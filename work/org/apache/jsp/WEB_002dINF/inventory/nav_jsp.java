@@ -1,4 +1,4 @@
-package org.apache.jsp.WEB_002dINF.potential;
+package org.apache.jsp.WEB_002dINF.inventory;
 
 import javax.servlet.*;
 import javax.servlet.http.*;
@@ -13,7 +13,7 @@ public final class nav_jsp extends org.apache.jasper.runtime.HttpJspBase
 
   static {
     _jspx_dependants = new java.util.ArrayList(1);
-    _jspx_dependants.add("/WEB-INF/potential/../common/config.jsp");
+    _jspx_dependants.add("/WEB-INF/inventory/../common/config.jsp");
   }
 
   private javax.el.ExpressionFactory _el_expressionfactory;
@@ -64,25 +64,23 @@ String win_topbar = "closed=\"true\" modal=\"true\" collapsible=\"false\"  dragg
 
       out.write("    ");
       out.write("\r\n");
-      out.write("<script type=\"text/javascript\" src=\"resources/desktop/product/catalog.js\"></script>\r\n");
       out.write("<div class=\"container\"  >\r\n");
-      out.write("<div style=\"width:80%;position:relative;\" class=\"small\" id=\"ListViewContents\">\r\n");
+      out.write("<div style=\"width:80%;position:relative;\" >\r\n");
       out.write("\t<table width=\"780\" border=\"0\">\r\n");
-      out.write("\t<tbody><tr><td align=\"center\"><img border=\"0\" src=\"resources/images/potentials/nav/sal_01.jpg\"><br>\r\n");
-      out.write("\t<img border=\"0\" src=\"resources/images/potentials/nav/sal_02.jpg\"><br>\r\n");
-      out.write("\t<img border=\"0\" usemap=\"#Map\" src=\"resources/images/potentials/nav/sal_03.jpg\">\r\n");
+      out.write("\t<tbody><tr><td align=\"center\"><img border=\"0\" src=\"resources/images/inventory/nav/inv_01.jpg\"><br>\r\n");
+      out.write("\t<img border=\"0\" src=\"resources/images/inventory/nav/inv_02.jpg\"><br>\r\n");
+      out.write("\t<img border=\"0\" usemap=\"#Map\" src=\"resources/images/inventory/nav/inv_03.jpg\">\r\n");
       out.write("\t</td><td></td></tr>\r\n");
       out.write("\t<tr class=\"lvtColDataHover\">\r\n");
       out.write("\t<td align=\"center\"><font size=\"5\"><b></b></font></td>\r\n");
       out.write("\t</tr>\r\n");
       out.write("\t</tbody></table>\r\n");
       out.write("\t<map id=\"Map\" name=\"Map\">\r\n");
-      out.write("<area href=\"index.php?action=index&amp;module=Potentials&amp;parenttab=Sales\" coords=\"140, 8, 220, 100\" shape=\"rect\">\r\n");
-      out.write("<area href=\"index.php?action=index&amp;module=SalesOrder&amp;parenttab=Sales\" coords=\"360, 8, 440, 100\" shape=\"rect\">\r\n");
-      out.write("<area href=\"index.php?action=index&amp;module=Invoice&amp;parenttab=Sales\" coords=\"565, 8, 645, 100\" shape=\"rect\">\r\n");
-      out.write("</map>\r\n");
+      out.write("\t<area href=\"index.php?action=index&amp;module=Warehouses&amp;parenttab=Inventory\" coords=\"235, 30, 320, 130\" shape=\"rect\">\r\n");
+      out.write("\t<area href=\"index.php?action=index&amp;module=Deliverys&amp;parenttab=Inventory\" coords=\"480, 30, 565, 130\" shape=\"rect\">\r\n");
+      out.write("\t</map>\r\n");
       out.write("</div>\r\n");
-      out.write("</div>\r\n");
+      out.write("</div>");
     } catch (Throwable t) {
       if (!(t instanceof SkipPageException)){
         out = _jspx_out;
