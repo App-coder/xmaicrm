@@ -1,24 +1,27 @@
 package com.crm.service.module.impl;
 
-import java.util.List;
+import javax.annotation.Resource;
 
 import org.springframework.stereotype.Service;
 
-import com.crm.model.XmExpenses;
+import com.crm.bean.portlets.salesyearinfo.ExpensesStat;
+import com.crm.mapper.module.XmExpensesMapper;
 import com.crm.service.module.XmExpensesService;
+
 @Service("xmExpensesService")
-public class XmExpensesServiceImpl implements XmExpensesService {
-
-	@Override
-	public int getTotal(int viewid) {
-		// TODO Auto-generated method stub
-		return 0;
+public class XmExpensesServiceImpl implements XmExpensesService{
+	
+	XmExpensesMapper xmExpensesMapper;
+	@Resource(name="xmExpensesMapper")
+	public void setXmExpensesMapper(XmExpensesMapper xmExpensesMapper) {
+		this.xmExpensesMapper = xmExpensesMapper;
 	}
 
+
 	@Override
-	public List<XmExpenses> loadList(int page, int rows, int viewid) {
-		// TODO Auto-generated method stub
-		return null;
+	public ExpensesStat getExpensesStat(String year) {
+		return this.xmExpensesMapper.getExpensesStat(year);
 	}
+
 
 }

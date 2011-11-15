@@ -6,9 +6,16 @@ body, input, button, select, textarea{font: Tahoma,'Microsoft Yahei','Simsun'}
 .pl10{padding-left:10px;}
 .pl5{padding-left:5px;}
 .ml_5{margin-left:5px;}
+.tac{text-align: center;}
 
 .tabcalendar{width:100%;border-collapse: collapse;}
 .tabcalendar tr td{height:25px;border:1px solid #000000;text-align: center;}
 .tabcalendar thead {background-color: #336600;}
 .tabcalendar thead td{color:white;text-align: center;}
 .tabcalendar tbody .tdesc{text-align: right;background-color: #F0F8FF;}
+
+.tabsaleyearinfo{width:100%;border-collapse: collapse;}
+.tabsaleyearinfo tr{background-color:#EEEEEE;}
+.tabsaleyearinfo tr td{height:25px;border:1px dotted #CCCCCC;}
+.tabsaleyearinfo thead tr{background-color:#7B95C7;padding-right:10px;text-align: center;color:#ffffff;font-weight: bold;}
+.tabsaleyearinfo td.lefttd {background-color: #DBE2F2;text-align: right;padding-right:10px;}

@@ -391,7 +391,16 @@
    <select id="getSupplierCharge" resultMap="BaseResultMap" >
    	select xm_charges.vendorid, sum(IFNULL(xm_charges.planamount,0.00)*(case when xm_charges.currency_rate > 0 then xm_charges.currency_rate else 1 end)) as sumchargesplan from xm_charges inner join xm_vendor on xm_vendor.vendorid = xm_charges.vendorid where xm_charges.deleted = 0 and xm_charges.chargestatus != '已付' group by xm_charges.vendorid;
    </select>
-   <select id="getYearGather" resultType="map" >
+   <select id="getYearGather" resultType="com.crm.bean.crm.portlets.GatherYear">
    	select DATE_FORMAT(xm_gathers.actualdate,'%m') as duedate,count(xm_gathers.gathersid) as gatherscount, sum((case when xm_gathers.currency_rate > 0 then xm_gathers.currency_rate else 1 end)*xm_gathers.planamount) as sumplanamount, sum((case when xm_gathers.currency_rate > 0 then xm_gathers.currency_rate else 1 end)*actualamount) as sumactualamount from xm_gathers left join xm_account on xm_account.accountid = xm_gathers.accountid where xm_gathers.deleted = 0 and xm_gathers.actualdate between #{fistday} and #{lastday} group by DATE_FORMAT(xm_gathers.actualdate,'%m') ;
+   </select>
+   <select id="getSum" resultType="String">
+   	select sum(object_num) as object_num from xm_salesobject where object_type='gather' and object_year=#{year} and object_month=#{month};
+   </select>
+   <select id="getFinished" resultType="String">
+   	select sum((case when xm_gathers.currency_rate > 0 then xm_gathers.currency_rate else 1 end)*xm_gathers.actualamount) as total from xm_gathers WHERE deleted =0 and gatherstatus='已收' and actualdate between #{firstDayOfMonth} and #{lastDayOfMonth};
+   </select>
+   <select id="getGatherStat" resultType="com.crm.bean.portlets.salesyearinfo.GatherStat">
+   	select count(*) as gathersacc, sum(IFNULL(xm_gathers.planamount,0.00)*(case when xm_gathers.currency_rate > 0 then xm_gathers.currency_rate else 1 end)) as sumgathersplan, sum(IFNULL((case when xm_gathers.currency_rate > 0 then xm_gathers.currency_rate else 1 end)*actualamount,0.00)) as sumgathersactual from xm_gathers where xm_gathers.deleted = 0 and xm_gathers.gatherstatus = '已收' and xm_gathers.actualdate between '${year}-01-01 00:00:00' and '${year}-12-31 23:59:00';
    </select>
 </mapper>

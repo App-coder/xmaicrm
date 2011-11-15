@@ -7,6 +7,7 @@ import javax.annotation.Resource;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.alibaba.fastjson.JSON;
 import com.crm.bean.easyui.ListBean;
@@ -33,7 +34,12 @@ public class KeyCustomviewController {
 
 	@RequestMapping(value = "/index")
 	public String index(ModelMap modelMap) {
-		
+		return "portlets/keycustomview";
+	}
+	
+	@RequestMapping(value = "/getJson")
+	@ResponseBody
+	public String getJson(){
 		ListBean bean = new ListBean();
 		List<XmCustomview> keycustomviews = this.keyCustomviewService.getKeyCustomviews();
 		for(int i=0;i<keycustomviews.size();i++){
@@ -41,9 +47,7 @@ public class KeyCustomviewController {
 		}
 		bean.setRows(keycustomviews);
 		bean.setTotal(keycustomviews.size());
-		modelMap.addAttribute("viewjson",JSON.toJSON(bean));
-		
-		return "portlets/keycustomview";
+		return JSON.toJSONString(bean); 
 	}
 	
 }

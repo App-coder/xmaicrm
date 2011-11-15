@@ -82,4 +82,26 @@
   <select id="getList" resultType="map">
   	SELECT xm_cangkus.*,(select GROUP_CONCAT(xm_users.user_name) from xm_users left join xm_cangkuserrel on xm_cangkuserrel.userid = xm_users.id where xm_cangkuserrel.cangkusid = xm_cangkus.cangkusid) as authority from xm_cangkus
   </select>
+  <select id="getCangkussets" resultType="map">
+  	SELECT
+		xm_cangkuproductrel.cangkusid,
+		xm_cangkus.cangkuname,
+		count(
+			xm_cangkuproductrel.productid
+		)AS prodcount,
+		sum(
+			xm_cangkuproductrel.productnum
+		)AS cangkucount,
+		sum(
+			xm_cangkuproductrel.productnum * xm_products.cost_price
+		)AS assets
+	FROM
+		xm_cangkuproductrel
+	INNER JOIN xm_products ON xm_products.productid = xm_cangkuproductrel.productid
+	left join xm_cangkus on xm_cangkuproductrel.cangkusid = xm_cangkus.cangkusid 
+	WHERE
+		xm_products.deleted = 0
+	GROUP BY
+		xm_cangkuproductrel.cangkusid;
+  </select>
 </mapper>

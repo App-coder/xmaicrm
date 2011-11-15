@@ -34,4 +34,10 @@ public class XmCangkusServiceImpl implements XmCangkusService {
 		this.xmCangkusMapper.updateByPrimaryKey(cangkus);
 	}
 
+
+	@Override
+	public List<Object> getCangkussets() {
+		return this.xmCangkusMapper.getCangkussets();
+	}
+
 }

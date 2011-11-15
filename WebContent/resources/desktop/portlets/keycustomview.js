@@ -14,6 +14,7 @@ function loadPage(){
     }];
     cols = setDefWidth(cols, 80);
     $('#keycustomview').datagrid({
+	url:'crm/portlets/key_customview/getJson',
 	collapsible : false,
 	idField : 'cvid',
 	rownumbers : true,
@@ -23,5 +24,4 @@ function loadPage(){
 	border:false,
 	columns : [ cols ]
     });
-    $('#keycustomview').datagrid('loadData',viewjson);
 }

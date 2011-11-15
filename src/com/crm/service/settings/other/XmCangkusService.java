@@ -8,4 +8,6 @@ public interface XmCangkusService {
 
 	void setStatus(int cangkusid,int isused);
 
+	List<Object> getCangkussets();
+
 }

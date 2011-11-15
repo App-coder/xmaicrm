@@ -15,6 +15,10 @@ public class XmAccountServiceImpl implements XmAccountService {
 	public void setXmAccountMapper(XmAccountMapper xmAccountMapper) {
 		this.xmAccountMapper = xmAccountMapper;
 	}
+	@Override
+	public String getNewAccounts(String year) {
+		return this.xmAccountMapper.getNewAccounts(year);
+	}
     
 
 }

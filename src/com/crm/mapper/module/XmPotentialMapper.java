@@ -24,4 +24,9 @@ public interface XmPotentialMapper extends ModuleMapper<XmPotential>{
 
     int updateByPrimaryKey(@Param("record") XmPotential record);
 
+	List<XmPotential> getTopPotential();
+
+	String getSalesCountByPick(@Param("colvalue") String colvalue,@Param("range") String range,@Param("firstday") String firstday,
+		@Param("lastday") String lastday);
+
 }

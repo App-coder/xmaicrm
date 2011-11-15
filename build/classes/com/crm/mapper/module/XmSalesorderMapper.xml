@@ -551,4 +551,13 @@
    <select id="getFinished" resultType="String" >
    	select sum((case when xm_salesorder.currency_rate > 0 then xm_salesorder.currency_rate else 1 end)*xm_salesorder.total) as total from xm_salesorder WHERE xm_salesorder.deleted =0 AND duedate between #{firstDayOfMonth} and #{lastDayOfMonth} and xm_salesorder.approved=1 and xm_salesorder.sostatus!='已撤单';
    </select>
+   <select id="getTopSalesByMonth" resultType="com.crm.bean.amcharts.portlets.Salesbymonth" >
+   	 SELECT DATE_FORMAT(xm_salesorder.duedate,<![CDATA['%Y-%m']]>) as m, sum((case when xm_salesorder.currency_rate <![CDATA[>]]> 0 then xm_salesorder.currency_rate else 1 end)*xm_salesorder.total) as total, count(*) as so_count FROM xm_salesorder inner join xm_account on xm_salesorder.accountid = xm_account.accountid left join xm_users on xm_users.id = xm_salesorder.smownerid where xm_salesorder.deleted = 0 AND xm_salesorder.duedate <![CDATA[>=]]> #{prev} AND xm_salesorder.duedate <![CDATA[<=]]> #{today} GROUP BY DATE_FORMAT(xm_salesorder.duedate,<![CDATA['%Y-%m']]>) ORDER BY m
+   </select>
+   <select id="getSalesOfYear" resultType="com.crm.bean.amcharts.portlets.Salesyear" >
+   	select DATE_FORMAT(xm_salesorder.duedate,'%m') as duedate,count(xm_salesorder.salesorderid) as salescount, sum((case when xm_salesorder.currency_rate > 0 then xm_salesorder.currency_rate else 1 end)*xm_salesorder.total) as salessumtotal from xm_salesorder left join xm_account on xm_account.accountid = xm_salesorder.accountid where xm_salesorder.deleted = 0 and xm_salesorder.approved = 1 and xm_salesorder.duedate between '${year}-01-01 00:00:00' and '${year}-12-31 23:59:00' group by DATE_FORMAT(xm_salesorder.duedate,'%m') ;
+   </select>
+   <select id="getSalesorderStat" resultType="com.crm.bean.portlets.salesyearinfo.SalesorderStat">
+   	select count(xm_salesorder.salesorderid) as salescount, sum((case when xm_salesorder.currency_rate > 0 then xm_salesorder.currency_rate else 1 end)*xm_salesorder.total) as salessumtotle from xm_salesorder inner join xm_account on xm_account.accountid = xm_salesorder.accountid where xm_salesorder.deleted = 0 and xm_salesorder.approved = 1 and xm_salesorder.duedate between '${year}-01-01 00:00:00' and '${year}-12-31 23:59:00';
+   </select>
 </mapper>
