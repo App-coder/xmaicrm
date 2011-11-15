@@ -11,8 +11,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.alibaba.fastjson.JSON;
-import com.crm.model.XmField;
-import com.crm.model.XmTab;
+import com.crm.action.BaseController;
+import com.crm.bean.crm.Message;
 import com.crm.service.XmFieldService;
 import com.crm.service.XmTabService;
 
@@ -26,7 +26,7 @@ import com.crm.service.XmTabService;
  */
 @Controller
 @RequestMapping(value = "crm/settings/deforgfield")
-public class XmDefOrgFieldController {
+public class XmDefOrgFieldController extends BaseController {
 
 	XmTabService xmTabService;
 	@Resource(name="xmTabService")
@@ -55,4 +55,18 @@ public class XmDefOrgFieldController {
 		return JSON.toJSONString(fields);
 	}
 	
+	@RequestMapping(value = "/submit", method = RequestMethod.POST)
+	@ResponseBody
+	public String submit(int tabid,String ck_fieldid,String unck_fieldid){
+		int affectrows=this.xmFieldService.submit(tabid, ck_fieldid, unck_fieldid);
+		Message msg = new Message();
+		if(affectrows>=1){
+			msg.setMessage("编辑成功！");
+			msg.setType(true);
+		}else{
+			msg.setMessage("编辑时发生异常！");
+			msg.setType(false);
+		}
+		return objToJson(msg);
+	}
 }

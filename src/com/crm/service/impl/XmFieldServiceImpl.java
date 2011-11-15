@@ -80,5 +80,20 @@ public class XmFieldServiceImpl implements XmFieldService{
 	public List<Object> getDefOrgFields(int tabid) {
 		return this.xmFieldMapper.getDefOrgFields(tabid);
 	}
+	
+	@Override
+	public int submit(int tabid, String ck_fieldid, String unck_fieldid) {
+		String fieldids="";
+		int affect=0;
+		if(ck_fieldid.split(",").length>0 && !ck_fieldid.split(",")[0].equals("")){
+			fieldids="("+ck_fieldid+")";
+			affect+=this.xmFieldMapper.updateDefOrgVisible(tabid, 0, fieldids);
+		}
+		if(unck_fieldid.split(",").length>0 && !unck_fieldid.split(",")[0].equals("")){
+			fieldids="("+unck_fieldid+")";
+			affect+=this.xmFieldMapper.updateDefOrgVisible(tabid, 1, fieldids);
+		}
+		return affect;
+	}
 
 }

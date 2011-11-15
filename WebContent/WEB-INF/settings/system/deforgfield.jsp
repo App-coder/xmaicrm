@@ -20,7 +20,7 @@ ${navbar }
     	</c:forEach>
     </select>
     <span>
-      <a href="#" class="easyui-linkbutton" iconCls="icon-save" plain="true" onclick="javascript:alert('Add')">编辑</a> 
+      <a class="easyui-linkbutton" iconCls="icon-save" plain="true" onclick="javascript:submitDeforgFid()">保存</a> 
     </span>
 </div>
 <div class="d_center">

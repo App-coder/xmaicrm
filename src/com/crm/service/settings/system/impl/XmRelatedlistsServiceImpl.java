@@ -23,5 +23,10 @@ public class XmRelatedlistsServiceImpl implements XmRelatedlistsService {
 	public List<XmRelatedlists> getRelatedByTabid(int tabid) {
 		return this.xmRelatedlistsMapper.getRelatedByTabid(tabid);
 	}
+	
+	@Override
+	public int submit(XmRelatedlists xmRelatedlists) {
+		return this.xmRelatedlistsMapper.updateByPrimaryKeySelective(xmRelatedlists);
+	}
 
 }
