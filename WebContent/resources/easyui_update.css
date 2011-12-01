@@ -14,8 +14,8 @@ a.l-btn{border-radius:0px;}
 #navMenu a:hover.l-btn-plain{background: none;border-radius:none;border:none;}
 #navMenu li.split{background:url(./images/toolbar-div.png) repeat-y;width:2px;display: inline-block;height:23px; }
 #navMenu ul { float:left; display:block; overflow:hidden; position:relative;margin-left:30px;list-style: none;margin:2px;}
-#navMenu li { float:left; margin-left:-1px; position:relative;line-height:28px;}
-#navMenu li a { float:left;}
+#navMenu li { float:left; margin-left:-1px; position:relative;line-height:28px;;}
+#navMenu li a { float:left;padding-left:5px;padding-right: 8px;}
 .navmenuitem .menu-item{border:none;border-bottom: 1px solid #D3D3D3;background-color: #fff;text-align: left;height:24px !important;line-height: 24px !important;}
 .navmenuitem .menu-active{background-color:#DBE2F2;border-radius:0px;}
 .navmenuitem .menu-text {left:5px;}
