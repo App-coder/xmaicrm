@@ -1,5 +1,9 @@
 package com.crm.product.mapper;
 
+import java.util.List;
+
+import org.apache.ibatis.annotations.Param;
+
 import com.crm.model.XmCatalog;
 
 public interface XmCatalogMapper {
@@ -14,4 +18,6 @@ public interface XmCatalogMapper {
     int updateByPrimaryKeySelective(XmCatalog record);
 
     int updateByPrimaryKey(XmCatalog record);
+
+	List<XmCatalog> getCatalogById(@Param("parentid") String parentid);
 }

@@ -12,6 +12,8 @@ public class XmCatalog {
     private Integer depth;
 
     private String parentcatalogid;
+    
+    private Integer childcount;
 
     public String getCatalogid() {
         return catalogid;
@@ -60,4 +62,13 @@ public class XmCatalog {
     public void setParentcatalogid(String parentcatalogid) {
         this.parentcatalogid = parentcatalogid == null ? null : parentcatalogid.trim();
     }
+
+	public Integer getChildcount() {
+		return childcount;
+	}
+
+	public void setChildcount(Integer childcount) {
+		this.childcount = childcount;
+	}
+
 }

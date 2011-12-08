@@ -8,6 +8,7 @@
     <result column="sortorder" property="sortorder" jdbcType="INTEGER" />
     <result column="depth" property="depth" jdbcType="INTEGER" />
     <result column="parentcatalogid" property="parentcatalogid" jdbcType="VARCHAR" />
+    <result column="childcount" property="sortorder" jdbcType="INTEGER" />
   </resultMap>
   <sql id="Base_Column_List" >
     catalogid, catalogname, parentcatalog, sortorder, depth, parentcatalogid
@@ -103,4 +104,19 @@
       parentcatalogid = #{parentcatalogid,jdbcType=VARCHAR}
     where catalogid = #{catalogid,jdbcType=VARCHAR}
   </update>
+  <select id="getCatalogById" resultMap="BaseResultMap" >
+  	SELECT catalog.*,( SELECT 
+				count(xm_catalog.catalogid) 
+			FROM 
+				xm_catalog 
+			WHERE 
+				xm_catalog.parentcatalogid = catalog.catalogid  
+		) childcount 
+	FROM 
+		xm_catalog catalog 
+	WHERE 
+		catalog.parentcatalogid = #{parentid} 
+	ORDER BY  
+		sortorder ASC 
+  </select>
 </mapper>
