@@ -1,0 +1,9 @@
+[{
+    "id":1,
+    "text":"text1"
+},{
+    "id":2,
+    "text":"text1",
+    "selected":true  
+}
+]
