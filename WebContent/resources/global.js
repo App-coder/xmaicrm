@@ -17,7 +17,6 @@ $(function() {
 
 });
 function tab(title, url, closable) {
-    	alert(title);
 	if (closable == undefined) {
 		closable = true;
 	}
