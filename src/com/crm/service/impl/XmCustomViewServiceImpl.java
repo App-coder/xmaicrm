@@ -20,7 +20,7 @@ public class XmCustomViewServiceImpl implements XmCustomViewService {
 	}
 
 	public List<XmCustomview> queryByEntityType(String entitytype) {
-		return this.queryByEntityType(entitytype);
+		return this.xmCustomviewMapper.queryByEntityType(entitytype);
 	}
 
 	@Override
