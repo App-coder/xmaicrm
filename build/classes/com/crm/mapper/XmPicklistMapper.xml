@@ -88,6 +88,9 @@
   <select id="getPickList" resultType="map">
   	select colvalue from xm_picklist where colname=#{pickfieldcolname} order by sequence;
   </select>
+  <select id="getPicks" resultMap="BaseResultMap">
+  	select * from xm_picklist where colname=#{fieldname} order by sequence asc;
+  </select>
   
   <select id="getPickListName" resultType="map">
     select fieldlabel,generatedtype,columnname,fieldname,uitype from xm_field inner join 

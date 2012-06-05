@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"
     pageEncoding="utf-8"%>
-<%@ include file="../../head.jsp"%>
+<%@ include file="../../head_1.jsp"%>
 <!-- amchart -->
 <script type="text/javascript" src="resources/amcharts/amcharts.js"></script>    
 <%@ include file="../../common/config.jsp"%>

@@ -14,8 +14,8 @@ import com.crm.model.XmParenttab;
 import com.crm.model.XmTab;
 import com.crm.service.XmEntitynameService;
 import com.crm.service.XmTabService;
+import com.crm.service.settings.system.XmParenttabService;
 import com.crm.service.system.CacheDataService;
-import com.crm.settings.system.service.XmParenttabService;
 import com.crm.util.CacheManager;
 import com.crm.util.Constant;
 
@@ -49,14 +49,17 @@ public class CacheDataServiceImpl implements CacheDataService {
 		if (CacheManager.getFromCache(Constant.ENTITYNAME) == null) {
 			HashMap<String, XmEntityname> hmentityname = new HashMap<String, XmEntityname>();
 			HashMap<String, XmEntityname> hmbyid = new HashMap<String, XmEntityname>();
+			HashMap<String, XmEntityname> hmbyid_noline = new HashMap<String, XmEntityname>();
 			List<XmEntityname> ens = this.xmEntitynameService.getEntityname();
 			for (int i = 0; i < ens.size(); i++) {
 				hmentityname.put(ens.get(i).getModulename().toLowerCase(),
 						ens.get(i));
 				hmbyid.put(ens.get(i).getEntityidfield(), ens.get(i));
+				hmbyid_noline.put(ens.get(i).getEntityidfield().replace("_", ""), ens.get(i));
 			}
 			CacheManager.putInCache(Constant.TABBYEID, hmbyid);
 			CacheManager.putInCache(Constant.ENTITYNAME, hmentityname);
+			CacheManager.putInCache(Constant.ENTITYNAME_NOLINE, hmbyid_noline);
 		}
 
 		if (CacheManager.getFromCache(Constant.TAB) == null) {
@@ -85,8 +88,6 @@ public class CacheDataServiceImpl implements CacheDataService {
 			}
 			CacheManager.putInCache(Constant.MENUBAR,menubar);
 		}
-		
-		
 	}
 	
 

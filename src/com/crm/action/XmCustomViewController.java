@@ -1,13 +1,14 @@
 package com.crm.action;
 
 import java.io.UnsupportedEncodingException;
-import java.lang.reflect.Field;
 import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 
 import javax.annotation.Resource;
 
@@ -46,6 +47,8 @@ import com.crm.service.XmFieldService;
 import com.crm.service.XmPicklistService;
 import com.crm.service.XmSequenceService;
 import com.crm.service.XmTabService;
+import com.crm.service.settings.basic.XmUsersService;
+import com.crm.util.ArrayUtil;
 import com.crm.util.DateUtil;
 import com.crm.util.HtmlUtil;
 import com.crm.util.JsonUtil;
@@ -123,6 +126,12 @@ public class XmCustomViewController extends BaseController {
 	public void setXmEntitynameService(XmEntitynameService xmEntitynameService) {
 		this.xmEntitynameService = xmEntitynameService;
 	}
+	
+	XmUsersService xmUsersService;
+	@Resource(name="xmUsersService")
+	public void setXmUsersService(XmUsersService xmUsersService) {
+		this.xmUsersService = xmUsersService;
+	}
 
 	@RequestMapping(value = "/queryByEntityType", method = RequestMethod.GET)
 	public String getViewList(@RequestParam("entitytype") String entitytype) {
@@ -154,7 +163,7 @@ public class XmCustomViewController extends BaseController {
 	}
 
 	@RequestMapping(value = "/index", method = RequestMethod.GET)
-	public String index(@Param("entitytype") String entitytype,
+	public String index(@Param("entitytype") String entitytype,String ptb,
 			ModelMap modelmap) {
 
 		XmTab tab = this.xmTabService.getTabByName(entitytype);
@@ -183,6 +192,8 @@ public class XmCustomViewController extends BaseController {
 				.getTabid());
 		modelmap.addAttribute("searchfields",
 				HtmlUtil.getSearchFields(searchFields));
+		
+		modelmap.addAttribute("ptb",ptb);
 
 		return "public/customview";
 	}
@@ -699,9 +710,10 @@ public class XmCustomViewController extends BaseController {
 	 * 
 	 * @param modelMap
 	 * @return
+	 * @throws UnsupportedEncodingException 
 	 */
 	@RequestMapping(value = "/viewIndex", method = RequestMethod.GET)
-	public String viewIndex(String entitytype, ModelMap modelMap) {
+	public String viewIndex(String entitytype,String ptb,ModelMap modelMap) throws UnsupportedEncodingException {
 		XmTab tab = CustomViewUtil.getTabByName(entitytype);
 		this.moduleUtil.setViewProp(modelMap, entitytype, tab);
 		XmEntityname entityname = CustomViewUtil.getEntitynameByET(entitytype);
@@ -709,7 +721,29 @@ public class XmCustomViewController extends BaseController {
 		modelMap.addAttribute("viewid", entityname.getEntityidfield());
 		modelMap.addAttribute("entitytype", entitytype);
 		modelMap.addAttribute("entityname", entityname);
+		
+		modelMap.addAttribute("ptb",new String(ptb.getBytes("ISO-8859-1"),
+				"utf-8"));
 		return "public/viewcv";
+	}
+	
+	/**
+	 * 查询选择的框子，弹出窗的window
+	 * 
+	 * @param modelMap
+	 * @return
+	 */
+	@RequestMapping(value = "/viewPop", method = RequestMethod.GET)
+	public String viewPop(String modulename,String columnname, ModelMap modelMap){
+		XmTab tab = CustomViewUtil.getTabByName(modulename);
+		this.moduleUtil.setViewProp(modelMap, modulename, tab);
+		XmEntityname entityname = CustomViewUtil.getEntitynameByET(modulename);
+		modelMap.addAttribute("tab", tab);
+		modelMap.addAttribute("viewid", entityname.getEntityidfield());
+		modelMap.addAttribute("entitytype", modulename);
+		modelMap.addAttribute("entityname", entityname);
+		modelMap.addAttribute("columnname",columnname);
+		return "public/viewpop";
 	}
 
 	/**
@@ -910,12 +944,20 @@ public class XmCustomViewController extends BaseController {
 	 * @param module 模块
 	 * @param modelmap
 	 * @return
+	 * @throws UnsupportedEncodingException 
 	 */
 	@RequestMapping(value = "/showEdit", method = RequestMethod.GET)
-	public String showEdit(int recordid,String module,ModelMap modelmap){
+	public String showEdit(int recordid,String module,String ptb,ModelMap modelmap) throws UnsupportedEncodingException{
+		
+		
+		XmTab tab = CustomViewUtil.getTabByName(module);
+		modelmap.addAttribute("tab",tab );
+		
+		modelmap.addAttribute("ptb",new String(ptb.getBytes("ISO-8859-1"),
+				"utf-8"));
+		
 		//加载对应的数据
 		if(recordid!=0){
-			
 			modelmap.addAttribute("recordid",recordid);
 		}
 		
@@ -923,15 +965,50 @@ public class XmCustomViewController extends BaseController {
 		XmEntityname entity = xmEntitynameService.getEntityByModule(module);
 		modelmap.addAttribute("entity",entity);
 		
-		//得到所有的字段，根据tableid
+		/*
+		 * 得到所有的字段，根据tableid
 		List<XmField> fields = xmFieldService.getFieldsByTabid(entity.getTabid());
+		if(fields.size()>0){
+			for(int i=0;i<fields.size();i++){
+				fields.get(i).setFieldHtml(HtmlUtil.getFieldHtml(fields.get(i).getColumnname(),fields.get(i).getTypeofdata()));
+			}
+		}
 		modelmap.addAttribute("fields",fields);
+		*/
+		
 		
 		//得到block，
 		List<XmBlocks> blocks = xmBlocksService.getFieldBlocksByTabId(entity.getTabid());
-		modelmap.addAttribute("blocks",blocks);
+		
+		List<Object> blockArray = new ArrayList<Object>();
+		for(int i=0;i<blocks.size();i++){
+			blockArray.add(blocks.get(i).getBlockid());
+		}
+		String blockstr = ArrayUtil.arrayToJoinStr(blockArray,",",true);
+		
+		List<XmField> fields = this.xmFieldService.getEditFields(entity.getTabid(),blockstr);
+		Set setblock = new HashSet();
+		
+		if(fields.size()>0){
+			for(int i=0;i<fields.size();i++){
+				fields.get(i).setFieldHtml(HtmlUtil.getFieldHtml(fields.get(i),this.xmPicklistService,this.xmUsersService));
+				setblock.add(fields.get(i).getBlock());
+			}
+		}
+		modelmap.addAttribute("fields",fields);
+		
+		//整理后的block modelmap.addAttribute("blocks",blocks);
+		List<XmBlocks> arrangeBlock = new ArrayList<XmBlocks>();
+		for(int i=0;i<blocks.size();i++){
+			if(setblock.contains(blocks.get(i).getBlockid())){
+				arrangeBlock.add(blocks.get(i));
+			}
+		}
+		modelmap.addAttribute("blocks",arrangeBlock);
 		
 		return "public/showedit";
 	}
+	
+	
 
 }

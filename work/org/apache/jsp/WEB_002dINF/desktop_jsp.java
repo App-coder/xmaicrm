@@ -63,6 +63,7 @@ public final class desktop_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write('\n');
       out.write("\r\n");
       out.write("\r\n");
+      out.write("\r\n");
 
 String path = request.getContextPath();  
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/"; 
@@ -106,9 +107,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
       out.write("<script type=\"text/javascript\" src=\"resources/plugins/ajaxfileupload.js\"></script>\r\n");
       out.write('\r');
       out.write('\n');
-      out.write("\r\n");
-      out.write("\r\n");
-      out.write("\r\n");
+      out.write('\r');
+      out.write('\n');
 
 String win_topbar = "resizable=\"false\"  closed=\"true\" modal=\"true\" collapsible=\"false\"  draggable=\"false\" minimizable=\"false\" maximizable=\"false\" inline=\"false\"";
 
@@ -141,7 +141,6 @@ String win_topbar = "resizable=\"false\"  closed=\"true\" modal=\"true\" collaps
       out.write("\r\n");
       out.write("<div id=\"main\" >\r\n");
       out.write("<div class=\"path\" >&gt;<a  href=\"crm/welcome/desktop\">工作台</a></div>\r\n");
-      out.write("\r\n");
       out.write("<div id=\"desktop\" >\r\n");
       out.write("\t<div style=\"width:33%;\">\r\n");
       out.write("\t\t<div title=\"Clock\" style=\"text-align:center;background:#f3eeaf;height:150px;padding:5px;\">\r\n");

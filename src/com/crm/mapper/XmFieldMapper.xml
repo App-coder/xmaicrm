@@ -291,10 +291,47 @@
 		ORDER BY  
 			sequence 
   </select>
-  <select id="getFieldsByTabid" resultMap="BaseResultMap" >
-  	select * from xm_field where tabid=#{tabid}
-  </select>
   <select id="getProfileFieldsByTabid" resultMap="BaseResultMap"  >
   	select xm_profile2field.readonly as profile_readonly,xm_profile2field.visible,xm_field.* from xm_profile2field inner join xm_field on xm_field.fieldid=xm_profile2field.fieldid where xm_profile2field.profileid=#{profileid} and xm_profile2field.tabid=#{tabid}
   </select>
+  <select id="getEditFields"  resultMap="BaseResultMap"   >
+  	SELECT
+		xm_field.*
+	FROM
+		xm_field
+	INNER JOIN xm_def_org_field ON xm_def_org_field.fieldid = xm_field.fieldid
+	AND xm_def_org_field.visible = 0
+	WHERE
+		xm_field.tabid = ${tabid}
+	AND xm_field.block IN(${blockstr})
+	AND xm_field.displaytype IN(1, 4)
+	AND info_type = 'BAS'
+	ORDER BY
+		block,
+		sequence;
+  </select>
+  <select id="getFieldsByTabid" resultMap="BaseResultMap" >
+  	select fieldid,columnname,fieldlabel,uitype,displaytype,tablename,typeofdata from xm_field where tabid=#{tabid} and  generatedtype=2 and uitype not in('1021','1022','1023') order by sequence limit #{start},#{rows}
+  </select>
+  
+  <select id="getTableNameByTabid" resultType="String">
+     select tablename from xm_entityname where tabid=#{tabid}
+  </select>
+  
+  <select id="getMaxSequence" resultType="Integer">
+     select max(sequence) sequence from xm_field  WHERE tabid =#{tabid}  AND generatedtype = 2 AND uitype NOT IN('1021', '1022', '1023')
+  </select>
+  
+  <select id="getTotal" resultType="Integer">
+    SELECT	count(*) total FROM xm_field WHERE 	tabid = #{tabid}  AND generatedtype = 2 AND uitype NOT IN('1021', '1022', '1023') ORDER BY 	sequence
+  </select>
+  
+  
+  <update id="addColumn">
+     alter table ${tablename} ${cfField};
+  </update>
+  
+  <update id="deleteColumn">
+     alter table ${tablename} ${cfField};
+  </update>
 </mapper>

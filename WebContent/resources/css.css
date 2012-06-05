@@ -50,15 +50,16 @@ table .tb_list td.righttd{padding-left:10px;}
 .bp{padding-right:15px;padding-top:10px;padding-left:10px;padding-bottom:10px;}
 .mgb_10{margin-bottom: 10px;}
 .mgt_10{margin-top: 10px;}
+.mgl_10{margin-left: 10px;}
 
 .tab_form{width:100%;font:12px/1.5 Tahoma,'Microsoft Yahei','Simsun';}
 .tab_form .edittd{width:110px;text-align: right;padding-right:10px;}
 .tab_form .edittd2{width:200px;text-align: right;padding-right:10px;}
 .tab_form .edittd3{text-align: right;padding-right:10px;}
 .tab_form input.text,.tab_form select.text{width:180px;margin-right: 10px;border:1px solid #D2D2D2;height: 20px;}
-.tab_form input.text2,.tab_form select.text2{width:250px;margin-right: 10px;border:1px solid #D2D2D2;height: 20px;}
+.tab_form input.text2,.tab_form select.text2{width:250px;border:1px solid #D2D2D2;height: 20px;}
 .tab_form input.text3,.tab_form select.text3{width:90%;margin-right: 10px;border:1px solid #D2D2D2;height: 20px;}
-.tab_form textarea{width:90%;}
+.tab_form textarea{width:90%;border:1px solid #D2D2D2;}
 .tab_editlist{width:100%;font:12px/1.5 Tahoma,'Microsoft Yahei','Simsun';}
 .tab_editlist input.text,.tab_editlist select.text{width:250px;margin-right: 10px;border:1px solid #D2D2D2;height: 20px;}
 .tab_editlist .edittd{width:15%;padding-left:10px;}
@@ -204,3 +205,5 @@ fieldset legend{color:#15428B;}
 .tabauth{width:100%;border-collapse: collapse;border:1px solid #AED0EA;}
 .tabauth thead{}
 .tabauth tr td{height: 26px;text-align: center;}
+
+.must{color:red;margin-left:4px;}

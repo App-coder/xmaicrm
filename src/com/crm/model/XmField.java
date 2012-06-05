@@ -41,6 +41,8 @@ public class XmField {
     
     private String tablabel;
     
+    private String fieldHtml;
+    
     //权限
     private int profileReadonly;
     
@@ -220,5 +222,15 @@ public class XmField {
 	public void setVisible(int visible) {
 		this.visible = visible;
 	}
+
+	public String getFieldHtml() {
+		return fieldHtml;
+	}
+
+	public void setFieldHtml(String fieldHtml) {
+		this.fieldHtml = fieldHtml;
+	}
     
+	
+	
 }

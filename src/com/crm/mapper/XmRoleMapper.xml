@@ -84,4 +84,38 @@
     <include refid="Base_Column_List" />
     from xm_role where depth!=0 order by roleid;
   </select>
+  <select id="getRolesByParent" resultType="map" >
+	SELECT
+		roles.*,
+	IF(
+		(
+			SELECT
+				count(xm_role.roleid)
+			FROM
+				xm_role
+			WHERE
+				parentrole LIKE CONCAT(roles.parentrole,'::%')
+		and xm_role.depth = roles.depth+1
+		)> 0,
+		'closed',
+		'open'
+	)state
+	FROM
+		xm_role roles
+	WHERE
+	<choose>
+		<when test="depth==0">
+			parentrole like '${parentrole}%' and depth=${depth};
+		</when>
+		<otherwise>
+			parentrole like '${parentrole}::%' and depth=${depth};
+		</otherwise>
+	</choose>
+  </select>
+  <select id="getAll" resultMap="BaseResultMap" >
+  	select * from xm_role
+  </select>
+  <select id="getUserRole" resultMap="BaseResultMap" >
+  	select xm_role.* from xm_role  left join xm_user2role on xm_role.roleid = xm_user2role.roleid where xm_user2role.userid = #{id}
+  </select>
 </mapper>

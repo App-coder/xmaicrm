@@ -15,7 +15,6 @@ var pathname = "工作台";
 ${navbar }
 <div id="main" >
 <div class="path" >&gt;<a  href="crm/welcome/desktop">工作台</a></div>
-
 <div id="desktop" >
 	<div style="width:33%;">
 		<div title="Clock" style="text-align:center;background:#f3eeaf;height:150px;padding:5px;">

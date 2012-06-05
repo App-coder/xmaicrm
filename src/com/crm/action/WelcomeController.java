@@ -11,12 +11,10 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.context.ServletContextAware;
 
 import com.crm.bean.crm.UserPermission;
-import com.crm.model.XmRole;
 import com.crm.model.XmUsers;
+import com.crm.service.settings.basic.XmUsersService;
 import com.crm.service.system.CacheDataService;
 import com.crm.service.system.UserService;
-import com.crm.settings.basic.service.XmRoleService;
-import com.crm.settings.basic.service.XmUsersService;
 import com.crm.util.Constant;
 
 @Controller

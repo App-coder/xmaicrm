@@ -30,4 +30,13 @@ public interface XmFieldService {
 
 	
 	public List<XmField> getProfileFieldsByTabid(Integer profileid,Integer tabid);
+
+	/**
+	 * 视图编辑的字段
+	 * 
+	 * @param tabid
+	 * @param blockstr
+	 * @return
+	 */
+	public List<XmField> getEditFields(Integer tabid, String blockstr);
 }

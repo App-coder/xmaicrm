@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.crm.mapper.settings.system.XmMultifieldMapper" >
+  <resultMap id="BaseResultMap" type="com.crm.model.XmMultifield" >
+    <result column="multifieldid" property="multifieldid" jdbcType="INTEGER" />
+    <result column="tabid" property="tabid" jdbcType="INTEGER" />
+    <result column="totallevel" property="totallevel" jdbcType="INTEGER" />
+    <result column="multifieldname" property="multifieldname" jdbcType="VARCHAR" />
+    <result column="tablename" property="tablename" jdbcType="VARCHAR" />
+  </resultMap>
+  <insert id="insert" parameterType="com.crm.model.XmMultifield" >
+    insert into xm_multifield (multifieldid, tabid, totallevel, 
+      multifieldname, tablename)
+    values (#{multifieldid,jdbcType=INTEGER}, #{tabid,jdbcType=INTEGER}, #{totallevel,jdbcType=INTEGER}, 
+      #{multifieldname,jdbcType=VARCHAR}, #{tablename,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.crm.model.XmMultifield" >
+    insert into xm_multifield
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="multifieldid != null" >
+        multifieldid,
+      </if>
+      <if test="tabid != null" >
+        tabid,
+      </if>
+      <if test="totallevel != null" >
+        totallevel,
+      </if>
+      <if test="multifieldname != null" >
+        multifieldname,
+      </if>
+      <if test="tablename != null" >
+        tablename,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="multifieldid != null" >
+        #{multifieldid,jdbcType=INTEGER},
+      </if>
+      <if test="tabid != null" >
+        #{tabid,jdbcType=INTEGER},
+      </if>
+      <if test="totallevel != null" >
+        #{totallevel,jdbcType=INTEGER},
+      </if>
+      <if test="multifieldname != null" >
+        #{multifieldname,jdbcType=VARCHAR},
+      </if>
+      <if test="tablename != null" >
+        #{tablename,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="getMultifield" resultMap="BaseResultMap">
+  	select multifieldid,multifieldname,totallevel from xm_multifield where tabid=#{tabid} order by multifieldid;
+  </select>
+</mapper>

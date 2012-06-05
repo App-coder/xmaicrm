@@ -33,5 +33,13 @@ public interface XmTabMapper {
 	List<XmTab> getHiddenParenttabs(@Param("existtabids") String existtabids);
 
 	List<XmTab> getTabPermission(@Param("profileid") int profileid);
+
+	List<XmTab> getModules();
+
+	List<XmTab> getModulesOfCustomMultiField();
+
+	List<XmTab> getMultiApproveModule();
+
+	List<XmTab> getCustomsharingsModule();
 	
 }

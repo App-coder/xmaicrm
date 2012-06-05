@@ -18,7 +18,7 @@ $(function() {
 });
 function initBind() {
     $('#form_customview').form({ 
-        url:'customview/editView',  
+        url:'crm/customview/editView',  
         onSubmit: function(){
             
             //验证显示字段不能重复
@@ -105,7 +105,7 @@ function initBind() {
     
 }
 function initContainer() {
-    $.get('role/getroles', null, function(data) {
+    $.get('crm/role/getroles', null, function(data) {
 	var ostr = "";
 	if (data.length >= 1) {
 	    for ( var i = 0; i < data.length; i++) {
@@ -118,7 +118,7 @@ function initContainer() {
 }
 function initGrid() {
     $('#customview_list').datagrid({
-	url : 'customview/load',
+	url : 'crm/customview/load',
 	doSize : true,
 	collapsible : false,
 	idField : 'cvid',
@@ -160,7 +160,7 @@ function initGrid() {
 	    handler : function() {
 		var selected = $('#customview_list').datagrid('getSelected');
 		if (selected) {
-		    $.post('customview/deleteCv', {
+		    $.post('crm/customview/deleteCv', {
 			cvid : selected.cvid
 		    }, function(msg) {
 			if (msg.type == true) {
@@ -183,7 +183,7 @@ function initGrid() {
 		    return;
 		}
 		if (selected) {
-		    $.post('customview/setDef', {
+		    $.post('crm/customview/setDef', {
 			cvid : selected.cvid,
 			entitytype : entitytype
 		    }, function(msg) {
@@ -205,10 +205,12 @@ function initGrid() {
 	} ] ],
 	columns : [ [ {
 	    field : 'viewname',
-	    title : '视图名称'
+	    title : '视图名称',
+	    width:80
 	}, {
 	    field : 'setdefault',
 	    title : '默认',
+	    width:80,
 	    formatter : function(value, row, index) {
 		if (value == 0) {
 		    return "<span class='green'>否</span>";
@@ -222,7 +224,7 @@ function initGrid() {
 }
 function initview(vid){
     //视图基本信息
-    $.post('customview/getView',{viewid:vid},function(data){
+    $.post('crm/customview/getView',{viewid:vid},function(data){
 	
 	$("#form_customview").find("input[name=viewname]").val(data.viewname);
 	$("#form_customview").find("input[name=id]").val(data.cvid);
@@ -249,14 +251,14 @@ function initview(vid){
     },'json');
 
     //九个列的信息
-    $.post('customview/getColumns',{viewid:vid},function(data){
+    $.post('crm/customview/getColumns',{viewid:vid},function(data){
 	for(var i=0;i<data.length;i++){
 	    $("#form_customview").find("select[name=column_"+(i+1)+"]").find("option[value=\""+data[i].columnname+"\"]").attr("selected","selected");
 	}
     },'json');
     
     //标准查询信息
-    $.post('customview/getStdfilter',{viewid:vid},function(data){
+    $.post('crm/customview/getStdfilter',{viewid:vid},function(data){
 	$("#form_customview").find("select[name=column_stdfilter]").find("option[value=\""+data.columnname+"\"]").attr("selected","selected");
 	$("#form_customview").find("select[name=stddatefilter]").find("option[value=\""+data.stdfilter+"\"]").attr("selected","selected");
 	$('#startdate').datebox('setValue', data.startdate);
@@ -278,7 +280,7 @@ function initview(vid){
     },'json');
     
     //高级查询信息
-    $.post('customview/getAdvfilter',{viewid:vid},function(data){
+    $.post('crm/customview/getAdvfilter',{viewid:vid},function(data){
 	//column_1 name
 	for(var i=0;i<data.length;i++){
 	    if(data[i].columnname!=""&&typeof(data[i].columnname)!="undefined"){
@@ -329,5 +331,4 @@ function setComp(val,cmpid){
 function updateCol(obj){
     $('#form_customview').find("select[name="+$(obj).attr("name")+"]").find("option[selected=selected]").removeAttr("selected");
     $('#form_customview').find("select[name="+$(obj).attr("name")+"]").find("option[value=\""+obj.value+"\"]").attr("selected","selected");
-    
 }

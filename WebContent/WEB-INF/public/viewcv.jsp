@@ -2,10 +2,6 @@
     pageEncoding="utf-8"%>
 <%@ include file="../head.jsp"%>
 <%@ include file="../common/config.jsp"%>
-<script>
-var pathname = "营销活动";
-</script>
-<%@ include file="../path.jsp" %>
 <c:choose>
 	<c:when test="${customview.cvid!=null && dview!=null}">
 		<script>
@@ -28,11 +24,12 @@ var viewtab = entitytype.toLowerCase();
 var viewid = '${viewid}';
 var tabid = ${tab.tabid};
 var tablabel = '${tab.tablabel}';
+var ptb = '${ptb}';
 </script>
 <script type="text/javascript" src="resources/desktop/public/viewcv.js"></script>
 </head>
 <body id="wrap">
-<%@ include file="../nav.jsp"%>
+${navbar }
 <div class="hidden">
 <c:if test="${repfields!=null }">
 	<div id="winreport" class="easyui-window" <%=win_topbar %>
@@ -57,7 +54,9 @@ var tablabel = '${tab.tablabel}';
 	
 </div>
 <div id="main">
-<div class="path" id="navpath"></div>
+<div id="navpath" class="path">
+${ptb }&gt;<a href="crm/customview/viewIndex?entitytype=${entityname.modulename }&ptb=${ptb }">${tab.tablabel}</a>
+</div>
 	<div class="d_view ">
 				<span class="icon-filter ">视图：</span> <select
 					class="sel_120">
@@ -65,7 +64,7 @@ var tablabel = '${tab.tablabel}';
 						<option value="${v.cvid }">${v.viewname}</option>
 					</c:forEach>
 				</select> <a
-					href="customview/index?entitytype=${entitytype}"
+					href="crm/customview/index?entitytype=${entitytype}&ptb=${ptb }"
 					class="easyui-linkbutton"
 					data-options="plain:true,iconCls:'icon-view'">视图管理</a>
 			</div>

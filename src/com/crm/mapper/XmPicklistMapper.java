@@ -30,4 +30,6 @@ public interface XmPicklistMapper {
 	int getTotal(@Param("tabid") int tabid);
 	
 	List<XmPicklist> getPickListValue(@Param("colname") String colname);
+
+	List<XmPicklist> getPicks(@Param("colname") String colname);
 }

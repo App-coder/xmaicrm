@@ -20,4 +20,18 @@ public interface XmTabService {
 
 	List<XmTab> getTabPermission(int profileid);
 
+	List<XmTab> getModules();
+
+	List<XmTab> getModulesOfCustomMultiField();
+
+	List<XmTab> getMultiApproveModule();
+
+	/**
+	 * 得到自定义共享规则的模块
+	 * 
+	 * @return
+	 */
+	List<XmTab> getCustomsharingsModule();
+
+
 }

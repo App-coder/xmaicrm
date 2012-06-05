@@ -12,7 +12,7 @@ var pathname = "全局共享规则";
 <%@ include file="../../nav.jsp"%>
 <div id="main">
 <div class="path" id="navpath"></div>
-sdfsd
+<table id="deforgsharelist" data-options="fitColumns:true"></table>
 </div>
 <%@ include file="../../foot.jsp"%>
 </body>

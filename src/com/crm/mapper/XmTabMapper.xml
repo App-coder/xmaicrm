@@ -183,4 +183,16 @@
   <select id="getTabPermission" resultMap="BaseResultMap" >
   	select xm_tab.*,xm_profile2tab.permissions,xm_profile2tab.profileid from xm_profile2tab inner join xm_tab on xm_tab.tabid=xm_profile2tab.tabid where profileid=#{profileid};
   </select>
+  <select id="getModules" resultMap="BaseResultMap" >
+  	select * from xm_tab where reportable=1 order by tabid;
+  </select>
+  <select id="getModulesOfCustomMultiField" resultMap="BaseResultMap" >
+  	select distinct xm_tab.tabid,xm_tab.`name`,xm_tab.tablabel from xm_field inner join xm_tab on xm_field.tabid=xm_tab.tabid where xm_field.tabid not in(7,9,10,29);
+  </select>
+  <select id="getMultiApproveModule" resultMap="BaseResultMap" >
+  	select xm_tab.tabid,xm_tab.tablabel,xm_tab.name from xm_modulelist inner join xm_tab on xm_tab.tabid=xm_modulelist.tabid where xm_modulelist.type='approve' order by xm_tab.tabid;
+  </select>
+  <select id="getCustomsharingsModule" resultMap="BaseResultMap" >
+  	select distinct xm_tab.* from xm_field inner join xm_tab on xm_field.tabid=xm_tab.tabid where xm_tab.name not in('Leads','Calendar','WU','Users','Inboundsearchs','Normaltasks','Integradedreports','Events','Products','Faq','PriceBooks','Announcements') ;
+  </select>
 </mapper>
