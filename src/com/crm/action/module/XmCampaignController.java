@@ -3,17 +3,24 @@ package com.crm.action.module;
 import java.io.UnsupportedEncodingException;
 
 import javax.annotation.Resource;
+import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.SessionAttributes;
 
+import com.alibaba.fastjson.JSON;
 import com.crm.action.BaseController;
 import com.crm.action.util.ModuleUtil;
-import com.crm.model.XmEntityname;
+import com.crm.bean.crm.Message;
+import com.crm.bean.crm.UserPermission;
 import com.crm.service.module.XmCampaignService;
 import com.crm.util.ActionUtil;
-import com.crm.util.crm.CustomViewUtil;
+import com.crm.util.Constant;
+import com.crm.util.actionutil.ActionCls;
 
 /**
  * 
@@ -25,6 +32,7 @@ import com.crm.util.crm.CustomViewUtil;
  */
 @Controller
 @RequestMapping(value = "crm/module/campaigns")
+@SessionAttributes({Constant.USERPERMISSION})
 public class XmCampaignController extends BaseController {
 	
 	ModuleUtil moduleUtil;
@@ -39,6 +47,12 @@ public class XmCampaignController extends BaseController {
 		this.xmCampaignService = xmCampaignService;
 	}
 	
+	ActionCls actionCls;
+	@Resource(name="actionCls")
+	public void setActionCls(ActionCls actionCls) {
+		this.actionCls = actionCls;
+	}
+
 	@RequestMapping(value = "/index")
 	public String index(int ptb,ModelMap modelMap) throws UnsupportedEncodingException{
 		
@@ -46,4 +60,34 @@ public class XmCampaignController extends BaseController {
 
 		return "module/campaigns/index";
 	}
+	
+	@RequestMapping(value = "/showedit")
+	public String showedit(int recordid,String module,int ptb,ModelMap modelmap){
+		
+		if(recordid!=0){
+			modelmap.addAttribute("recordid",recordid);
+		}
+		
+		this.actionCls.showEdit(ptb, module, modelmap);
+		
+		return "module/campaigns/edit";
+	}
+	
+	@RequestMapping(value = "/edit")
+	@ResponseBody
+	public String edit(HttpServletRequest request,@ModelAttribute(Constant.USERPERMISSION) UserPermission userPermission){
+		Message msg = new Message();
+		int insertid = this.xmCampaignService.getMaxId()+1;
+		Boolean res = this.actionCls.add(request,insertid,userPermission.getUser().getId());
+		
+		if(res){
+			msg.setMessage("编辑成功！");
+			msg.setType(true);
+		}else{
+			msg.setMessage("编辑失败！");
+			msg.setType(false);
+		}
+		return JSON.toJSONString(msg);
+	}
+	
 }

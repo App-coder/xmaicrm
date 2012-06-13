@@ -11,7 +11,7 @@ var pathname = "自定义字段";
 <link rel="stylesheet" type="text/css" href="resources/msdropdown/dd.css" />
 </head>
 <body id="wrap">
-<%@ include file="../../nav.jsp"%>
+${navbar }
 <div id="main">
     <div class="hidden">
 			<div id="customfield" class="easyui-window" <%=win_topbar%> style="width: 700px; height: 432px;">

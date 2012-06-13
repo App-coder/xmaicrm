@@ -1,6 +1,5 @@
-#Mon Jul 30 20:10:54 CST 2012
 eclipse.preferences.version=1
-encoding//WebContent/WEB-INF/nav.jsp=UTF-8
+encoding//WebContent/WEB-INF/_nav.jsp=UTF-8
 encoding//WebContent/WEB-INF/welcome.jsp=UTF-8
 encoding//WebContent/resources/css.css=UTF-8
 encoding/<project>=UTF-8

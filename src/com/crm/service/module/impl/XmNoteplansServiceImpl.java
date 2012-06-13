@@ -15,6 +15,10 @@ public class XmNoteplansServiceImpl implements XmNoteplansService {
 	public void setXmNoteplansMapper(XmNoteplansMapper xmNoteplansMapper) {
     	this.xmNoteplansMapper = xmNoteplansMapper;
 	}
+	@Override
+	public Object getExecutor(Object value) {
+		return this.xmNoteplansMapper.getExecutor(value+"");
+	}
     
 
 }

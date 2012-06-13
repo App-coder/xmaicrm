@@ -84,6 +84,22 @@ public class XmUsersServiceImpl implements XmUsersService{
 		return this.xmUsersMapper.getOptionsUser();
 	}
 
+	@Override
+	public boolean existUserName(String username) {
+		return this.xmUsersMapper.existUserName(username)>0?true:false;
+	}
+
+	@Override
+	public List<Object> getRelUser(int page, int rows, String roleid) {
+		int start = (page-1)*rows;
+		return this.xmUsersMapper.getRelUser(start,rows,roleid);
+	}
+
+	@Override
+	public int getTotalRelUser(String roleid) {
+		return this.xmUsersMapper.getTotalRelUser(roleid);
+	}
+
 
 
 	

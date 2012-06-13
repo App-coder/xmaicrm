@@ -8,4 +8,6 @@ public interface XmEmailtemplatesService {
 
 	List<XmEmailtemplates> getAll();
 
+	XmEmailtemplates getById(int templateid);
+
 }

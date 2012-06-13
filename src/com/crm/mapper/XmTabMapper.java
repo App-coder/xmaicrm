@@ -49,5 +49,10 @@ public interface XmTabMapper {
 	List<XmTab> getProductFieldModule();
 	
 	List<XmTab> getRelmodField();
+
+	List<XmTab> getPermissionTab();
+
+	List<XmTab> getRecyclebinModule(@Param("skipstr") String skipstr);
+
 	
 }

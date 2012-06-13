@@ -4,13 +4,14 @@
 <%@ include file="../../common/config.jsp"%>
 <script>
     var pathname = "多仓库管理";
+    var pathActive = "cangkus";
 </script>
 <%@ include file="../../path.jsp"%>
 <script type="text/javascript"
 	src="resources/desktop/settings/other/cangkus.js"></script>
 </head>
 <body id="wrap">
-	<%@ include file="../../nav.jsp"%>
+	${navbar }
 	<div id="main">
 		<div class="hidden">
 			<div id="cangkus" class="easyui-window" <%=win_topbar%>
@@ -30,8 +31,21 @@
 				</div>
 			</div>
 		</div>
-		<div class="path" id="navpath"></div>
-		<table id="cangkus_list"></table>
+		
+		<table style="width:100%;">
+		<tr>
+			<td width="160px" valign="top">
+				<%@ include file="../../nav_setting.jsp"%>
+			</td>
+			<td valign="top">
+			<div class="path" id="navpath"></div>
+			<table id="cangkus_list"></table>
+			</td>
+		</tr>
+		</table>
+		
+		
+
 	</div>
 	<%@ include file="../../foot.jsp"%>
 </body>

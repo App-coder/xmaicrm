@@ -4,12 +4,13 @@
 <%@ include file="../../common/config.jsp"%>
 <script>
 var pathname = "部门机构";
+var pathActive = "group";
 </script>
 <%@ include file="../../path.jsp" %>
 <script type="text/javascript" src="resources/desktop/settings/basic/group.js"></script>
 </head>
 <body id="wrap">
-<%@ include file="../../nav.jsp"%>
+${navbar }
 <div id="main">
 <div class="hidden">
 	<div id="groupedit" class="easyui-window" <%=win_topbar%> style="width: 400px; height:247px;">
@@ -46,8 +47,21 @@ var pathname = "部门机构";
 			</div>
 	</div>
 </div>
-<div class="path" id="navpath"></div>
-<table id="grouplist" data-options="fitColumns:true"></table>
+
+<table style="width:100%;">
+	<tr>
+		<td width="160px" valign="top">
+			<%@ include file="../../nav_setting.jsp"%>
+				</td>
+				<td valign="top">
+	<div class="path" id="navpath"></div>
+	<table id="grouplist" data-options="fitColumns:true"></table>
+	</td>
+</tr>
+</table>
+
+
+
 </div>
 <%@ include file="../../foot.jsp"%>
 </body>

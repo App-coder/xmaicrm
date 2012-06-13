@@ -30,4 +30,33 @@ public class CustomViewUtil {
 		return hmen.get(eid);
 	}
 
+	public static String getColumnVal(String type,String value) {
+		type = getType(type);
+		if(type=="Date" || type=="Varchar"){
+			return "'"+value+"'";
+		}else{
+			return value;
+		}
+	}
+	
+	public static String getType(String type){
+		String typestr = "";
+		if(type.indexOf("C")!=-1){
+			typestr = "Boolean";
+		}else if(type.indexOf("D")!=-1){
+			typestr = "Date";
+		}else if(type.indexOf("DT")!=-1){
+			typestr = "DateTime";
+		}else if(type.indexOf("E")!=-1){
+			typestr = "EMail";
+		}else if(type.indexOf("I")!=-1){
+			typestr = "Integer";
+		}else if(type.indexOf("N")!=-1){
+			typestr = "Number";
+		}else if(type.indexOf("V")!=-1){
+			typestr = "Varchar";
+		}
+		return typestr;
+	}
+	
 }

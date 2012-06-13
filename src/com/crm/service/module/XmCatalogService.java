@@ -8,4 +8,12 @@ public interface XmCatalogService {
 
 	List<XmCatalog> getCatalogById(String parentid);
 
+	void insert(XmCatalog catalog);
+
+	void edit(XmCatalog catalog);
+
+	void delete(String cid);
+
+	List<XmCatalog> getCatalogAll();
+
 }

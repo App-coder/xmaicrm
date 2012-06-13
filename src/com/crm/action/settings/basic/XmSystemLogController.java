@@ -21,7 +21,7 @@ import com.crm.action.tools.file.LastModifiedComprator;
 import com.crm.bean.easyui.ListBean;
 
 @Controller
-@RequestMapping(value = "settings/systemlog")
+@RequestMapping(value = "crm/settings/systemlog")
 public class XmSystemLogController implements ServletContextAware {
 
 	private ServletContext servletContext;

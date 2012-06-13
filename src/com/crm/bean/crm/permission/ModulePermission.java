@@ -5,22 +5,21 @@ import java.util.List;
 import com.crm.model.XmField;
 
 public class ModulePermission {
-	
+
 	int profileid;
 	int tabid;
-	
+
 	String tablabel;
 	int tabpermission;
-	
-	int permission;
-	int create;
-	int edit;
-	int view;
-	int del;
-	
-	//对应的字段权限
+
+	int create = -1;
+	int edit = -1;
+	int view = -1;
+	int del = -1;
+
+	// 对应的字段权限
 	List<XmField> profile2fields;
-	
+
 	public int getProfileid() {
 		return profileid;
 	}
@@ -44,12 +43,6 @@ public class ModulePermission {
 	}
 	public void setTabpermission(int tabpermission) {
 		this.tabpermission = tabpermission;
-	}
-	public int getPermission() {
-		return permission;
-	}
-	public void setPermission(int permission) {
-		this.permission = permission;
 	}
 	public int getCreate() {
 		return create;
@@ -81,5 +74,5 @@ public class ModulePermission {
 	public void setProfile2fields(List<XmField> profile2fields) {
 		this.profile2fields = profile2fields;
 	}
-	
+
 }

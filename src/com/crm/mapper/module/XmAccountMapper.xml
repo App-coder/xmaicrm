@@ -876,4 +876,63 @@
   <select id="getNewAccountOfUserAndLast" resultType="INTEGER">
   	select count(*) as rowsnum FROM xm_account WHERE deleted =0 AND smownerid='${userid}' and createdtime between '${start} 00:00:00' and '${end} 23:59:00';
   </select>
+  <select id="loadUnabsorbed" resultType="map">
+  	SELECT
+		xm_account.accountid AS accountid,
+		xm_users.last_name,
+		xm_account.*
+	FROM
+		xm_account
+	LEFT JOIN xm_users ON xm_users.id = xm_account.smownerid
+	WHERE
+		xm_account.deleted = 0
+	AND xm_account.ispools = 'Yes'
+	AND(
+		xm_account.assignstatus = '未分配'
+		OR xm_account.assignstatus IS NULL
+		OR xm_account.assignstatus = ''
+	) limit #{start},#{rows}
+  </select>
+  <select id="getTotalUnabsorbed" resultType="Integer">
+  	SELECT
+		count(xm_account.accountid) 
+	FROM
+		xm_account
+	LEFT JOIN xm_users ON xm_users.id = xm_account.smownerid
+	WHERE
+		xm_account.deleted = 0
+	AND xm_account.ispools = 'Yes'
+	AND(
+		xm_account.assignstatus = '未分配'
+		OR xm_account.assignstatus IS NULL
+		OR xm_account.assignstatus = ''
+	) 
+  </select>
+  <select id="getTotalAssigned" resultType="Integer">
+ 	SELECT
+		count(xm_account.accountid)
+	FROM
+		xm_account
+	LEFT JOIN xm_users ON xm_users.id = xm_account.smownerid
+	WHERE
+		xm_account.deleted = 0
+	AND xm_account.ispools = 'Yes'
+	AND xm_account.assignstatus = '已分配'
+	AND((1 = 1))
+  </select>
+  <select id="loadAssigned" resultType="map" >
+  	SELECT
+		xm_account.accountid AS accountid,
+		xm_users.last_name,
+		xm_account.*
+	FROM
+		xm_account
+	LEFT JOIN xm_users ON xm_users.id = xm_account.smownerid
+	WHERE
+		xm_account.deleted = 0
+	AND xm_account.ispools = 'Yes'
+	AND xm_account.assignstatus = '已分配'
+	AND((1 = 1))
+		limit #{start},#{rows}
+  </select>
 </mapper>

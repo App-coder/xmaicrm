@@ -8,6 +8,7 @@ public class Tree {
 	private String state;
 	private List<Tree> children;
 	private String iconCls;
+	private Object attributes;
 
 	public String getText() {
 		return text;
@@ -40,6 +41,10 @@ public class Tree {
 	public void setId(String id) {
 		this.id = id;
 	}
-	
-	
+	public Object getAttributes() {
+		return attributes;
+	}
+	public void setAttributes(Object attributes) {
+		this.attributes = attributes;
+	}
 }

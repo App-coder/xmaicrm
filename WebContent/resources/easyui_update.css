@@ -27,4 +27,7 @@ a.l-btn{border-radius:0px;}
 
 /*grid的toolbar的一些样式*/
 .tipt{border:1px solid #ccc;width:100px;}
-.gtb{padding-left:10px;height:25px;line-height:25px;}
+.gtb{height:25px;line-height:25px;}
+
+a.lb_ck{background-position: right bottom;}
+a.lb_ck span.l-btn-left{background-position: left bottom;}

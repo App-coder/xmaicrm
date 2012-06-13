@@ -102,7 +102,6 @@ function initBind() {
 	    $('#form_customview').find("input[name=entitytype]").val(entitytype);
 	}
     });
-    
 }
 function initContainer() {
     $.get('crm/role/getroles', null, function(data) {
@@ -126,7 +125,6 @@ function initGrid() {
 	rownumbers : true,
 	pagination : true,
 	fitColumns:true,
-	height:362,
 	queryParams : {
 	    'entitytype' : entitytype
 	},
@@ -160,15 +158,20 @@ function initGrid() {
 	    handler : function() {
 		var selected = $('#customview_list').datagrid('getSelected');
 		if (selected) {
-		    $.post('crm/customview/deleteCv', {
-			cvid : selected.cvid
-		    }, function(msg) {
-			if (msg.type == true) {
-			    $('#customview_list').datagrid("reload");
-			} else {
-			    error(msg.message);
+		    //删除确认
+		    confirm('确认删除视图？',function(r){
+			if(r){
+			    $.post('crm/customview/deleteCv', {
+				cvid : selected.cvid
+			    }, function(msg) {
+				if (msg.type == true) {
+				    $('#customview_list').datagrid("reload");
+				} else {
+				    error(msg.message);
+				}
+			    }, 'json');
 			}
-		    }, 'json');
+		    });
 		} else {
 		    message('请选择一行！');
 		}

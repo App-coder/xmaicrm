@@ -26,7 +26,7 @@ public class XmNoteplansController extends BaseController{
 	@RequestMapping(value = "/index")
 	public String index(int ptb,ModelMap modelMap) throws UnsupportedEncodingException{
 		ActionUtil.setTitle("Noteplans", ptb, modelMap, this.moduleUtil);
-		return "public/viewcv";
+		return "module/noteplans/index";
 	}
 	
 	

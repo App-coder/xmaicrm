@@ -126,7 +126,9 @@ function closeWin(wind) {
 function formsubmit(fid) {
 	$('#' + fid).submit();
 }
-
+function clearform(fid){
+    $('#' + fid).form("clear");
+}
 function obj2str(o) {
 	var r = [];
 	if (typeof o == "string")
@@ -257,6 +259,17 @@ function setDefWidth(cols,wid){
 	}
     }
     return cols;
+}
+//显示选项的optionwindow，用于选项的选择
+function showOptionPanel(modulename,columnname,fieldlabel){
+    $("#optionwindow").window({
+	title:"选择"+fieldlabel
+    });
+    $("#optionframe").attr("src","crm/customview/viewPop?modulename="+modulename+"&columnname="+columnname);
+    $("#optionwindow").window("open");
+}
+function showTip(value,row,index){
+    return "<span title='"+value+"'>"+value+"</span>";
 }
 
 function showLocale(objD)

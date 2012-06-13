@@ -22,4 +22,6 @@ public interface XmCangkusMapper {
 
 	List<Object> getCangkussets();
 
+	List<XmCangkus> getCangkus();
+
 }

@@ -63,16 +63,16 @@ public class CacheDataServiceImpl implements CacheDataService {
 		}
 
 		if (CacheManager.getFromCache(Constant.TAB) == null) {
-			HashMap<String, XmTab> hmentityname = new HashMap<String, XmTab>();
+			HashMap<String, XmTab> tabOfName = new HashMap<String, XmTab>();
 			HashMap<String, XmTab> hmlabtabs = new HashMap<String, XmTab>();
 			List<XmTab> tabs = this.xmTabService.getAll();
 			for (int i = 0; i < tabs.size(); i++) {
-				hmentityname.put(tabs.get(i).getName().toLowerCase(),
+				tabOfName.put(tabs.get(i).getName().toLowerCase(),
 						tabs.get(i));
 				hmlabtabs.put(tabs.get(i).getTablabel().toLowerCase(),
 						tabs.get(i));
 			}
-			CacheManager.putInCache(Constant.TAB, hmentityname);
+			CacheManager.putInCache(Constant.TAB, tabOfName);
 			CacheManager.putInCache(Constant.TABBYLAB, hmlabtabs);
 		}
 		if (CacheManager.getFromCache(Constant.MENUBAR) == null) {

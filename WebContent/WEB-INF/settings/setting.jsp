@@ -4,7 +4,7 @@
 <%@ include file="../common/config.jsp"%>
 </head>
 <body id="wrap">
-	<%@ include file="../nav.jsp"%>
+	${navbar }
 	<div id="main">
 		<div class="path" >&gt;<a  href="crm/welcome/desktop">控制面板</a></div>
 		<div class="container panel-noscroll">
@@ -25,7 +25,7 @@
 											<tbody>
 												<tr>
 													<td valign="top"><a
-														href="settings/users/index"><img
+														href="crm/settings/users/index"><img
 															width="48" height="48" border="0" title="系统用户" alt="系统用户"
 															src="resources/images/settings/panel/ico-users.gif"></a></td>
 												</tr>
@@ -62,13 +62,13 @@
 											<tbody>
 												<tr>
 													<td valign="top"><a
-														href="settings/group/index"><img
+														href="crm/settings/group/index"><img
 															width="48" height="48" border="0" title="部门机构" alt="部门机构"
 															src="resources/images/settings/panel/ico-groups.gif"></a></td>
 												</tr>
 												<tr>
 													<td valign="top" class="big"><a
-														href="settings/group/index">部门机构</a></td>
+														href="crm/settings/group/index">部门机构</a></td>
 												</tr>
 											</tbody>
 										</table>
@@ -124,13 +124,13 @@
 											<tbody>
 												<tr>
 													<td valign="top"><a
-														href="settings/systemlog/index"><img
+														href="crm/settings/systemlog/index"><img
 															width="48" height="48" border="0" title="系统日志" alt="系统日志"
 															src="resources/images/settings/panel/audit.gif"></a></td>
 												</tr>
 												<tr>
 													<td valign="top" class="big"><a
-														href="settings/systemlog/index">系统日志</a></td>
+														href="crm/settings/systemlog/index">系统日志</a></td>
 												</tr>
 											</tbody>
 										</table>
@@ -143,13 +143,13 @@
 											<tbody>
 												<tr>
 													<td valign="top"><a
-														href="settings/loginhistory/index"><img
+														href="crm/settings/loginhistory/index"><img
 															width="48" height="48" border="0" title="登录历史" alt="登录历史"
 															src="resources/images/settings/panel/set-IcoLoginHistory.gif"></a></td>
 												</tr>
 												<tr>
 													<td valign="top" class="big"><a
-														href="settings/loginhistory/index">登录历史</a></td>
+														href="crm/settings/loginhistory/index">登录历史</a></td>
 												</tr>
 											</tbody>
 										</table>
@@ -445,13 +445,13 @@
 											<tbody>
 												<tr>
 													<td valign="top"><a
-														href="settings/emailtemplates/index"><img
+														href="crm/settings/emailtemplates/index"><img
 															border="0" title="Email模版" alt="Email模版"
 															src="resources/images/settings/panel/ViewTemplate.gif"></a></td>
 												</tr>
 												<tr>
 													<td valign="top" class="big"><a
-														href="settings/emailtemplates/index">Email模版</a></td>
+														href="crm/settings/emailtemplates/index">Email模版</a></td>
 
 												</tr>
 
@@ -465,13 +465,13 @@
 											<tbody>
 												<tr>
 													<td valign="top"><a
-														href="javascript:tab('数据库备份','settings/dbbackup/index')"><img
+														href="crm/settings/dbbackup/index"><img
 															border="0" title="数据库备份" alt="数据库备份"
 															src="resources/images/settings/panel/dbbackup.gif"></a></td>
 												</tr>
 												<tr>
 													<td valign="top" class="big"><a
-														href="javascript:tab('数据库备份','settings/dbbackup/index')">数据库备份</a></td>
+														href="crm/settings/dbbackup/index">数据库备份</a></td>
 
 												</tr>
 
@@ -486,13 +486,13 @@
 											<tbody>
 												<tr>
 													<td valign="top"><a
-														href="settings/organizationconfig/index"><img
+														href="crm/settings/organizationconfig/index"><img
 															border="0" title="公司信息" alt="公司信息"
 															src="resources/images/settings/panel/company.gif"></a></td>
 												</tr>
 												<tr>
 													<td valign="top" class="big"><a
-														href="settings/organizationconfig/index">公司信息</a></td>
+														href="crm/settings/organizationconfig/index">公司信息</a></td>
 												</tr>
 
 											</tbody>
@@ -548,13 +548,13 @@
 											<tbody>
 												<tr>
 													<td valign="top"><a
-														href="settings/currencyInfo/index"><img
+														href="crm/settings/currencyInfo/index"><img
 															border="0" title="货币币种" alt="货币币种"
 															src="resources/images/settings/panel/currency.gif"></a></td>
 												</tr>
 												<tr>
 													<td valign="top" class="big"><a
-														href="settings/currencyInfo/index">货币币种</a></td>
+														href="crm/settings/currencyInfo/index">货币币种</a></td>
 												</tr>
 
 
@@ -569,13 +569,13 @@
 											<tbody>
 												<tr>
 													<td valign="top"><a
-														href="settings/license/index"><img
+														href="crm/settings/license/index"><img
 															border="0" title="授权许可" alt="授权许可"
 															src="resources/images/settings/panel/license.gif"></a></td>
 												</tr>
 												<tr>
 													<td valign="top" class="big"><a
-														href="settings/license/index">授权许可</a></td>
+														href="crm/settings/license/index">授权许可</a></td>
 												</tr>
 
 
@@ -589,14 +589,14 @@
 											<tbody>
 												<tr>
 													<td valign="top"><a
-														href="javascript:tab('回收站','settings/recyclebin/index')"><img
+														href="crm/settings/recyclebin/index"><img
 															border="0" title="回收站" alt="回收站"
 															src="resources/images/settings/panel/settingsTrash.gif"></a></td>
 
 												</tr>
 												<tr>
 													<td valign="top" class="big"><a
-														href="javascript:tab('回收站','settings/recyclebin/index')">回收站</a></td>
+														href="crm/settings/recyclebin/index">回收站</a></td>
 
 												</tr>
 											</tbody>

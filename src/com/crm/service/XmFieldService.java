@@ -60,6 +60,13 @@ public interface XmFieldService {
 	List<Object> getProductField(String module);
 	
 	List<Object> getRelmodField(String module,int tabid);
-	
+
 	List<Object> getMultiLevel2(Integer tabid,String typeofdata);
+	/**
+	 * @param tabid 模块的ID
+	 * @param columns 回收站显示字段
+	 * @return 
+	 */
+	public List<XmField> getRecycleBinFields(int tabid, String[] columns);
+
 }

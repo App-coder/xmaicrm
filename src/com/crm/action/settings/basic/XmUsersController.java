@@ -22,6 +22,7 @@ import com.crm.service.settings.basic.XmUser2roleService;
 import com.crm.service.settings.basic.XmUsers2groupService;
 import com.crm.service.settings.basic.XmUsersService;
 import com.crm.util.HtmlUtil;
+import com.crm.util.StringUtil;
 
 /**
  * 
@@ -85,6 +86,10 @@ public class XmUsersController extends BaseController {
 	public String userEdit(XmUsers user,String roleid,int groupid,String action){
 		Message msg = new Message();
 		
+		if(user.getIsAdmin()==null){
+			user.setIsAdmin("off");
+		}
+		
 		//添加
 		if(action.equals("add")){
 			int keyid = this.xmUsersService.add(user);
@@ -114,6 +119,30 @@ public class XmUsersController extends BaseController {
 		}
 		
 		msg.setType(true);
+		return JSON.toJSONString(msg);
+	}
+	
+	@RequestMapping(value = "/editPassword", method = RequestMethod.POST)
+	@ResponseBody
+	public String editPassword(XmUsers user){
+		user.setUserPassword(StringUtil.getMD5(user.getUserPassword().getBytes()));
+		this.xmUsersService.update(user);
+		Message msg = new Message();
+		msg.setMessage("用户密码修改成功！");
+		msg.setType(true);
+		return JSON.toJSONString(msg);
+	}
+	
+	@RequestMapping(value = "/existUserName", method = RequestMethod.POST)
+	@ResponseBody
+	public String existUserName(String username){
+		Message msg = new Message();
+		boolean exist = this.xmUsersService.existUserName(username);
+		if(exist){
+			msg.setType(true);
+		}else{
+			msg.setType(false);
+		}
 		return JSON.toJSONString(msg);
 	}
 	

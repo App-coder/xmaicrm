@@ -11,6 +11,7 @@ import com.crm.mapper.XmTabMapper;
 import com.crm.model.XmField;
 import com.crm.model.XmTab;
 import com.crm.service.XmFieldService;
+import com.crm.util.ArrayUtil;
 @Service("xmFieldService")
 public class XmFieldServiceImpl implements XmFieldService{
 
@@ -111,5 +112,11 @@ public class XmFieldServiceImpl implements XmFieldService{
 		return this.xmFieldMapper.getMultiLevel2(tabid, typeofdata);
 	}
 	
+
+	@Override
+	public List<XmField> getRecycleBinFields(int tabid, String[] columns) {
+		List<XmField> recyclebinFields = this.xmFieldMapper.getRecycleBinFields(tabid,ArrayUtil.arrayToJoinStr(columns));
+		return recyclebinFields;
+	}
 
 }

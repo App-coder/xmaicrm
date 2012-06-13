@@ -40,4 +40,10 @@ public class XmCangkusServiceImpl implements XmCangkusService {
 		return this.xmCangkusMapper.getCangkussets();
 	}
 
+
+	@Override
+	public List<XmCangkus> getCangkus() {
+		return this.xmCangkusMapper.getCangkus();
+	}
+
 }

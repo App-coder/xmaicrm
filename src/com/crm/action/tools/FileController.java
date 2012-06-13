@@ -30,7 +30,7 @@ import com.crm.util.FileUtil;
 import com.crm.util.StringUtil;
 
 @Controller
-@RequestMapping(value = "file/")
+@RequestMapping(value = "crm/file/")
 public class FileController implements
 		ServletContextAware {
 

@@ -26,6 +26,12 @@ public interface XmUsersService {
 
 	List<XmUsers> getOptionsUser();
 
+	boolean existUserName(String username);
+
+	List<Object> getRelUser(int page, int rows, String roleid);
+
+	int getTotalRelUser(String roleid);
+
 
 	
 }

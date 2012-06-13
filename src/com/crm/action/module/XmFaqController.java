@@ -1,8 +1,16 @@
 package com.crm.action.module;
 
+import java.io.UnsupportedEncodingException;
+
+import javax.annotation.Resource;
+
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+
+import com.crm.action.util.ModuleUtil;
+import com.crm.util.ActionUtil;
 
 /**
  * 
@@ -13,12 +21,22 @@ import org.springframework.web.bind.annotation.RequestMethod;
  * Time: 下午6:57:05
  */
 @Controller
-@RequestMapping(value = "faq")
+@RequestMapping(value = "crm/module/faq")
 public class XmFaqController {
 
-	@RequestMapping(value = "/index", method = RequestMethod.GET)
-	public String index(){
-		return "afterser/faq";
+	ModuleUtil moduleUtil;
+	@Resource(name = "moduleUtil")
+	public void setModuleUtil(ModuleUtil moduleUtil) {
+		this.moduleUtil = moduleUtil;
+	}
+
+	@RequestMapping(value = "/index")
+	public String index(int ptb, ModelMap modelMap)
+			throws UnsupportedEncodingException {
+
+		ActionUtil.setTitle2("Faq", ptb, modelMap, this.moduleUtil);
+
+		return "module/faq/index";
 	}
 	
 }

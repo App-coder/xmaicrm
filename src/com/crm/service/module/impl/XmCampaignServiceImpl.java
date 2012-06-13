@@ -37,15 +37,24 @@ public class XmCampaignServiceImpl implements XmCampaignService {
 	}
 	
 	public int getTotal(int viewid,XmCustomview customview,XmCvstdfilter stdfilter,List<XmCvadvfilter> advfilters,List<CVColumn> cols) {
-		String totalsql = this.cvFilter.getTotalFilter(viewid,customview,stdfilter,advfilters,cols);
+		String totalsql = this.cvFilter.getTotalFilter(viewid,customview,stdfilter,advfilters,cols,"");
 		return this.xmCampaignMapper.getTotalBySql(totalsql);
 	}
 
 
 	public List<Object> loadList(int page, int rows, int viewid,XmCustomview customview,XmCvstdfilter stdfilter,List<XmCvadvfilter> advfilters,List<CVColumn> cols) {
-		String listsql = this.cvFilter.getListFilter(viewid,customview,stdfilter,advfilters,cols);
+		String listsql = this.cvFilter.getListFilter(viewid,customview,stdfilter,advfilters,cols,"");
 		int start = (page-1)*rows;
 		return this.xmCampaignMapper.loadListBySql(start,rows,listsql);
+	}
+
+	@Override
+	public int getMaxId() {
+		String maxid = this.xmCampaignMapper.getMaxId();
+		if(maxid!=null&&maxid!=""){
+			return Integer.parseInt(maxid); 
+		}
+		return 0;
 	}
 
 

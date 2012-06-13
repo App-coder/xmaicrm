@@ -1,6 +1,7 @@
 package com.crm.service;
 
 import java.util.List;
+import java.util.Map;
 
 import com.crm.bean.easyui.expand.CVColumn;
 import com.crm.model.XmCustomview;
@@ -29,11 +30,11 @@ public interface XmCustomViewService {
 	XmCustomview getView(int viewid);
 
 	int getTotal(int viewid, XmCustomview customview, XmCvstdfilter stdfilter,
-			List<XmCvadvfilter> advfilter, List<CVColumn> cols);
+			List<XmCvadvfilter> advfilter, List<CVColumn> cols,String customfilter);
 
-	List<Object> loadList(int page, int rows, int viewid,
+	List<Map> loadList(int page, int rows, int viewid,
 			XmCustomview customview, XmCvstdfilter stdfilter,
-			List<XmCvadvfilter> advfilter, List<CVColumn> cols);
+			List<XmCvadvfilter> advfilter, List<CVColumn> cols,String customfilter);
 
 	List<XmCustomview> loadList(String entitytype, int page, int rows);
 
@@ -42,6 +43,10 @@ public interface XmCustomViewService {
 
 	List<Object> getChartData(String grouptype, List<CVColumn> cols,
 			String pickfieldtable, String pickfieldname, String pickfieldcolname);
+
+	XmCustomview selectByPrimaryKey(int cvid);
+
+	int insert(String string);
 
 	
 

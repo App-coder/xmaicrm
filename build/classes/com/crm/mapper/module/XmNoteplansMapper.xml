@@ -277,4 +277,7 @@
   <select id="loadList" resultMap="BaseResultMap">
     select xm_noteplans.noteplanname,xm_users.user_name FROM xm_noteplans LEFT JOIN xm_users ON xm_users.id = xm_noteplans.smownerid WHERE xm_noteplans.deleted = 0 and 1=1 ${filter} limit #{start},#{rows}
   </select>
+  <select id="getExecutor" resultType="String">
+  	select GROUP_CONCAT(xm_users.user_name) from xm_users where id in (${executor})
+  </select>
 </mapper>

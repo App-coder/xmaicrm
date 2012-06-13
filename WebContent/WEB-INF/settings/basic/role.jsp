@@ -4,59 +4,82 @@
 <%@ include file="../../common/config.jsp"%>
 <script>
     var pathname = "角色权限";
+    var pathActive = "role";
 </script>
 <%@ include file="../../path.jsp"%>
 <script type="text/javascript"
 	src="resources/desktop/settings/basic/role.js"></script>
 </head>
 <body id="wrap">
-	<%@ include file="../../nav.jsp"%>
+	${navbar }
 	<div id="main">
 		<div class="hidden">
-			<div id="roleedit" class="easyui-window" <%=win_topbar%>
+			
+			<!-- 查看关联用户 -->
+			<div id="reluser" title="关联的用户" class="easyui-window" <%=win_topbar%>
+				style="width: 700px; height: 432px;">
+					<div class="easyui-layout" data-options="fit:true,border:false">
+					<div data-options="region:'center',border:false"
+						style="padding: 10px;">
+						<table id="tb_reluser"></table>
+						</div>
+					</div>
+			</div>
+			
+			<div id="roleinfo" title="编辑角色信息" class="easyui-window" <%=win_topbar%>
 				style="width: 700px; height: 432px;">
 				<div class="easyui-layout" data-options="fit:true,border:false">
 					<div data-options="region:'center',border:false"
 						style="padding: 10px;">
-						<fieldset class="mgb_10">
-							<legend>全局权限 </legend>
-							<table class="tab_form">
-								<tr>
-									<td><input type="checkbox" />查看下面所选模块的所有信息(包括不是自己负责)，此权限不受上下级角色的限制，请慎重选择。</td>
-								</tr>
-								<tr>
-									<td><input type="checkbox" />编辑下面所选模块的所有信息(包括不是自己负责)，此权限不受上下级角色的限制，请慎重选择。</td>
-								</tr>
-							</table>
-						</fieldset>
-						<fieldset class="mgb_10" >
-							<legend>模块权限 </legend>
-							<table class="tabauth " id="tabRoleAuth" >
-								<thead>
-								<tr class="datagrid-header">
-									<td width="16%">模块名称 </td>
-									<td width="16%">新增</td>
-									<td width="16%">编辑</td>
-									<td width="16%">查看</td>
-									<td width="16%">删除</td>
-									<td width="16%">字段/工具</td>
-								</tr>
-								</thead>
-								<tbody>
-										
-								</tbody>
-							</table>
-						</fieldset>
-						</div>
+						<table class="tab_form">
+							<tr>
+								<td class="edittd">上级角色</td>
+								<td><input class="easyui-combobox"
+										name="groupid"
+										data-options="
+										url:'crm/settings/role/getRoleTree',
+										valueField:'id',
+										textField:'text',
+										panelHeight:'auto',
+										required:true,
+										editable:false
+										" width="190px"></td>
+							</tr>
+							<tr>
+								<td class="edittd">角色名称</td>
+								<td><input type="text" class="text" /><span class="must">*</span>
+								</td>
+							</tr>
+							<tr>
+								<td class="edittd">描述</td>
+								<td><textarea></textarea></td>
+							</tr>
+						</table>
+					</div>
 				</div>
 				<div region="south" class="btnbar" border="false">
-					<a class="easyui-linkbutton" iconCls="icon-ok" onclick="submitUser()">编辑</a>
-					<a class="easyui-linkbutton" iconCls="icon-cancel" onclick="closeWin('useredit')">取消</a>
+					<a class="easyui-linkbutton" iconCls="icon-ok"
+						href="javascript:void(0)" onclick="formsubmit('form_customview')">编辑</a> <a
+						class="easyui-linkbutton" iconCls="icon-cancel"
+						href="javascript:void(0)" onclick="closeWin('customview_edit')">取消</a>
 				</div>
 			</div>
+			
+			
 		</div>
-		<div class="path" id="navpath"></div>
-		<table id="rolelist"></table>
+		
+		
+		<table style="width:100%;">
+			<tr>
+				<td width="160px" valign="top">
+					<%@ include file="../../nav_setting.jsp"%>
+				</td>
+				<td valign="top">
+				<div class="path" id="navpath"></div>
+				<table id="rolelist"></table></td>
+			</tr>
+		</table>
+		
 	</div>
 	<%@ include file="../../foot.jsp"%>
 </body>

@@ -6,7 +6,7 @@
 <c:set var="marketing" value="<a href='customview/viewIndex?entitytype=Campaigns'>市场管理</a>"></c:set>
 <c:set var="customer" value="<a href='customview/viewIndex?entitytype=Accounts'>客户</a>"></c:set>
 <!-- 系统设置的链接 -->
-<c:set var="syssetting" value="<a href='setting/index' >系统设置</a>" ></c:set>
+<c:set var="syssetting" value="<a href='crm/setting/index' >系统设置</a>" ></c:set>
 <c:choose>
 	<c:when test="${pathname eq '营销活动' }">
 		${marketing }&gt;<a href="${url }">营销活动</a>
@@ -22,6 +22,12 @@
 	</c:when>
 	<c:when test="${pathname=='角色权限' }">
 		${syssetting }&gt;<a href="${url }">角色权限</a>
+	</c:when>
+	<c:when test="${pathname=='添加角色'}">
+		${syssetting }&gt;<a href="crm/settings/role/index">角色权限</a>&gt;<a href="${url }">添加角色</a>
+	</c:when>
+	<c:when test="${pathname=='编辑权限' }">
+		${syssetting }&gt;<a href="crm/settings/role/index">角色权限</a>&gt;<a href="${url }">编辑权限：${pArgs }</a>
 	</c:when>
 	<c:when test="${pathname=='部门机构' }">
 		${syssetting }&gt;<a href="${url }">部门机构</a>
@@ -49,6 +55,18 @@
 	</c:when>	
 	<c:when test="${pathname=='Email模版' }">
 		${syssetting }&gt;<a href="${url }">Email模版</a>
+	</c:when>
+	<c:when test="${pathname=='编辑Email模版' }">
+		${syssetting }&gt;<a href="crm/settings/emailtemplates/index">Email模版</a>&gt;<a href="${url }">编辑Email模版</a>
+	</c:when>
+	<c:when test="${pathname=='添加Email模版' }">
+		${syssetting }&gt;<a href="crm/settings/emailtemplates/index">Email模版</a>&gt;<a href="${url }">添加Email模版</a>
+	</c:when>
+	<c:when test="${pathname=='Email模版预览' }">
+		${syssetting }&gt;<a href="${url }">Email模版预览</a>
+	</c:when>
+	<c:when test="${pathname=='数据库备份' }">
+		${syssetting }&gt;<a href="${url }">数据库备份</a>
 	</c:when>
 	<c:when test="${pathname=='公司信息管理 ' }">
 		${syssetting }&gt;<a href="${url }">公司信息管理</a>
@@ -91,7 +109,10 @@
 	</c:when>
 	<c:when test="${pathname=='短信通道' }">
 		${syssetting }&gt;<a href="${url }">短信通道</a>
-	</c:when>	
+	</c:when>
+	<c:when test="${pathname=='回收站' }">
+		${syssetting }&gt;<a href="${url }">回收站</a>
+	</c:when>		
 	<c:otherwise>
 		导航设置不正确！
 	</c:otherwise>

@@ -1,0 +1,111 @@
+怎么用java备份mysql数据库
+
+首先，设置mysql的环境变量（在path中添加%MYSQL_HOME%\bin），重启电脑。
+完整代码：
+备份：
+
+public static void main(String[] args) {
+
+backup();
+load();
+}
+
+
+public static void backup() {
+try {
+Runtime rt = Runtime.getRuntime();
+
+// 调用 mysql 的 cmd:
+Process child = rt
+.exec("mysqldump -u root --set-charset=utf8 bjse act_obj");// 设置导出编码为utf8。这里必须是utf8
+
+// 把进程执行中的控制台输出信息写入.sql文件，即生成了备份文件。注：如果不对控制台信息进行读出，则会导致进程堵塞无法运行
+InputStream in = child.getInputStream();// 控制台的输出信息作为输入流
+
+InputStreamReader xx = new InputStreamReader(in, "utf8");// 设置输出流编码为utf8。这里必须是utf8，否则从流中读入的是乱码
+
+String inStr;
+StringBuffer sb = new StringBuffer("");
+String outStr;
+// 组合控制台输出信息字符串
+BufferedReader br = new BufferedReader(xx);
+while ((inStr = br.readLine()) != null) {
+sb.append(inStr + "\r\n");
+}
+outStr = sb.toString();
+
+// 要用来做导入用的sql目标文件：
+FileOutputStream fout = new FileOutputStream(
+"e:/mysql-5.0.27-win32/bin/bjse22.sql");
+OutputStreamWriter writer = new OutputStreamWriter(fout, "utf8");
+writer.write(outStr);
+// 注：这里如果用缓冲方式写入文件的话，会导致中文乱码，用flush()方法则可以避免
+writer.flush();
+
+// 别忘记关闭输入输出流
+in.close();
+xx.close();
+br.close();
+writer.close();
+fout.close();
+
+System.out.println("");
+
+} catch (Exception e) {
+e.printStackTrace();
+}
+
+}
+
+
+public static void load() {
+try {
+String fPath = "e:/mysql-5.0.27-win32/bin/bjse22.sql";
+Runtime rt = Runtime.getRuntime();
+
+// 调用 mysql 的 cmd:
+Process child = rt.exec("mysql -u root bjse ");
+OutputStream out = child.getOutputStream();//控制台的输入信息作为输出流
+String inStr;
+StringBuffer sb = new StringBuffer("");
+String outStr;
+BufferedReader br = new BufferedReader(new InputStreamReader(
+new FileInputStream(fPath), "utf8"));
+while ((inStr = br.readLine()) != null) {
+sb.append(inStr + "\r\n");
+}
+outStr = sb.toString();
+
+OutputStreamWriter writer = new OutputStreamWriter(out, "utf8");
+writer.write(outStr);
+// 注：这里如果用缓冲方式写入文件的话，会导致中文乱码，用flush()方法则可以避免
+writer.flush();
+// 别忘记关闭输入输出流
+out.close();
+br.close();
+writer.close();
+
+System.out.println("");
+
+} catch (Exception e) {
+e.printStackTrace();
+}
+
+}
+
+备份语句：
+mysql> SELECT * INTO OUTFILE "D:\\data\\db_testtemp.txt" fields terminated by ',
+' from db_testtemp where std_state='1';
+Query OK, 1 row affected (0.00 sec)
+
+mysql> SELECT * INTO OUTFILE "D:\\data\\db_testtemp.txt" fields terminated by ',
+' from db_testtemp ;
+Query OK, 2 rows affected (0.00 sec)
+
+只生成一个只有数据的.txt:SELECT * INTO OUTFILE "D:\\data\\db_testtemp.txt" fields terminated by ',' lines terminated by '\r\n' from db_testtemp ;
+
+只生成一个只有数据的.txt:mysqldump -uroot -pncae2010 -w "std_state='1'" -T D:\data --no-create-info --fields-terminated-by=, exam db_testtemp
+
+生成一个创建数据库语句的.sql,一个只有数据的.txt:mysqldump -uroot -pncae2010 -w "std_state='1'" -T D:\data --fields-terminated-by=, exam db_testtemp
+
+只生成insert语句：mysqldump -uroot -pncae2010 -w "std_state='1'" -t exam db_testtemp > D:\data\a.sql

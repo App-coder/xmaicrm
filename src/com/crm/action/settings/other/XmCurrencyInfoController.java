@@ -24,7 +24,7 @@ import com.crm.util.HtmlUtil;
  * Time: 下午9:27:20
  */
 @Controller
-@RequestMapping(value = "settings/currencyInfo")
+@RequestMapping(value = "crm/settings/currencyInfo")
 public class XmCurrencyInfoController {
 	
 	XmCurrencyInfoService xmCurrencyInfoService;

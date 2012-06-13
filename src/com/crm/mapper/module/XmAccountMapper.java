@@ -27,4 +27,12 @@ public interface XmAccountMapper extends ModuleMapper<XmAccount> {
 	List<XmAccount> getTopAccount(@Param("smownerid") String smownerid);
 
 	int getNewAccountOfUserAndLast(@Param("userid") Integer userid,@Param("start") String start,@Param("end") String end);
+
+	List<Object> loadUnabsorbed(@Param("start") int start,@Param("rows") int rows);
+
+	int getTotalUnabsorbed();
+
+	int getTotalAssigned();
+
+	List<Object> loadAssigned(@Param("start") int start,@Param("rows") int rows);
 }

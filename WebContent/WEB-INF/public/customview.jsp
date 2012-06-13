@@ -153,6 +153,9 @@ var entitytype = '${entitytype}';
 	    end_newday = '${timeoptions.end_thisfq}';
 	}
 
+	$("#form_customview").find("input[name=startdate]").val(start_prevfy);
+	$("#form_customview").find("input[name=enddate]").val(end_newday);
+	
 	$("#startdate").datebox('setValue', start_prevfy);
 	$("#enddate").datebox('setValue', end_newday);
     }

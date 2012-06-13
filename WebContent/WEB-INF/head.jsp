@@ -6,8 +6,8 @@
 String path = request.getContextPath();  
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/"; 
 %>    
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<html>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <base href="<%=basePath %>"/>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -34,6 +34,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 
 <!-- easyuipack.js 补充拓展 -->
 <script type="text/javascript" src="resources/easyui/easyuipack.js"></script>
+<script type="text/javascript" src="resources/easyui/extension/validatebox.js"></script>
 
 <!-- loadmask -->
 <link href="resources/plugins/loadmask/jquery.loadmask.css" rel="stylesheet" type="text/css" />

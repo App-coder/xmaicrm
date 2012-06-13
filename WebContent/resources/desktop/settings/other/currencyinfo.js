@@ -5,7 +5,7 @@ $(function() {
 function initForm(){
     
     $('#form_currencyinfo').form({
-	url : 'settings/currencyInfo/edit',
+	url : 'crm/settings/currencyInfo/edit',
 	onSubmit : function() {
 	    if ($('#form_currencyinfo').form("validate")) {
 		return true;
@@ -47,7 +47,7 @@ function initPage() {
     cols = setDefWidth(cols, 80);
 
     $('#currencyinfo_list').datagrid({
-	url : 'settings/currencyInfo/list',
+	url : 'crm/settings/currencyInfo/list',
 	collapsible : false,
 	idField : 'id',
 	singleSelect : true,
@@ -87,7 +87,7 @@ function initPage() {
 		    if(Number(selected.defaultid) >= 0){
 			confim('确定删除货币币种？',function(r){
 			    if(r){
-				$.post('settings/currencyInfo/delete',{cid:selected.id},function(res){
+				$.post('crm/settings/currencyInfo/delete',{cid:selected.id},function(res){
 				    if(res.type == true){
 					$('#currencyinfo_list').datagrid("reload");
 				    }
@@ -110,7 +110,7 @@ function initPage() {
     });
 }
 function loadForm(cid){
-    $.post('settings/currencyInfo/getCurrencyById',{cid:cid},function(res){
+    $.post('crm/settings/currencyInfo/getCurrencyById',{cid:cid},function(res){
 	$('#form_currencyinfo').form("load",res);
 	$("#currencyinfo").window("open");
     },'json');

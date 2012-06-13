@@ -215,4 +215,23 @@
   <select id="getRelmodField" resultMap="BaseResultMap">
      SELECT tabid,name,tablabel FROM xm_tab WHERE reportable = 1 ORDER BY tabid
   </select>
+  <select id="getPermissionTab" resultMap="BaseResultMap"  >
+  	SELECT DISTINCT
+		(name),xm_tab.tabid,xm_tab.tablabel
+	FROM
+		xm_profile2field
+	INNER JOIN xm_tab ON xm_tab.tabid = xm_profile2field.tabid;
+  </select>
+  <select id="getRecyclebinModule" resultMap="BaseResultMap">
+  	SELECT DISTINCT
+		`name`,
+		tabid,
+		tablabel
+	FROM
+		xm_tab
+	WHERE
+		reportable = 1
+	AND tabid != '9'
+	AND tabid NOT IN(${skipstr})
+  </select>
 </mapper>

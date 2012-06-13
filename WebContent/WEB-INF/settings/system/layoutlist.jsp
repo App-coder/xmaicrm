@@ -9,7 +9,7 @@ var pathname ='页面布局';
 <script type="text/javascript" src="resources/desktop/settings/system/layoutlist.js"></script>
 </head>
 <body id="wrap">
-<%@ include file="../../nav.jsp"%>
+${navbar }
 <div id="main">
     <div class="hidden">
 			<div id="layoutlist" class="easyui-window" <%=win_topbar%> style="width: 400px; height: 252px;">

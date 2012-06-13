@@ -20,4 +20,6 @@ public interface XmCatalogMapper {
     int updateByPrimaryKey(XmCatalog record);
 
 	List<XmCatalog> getCatalogById(@Param("parentid") String parentid);
+
+	List<XmCatalog> getCatalogAll();
 }

@@ -113,7 +113,7 @@
 	</choose>
   </select>
   <select id="getAll" resultMap="BaseResultMap" >
-  	select * from xm_role
+  	select * from xm_role order by parentrole asc ;
   </select>
   <select id="getUserRole" resultMap="BaseResultMap" >
   	select xm_role.* from xm_role  left join xm_user2role on xm_role.roleid = xm_user2role.roleid where xm_user2role.userid = #{id}

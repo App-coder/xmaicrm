@@ -18,6 +18,7 @@ import com.crm.model.XmCvadvfilter;
 import com.crm.model.XmCvstdfilter;
 import com.crm.model.XmEntityname;
 import com.crm.model.XmTab;
+import com.crm.util.DateUtil;
 import com.crm.util.JsonUtil;
 import com.crm.util.crm.CustomViewUtil;
 
@@ -120,7 +121,7 @@ public class CvFilter {
 		if(stdfilter!=null){
 			if(stdfilter.getColumnname()!=null && stdfilter.getStartdate()!=null){
 					CVColumn std = (CVColumn)JsonUtil.getObject4JsonString(stdfilter.getColumnname(), CVColumn.class);
-					filter +=" and "+en.getTablename() +"."+std.getField()+">'"+stdfilter.getStartdate()+"' and "+en.getTablename() +"."+std.getField()+"<'"+stdfilter.getEnddate()+"'";
+					filter +=" and "+en.getTablename() +"."+std.getField()+">'"+DateUtil.format(stdfilter.getStartdate(),DateUtil.C_DATE_PATTON_DEFAULT)+"' and "+en.getTablename() +"."+std.getField()+"<'"+DateUtil.format(stdfilter.getEnddate(),DateUtil.C_DATE_PATTON_DEFAULT)+"'";
 			}
 		}
 		
@@ -145,11 +146,11 @@ public class CvFilter {
 	}
 
 	public String getTotalFilter(int viewid, XmCustomview customview,
-			XmCvstdfilter stdfilter, List<XmCvadvfilter> advfilters,List<CVColumn> cols) {
+			XmCvstdfilter stdfilter, List<XmCvadvfilter> advfilters,List<CVColumn> cols,String customfiter){
 		String totalfilter = "";
 		XmEntityname en = CustomViewUtil.getEntitynameByET(customview.getEntitytype());
 		if(cols.size()>=1){
-			totalfilter +="SELECT count(1) AS count FROM "+en.getTablename()+" where 1=1 " ;
+			totalfilter +="SELECT count(1) AS count FROM "+en.getTablename()+"" ;
 			for(int i=0;i<cols.size();i++){
 				CVColumn n = cols.get(i);
 				XmEntityname cd = CustomViewUtil.getEntitynameByET(n.getEntitytype());
@@ -159,14 +160,15 @@ public class CvFilter {
 					}
 				}
 			}
+			totalfilter +=" where 1=1  ";
 		}else{
 			totalfilter +="SELECT count(1) AS count FROM "+en.getTablename() +" where 1=1 and "+en.getTablename()+".deleted = 0 " ;
 		}
-		return totalfilter+" and "+en.getTablename()+".deleted = 0 "+getFilter(customview, stdfilter, advfilters);
+		return totalfilter+" and "+en.getTablename()+".deleted = 0 "+getFilter(customview, stdfilter, advfilters)+customfiter;
 	}
 
 	public String getListFilter(int viewid, XmCustomview customview,
-			XmCvstdfilter stdfilter, List<XmCvadvfilter> advfilters,List<CVColumn> cols) {
+			XmCvstdfilter stdfilter, List<XmCvadvfilter> advfilters,List<CVColumn> cols,String customfiter) {
 		String selectall = "";
 		String columnstr = "";
 		String joinstr = "";
@@ -186,10 +188,14 @@ public class CvFilter {
 
 						joinstr +=" INNER JOIN xm_users on "+n.getFieldtabname()+"."+n.getFieldcolname()+"=xm_users.id";
 						
-					}else if(n.getFieldname().indexOf("_")!=-1){ 
+					}else if(n.getFieldname().indexOf("_")!=-1 && n.getFieldname().split("_")[1].equals("id")){ 
 						
 						XmEntityname et  =  CustomViewUtil.getEntitynameByET(n.getEntitytype());
+						XmEntityname eref = null;
 						
+						eref = CustomViewUtil.getEntitynameByEID(n.getFieldname().replace("_", ""));
+						columnstr +=Join(columnstr)+"( select "+eref.getFieldname()+" from "+eref.getTablename()+" as tmp where tmp."+eref.getEntityidfield()+" = "+ey.getTablename()+"."+n.getFieldcolname()+" )  as "+n.getFieldcolname();
+						/*
 						XmEntityname eref = null;
 						if(n.getFieldname().split("_")[1].equals("id")){
 							eref = CustomViewUtil.getEntitynameByEID(n.getFieldname().replace("_", ""));
@@ -201,23 +207,31 @@ public class CvFilter {
 							columnstr +=Join(columnstr)+"( select "+eref.getFieldname()+" from "+eref.getTablename()+" as tmp where tmp."+eref.getEntityidfield()+" = "+ey.getTablename()+"."+n.getFieldcolname()+" )  as "+n.getFieldcolname();
 						}else{
 							columnstr +=Join(columnstr)+n.getFieldname().split("_")[1]+" as "+n.getFieldcolname();
-						}
+						}*/
 						
 					}else{
-						columnstr +=Join(columnstr)+n.getFieldtabname()+"."+n.getFieldcolname()+" ";
+						
+						columnstr = CustomJoin(columnstr,n);
+						
 					}
 				}
 				
 				
 			}
-			
+			columnstr = en.getTablename()+"."+en.getEntityidfield()+","+columnstr;
 			selectall +="select "+columnstr+" from "+en.getTablename()+" "+joinstr+"  ";
 		}else{
 			selectall +="SELECT "+en.getTablename()+".* FROM "+en.getTablename()+" " ;
 		}
-		return selectall+" where 1=1  and "+en.getTablename()+".deleted = 0 "+getFilter(customview, stdfilter, advfilters);
+		return selectall+" where 1=1  and "+en.getTablename()+".deleted = 0 "+getFilter(customview, stdfilter, advfilters) + customfiter;
 	}
 	
+	private String CustomJoin(String columnstr, CVColumn n) {
+		//if(n.getEntitytype().equals("Noteplans")&&n.getFieldcolname().equals("executor")){
+		columnstr +=Join(columnstr)+n.getFieldtabname()+"."+n.getFieldcolname()+" ";
+		return columnstr;
+	}
+
 	public String Join(String str){
 		if(str!=null && !str.equals("")){
 			return ",";

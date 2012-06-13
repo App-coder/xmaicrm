@@ -2,6 +2,7 @@ package com.crm.action;
 
 import javax.annotation.Resource;
 import javax.servlet.ServletContext;
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Controller;
@@ -95,9 +96,12 @@ public class WelcomeController implements ServletContextAware {
 	}
 
 	@RequestMapping(value = "/navbar", method = RequestMethod.POST)
-	public String navbar(String pathname, String url, ModelMap modelmap) {
+	public String navbar(String pathname, String url, ModelMap modelmap,HttpServletRequest request) {
 		modelmap.addAttribute("pathname", pathname);
 		modelmap.addAttribute("url", url);
+		if(request.getParameter("pArgs")!=null){
+			modelmap.addAttribute("pArgs",request.getParameter("pArgs"));
+		}
 		return "navbar";
 	}
 
