@@ -448,4 +448,20 @@
 				sequence
 	</select>
 	
+	<select id="getMultiLevel2" resultType="map">
+	   SELECT
+			fieldid,
+			columnname,
+			tablename,
+			fieldname,
+			fieldlabel,
+			substring(typeofdata,3,1) typeofdata
+		FROM
+			xm_field
+		WHERE
+			tabid = #{tabid}
+		AND uitype IN('1021', '1022', '1023')
+		AND typeofdata LIKE #{typeofdata}
+	</select>
+	
 </mapper>

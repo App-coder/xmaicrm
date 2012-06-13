@@ -19,10 +19,19 @@ public class XmMultifieldServiceImpl implements XmMultifieldService {
 		this.xmMultifieldMapper = xmMultifieldMapper;
 	}
 
-
 	@Override
 	public List<XmMultifield> getMultifield(int tabid) {
 		return this.xmMultifieldMapper.getMultifield(tabid);
+	}
+	
+	@Override
+	public List<Object> getMultiLevel1(int multifieldid) {
+		return this.xmMultifieldMapper.getMultiLevel1(multifieldid);
+	}
+	
+	@Override
+	public List<Object> getMultiLevelField(int thelevel, int parentfieldid,String tablename) {
+		return this.xmMultifieldMapper.getMultiLevelField(thelevel, parentfieldid,tablename);
 	}
 
 }

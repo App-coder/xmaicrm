@@ -42,7 +42,7 @@
 									<td width="18%" class="edittd3">角色</td>
 									<td width="32%"><input id="roleid" name="roleid"
 										class="easyui-combotree"
-										data-options="url:'settings/role/getRoleTree',required:true"
+										data-options="url:'crm/settings/role/getRoleTree',required:true"
 										style="width: 190px;"></td>
 								</tr>
 								<tr>

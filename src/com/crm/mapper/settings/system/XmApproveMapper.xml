@@ -196,6 +196,14 @@
     where id = #{id,jdbcType=INTEGER}
   </update>
   <select id="getApproveList" resultMap="BaseResultMap" >
-  	select id,name,used from xm_approve where tabid=#{tabid} order by created_at;
+  	select id,name,used,userselected from xm_approve where tabid=#{tabid} order by created_at;
+  </select>
+  
+  <select id="getApproveRole" resultType="map">
+    select userid from xm_approve2user where approveid=#{approveid}
+  </select>
+  
+  <select id="getApproveRelatedModule" resultType="String">
+    select xm_tab.name from xm_approve inner join xm_tab on xm_approve.tabid=xm_tab.tabid where xm_approve.id=#{approveid}
   </select>
 </mapper>

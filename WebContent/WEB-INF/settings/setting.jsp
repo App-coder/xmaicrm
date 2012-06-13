@@ -31,7 +31,7 @@
 												</tr>
 												<tr>
 													<td valign="top" class="big"><a
-														href="settings/users/index">系统用户</a></td>
+														href="crm/settings/users/index">系统用户</a></td>
 												</tr>
 											</tbody>
 										</table>

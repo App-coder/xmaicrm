@@ -51,7 +51,22 @@
       </if>
     </trim>
   </insert>
-  <select id="getMultifield" resultMap="BaseResultMap">
+  <select id="getMultifield"  resultMap="BaseResultMap">
   	select multifieldid,multifieldname,totallevel from xm_multifield where tabid=#{tabid} order by multifieldid;
+  </select>
+  <select id="getMultiLevel1" resultType="map">
+    SELECT
+	    xm_multifield.*, xm_tab.NAME AS modulename
+	FROM
+		xm_multifield
+	INNER JOIN xm_tab ON xm_tab.tabid = xm_multifield.tabid
+	WHERE
+		multifieldid = #{multifieldid}
+  </select>
+  
+  <select id="getMultiLevelField" resultType="map">
+    SELECT
+	   actualfieldid,actualfieldname FROM ${tablename} 
+    WHERE thelevel = #{thelevel}  AND parentfieldid = #{parentfieldid} ORDER BY sortorderid ASC
   </select>
 </mapper>

@@ -2,6 +2,8 @@ package com.crm.service;
 
 import java.util.*;
 
+import org.apache.ibatis.annotations.Param;
+
 import com.crm.model.XmField;
 import com.crm.model.XmProfile2field;
 
@@ -58,4 +60,6 @@ public interface XmFieldService {
 	List<Object> getProductField(String module);
 	
 	List<Object> getRelmodField(String module,int tabid);
+	
+	List<Object> getMultiLevel2(Integer tabid,String typeofdata);
 }

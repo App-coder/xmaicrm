@@ -6,7 +6,7 @@ $(function() {
 function initForm() {
 
     $('#form_add').form({
-	url : 'settings/users/userEdit',
+	url : 'crm/settings/users/userEdit',
 	onSubmit : function() {
 	    if ($('#form_add').form("validate")) {
 		return true;
@@ -26,7 +26,7 @@ function initForm() {
     });
     
     $('#form_edit').form({
-	url : 'settings/users/userEdit',
+	url : 'crm/settings/users/userEdit',
 	onSubmit : function() {
 	    if ($('#form_edit').form("validate")) {
 		return true;
@@ -75,7 +75,7 @@ function initPage() {
     cols = setDefWidth(cols, 80);
 
     $('#user_list').datagrid({
-	url : 'settings/users/list',
+	url : 'crm/settings/users/list',
 	collapsible : false,
 	idField : 'id',
 	singleSelect : true,
@@ -120,7 +120,7 @@ function initPage() {
 		if (selected) {
 		    confirm('确定删除用户?',function(r){
 			if (r){  
-			    $.post("settings/users/delete",{id:selected.id},function(res){
+			    $.post("crm/settings/users/delete",{id:selected.id},function(res){
 				if(res.type == true){
 				    $('#user_list').datagrid("reload");
 				}
@@ -142,7 +142,7 @@ function initPage() {
 }
 // 编辑窗口的初始化
 function loadForm(uid) {
-    $.post('settings/users/getUserById', {
+    $.post('crm/settings/users/getUserById', {
 	id : uid
     }, function(res) {
 	$('#form_edit').form('load',{

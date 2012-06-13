@@ -14,8 +14,8 @@ red{color:red;}
 .fl{float:left;}
 .tac{text-align: center;}
 .tar{text-align:right;}
-a{cursor: pointer;text-decoration: none;color:#000;}
-.a:hover{}
+a{cursor: pointer;text-decoration: none;color: #33338C;}
+a:hover{text-decoration: underline;}
 .a:link{color:#27A5E1;text-decoration: underline;}
 
 .headerNav{background-position: 100% -50px;background-repeat: no-repeat;height: 30px;background: url("./images/header-bg.png") repeat-x scroll 0 0 transparent;}
@@ -264,4 +264,11 @@ fieldset legend{color:#15428B;}
     border-width: 1px 0 0 1px;
     font-weight: bold;
 }
+
+.listTable {
+    border-bottom: 1px solid #CCCCCC;
+    border-left: 1px solid #CCCCCC;
+    border-right: 1px solid #CCCCCC;
+}
+
 

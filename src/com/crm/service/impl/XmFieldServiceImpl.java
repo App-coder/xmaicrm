@@ -105,5 +105,11 @@ public class XmFieldServiceImpl implements XmFieldService{
 	public List<Object> getRelmodField(String module, int tabid) {
 		return this.xmFieldMapper.getRelmodField(module, tabid);
 	}
+	
+	@Override
+	public List<Object> getMultiLevel2(Integer tabid, String typeofdata) {
+		return this.xmFieldMapper.getMultiLevel2(tabid, typeofdata);
+	}
+	
 
 }

@@ -12,4 +12,8 @@ public interface XmMultifieldMapper {
     int insertSelective(XmMultifield record);
 
 	List<XmMultifield> getMultifield(@Param("tabid") int tabid);
+	
+	List<Object> getMultiLevel1(@Param("multifieldid") int multifieldid);
+	
+	List<Object> getMultiLevelField(@Param("thelevel") int thelevel,@Param("parentfieldid") int parentfieldid,@Param("tablename") String tablename);
 }

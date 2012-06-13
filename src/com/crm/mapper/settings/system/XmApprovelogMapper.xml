@@ -1,0 +1,182 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.crm.mapper.settings.system.XmApprovelogMapper" >
+  <resultMap id="BaseResultMap" type="com.crm.model.XmApprovelog" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="crmid" property="crmid" jdbcType="INTEGER" />
+    <result column="approveid" property="approveid" jdbcType="INTEGER" />
+    <result column="stepid" property="stepid" jdbcType="INTEGER" />
+    <result column="approved_by" property="approvedBy" jdbcType="INTEGER" />
+    <result column="approveresult" property="approveresult" jdbcType="INTEGER" />
+    <result column="created_at" property="createdAt" jdbcType="TIMESTAMP" />
+    <result column="updated_at" property="updatedAt" jdbcType="TIMESTAMP" />
+    <result column="prestepid" property="prestepid" jdbcType="INTEGER" />
+  </resultMap>
+  <resultMap id="ResultMapWithBLOBs" type="com.crm.model.XmApprovelog" extends="BaseResultMap" >
+    <result column="memo" property="memo" jdbcType="LONGVARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, crmid, approveid, stepid, approved_by, approveresult, created_at, updated_at, 
+    prestepid
+  </sql>
+  <sql id="Blob_Column_List" >
+    memo
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="ResultMapWithBLOBs" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from xm_approvelog
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from xm_approvelog
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.crm.model.XmApprovelog" >
+    insert into xm_approvelog (id, crmid, approveid, 
+      stepid, approved_by, approveresult, 
+      created_at, updated_at, prestepid, 
+      memo)
+    values (#{id,jdbcType=INTEGER}, #{crmid,jdbcType=INTEGER}, #{approveid,jdbcType=INTEGER}, 
+      #{stepid,jdbcType=INTEGER}, #{approvedBy,jdbcType=INTEGER}, #{approveresult,jdbcType=INTEGER}, 
+      #{createdAt,jdbcType=TIMESTAMP}, #{updatedAt,jdbcType=TIMESTAMP}, #{prestepid,jdbcType=INTEGER}, 
+      #{memo,jdbcType=LONGVARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.crm.model.XmApprovelog" >
+    insert into xm_approvelog
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="crmid != null" >
+        crmid,
+      </if>
+      <if test="approveid != null" >
+        approveid,
+      </if>
+      <if test="stepid != null" >
+        stepid,
+      </if>
+      <if test="approvedBy != null" >
+        approved_by,
+      </if>
+      <if test="approveresult != null" >
+        approveresult,
+      </if>
+      <if test="createdAt != null" >
+        created_at,
+      </if>
+      <if test="updatedAt != null" >
+        updated_at,
+      </if>
+      <if test="prestepid != null" >
+        prestepid,
+      </if>
+      <if test="memo != null" >
+        memo,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="crmid != null" >
+        #{crmid,jdbcType=INTEGER},
+      </if>
+      <if test="approveid != null" >
+        #{approveid,jdbcType=INTEGER},
+      </if>
+      <if test="stepid != null" >
+        #{stepid,jdbcType=INTEGER},
+      </if>
+      <if test="approvedBy != null" >
+        #{approvedBy,jdbcType=INTEGER},
+      </if>
+      <if test="approveresult != null" >
+        #{approveresult,jdbcType=INTEGER},
+      </if>
+      <if test="createdAt != null" >
+        #{createdAt,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updatedAt != null" >
+        #{updatedAt,jdbcType=TIMESTAMP},
+      </if>
+      <if test="prestepid != null" >
+        #{prestepid,jdbcType=INTEGER},
+      </if>
+      <if test="memo != null" >
+        #{memo,jdbcType=LONGVARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.crm.model.XmApprovelog" >
+    update xm_approvelog
+    <set >
+      <if test="crmid != null" >
+        crmid = #{crmid,jdbcType=INTEGER},
+      </if>
+      <if test="approveid != null" >
+        approveid = #{approveid,jdbcType=INTEGER},
+      </if>
+      <if test="stepid != null" >
+        stepid = #{stepid,jdbcType=INTEGER},
+      </if>
+      <if test="approvedBy != null" >
+        approved_by = #{approvedBy,jdbcType=INTEGER},
+      </if>
+      <if test="approveresult != null" >
+        approveresult = #{approveresult,jdbcType=INTEGER},
+      </if>
+      <if test="createdAt != null" >
+        created_at = #{createdAt,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updatedAt != null" >
+        updated_at = #{updatedAt,jdbcType=TIMESTAMP},
+      </if>
+      <if test="prestepid != null" >
+        prestepid = #{prestepid,jdbcType=INTEGER},
+      </if>
+      <if test="memo != null" >
+        memo = #{memo,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.crm.model.XmApprovelog" >
+    update xm_approvelog
+    set crmid = #{crmid,jdbcType=INTEGER},
+      approveid = #{approveid,jdbcType=INTEGER},
+      stepid = #{stepid,jdbcType=INTEGER},
+      approved_by = #{approvedBy,jdbcType=INTEGER},
+      approveresult = #{approveresult,jdbcType=INTEGER},
+      created_at = #{createdAt,jdbcType=TIMESTAMP},
+      updated_at = #{updatedAt,jdbcType=TIMESTAMP},
+      prestepid = #{prestepid,jdbcType=INTEGER},
+      memo = #{memo,jdbcType=LONGVARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.crm.model.XmApprovelog" >
+    update xm_approvelog
+    set crmid = #{crmid,jdbcType=INTEGER},
+      approveid = #{approveid,jdbcType=INTEGER},
+      stepid = #{stepid,jdbcType=INTEGER},
+      approved_by = #{approvedBy,jdbcType=INTEGER},
+      approveresult = #{approveresult,jdbcType=INTEGER},
+      created_at = #{createdAt,jdbcType=TIMESTAMP},
+      updated_at = #{updatedAt,jdbcType=TIMESTAMP},
+      prestepid = #{prestepid,jdbcType=INTEGER}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  
+  <select id="getApproveUsed" resultType="Integer">
+    SELECT count(xm_approvelog.crmid) crmid
+	FROM
+		xm_approvelog
+	INNER JOIN ${tablename} ON xm_approvelog.crmid = ${tablename}.${fieldid}
+	WHERE
+		approveid = #{approveid} and ${tablename}.deleted=0 and ${tablename}.approved!=1 
+  </select>
+  
+</mapper>

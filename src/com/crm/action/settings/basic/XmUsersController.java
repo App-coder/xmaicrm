@@ -32,7 +32,7 @@ import com.crm.util.HtmlUtil;
  * Time: 上午10:09:13
  */
 @Controller
-@RequestMapping(value = "settings/users")
+@RequestMapping(value = "crm/settings/users")
 public class XmUsersController extends BaseController {
 	
 	XmUsersService xmUsersService;
