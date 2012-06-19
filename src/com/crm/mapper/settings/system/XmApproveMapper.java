@@ -23,6 +23,10 @@ public interface XmApproveMapper {
 
 	List<XmApprove> getApproveList(@Param("tabid") int tabid);
 	
+	XmApprove getApproveListById(@Param("approveid") int approveid);
+	
+	List<Object> getApproveStepList(@Param("approveid") int approveid);
+	
 	List<Object> getApproveRole(@Param("approveid") int approveid);
 	
 	String getApproveRelatedModule(@Param("approveid") int approveid);

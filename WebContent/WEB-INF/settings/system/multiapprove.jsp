@@ -4,6 +4,7 @@
 <%@ include file="../../common/config.jsp"%>
 <script>
 var pathname = "审批流程";
+var pathActive = "multiapprove";
 </script>
 <%@ include file="../../path.jsp"%>
 <script type="text/javascript"
@@ -57,7 +58,7 @@ var pathname = "审批流程";
 							<legend class="schart">角色信息(所选角色提交的记录将通过当前审批流程审批)</legend>
 							<table>
 							<tr><td><ul id="role_tree" class="easyui-tree" 
-							data-options="url:'crm/settings/role/getRoleTree',required:true,cascadeCheck:false" checkbox="true"></ul></td></tr>
+							data-options="required:true,cascadeCheck:false" checkbox="true"></ul></td></tr>
 							</table>
 							</fieldset>
 							<table style="margin-bottom: 10px;">
@@ -80,15 +81,40 @@ var pathname = "审批流程";
 		</div>
 	
 	
-		<div class="path" id="navpath"></div>
-		<table id="multiapprovelist" toolbar="#multiapprovelist_tb"></table>
+	   <table style="width:100%;">
+			<tr>
+				<td width="160px" valign="top">
+					<%@ include file="../../nav_setting.jsp"%>
+				</td>
+				<td valign="top">
+				<div class="path" id="navpath"></div>
+				<table id="multiapprovelist" toolbar="#multiapprovelist_tb"></table>
+				<table class="listTable small" width="100%" cellspacing="0" cellpadding="5">
+					<tbody>
+						<tr>
+							<td valign="top" nowrap="">
+							提示：
+							<ul class="small">
+							<li>每个模块可以新增多个审批流程，如果没有设置审批流程，审批将是单级审批，记录负责人的上级具有审批权限。</li>
+							<li>点击查看审批步骤可以新增和修改审批步骤，每个审批流程可以具有多个审批步骤，步骤数量没有限制。</li>
+							<li>如果记录正在通过审批流程处理，那么所在的审批流程将不能修改和删除。</li>
+							</ul>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+				</td>
+			</tr>
+		</table>
+	
+		
 		<div id="multiapprovelist_tb" class="gtb" style="display: block;">
 			<span>选择模块：</span> <select class="tipt" id="selectmultiapprove"
 				onchange="reloadGrid(this.value)">
 				<c:forEach items="${modules }" var="m">
 					<option value="${m.tabid }">${m.tablabel }</option>
 				</c:forEach>
-			</select><a onclick="javascript:editRelmodField()"
+			</select><a onclick="javascript:doMultiApproveStep()"
 				class="easyui-linkbutton"
 				data-options="plain:true,iconCls:'icon-add'">编辑审批步骤</a>
 				<a onclick="javascript:editRelmodField()"
@@ -101,20 +127,7 @@ var pathname = "审批流程";
 				class="easyui-linkbutton"
 				data-options="plain:true,iconCls:'icon-remove'">删除</a>
 		</div>
-		<table class="listTable small" width="100%" cellspacing="0" cellpadding="5">
-		<tbody>
-			<tr>
-				<td valign="top" nowrap="">
-				提示：
-				<ul class="small">
-				<li>每个模块可以新增多个审批流程，如果没有设置审批流程，审批将是单级审批，记录负责人的上级具有审批权限。</li>
-				<li>点击查看审批步骤可以新增和修改审批步骤，每个审批流程可以具有多个审批步骤，步骤数量没有限制。</li>
-				<li>如果记录正在通过审批流程处理，那么所在的审批流程将不能修改和删除。</li>
-				</ul>
-				</td>
-			</tr>
-		</tbody>
-		</table>
+		
 	</div>
 	<%@ include file="../../foot.jsp"%>
 </body>
