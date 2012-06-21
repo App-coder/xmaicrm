@@ -11,7 +11,21 @@ var pathname = "级联字段";
 </head>
 <body id="wrap">
 	${navbar }
-	<div id="main">
+		<div id="main">
+		    <div class="hidden">
+				<div id="block" class="easyui-window" <%=win_topbar%> style="width: 500px; height: 232px;">
+					<div class="easyui-layout" data-options="fit:true,border:false">
+						<div data-options="region:'center',border:false" style="padding: 10px; background: #fff;">
+							<table id="multifield_grid"></table>
+						</div>
+						<div region="south" class="btnbar" border="false">
+							<a class="easyui-linkbutton" iconCls="icon-ok" onclick="submitBlock()">确定</a>
+							<a class="easyui-linkbutton" iconCls="icon-cancel" onclick="closeWin('block')">取消</a>
+						</div>
+					</div>
+				</div>
+		</div>
+	  
 		<div class="path" id="navpath"></div>
 		<table id="multifieldlist" toolbar="#multifield_tb"></table>
 		<div id="multifield_tb" class="gtb" style="display: block;">
