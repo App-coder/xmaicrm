@@ -54,5 +54,7 @@ public interface XmFieldMapper {
 	
 	List<Object> getProductField(@Param("module") String module);
 	
+	List<Object> getRelmodField(@Param("module") String module,@Param("tabid") int tabid);
+	
 	String getProductOfFieldname(@Param("module") String module,@Param("fieldid") Integer fieldid);
 }

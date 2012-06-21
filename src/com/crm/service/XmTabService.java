@@ -51,6 +51,8 @@ public interface XmTabService {
 	 * @return
 	 */
 	List<XmTab> getProductFieldModule();
+	
+	List<XmTab> getRelmodField();
 
 
 }

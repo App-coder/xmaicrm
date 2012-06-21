@@ -211,4 +211,8 @@
   <select id="getProductFieldModule" resultMap="BaseResultMap" >
      select xm_tab.name,xm_tab.tablabel from xm_modulelist inner join xm_tab on xm_tab.tabid=xm_modulelist.tabid where xm_modulelist.type='productfield' order by xm_tab.tabid
   </select>
+  
+  <select id="getRelmodField" resultMap="BaseResultMap">
+     SELECT tabid,name,tablabel FROM xm_tab WHERE reportable = 1 ORDER BY tabid
+  </select>
 </mapper>

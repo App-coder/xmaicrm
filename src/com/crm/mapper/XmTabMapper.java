@@ -48,4 +48,6 @@ public interface XmTabMapper {
 	
 	List<XmTab> getProductFieldModule();
 	
+	List<XmTab> getRelmodField();
+	
 }

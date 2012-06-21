@@ -409,4 +409,43 @@
 		AND xm_field.fieldlabel != 'Website'
 	</select>
 	
+	<select id="getRelmodField" resultType="map">
+	   SELECT
+			xm_field.columnname,
+			xm_field.fieldlabel,
+			xm_relmodfieldlist.fieldname,
+			xm_relmodfieldlist.width,
+			xm_relmodfieldlist.module,
+			xm_field.fieldid,
+			xm_field.sequence
+		FROM
+			xm_field
+		INNER JOIN xm_def_org_field ON xm_def_org_field.fieldid = xm_field.fieldid
+		LEFT JOIN xm_relmodfieldlist ON xm_relmodfieldlist.fieldname = xm_field.columnname
+		AND xm_relmodfieldlist.module = #{module}
+		WHERE
+			xm_def_org_field.visible = 0
+		AND xm_field.tabid = #{tabid}
+		AND xm_field.uitype NOT IN(19, 69, 61, 30, 105)
+		UNION
+			SELECT
+				xm_field.columnname,
+				xm_field.fieldlabel,
+				xm_relmodfieldlist.fieldname,
+				xm_relmodfieldlist.width,
+				xm_relmodfieldlist.module,
+				xm_field.fieldid,
+				xm_field.sequence
+			FROM
+				xm_field
+			LEFT JOIN xm_relmodfieldlist ON xm_relmodfieldlist.fieldname = xm_field.columnname
+			AND xm_relmodfieldlist.module = #{module}
+			WHERE
+				xm_field.columnname = 'total'
+			AND xm_field.displaytype = 3
+			AND xm_field.tabid = #{tabid}
+			ORDER BY
+				sequence
+	</select>
+	
 </mapper>

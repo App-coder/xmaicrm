@@ -71,6 +71,9 @@
 	<c:when test="${pathname=='级联字段' }">
 		${syssetting }&gt;<a href="${url }">级联字段</a>
 	</c:when>
+	<c:when test="${pathname=='相关信息模块字段' }">
+		${syssetting }&gt;<a href="${url }">相关信息模块字段</a>
+	</c:when>
 	<c:when test="${pathname=='审批流程' }">
 		${syssetting }&gt;<a href="${url }">审批流程</a>
 	</c:when>
