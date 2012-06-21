@@ -44,6 +44,6 @@ public class XmCampaignController extends BaseController {
 		
 		ActionUtil.setTitle("Campaigns", ptb, modelMap, this.moduleUtil);
 
-		return "public/viewcv";
+		return "module/campaigns/index";
 	}
 }

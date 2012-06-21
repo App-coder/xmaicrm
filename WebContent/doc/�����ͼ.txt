@@ -1,0 +1,5 @@
+delete from xm_customview;
+delete from xm_customview_seq;
+delete from xm_cvadvfilter;
+DELETE from xm_cvcolumnlist;
+DELETE from xm_cvstdfilter;

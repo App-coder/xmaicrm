@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"
     pageEncoding="utf-8"%>
-<%@ include file="../head.jsp"%>
-<%@ include file="../common/config.jsp"%>
+<%@ include file="../../head.jsp"%>
+<%@ include file="../../common/config.jsp"%>
 <c:choose>
 	<c:when test="${customview.cvid!=null && dview!=null}">
 		<script>
@@ -24,9 +24,8 @@ var viewtab = entitytype.toLowerCase();
 var viewid = '${viewid}';
 var tabid = ${tab.tabid};
 var tablabel = '${tab.tablabel}';
-var ptb = '${ptb}';
 </script>
-<script type="text/javascript" src="resources/desktop/public/viewcv.js"></script>
+<script type="text/javascript" src="resources/desktop/module/campaigns/index.js"></script>
 </head>
 <body id="wrap">
 ${navbar }
@@ -87,6 +86,6 @@ ${ptb.parenttabLabel }&gt;<a href="crm/module/${fn:toLowerCase(entityname.module
 </div>
 
 
-<%@ include file="../foot.jsp"%>
+<%@ include file="../../foot.jsp"%>
 </body>
 </html>

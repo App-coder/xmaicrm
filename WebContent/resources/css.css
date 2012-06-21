@@ -152,7 +152,7 @@ fieldset legend{color:#15428B;}
 .tab_center tbody tr td{text-align: center !important;}
 .wtop{text-align: center;padding:5px;line-height: 20px;}
 #div_foot{bottom:0px;height: 40px;clear:both;width:100%;}
-#main {padding:0 15px 45px;min-height:500px;} /* 必须使用和footer相同的高度 */
+#main {padding:0 15px 15px;min-height:500px;} /* 必须使用和footer相同的高度 */
 .path{
     height: 30px;
     line-height: 30px;

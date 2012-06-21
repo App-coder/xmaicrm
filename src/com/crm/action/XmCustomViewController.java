@@ -36,6 +36,7 @@ import com.crm.model.XmCvcolumnlist;
 import com.crm.model.XmCvstdfilter;
 import com.crm.model.XmEntityname;
 import com.crm.model.XmField;
+import com.crm.model.XmParenttab;
 import com.crm.model.XmTab;
 import com.crm.service.XmBlocksService;
 import com.crm.service.XmCustomViewService;
@@ -49,6 +50,8 @@ import com.crm.service.XmSequenceService;
 import com.crm.service.XmTabService;
 import com.crm.service.settings.basic.XmUsersService;
 import com.crm.util.ArrayUtil;
+import com.crm.util.CacheManager;
+import com.crm.util.Constant;
 import com.crm.util.DateUtil;
 import com.crm.util.HtmlUtil;
 import com.crm.util.JsonUtil;
@@ -162,8 +165,16 @@ public class XmCustomViewController extends BaseController {
 		return arrayToJson(cols);
 	}
 
+	/**
+	 * 视图编辑
+	 * 
+	 * @param entitytype
+	 * @param ptb
+	 * @param modelmap
+	 * @return
+	 */
 	@RequestMapping(value = "/index", method = RequestMethod.GET)
-	public String index(@Param("entitytype") String entitytype,String ptb,
+	public String index(@Param("entitytype") String entitytype,int ptb,
 			ModelMap modelmap) {
 
 		XmTab tab = this.xmTabService.getTabByName(entitytype);
@@ -193,7 +204,10 @@ public class XmCustomViewController extends BaseController {
 		modelmap.addAttribute("searchfields",
 				HtmlUtil.getSearchFields(searchFields));
 		
-		modelmap.addAttribute("ptb",ptb);
+		HashMap<Integer, XmParenttab> parenttabs = (HashMap<Integer, XmParenttab>) CacheManager
+				.getFromCache(Constant.PARENTTAB);
+		XmParenttab parenttab = parenttabs.get(ptb);
+		modelmap.addAttribute("ptb", parenttab);
 
 		return "public/customview";
 	}
