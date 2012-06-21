@@ -46,5 +46,7 @@ public interface XmCustomviewMapper {
 	List<Object> getChartData(@Param("resultsql") String resultsql);
 
 	List<XmCustomview> getKeyCustomview();
+
+	XmCustomview getFirstCView(@Param("entitytype") String entitytype);
 	
 }
