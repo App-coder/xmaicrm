@@ -11,6 +11,7 @@ import com.crm.mapper.XmPicklistMapper;
 import com.crm.mapper.XmSequenceMapper;
 import com.crm.model.XmPicklist;
 import com.crm.service.XmPicklistService;
+import com.crm.service.XmSequenceService;
 @Service("xmPicklistService")
 public class XmPicklistServiceImpl implements XmPicklistService {
 	
@@ -20,8 +21,12 @@ public class XmPicklistServiceImpl implements XmPicklistService {
 		this.xmPicklistMapper = xmPicklistMapper;
 	}
 	
-	@Autowired
-	XmSequenceMapper xmSequenceMapper;
+	XmSequenceService xmSequenceService;
+	@Resource(name="xmSequenceService")
+	public void setXmSequenceService(XmSequenceService xmSequenceService) {
+		this.xmSequenceService = xmSequenceService;
+	}
+
 
 	@Override
 	public List<Object> getPickList(String pickfieldcolname) {
@@ -56,16 +61,14 @@ public class XmPicklistServiceImpl implements XmPicklistService {
 		int sequence=0;
     	XmPicklist xp=new XmPicklist();
     	String[] pick=arrpick.split(",");
-    	sequence=this.xmSequenceMapper.getSequenceId("picklist");
+    	sequence=this.xmSequenceService.getSequenceId("picklist");
     	for(int i=0;i<pick.length;i++){
-    		sequence+=1;
     		xp.setId(sequence);
     		xp.setColvalue(pick[i]);
     		xp.setColname(colname);
     		xp.setSequence(i);
     		this.xmPicklistMapper.insert(xp);
     	}
-    	this.xmSequenceMapper.updateSeq("picklist", sequence);
 		return 1;
 	}
 

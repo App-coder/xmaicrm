@@ -18,9 +18,13 @@ public class XmSequenceServiceImpl implements XmSequenceService {
 
 	@Override
 	public int getSequenceId(String table) {
-		int now_seq = this.xmSequenceMapper.getSequenceId(table);
-		this.xmSequenceMapper.updateSeq(table,now_seq+1);
-		return now_seq+1;
+		String now_seq = this.xmSequenceMapper.getSequenceId(table);
+		Integer newseq = 0;
+		if(now_seq!=null){
+			newseq = Integer.parseInt(now_seq);
+		}
+		this.xmSequenceMapper.updateSeq(table,newseq+1);
+		return newseq+1;
 	}
 
 

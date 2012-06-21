@@ -69,14 +69,7 @@ public class ModuleUtil extends BaseController{
 						if(n.getFieldname()!=null){
 							if(n.getFieldname().indexOf("assigned_")!=-1){
 								ne.setField("user_name");
-							}
-							/*
-							else if(n.getFieldname().indexOf("_")!=-1){
-								XmEntityname et = CustomViewUtil.getEntitynameByET(n.getEntitytype());
-								ne.setField(et.getFieldname());
-							}
-							*/
-							else{
+							}else{
 								ne.setField(n.getFieldcolname());
 							}
 							ne.setTitle(n.getTitle());
