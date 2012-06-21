@@ -10,4 +10,6 @@ public interface XmSequenceMapper {
 
 	int getMax(@Param("tablename") String tablename,@Param("key") String key);
 
+	void clearSeq(@Param("tablename") String tablename);
+
 }
