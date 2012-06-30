@@ -23,6 +23,10 @@
     where fieldid = #{fieldid,jdbcType=INTEGER}
       and profileid = #{profileid,jdbcType=INTEGER}
   </delete>
+  <delete id="deleteByFieldId" parameterType="map" >
+    delete from xm_profile2field
+    where fieldid = #{fieldid,jdbcType=INTEGER}
+  </delete>
   <insert id="insert" parameterType="com.crm.model.XmProfile2field" >
     insert into xm_profile2field (fieldid, profileid, tabid, 
       visible, readonly)

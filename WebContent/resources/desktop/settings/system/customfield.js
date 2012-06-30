@@ -13,6 +13,8 @@ var cfimagecombo=new Array("text.gif","number.gif","percent.gif","cfcurrency.gif
 var fieldUiType=new Array("1","7","9","71","5","13","11","15","17","56","21","33","86","87","88","89","85");
 var typeofdata="";
 var params="";
+var updaterow;
+var colvalue="";
 
 
 var cols = [{
@@ -62,7 +64,9 @@ function initForm() {
 		    res = $.parseJSON(res);
 		    if(res.type == true){
 		       closeWin('customfield');
-		       $('#form_customfield').form("clear");
+//		       $('#form_customfield').form("clear"); //bug
+		       $("input[name=fldLength]").attr("readonly",false);
+			   $("input[name=fldDecimal]").attr("readonly",false);
 		       $(".validatebox-tip").hide();
 		       $('#customfieldlist').datagrid("reload",{  
 		            tabid: $(".importBox").val() 
@@ -103,7 +107,14 @@ function initGrid(){
 		    handler : function() {
 		    	$("input[name=action]").val("add");
 				$("#customfield").window({
-				    title : "新增显示区域"
+				    title : "新增显示区域",
+				    onOpen:function(){
+				    	$("textarea[name=fldPickList]").html("&nbsp;"); 
+				    	$("input[name=fldLength]").attr("readonly",false);
+						$("input[name=fldDecimal]").attr("readonly",false);
+					    $(".validatebox-tip").hide();
+					    $("#fieldType").show("slow");
+				    },
 				});
 				
 				$("#customfield").window("open");
@@ -112,35 +123,41 @@ function initGrid(){
 		    text : '修改',
 		    iconCls:'icon-edit',
 		    handler : function() {
-		    	/*var selected = $('#blocklist').datagrid("getSelected");
+		    	var selected = $('#customfieldlist').datagrid("getSelected");
 				if (selected) {
 				    $("input[name=action]").val("update");
-				    $("#form_block").find("input[name=blockid]").val(selected.blockid);
-				    
 				    // 赋值操作
+				    updaterow=selected;
 				    loadForm(selected);
 				} else {
 				    message("请选择一行记录！");
-				}*/
+				}
 		    }
 		},{
 		    text : '删除',
 		    iconCls:'icon-remove',
 		    handler : function() {
-		    	/*var selected = $('#blocklist').datagrid("getSelected");
+		    	var selected = $('#customfieldlist').datagrid("getSelected");
+		    	var param={
+		    			fieldid:selected.fieldid,
+		    			columnname:selected.columnname,
+		    			tablename:selected.tablename,
+		    			uitype:selected.uitype
+		    	};
+		    	var params=new JSONUtil().stringify(param);
 				if (selected) {
-				    confirm('确定删除用户?',function(r){
+				    confirm('确定删除?',function(r){
 					if (r){  
-					    $.post("settings/customblock/submit",{blockid:selected.blockid,action:"delete"},function(res){
+					    $.post("settings/customfield/submit",{queryParams:params,action:"delete"},function(res){
 							if(res.type == true){
-							    $('#blocklist').datagrid("reload");
+							    $('#customfieldlist').datagrid("reload");
 							}
 					    },'json');			        
 					}  
 				    });
 				}else {
 				    message("请选择一行记录！");
-				}*/
+				}
 		    }
 		}],
 		frozenColumns : [[{
@@ -153,30 +170,78 @@ function initGrid(){
 
 //编辑窗口的初始化
 function loadForm(row) {
-	$('#form_block').form('load',{
-		blocklabel:row.blocklabel,
-		sequence:row.sequence
+	$('#form_customfield').form('load',{
+		fldLabel:row.fieldlabel,
 	});
-	$("#block").window({
-	    title:'编辑显示区域',
+	$("#customfield").window({
+	    title:'编辑自定义字段'+"--"+row.uitype,
 	    onOpen:function(){
 		    $(".validatebox-tip").hide();
+		    $("#fieldType").hide("slow");
+		    editFieldType(row);
 	    },
 	    onClose:function(){
-	    	$('#form_block').form("clear");
+//	    	$('#form_customfield').form("clear");
+	    	$("textarea[name=fldPickList]").html("&nbsp;");
+	    	$("input[name=fldLabel]").val("");
+	    	$("input[name='fldMandatory']").attr("checked",false);
+	    	$("input[name=fldLength]").val("");
+	    	$("input[name=fldDecimal]").val("");
 	    	$(".validatebox-tip").hide();
 	    }
 	});
-	$("#block").window("open");
-}
-
-function submitBlock(){
-    formsubmit("form_block");
+	$("#customfield").window("open");
 }
 
 function callinitmethod(){
 	$("#decimaldetails").hide("slow");
 	$("#picklist").hide("slow");
+}
+
+//获取下拉框列表的值
+function getPickList(colname){
+	colvalue="";
+	$.get("settings/customfield/getPickListByColname",{colname:colname},function(result){
+		$.each(result,function(i,pick){
+			colvalue+=pick.colvalue+"\n";
+		});
+		colvalue=colvalue.substr(0,colvalue.length-1);
+		$("textarea[name=fldPickList]").html(colvalue);
+	},"json");
+}
+
+function editFieldType(row){
+	var type=row.uitype;
+	var ischeck=row.typeofdata.substr(2,1);
+	if(ischeck=='O')
+		$("input[name='fldMandatory']").attr("checked",false);
+	else
+		$("input[name='fldMandatory']").attr("checked",true);
+	
+	if (type=='文本') {
+		$("#lengthdetails").show("slow");
+		$("#decimaldetails").hide("slow");
+		$("#picklist").hide("slow");
+		$("input[name=fldLength]").attr("readonly",true);
+		$("input[name=fldLength]").val(row.typeofdata.substr(7));
+	} else if (type=='日期' || type=='Email' || type=='电话' || type=='网址' || type=='复选框' || type=='文本域' || type=='QQ' || type=='Msn' || type=='贸易通' || type=='Yahoo' || type=='Skype') {
+		$("#lengthdetails").hide("slow");
+		$("#decimaldetails").hide("slow");
+		$("#picklist").hide("slow");
+	} else if (type=='数字' || type=='百分比' || type=='货币') {
+		$("#lengthdetails").show("slow");
+		$("#decimaldetails").show("slow");
+		$("#picklist").hide("slow");
+		$("input[name=fldLength]").attr("readonly",true);
+		$("input[name=fldDecimal]").attr("readonly",true);
+		$("input[name=fldLength]").val(row.typeofdata.substr(4,2));
+		$("input[name=fldDecimal]").val(row.typeofdata.substr(7,1));
+	} else if (type=='下拉框' || type=='多选框') {
+		$("#lengthdetails").hide("slow");
+		$("#decimaldetails").hide("slow");
+		$("#picklist").show("slow");
+		getPickList(row.columnname);
+	}
 }
 
 function selFieldType(id) {
@@ -218,37 +283,56 @@ function setCfType(type){
 }
 
 function submitCustomField(){
-	var temp=typeofdata;
-	var defieldtype;
-	
-	if($("input[name='fldMandatory']").attr('checked')==undefined)
-		typeofdata+="~O";
-	else
-		typeofdata+="~M";
-	
 	var fieldname=$("input[name=fldLabel]").val();
-	var fieldlength=$("input[name=fldLength]").val();
-	var fielddecimal=$("input[name=fldDecimal]").val();
-	if(uitype==1)
-		typeofdata+="~LE~"+fieldlength;
-	else if(uitype==9)
-		typeofdata+=fieldlength+"~"+fielddecimal;
-	else if(uitype==7 || uitype==71)
-		typeofdata+=fieldlength+","+fielddecimal;
+	var fieldpicklist=$("textarea[name=fldPickList]").html()=="&nbsp;"?"undefined":$("textarea[name=fldPickList]").val();
+	var arrpick = fieldpicklist.split('\n').join(",");
 	
-	if(temp=='D')
-		defieldtype="date";
-	else if(temp=='N')
-		defieldtype="decimal("+fieldlength+","+fielddecimal+")";
-	else if(temp=='C')
-		defieldtype="varchar(255)";
-	else if(temp=='V' && uitype!=33)
-		defieldtype="varchar(255)";
-	else
-		defieldtype="text";
+	if($("input[name=action]").val()=="add"){
+		var temp=typeofdata;
+		var defieldtype;
+		if($("input[name='fldMandatory']").attr('checked')==undefined)
+			typeofdata+="~O";
+		else
+			typeofdata+="~M";
 		
-	var cfField="+defieldtype+";
-	params="{tabid:"+tabid+",cfField:\""+cfField+"\",uitype:"+uitype+",fieldlabel:\""+fieldname+"\",typeofdata:\""+typeofdata+"\"}";
+		var fieldlength=$("input[name=fldLength]").val();
+		var fielddecimal=$("input[name=fldDecimal]").val();
+		
+		if(uitype==1)
+			typeofdata+="~LE~"+fieldlength;
+		else if(uitype==9)
+			typeofdata+="~"+fieldlength+"~"+fielddecimal;
+		else if(uitype==7 || uitype==71)
+			typeofdata+="~"+fieldlength+","+fielddecimal;
+		
+		if(temp=='D')
+			defieldtype="date";
+		else if(temp=='N')
+			defieldtype="decimal("+fieldlength+","+fielddecimal+")";
+		else if(temp=='C')
+			defieldtype="varchar(255)";
+		else if(temp=='V' && uitype!=33)
+			defieldtype="varchar(255)";
+		else
+			defieldtype="text";
+		var cfField=defieldtype;
+		params="{arrpick:\""+arrpick+"\",tabid:"+tabid+",cfField:\""+cfField+"\",uitype:"+uitype+",fieldlabel:\""+fieldname+"\",typeofdata:\""+typeofdata+"\"}";
+	}else{
+		var temp= updaterow.typeofdata.charAt(2);
+		if($("input[name='fldMandatory']").attr('checked')==undefined)
+			updaterow.typeofdata=updaterow.typeofdata.replace(temp,"O");
+		else
+			updaterow.typeofdata=updaterow.typeofdata.replace(temp,"M");
+		var param={
+				typeofdata:updaterow.typeofdata,
+				fieldlabel:fieldname,
+				fieldid:updaterow.fieldid,
+				columnname:updaterow.columnname,
+				arrpick:arrpick
+		};
+		params=new JSONUtil().stringify(param);
+	}
+	
 	$("input[name=queryParams]").val(params);
     formsubmit("form_customfield");
 }

@@ -299,14 +299,27 @@
 			sequence 
   </select>
   <select id="getFieldsByTabid" resultMap="BaseResultMap" >
-  	select fieldid,columnname,fieldlabel,uitype,displaytype from xm_field where tabid=#{tabid} and  generatedtype=2 and uitype not in('1021','1022','1023') order by sequence limit #{start},#{rows}
+  	select fieldid,columnname,fieldlabel,uitype,displaytype,tablename,typeofdata from xm_field where tabid=#{tabid} and  generatedtype=2 and uitype not in('1021','1022','1023') order by sequence limit #{start},#{rows}
   </select>
   
-  <select id="getTableNameByTabid" resultType="VARCHAR">
+  <select id="getTableNameByTabid" resultType="String">
      select tablename from xm_entityname where tabid=#{tabid}
   </select>
   
+  <select id="getMaxSequence" resultType="Integer">
+     select max(sequence) sequence from xm_field  WHERE tabid =#{tabid}  AND generatedtype = 2 AND uitype NOT IN('1021', '1022', '1023')
+  </select>
+  
+  <select id="getTotal" resultType="Integer">
+    SELECT	count(*) total FROM xm_field WHERE 	tabid = #{tabid}  AND generatedtype = 2 AND uitype NOT IN('1021', '1022', '1023') ORDER BY 	sequence
+  </select>
+  
+  
   <update id="addColumn">
+     alter table ${tablename} ${cfField};
+  </update>
+  
+  <update id="deleteColumn">
      alter table ${tablename} ${cfField};
   </update>
 </mapper>

@@ -23,10 +23,11 @@ var pathname = "自定义字段";
 							<input type="hidden" name="tabid"/> -->
 							<input type="hidden" name="action"/>
 							<table class="tab_form" cellpadding="5" celspacing="0">
-								<tr>
+								<tr id="fieldType">
 									<td width="18%" class="edittd3">选择字段类型</td>
 									<td width="62%">
-									  <select id="cfcombo" name="cfcombo" onchange="selFieldType(this.value)" style="width:240px;" tabindex="1">
+									  <select id="cfcombo" name="cfcombo" onchange="selFieldType(this.value)"  style="width:240px;">
+									     <option value="-1">请选择字段类型</option>
 									  </select>
 									</td>
 								</tr>
@@ -46,7 +47,7 @@ var pathname = "自定义字段";
 									  <input class="txtBox" type="text" value="" name="fldLabel">
 									</td>
                                 </tr>
-                                <tr id="lengthdetails" style="visibility: visible;">
+                                <tr id="lengthdetails">
 									<td class="dataLabel" nowrap="nowrap" align="right">
 									<b>长度: </b>
 									</td>
