@@ -52,7 +52,7 @@ function initForm() {
 	});
 
     $('#form_customfield').form({
-		url : 'settings/customfield/submit',
+		url : 'crm/settings/customfield/submit',
 		onSubmit : function() {
 		    if ($('#form_customfield').form("validate")) {
 			     return true;
@@ -77,7 +77,7 @@ function initForm() {
 }
 
 function initPage(){
-	$.get("settings/customblock/getBlockList",null,function(result){
+	$.get("crm/settings/customblock/getBlockList",null,function(result){
 		var options="";
 		$.each(result,function(i,block){
 			options+="<option value='"+block.tabid+"'>"+block.tablabel+"</option>";
@@ -91,7 +91,7 @@ function initPage(){
 
 function initGrid(){
 	$('#customfieldlist').datagrid({
-		url : 'settings/customfield/getFieldsByTabid',
+		url : 'crm/settings/customfield/getFieldsByTabid',
 		queryParams:{
 			tabid:tabid,
 		},
@@ -148,7 +148,7 @@ function initGrid(){
 				if (selected) {
 				    confirm('确定删除?',function(r){
 					if (r){  
-					    $.post("settings/customfield/submit",{queryParams:params,action:"delete"},function(res){
+					    $.post("crm/settings/customfield/submit",{queryParams:params,action:"delete"},function(res){
 							if(res.type == true){
 							    $('#customfieldlist').datagrid("reload");
 							}
@@ -201,7 +201,7 @@ function callinitmethod(){
 //获取下拉框列表的值
 function getPickList(colname){
 	colvalue="";
-	$.get("settings/customfield/getPickListByColname",{colname:colname},function(result){
+	$.get("crm/settings/customfield/getPickListByColname",{colname:colname},function(result){
 		$.each(result,function(i,pick){
 			colvalue+=pick.colvalue+"\n";
 		});

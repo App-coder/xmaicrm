@@ -182,13 +182,13 @@
 											<tbody>
 												<tr>
 													<td valign="top"><a
-														href="settings/customblock/index"><img
+														href="crm/settings/customblock/index"><img
 															border="0" title="显示区域" alt="显示区域"
 															src="resources/images/settings/panel/blocklist.gif"></a></td>
 												</tr>
 												<tr>
 													<td valign="top" class="big"><a
-														href="settings/customblock/index">显示区域</a></td>
+														href="crm/settings/customblock/index">显示区域</a></td>
 												</tr>
 
 											</tbody>
@@ -203,13 +203,13 @@
 												<tr>
 
 													<td valign="top"><a
-														href="settings/customfield/index"><img
+														href="crm/settings/customfield/index"><img
 															border="0" title="自定义字段" alt="自定义字段"
 															src="resources/images/settings/panel/custom.gif"></a></td>
 												</tr>
 												<tr>
 													<td valign="top" class="big"><a
-														href="settings/customfield/index">自定义字段</a></td>
+														href="crm/settings/customfield/index">自定义字段</a></td>
 												</tr>
 
 											</tbody>

@@ -22,7 +22,7 @@ import com.crm.settings.system.service.XmCustomBlockService;
  * Time: 上午10:30:12
  */
 @Controller
-@RequestMapping(value = "settings/customblock")
+@RequestMapping(value = "crm/settings/customblock")
 public class XmCustomBlockController extends BaseController {
 	
 	@Autowired

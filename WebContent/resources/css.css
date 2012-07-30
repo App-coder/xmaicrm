@@ -6,7 +6,8 @@ html, body, #wrap {height: 100%;}
 body > #wrap {height: auto; min-height: 100%;}
 body{margin:0px;padding:0px;}
 body, input, button, select, textarea{font: Tahoma,'Microsoft Yahei','Simsun'}
-textarea{ resize: none;}
+
+/*textarea{ resize: none;} */
 
 a{cursor: pointer;text-decoration: none;color:#000;}
 .a:hover{}
