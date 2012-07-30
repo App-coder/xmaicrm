@@ -25,4 +25,6 @@ public interface XmRoleMapper {
 
 	List<XmRole> getAll();
 
+	XmRole getUserRole(@Param("id") Integer id);
+
 }

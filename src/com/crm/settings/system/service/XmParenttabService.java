@@ -16,4 +16,6 @@ public interface XmParenttabService {
 
 	void deleteById(int parenttabid);
 
+	List<XmParenttab> getVisibleParenttab();
+
 }

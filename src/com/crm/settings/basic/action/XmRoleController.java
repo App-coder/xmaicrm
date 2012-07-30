@@ -23,6 +23,7 @@ import com.crm.model.XmProfile2globalpermissions;
 import com.crm.model.XmProfile2standardpermissions;
 import com.crm.model.XmRole;
 import com.crm.model.XmTab;
+import com.crm.service.XmFieldService;
 import com.crm.service.XmTabService;
 import com.crm.settings.basic.service.XmProfile2globalpermissionsService;
 import com.crm.settings.basic.service.XmProfile2standardpermissionsService;
@@ -68,6 +69,12 @@ public class XmRoleController extends BaseController {
 		this.xmProfile2globalpermissionsService = xmProfile2globalpermissionsService;
 	}
 	
+	XmFieldService xmFieldService;
+	@Resource(name="xmFieldService")
+	public void setXmFieldService(XmFieldService xmFieldService) {
+		this.xmFieldService = xmFieldService;
+	}
+
 	//标准接口的操作
 	XmProfile2standardpermissionsService xmProfile2standardpermissionsService;
 	@Resource(name="xmProfile2standardpermissionsService")
@@ -160,7 +167,7 @@ public class XmRoleController extends BaseController {
 		//模块的权限规则
 		List<XmTab> tabPermissions = this.xmTabService.getTabPermission(profileid);
 		List<XmProfile2standardpermissions> standardpermissions = this.xmProfile2standardpermissionsService.getStandardPermissionsByProfileId(profileid);
-		List<ModulePermission> modulePermission = PermissionUtil.GenerateModulePerssion(tabPermissions,standardpermissions);
+		List<ModulePermission> modulePermission = PermissionUtil.GenerateModulePerssion(tabPermissions,standardpermissions,this.xmFieldService);
 		ListBean beanPermission = new ListBean();
 		beanPermission.setRows(modulePermission);
 		beanPermission.setTotal(modulePermission.size());

@@ -40,6 +40,11 @@ public class XmField {
     private String infoType;
     
     private String tablabel;
+    
+    //权限
+    private int profileReadonly;
+    
+    private int visible;
 
     public Integer getFieldid() {
         return fieldid;
@@ -199,7 +204,21 @@ public class XmField {
 	public void setTablabel(String tablabel) {
 		this.tablabel = tablabel;
 	}
-    
-    
+
+	public int getProfileReadonly() {
+		return profileReadonly;
+	}
+
+	public void setProfileReadonly(int profileReadonly) {
+		this.profileReadonly = profileReadonly;
+	}
+
+	public int getVisible() {
+		return visible;
+	}
+
+	public void setVisible(int visible) {
+		this.visible = visible;
+	}
     
 }

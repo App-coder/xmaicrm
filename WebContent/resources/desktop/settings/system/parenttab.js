@@ -173,9 +173,19 @@ function initPage(){
 	    iconCls : 'icon-remove',
 	    handler : function() {
 		var selected = $('#viewmodule').datagrid("getSelected");
+		var viewall = $('#viewmodule').datagrid("getRows");
 		if (selected) {
+		    var newdata = [];
+		    for(var i=0;i<viewall.length;i++){
+			if(selected.tabid!=viewall[i].tabid){
+			    newdata.push({
+				tabid:viewall[i].tabid,
+				tablabel:viewall[i].tablabel
+			    });
+			}
+		    }
 		    
-		    
+		    $('#viewmodule').datagrid("loadData",newdata);
 		    
 		}else {
 		    message("请选择一行记录！");
@@ -283,6 +293,11 @@ function initEditWind(parenttabid){
 function isExist(select){
     var selected = $('#viewmodule').datagrid("getRows");
     var exist = false;
+    
+    if(selected[0] == null){
+	return false;
+    }
+    
     for(var i=0;i<selected.length;i++){
 	if(select.tabid == selected[i].tabid ){
 	    exist = true;

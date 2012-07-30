@@ -13,6 +13,9 @@ public class Constant {
 	public static String TABBYLAB = "TABBYLAB";
 	public static String ENTITYNAMEBYIDFIELD = "ENTITYNAMEBYIDFIELD";
 	
+	//菜单，menu常量
+	public static String MENUBAR = "MENUBAR";
+	
 	/*用户常量*/
 	public static final String USER = "USER";
 	//导航菜单栏目

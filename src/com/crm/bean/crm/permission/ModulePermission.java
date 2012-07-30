@@ -1,6 +1,11 @@
 package com.crm.bean.crm.permission;
 
+import java.util.List;
+
+import com.crm.model.XmField;
+
 public class ModulePermission {
+	
 	int profileid;
 	int tabid;
 	
@@ -12,6 +17,9 @@ public class ModulePermission {
 	int edit;
 	int view;
 	int del;
+	
+	//对应的字段权限
+	List<XmField> profile2fields;
 	
 	public int getProfileid() {
 		return profileid;
@@ -66,6 +74,12 @@ public class ModulePermission {
 	}
 	public void setDel(int del) {
 		this.del = del;
+	}
+	public List<XmField> getProfile2fields() {
+		return profile2fields;
+	}
+	public void setProfile2fields(List<XmField> profile2fields) {
+		this.profile2fields = profile2fields;
 	}
 	
 }

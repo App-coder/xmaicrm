@@ -90,10 +90,12 @@ public class XmParenttabController {
 	@RequestMapping(value = "/existParenttabList", method = RequestMethod.POST)
 	@ResponseBody
 	public String existParenttabList(int parenttabid){
-		
 		List<XmTab> existTabs = this.xmTabService.existParenttabList(parenttabid);
-		
-		return JSON.toJSONString(existTabs);
+		if(existTabs.size()>0&&existTabs.get(0)!=null){
+			return JSON.toJSONString(existTabs);
+		}else{
+			return "[]";
+		}
 	}
 	
 	/**

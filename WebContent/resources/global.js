@@ -1,7 +1,6 @@
 var msg_ex = "系统出现异常，请联系管理员！";
 
 $(function() {
-	
     /*
 	 $("body").ajaxStart(function(){ mask(); });
 	  
@@ -15,8 +14,18 @@ $(function() {
 	tabClose();
 	tabCloseEven();
 	*/
-
+    //加载信息
+    loadMsg();
 });
+function loadMsg(){
+	$.messager.show({
+		title:'系统提示',
+		msg:'你有四条短信息。【详细…】<span id=\'tipmsg\'></span>',
+		timeout:0,
+		showType:'slide'
+	});
+	$("#tipmsg").parent().parent(".window").css("bottom","0").css("position","fixed");
+}
 function tab(title, url, closable) {
 	if (closable == undefined) {
 		closable = true;

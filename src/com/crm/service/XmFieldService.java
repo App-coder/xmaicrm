@@ -3,6 +3,7 @@ package com.crm.service;
 import java.util.*;
 
 import com.crm.model.XmField;
+import com.crm.model.XmProfile2field;
 
 public interface XmFieldService {
 	
@@ -26,4 +27,7 @@ public interface XmFieldService {
 	 * @return
 	 */
 	public List<XmField> getFieldsByTabid(Integer tabid);
+
+	
+	public List<XmField> getProfileFieldsByTabid(Integer profileid,Integer tabid);
 }

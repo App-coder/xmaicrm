@@ -30,4 +30,6 @@ public interface XmFieldMapper {
 
 	List<XmField> getFieldsByTabid(@Param("tabid") Integer tabid);
 
+	List<XmField> getProfileFieldsByTabid(@Param("profileid") Integer profileid,@Param("tabid") Integer tabid);
+
 }
