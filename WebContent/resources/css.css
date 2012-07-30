@@ -9,27 +9,28 @@ a{cursor: pointer;text-decoration: none;color:#000;}
 .a:hover{}
 .a:link{color:#27A5E1;text-decoration: underline;}
 
-.headerNav{background-position: 100% -50px;background-repeat: no-repeat;height: 50px;background:url("./images/header_bg.png") repeat-x scroll 0 0 transparent;}
+.headerNav{background-position: 100% -50px;background-repeat: no-repeat;height: 50px;}
 .logo{float: left;height: 50px;text-indent: -1000px;width: 250px;background: url("./images/logo.png") no-repeat scroll 0 0 transparent;}
 
 .nav{float:right;list-style: none outside none;}
-.nav li{ float: left;line-height: 11px;margin-left: -1px;padding: 0 10px;position: relative;background:url("./images/listLine.png") no-repeat scroll 0 0 transparent;}
-.nav li a{color:#B9CCDA;}
+.nav li{ float: left;line-height: 24px;padding: 0 5px;position: relative;}
+.nav li a{font-weight: bold;}
+.nav li a.split{width:2px;background:url(./images/toolbar-div.png);height:31px;}
 
 #navMenu ul{list-style: none outside none;margin:0px;padding:0px;}
-#navMenu, #navMenu li, #navMenu li.selected a, #navMenu li.selected span { background:url(./images/menu.png) no-repeat;}
+#navMenu, #navMenu li{ background:url(./images/menu.png) no-repeat;}
 #navMenu { background-color:#1871dd;clear:both; }
 #navMenu li a, #navMenu li span { color:#FFF; }
-#navMenu li.selected span { color:#000; }
-#navMenu { display:block; overflow:hidden; height:35px; padding:0 5px; background-repeat:repeat-x;}
+#navMenu li.selected span {  background: url(./images/toolbar_selected.png);}
+#navMenu { display:block; overflow:hidden; height:31px; padding:0 5px; background-repeat:repeat-x;}
 #navMenu ul { float:left; display:block; overflow:hidden; position:relative;}
-#navMenu li { float:left; margin-left:-1px; background-position:0 -50px; position:relative;}
+#navMenu li { float:left; margin-left:-1px; position:relative;}
 #navMenu li a { float:left;}
 #navMenu li span { float:left; font-weight:bold; cursor:pointer; padding:0 15px;}
 #navMenu li a, #navMenu li span { line-height:35px; font-size:14px;}
 #navMenu li.selected { z-index:1;}
-#navMenu li.selected a, #navMenu li.selected a:hover { text-decoration:none; background-position:100% -150px;}
-#navMenu li.selected span { padding:0 8px; background-position:0 -100px;}
+#navMenu li.selected a, #navMenu li.selected a:hover { text-decoration:none; }
+#navMenu li.selected span { padding:0 8px; }
 
 .div_accordion ul{list-style: none outside none;margin:0px;padding:0px;}
 .div_accordion ul li{height:25px;line-height:25px;padding-left:5px;}

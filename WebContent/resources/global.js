@@ -260,3 +260,7 @@ function tabCloseEven()
 		$('#mm').menu('hide');
 	})
 }
+
+function hideWind(id){
+	$('#'+id).window('close');
+}

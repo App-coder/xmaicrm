@@ -1,131 +1,68 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD html 4.01 Transitional//EN">
-<html>
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>vtiger CRM 5 - Commercial Open Source CRM</title>
-<style type="text/css">@import url("resources/style.css");</style>
-<script language="JavaScript" type="text/javascript" src="include/js/popup.js"></script>
-<script type="text/javascript" language="JavaScript">
-function set_focus() {
-	if (document.DetailView.user_name.value != '') {
-		document.DetailView.user_password.focus();
-		document.DetailView.user_password.select();
-	}
-	else document.DetailView.user_name.focus();
-}
-</script>
+<%@ page language="java" contentType="text/html; charset=utf-8"
+	pageEncoding="utf-8"%>
+<%@ include file="header.jsp"%>
+<script type="text/javascript" src="resources/desktop/js/index.js"></script>
 </head>
-<body onload="set_focus()">
-	<div class="loginContainer">
-<table class="loginWrapper" width="100%" height="100%" cellpadding="10" cellspacing="0" border="0">
-	<tr valign="top">
-		<td valign="top" align="left" colspan="2">
-			<img align="absmiddle" src="test/logo/vtiger-crm-logo.gif" alt="logo"/>
-			<br />
-			<a target="_blank" href="http://www.vtiger.com">vtiger</a>
-			<br />
-		</td>
-	</tr>
+<body id="bodycontainer" class="easyui-layout">
+	<div region="north" style="height: 90px; overflow: hidden;"
+		class="headerNav">
+		<a class="logo"></a>
+		<ul class="nav">
+			<li><a>张三</a></li>
+			<li><img border="0" style="padding: 0px;" src="resources/images/usersetting.png"></li>
+			<li><img border="0" style="padding: 0px;" src="resources/images/setting.png"></li>
+		</ul>
+		<div id="navMenu">
+			<ul>
+				<li>
+				<a>
+				<span>首页</span>
+				</a>
+				</li>
+				<li><a id="nav_goods"
+					href="javascript:menuList('admin/webmaster/goods')"><span>商品</span></a></li>
+				<li><a class="split">&nbsp;</a></li>
+				<li><a id="nav_member"
+					href="javascript:menuList('admin/webmaster/member')"><span>会员</span></a></li>
+				<li><a id="nav_order"
+					href="javascript:menuList('admin/webmaster/order')"><span>订单</span></a></li>
+				<li><a id="nav_market"
+					href="javascript:menuList('admin/webmaster/market')"><span>营销</span></a></li>
+				<li><a id="nav_stat"
+					href="javascript:menuList('admin/webmaster/stat')"><span>统计</span></a></li>
+				<li><a id="nav_system"
+					href="javascript:menuList('admin/webmaster/system')"
+					class="selected"><span>系统</span></a></li>
+				<li><a id="nav_tool"
+					href="javascript:menuList('admin/webmaster/tool')"><span>工具</span></a></li>
+			</ul>
+		</div>
+	</div>
+	<div region="south"
+		style="height: 30px; background: #efefef; text-align: center; padding-top: 5px;">
+		中国百分百商城系统</div>
+	<div region="west" split="true" style="width: 150px; overflow: hidden;">
+		<div id="lefttree" fit="true" class="easyui-panel" border="false">
+		</div>
+	</div>
+	<div region="center" style="overflow: hidden;">
+		<div id="tabs" tools="#tab-tools" fit="true" border="false"></div>
+	</div>
 
-	<tr>
-		<td valign="top" align="center" width="50%">
-			<div>
-				<table border="0" cellspacing="0" cellpadding="10" class="small pluginsPromotionDiv">
-					<tr>
-						<td colspan="2" align="center" class="small">
-							Get more out of vtiger CRM
-						</td>
-					</tr>
-					<tr>
-						<td width="50%" align="center" class=small>
-							<a target="_blank" href="http://www.vtiger.com/crm/official-add-ons/#Outlook">
-								<img align="absmiddle" border="0" src="include/images//OutlookPlugin.png" alt="Outlook Plugin">
-							</a>
-						</td>
-						<td width="50%" align="center" class=small>
-							<a target="_blank" href="http://www.vtiger.com/crm/official-add-ons/#Exchange">
-								<img align="absmiddle" border="0" src="include/images//ExchangeConnector.png" alt="Exchange Connector">
-							</a>
-						</td>
-					</tr>
+	<div id="tab-tools">
+		<a class="easyui-linkbutton" plain="true" title="页面重载"
+			iconCls="icon-reload" onclick="javascript:reloadTab()"></a>
+	</div>
 
-					<tr>
-						<td width="50%" align="center" class=small>
-							<a target="_blank" href="http://itunes.apple.com/us/app/vtiger-crm-mobile/id381259792?mt=8">
-								<img align="absmiddle" border="0" src="include/images//AppStoreQRCode.png" alt="vtiger iPhone Application">
-								<br/>
-								<img align="absmiddle" border="0" src="include/images//AppStore.png" alt="vtiger iPhone Application">
-							</a>
-						</td>
-						<td width="50%" align="center" class=small>
-							<a target="_blank" href="https://market.android.com/details?id=com.vtiger.apps.gvtigerpro&feature=search_result">
-								<img align="absmiddle" border="0" src="include/images//GooglePlayQRCode.png" alt="vtiger Android Application">
-								<br/>
-								<img align="absmiddle" border="0" src="include/images//GooglePlay.png" alt="vtiger Android Application">
-							</a>
-						</td>
-					</tr>
-				</table>
-			</div>
-		</td>
-
-		<td valign="top" align="center" width="50%">
-			<div class="loginForm">
-				<div class="poweredBy">Powered by vtiger CRM - 5.4.0</div>
-				<form action="index.php" method="post" name="DetailView" id="form">
-					<input type="hidden" name="module" value="Users" />
-					<input type="hidden" name="action" value="Authenticate" />
-					<input type="hidden" name="return_module" value="Users" />
-					<input type="hidden" name="return_action" value="Login" />
-					<div class="inputs">
-						<div class="label">User Name</div>
-						<div class="input"><input type="text" name="user_name"/></div>
-						<br />
-						<div class="label">Password</div>
-						<div class="input"><input type="password" name="user_password"/></div>
-												<br />
-						<div class="button">
-							<input type="submit" id="submitButton" value="Login" />
-						</div>
-					</div>
-				</form>
-			</div>
-			<div class="importantLinks">
-			<a href='javascript:mypopup()'>Read License</a>
-			|
-			<a href='http://www.vtiger.com/products/crm/privacy_policy.html' target='_blank'>Privacy Policy</a>
-			|
-			&copy; 2004- 2012			</div>
-		</td>
-	</tr>
-	<tr valign="bottom">
-		<td class="communityLinks">
-			Connect with us
-			<br />
-			<a target="_blank" href="http://www.facebook.com/pages/vtiger/226866697333578?sk=app_143539149057867">
-				<img align="absmiddle" border="0" src="include/images//Facebook.png" alt="Facebook">
-			</a>
-			<a target="_blank" href="http://twitter.com/#!/vtigercrm">
-				<img align="absmiddle" border="0" src="include/images//Twitter.png" alt="Twitter">
-			</a>
-			<a target="_blank" href="http://www.linkedin.com/company/1270573?trk=tyah">
-				<img align="absmiddle" border="0" src="include/images//Linkedin.png" alt="Linkedin">
-			</a>
-			<a target="_blank" href="http://www.youtube.com/user/vtigercrm">
-				<img align="absmiddle" border="0" src="include/images//Youtube.png" alt="Videos">
-			</a>
-			<a target="_blank" href="http://wiki.vtiger.com/">
-				<img align="absmiddle" border="0" src="include/images//Manuals.png" alt="Manuals">
-			</a>
-			<a target="_blank" href="http://forums.vtiger.com/">
-				<img align="absmiddle" border="0" src="include/images//Forums.png" alt="Forums">
-			</a>
-			<a target="_blank" href="http://blogs.vtiger.com/">
-				<img align="absmiddle" border="0" src="include/images//Blogs.png" alt="Blogs">
-			</a>
-		</td>
-	</tr>
-</table>
-
+	<div id="mm" class="easyui-menu" style="width:150px;">
+		<div id="mm-tabclose">关闭</div>
+		<div id="mm-tabcloseall">全部关闭</div>
+		<div id="mm-tabcloseother">除此之外全部关闭</div>
+		<div class="menu-sep"></div>
+		<div id="mm-tabcloseright">当前页右侧全部关闭</div>
+		<div id="mm-tabcloseleft">当前页左侧全部关闭</div>
+		<div class="menu-sep"></div>
+		<div id="mm-exit">退出</div>
 	</div>
 </body>
+</html>

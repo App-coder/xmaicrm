@@ -13,4 +13,9 @@ public class WelcomeController {
 		return "welcome";
 	}
 	
+	@RequestMapping(value = "/console", method = RequestMethod.GET)
+	public String console(){
+		return "console";
+	}
+	
 }
