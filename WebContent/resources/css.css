@@ -16,9 +16,6 @@ a{cursor: pointer;text-decoration: none;color:#000;}
 .nav li{ float: left;line-height: 11px;margin-left: -1px;padding: 0 10px;position: relative;background:url("./images/listLine.png") no-repeat scroll 0 0 transparent;}
 .nav li a{color:#33338C;}
 
-#navMenu{ background:url(./images/menu.png) no-repeat;clear:both;padding:2px;}
-#navMenu { display:block; overflow:hidden; height:31px; background-repeat:repeat-x;}
-
 .div_accordion ul{list-style: none outside none;margin:0px;padding:0px;}
 .div_accordion ul li{height:25px;line-height:25px;padding-left:5px;}
 .div_accordion li a{text-decoration: none;color:#000;}

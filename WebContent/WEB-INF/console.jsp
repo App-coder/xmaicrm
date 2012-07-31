@@ -3,8 +3,16 @@
 <%@ include file="header.jsp"%>
 <script type="text/javascript" src="resources/desktop/js/index.js"></script>
 </head>
-<body id="bodycontainer" class="easyui-layout">
-	<div region="north" style="height:66px; overflow: hidden;"
+<body id="bodycontainer" class="easyui-layout consolebd" >
+	<div class="hidden">
+	<div id="mm1" style="width:120px;" class="navmenuitem" plain="false">
+		<div>首页</div>
+		<div>日程安排</div>
+		<div>文档中心</div>
+		<div>公告</div>
+	</div>
+	</div>
+	<div region="north" style="height:68px; overflow: hidden;"
 		class="headerNav" border="false" >
 		<a class="logo"></a>
 		<ul class="nav">
@@ -13,8 +21,11 @@
 			<li><a href="admin/webmaster/loginout">退出</a></li>
 		</ul>
 		<div id="navMenu">
-			<a href="javascript:void(0)" id="mb1" class="easyui-menubutton" data-options="menu:'#mm1',iconCls:'icon-edit'">Edit</a>
-		<a href="javascript:void(0)" id="mb2" class="easyui-menubutton" data-options="menu:'#mm2',iconCls:'icon-help'">Help</a>
+			<ul>
+				<li><a href="javascript:void(0)" id="mb1" class="easyui-menubutton" data-options="menu:'#mm1'">工作台</a></li>
+				<li class="split"></li>
+				<li><a href="javascript:void(0)" id="mb1" class="easyui-menubutton">工作台</a></li>
+			</ul>
 		</div>
 	</div>
 	<div region="south" class="footercss" 
