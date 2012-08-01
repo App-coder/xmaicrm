@@ -16,41 +16,8 @@ $(function() {
 	tabCloseEven();
 
 });
-function menuList(url) {
-
-	var menuid = url.replace("admin/webmaster/", "");
-
-	$("#nav_" + menuid).parent().parent("ul").find("li")
-			.removeClass("selected");
-
-	$("#nav_" + menuid).parent("li").addClass("selected");
-	var title;
-
-	if (menuid == 'goods') {
-		title = "商品";
-	} else if (menuid == 'member') {
-		title = "会员";
-	} else if (menuid == 'order') {
-		title = "订单";
-	} else if (menuid == 'market') {
-		title = "营销";
-	} else if (menuid == 'stat') {
-		title = "统计";
-	} else if (menuid == 'system') {
-		title = "系统";
-	} else if (menuid == 'tool') {
-		title = "工具";
-	}
-
-	$.get(url, null, function(data) {
-		$("#lefttree").panel({
-			title : title,
-			content : data
-		});
-	}, 'html');
-
-}
 function tab(title, url, closable) {
+    	alert(title);
 	if (closable == undefined) {
 		closable = true;
 	}
