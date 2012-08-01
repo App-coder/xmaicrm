@@ -1,7 +1,7 @@
 $(function(){
-    initPage();
+    init_notepad();
 });
-function initPage(){
+function init_notepad(){
     $.post('crm/portlets/note_pad/getNote',{},function(res){
 	$("#content").text(res);
     });

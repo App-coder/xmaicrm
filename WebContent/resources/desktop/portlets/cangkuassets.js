@@ -1,7 +1,7 @@
 $(function(){
-    loadPage();
+    init_cangkuassets();
 });
-function loadPage(){
+function init_cangkuassets(){
     var cols = [ {
 	field : 'cangkuname',
 	title : '仓库'

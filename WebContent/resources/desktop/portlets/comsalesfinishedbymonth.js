@@ -1,7 +1,7 @@
 $(function(){
-    initPage();
+    init_comsalesfinishedbymonth();
 });
-function initPage(){
+function init_comsalesfinishedbymonth(){
     
     $.post('crm/portlets/com_salesfinishedbymonth/getInfo',null,function(res){
 	

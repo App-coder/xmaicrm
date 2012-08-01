@@ -1,7 +1,7 @@
 $(function(){
-    loadPage();
+    init_topcalendar();
 });
-function loadPage(){
+function init_topcalendar(){
     var cols = [ {
 	field : 'accountname',
 	title : '客户名称'

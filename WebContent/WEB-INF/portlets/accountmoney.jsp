@@ -4,7 +4,7 @@
 <script type="text/javascript" src="resources/desktop/portlets/accountmoney.js"></script>
 </head>
 <body>
-<table class="tablist">
+<table class="tablist" id="tab_accountmoney">
 </table>
 </body>
 </html>

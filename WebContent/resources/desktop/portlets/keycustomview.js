@@ -1,7 +1,7 @@
 $(function(){
-    loadPage();
+    init_keycustomview();
 });
-function loadPage(){
+function init_keycustomview(){
     var cols = [ {
 	field : 'viewname',
 	title : '视图'

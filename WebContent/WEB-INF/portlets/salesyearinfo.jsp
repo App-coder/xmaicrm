@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"
 	pageEncoding="utf-8"%>
 <%@ include file="../head_portlets.jsp"%>
+<cache:cache>
 <script type="text/javascript" src="resources/desktop/portlets/salesyearinfo.js"></script>
 </head>
 <body>
@@ -31,3 +32,4 @@
 </table>
 </body>
 </html>
+</cache:cache>

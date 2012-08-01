@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"
 	pageEncoding="utf-8"%>
+<cache:cache>
 <div id="div_foot" class="footercss">
 	<table width="100%" cellspacing="0" cellpadding="5" border="0"
 		style="padding: 8px 20px; display: table; height: 40px;">
@@ -104,3 +105,4 @@
 	</div>
 </div>
 <script type="text/javascript" src="resources/desktop/foot.js"></script>
+</cache:cache>

@@ -1,7 +1,7 @@
 $(function(){
-    initPage();
+    init_topperformance();
 });
-function initPage(){
+function init_topperformance(){
     $.get('crm/portlets/top_performance/getJson',null,function(res){
 	$("#newaccount").html(res.newaccount);
 	$("#newnote").html(res.newnote);

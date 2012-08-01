@@ -1,7 +1,7 @@
 $(function(){
-    loadPage();
+    init_topaccount();
 });
-function loadPage(){
+function init_topaccount(){
     var cols = [ {
 	field : 'accountname',
 	title : '客户名称'

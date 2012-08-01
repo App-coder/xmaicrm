@@ -1,7 +1,7 @@
 $(function(){
-    loadPage();
+    init_toppotential();
 });
-function loadPage(){
+function init_toppotential(){
     var cols = [ {
 	field : 'potentialname',
 	title : '销售机会'

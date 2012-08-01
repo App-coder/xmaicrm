@@ -1,7 +1,7 @@
 $(function(){
-    initPage();
+    init_comgathersfinishedbymonth();
 });
-function initPage(){
+function init_comgathersfinishedbymonth(){
     
     $.post('crm/portlets/com_gathersfinishedbymonth/getJson',null,function(res){
 	

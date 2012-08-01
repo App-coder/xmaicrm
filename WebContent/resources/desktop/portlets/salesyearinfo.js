@@ -1,7 +1,7 @@
 $(function(){
-    initPage();
+    init_salesyearinfo();
 });
-function initPage(){
+function init_salesyearinfo(){
     $.get('crm/portlets/salesyearinfo/getJson',null,function(res){
 	
 	$("#year").html(res.year);

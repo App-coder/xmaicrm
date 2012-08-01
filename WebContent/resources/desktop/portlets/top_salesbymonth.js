@@ -1,7 +1,13 @@
-$(function(){
-    initPage();
+$(function() {
+    init_topsalesbymonth();
 });
-function initPage(){
+function init_topsalesbymonth() {
+    var chart = new FusionCharts("resources/fusionchart/MSColumn3DLineDY.swf",
+	    "ChartId", "100%", "252");
+    chart.setDataURL("crm/portlets/top_salesbymonth/getXml");
+    chart.render("chart_top_salesbymonth");
+}
+function init_topsalesbymonth1(){
     
     $.post('crm/portlets/top_salesbymonth/getJson',null,function(res){
 	

@@ -17,6 +17,7 @@ public class DateUtil {
 
 	public static final String C_TIME_PATTON_DEFAULT = "yyyy-MM-dd HH:mm:ss";
 	public static final String C_DATE_PATTON_DEFAULT = "yyyy-MM-dd";
+	public static final String C_DATE_PATTON_YYYYMM = "yyyy-MM";
 	public static final String C_DATA_PATTON_YYYYMMDD = "yyyyMMdd";
 	public static final String C_DATA_PATTON_YYYYMM = "yyyyMM";
 	public static final String C_DATA_PATTON_DD = "yyyyMMdd";
