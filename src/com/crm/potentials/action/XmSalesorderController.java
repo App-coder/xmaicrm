@@ -19,6 +19,13 @@ import com.crm.model.XmSalesorder;
 import com.crm.potentials.service.XmSalesorderService;
 import com.crm.service.XmCustomViewService;
 
+/**
+ * 合同订单
+ * 
+ * User: zhujun
+ * Date: 2012-8-1
+ * Time: 下午4:32:00
+ */
 @Controller
 @RequestMapping(value = "salesorder")
 public class XmSalesorderController extends BaseController {

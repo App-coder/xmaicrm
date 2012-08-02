@@ -1,3 +1,33 @@
+.icon-left{
+	background:url('icons/left.png') no-repeat;
+}
+.icon-right{
+	background:url('icons/right.png') no-repeat;
+}
+.icon-cmp-valid{
+	background:url('icons/valid.png') no-repeat;
+}
+.icon-cmp-invalid{
+	background:url('icons/invalid.png') no-repeat;
+}
+.icon-folder{
+	background:url('icons/tree_folder.gif') no-repeat;
+}
+.icon-group{
+	background:url('icons/group.png') no-repeat;
+}
+.icon-unauditoffline{
+	background:url('icons/unauditoffline.png') no-repeat;
+}
+.icon-unauditOnline{
+	background:url('icons/unauditOnline.png') no-repeat;
+}
+.icon-auditoffline{
+	background:url('icons/auditoffline.png') no-repeat;
+}
+.icon-auditonline{
+	background:url('icons/auditonline.png') no-repeat;
+}
 .icon-blank{
 	background:url('icons/blank.gif') no-repeat;
 }
@@ -16,6 +46,12 @@
 .icon-cut{
 	background:url('icons/cut.png') no-repeat;
 }
+.icon-excel{
+	background:url('icons/excel.png') no-repeat;
+}
+.icon-auth{
+	background:url('icons/auth.png') no-repeat;
+}
 .icon-ok{
 	background:url('icons/ok.png') no-repeat;
 }
@@ -28,8 +64,14 @@
 .icon-reload{
 	background:url('icons/reload.png') no-repeat;
 }
+.icon-recycle{
+	background:url('icons/recycle.png') no-repeat;
+}
 .icon-search{
 	background:url('icons/search.png') no-repeat;
+}
+.icon-money{
+	background:url('icons/money.png') no-repeat;
 }
 .icon-print{
 	background:url('icons/print.png') no-repeat;
@@ -40,6 +82,9 @@
 .icon-undo{
 	background:url('icons/undo.png') no-repeat;
 }
+.icon-stop{
+	background:url('icons/stop.png') no-repeat;
+}
 .icon-redo{
 	background:url('icons/redo.png') no-repeat;
 }
@@ -49,10 +94,18 @@
 .icon-sum{
 	background:url('icons/sum.png') no-repeat;
 }
+.icon-up{
+	background:url('icons/up.png') no-repeat;
+}
+.icon-down{
+	background:url('icons/down.png') no-repeat;
+}
 .icon-tip{
 	background:url('icons/tip.png') no-repeat;
 }
-
+.icon-view{
+	background:url('icons/view.png') no-repeat;
+}
 .icon-mini-add{
 	background:url('icons/mini_add.png') no-repeat 2px 2px;
 }
@@ -62,26 +115,51 @@
 .icon-mini-refresh{
 	background:url('icons/mini_refresh.png') no-repeat 3px 2px;
 }
-
-/*新增*/
-.icon-folder{
-	background:url('icons/tree_folder.gif') no-repeat;
+.icon-user{
+	background:url('icons/allusers.png') no-repeat 3px 2px;
 }
-.tree-file {
-	background:url('icons/tree_file.gif') no-repeat;
+.icon-role{
+	background:url('icons/role.png') no-repeat 3px 2px;
 }
-.icon-view{
-	background:url('icons/view.png') no-repeat;
+.icon-virtualmanager{
+	background:url('icons/approvols.png') no-repeat 3px 2px;
 }
-.icon-filter{
-	background:url('icons/filter.png') no-repeat;
+.icon-generalsetup{
+	background:url('icons/general.png') no-repeat 3px 2px;
 }
-.icon-report{
-	background:url('icons/report.png') no-repeat;
+.icon-uninstallcode{
+	background:url('icons/uninstallcode.png') no-repeat 3px 2px;
+}
+.icon-scanplan{
+	background:url('icons/scanplan.png') no-repeat 3px 2px;
+}
+.icon-cert{
+	background:url('icons/cert.png') no-repeat 3px 2px;
+}
+.icon-sync{
+	background:url('icons/sync.png') no-repeat 3px 2px;
+}
+.icon-ftp{
+	background:url('icons/ftp.png') no-repeat 3px 2px;
+}
+.icon-clientlog{
+	background:url('icons/clientlog.png') no-repeat 3px 2px;
+}
+.icon-serverlog{
+	background:url('icons/serverlog.png') no-repeat 3px 2px;
+}
+.icon-logs{
+	background:url('icons/logs.png') no-repeat 3px 2px;
+}
+.icon-copyright{
+	background:url('icons/copyright.png') no-repeat 3px 2px;
+}
+.icon-license{
+	background:url('icons/license.png') no-repeat 3px 2px;
+}
+.icon-bind{
+	background:url('icons/bind.png') no-repeat 3px 2px;
 }
 .icon-tool{
-	background:url('icons/tool.png') no-repeat;
-}
-.icon-list{
-	background:url('icons/list.png') no-repeat;
+	background:url('icons/tool.png') no-repeat 3px 2px;
 }

@@ -33,16 +33,16 @@
 			<div><a href="javascript:tab('产品序号','serialnumbers/index')" >产品序号</a></div>
 		</div>
 		<div id="sale_item" style="width: 120px;" class="navmenuitem"  >
-			<div>销售导航</div>
+			<div><a href="javascript:tab('销售导航','potential/nav')" >销售导航</a></div>
 			<div><a href="javascript:tab('销售机会','potential/index')" >销售机会</a></div>
-			<div>销售漏斗</div>
+			<div><a href="javascript:tab('销售漏斗','potential/funnel')" >销售漏斗</a></div>
 			<div><a href="javascript:tab('报价单','quotes/index')" >报价单</a></div>
 			<div><a href="javascript:tab('竞争对手','duishous/index')" >竞争对手</a></div>
 			<div><a href="javascript:tab('合同订单','salesorder/index')" >合同订单</a></div>
 			<div><a href="javascript:tab('发货单','invoice/index')" >发货单</a></div>
 			<div><a href="javascript:tab('销售退货单','tuihuos/index')" >销售退货单</a></div>
-			<div>员工绩效</div>
-			<div>销售目标</div>
+			<div><a href="javascript:tab('员工绩效','performances/index')" >员工绩效</a></div>
+			<div><a href="javascript:tab('销售目标','salestarget/index')" >销售目标</a></div>
 		</div>
 		<div id="buy_item" style="width: 120px;" class="navmenuitem"  >
 			<div><a href="javascript:tab('采购导航','bsteps/index')">采购导航</a></div>
@@ -70,7 +70,7 @@
 			<div><a href="javascript:tab('库存台帐','inventoryledgers/index')" >库存台帐</a></div>
 		</div>
 		<div id="finance_item" style="width: 120px;" class="navmenuitem"  >
-			<div><a href="javascript:tab('财务导航','accounting/index')" >财务导航</a></div>
+			<div><a href="javascript:tab('财务导航','accounting/nav')" >财务导航</a></div>
 			<div><a href="javascript:tab('应收款','gathers/index')" >应收款</a></div>
 			<div><a href="javascript:tab('应付款','inventoryledgers/index')" >应付款</a></div>
 			<div><a href="javascript:tab('收款单','gathersrecords/index')" >收款单</a></div>

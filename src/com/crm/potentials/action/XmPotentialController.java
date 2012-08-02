@@ -74,4 +74,21 @@ public class XmPotentialController extends BaseController  {
 		return objToJson(list);
 	}
 	
+	/**
+	 * 销售导航
+	 */
+	@RequestMapping(value = "/nav", method = RequestMethod.GET)
+	public String nav(){
+		return "potential/nav";
+	}
+	
+	/**
+	 * 销售漏斗
+	 */
+	@RequestMapping(value = "/funnel", method = RequestMethod.GET)
+	public String funnel(){
+		return "potential/funnel";
+	}
+	
+	
 }
