@@ -135,7 +135,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
       out.write("\t\t\t<div><a href=\"javascript:tab('销售目标','salestarget/index')\" >销售目标</a></div>\r\n");
       out.write("\t\t</div>\r\n");
       out.write("\t\t<div id=\"buy_item\" style=\"width: 120px;\" class=\"navmenuitem\"  >\r\n");
-      out.write("\t\t\t<div><a href=\"javascript:tab('采购导航','purchase/index')\">采购导航</a></div>\r\n");
+      out.write("\t\t\t<div><a href=\"javascript:tab('采购导航','purchase/nav')\">采购导航</a></div>\r\n");
       out.write("\t\t\t<div><a href=\"javascript:tab('进货单','purchaseorder/index')\">进货单</a></div>\r\n");
       out.write("\t\t\t<div><a href=\"javascript:tab('供应商','vendor/index')\">供应商</a></div>\r\n");
       out.write("\t\t\t<div><a href=\"javascript:tab('供应商联系人','vcontacts/index')\">供应商联系人</a></div>\r\n");
@@ -145,7 +145,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
       out.write("\t\t\t<div><a href=\"javascript:tab('客服控制台','accountrecordss/index')\" >客服控制台</a></div>\r\n");
       out.write("\t\t\t<div><a href=\"javascript:tab('客户服务','accountrecordss/index')\" >客户服务</a></div>\r\n");
       out.write("\t\t\t<div><a href=\"javascript:tab('客户投诉','complaints/index')\" >客户投诉</a></div>\r\n");
-      out.write("\t\t\t<div>知识库</div>\r\n");
+      out.write("\t\t\t<div><a href=\"javascript:tab('知识库','faq/index')\" >知识库</a></div>\r\n");
       out.write("\t\t\t<div><a href=\"javascript:tab('知识库分类','faqcategorys/index')\" >知识库分类</a></div>\r\n");
       out.write("\t\t</div>\r\n");
       out.write("\t\t<div id=\"stock_item\" style=\"width: 120px;\" class=\"navmenuitem\"  >\r\n");
