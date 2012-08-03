@@ -1,9 +1,15 @@
 $(function(){
-    init_comgathersfinishedbymonth();
+    init_comsalesfinishedbymonth();
 });
-function init_comgathersfinishedbymonth(){
+function init_comsalesfinishedbymonth(){
+    var chart = new FusionCharts("resources/fusionchart/MSColumn3D.swf",
+	    "ChartId", "100%", "252");
+    chart.setDataURL("crm/portlets/com_salesfinishedbymonth/getXml");
+    chart.render("chart_salesfinishedbymonth");
+}
+function init_comsalesfinishedbymonth1(){
     
-    $.post('crm/portlets/com_gathersfinishedbymonth/getJson',null,function(res){
+    $.post('crm/portlets/com_salesfinishedbymonth/getInfo',null,function(res){
 	
 	var chart = new AmCharts.AmSerialChart();
         chart.dataProvider = res;

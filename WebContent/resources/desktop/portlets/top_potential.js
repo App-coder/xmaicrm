@@ -13,7 +13,7 @@ function init_toppotential(){
 	title : '预计成交日期'
     }];
     cols = setDefWidth(cols, 80);
-    $('#tablist').datagrid({
+    $('#tab_toppotential').datagrid({
 	url:'crm/portlets/top_potential/getJson',
 	collapsible : false,
 	idField : 'cvid',
@@ -22,6 +22,7 @@ function init_toppotential(){
 	fitColumns : true,
 	singleSelect : true,
 	border:false,
+	fit:true,
 	columns : [ cols ]
     });
 }

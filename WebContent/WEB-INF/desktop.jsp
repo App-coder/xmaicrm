@@ -29,7 +29,6 @@ ${navbar }
 			<c:forEach items="${stuffs}" var="stuff" varStatus="vs" >
 			<c:if test="${vs.index%3==0 }">
 				<div title="${stuff.stufftitle }" style="height:280px;overflow:hidden;">
-					${stuff.stufftype  }
 					<%@ include file="portlets/select.jsp"%>
 				</div>
 			</c:if>
@@ -39,7 +38,7 @@ ${navbar }
 			<c:forEach items="${stuffs}" var="stuff" varStatus="vs" >
 			<c:if test="${(vs.index+2)%3==0 }">
 				<div title="${stuff.stufftitle }" style="height:280px;overflow:hidden;">
-					<!-- <iframe frameborder="0" width="100%" height="100%" src="crm/portlets/${stuff.stufftype }/index"></iframe> -->
+					<%@ include file="portlets/select.jsp"%>
 				</div>
 			</c:if>
 			</c:forEach>
@@ -48,7 +47,7 @@ ${navbar }
 			<c:forEach items="${stuffs}" var="stuff" varStatus="vs" >
 			<c:if test="${(vs.index+1)%3==0 }">
 				<div title="${stuff.stufftitle }" style="height:280px;overflow:hidden;">
-					<!-- <iframe frameborder="0" width="100%" height="100%" src="crm/portlets/${stuff.stufftype }/index"></iframe> -->
+					<%@ include file="portlets/select.jsp"%>
 				</div>
 			</c:if>
 			</c:forEach>

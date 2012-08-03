@@ -1,30 +1,21 @@
-<graph labelDisplay='WRAP' showvalues='0' numDivLines='4'
-	formatNumberScale='0' decimalPrecision='0' anchorSides='10'
-	anchorRadius='3' anchorBorderColor='009900' outCnvBaseFontSize='12'
-	baseFontSize='12'>
-	<categories>
-		<category name='2012-07-01' />
-		<category name='2012-08-01' />
-		<category name='2012-09-01' />
-		<category name='2012-10-01' />
-		<category name='2012-11-01' />
-		<category name='2012-12-01' />
-	</categories>
-	<dataset seriesName='合同订单金额' color='AFD8F8' showValues='0'>
-		<set value='0' />
-		<set value='0' />
-		<set value='0' />
-		<set value='0' />
-		<set value='0' />
-		<set value='0' />
-	</dataset>
-	<dataset seriesName='合同订单数量' color='8BBA00' showValues='0'
-		parentYAxis='S'>
-		<set value='0' />
-		<set value='0' />
-		<set value='0' />
-		<set value='0' />
-		<set value='0' />
-		<set value='0' />
-	</dataset>
-</graph>
+<chart caption='' subcaption='' decimals='1' baseFontSize='12'
+	isSliced='1' streamlinedData='0' isHollow='0' bgColor='EAEAEA'
+	showBorder='0' formatNumberScale='0'>
+	<set label='无' value='1' />
+	<set label='初期沟通' value='0.001' />
+	<set label='立项评估' value='0.001' />
+	<set label='需求分析' value='2' />
+	<set label='方案指定' value='0.001' />
+	<set label='招投标/竞争' value='1' />
+	<set label='商务谈判' value='0.001' />
+	<set label='谈成结束' value='0.001' />
+	<set label='未成结束' value='0.001' />
+	<styles>
+		<definition>
+			<style type='font' name='captionFont' size='15' />
+		</definition>
+		<application>
+			<apply toObject='CAPTION' styles='captionFont' />
+		</application>
+	</styles>
+</chart>

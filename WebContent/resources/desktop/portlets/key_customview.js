@@ -22,6 +22,8 @@ function init_keycustomview(){
 	fitColumns : true,
 	singleSelect : true,
 	border:false,
+	fit:true,
+	border:false,
 	columns : [ cols ]
     });
 }

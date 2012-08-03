@@ -16,7 +16,7 @@ function init_cangkuassets(){
 	title : '资产'
     }];
     cols = setDefWidth(cols, 80);
-    $('#tablist').datagrid({
+    $('#tab_cangkuassets').datagrid({
 	url:'crm/portlets/cangkuassets/getJson',
 	collapsible : false,
 	idField : 'cangkusid',
@@ -25,6 +25,7 @@ function init_cangkuassets(){
 	fitColumns : true,
 	singleSelect : true,
 	border:false,
+	fit:true,
 	columns : [ cols ]
     });
 }

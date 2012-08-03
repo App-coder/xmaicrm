@@ -8,7 +8,7 @@ var res = ${res};
 <script type="text/javascript" src="resources/desktop/portlets/salesfunnels.js"></script>
 </head>
 <body>
-<div id="chart"></div>
+<div id="portlets_salesfunnels"></div>
 </body>
 </html>
 </cache:cache>

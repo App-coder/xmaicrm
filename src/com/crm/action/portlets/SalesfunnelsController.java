@@ -96,7 +96,11 @@ public class SalesfunnelsController {
 			if(!picks.get(i).equals("无")){
 				Salesfunnels s = new Salesfunnels();
 				s.setName(picks.get(i).getColvalue());
-				s.setValue(this.xmPotentialService.getSalesCountByPick(picks.get(i).getColvalue(),ids,fd,ld));
+				String value = this.xmPotentialService.getSalesCountByPick(picks.get(i).getColvalue(),ids,fd,ld);
+				if(value.equals("0")){
+					value = "0.001";
+				}
+				s.setValue(value);
 				s.setColor(colors[i]);
 				salesfunnels.add(s);
 			}
