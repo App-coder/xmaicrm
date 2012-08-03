@@ -1,7 +1,9 @@
 package com.crm.financial.action;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.crm.action.BaseController;
 /**
@@ -15,5 +17,10 @@ import com.crm.action.BaseController;
 @Controller
 @RequestMapping(value = "gathersrecords")
 public class XmGathersrecordsController extends BaseController {
-
+	
+	@RequestMapping(value = "/index", method = RequestMethod.GET)
+	public String index(ModelMap modelMap){
+		return "financial/gathersrecords";
+	}
+	
 }

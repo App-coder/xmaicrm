@@ -49,6 +49,12 @@ public class XmWarehousesController extends BaseController {
 	}
 	
 	
+	/**
+	 * 入库单界面
+	 * 
+	 * @param modelMap
+	 * @return
+	 */
 	@RequestMapping(value = "/index", method = RequestMethod.GET)
 	public String index(ModelMap modelMap){
 		
