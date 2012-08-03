@@ -52,7 +52,7 @@ public class XmBillingsController extends BaseController {
 	@RequestMapping(value = "/index", method = RequestMethod.GET)
 	public String index(ModelMap modelMap){
 		this.moduleUtil.setViewProp(modelMap,"Expenses");
-		return "financial/expenses";
+		return "financial/billings";
 	}
 	
 	/**

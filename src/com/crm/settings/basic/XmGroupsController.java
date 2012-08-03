@@ -14,7 +14,7 @@ import com.crm.action.BaseController;
  * Time: 上午10:14:10
  */
 @Controller
-@RequestMapping(value = "group")
+@RequestMapping(value = "settings/group")
 public class XmGroupsController extends BaseController {
-
+	
 }

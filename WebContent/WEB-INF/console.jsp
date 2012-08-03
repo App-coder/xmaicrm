@@ -153,8 +153,12 @@
 				<li><a href="javascript:void(0)" id="setting"
 					class="easyui-menubutton" data-options="menu:'#setting_item'">控制面板</a></li>
 				<li class="split"></li>
+				
+				<!-- 
 				<li><a href="javascript:void(0)" id="quick"
 					class="easyui-menubutton" data-options="menu:'#quick_item'"><input id="quick" name="dept" value="aa"></a></li>
+				 -->
+					
 			</ul>
 		</div>
 	</div>

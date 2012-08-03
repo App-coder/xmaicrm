@@ -162,7 +162,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
       out.write("\t\t<div id=\"finance_item\" style=\"width: 120px;\" class=\"navmenuitem\"  >\r\n");
       out.write("\t\t\t<div><a href=\"javascript:tab('财务导航','accounting/nav')\" >财务导航</a></div>\r\n");
       out.write("\t\t\t<div><a href=\"javascript:tab('应收款','gathers/index')\" >应收款</a></div>\r\n");
-      out.write("\t\t\t<div><a href=\"javascript:tab('应付款','inventoryledgers/index')\" >应付款</a></div>\r\n");
+      out.write("\t\t\t<div><a href=\"javascript:tab('应付款','charges/index')\" >应付款</a></div>\r\n");
       out.write("\t\t\t<div><a href=\"javascript:tab('收款单','gathersrecords/index')\" >收款单</a></div>\r\n");
       out.write("\t\t\t<div><a href=\"javascript:tab('付款单','chargesrecords/index')\" >付款单</a></div>\r\n");
       out.write("\t\t\t<div><a href=\"javascript:tab('往来帐','forthamounts/index')\" >往来帐</a></div>\r\n");
@@ -175,6 +175,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
       out.write("\t\t\t<div><a href=\"javascript:tab('常用报表','ureports/index')\" >常用报表</a></div>\r\n");
       out.write("\t\t\t<div><a href=\"javascript:tab('年终销售报表','salesreports/index')\" >年终销售报表</a></div>\r\n");
       out.write("\t\t</div>\r\n");
+      out.write("\t\t<!-- \r\n");
       out.write("\t\t<div id=\"service_item\" style=\"width: 120px;\" class=\"navmenuitem\" >\r\n");
       out.write("\t\t\t<div><a href=\"javascript:tab('服务合同','billings/index')\" >服务合同</a></div>\r\n");
       out.write("\t\t\t<div><a href=\"javascript:tab('项目里程碑','billings/index')\" >项目里程碑</a></div>\r\n");
@@ -182,6 +183,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
       out.write("\t\t\t<div><a href=\"javascript:tab('项目','billings/index')\" >项目</a></div>\r\n");
       out.write("\t\t\t<div><a href=\"javascript:tab('常见问答','billings/index')\" >常见问答</a></div>\r\n");
       out.write("\t\t</div>\r\n");
+      out.write("\t\t -->\r\n");
       out.write("\t\t<div id=\"setting_item\" style=\"width: 120px;\" class=\"navmenuitem\" >\r\n");
       out.write("\t\t\t<div><a href=\"javascript:tab('控制面板','setting/index')\" >控制面板</a></div>\r\n");
       out.write("\t\t\t<div><a href=\"javascript:tab('业务规则','workflow/index')\" >业务规则</a></div>\r\n");
@@ -231,14 +233,22 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
       out.write("\t\t\t\t<li><a href=\"javascript:void(0)\" id=\"report\"\r\n");
       out.write("\t\t\t\t\tclass=\"easyui-menubutton\" data-options=\"menu:'#report_item'\">报表</a></li>\r\n");
       out.write("\t\t\t\t<li class=\"split\"></li>\r\n");
+      out.write("\t\t\t\t\r\n");
+      out.write("\t\t\t\t<!-- \r\n");
       out.write("\t\t\t\t<li><a href=\"javascript:void(0)\" id=\"service\"\r\n");
       out.write("\t\t\t\t\tclass=\"easyui-menubutton\" data-options=\"menu:'#service_item'\">服务支持</a></li>\r\n");
       out.write("\t\t\t\t<li class=\"split\"></li>\r\n");
+      out.write("\t\t\t\t -->\r\n");
+      out.write("\t\t\t\t\r\n");
       out.write("\t\t\t\t<li><a href=\"javascript:void(0)\" id=\"setting\"\r\n");
       out.write("\t\t\t\t\tclass=\"easyui-menubutton\" data-options=\"menu:'#setting_item'\">控制面板</a></li>\r\n");
       out.write("\t\t\t\t<li class=\"split\"></li>\r\n");
+      out.write("\t\t\t\t\r\n");
+      out.write("\t\t\t\t<!-- \r\n");
       out.write("\t\t\t\t<li><a href=\"javascript:void(0)\" id=\"quick\"\r\n");
       out.write("\t\t\t\t\tclass=\"easyui-menubutton\" data-options=\"menu:'#quick_item'\"><input id=\"quick\" name=\"dept\" value=\"aa\"></a></li>\r\n");
+      out.write("\t\t\t\t -->\r\n");
+      out.write("\t\t\t\t\t\r\n");
       out.write("\t\t\t</ul>\r\n");
       out.write("\t\t</div>\r\n");
       out.write("\t</div>\r\n");
