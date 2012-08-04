@@ -17,6 +17,7 @@ import com.alibaba.fastjson.JSON;
 import com.crm.bean.amcharts.portlets.Gathersyear;
 import com.crm.bean.crm.portlets.GatherYear;
 import com.crm.service.portlets.XmGathersService;
+import com.crm.util.CacheUtil;
 
 /**
  * 公司应收款月度同比
@@ -92,6 +93,11 @@ public class GathersyearController {
 	@ResponseBody
 	public String getXml(){
 		
+		Object cache = CacheUtil.getKeyCache(CacheUtil.getMethKey(),CacheUtil.defRefreshTime);
+		if(cache!=null){
+			return cache.toString();
+		}
+		
 		StringBuffer sb = new StringBuffer();
 		
 		StringBuffer categories = new StringBuffer();
@@ -154,7 +160,11 @@ public class GathersyearController {
         } catch (UnsupportedEncodingException e) {
             e.printStackTrace();
         }
-		return utf8BomStr+sb.toString();
+        
+        String cachestr = utf8BomStr+sb.toString();
+        CacheUtil.putKeyCache(CacheUtil.getMethKey(), cachestr);
+        
+		return cachestr;
 	}
 
 }

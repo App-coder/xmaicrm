@@ -15,8 +15,8 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.alibaba.fastjson.JSON;
 import com.crm.bean.amcharts.portlets.Salesbymonth;
-import com.crm.model.XmSalesorder;
 import com.crm.service.module.XmSalesorderService;
+import com.crm.util.CacheUtil;
 import com.crm.util.DateUtil;
 
 /**
@@ -63,6 +63,11 @@ public class TopSalesbymonthController {
 	@RequestMapping(value = "/getXml")
 	@ResponseBody
 	public String getXml(){
+		
+		Object cache = CacheUtil.getKeyCache(CacheUtil.getMethKey(),CacheUtil.defRefreshTime);
+		if(cache!=null){
+			return cache.toString();
+		}
 		
 		StringBuffer sb = new StringBuffer();
 		sb.append("<graph labelDisplay='WRAP' showvalues='0' numDivLines='4' formatNumberScale='0' decimalPrecision='0' anchorSides='10'  anchorRadius='3' anchorBorderColor='009900' outCnvBaseFontSize='12' baseFontSize='12'>");
@@ -118,7 +123,11 @@ public class TopSalesbymonthController {
         } catch (UnsupportedEncodingException e) {
             e.printStackTrace();
         }
-		return utf8BomStr+sb.toString();
+        
+        String cachestr = utf8BomStr+sb.toString();
+        CacheUtil.putKeyCache(CacheUtil.getMethKey(), cachestr);;
+        
+		return cachestr;
 	}
 	
 

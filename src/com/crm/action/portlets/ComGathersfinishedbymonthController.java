@@ -16,8 +16,8 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.alibaba.fastjson.JSON;
 import com.crm.bean.amcharts.portlets.Gathersfinishedbymonth;
-import com.crm.bean.amcharts.portlets.Salesfinishedbymonth;
 import com.crm.service.portlets.XmGathersService;
+import com.crm.util.CacheUtil;
 import com.crm.util.time.TimeGet;
 
 /**
@@ -87,6 +87,11 @@ public class ComGathersfinishedbymonthController {
 	@ResponseBody
 	public String getXml(){
 		
+		Object cache = CacheUtil.getKeyCache(CacheUtil.getMethKey(),CacheUtil.defRefreshTime);
+		if(cache!=null){
+			return cache.toString();
+		}
+		
 		StringBuffer sb = new StringBuffer();
 		TimeGet timeget = new TimeGet();
 		
@@ -137,14 +142,18 @@ public class ComGathersfinishedbymonthController {
 		sb.append(finished.toString());
 		sb.append("</graph>");
 		
-		 byte[] utf8Bom = new byte[]{(byte) 0xef, (byte) 0xbb, (byte) 0xbf};
-	        String utf8BomStr = "";
-	        try {
-	            utf8BomStr = new String(utf8Bom, "UTF-8");//定义BOM标记
-	        } catch (UnsupportedEncodingException e) {
-	            e.printStackTrace();
-	        }
-			return utf8BomStr+sb.toString();
+		byte[] utf8Bom = new byte[]{(byte) 0xef, (byte) 0xbb, (byte) 0xbf};
+        String utf8BomStr = "";
+        try {
+            utf8BomStr = new String(utf8Bom, "UTF-8");//定义BOM标记
+        } catch (UnsupportedEncodingException e) {
+            e.printStackTrace();
+        }
+        
+        String cachestr = utf8BomStr+sb.toString();
+        CacheUtil.putKeyCache(CacheUtil.getMethKey(), cachestr);		
+        
+		return cachestr;
 	}
 	
 }

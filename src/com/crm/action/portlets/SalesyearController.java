@@ -17,6 +17,7 @@ import com.alibaba.fastjson.JSON;
 import com.crm.bean.amcharts.chartdata.CD_Salesyear;
 import com.crm.bean.amcharts.portlets.Salesyear;
 import com.crm.service.module.XmSalesorderService;
+import com.crm.util.CacheUtil;
 
 /**
  * 公司销售额月度同比
@@ -43,6 +44,11 @@ public class SalesyearController {
 	@RequestMapping(value = "/getXml")
 	@ResponseBody
 	public String getXml(){
+		
+		Object cache = CacheUtil.getKeyCache(CacheUtil.getMethKey(),CacheUtil.defRefreshTime);
+		if(cache!=null){
+			return cache.toString();
+		}
 		
 		StringBuffer sb = new StringBuffer();
 		
@@ -113,7 +119,10 @@ public class SalesyearController {
             e.printStackTrace();
         }
 		
-		return utf8BomStr+sb.toString();
+        String cachestr = utf8BomStr+sb.toString();
+        CacheUtil.putKeyCache(CacheUtil.getMethKey(), cachestr);
+        
+		return cachestr;
 	}
 
 	@RequestMapping(value = "/getJson")

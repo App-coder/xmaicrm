@@ -15,6 +15,7 @@ import com.crm.bean.fusionchart.Salesfunnels;
 import com.crm.model.XmPicklist;
 import com.crm.service.XmPicklistService;
 import com.crm.service.module.XmPotentialService;
+import com.crm.util.CacheUtil;
 import com.crm.util.time.TimeGet;
 
 /**
@@ -79,6 +80,12 @@ public class SalesfunnelsController {
 	@RequestMapping(value = "/getJson")
 	@ResponseBody
 	public String getJson(){
+		
+		Object cache = CacheUtil.getKeyCache(CacheUtil.getMethKey(),CacheUtil.defRefreshTime);
+		if(cache!=null){
+			return cache.toString();
+		}
+		
 		String[] colors = new String[]{
 				"#B1D1EA","#E8BB32","#7DA113","#EC935B","#F2BE9D","#E57F3E","#299898","#C37676","#A23535","#905890","#517B23","#A39C19"
 		};
@@ -106,7 +113,10 @@ public class SalesfunnelsController {
 			}
 		}
 		
-		return JSON.toJSONString(salesfunnels);
+		String cachestr = JSON.toJSONString(salesfunnels);
+		CacheUtil.putKeyCache(CacheUtil.getMethKey(), cachestr);
+		
+		return cachestr;
 	}
 	
 }

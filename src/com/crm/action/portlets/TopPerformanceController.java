@@ -19,6 +19,7 @@ import com.crm.service.module.XmNoteService;
 import com.crm.service.module.XmPotentialService;
 import com.crm.service.module.XmSalesorderService;
 import com.crm.service.portlets.XmGathersService;
+import com.crm.util.CacheUtil;
 import com.crm.util.Constant;
 import com.crm.util.DateUtil;
 import com.crm.util.time.TimeGet;
@@ -65,9 +66,13 @@ public class TopPerformanceController {
 
 	@RequestMapping(value = "/getJson")
 	@ResponseBody
-	public String getJson(
-			@ModelAttribute(Constant.USERPERMISSION) UserPermission userPermission) {
+	public String getJson(@ModelAttribute(Constant.USERPERMISSION) UserPermission userPermission) {
 
+		Object cache = CacheUtil.getKeyCache(CacheUtil.getMethKey(),CacheUtil.defRefreshTime);
+		if(cache!=null){
+			return cache.toString();
+		}
+		
 		TimeGet tg = new TimeGet();
 
 		Calendar calendar = Calendar.getInstance();
@@ -98,8 +103,11 @@ public class TopPerformanceController {
 		performance.setNewsalesorder(newsalesorder);
 		performance.setSumofgather(sumofgather == null ? 0 + "" : sumofgather);
 		performance.setSumoforder(sumoforder == null ? 0 + "" : sumoforder);
+		
+		String cachestr = JSON.toJSONString(performance);
+		CacheUtil.putKeyCache(CacheUtil.getMethKey(), cachestr);
 
-		return JSON.toJSONString(performance);
+		return cachestr;
 	}
 
 }

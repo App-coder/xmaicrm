@@ -1,5 +1,7 @@
 package com.crm.action.portlets;
 
+import java.util.List;
+
 import javax.annotation.Resource;
 
 import org.springframework.stereotype.Controller;
@@ -14,9 +16,8 @@ import com.crm.bean.crm.UserPermission;
 import com.crm.bean.easyui.ListBean;
 import com.crm.model.XmAccount;
 import com.crm.service.module.XmAccountService;
+import com.crm.util.CacheUtil;
 import com.crm.util.Constant;
-
-import java.util.*;
 
 @Controller
 @SessionAttributes(Constant.USERPERMISSION)
@@ -38,12 +39,20 @@ public class TopAccountController {
 	@ResponseBody
 	public String getJson(@ModelAttribute(Constant.USERPERMISSION) UserPermission userPermission){
 		
+		Object cache = CacheUtil.getKeyCache(CacheUtil.getMethKey(),CacheUtil.defRefreshTime);
+		if(cache!=null){
+			return cache.toString();
+		}
+		
 		ListBean bean = new ListBean();
 		List<XmAccount> accounts = this.xmAccountService.getTopAccount(userPermission.getUser().getId()+"");
 		bean.setRows(accounts);
 		bean.setTotal(accounts.size());
 		
-		return JSON.toJSONString(bean);
+		String cachestr = JSON.toJSONString(bean);
+		CacheUtil.putKeyCache(CacheUtil.getMethKey(), cachestr);
+		
+		return cachestr;
 	}
 	
 }

@@ -89,9 +89,10 @@
 		<property name="basePackage" value="com.crm.**.mapper" />
 	</bean>
 
-	<!-- Service层   <context:component-scan base-package="com.crm.**.service.impl,com.crm.mapper.util" /> -->
-	<context:component-scan base-package="com.crm.**" />
-
+	<!-- Service层
+	<context:component-scan base-package="com.crm.**.service.impl,com.crm.mapper.util" />
+ 	-->
+ 	
 	<!-- 事务 -->
 	<tx:advice id="txAdvice" transaction-manager="transactionManager">
 		<tx:attributes>

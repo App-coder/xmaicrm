@@ -18,8 +18,8 @@ public final class desktop_jsp extends org.apache.jasper.runtime.HttpJspBase
     _jspx_dependants.add("/WEB-INF/path.jsp");
     _jspx_dependants.add("/WEB-INF/portlets/select.jsp");
     _jspx_dependants.add("/WEB-INF/foot.jsp");
-    _jspx_dependants.add("/WEB-INF/tld/oscache/oscache.tld");
     _jspx_dependants.add("/WEB-INF/tld/jstl/fn.tld");
+    _jspx_dependants.add("/WEB-INF/tld/oscache/oscache.tld");
   }
 
   private org.apache.jasper.runtime.TagHandlerPool _005fjspx_005ftagPool_005fc_005fchoose;
@@ -100,6 +100,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
         return;
       out.write("\r\n");
       out.write("</title>\r\n");
+      out.write("<cache>\r\n");
       out.write("<link rel=\"stylesheet\" type=\"text/css\" href=\"resources/easyui/themes/default/easyui.css\">\r\n");
       out.write("<link rel=\"stylesheet\" type=\"text/css\" href=\"resources/easyui/themes/icon.css\">\r\n");
       out.write("<link rel=\"stylesheet\" type=\"text/css\" href=\"resources/css.css\">\r\n");
@@ -129,6 +130,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
       out.write("\r\n");
       out.write("<!-- 文件上传 -->\r\n");
       out.write("<script type=\"text/javascript\" src=\"resources/plugins/ajaxfileupload.js\"></script>\r\n");
+      out.write("</cache>");
       out.write('\r');
       out.write('\n');
       out.write('\r');

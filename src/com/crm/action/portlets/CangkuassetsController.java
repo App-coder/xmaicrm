@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.alibaba.fastjson.JSON;
 import com.crm.bean.easyui.ListBean;
 import com.crm.service.settings.other.XmCangkusService;
+import com.crm.util.CacheUtil;
 
 /**
  * 库存资产
@@ -38,11 +39,19 @@ public class CangkuassetsController {
 	@RequestMapping(value = "/getJson")
 	@ResponseBody
 	public String getJson(){
+		
+		Object cache = CacheUtil.getKeyCache(CacheUtil.getMethKey(),CacheUtil.defRefreshTime);
+		if(cache!=null){
+			return cache.toString();
+		}
+		
 		ListBean bean = new ListBean();
 		List<Object> objs = this.xmCangkusService.getCangkussets();
 		bean.setRows(objs);
 		bean.setTotal(objs.size());
-		return JSON.toJSONString(bean);
+		String txt = JSON.toJSONString(bean);
+		CacheUtil.putKeyCache(CacheUtil.getMethKey(), txt);
+		return txt;
 	}
 	
 }

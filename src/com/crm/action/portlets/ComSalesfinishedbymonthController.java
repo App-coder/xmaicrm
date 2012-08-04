@@ -14,6 +14,7 @@ import com.alibaba.fastjson.JSON;
 import com.crm.bean.amcharts.portlets.Salesfinishedbymonth;
 import com.crm.model.XmSalesorder;
 import com.crm.service.module.XmSalesorderService;
+import com.crm.util.CacheUtil;
 import com.crm.util.DateUtil;
 import com.crm.util.time.TimeGet;
 import java.util.*;
@@ -88,6 +89,10 @@ public class ComSalesfinishedbymonthController {
 	@RequestMapping(value = "/getXml")
 	@ResponseBody
 	public String getXml(){
+		Object cache = CacheUtil.getKeyCache(CacheUtil.getMethKey(),CacheUtil.defRefreshTime);
+		if(cache!=null){
+			return cache.toString();
+		}
 		
 		StringBuffer sb = new StringBuffer();
 		
@@ -139,8 +144,10 @@ public class ComSalesfinishedbymonthController {
             utf8BomStr = new String(utf8Bom, "UTF-8");//定义BOM标记
         } catch (UnsupportedEncodingException e) {
             e.printStackTrace();
-        }
-		return utf8BomStr+sb.toString();
+        }  
+        String cachestr = utf8BomStr+sb.toString();
+        CacheUtil.putKeyCache(CacheUtil.getMethKey(), cachestr);
+		return cachestr;
 	}
 	
 }
