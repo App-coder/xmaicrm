@@ -21,10 +21,16 @@ var pathname = "工作台";
 
 </head>
 <body id="wrap">
+<div class="hidden" >
+	<div id="win_plugtemps" class="easyui-window" <%=win_bar_1 %>
+		style="width:700px; height: 432px;">
+		<table id="plugtemps"></table>
+	</div>
+</div>
 ${navbar }
 <div id="main" >
 <div class="path" >&gt;<a  href="crm/module/home/index">工作台</a>
-<a iconCls="icon-tool" class="easyui-linkbutton fr">管理组件模版</a>
+<a iconCls="icon-tool" class="easyui-linkbutton fr" onclick="showPlugTempsPanel()">管理组件模版</a>
 </div>
 <div id="desktop" >
 		 <div style="width:33%;">
