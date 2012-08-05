@@ -11,7 +11,7 @@
 <script type="text/javascript" src="resources/desktop/settings/other/emailtemplates.js"></script>
 </head>
 <body id="wrap">
-	<%@ include file="../../nav.jsp"%>
+${navbar }
 	<div id="main">
 		<div class="hidden">
 			<div id="emailtemplatesedit" class="easyui-window" <%=win_topbar%> style="width: 700px; height: 432px;" >

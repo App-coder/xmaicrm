@@ -9,7 +9,7 @@ var pathname = "SMTP服务器 ";
 <script type="text/javascript" src="resources/desktop/settings/other/system.js"></script>
 </head>
 <body id="wrap">
-<%@ include file="../../nav.jsp"%>
+${navbar }
 <div id="main">
 <div class="path" id="navpath"></div>
 <form id="form_email" method="post" >

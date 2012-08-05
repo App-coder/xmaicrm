@@ -10,7 +10,7 @@ var pathname = "登入历史";
 <script type="text/javascript" src="resources/desktop/settings/basic/loginhistory.js"></script>
 </head>
 <body id="wrap">
-<%@ include file="../../nav.jsp"%>
+${navbar }
 <div id="main">
 <div class="path" id="navpath"></div>
 <table id="loginlist"  toolbar="#logs_tb" ></table>

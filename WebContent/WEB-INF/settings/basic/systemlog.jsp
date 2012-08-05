@@ -9,7 +9,7 @@ var pathname = "系统日志";
 <script type="text/javascript" src="resources/desktop/settings/basic/systemlog.js"></script>
 </head>
 <body id="wrap">
-<%@ include file="../../nav.jsp"%>
+${navbar }
 <div id="main">
 <div class="path" id="navpath"></div>
 <table class="tab_form mgb_10">

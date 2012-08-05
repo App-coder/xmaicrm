@@ -11,6 +11,7 @@ import java.util.Map;
 import java.util.Set;
 
 import javax.annotation.Resource;
+import javax.servlet.http.HttpServletRequest;
 
 import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Controller;
@@ -49,6 +50,7 @@ import com.crm.service.XmFieldService;
 import com.crm.service.XmPicklistService;
 import com.crm.service.XmSequenceService;
 import com.crm.service.XmTabService;
+import com.crm.service.module.XmNoteplansService;
 import com.crm.service.settings.basic.XmUsersService;
 import com.crm.util.ArrayUtil;
 import com.crm.util.CacheManager;
@@ -135,6 +137,12 @@ public class XmCustomViewController extends BaseController {
 	@Resource(name="xmUsersService")
 	public void setXmUsersService(XmUsersService xmUsersService) {
 		this.xmUsersService = xmUsersService;
+	}
+	
+	XmNoteplansService xmNoteplansService;
+	@Resource(name="xmNoteplansService")
+	public void setXmNoteplansService(XmNoteplansService xmNoteplansService) {
+		this.xmNoteplansService = xmNoteplansService;
 	}
 
 	@RequestMapping(value = "/queryByEntityType", method = RequestMethod.GET)
@@ -774,7 +782,8 @@ public class XmCustomViewController extends BaseController {
 	 */
 	@RequestMapping(value = "/renderView", method = RequestMethod.POST)
 	@ResponseBody
-	public String renderView(int page, int rows, String entitytype, int viewid) {
+	public String renderView(int page, int rows, String entitytype, int viewid,HttpServletRequest request) {
+		
 		XmCustomview customview = this.xmCustomViewService.selectByPrimaryKey(
 				entitytype, viewid);
 		List<CVColumn> cols = this.xmCvcolumnlistService
@@ -784,11 +793,30 @@ public class XmCustomViewController extends BaseController {
 		List<XmCvadvfilter> advfilter = xmCvadvfilterService
 				.getAdvFilters(viewid);
 
+		String customfilter = getCustomFilter(entitytype,request);
+		
 		int total = this.xmCustomViewService.getTotal(viewid, customview,
-				stdfilter, advfilter, cols);
+				stdfilter, advfilter, cols,customfilter);
 		List<Map> ls = this.xmCustomViewService.loadList(page, rows, viewid,
-				customview, stdfilter, advfilter, cols);
+				customview, stdfilter, advfilter, cols,customfilter);
 
+		
+		//根据模块的不同，整理生成的数据……
+		if(entitytype.equalsIgnoreCase("Noteplans")){
+			if(ls.size()>0){
+				for(int i=0;i<ls.size();i++){
+					Iterator iter = ls.get(i).entrySet().iterator();
+					while (iter.hasNext()) {
+						Map.Entry entry = (Map.Entry) iter.next();
+						Object key = entry.getKey();
+						if(key.equals("executor")){
+							entry.setValue(xmNoteplansService.getExecutor(entry.getValue()));
+						}
+					}
+				}
+			}
+		}
+		
 		ListBean list = new ListBean();
 		list.setRows(ls);
 		list.setTotal(total);
@@ -824,6 +852,30 @@ public class XmCustomViewController extends BaseController {
 
 		}
 		return JSON.toJSONStringWithDateFormat(list, "yyyy-MM-dd");
+	}
+	
+	/**
+	 * 根据类型获取和组合自定义的过滤条件
+	 * 
+	 * @param entitytype
+	 * @param request
+	 * @return
+	 */
+	public String getCustomFilter(String entitytype,HttpServletRequest request){
+		StringBuffer sb = new StringBuffer();
+		//入库单管理
+		if(entitytype.equals("Warehouses")){
+			int cangku = Integer.parseInt(request.getParameter("cangku"));
+			if(cangku!=1){
+				sb.append(" and xm_warehouses.cangkusid = "+cangku);
+			}
+		}else if(entitytype.equals("Deliverys")){
+			int cangku = Integer.parseInt(request.getParameter("cangku"));
+			if(cangku!=1){
+				sb.append(" and xm_deliverys.cangkusid = "+cangku);
+			}
+		}
+		return sb.toString();
 	}
 
 	/**

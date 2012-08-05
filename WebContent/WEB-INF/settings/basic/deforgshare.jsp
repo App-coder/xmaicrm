@@ -9,7 +9,7 @@ var pathname = "全局共享规则";
 <script type="text/javascript" src="resources/desktop/settings/basic/deforgshare.js"></script>
 </head>
 <body id="wrap">
-<%@ include file="../../nav.jsp"%>
+${navbar }
 <div id="main">
 <div class="path" id="navpath"></div>
 <table id="deforgsharelist" data-options="fitColumns:true"></table>

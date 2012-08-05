@@ -1,11 +1,15 @@
 package com.crm.action.module;
 
+import javax.annotation.Resource;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.crm.action.BaseController;
+import com.crm.action.util.ModuleUtil;
+import com.crm.util.ActionUtil;
 
 /**
  * 采购导航模块
@@ -15,11 +19,22 @@ import com.crm.action.BaseController;
  * Time: 下午22:04:36
  */
 @Controller
-@RequestMapping(value = "bsteps")
+@RequestMapping(value = "crm/module/bsteps")
 public class XmBstepsController extends BaseController{
-	@RequestMapping(value = "/index", method = RequestMethod.GET)
-	public String index(ModelMap modelMap){
-		return "purchase/bsteps";
+
+	ModuleUtil moduleUtil;
+	@Resource(name = "moduleUtil")
+	public void setModuleUtil(ModuleUtil moduleUtil) {
+		this.moduleUtil = moduleUtil;
 	}
+	
+	@RequestMapping(value = "/index", method = RequestMethod.GET)
+	public String index(int ptb,ModelMap modelMap){
+		
+		ActionUtil.setTitle2("Bsteps", ptb, modelMap, this.moduleUtil);
+		
+		return "module/bsteps/index";
+	}
+	
 
 }

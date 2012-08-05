@@ -10,7 +10,7 @@
 	src="resources/desktop/settings/other/cangkus.js"></script>
 </head>
 <body id="wrap">
-	<%@ include file="../../nav.jsp"%>
+	${navbar }
 	<div id="main">
 		<div class="hidden">
 			<div id="cangkus" class="easyui-window" <%=win_topbar%>

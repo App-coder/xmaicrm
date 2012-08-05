@@ -40,4 +40,7 @@
   <delete id="clearRelByParentid" >
   	delete from xm_parenttabrel where parenttabid = #{parenttabid}
   </delete>
+  <select id="getPtbByTabid" resultType="Integer" >
+  	select parenttabid from xm_parenttabrel where tabid = #{tabid}
+  </select>
 </mapper>

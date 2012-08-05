@@ -9,7 +9,7 @@ var pathname = "显示区域";
 <script type="text/javascript" src="resources/desktop/settings/system/customblock.js"></script>
 </head>
 <body id="wrap">
-<%@ include file="../../nav.jsp"%>
+${navbar }
 <div id="main">
     <div class="hidden">
 			<div id="block" class="easyui-window" <%=win_topbar%> style="width: 500px; height: 232px;">

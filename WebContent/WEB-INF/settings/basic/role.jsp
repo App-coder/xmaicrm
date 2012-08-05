@@ -10,7 +10,7 @@
 	src="resources/desktop/settings/basic/role.js"></script>
 </head>
 <body id="wrap">
-	<%@ include file="../../nav.jsp"%>
+	${navbar }
 	<div id="main">
 		<div class="hidden">
 			<div id="roleedit" class="easyui-window" <%=win_topbar%>

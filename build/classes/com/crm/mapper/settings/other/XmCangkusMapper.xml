@@ -104,4 +104,9 @@
 	GROUP BY
 		xm_cangkuproductrel.cangkusid;
   </select>
+  <select id="getCangkus" resultMap="BaseResultMap" >
+  	  select 
+	    <include refid="Base_Column_List" />
+	  from xm_cangkus
+  </select>
 </mapper>

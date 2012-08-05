@@ -10,6 +10,7 @@ body, input, button, select, textarea{font: Tahoma,'Microsoft Yahei','Simsun'}
 textarea{ resize: none;}
 form{margin:0px;padding:0px;}
 red{color:red;}
+.red{color:red;}
 .fr{float:right;}
 .fl{float:left;}
 .tac{text-align: center;}

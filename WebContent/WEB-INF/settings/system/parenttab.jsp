@@ -9,7 +9,7 @@ var pathname = "主菜单";
 <script type="text/javascript" src="resources/desktop/settings/system/parenttab.js"></script>
 </head>
 <body id="wrap">
-<%@ include file="../../nav.jsp"%>
+${navbar }
 <div id="main">
 <div class="hidden" >
 	<div id="parenttabedit" class="easyui-window" <%=win_topbar%> style="width:825px; height:510px;">

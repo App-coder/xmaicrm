@@ -9,7 +9,7 @@ var pathname = "部门机构";
 <script type="text/javascript" src="resources/desktop/settings/basic/group.js"></script>
 </head>
 <body id="wrap">
-<%@ include file="../../nav.jsp"%>
+${navbar }
 <div id="main">
 <div class="hidden">
 	<div id="groupedit" class="easyui-window" <%=win_topbar%> style="width: 400px; height:247px;">

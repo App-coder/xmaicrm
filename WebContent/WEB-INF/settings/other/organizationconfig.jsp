@@ -9,7 +9,7 @@ var pathname = "公司信息管理 ";
 <script type="text/javascript" src="resources/desktop/settings/other/organizationconfig.js"></script>
 </head>
 <body id="wrap">
-<%@ include file="../../nav.jsp"%>
+${navbar }
 <div id="main">
 <div class="path" id="navpath"></div>
 <form id="form_organization" name="form_organization" method="post" >

@@ -69,7 +69,7 @@ public class KeyCustomviewServiceImpl implements KeyCustomviewService {
 				.getAdvFilters(customview.getCvid());
 
 		return this.xmCustomViewService.getTotal(customview.getCvid(), customview,
-				stdfilter, advfilter, cols);
+				stdfilter, advfilter, cols,"");
 	}
 
 	

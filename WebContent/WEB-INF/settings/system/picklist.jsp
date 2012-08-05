@@ -9,7 +9,7 @@ var pathname ='下拉框选项';
 <script type="text/javascript" src="resources/desktop/settings/system/picklist.js"></script>
 </head>
 <body id="wrap">
-<%@ include file="../../nav.jsp"%>
+${navbar }
 <div id="main">
     <div class="hidden">
 			<div id="picklist" class="easyui-window" <%=win_topbar%> style="width: 500px; height: 292px;">

@@ -10,7 +10,7 @@
 	src="resources/desktop/settings/other/currencyinfo.js"></script>
 </head>
 <body id="wrap">
-	<%@ include file="../../nav.jsp"%>
+${navbar }
 	<div id="main">
 		<div class="hidden">
 			<div id="currencyinfo" class="easyui-window" <%=win_topbar%>

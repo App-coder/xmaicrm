@@ -26,6 +26,11 @@ public class XmParenttabrelServiceImpl implements XmParenttabrelService {
 		this.xmParenttabrelMapper.insert(xmParenttabrel);
 	}
 
+	@Override
+	public int getPtbByTabid(Integer tabid) {
+		return this.xmParenttabrelMapper.getPtbByTabid(tabid);
+	}
+
 	
 	
 }

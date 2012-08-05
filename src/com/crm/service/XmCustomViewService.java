@@ -30,11 +30,11 @@ public interface XmCustomViewService {
 	XmCustomview getView(int viewid);
 
 	int getTotal(int viewid, XmCustomview customview, XmCvstdfilter stdfilter,
-			List<XmCvadvfilter> advfilter, List<CVColumn> cols);
+			List<XmCvadvfilter> advfilter, List<CVColumn> cols,String customfilter);
 
 	List<Map> loadList(int page, int rows, int viewid,
 			XmCustomview customview, XmCvstdfilter stdfilter,
-			List<XmCvadvfilter> advfilter, List<CVColumn> cols);
+			List<XmCvadvfilter> advfilter, List<CVColumn> cols,String customfilter);
 
 	List<XmCustomview> loadList(String entitytype, int page, int rows);
 
