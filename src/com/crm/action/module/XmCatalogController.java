@@ -61,7 +61,24 @@ public class XmCatalogController extends BaseController{
 	@ResponseBody
 	public String getCatalogAll(){
 		List<XmCatalog> catalogs = this.xmCatalogService.getCatalogAll(); 
-		return JSON.toJSONString(getCataLogs("H1", catalogs));
+		List<TreeGrid1> tree = new ArrayList<TreeGrid1>();
+		for(int i=0;i<catalogs.size();i++){
+			if(catalogs.get(i).getCatalogid().equals("H1")){
+				TreeGrid1 root = new TreeGrid1();
+				root.setId(catalogs.get(i).getCatalogid());
+				root.setText(catalogs.get(i).getCatalogname());
+				root.setAttributes(catalogs.get(i));
+				
+				root.setChildren(getCataLogs("H1", catalogs));
+				root.setState("open");
+				
+				tree.add(root);
+				
+				break;
+			}
+		}
+	
+		return JSON.toJSONString(tree);
 	}
 	
 	public List<TreeGrid1> getCataLogs(String parentid,List<XmCatalog> catalogs){

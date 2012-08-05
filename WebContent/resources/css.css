@@ -1,11 +1,10 @@
 /*easyui*/
 .panel-body{background:none; }
 /*easyui*/
-*{font-size:12px;}
+*{font-size:12px;font-family: Tahoma,'Microsoft Yahei','Simsun';}
 html, body, #wrap {height: 100%;}
 body > #wrap {height: auto; min-height: 100%;min-width:1024px;}
 body{margin:0px;padding:0px;}
-body, input, button, select, textarea{font: Tahoma,'Microsoft Yahei','Simsun'}
 
 textarea{ resize: none;}
 form{margin:0px;padding:0px;}

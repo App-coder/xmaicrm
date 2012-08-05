@@ -6,7 +6,7 @@
 </head>
 <body class="easyui-layout" >
 	<div data-options="region:'west',noheader:true,border:none"  style="width:200px">
-	
+		
 	</div>  
     <div data-options="region:'center',border:none" >
     
