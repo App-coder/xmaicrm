@@ -879,7 +879,7 @@
   <select id="loadUnabsorbed" resultType="map">
   	SELECT
 		xm_account.accountid AS accountid,
-		xm_users.user_name,
+		xm_users.last_name,
 		xm_account.*
 	FROM
 		xm_account
@@ -907,5 +907,32 @@
 		OR xm_account.assignstatus IS NULL
 		OR xm_account.assignstatus = ''
 	) 
+  </select>
+  <select id="getTotalAssigned" resultType="Integer">
+ 	SELECT
+		count(xm_account.accountid)
+	FROM
+		xm_account
+	LEFT JOIN xm_users ON xm_users.id = xm_account.smownerid
+	WHERE
+		xm_account.deleted = 0
+	AND xm_account.ispools = 'Yes'
+	AND xm_account.assignstatus = '已分配'
+	AND((1 = 1))
+  </select>
+  <select id="loadAssigned" resultType="map" >
+  	SELECT
+		xm_account.accountid AS accountid,
+		xm_users.last_name,
+		xm_account.*
+	FROM
+		xm_account
+	LEFT JOIN xm_users ON xm_users.id = xm_account.smownerid
+	WHERE
+		xm_account.deleted = 0
+	AND xm_account.ispools = 'Yes'
+	AND xm_account.assignstatus = '已分配'
+	AND((1 = 1))
+		limit #{start},#{rows}
   </select>
 </mapper>

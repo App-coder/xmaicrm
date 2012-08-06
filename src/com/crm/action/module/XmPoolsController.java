@@ -59,4 +59,15 @@ public class XmPoolsController {
 		return JSON.toJSONStringWithDateFormat(unabsorbed,DateUtil.C_DATE_PATTON_DEFAULT);
 	}
 	
+	@RequestMapping(value = "/loadAssigned")
+	@ResponseBody
+	public String loadAssigned(int page,int rows){
+		ListBean bean = new ListBean();
+		int total = this.xmAccountService.getTotalAssigned();
+		List<Object> assigned = this.xmAccountService.loadAssigned(page,rows);
+		bean.setRows(assigned);
+		bean.setTotal(total);
+		return JSON.toJSONStringWithDateFormat(assigned,DateUtil.C_DATE_PATTON_DEFAULT);
+	}
+	
 }

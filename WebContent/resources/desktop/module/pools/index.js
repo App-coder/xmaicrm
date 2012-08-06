@@ -33,7 +33,7 @@ function initUnabsorbed(){
 	field : 'modifiedtime',
 	title : '最新修改时间'
     },{
-	field : 'smownerid',
+	field : 'last_name',
 	title : '负责人'
     }];
     cols = setDefWidth(cols, 80);
@@ -82,45 +82,48 @@ function initUnabsorbed(){
 }
 function initAssigned(){
     var cols = [ {
-	field : 'maillistname',
-	title : '客户名称'
+	field : 'accountname',
+	title : '客户名称',
+	formatter:showTip
     }, {
-	field : 'description',
+	field : 'rating',
 	title : '客户状态'
     },{
-	field : 'description',
+	field : 'grade',
 	title : '客户级别'
     },{
-	field : 'description',
+	field : 'leadsource',
 	title : '客户来源'
     },{
-	field : 'description',
+	field : 'phone',
 	title : '电话'
     },{
-	field : 'description',
+	field : 'bill_city',
 	title : '城市'
     },{
 	field : 'description',
-	title : '描述'
+	title : '描述',
+	formatter:showTip
     },{
-	field : 'description',
+	field : 'startdate',
 	title : '分配时间'
     },{
-	field : 'description',
+	field : 'enddate',
 	title : '到期时间'
     },{
-	field : 'description',
+	field : 'last_name',
 	title : '负责人'
     }];
     cols = setDefWidth(cols, 80);
     $('#tb_assigned').datagrid({
-	url:'crm/module/maillists/list',
+	url:'crm/module/pools/loadAssigned',
 	collapsible : false,
-	idField : 'maillistid',
+	idField : 'accountid',
 	singleSelect : true,
 	rownumbers : true,
 	fitColumns:true,
 	pagination : true,
+	pageSize:20,
 	toolbar : [{
 	    text : '延期',
 	    iconCls:'icon-add',

@@ -31,4 +31,8 @@ public interface XmAccountMapper extends ModuleMapper<XmAccount> {
 	List<Object> loadUnabsorbed(@Param("start") int start,@Param("rows") int rows);
 
 	int getTotalUnabsorbed();
+
+	int getTotalAssigned();
+
+	List<Object> loadAssigned(@Param("start") int start,@Param("rows") int rows);
 }

@@ -74,7 +74,7 @@ table .tb_list td.righttd{padding-left:10px;}
 .tab_editlist{width:100%;font:12px/1.5 Tahoma,'Microsoft Yahei','Simsun';}
 .tab_editlist input.text,.tab_editlist select.text{width:250px;margin-right: 10px;border:1px solid #D2D2D2;height: 20px;}
 .tab_editlist .edittd{width:15%;padding-left:10px;}
-.text{width:180px;margin-right: 10px;border:1px solid #D2D2D2;height: 20px;}
+.text{width:180px;margin-right: 10px;border:1px solid #D2D2D2;height:18px;padding-left:3px;padding-right:3px;}
 
 .textborder{border:1px solid #D2D2D2;}
 
@@ -157,7 +157,6 @@ fieldset legend{color:#15428B;}
 .path{
     height: 30px;
     line-height: 30px;
-    padding-left: 10px;
     border-bottom:1px solid #767676;
     margin-bottom:10px;
     }

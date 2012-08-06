@@ -24,5 +24,9 @@ public interface XmAccountService  {
 	List<Object> loadUnabsorbed(int page, int rows);
 
 	int getTotalUnabsorbed();
+
+	int getTotalAssigned();
+
+	List<Object> loadAssigned(int page, int rows);
  
 }

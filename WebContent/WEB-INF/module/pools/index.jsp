@@ -22,11 +22,27 @@
 		        <select><option>自定义</option></select>
 		        <input type="text" class="easyui-datebox"/>
 		        <input type="text" class="easyui-datebox"/>
-		        
+		        &nbsp;客户状态：<select><option>请选择</option></select>
+		                     客户级别：<select><option>请选择</option></select>
+		                     客户来源：<select><option>请选择</option></select>&nbsp;
+				<select><option>客户名称</option></select>&nbsp;
+				<a class="easyui-linkbutton" data-options="iconCls:'icon-search'" >查找</a>                   
 				</div> 
 		        <table id="tb_unabsorbed" ></table>
 		    </div>  
 		    <div title="已分配" class="p10"  >  
+		    				<div class="d_bar" >  
+		        查看范围：<select><option>所有客户</option></select>
+		        &nbsp;<select><option>到期时间</option></select>
+		        <select><option>自定义</option></select>
+		        <input type="text" class="easyui-datebox"/>
+		        <input type="text" class="easyui-datebox"/>
+		        &nbsp;客户状态：<select><option>请选择</option></select>
+		                     客户级别：<select><option>请选择</option></select>
+		                     客户来源：<select><option>请选择</option></select>&nbsp;
+				<select><option>客户名称</option></select>&nbsp;
+				<a class="easyui-linkbutton" data-options="iconCls:'icon-search'" >查找</a>                   
+				</div> 
 		        <table id="assigned" toolbar="#tb_assigned" ></table>
 		        <div id="tb_assigned" class="gtb" style="display: block;" >  
 				</div>
