@@ -93,6 +93,7 @@ table .tb_list td.righttd{padding-left:10px;}
 .tabview{width:100%;font:12px/1.5 Tahoma,'Microsoft Yahei','Simsun';border-collapse: collapse;}
 .tabview .label{width:200px;text-align: right;padding-right:10px;background-color: #EFEFEF;}
 .tabview td {border:1px dotted #AED0EA;height:25px;line-height:25px;padding-left:10px;}
+.td_r td{text-align: right;padding:right:10px;}
 
 .text{width:180px;margin-right: 10px;border:1px solid #D2D2D2;padding-left:3px;padding-right:3px;height:18px;}
 

@@ -307,3 +307,19 @@ function initEdit(name,module,resizeType){
 	});
 	return editor;
 }
+//去除空格,回车
+String.prototype.Trim = function()
+{
+	return this.replace(/(^\s*)|(\s*$)|(\n)/g, ""); 
+}
+
+//删除字符串左边的空格回车
+String.prototype.LTrim = function()
+{
+	return this.replace(/(^\s*)|(^\n)/g, ""); 
+}
+
+String.prototype.RTrim = function()
+{
+	return this.replace(/(\s*$)|(\n$)/g, ""); 
+}

@@ -8,6 +8,8 @@ public class XmHometemplates {
     private String hometemplatesname;
 
     private Integer smcreatorid;
+    
+    private String smcreator;
 
     private Integer modifiedby;
 
@@ -15,7 +17,13 @@ public class XmHometemplates {
 
     private Date modifiedtime;
 
+    private String modifieuser;
+    
     private Integer deleted;
+    
+    private String relRoles;
+    
+    private String relRoleIds;
 
     public Integer getHometemplatesid() {
         return hometemplatesid;
@@ -72,4 +80,39 @@ public class XmHometemplates {
     public void setDeleted(Integer deleted) {
         this.deleted = deleted;
     }
+
+	public String getRelRoles() {
+		return relRoles;
+	}
+
+	public void setRelRoles(String relRoles) {
+		this.relRoles = relRoles;
+	}
+
+	public String getSmcreator() {
+		return smcreator;
+	}
+
+	public void setSmcreator(String smcreator) {
+		this.smcreator = smcreator;
+	}
+
+	public String getModifieuser() {
+		return modifieuser;
+	}
+
+	public void setModifieuser(String modifieuser) {
+		this.modifieuser = modifieuser;
+	}
+
+	public String getRelRoleIds() {
+		return relRoleIds;
+	}
+
+	public void setRelRoleIds(String relRoleIds) {
+		this.relRoleIds = relRoleIds;
+	}
+    
+    
+    
 }

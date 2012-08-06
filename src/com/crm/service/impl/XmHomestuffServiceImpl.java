@@ -10,6 +10,7 @@ import com.crm.mapper.XmHomestuffMapper;
 import com.crm.mapper.XmHometemplatesMapper;
 import com.crm.model.XmHomestuff;
 import com.crm.service.XmHomestuffService;
+import com.crm.service.XmSequenceService;
 
 @Service("xmHomestuffService")
 public class XmHomestuffServiceImpl implements XmHomestuffService {
@@ -20,6 +21,12 @@ public class XmHomestuffServiceImpl implements XmHomestuffService {
 		this.xmHometemplatesMapper = xmHometemplatesMapper;
 	}
 	
+	XmSequenceService xmSequenceService;
+	@Resource(name="xmSequenceService")
+	public void setXmSequenceService(XmSequenceService xmSequenceService) {
+		this.xmSequenceService = xmSequenceService;
+	}
+
 	XmHomestuffMapper xmHomestuffMapper;
 	@Resource(name="xmHomestuffMapper")
 	public void setXmHomestuffMapper(XmHomestuffMapper xmHomestuffMapper) {
@@ -42,6 +49,21 @@ public class XmHomestuffServiceImpl implements XmHomestuffService {
 			stuffs = this.xmHomestuffMapper.getDefaultStuff();
 		}
 		return stuffs;
+	}
+
+	@Override
+	public List<XmHomestuff> getByStuffId(int hometemplatesid) {
+		return this.xmHomestuffMapper.getByStuffId(hometemplatesid);
+	}
+
+	@Override
+	public void insert(XmHomestuff xmHomestuff) {
+		this.xmHomestuffMapper.insert(xmHomestuff);
+	}
+
+	@Override
+	public int deleteByStuffId(int hometemplatesid) {
+		return this.xmHomestuffMapper.deleteByStuffId(hometemplatesid);
 	}
 
 	

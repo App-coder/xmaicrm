@@ -170,7 +170,6 @@ String win_bar_1 = "resizable=\"false\"  closed=\"true\" modal=\"false\" collaps
       out.write("<script type=\"text/javascript\" src=\"resources/plugins/portal/jquery.portal.js\"></script>\r\n");
       out.write("<script type=\"text/javascript\" src=\"resources/desktop/desktop.js\"></script>\r\n");
       out.write("<link rel=\"stylesheet\" type=\"text/css\" href=\"resources/portlets.css\">\r\n");
-      out.write("<script type=\"text/javascript\" src=\"resources/desktop/portlets.js\"></script>\r\n");
       out.write("\r\n");
       if (_jspx_meth_c_005fforEach_005f0(_jspx_page_context))
         return;
@@ -179,8 +178,136 @@ String win_bar_1 = "resizable=\"false\"  closed=\"true\" modal=\"false\" collaps
       out.write("</head>\r\n");
       out.write("<body id=\"wrap\">\r\n");
       out.write("<div class=\"hidden\" >\r\n");
+      out.write("\t<div id=\"win_plugtempsedit\" class=\"easyui-window\" ");
+      out.print(win_topbar );
+      out.write("\r\n");
+      out.write("\t\tstyle=\"width:800px; height: 494px;\" >\r\n");
+      out.write("\t\t<div class=\"easyui-layout\" data-options=\"fit:true,border:false\">\r\n");
+      out.write("\t\t\t<div data-options=\"region:'center',border:false\" style=\"padding:10px;\">\r\n");
+      out.write("\t\t\t\t<form name=\"form_plugtempsedit\" id=\"form_plugtempsedit\" method=\"post\" >\r\n");
+      out.write("\t\t\t\t\t<input type=\"hidden\" name=\"hometemplatesid\"  />\r\n");
+      out.write("\t\t\t\t\t<input type=\"hidden\" name=\"templatesstuffs\" />\r\n");
+      out.write("\t\t\t\t\t<fieldset>\r\n");
+      out.write("\t\t\t\t\t\t<legend>组件描述</legend>\r\n");
+      out.write("\t\t\t\t\t\t<table class=\"tab_editlist\" >\r\n");
+      out.write("\t\t\t\t\t\t\t<tr>\r\n");
+      out.write("\t\t\t\t\t\t\t\t<td class=\"edittd\">组件模板名称</td>\r\n");
+      out.write("\t\t\t\t\t\t\t\t<td><input type=\"text\" value=\"\" name=\"hometemplatesname\" data-options=\"required:true\" class=\"text easyui-validatebox \"></td>\r\n");
+      out.write("\t\t\t\t\t\t\t</tr>\r\n");
+      out.write("\t\t\t\t\t\t</table>\r\n");
+      out.write("\t\t\t\t\t</fieldset>\r\n");
+      out.write("\t\t\t\t\t\r\n");
+      out.write("\t\t\t\t\t<fieldset>\r\n");
+      out.write("\t\t\t\t\t\t<legend>选择组件</legend>\r\n");
+      out.write("\t\t\t\t\t\t\t<table class=\"tabview td_r\">\r\n");
+      out.write("\t\t\t\t\t\t\t\t<tr>\r\n");
+      out.write("\t\t\t\t\t\t\t\t\t<td>最近一个月客户纪念日 <input type=\"checkbox\"\r\n");
+      out.write("\t\t\t\t\t\t\t\t\t\tvalue=\"AccountMemdays\" name=\"stufftype\"></td>\r\n");
+      out.write("\t\t\t\t\t\t\t\t\t<td>应收款、应付款客户汇总 <input type=\"checkbox\"\r\n");
+      out.write("\t\t\t\t\t\t\t\t\t\tvalue=\"accountmoney\" name=\"stufftype\"></td>\r\n");
+      out.write("\t\t\t\t\t\t\t\t\t<td>公告 <input type=\"checkbox\" value=\"announcements\"\r\n");
+      out.write("\t\t\t\t\t\t\t\t\t\tname=\"stufftype\"></td>\r\n");
+      out.write("\t\t\t\t\t\t\t\t</tr>\r\n");
+      out.write("\t\t\t\t\t\t\t\t<tr>\r\n");
+      out.write("\t\t\t\t\t\t\t\t\t<td>易客CRM新闻 <input type=\"checkbox\" value=\"c3crm_news\"\r\n");
+      out.write("\t\t\t\t\t\t\t\t\t\tname=\"stufftype\"></td>\r\n");
+      out.write("\t\t\t\t\t\t\t\t\t<td>库存资产 <input type=\"checkbox\" value=\"cangkuassets\"\r\n");
+      out.write("\t\t\t\t\t\t\t\t\t\tname=\"stufftype\"></td>\r\n");
+      out.write("\t\t\t\t\t\t\t\t\t<td>公司最近6个月回款任务完成情况 <input type=\"checkbox\"\r\n");
+      out.write("\t\t\t\t\t\t\t\t\t\tvalue=\"com_gathersfinishedbymonth\" name=\"stufftype\"></td>\r\n");
+      out.write("\t\t\t\t\t\t\t\t</tr>\r\n");
+      out.write("\t\t\t\t\t\t\t\t<tr>\r\n");
+      out.write("\t\t\t\t\t\t\t\t\t<td>公司最近6个月销售任务完成情况 <input type=\"checkbox\"\r\n");
+      out.write("\t\t\t\t\t\t\t\t\t\tvalue=\"com_salesfinishedbymonth\" name=\"stufftype\"></td>\r\n");
+      out.write("\t\t\t\t\t\t\t\t\t<td>日/周/月报 <input type=\"checkbox\" value=\"datelogs\"\r\n");
+      out.write("\t\t\t\t\t\t\t\t\t\tname=\"stufftype\"></td>\r\n");
+      out.write("\t\t\t\t\t\t\t\t\t<td>费用报销（30天内） <input type=\"checkbox\"\r\n");
+      out.write("\t\t\t\t\t\t\t\t\t\tvalue=\"expensesmonth\" name=\"stufftype\"></td>\r\n");
+      out.write("\t\t\t\t\t\t\t\t</tr>\r\n");
+      out.write("\t\t\t\t\t\t\t\t<tr>\r\n");
+      out.write("\t\t\t\t\t\t\t\t\t<td>标签列表 <input type=\"checkbox\" value=\"free_tags\"\r\n");
+      out.write("\t\t\t\t\t\t\t\t\t\tname=\"stufftype\"></td>\r\n");
+      out.write("\t\t\t\t\t\t\t\t\t<td>公司应收款月度同比 <input type=\"checkbox\" value=\"gathersyear\"\r\n");
+      out.write("\t\t\t\t\t\t\t\t\t\tname=\"stufftype\"></td>\r\n");
+      out.write("\t\t\t\t\t\t\t\t\t<td>关键视图 <input type=\"checkbox\" value=\"key_customview\"\r\n");
+      out.write("\t\t\t\t\t\t\t\t\t\tname=\"stufftype\"></td>\r\n");
+      out.write("\t\t\t\t\t\t\t\t</tr>\r\n");
+      out.write("\t\t\t\t\t\t\t\t<tr>\r\n");
+      out.write("\t\t\t\t\t\t\t\t\t<td>记事本(双击内容进入编辑模式) <input type=\"checkbox\"\r\n");
+      out.write("\t\t\t\t\t\t\t\t\t\tvalue=\"note_pad\" name=\"stufftype\"></td>\r\n");
+      out.write("\t\t\t\t\t\t\t\t\t<td>过期未完成日程 <input type=\"checkbox\" value=\"notok_calendar\"\r\n");
+      out.write("\t\t\t\t\t\t\t\t\t\tname=\"stufftype\"></td>\r\n");
+      out.write("\t\t\t\t\t\t\t\t\t<td>在线用户 <input type=\"checkbox\" value=\"online_users\"\r\n");
+      out.write("\t\t\t\t\t\t\t\t\t\tname=\"stufftype\"></td>\r\n");
+      out.write("\t\t\t\t\t\t\t\t</tr>\r\n");
+      out.write("\t\t\t\t\t\t\t\t<tr>\r\n");
+      out.write("\t\t\t\t\t\t\t\t\t<td>销售漏斗 <input type=\"checkbox\" value=\"salesfunnels\"\r\n");
+      out.write("\t\t\t\t\t\t\t\t\t\tname=\"stufftype\"></td>\r\n");
+      out.write("\t\t\t\t\t\t\t\t\t<td>公司销售额月度同比 <input type=\"checkbox\" value=\"salesyear\"\r\n");
+      out.write("\t\t\t\t\t\t\t\t\t\tname=\"stufftype\"></td>\r\n");
+      out.write("\t\t\t\t\t\t\t\t\t<td>公司年度销售情况 <input type=\"checkbox\" value=\"salesyearinfo\"\r\n");
+      out.write("\t\t\t\t\t\t\t\t\t\tname=\"stufftype\"></td>\r\n");
+      out.write("\t\t\t\t\t\t\t\t</tr>\r\n");
+      out.write("\t\t\t\t\t\t\t\t<tr>\r\n");
+      out.write("\t\t\t\t\t\t\t\t\t<td>快捷方式 <input type=\"checkbox\" value=\"short_cuts\"\r\n");
+      out.write("\t\t\t\t\t\t\t\t\t\tname=\"stufftype\"></td>\r\n");
+      out.write("\t\t\t\t\t\t\t\t\t<td>下属本月销售数据 <input type=\"checkbox\"\r\n");
+      out.write("\t\t\t\t\t\t\t\t\t\tvalue=\"sub_performance\" name=\"stufftype\"></td>\r\n");
+      out.write("\t\t\t\t\t\t\t\t\t<td>今日待联系客户 <input type=\"checkbox\" value=\"today_account\"\r\n");
+      out.write("\t\t\t\t\t\t\t\t\t\tname=\"stufftype\"></td>\r\n");
+      out.write("\t\t\t\t\t\t\t\t</tr>\r\n");
+      out.write("\t\t\t\t\t\t\t\t<tr>\r\n");
+      out.write("\t\t\t\t\t\t\t\t\t<td>最近联系客户 <input type=\"checkbox\" value=\"top_account\"\r\n");
+      out.write("\t\t\t\t\t\t\t\t\t\tname=\"stufftype\"></td>\r\n");
+      out.write("\t\t\t\t\t\t\t\t\t<td>7天内日程 <input type=\"checkbox\" value=\"top_calendar\"\r\n");
+      out.write("\t\t\t\t\t\t\t\t\t\tname=\"stufftype\"></td>\r\n");
+      out.write("\t\t\t\t\t\t\t\t\t<td>30天内及过期应收款 <input type=\"checkbox\" value=\"top_gather\"\r\n");
+      out.write("\t\t\t\t\t\t\t\t\t\tname=\"stufftype\"></td>\r\n");
+      out.write("\t\t\t\t\t\t\t\t</tr>\r\n");
+      out.write("\t\t\t\t\t\t\t\t<tr>\r\n");
+      out.write("\t\t\t\t\t\t\t\t\t<td>最近联系记录 <input type=\"checkbox\" value=\"top_notes\"\r\n");
+      out.write("\t\t\t\t\t\t\t\t\t\tname=\"stufftype\"></td>\r\n");
+      out.write("\t\t\t\t\t\t\t\t\t<td>个人本月销售数据 <input type=\"checkbox\"\r\n");
+      out.write("\t\t\t\t\t\t\t\t\t\tvalue=\"top_performance\" name=\"stufftype\"></td>\r\n");
+      out.write("\t\t\t\t\t\t\t\t\t<td>金额较大的销售机会 <input type=\"checkbox\"\r\n");
+      out.write("\t\t\t\t\t\t\t\t\t\tvalue=\"top_potential\" name=\"stufftype\"></td>\r\n");
+      out.write("\t\t\t\t\t\t\t\t</tr>\r\n");
+      out.write("\t\t\t\t\t\t\t\t<tr>\r\n");
+      out.write("\t\t\t\t\t\t\t\t\t<td>最新报价 <input type=\"checkbox\" value=\"top_quote\"\r\n");
+      out.write("\t\t\t\t\t\t\t\t\t\tname=\"stufftype\"></td>\r\n");
+      out.write("\t\t\t\t\t\t\t\t\t<td>公司最近6个月销售情况 <input type=\"checkbox\"\r\n");
+      out.write("\t\t\t\t\t\t\t\t\t\tvalue=\"top_salesbymonth\" name=\"stufftype\"></td>\r\n");
+      out.write("\t\t\t\t\t\t\t\t\t<td>最新已审批合同订单 <input type=\"checkbox\"\r\n");
+      out.write("\t\t\t\t\t\t\t\t\t\tvalue=\"top_salesorder\" name=\"stufftype\"></td>\r\n");
+      out.write("\t\t\t\t\t\t\t\t</tr>\r\n");
+      out.write("\t\t\t\t\t\t\t\t<tr>\r\n");
+      out.write("\t\t\t\t\t\t\t\t\t<td>本人最近6个月销售情况 <input type=\"checkbox\"\r\n");
+      out.write("\t\t\t\t\t\t\t\t\t\tvalue=\"user_salesbymonth\" name=\"stufftype\"></td>\r\n");
+      out.write("\t\t\t\t\t\t\t\t\t<td>本人最近3个月销售任务完成情况 <input type=\"checkbox\"\r\n");
+      out.write("\t\t\t\t\t\t\t\t\t\tvalue=\"user_salesfinishedbymonth\" name=\"stufftype\"></td>\r\n");
+      out.write("\t\t\t\t\t\t\t\t\t<td></td>\r\n");
+      out.write("\t\t\t\t\t\t\t\t</tr>\r\n");
+      out.write("\t\t\t\t\t\t\t</table>\r\n");
+      out.write("\t\t\t\t\t\t</fieldset>\r\n");
+      out.write("\t\t\t\t\t\r\n");
+      out.write("\t\t\t\t\t<fieldset class=\"mgb_10\" >\r\n");
+      out.write("\t\t\t\t\t\t<legend>选择角色</legend>\r\n");
+      out.write("\t\t\t\t\t\t<table class=\"tabview td_r\" id=\"tab_role\">\r\n");
+      out.write("\t\t\t\t\t\t</table>\r\n");
+      out.write("\t\t\t\t\t</fieldset>\r\n");
+      out.write("\t\t\t\t\t\r\n");
+      out.write("\t\t\t\t</form>\r\n");
+      out.write("\t\t\t</div>\r\n");
+      out.write("\t\t\t<div region=\"south\" class=\"btnbar\" border=\"false\">\r\n");
+      out.write("\t\t\t<a class=\"easyui-linkbutton\" iconCls=\"icon-ok\"\r\n");
+      out.write("\t\t\t\thref=\"javascript:void(0)\" onclick=\"plugtempsSave()\">保存</a> <a\r\n");
+      out.write("\t\t\t\tclass=\"easyui-linkbutton\" iconCls=\"icon-cancel\"\r\n");
+      out.write("\t\t\t\thref=\"javascript:void(0)\" onclick=\"closeWin('win_plugtempsedit')\">取消</a>\r\n");
+      out.write("\t\t\t\t</div>\r\n");
+      out.write("\t\t</div>\r\n");
+      out.write("\t</div>\r\n");
       out.write("\t<div id=\"win_plugtemps\" class=\"easyui-window\" ");
-      out.print(win_bar_1 );
+      out.print(win_topbar );
       out.write("\r\n");
       out.write("\t\tstyle=\"width:700px; height: 432px;\">\r\n");
       out.write("\t\t<table id=\"plugtemps\"></table>\r\n");
@@ -447,11 +574,11 @@ String win_bar_1 = "resizable=\"false\"  closed=\"true\" modal=\"false\" collaps
     org.apache.taglibs.standard.tag.rt.core.ForEachTag _jspx_th_c_005fforEach_005f0 = (org.apache.taglibs.standard.tag.rt.core.ForEachTag) _005fjspx_005ftagPool_005fc_005fforEach_0026_005fvarStatus_005fvar_005fitems.get(org.apache.taglibs.standard.tag.rt.core.ForEachTag.class);
     _jspx_th_c_005fforEach_005f0.setPageContext(_jspx_page_context);
     _jspx_th_c_005fforEach_005f0.setParent(null);
-    // /WEB-INF/desktop.jsp(18,0) name = items type = java.lang.Object reqTime = true required = false fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
+    // /WEB-INF/desktop.jsp(17,0) name = items type = java.lang.Object reqTime = true required = false fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
     _jspx_th_c_005fforEach_005f0.setItems((java.lang.Object) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${stuffs}", java.lang.Object.class, (PageContext)_jspx_page_context, null, false));
-    // /WEB-INF/desktop.jsp(18,0) name = var type = java.lang.String reqTime = false required = false fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
+    // /WEB-INF/desktop.jsp(17,0) name = var type = java.lang.String reqTime = false required = false fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
     _jspx_th_c_005fforEach_005f0.setVar("stuff");
-    // /WEB-INF/desktop.jsp(18,0) name = varStatus type = java.lang.String reqTime = false required = false fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
+    // /WEB-INF/desktop.jsp(17,0) name = varStatus type = java.lang.String reqTime = false required = false fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
     _jspx_th_c_005fforEach_005f0.setVarStatus("vs");
     int[] _jspx_push_body_count_c_005fforEach_005f0 = new int[] { 0 };
     try {
@@ -489,11 +616,11 @@ String win_bar_1 = "resizable=\"false\"  closed=\"true\" modal=\"false\" collaps
     org.apache.taglibs.standard.tag.rt.core.ForEachTag _jspx_th_c_005fforEach_005f1 = (org.apache.taglibs.standard.tag.rt.core.ForEachTag) _005fjspx_005ftagPool_005fc_005fforEach_0026_005fvarStatus_005fvar_005fitems.get(org.apache.taglibs.standard.tag.rt.core.ForEachTag.class);
     _jspx_th_c_005fforEach_005f1.setPageContext(_jspx_page_context);
     _jspx_th_c_005fforEach_005f1.setParent(null);
-    // /WEB-INF/desktop.jsp(37,3) name = items type = java.lang.Object reqTime = true required = false fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
+    // /WEB-INF/desktop.jsp(162,3) name = items type = java.lang.Object reqTime = true required = false fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
     _jspx_th_c_005fforEach_005f1.setItems((java.lang.Object) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${stuffs}", java.lang.Object.class, (PageContext)_jspx_page_context, null, false));
-    // /WEB-INF/desktop.jsp(37,3) name = var type = java.lang.String reqTime = false required = false fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
+    // /WEB-INF/desktop.jsp(162,3) name = var type = java.lang.String reqTime = false required = false fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
     _jspx_th_c_005fforEach_005f1.setVar("stuff");
-    // /WEB-INF/desktop.jsp(37,3) name = varStatus type = java.lang.String reqTime = false required = false fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
+    // /WEB-INF/desktop.jsp(162,3) name = varStatus type = java.lang.String reqTime = false required = false fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
     _jspx_th_c_005fforEach_005f1.setVarStatus("vs");
     int[] _jspx_push_body_count_c_005fforEach_005f1 = new int[] { 0 };
     try {
@@ -533,7 +660,7 @@ String win_bar_1 = "resizable=\"false\"  closed=\"true\" modal=\"false\" collaps
     org.apache.taglibs.standard.tag.rt.core.IfTag _jspx_th_c_005fif_005f0 = (org.apache.taglibs.standard.tag.rt.core.IfTag) _005fjspx_005ftagPool_005fc_005fif_0026_005ftest.get(org.apache.taglibs.standard.tag.rt.core.IfTag.class);
     _jspx_th_c_005fif_005f0.setPageContext(_jspx_page_context);
     _jspx_th_c_005fif_005f0.setParent((javax.servlet.jsp.tagext.Tag) _jspx_th_c_005fforEach_005f1);
-    // /WEB-INF/desktop.jsp(38,3) name = test type = boolean reqTime = true required = true fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
+    // /WEB-INF/desktop.jsp(163,3) name = test type = boolean reqTime = true required = true fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
     _jspx_th_c_005fif_005f0.setTest(((java.lang.Boolean) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${vs.index%3==0 }", java.lang.Boolean.class, (PageContext)_jspx_page_context, null, false)).booleanValue());
     int _jspx_eval_c_005fif_005f0 = _jspx_th_c_005fif_005f0.doStartTag();
     if (_jspx_eval_c_005fif_005f0 != javax.servlet.jsp.tagext.Tag.SKIP_BODY) {
@@ -1067,11 +1194,11 @@ String win_bar_1 = "resizable=\"false\"  closed=\"true\" modal=\"false\" collaps
     org.apache.taglibs.standard.tag.rt.core.ForEachTag _jspx_th_c_005fforEach_005f2 = (org.apache.taglibs.standard.tag.rt.core.ForEachTag) _005fjspx_005ftagPool_005fc_005fforEach_0026_005fvarStatus_005fvar_005fitems.get(org.apache.taglibs.standard.tag.rt.core.ForEachTag.class);
     _jspx_th_c_005fforEach_005f2.setPageContext(_jspx_page_context);
     _jspx_th_c_005fforEach_005f2.setParent(null);
-    // /WEB-INF/desktop.jsp(46,3) name = items type = java.lang.Object reqTime = true required = false fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
+    // /WEB-INF/desktop.jsp(171,3) name = items type = java.lang.Object reqTime = true required = false fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
     _jspx_th_c_005fforEach_005f2.setItems((java.lang.Object) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${stuffs}", java.lang.Object.class, (PageContext)_jspx_page_context, null, false));
-    // /WEB-INF/desktop.jsp(46,3) name = var type = java.lang.String reqTime = false required = false fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
+    // /WEB-INF/desktop.jsp(171,3) name = var type = java.lang.String reqTime = false required = false fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
     _jspx_th_c_005fforEach_005f2.setVar("stuff");
-    // /WEB-INF/desktop.jsp(46,3) name = varStatus type = java.lang.String reqTime = false required = false fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
+    // /WEB-INF/desktop.jsp(171,3) name = varStatus type = java.lang.String reqTime = false required = false fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
     _jspx_th_c_005fforEach_005f2.setVarStatus("vs");
     int[] _jspx_push_body_count_c_005fforEach_005f2 = new int[] { 0 };
     try {
@@ -1111,7 +1238,7 @@ String win_bar_1 = "resizable=\"false\"  closed=\"true\" modal=\"false\" collaps
     org.apache.taglibs.standard.tag.rt.core.IfTag _jspx_th_c_005fif_005f1 = (org.apache.taglibs.standard.tag.rt.core.IfTag) _005fjspx_005ftagPool_005fc_005fif_0026_005ftest.get(org.apache.taglibs.standard.tag.rt.core.IfTag.class);
     _jspx_th_c_005fif_005f1.setPageContext(_jspx_page_context);
     _jspx_th_c_005fif_005f1.setParent((javax.servlet.jsp.tagext.Tag) _jspx_th_c_005fforEach_005f2);
-    // /WEB-INF/desktop.jsp(47,3) name = test type = boolean reqTime = true required = true fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
+    // /WEB-INF/desktop.jsp(172,3) name = test type = boolean reqTime = true required = true fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
     _jspx_th_c_005fif_005f1.setTest(((java.lang.Boolean) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${(vs.index+2)%3==0 }", java.lang.Boolean.class, (PageContext)_jspx_page_context, null, false)).booleanValue());
     int _jspx_eval_c_005fif_005f1 = _jspx_th_c_005fif_005f1.doStartTag();
     if (_jspx_eval_c_005fif_005f1 != javax.servlet.jsp.tagext.Tag.SKIP_BODY) {
@@ -1645,11 +1772,11 @@ String win_bar_1 = "resizable=\"false\"  closed=\"true\" modal=\"false\" collaps
     org.apache.taglibs.standard.tag.rt.core.ForEachTag _jspx_th_c_005fforEach_005f3 = (org.apache.taglibs.standard.tag.rt.core.ForEachTag) _005fjspx_005ftagPool_005fc_005fforEach_0026_005fvarStatus_005fvar_005fitems.get(org.apache.taglibs.standard.tag.rt.core.ForEachTag.class);
     _jspx_th_c_005fforEach_005f3.setPageContext(_jspx_page_context);
     _jspx_th_c_005fforEach_005f3.setParent(null);
-    // /WEB-INF/desktop.jsp(55,3) name = items type = java.lang.Object reqTime = true required = false fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
+    // /WEB-INF/desktop.jsp(180,3) name = items type = java.lang.Object reqTime = true required = false fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
     _jspx_th_c_005fforEach_005f3.setItems((java.lang.Object) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${stuffs}", java.lang.Object.class, (PageContext)_jspx_page_context, null, false));
-    // /WEB-INF/desktop.jsp(55,3) name = var type = java.lang.String reqTime = false required = false fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
+    // /WEB-INF/desktop.jsp(180,3) name = var type = java.lang.String reqTime = false required = false fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
     _jspx_th_c_005fforEach_005f3.setVar("stuff");
-    // /WEB-INF/desktop.jsp(55,3) name = varStatus type = java.lang.String reqTime = false required = false fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
+    // /WEB-INF/desktop.jsp(180,3) name = varStatus type = java.lang.String reqTime = false required = false fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
     _jspx_th_c_005fforEach_005f3.setVarStatus("vs");
     int[] _jspx_push_body_count_c_005fforEach_005f3 = new int[] { 0 };
     try {
@@ -1689,7 +1816,7 @@ String win_bar_1 = "resizable=\"false\"  closed=\"true\" modal=\"false\" collaps
     org.apache.taglibs.standard.tag.rt.core.IfTag _jspx_th_c_005fif_005f2 = (org.apache.taglibs.standard.tag.rt.core.IfTag) _005fjspx_005ftagPool_005fc_005fif_0026_005ftest.get(org.apache.taglibs.standard.tag.rt.core.IfTag.class);
     _jspx_th_c_005fif_005f2.setPageContext(_jspx_page_context);
     _jspx_th_c_005fif_005f2.setParent((javax.servlet.jsp.tagext.Tag) _jspx_th_c_005fforEach_005f3);
-    // /WEB-INF/desktop.jsp(56,3) name = test type = boolean reqTime = true required = true fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
+    // /WEB-INF/desktop.jsp(181,3) name = test type = boolean reqTime = true required = true fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
     _jspx_th_c_005fif_005f2.setTest(((java.lang.Boolean) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${(vs.index+1)%3==0 }", java.lang.Boolean.class, (PageContext)_jspx_page_context, null, false)).booleanValue());
     int _jspx_eval_c_005fif_005f2 = _jspx_th_c_005fif_005f2.doStartTag();
     if (_jspx_eval_c_005fif_005f2 != javax.servlet.jsp.tagext.Tag.SKIP_BODY) {

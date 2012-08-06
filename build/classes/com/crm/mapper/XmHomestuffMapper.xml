@@ -109,4 +109,10 @@
   <select id="getDefaultStuff" resultMap="BaseResultMap" >
   	SELECT * from xm_homedefault order by stuffsequence 
   </select>
+  <select id="getByStuffId" resultMap="BaseResultMap" >
+  select * from xm_homestuff where stuffid = #{hometemplatesid} order by stuffsequence desc ;
+  </select>
+  <delete id="deleteByStuffId" >
+  	delete from xm_homestuff where stuffid = #{hometemplatesid}
+  </delete>
 </mapper>

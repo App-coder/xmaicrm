@@ -26,5 +26,9 @@ public interface XmRoleMapper {
 	List<XmRole> getAll();
 
 	XmRole getUserRole(@Param("id") Integer id);
+
+	List<XmRole> getRolesWithoutTemplates();
+
+	List<XmRole> getTemplatesRelRole(@Param("hometemplatesid") int hometemplatesid);
 	
 }

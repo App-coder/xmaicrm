@@ -9,6 +9,7 @@
     <result column="createdtime" property="createdtime" jdbcType="TIMESTAMP" />
     <result column="modifiedtime" property="modifiedtime" jdbcType="TIMESTAMP" />
     <result column="deleted" property="deleted" jdbcType="INTEGER" />
+    <result column="modifieuser" property="modifieuser" jdbcType="VARCHAR" />
   </resultMap>
   <sql id="Base_Column_List" >
     hometemplatesid, hometemplatesname, smcreatorid, modifiedby, createdtime, modifiedtime, 
@@ -117,5 +118,14 @@
   </update>
   <select id="getStuffId" resultType="String" >
   	select xm_hometemplates.hometemplatesid from xm_hometemplates inner join xm_hometemplatesrole on xm_hometemplatesrole.hometemplatesid = xm_hometemplates.hometemplatesid where xm_hometemplates.deleted = 0 and xm_hometemplatesrole.roleid = #{role} 
+  </select>
+  <select id="getTotal" resultType="Integer">
+  	select count(xm_hometemplates.hometemplatesid) from xm_hometemplates where xm_hometemplates.deleted = 0 
+  </select>
+  <select id="loadlist" resultMap="BaseResultMap">
+  	select xm_hometemplates.*,xm_users.user_name as modifieuser from xm_hometemplates left JOIN xm_users on xm_hometemplates.modifiedby = xm_users.id where xm_hometemplates.deleted = 0  limit #{start},#{rows}
+  </select>
+  <select id="getById" resultMap="BaseResultMap" >
+  	select * from xm_hometemplates where hometemplatesid = #{hometemplatesid}
   </select>
 </mapper>

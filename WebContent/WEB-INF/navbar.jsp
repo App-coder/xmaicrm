@@ -122,6 +122,9 @@
 	<c:when test="${pathname=='帐号&设置' }">
 		<a href="${url }">帐号&设置</a>
 	</c:when>
+	<c:when test="${pathname=='组件模版预览' }">
+		组件模版预览&gt;<a href="${url }">模版：${pArgs }</a>&gt;<a href="crm/module/home/index">返回工作台</a>
+	</c:when>
 	<c:otherwise>
 		导航设置不正确！
 	</c:otherwise>

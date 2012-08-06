@@ -8,4 +8,8 @@ public interface XmRoleService {
 
 	List<XmRole> loadAll();
 
+	List<XmRole> getRolesWithoutTemplates();
+
+	List<XmRole> getTemplatesRelRole(int hometemplatesid);
+
 }
