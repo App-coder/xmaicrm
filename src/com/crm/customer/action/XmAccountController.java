@@ -21,28 +21,10 @@ import com.crm.service.XmCustomViewService;
 @Controller
 @RequestMapping(value = "account")
 public class XmAccountController extends BaseController{
-	ModuleUtil moduleUtil;
-	@Resource(name="moduleUtil")
-	public void setModuleUtil(ModuleUtil moduleUtil) {
-		this.moduleUtil = moduleUtil;
-	}
-	
-	XmCustomViewService xmCustomViewService;
-	@Resource(name="xmCustomViewService")
-	public void setXmCustomViewService(XmCustomViewService xmCustomViewService) {
-		this.xmCustomViewService = xmCustomViewService;
-	}
-	
 	XmAccountService xmAccountService;
 	@Resource(name="xmAccountService")
 	public void setXmAccountService(XmAccountService xmAccountService) {
 		this.xmAccountService = xmAccountService;
-	}
-	
-	@RequestMapping(value = "/index", method = RequestMethod.GET)
-	public String index(ModelMap modelMap){
-		this.moduleUtil.setViewProp(modelMap,"Accounts");
-		return "customer/account";
 	}
 	
 	

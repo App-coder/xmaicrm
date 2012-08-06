@@ -22,31 +22,11 @@ import com.crm.service.XmCustomViewService;
 @RequestMapping(value = "tuihuos")
 public class XmTuihuosController extends BaseController {
 	
-	ModuleUtil moduleUtil;
-	@Resource(name="moduleUtil")
-	public void setModuleUtil(ModuleUtil moduleUtil) {
-		this.moduleUtil = moduleUtil;
-	}
-
-	XmCustomViewService xmCustomViewService;
-	@Resource(name="xmCustomViewService")
-	public void setXmCustomViewService(XmCustomViewService xmCustomViewService) {
-		this.xmCustomViewService = xmCustomViewService;
-	}
-	
 	XmTuihuosService xmTuihuosService;
 	@Resource(name="xmTuihuosService")
 	public void setXmTuihuosService(XmTuihuosService xmTuihuosService) {
 		this.xmTuihuosService = xmTuihuosService;
 	}
-	
-	@RequestMapping(value = "/index", method = RequestMethod.GET)
-	public String index(ModelMap modelMap){
-		this.moduleUtil.setViewProp(modelMap,"Tuihuos");
-		return "potential/tuihuos";
-	}
-	
-	
 	
 	
 }

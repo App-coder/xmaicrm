@@ -20,15 +20,4 @@ import com.crm.action.util.ModuleUtil;
 @Controller
 @RequestMapping(value = "forthamounts")
 public class XmForthamountsController extends BaseController {
-	ModuleUtil moduleUtil;
-	@Resource(name="moduleUtil")
-	public void setModuleUtil(ModuleUtil moduleUtil) {
-		this.moduleUtil = moduleUtil;
-	}
-	
-	@RequestMapping(value = "/index", method = RequestMethod.GET)
-	public String index(ModelMap modelMap){
-		this.moduleUtil.setViewProp(modelMap,"Gathers");
-		return "financial/forthamounts";
-	}
 }

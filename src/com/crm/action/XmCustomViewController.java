@@ -670,9 +670,9 @@ public class XmCustomViewController extends BaseController {
 	 */
 	@RequestMapping(value = "/viewIndex", method = RequestMethod.GET)
 	public String viewIndex(String entitytype,ModelMap modelMap){
-		this.moduleUtil.setViewProp(modelMap,entitytype);
-		XmEntityname entityname = CustomViewUtil.getEntitynameByET(entitytype);
 		XmTab tab = CustomViewUtil.getTabByName(entitytype);
+		this.moduleUtil.setViewProp(modelMap,entitytype,tab);
+		XmEntityname entityname = CustomViewUtil.getEntitynameByET(entitytype);
 		modelMap.addAttribute("tab",tab);
 		modelMap.addAttribute("viewid",entityname.getEntityidfield());
 		modelMap.addAttribute("entitytype",entitytype);

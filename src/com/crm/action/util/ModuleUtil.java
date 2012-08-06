@@ -55,7 +55,7 @@ public class ModuleUtil extends BaseController{
 	 * @param modelMap
 	 * @param tabname 表名
 	 */
-	public void setViewProp(ModelMap modelMap,String tabname){
+	public void setViewProp(ModelMap modelMap,String tabname,XmTab current){
 		//得到默认的view
 		XmCustomview customview = this.xmCustomViewService.selectByPrimaryKey(tabname,-1);
 		try {
@@ -103,6 +103,25 @@ public class ModuleUtil extends BaseController{
 			uf.setFieldlabel("负责人");
 			repfields.add(uf);
 		}
+		
+		if(repfields.size()>=1){
+			List<XmField> reportitems = xmFieldService.getReportItems(current.getTabid());
+			StringBuffer sb = new StringBuffer();
+			sb.append("<option value=\"count\" >记录数</option>");
+			for(int i=0;i<reportitems.size();i++){
+				String fieldtype = reportitems.get(i).getTypeofdata().substring(0,reportitems.get(i).getTypeofdata().indexOf("~"));
+				Boolean isid = reportitems.get(i).getColumnname().substring(reportitems.get(i).getColumnname().length()-2).equals("id");
+				if(!fieldtype.equals("V") && !isid &&!(fieldtype.equals("D"))){
+					if ( !(fieldtype.equals("N")) || !( fieldtype.equals("NN") ) ){
+						String item = "{\"fieldlabel\":\""+reportitems.get(i).getFieldlabel()+"\",\"fieldname\":\""+reportitems.get(i).getFieldname()+"\",\"fieldtablename\":\""+reportitems.get(i).getTablename()+"\",\"fieldcolname\":\""+reportitems.get(i).getColumnname()+"\"}";
+						sb.append("<option value=\""+item+"\" >"+reportitems.get(i).getFieldlabel()+"</option>");
+					}
+				}
+			}
+			modelMap.addAttribute("reportoptions",sb.toString());
+		}
+		
+		
 		modelMap.addAttribute("repfields",repfields);
 	}
 }

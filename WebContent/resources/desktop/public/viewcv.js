@@ -55,13 +55,18 @@ function init(){
 }
 function viewSearchReport(){
     var reportcolumn= $("#reportselect").find("option:selected").attr("value");
-    $("select[name=graphtype]").attr("selected","selected");
+    var reporttext = $("#reportselect").find("option:selected").text();
     var objparam = $.parseJSON(reportcolumn);
-    
-    //生成报表视图
-    $.post('field/getReportItems',{tabid:tabid},function(data){
-	$("select[name=grouptype]").html(data);
-	$("#winreport").window("open");
-    },'html');
+    //${tab.tablabel }-分布统计
+    $("#winreport").window({
+	title:tablabel+"-"+reporttext+"-分布统计",
+	onOpen:function(){
+	    //将选项设置为第一个
+	    $("select[name=graphtype]").find("option:first").attr("selected","selected");
+	    $("select[name=grouptype]").find("option:first").attr("selected","selected");
+	    
+	}
+    });
+    $("#winreport").window("open");
     
 }

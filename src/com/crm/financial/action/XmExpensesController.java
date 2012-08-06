@@ -34,46 +34,4 @@ public class XmExpensesController extends BaseController {
 		this.xmExpensesService = xmExpensesService;
 	}
 
-	ModuleUtil moduleUtil;
-	@Resource(name="moduleUtil")
-	public void setModuleUtil(ModuleUtil moduleUtil) {
-		this.moduleUtil = moduleUtil;
-	}
-	
-	XmCustomViewService xmCustomViewService;
-	@Resource(name="xmCustomViewService")
-	public void setXmCustomViewService(XmCustomViewService xmCustomViewService) {
-		this.xmCustomViewService = xmCustomViewService;
-	}
-	
-	@RequestMapping(value = "/index", method = RequestMethod.GET)
-	public String index(ModelMap modelMap){
-		this.moduleUtil.setViewProp(modelMap,"Expenses");
-		return "financial/expenses";
-	}
-	
-	/**
-	 * 根据视图ID返回对应的JSON
-	 * 
-	 * @param page 页数
-	 * @param rows 行数
-	 * @param viewid 视图ID
-	 * @return
-	 */
-	@RequestMapping(value = "/renderView", method = RequestMethod.POST)
-	@ResponseBody
-	public String renderView(int page,int rows,String entitytype,int viewid){
-		
-		XmCustomview customview = this.xmCustomViewService.selectByPrimaryKey(entitytype,viewid);
-		
-		int total = this.xmExpensesService.getTotal(viewid);
-		List<XmExpenses> ls = this.xmExpensesService.loadList(page,rows,viewid);
-		
-		ListBean list = new ListBean();
-		list.setRows(ls);
-		list.setTotal(total);
-		return objToJson(list);
-	}
-	
-	
 }

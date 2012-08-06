@@ -22,6 +22,7 @@ var entitytype = '${entitytype}';
 var viewtab = entitytype.toLowerCase();
 var viewid = '${viewid}';
 var tabid = ${tab.tabid};
+var tablabel = '${tab.tablabel}';
 </script>
 <script type="text/javascript" src="resources/desktop/public/viewcv.js"></script>
 
@@ -29,8 +30,8 @@ var tabid = ${tab.tabid};
 <body id="wrap">
 <%@ include file="../nav.jsp"%>
 <div class="hidden">
-	<div id="winreport"
-		title="${tab.tablabel }-分布统计" class="easyui-window" <%=win_topbar %>
+<c:if test="${repfields!=null }">
+	<div id="winreport" class="easyui-window" <%=win_topbar %>
 		style="width:700px; height: 500px;">
 		<div class="wtop">
 			显示类型：<select name="graphtype" class="text">
@@ -40,6 +41,7 @@ var tabid = ${tab.tabid};
 				<option value="Pie3D">3D饼图</option>
 				<option value="Pie2D">2D饼图</option>
 			</select>&nbsp;&nbsp;统计项目：<select name="grouptype" class="text">
+			${reportoptions }
 			</select>&nbsp;&nbsp;<a href="#" iconCls="icon-view" class="easyui-linkbutton">预览</a>
 		</div>
 		<div class="easyui-tabs">
@@ -49,7 +51,11 @@ var tabid = ${tab.tabid};
 			<div title="报表数据" class="p10">tab2</div>
 		</div>
 	</div>
-	<div class="div_stat div_statdemo"> <span class="stat_name"></span>：<span class="stat_num"></span></div>
+</c:if>	
+
+<!-- 合并记录的demo的html -->	
+<div class="div_stat div_statdemo"> <span class="stat_name"></span>：<span class="stat_num"></span></div>
+	
 </div>
 <div id="main">
 <div class="path"><a href="/">市场管理</a>&gt;<a href="/sc/">营销活动</a></div>
