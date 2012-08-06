@@ -11,6 +11,7 @@ var pathname = "工作台";
 <!-- portal页面的引用 -->
 <link rel="stylesheet" type="text/css" href="resources/plugins/portal/portal.css">
 <script type="text/javascript" src="resources/plugins/portal/jquery.portal.js"></script>
+<script type="text/javascript" src="resources/lib/json2.js"></script>
 <script type="text/javascript" src="resources/desktop/desktop.js"></script>
 <link rel="stylesheet" type="text/css" href="resources/portlets.css">
 
@@ -21,6 +22,21 @@ var pathname = "工作台";
 </head>
 <body id="wrap">
 <div class="hidden" >
+	<div id="win_cfgorder" class="easyui-window" <%=win_topbar %>
+		style="width:600px; height: 370px;"  >
+		<div class="easyui-layout" data-options="fit:true,border:false">
+				<div data-options="region:'center',border:false"  >
+					<table id="tab_templatestuff"></table>
+				</div>
+				<div region="south" class="btnbar" border="false">
+					<a class="easyui-linkbutton" iconCls="icon-ok"
+						href="javascript:void(0)" onclick="cfgStuffOrder()">保存</a> <a
+						class="easyui-linkbutton" iconCls="icon-cancel"
+						href="javascript:void(0)" onclick="closeWin('win_cfgorder')">取消</a>
+				</div>
+		</div>
+	</div>
+	
 	<div id="win_plugtempsedit" class="easyui-window" <%=win_topbar %>
 		style="width:800px; height: 494px;" >
 		<div class="easyui-layout" data-options="fit:true,border:false">
@@ -50,7 +66,7 @@ var pathname = "工作台";
 										name="stufftype"></td>
 								</tr>
 								<tr>
-									<td>易客CRM新闻 <input type="checkbox" value="c3crm_news"
+									<td>新麦CRM新闻 <input type="checkbox" value="c3crm_news"
 										name="stufftype"></td>
 									<td>库存资产 <input type="checkbox" value="cangkuassets"
 										name="stufftype"></td>

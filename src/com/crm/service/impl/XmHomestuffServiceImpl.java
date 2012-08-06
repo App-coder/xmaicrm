@@ -66,6 +66,11 @@ public class XmHomestuffServiceImpl implements XmHomestuffService {
 		return this.xmHomestuffMapper.deleteByStuffId(hometemplatesid);
 	}
 
+	@Override
+	public int changeSeq(XmHomestuff xmHomestuff) {
+		return this.xmHomestuffMapper.changeSeq(xmHomestuff);
+	}
+
 	
 	
 }

@@ -14,4 +14,6 @@ public interface XmHomestuffService {
 
 	int deleteByStuffId(int hometemplatesid);
 
+	int changeSeq(XmHomestuff xmHomestuff);
+
 }

@@ -139,6 +139,7 @@ public class XmHometemplatesController {
 			this.xmHomestuffService.deleteByStuffId(hometemplatesid);
 			for(int i=0;i<stuffs.size();i++){
 				XmHomestuff stuff = new XmHomestuff();
+				stuff.setStuffid(hometemplatesid);
 				stuff.setStuffsequence(i);
 				stuff.setStufftitle(stuffs.get(i).getStufftitle());
 				stuff.setStufftype(stuffs.get(i).getStufftype());
@@ -230,19 +231,77 @@ public class XmHometemplatesController {
 	 * @param hometemplatesid 组件模版ID
 	 * @return
 	 */
+	@RequestMapping(value = "/getHometemplates", method = RequestMethod.GET)
+	@ResponseBody
 	public String getHometemplates(int hometemplatesid){
 		XmHometemplates hometemplates = this.xmHometemplatesService.getById(hometemplatesid);
 		List<XmHomestuff> homestuffs = this.xmHomestuffService.getByStuffId(hometemplatesid);
 		List<XmHometemplatesrole> templatesrole = this.xmHometemplatesroleService.getByHometemplatesid(hometemplatesid);
 		List<XmRole> relroles = this.xmRoleService.getTemplatesRelRole(hometemplatesid);
 		
+		//重新组织ROLE
+		for(int i=0;i<relroles.size();i++){
+			relroles.get(i).setRelTemplate(setRel(relroles.get(i), templatesrole));
+		}
+		
 		Hometemplates templates = new Hometemplates();
 		templates.setHomestuffs(homestuffs);
-		templates.setHometemplatesroles(templatesrole);
 		templates.setRelRoles(relroles);
+		templates.setHometemplatesroles(templatesrole);
 		templates.setXmHometemplates(hometemplates);
 		
 		return JSON.toJSONString(templates);
 	}
+	
+	public Boolean setRel(XmRole role,List<XmHometemplatesrole> templaterole){
+		Boolean rel = false;
+		for(int i=0;i<templaterole.size();i++){
+			if(role.getRoleid().equals(templaterole.get(i).getRoleid())){
+				rel = true;
+				break;
+			}
+		}
+		return rel;
+	}
+	
+	/**
+	 * 得到组件模版的组件
+	 * 
+	 * @param hometemplatesid
+	 * @return
+	 */
+	@RequestMapping(value = "/getStuff", method = RequestMethod.POST)
+	@ResponseBody
+	public String getStuff(int hometemplatesid){
+		List<XmHomestuff> stuffs = this.xmHomestuffService.getByStuffId(hometemplatesid);
+		ListBean bean = new ListBean();
+		bean.setRows(stuffs);
+		bean.setTotal(stuffs.size());
+		return JSON.toJSONString(bean);
+	}
+	
+	@RequestMapping(value = "/changeStuffOrder", method = RequestMethod.POST)
+	@ResponseBody
+	public String changeStuffOrder(String changerows){
+		
+		Message msg = new Message();
+		
+		List<XmHomestuff> stuffs = JsonUtil.getList4Json(changerows, XmHomestuff.class);
+		if(stuffs.size()>0){
+			
+			for(int i=0;i<stuffs.size();i++){
+				this.xmHomestuffService.changeSeq(stuffs.get(i));
+			}
+			
+			msg.setType(true);
+			msg.setMessage("序列修改成功！");
+		}else{
+			msg.setType(false);
+			msg.setMessage("没有改变的行！");
+		}
+		
+		return JSON.toJSONString(msg);
+	}
+	
 	
 }

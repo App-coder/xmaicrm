@@ -25,4 +25,6 @@ public interface XmHomestuffMapper {
 	List<XmHomestuff> getByStuffId(@Param("hometemplatesid") int hometemplatesid);
 
 	int deleteByStuffId(@Param("hometemplatesid") int hometemplatesid);
+
+	int changeSeq(XmHomestuff xmHomestuff);
 }

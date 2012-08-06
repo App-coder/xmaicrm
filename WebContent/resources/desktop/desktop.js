@@ -1,3 +1,4 @@
+var lastIndex;
 $(function() {
     initPage();
 });
@@ -112,12 +113,42 @@ function initTempGrid(){
 			    
 			    var hometemplatesid = selected.hometemplatesid;
 			    $("#form_plugtempsedit").find("input[name=hometemplatesid]").val(hometemplatesid);
-			    $("#form_plugtempsedit").find("input[name=hometemplatesname]").val(hometemplatesname);
+			    $("#form_plugtempsedit").find("input[name=hometemplatesname]").val(selected.hometemplatesname);
 			    
-			    
-			    
-			    
-			    
+			    //加载数据
+			    var trs = "<tr>";
+			    $.get('crm/hometemplates/getHometemplates',{hometemplatesid:hometemplatesid},function(res){
+				   for(var i=0;i<res.relRoles.length;i++){
+				       	var ck = "";
+				       	if(res.relRoles[i].relTemplate == true){
+				       	    ck = "checked=\"checked\"";
+				       	}
+					if(i==0){
+					    trs += "<td width=\"33%\">"+res.relRoles[i].rolename+"<input type=\"checkbox\" "+ck+" name=\"roleid\" value=\""+res.relRoles[i].roleid+"\" /></td>";
+					}else if(i%3==0 && i<res.length-1){
+					    trs += "</tr>"
+					    trs += "<tr>";
+					}else{
+					    trs += "<td width=\"33%\">"+res.relRoles[i].rolename+"<input type=\"checkbox\" "+ck+" name=\"roleid\" value=\""+res.relRoles[i].roleid+"\" /></td>"
+					}
+					
+					if(i==res.length-1){
+					    var re = (i+1)%3;
+					    for(var j=1;j<re;j++){
+						trs +="<td width=\"33%\"></td>";
+					    }
+					    trs +="</tr>";
+					}
+				    }
+				    $("#tab_role").html("");
+				    $("#tab_role").append(trs);
+				    
+				    //设置组件模版的选中
+				    var homestuffs = res.homestuffs;
+				    for(var i=0;i<homestuffs.length;i++){
+					$("#form_plugtempsedit").find("input[type=checkbox][value='"+homestuffs[i].stufftype+"']").attr("checked","checked");
+				    }
+			    },'json');
 			}
 		    });
 		    $("#win_plugtempsedit").window("open");
@@ -159,15 +190,72 @@ function initTempGrid(){
 	    text : '设置排序',
 	    iconCls:'icon-tool',
 	    handler : function() {
-		
+		var selected = $('#plugtemps').datagrid('getSelected');
+		if (selected) {
+		    $("#win_cfgorder").window({
+			title:"设置组件排序",
+			onOpen:function(){
+			    //初始化tab
+			    var cols = [ {
+				field : 'stufftitle',
+				title : '组件名称'
+			    },{
+				field : 'stuffsequence',
+				title : '序列',
+				editor:{type:'numberbox',options:{precision:0}}
+			    }];
+			    cols = setDefWidth(cols, 80);
+			    $('#tab_templatestuff').datagrid({
+				url:'crm/hometemplates/getStuff',
+				collapsible : false,
+				idField : 'stufftype',
+				singleSelect : true,
+				rownumbers : true,
+				fitColumns:true,
+				pagination : false,
+				fit:true,
+				border:false,
+				queryParams:{hometemplatesid:selected.hometemplatesid},
+				frozenColumns : [[{
+					field : 'ck',
+					checkbox : true
+				}]],
+				columns : [cols],
+				onClickRow:function(rowIndex){
+					if (lastIndex != rowIndex){
+						$('#tab_templatestuff').datagrid('endEdit', lastIndex);
+						$('#tab_templatestuff').datagrid('beginEdit', rowIndex);
+					}
+					lastIndex = rowIndex;
+				}
+			      });
+			}
+		    });
+		    $("#win_cfgorder").window("open");
+		} else {
+		    message('请选择一行！');
+		}		
 	    }
 	}],
 	frozenColumns : [[{
 		field : 'ck',
 		checkbox : true
 	}]],
-	columns : [ cols ],
+	columns : [ cols ]
     });
+}
+//设置模版组件排序
+function cfgStuffOrder(){
+    $('#tab_templatestuff').datagrid('endEdit', lastIndex);
+   
+    //得到改变的行，对改变的行进行处理。
+    var changerows = $('#tab_templatestuff').datagrid('getChanges');
+    
+    $.post('crm/hometemplates/changeStuffOrder',{changerows:JSON.stringify(changerows)},function(res){
+	if(res.type == true){
+	    closeWin('win_cfgorder');
+	}
+    },'json');
 }
 function plugtempsSave(){
     $('#form_plugtempsedit').form('submit', {
@@ -189,7 +277,7 @@ function plugtempsSave(){
         	stufftypes.push({stufftype:$(ck_stufftypes[i]).val(),stufftitle:$(ck_stufftypes[i]).closest("td").text().Trim()});
             }
             
-            $("#form_plugtempsedit").find("input[name=templatesstuffs]").val(obj2str(stufftypes));
+            $("#form_plugtempsedit").find("input[name=templatesstuffs]").val(JSON.stringify(stufftypes));
             
             var ck_roleid = $("#form_plugtempsedit").find("input[name=roleid]:checked");
             if(ck_roleid.length<=0){
