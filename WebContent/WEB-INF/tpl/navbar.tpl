@@ -1,12 +1,12 @@
 <div class="headerNav"  >
 		<a class="logo"></a>
 		<ul class="nav">
-			<li><a>手机短信</a></li>
-			<li><a>我的审批中心</a></li>
-			<li><a>自定义提醒</a></li>
-			<li><a>我要提问</a></li>
-			<li><a>帐号&设置</a></li>
-			<li><a>退出（BOSS）</a></li>
+			<li><a href="javascript:msgWind()">手机短信</a></li>
+			<li><a href="javascript:approveWind()">我的审批中心</a></li>
+			<li><a href="javascript:remindWind()">自定义提醒</a></li>
+			<li><a href="http://www.x-mai.com" target="_blank" >我要提问</a></li>
+			<li><a href="crm/role/config">帐号&设置</a></li>
+			<li><a href="crm/welcome/loginout">退出（BOSS）</a></li>
 		</ul>
 </div>	
 <div id="nav_div">

@@ -23,7 +23,8 @@ var pathname = "登入历史";
     	</c:forEach>
     </select>
 </div> 
- 
+<table class="midtab" id="midtab" >
+</table>
 </div>
 <%@ include file="../../foot.jsp"%>
 </body>

@@ -7,8 +7,12 @@ body > #wrap {height: auto; min-height: 100%;}
 body{margin:0px;padding:0px;}
 body, input, button, select, textarea{font: Tahoma,'Microsoft Yahei','Simsun'}
 
-/*textarea{ resize: none;} */
-
+textarea{ resize: none;}
+red{color:red;}
+.fr{float:right;}
+.fl{float:left;}
+.tac{text-align: center;}
+.tar{text-align:right;}
 a{cursor: pointer;text-decoration: none;color:#000;}
 .a:hover{}
 .a:link{color:#27A5E1;text-decoration: underline;}
@@ -51,6 +55,7 @@ table .tb_list td.righttd{padding-left:10px;}
 .mgb_10{margin-bottom: 10px;}
 .mgt_10{margin-top: 10px;}
 .mgl_10{margin-left: 10px;}
+.mgb_5{margin-bottom:5px;}
 
 .tab_form{width:100%;font:12px/1.5 Tahoma,'Microsoft Yahei','Simsun';}
 .tab_form .edittd{width:110px;text-align: right;padding-right:10px;}
@@ -60,6 +65,8 @@ table .tb_list td.righttd{padding-left:10px;}
 .tab_form input.text2,.tab_form select.text2{width:250px;border:1px solid #D2D2D2;height: 20px;}
 .tab_form input.text3,.tab_form select.text3{width:90%;margin-right: 10px;border:1px solid #D2D2D2;height: 20px;}
 .tab_form textarea{width:90%;border:1px solid #D2D2D2;}
+.midtab{width:100%;font:12px/1.5 Tahoma,'Microsoft Yahei','Simsun';}
+.midtab tr td{height:25px;text-align: left;line-height:25px;padding-left:10px;}
 .tab_editlist{width:100%;font:12px/1.5 Tahoma,'Microsoft Yahei','Simsun';}
 .tab_editlist input.text,.tab_editlist select.text{width:250px;margin-right: 10px;border:1px solid #D2D2D2;height: 20px;}
 .tab_editlist .edittd{width:15%;padding-left:10px;}
@@ -207,3 +214,5 @@ fieldset legend{color:#15428B;}
 .tabauth tr td{height: 26px;text-align: center;}
 
 .must{color:red;margin-left:4px;}
+
+.pl_container{border:1px solid #99BBE8;}

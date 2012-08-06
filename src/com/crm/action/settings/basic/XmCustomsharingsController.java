@@ -52,7 +52,7 @@ public class XmCustomsharingsController extends BaseController {
 		return "settings/basic/customsharings";
 	}
 	
-	@RequestMapping(value = "/list", method = RequestMethod.GET)
+	@RequestMapping(value = "/list", method = RequestMethod.POST)
 	@ResponseBody
 	public String list(int tabid){
 		List<XmCustomsharings> sharings = this.xmCustomsharingsService.getShares(tabid);

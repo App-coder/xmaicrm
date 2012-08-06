@@ -195,4 +195,16 @@
   <select id="getCustomsharingsModule" resultMap="BaseResultMap" >
   	select distinct xm_tab.* from xm_field inner join xm_tab on xm_field.tabid=xm_tab.tabid where xm_tab.name not in('Leads','Calendar','WU','Users','Inboundsearchs','Normaltasks','Integradedreports','Events','Products','Faq','PriceBooks','Announcements') ;
   </select>
+  <select id="getDefOrgFieldModule" resultMap="BaseResultMap" >
+  	select distinct xm_tab.* from xm_field inner join xm_tab on xm_field.tabid=xm_tab.tabid where xm_field.tabid not in(7,9,10,29) order by xm_field.tabid;
+  </select>
+  <select id="getRelatedModule"  resultMap="BaseResultMap">
+  	SELECT DISTINCT
+		xm_tab.*
+	FROM
+		xm_field
+	INNER JOIN xm_tab ON xm_field.tabid = xm_tab.tabid
+	WHERE
+		xm_field.tabid NOT IN(7, 9, 10, 16, 15, 29);
+  </select>
 </mapper>

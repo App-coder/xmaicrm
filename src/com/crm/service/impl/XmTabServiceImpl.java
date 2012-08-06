@@ -62,6 +62,14 @@ public class XmTabServiceImpl implements XmTabService {
 	public List<XmTab> getCustomsharingsModule() {
 		return this.xmTabMapper.getCustomsharingsModule();
 	}
+	@Override
+	public List<XmTab> getDefOrgFieldModule() {
+		return this.xmTabMapper.getDefOrgFieldModule();
+	}
+	@Override
+	public List<XmTab> getRelatedModule() {
+		return this.xmTabMapper.getRelatedModule();
+	}
 	
 	
 

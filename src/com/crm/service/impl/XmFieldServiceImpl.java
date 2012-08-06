@@ -66,4 +66,9 @@ public class XmFieldServiceImpl implements XmFieldService{
 		return this.xmFieldMapper.getEditFields(tabid,blockstr);
 	}
 
+	@Override
+	public List<Object> getDefOrgFields(int tabid) {
+		return this.xmFieldMapper.getDefOrgFields(tabid);
+	}
+
 }

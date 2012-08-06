@@ -41,5 +41,9 @@ public interface XmTabMapper {
 	List<XmTab> getMultiApproveModule();
 
 	List<XmTab> getCustomsharingsModule();
+
+	List<XmTab> getDefOrgFieldModule();
+
+	List<XmTab> getRelatedModule();
 	
 }

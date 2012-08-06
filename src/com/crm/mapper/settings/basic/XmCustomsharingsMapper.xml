@@ -7,6 +7,9 @@
     <id column="tabid" property="tabid" jdbcType="INTEGER" />
     <id column="whoshared" property="whoshared" jdbcType="INTEGER" />
     <result column="sharingsid" property="sharingsid" jdbcType="INTEGER" />
+    <result column="share_action_name" property="shareactionname" jdbcType="VARCHAR" />
+    <result column="sharedstr" property="sharedstr" jdbcType="VARCHAR" />
+    <result column="whosharedstr" property="whosharedstr" jdbcType="VARCHAR" />
   </resultMap>
   <sql id="Base_Column_List" >
     shared, sharingstype, tabid, whoshared, sharingsid
@@ -91,6 +94,19 @@
       and whoshared = #{whoshared,jdbcType=INTEGER}
   </update>
   <select id="getShares" resultMap="BaseResultMap" >
-  	select DISTINCT(sh.sharingsid),sh.tabid,sh.sharingstype,GROUP_CONCAT(u.last_name) shared,u2.last_name whoshared from ec_customsharings sh  left join ec_users u on sh.shared = u.id left join ec_users u2 on sh.whoshared = u2.id where tabid = #{tabid} GROUP BY sh.sharingsid ;
+	SELECT DISTINCT
+		(sh.sharingsid),
+		sh.tabid,
+		sh.sharingstype,
+		GROUP_CONCAT(u.last_name) sharedstr,
+		u2.last_name whosharedstr,
+		xosa.share_action_name 
+	FROM
+		xm_customsharings sh
+	LEFT JOIN xm_users u ON sh.shared = u.id
+	LEFT JOIN xm_users u2 ON sh.whoshared = u2.id 
+	left join xm_org_share_action_mapping xosa on xosa.share_action_id = sh.sharingstype 
+	WHERE
+		tabid = #{tabid} GROUP BY sh.sharingsid 
   </select>
 </mapper>

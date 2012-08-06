@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.crm.mapper.XmSendsmsboxMapper" >
+  <resultMap id="BaseResultMap" type="com.crm.model.XmSendsmsbox" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="sendtime" property="sendtime" jdbcType="TIMESTAMP" />
+    <result column="success" property="success" jdbcType="INTEGER" />
+    <result column="userid" property="userid" jdbcType="INTEGER" />
+    <result column="lastname" property="lastname" jdbcType="VARCHAR" />
+  </resultMap>
+  <resultMap id="ResultMapWithBLOBs" type="com.crm.model.XmSendsmsbox" extends="BaseResultMap" >
+    <result column="sendermobile" property="sendermobile" jdbcType="LONGVARCHAR" />
+    <result column="content" property="content" jdbcType="LONGVARCHAR" />
+    <result column="message" property="message" jdbcType="LONGVARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, sendtime, success, userid
+  </sql>
+  <sql id="Blob_Column_List" >
+    sendermobile, content, message
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="ResultMapWithBLOBs" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from xm_sendsmsbox
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from xm_sendsmsbox
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.crm.model.XmSendsmsbox" >
+    insert into xm_sendsmsbox (id, sendtime, success, 
+      userid, sendermobile, content, 
+      message)
+    values (#{id,jdbcType=INTEGER}, #{sendtime,jdbcType=TIMESTAMP}, #{success,jdbcType=INTEGER}, 
+      #{userid,jdbcType=INTEGER}, #{sendermobile,jdbcType=LONGVARCHAR}, #{content,jdbcType=LONGVARCHAR}, 
+      #{message,jdbcType=LONGVARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.crm.model.XmSendsmsbox" >
+    insert into xm_sendsmsbox
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="sendtime != null" >
+        sendtime,
+      </if>
+      <if test="success != null" >
+        success,
+      </if>
+      <if test="userid != null" >
+        userid,
+      </if>
+      <if test="sendermobile != null" >
+        sendermobile,
+      </if>
+      <if test="content != null" >
+        content,
+      </if>
+      <if test="message != null" >
+        message,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="sendtime != null" >
+        #{sendtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="success != null" >
+        #{success,jdbcType=INTEGER},
+      </if>
+      <if test="userid != null" >
+        #{userid,jdbcType=INTEGER},
+      </if>
+      <if test="sendermobile != null" >
+        #{sendermobile,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="content != null" >
+        #{content,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="message != null" >
+        #{message,jdbcType=LONGVARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.crm.model.XmSendsmsbox" >
+    update xm_sendsmsbox
+    <set >
+      <if test="sendtime != null" >
+        sendtime = #{sendtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="success != null" >
+        success = #{success,jdbcType=INTEGER},
+      </if>
+      <if test="userid != null" >
+        userid = #{userid,jdbcType=INTEGER},
+      </if>
+      <if test="sendermobile != null" >
+        sendermobile = #{sendermobile,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="content != null" >
+        content = #{content,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="message != null" >
+        message = #{message,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.crm.model.XmSendsmsbox" >
+    update xm_sendsmsbox
+    set sendtime = #{sendtime,jdbcType=TIMESTAMP},
+      success = #{success,jdbcType=INTEGER},
+      userid = #{userid,jdbcType=INTEGER},
+      sendermobile = #{sendermobile,jdbcType=LONGVARCHAR},
+      content = #{content,jdbcType=LONGVARCHAR},
+      message = #{message,jdbcType=LONGVARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.crm.model.XmSendsmsbox" >
+    update xm_sendsmsbox
+    set sendtime = #{sendtime,jdbcType=TIMESTAMP},
+      success = #{success,jdbcType=INTEGER},
+      userid = #{userid,jdbcType=INTEGER}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <select id="loadList" resultMap="ResultMapWithBLOBs" >
+  	SELECT DISTINCT(msbox.id),msbox.sendermobile,msbox.content,msbox.sendtime,msbox.success,msbox.message,msbox.userid,lastname FROM xm_sendsmsbox msbox left join xm_contactdetails details on msbox.sendermobile = details.mobile where details.deleted=0 and userid = #{userid} limit #{start},#{rows}
+  </select>
+  <select id="getTotal" resultType="Integer">
+  	SELECT
+		count(DISTINCT(msbox.id))
+	FROM
+		xm_sendsmsbox msbox 
+	LEFT JOIN xm_contactdetails details ON msbox.sendermobile = details.mobile
+	WHERE
+		details.deleted = 0
+	AND userid = #{userid}
+  </select>
+</mapper>

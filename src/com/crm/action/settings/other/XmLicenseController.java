@@ -16,7 +16,7 @@ import com.crm.util.Constant;
  * Time: 上午10:54:14
  */
 @Controller
-@RequestMapping(value = "settings/license")
+@RequestMapping(value = "crm/settings/license")
 public class XmLicenseController extends BaseController {
 
 	@RequestMapping(value = "/index", method = RequestMethod.GET)

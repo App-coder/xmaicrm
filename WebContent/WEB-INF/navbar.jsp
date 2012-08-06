@@ -77,6 +77,15 @@
 	<c:when test="${pathname=='自定义共享规则' }">
 		${syssetting }&gt;<a href="${url }">自定义共享规则</a>
 	</c:when>
+	<c:when test="${pathname=='全局字段' }">
+		${syssetting }&gt;<a href="${url }">全局字段</a>
+	</c:when>
+	<c:when test="${pathname=='相关信息' }">
+		${syssetting }&gt;<a href="${url }">相关信息</a>
+	</c:when>
+	<c:when test="${pathname=='短信通道' }">
+		${syssetting }&gt;<a href="${url }">短信通道</a>
+	</c:when>	
 	<c:otherwise>
 		导航设置不正确！
 	</c:otherwise>

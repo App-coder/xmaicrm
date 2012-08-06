@@ -288,13 +288,13 @@
 												<tr>
 
 													<td valign="top"><a
-														href="javascript:tab('全局字段','settings/customtab/index')"><img
+														href="crm/settings/deforgfield/index"><img
 															border="0" title="全局字段" alt="全局字段"
 															src="resources/images/settings/panel/orgshar.gif"></a></td>
 												</tr>
 												<tr>
 													<td valign="top" class="big"><a
-														href="javascript:tab('全局字段','settings/customtab/index')">全局字段</a></td>
+														href="crm/settings/deforgfield/index">全局字段</a></td>
 												</tr>
 
 											</tbody>
@@ -309,21 +309,38 @@
 												<tr>
 
 													<td valign="top"><a
-														href="javascript:tab('相关信息','settings/customtab/index')"><img
+														href="crm/settings/relatedlists/index"><img
 															border="0" title="相关信息" alt="相关信息"
 															src="resources/images/settings/panel/relatedinfo.gif"></a></td>
 												</tr>
 												<tr>
 													<td valign="top" class="big"><a
-														href="javascript:tab('相关信息','settings/customtab/index')">相关信息</a></td>
+														href="crm/settings/relatedlists/index">相关信息</a></td>
 												</tr>
 
 											</tbody>
 										</table>
 									</td>
-
+									
 									<td width="12.5%" valign="top">
-										<!-- empty-->
+										<table width="100%" class="tab_center" cellspacing="0"
+											cellpadding="5" border="0">
+											<tbody>
+												<tr>
+													<td valign="top"><a
+														href="crm/settings/multiapprove/index"><img
+															width="48" height="48" border="0"
+															src="resources/images/settings/panel/approvelist.gif"></a></td>
+												</tr>
+												<tr>
+													<td valign="top" class="big"><a
+														href="crm/settings/multiapprove/index">审批流程</a></td>
+												</tr>
+											</tbody>
+										</table>
+									</td>
+<!-- 
+									<td width="12.5%" valign="top">
 										<table width="100%" class="tab_center" cellspacing="0"
 											cellpadding="5" border="0">
 											<tbody>
@@ -340,9 +357,9 @@
 											</tbody>
 										</table>
 									</td>
+									 -->
 								</tr>
 								<tr>
-								
 								<!-- 
 									<td width="12.5%" valign="top">
 										<table width="100%" class="tab_center" cellspacing="0"
@@ -362,27 +379,9 @@
 										</table>
 									</td>
 								 -->
-									<td width="12.5%" valign="top">
-										<!-- empty-->
-										<table width="100%" class="tab_center" cellspacing="0"
-											cellpadding="5" border="0">
-											<tbody>
-												<tr>
-													<td valign="top"><a
-														href="crm/settings/multiapprove/index"><img
-															width="48" height="48" border="0"
-															src="resources/images/settings/panel/approvelist.gif"></a></td>
-												</tr>
-												<tr>
-													<td valign="top" class="big"><a
-														href="crm/settings/multiapprove/index">审批流程</a></td>
-												</tr>
-											</tbody>
-										</table>
-									</td>
+									
 									
 									<td width="12.5%" valign="top">
-										<!-- empty-->
 										<table width="100%" class="tab_center" cellspacing="0"
 											cellpadding="5" border="0">
 											<tbody>
@@ -400,6 +399,7 @@
 										</table>
 									</td>
 									
+									<td width="12.5%" valign="top"></td>
 									<td width="12.5%" valign="top"></td>
 									<td width="12.5%" valign="top"></td>
 									<td width="12.5%" valign="top"></td>
@@ -444,8 +444,9 @@
 											</tbody>
 										</table>
 									</td>
+									
+									<!-- 
 									<td width="12.5%" valign="top">
-										<!-- icon 11-->
 										<table width="100%" class="tab_center" cellspacing="0"
 											cellpadding="5" border="0">
 											<tbody>
@@ -464,7 +465,7 @@
 											</tbody>
 										</table>
 									</td>
-
+ -->
 									<td width="12.5%" valign="top">
 										<!-- icon 16-->
 										<table width="100%" class="tab_center" cellspacing="0"
@@ -493,13 +494,13 @@
 											<tbody>
 												<tr>
 													<td valign="top"><a
-														href="settings/system/index"><img
+														href="crm/settings/system/index"><img
 															border="0" title="SMTP服务器" alt="SMTP服务器"
 															src="resources/images/settings/panel/ogmailserver.gif"></a></td>
 												</tr>
 												<tr>
 													<td valign="top" class="big"><a
-														href="settings/system/index">SMTP服务器</a></td>
+														href="crm/settings/system/index">SMTP服务器</a></td>
 												</tr>
 
 
@@ -514,13 +515,13 @@
 											<tbody>
 												<tr>
 													<td valign="top"><a
-														href="javascript:tab('短信通道','settings/messageconfig/index')"><img
+														href="crm/settings/messageaccount/index"><img
 															border="0" title="短信通道" alt="短信通道"
 															src="resources/images/settings/panel/ico_mobile.gif"></a></td>
 												</tr>
 												<tr>
 													<td valign="top" class="big"><a
-														href="javascript:tab('短信通道','settings/messageconfig/index')">短信通道</a></td>
+														href="crm/settings/messageaccount/index">短信通道</a></td>
 												</tr>
 
 
@@ -569,8 +570,9 @@
 											</tbody>
 										</table>
 									</td>
+									
+									<!-- 
 									<td width="12.5%" valign="top">
-										<!-- icon 11-->
 										<table width="100%" class="tab_center" cellspacing="0"
 											cellpadding="5" border="0">
 											<tbody>
@@ -589,27 +591,33 @@
 											</tbody>
 										</table>
 									</td>
-								</tr>
-								<tr>
-								<td width="12.5%" valign="top">
+									 -->
+									
+									<td width="12.5%" valign="top">
 										<!-- icon 11-->
 										<table width="100%" class="tab_center" cellspacing="0"
 											cellpadding="5" border="0">
 											<tbody>
 												<tr>
 													<td valign="top"><a
-														href="javascript:tab('多仓库管理','settings/multiwarehouse/index')"><img
+														href="crm/settings/cangkus/index"><img
 															border="0" title="多仓库管理" alt="多仓库管理"
 															src="resources/images/settings/panel/cangku.gif"></a></td>
 												</tr>
 												<tr>
 													<td valign="top" class="big"><a
-														href="javascript:tab('多仓库管理','settings/multiwarehouse/index')">多仓库管理</a></td>
+														href="crm/settings/cangkus/index">多仓库管理</a></td>
 
 												</tr>
 
 											</tbody>
 										</table>
+									</td>
+									<td width="12.5%" valign="top">
+									</td>
+								</tr>
+								<tr style="display:none;">
+								<td width="12.5%" valign="top">
 									</td>
 									<td width="12.5%" valign="top">
 									</td>

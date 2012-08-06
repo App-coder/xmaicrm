@@ -39,4 +39,13 @@ public interface XmFieldService {
 	 * @return
 	 */
 	public List<XmField> getEditFields(Integer tabid, String blockstr);
+
+	/**
+	 * 
+	 * 全局字段，根据TABID，进行查询
+	 * 
+	 * @param tabid
+	 * @return
+	 */
+	public List<Object> getDefOrgFields(int tabid);
 }

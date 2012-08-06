@@ -15,7 +15,7 @@ import com.crm.bean.crm.Message;
 import com.crm.bean.easyui.ListBean;
 import com.crm.service.settings.other.XmCangkusService;
 @Controller
-@RequestMapping(value = "settings/cangkus")
+@RequestMapping(value = "crm/settings/cangkus")
 public class XmCangkusController {
 	
 	XmCangkusService xmCangkusService;

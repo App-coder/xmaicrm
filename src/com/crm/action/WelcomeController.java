@@ -83,6 +83,11 @@ public class WelcomeController implements ServletContextAware {
 			return "welcome";
 		}
 	}
+	
+	@RequestMapping(value = "/loginout", method = RequestMethod.GET)
+	public String loginout(){
+		return "welcome";
+	}
 
 	@RequestMapping(value = "/navbar", method = RequestMethod.POST)
 	public String navbar(String pathname, String url, ModelMap modelmap) {
