@@ -110,9 +110,7 @@ a.cus_markhui:link {
     border-right: 1px solid #CCCCCC;
     border-bottom: none;
     background-color:#EFEFEF;
-    height:30px;
-    line-height: 30px;
-    padding-left:10px;
+    padding:5px 0px 5px 5px;
 }
 
 .d_center{

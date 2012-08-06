@@ -18,6 +18,11 @@
 		    <div title="未分配" class="p10"  >
 				<div class="d_bar" >  
 		        查看范围：<select><option>所有客户</option></select>
+		        &nbsp;<select><option>到期时间</option></select>
+		        <select><option>自定义</option></select>
+		        <input type="text" class="easyui-datebox"/>
+		        <input type="text" class="easyui-datebox"/>
+		        
 				</div> 
 		        <table id="tb_unabsorbed" ></table>
 		    </div>  

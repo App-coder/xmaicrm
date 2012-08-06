@@ -160,6 +160,11 @@ String win_topbar = "resizable=\"false\"  closed=\"true\" modal=\"true\" collaps
       out.write("\t\t    <div title=\"未分配\" class=\"p10\"  >\r\n");
       out.write("\t\t\t\t<div class=\"d_bar\" >  \r\n");
       out.write("\t\t        查看范围：<select><option>所有客户</option></select>\r\n");
+      out.write("\t\t        &nbsp;<select><option>到期时间</option></select>\r\n");
+      out.write("\t\t        <select><option>自定义</option></select>\r\n");
+      out.write("\t\t        <input type=\"text\" class=\"easyui-datebox\"/>\r\n");
+      out.write("\t\t        <input type=\"text\" class=\"easyui-datebox\"/>\r\n");
+      out.write("\t\t        \r\n");
       out.write("\t\t\t\t</div> \r\n");
       out.write("\t\t        <table id=\"tb_unabsorbed\" ></table>\r\n");
       out.write("\t\t    </div>  \r\n");
