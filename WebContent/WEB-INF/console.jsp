@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"
 	pageEncoding="utf-8"%>
 <%@ include file="header.jsp"%>
-<script type="text/javascript" src="resources/desktop/js/index.js"></script>
+<script type="text/javascript" src="resources/desktop/index.js"></script>
 </head>
 <body id="bodycontainer" class="easyui-layout consolebd">
 	<div class="hidden">
@@ -13,9 +13,11 @@
 		</div>
 		<div id="agora_item" style="width: 120px;" class="navmenuitem"  >
 			<div>营销活动</div>
+			<div>群发短信</div>
+			<div>群发邮件</div>
 		</div>
 		<div id="customer_item"  style="width: 120px;" class="navmenuitem"  >
-			<div>客户</div>
+			<div><a href="javascript:tab('客户','Customer/Accounts')">客户</a></div>
 			<div>联系人</div>
 			<div>客户关怀</div>
 			<div>联系记录</div>
@@ -79,6 +81,13 @@
 			<div>常用报表</div>
 			<div>年终销售报表</div>
 		</div>
+		<div id="service_item" style="width: 120px;" class="navmenuitem" >
+			<div>服务合同</div>
+			<div>项目里程碑</div>
+			<div>项目任务</div>
+			<div>项目</div>
+			<div>常见问答</div>
+		</div>
 	</div>
 	<div region="north" style="height: 68px; overflow: hidden;"
 		class="headerNav" border="false">
@@ -122,6 +131,11 @@
 				<li class="split"></li>
 				<li><a href="javascript:void(0)" id="report"
 					class="easyui-menubutton" data-options="menu:'#report_item'">报表</a></li>
+				<li class="split"></li>
+				<li><a href="javascript:void(0)" id="service"
+					class="easyui-menubutton" data-options="menu:'#service_item'">服务支持</a></li>
+				<li><a href="javascript:void(0)" id="quick"
+					class="easyui-menubutton" data-options="menu:'#quick_item'"><input id="quick" name="dept" value="aa"></a></li>
 			</ul>
 		</div>
 	</div>

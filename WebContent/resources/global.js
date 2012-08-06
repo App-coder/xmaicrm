@@ -16,15 +16,13 @@ $(function() {
 	tabCloseEven();
 
 });
-function tab(title, url, closable) {
-    	alert(title);
+
+var tab=function(title, url, closable){
 	if (closable == undefined) {
 		closable = true;
 	}
 	var exists = $('#tabs').tabs('exists', title);
-
 	if (!exists) {
-
 		$('#tabs').tabs('add', {
 			title : title,
 			id : new Date().getTime(),
@@ -36,14 +34,13 @@ function tab(title, url, closable) {
 			bodyCls : 'bstyle'
 			//height : 100
 		});
-		
 		tabClose();
-
 	} else {
-		$('#tabs').tabs("select", title)
+		$('#tabs').tabs("select", title);
 	}
+};
 
-}
+
 function g_select(domid, json, param, defopt) {
 	var str = "";
 	str += defopt;
@@ -156,7 +153,7 @@ function tabClose()
 	$(".tabs-inner").dblclick(function(){
 		var subtitle = $(this).children("span").text();
 		$('#tabs').tabs('close',subtitle);
-	})
+	});
 
 	$(".tabs-inner").bind('contextmenu',function(e){
 		$('#mm').menu('show', {
@@ -177,7 +174,7 @@ function tabCloseEven()
 	$('#mm-tabclose').click(function(){
 		var currtab_title = $('#mm').data("currtab");
 		$('#tabs').tabs('close',currtab_title);
-	})
+	});
 	//全部关闭
 	$('#mm-tabcloseall').click(function(){
 		$('.tabs-inner span').each(function(i,n){
@@ -225,7 +222,7 @@ function tabCloseEven()
 	//退出
 	$("#mm-exit").click(function(){
 		$('#mm').menu('hide');
-	})
+	});
 }
 
 function hideWind(id){
