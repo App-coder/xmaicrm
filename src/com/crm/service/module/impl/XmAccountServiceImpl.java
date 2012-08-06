@@ -31,6 +31,15 @@ public class XmAccountServiceImpl implements XmAccountService {
 			String end) {
 		return this.xmAccountMapper.getNewAccountOfUserAndLast(userid,start,end);
 	}
+	@Override
+	public List<Object> loadUnabsorbed(int page, int rows) {
+		int start = (page-1)*rows;
+		return this.xmAccountMapper.loadUnabsorbed(start,rows);
+	}
+	@Override
+	public int getTotalUnabsorbed() {
+		return this.xmAccountMapper.getTotalUnabsorbed();
+	}
     
 
 }

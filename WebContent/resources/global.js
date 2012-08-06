@@ -259,3 +259,6 @@ function showOptionPanel(modulename,columnname,fieldlabel){
     $("#optionframe").attr("src","crm/customview/viewPop?modulename="+modulename+"&columnname="+columnname);
     $("#optionwindow").window("open");
 }
+function showTip(value,row,index){
+    return "<span title='"+value+"'>"+value+"</span>";
+}

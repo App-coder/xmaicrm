@@ -20,5 +20,9 @@ public interface XmAccountService  {
 	 * @return
 	 */
 	int getNewAccountOfUserAndLast(Integer userid, String start, String end);
+
+	List<Object> loadUnabsorbed(int page, int rows);
+
+	int getTotalUnabsorbed();
  
 }
