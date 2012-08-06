@@ -84,7 +84,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
       out.write("\r\n");
       out.write("<script type=\"text/javascript\" src=\"resources/global.js\"></script>\r\n");
       out.write("\r\n");
-      out.write("<script type=\"text/javascript\" src=\"resources/desktop/js/index.js\"></script>\r\n");
+      out.write("<script type=\"text/javascript\" src=\"resources/desktop/index.js\"></script>\r\n");
       out.write("</head>\r\n");
       out.write("<body id=\"bodycontainer\" class=\"easyui-layout consolebd\">\r\n");
       out.write("\t<div class=\"hidden\">\r\n");

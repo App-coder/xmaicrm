@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"
 	pageEncoding="utf-8"%>
 <%@ include file="header.jsp"%>
-<script type="text/javascript" src="resources/desktop/js/index.js"></script>
+<script type="text/javascript" src="resources/desktop/index.js"></script>
 </head>
 <body id="bodycontainer" class="easyui-layout consolebd">
 	<div class="hidden">
@@ -22,7 +22,7 @@
 			<div>纪念日</div>
 		</div>
 		<div id="product_item"  style="width: 120px;" class="navmenuitem"  >
-			<div>产品列表</div>
+			<div><a href="javascript:tab('产品列表','welcome/homepage')" >产品列表</a></div>
 			<div>产品分类</div>
 			<div>产品序号</div>
 		</div>
