@@ -11,6 +11,11 @@ public final class index_jsp extends org.apache.jasper.runtime.HttpJspBase
 
   private static java.util.List _jspx_dependants;
 
+  static {
+    _jspx_dependants = new java.util.ArrayList(1);
+    _jspx_dependants.add("/WEB-INF/product/../common/config.jsp");
+  }
+
   private javax.el.ExpressionFactory _el_expressionfactory;
   private org.apache.AnnotationProcessor _jsp_annotationprocessor;
 
@@ -40,7 +45,7 @@ public final class index_jsp extends org.apache.jasper.runtime.HttpJspBase
 
 
     try {
-      response.setContentType("text/html");
+      response.setContentType("text/html; charset=utf-8");
       pageContext = _jspxFactory.getPageContext(this, request, response,
       			null, true, 8192, true);
       _jspx_page_context = pageContext;
@@ -50,7 +55,41 @@ public final class index_jsp extends org.apache.jasper.runtime.HttpJspBase
       out = pageContext.getOut();
       _jspx_out = out;
 
-      out.write("sdfsdf");
+      out.write('\r');
+      out.write('\n');
+      out.write("\r\n");
+      out.write("\r\n");
+
+String win_topbar = "closed=\"true\" modal=\"true\" collapsible=\"false\"  draggable=\"false\" minimizable=\"false\" maximizable=\"false\" inline=\"false\" resizable=\"false\"";
+
+      out.write("    ");
+      out.write("\r\n");
+      out.write("<script type=\"text/javascript\" src=\"resource/admin/js/demo.js\"></script>\r\n");
+      out.write("<div class=\"container\"  >\r\n");
+      out.write("\t<div class=\"easyui-layout\" fit=\"true\">\r\n");
+      out.write("\t\t<div data-options=\"region:'north'\" style=\"overflow:hidden;padding:10px\">\r\n");
+      out.write("\t\t\t<h2>Layout in Panel</h2>\r\n");
+      out.write("\t\t</div>\r\n");
+      out.write("\t\t<div data-options=\"region:'south',split:true\" style=\"height:50px;background:#fafafa;\"></div>\r\n");
+      out.write("\t\t<div data-options=\"region:'east',iconCls:'icon-reload',split:true\" title=\"East\" style=\"width:180px;\"></div>\r\n");
+      out.write("\t\t<div data-options=\"region:'west',split:true\" title=\"West\" style=\"width:100px;\"></div>\r\n");
+      out.write("\t\t<div data-options=\"region:'center',title:'Main Title'\" style=\"background:#fafafa;overflow:hidden\">\r\n");
+      out.write("\t\t\t<table class=\"easyui-datagrid\"\r\n");
+      out.write("\t\t\t\t\tdata-options=\"url:'datagrid_data2.json',border:false,fit:true,fitColumns:true\">\r\n");
+      out.write("\t\t\t\t<thead>\r\n");
+      out.write("\t\t\t\t\t<tr>\r\n");
+      out.write("\t\t\t\t\t\t<th data-options=\"field:'itemid'\" width=\"80\">Item ID</th>\r\n");
+      out.write("\t\t\t\t\t\t<th data-options=\"field:'productid'\" width=\"100\">Product ID</th>\r\n");
+      out.write("\t\t\t\t\t\t<th data-options=\"field:'listprice',align:'right'\" width=\"80\">List Price</th>\r\n");
+      out.write("\t\t\t\t\t\t<th data-options=\"field:'unitcost',align:'right'\" width=\"80\">Unit Cost</th>\r\n");
+      out.write("\t\t\t\t\t\t<th data-options=\"field:'attr1'\" width=\"150\">Attribute</th>\r\n");
+      out.write("\t\t\t\t\t\t<th data-options=\"field:'status',align:'center'\" width=\"50\">Status</th>\r\n");
+      out.write("\t\t\t\t\t</tr>\r\n");
+      out.write("\t\t\t\t</thead>\r\n");
+      out.write("\t\t\t</table>\r\n");
+      out.write("\t\t</div>\r\n");
+      out.write("\t</div>\r\n");
+      out.write("</div>");
     } catch (Throwable t) {
       if (!(t instanceof SkipPageException)){
         out = _jspx_out;
