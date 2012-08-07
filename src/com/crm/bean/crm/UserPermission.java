@@ -5,8 +5,11 @@ import java.util.List;
 
 import com.crm.bean.crm.permission.ModulePermission;
 import com.crm.model.XmProfile2globalpermissions;
+import com.crm.model.XmRole;
 
 public class UserPermission {
+	
+	private XmRole role;
 	/**
 	 * 模块的权限，包括模块权限，添加，修改，编辑，删除，权限
 	 */
@@ -26,6 +29,12 @@ public class UserPermission {
 	public void setGlobalpermissions(
 			List<XmProfile2globalpermissions> globalpermissions) {
 		this.globalpermissions = globalpermissions;
+	}
+	public XmRole getRole() {
+		return role;
+	}
+	public void setRole(XmRole role) {
+		this.role = role;
 	}
 	
 }

@@ -1,17 +1,23 @@
 package com.crm.action;
 
+import java.util.List;
+
 import javax.annotation.Resource;
 import javax.servlet.ServletContext;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.context.ServletContextAware;
 
 import com.crm.bean.crm.UserPermission;
+import com.crm.model.XmHomestuff;
 import com.crm.model.XmUsers;
+import com.crm.service.XmHomestuffService;
 import com.crm.service.settings.basic.XmUsersService;
 import com.crm.service.system.CacheDataService;
 import com.crm.service.system.UserService;
@@ -19,6 +25,7 @@ import com.crm.util.Constant;
 
 @Controller
 @RequestMapping(value = "crm/welcome")
+@SessionAttributes(Constant.USERPERMISSION)
 public class WelcomeController implements ServletContextAware {
 
 	private ServletContext servletContext;
@@ -44,6 +51,12 @@ public class WelcomeController implements ServletContextAware {
 		this.userService = userService;
 	}
 
+	XmHomestuffService xmHomestuffService;
+	@Resource(name="xmHomestuffService")
+	public void setXmHomestuffService(XmHomestuffService xmHomestuffService) {
+		this.xmHomestuffService = xmHomestuffService;
+	}
+
 	@RequestMapping(value = "/index", method = RequestMethod.GET)
 	public String index() {
 		return "welcome";
@@ -60,7 +73,11 @@ public class WelcomeController implements ServletContextAware {
 	}
 
 	@RequestMapping(value = "/desktop", method = RequestMethod.GET)
-	public String desktop() {
+	public String desktop(@ModelAttribute(Constant.USERPERMISSION) UserPermission userpermission,ModelMap modelmap) {
+		
+		List<XmHomestuff> stuffs = this.xmHomestuffService.getStuffByRole(userpermission.getRole().getRoleid());
+		modelmap.addAttribute("stuffs",stuffs);
+		
 		return "desktop";
 	}
 
@@ -76,7 +93,7 @@ public class WelcomeController implements ServletContextAware {
 			session.setAttribute("userpermission", userpermission);
 			// 缓存导航栏
 			session.setAttribute("navbar", this.userService.getNavBar(login,this.servletContext.getRealPath("WEB-INF/tpl"),userpermission));
-            
+			
 			return "redirect:/crm/welcome/desktop";
 		} else {
 			modelmap.addAttribute("message", "用户验证没有通过！");
