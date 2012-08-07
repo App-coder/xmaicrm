@@ -4,10 +4,11 @@
 *{font-size:12px;}
 html, body, #wrap {height: 100%;}
 body > #wrap {height: auto; min-height: 100%;}
-body{margin:0px;padding:0px;}
+body{margin:0px;padding:0px;min-width:1024px;}
 body, input, button, select, textarea{font: Tahoma,'Microsoft Yahei','Simsun'}
 
 textarea{ resize: none;}
+form{margin:0px;padding:0px;}
 red{color:red;}
 .fr{float:right;}
 .fl{float:left;}
@@ -70,6 +71,7 @@ table .tb_list td.righttd{padding-left:10px;}
 .tab_editlist{width:100%;font:12px/1.5 Tahoma,'Microsoft Yahei','Simsun';}
 .tab_editlist input.text,.tab_editlist select.text{width:250px;margin-right: 10px;border:1px solid #D2D2D2;height: 20px;}
 .tab_editlist .edittd{width:15%;padding-left:10px;}
+.text{width:180px;margin-right: 10px;border:1px solid #D2D2D2;height: 20px;}
 
 .textborder{border:1px solid #D2D2D2;}
 
@@ -214,5 +216,9 @@ fieldset legend{color:#15428B;}
 .tabauth tr td{height: 26px;text-align: center;}
 
 .must{color:red;margin-left:4px;}
-
 .pl_container{border:1px solid #99BBE8;}
+
+/*查找用户*/
+.searchuser{margin-top:4px;}
+.searchuser.searchtext{width:100px;border:1px solid #D2D2D2;height:14px;line-height:14px;font-size:12px;float:right;}
+.searchuser .button{border:1px solid #AAAAAA;height:20px;line-height:20px;float:right;margin-right:10px;background: url("images/btn_bg.gif") repeat-x scroll left top transparent;}

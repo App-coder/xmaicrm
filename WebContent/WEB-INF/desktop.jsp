@@ -12,7 +12,7 @@ var pathname = "工作台";
 <script type="text/javascript" src="resources/desktop/desktop.js"></script>
 </head>
 <body id="wrap">
-${navbar }
+<%@ include file="nav.jsp"%>
 <div id="main" >
 <div class="path" >&gt;<a  href="crm/welcome/desktop">工作台</a></div>
 <div id="desktop" >

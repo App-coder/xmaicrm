@@ -61,5 +61,8 @@
 				</#if>
 			</#list>
 		</#if>
+		<div class="searchuser fr">
+			<input type="text" class="text"/>				
+		</div>
 	</ul>
 </div>

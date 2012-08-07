@@ -14,7 +14,7 @@ import java.util.*;
 import javax.annotation.Resource;
 
 @Controller
-@RequestMapping(value = "field")
+@RequestMapping(value = "crm/field")
 public class XmFieldController {
 	
 	
