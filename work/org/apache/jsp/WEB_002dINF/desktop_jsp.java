@@ -268,7 +268,7 @@ String win_topbar = "resizable=\"false\"  closed=\"true\" modal=\"true\" collaps
       out.write("\t\t\t</ul></li>\r\n");
       out.write("\t \t<li class=\"fr\">\r\n");
       out.write("\t \t\t<div class=\"searchuser\">\r\n");
-      out.write("\t \t\t\t<form action=\"\">\r\n");
+      out.write("\t \t\t\t<form action=\"crm/search/query\">\r\n");
       out.write("\t \t\t\t<input type=\"text\" class=\"searchtext\" name=\"searchuser\"/><input class=\"button\" type=\"submit\" value=\"查找\"/>\r\n");
       out.write("\t \t\t\t</form>\r\n");
       out.write("\t \t\t</div>\r\n");

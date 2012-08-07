@@ -61,8 +61,12 @@
 				</#if>
 			</#list>
 		</#if>
-		<div class="searchuser fr">
-			<input type="text" class="text"/>				
-		</div>
+	 	<li class="fr">
+	 		<div class="searchuser">
+	 			<form action="crm/search/query" method="post" >
+	 			<input type="text" class="searchtext" name="searchuser"/><input class="button" type="submit" value="查找"/>
+	 			</form>
+	 		</div>
+	 	</li>
 	</ul>
 </div>
