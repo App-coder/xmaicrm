@@ -107,7 +107,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
       out.write("\t\t\t<div>纪念日</div>\r\n");
       out.write("\t\t</div>\r\n");
       out.write("\t\t<div id=\"product_item\"  style=\"width: 120px;\" class=\"navmenuitem\"  >\r\n");
-      out.write("\t\t\t<div><a href=\"javascript:tab('产品列表','welcome/homepage')\" >产品列表</a></div>\r\n");
+      out.write("\t\t\t<div><a href=\"javascript:tab('产品列表','product/index')\" >产品列表</a></div>\r\n");
       out.write("\t\t\t<div>产品分类</div>\r\n");
       out.write("\t\t\t<div>产品序号</div>\r\n");
       out.write("\t\t</div>\r\n");

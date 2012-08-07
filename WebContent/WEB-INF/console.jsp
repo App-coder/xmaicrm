@@ -24,7 +24,7 @@
 			<div>纪念日</div>
 		</div>
 		<div id="product_item"  style="width: 120px;" class="navmenuitem"  >
-			<div><a href="javascript:tab('产品列表','welcome/homepage')" >产品列表</a></div>
+			<div><a href="javascript:tab('产品列表','product/index')" >产品列表</a></div>
 			<div>产品分类</div>
 			<div>产品序号</div>
 		</div>
