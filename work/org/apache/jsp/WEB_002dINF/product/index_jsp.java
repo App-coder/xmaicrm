@@ -67,12 +67,7 @@ String win_topbar = "closed=\"true\" modal=\"true\" collapsible=\"false\"  dragg
       out.write("<script type=\"text/javascript\" src=\"resource/admin/js/demo.js\"></script>\r\n");
       out.write("<div class=\"container\"  >\r\n");
       out.write("\t<div class=\"easyui-layout\" fit=\"true\">\r\n");
-      out.write("\t\t<div data-options=\"region:'north'\" style=\"overflow:hidden;padding:10px\">\r\n");
-      out.write("\t\t\t<h2>Layout in Panel</h2>\r\n");
-      out.write("\t\t</div>\r\n");
-      out.write("\t\t<div data-options=\"region:'south',split:true\" style=\"height:50px;background:#fafafa;\"></div>\r\n");
-      out.write("\t\t<div data-options=\"region:'east',iconCls:'icon-reload',split:true\" title=\"East\" style=\"width:180px;\"></div>\r\n");
-      out.write("\t\t<div data-options=\"region:'west',split:true\" title=\"West\" style=\"width:100px;\"></div>\r\n");
+      out.write("\t\t<div data-options=\"region:'west',split:true,minimizable:false\" title=\"West\" style=\"width:150px;\"></div>\r\n");
       out.write("\t\t<div data-options=\"region:'center',title:'Main Title'\" style=\"background:#fafafa;overflow:hidden\">\r\n");
       out.write("\t\t\t<table class=\"easyui-datagrid\"\r\n");
       out.write("\t\t\t\t\tdata-options=\"url:'datagrid_data2.json',border:false,fit:true,fitColumns:true\">\r\n");
