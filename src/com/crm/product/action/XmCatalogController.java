@@ -1,5 +1,6 @@
 package com.crm.product.action;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.annotation.Resource;
@@ -9,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.crm.action.BaseController;
+import com.crm.bean.easyui.Tree;
 import com.crm.model.XmCatalog;
 import com.crm.product.service.XmCatalogService;
 
@@ -27,9 +29,17 @@ public class XmCatalogController extends BaseController{
 	public String getCatalogById(String parentid){
 		
 		List<XmCatalog> catalog = this.xmCatalogService.getCatalogById(parentid);
-		
-		
-		return "";
+		List<Tree> trees = new ArrayList<Tree>();
+		for(XmCatalog c :catalog){
+			Tree t = new Tree();
+			t.setId(c.getCatalogid());
+			t.setText(c.getCatalogname());
+			if(c.getChildcount()>0){
+				t.setState("closed");
+			}
+			trees.add(t);
+		}
+		return arrayToJson(trees);
 	}
 	
 }
