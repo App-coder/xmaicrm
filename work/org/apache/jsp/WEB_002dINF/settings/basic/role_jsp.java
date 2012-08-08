@@ -1,10 +1,10 @@
-package org.apache.jsp.WEB_002dINF;
+package org.apache.jsp.WEB_002dINF.settings.basic;
 
 import javax.servlet.*;
 import javax.servlet.http.*;
 import javax.servlet.jsp.*;
 
-public final class desktop_jsp extends org.apache.jasper.runtime.HttpJspBase
+public final class role_jsp extends org.apache.jasper.runtime.HttpJspBase
     implements org.apache.jasper.runtime.JspSourceDependent {
 
   private static final JspFactory _jspxFactory = JspFactory.getDefaultFactory();
@@ -12,10 +12,13 @@ public final class desktop_jsp extends org.apache.jasper.runtime.HttpJspBase
   private static java.util.List _jspx_dependants;
 
   static {
-    _jspx_dependants = new java.util.ArrayList(3);
-    _jspx_dependants.add("/WEB-INF/head.jsp");
-    _jspx_dependants.add("/WEB-INF/nav.jsp");
-    _jspx_dependants.add("/WEB-INF/foot.jsp");
+    _jspx_dependants = new java.util.ArrayList(6);
+    _jspx_dependants.add("/WEB-INF/settings/basic/../../head.jsp");
+    _jspx_dependants.add("/WEB-INF/settings/basic/../../common/config.jsp");
+    _jspx_dependants.add("/WEB-INF/settings/basic/../../path.jsp");
+    _jspx_dependants.add("/WEB-INF/settings/basic/../../nav.jsp");
+    _jspx_dependants.add("/WEB-INF/settings/basic/../../foot.jsp");
+    _jspx_dependants.add("/WEB-INF/tld/jstl/fn.tld");
   }
 
   private javax.el.ExpressionFactory _el_expressionfactory;
@@ -90,10 +93,36 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
       out.write("<!-- 菜单 -->\r\n");
       out.write("<link rel=\"stylesheet\" type=\"text/css\" href=\"resources/prodrop/pro_drop.css\" />\r\n");
       out.write("<script src=\"resources/prodrop/stuHover.js\" type=\"text/javascript\"></script>");
+      out.write('\r');
+      out.write('\n');
       out.write("\r\n");
+      out.write("\r\n");
+      out.write("\r\n");
+
+String win_topbar = "closed=\"true\" modal=\"true\" collapsible=\"false\"  draggable=\"false\" minimizable=\"false\" maximizable=\"false\" inline=\"false\"";
+
+      out.write("    ");
+      out.write("\r\n");
+      out.write("<script>\r\n");
+      out.write("var pathname = \"角色权限\";\r\n");
+      out.write("</script>\r\n");
+      out.write("\r\n");
+      out.write("<script>\r\n");
+      out.write("$(function(){\r\n");
+      out.write("    var _spath = '");
+      out.print(request.getContextPath());
+      out.write("';\r\n");
+      out.write("    var _loc = window.location.href;\r\n");
+      out.write("    var _url = _loc.substring(_loc.indexOf(_spath)+_spath.length+1);\r\n");
+      out.write("    $.post('welcome/navbar',{pathname:pathname,url:_url},function(html){\r\n");
+      out.write("\t\t$(\"#navpath\").html(html);\t\r\n");
+      out.write("    },'html');\r\n");
+      out.write("});\r\n");
+      out.write("</script>");
+      out.write("\r\n");
+      out.write("<script type=\"text/javascript\" src=\"resources/desktop/settings/basic/role.js\"></script>\r\n");
       out.write("</head>\r\n");
       out.write("<body id=\"wrap\">\r\n");
-      out.write("\t");
       out.write("\r\n");
       out.write("<div class=\"headerNav\"  >\r\n");
       out.write("\t\t<a class=\"logo\"></a>\r\n");
@@ -225,13 +254,10 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
       out.write("\t</ul>\r\n");
       out.write("</div>");
       out.write("\r\n");
-      out.write("\t<div id=\"main\">\r\n");
-      out.write("\t\t<div class=\"path\">\r\n");
-      out.write("\t\t\t<a href=\"/\">首页</a>&gt;<a href=\"/sc/\">素材</a>&gt;<a href=\"/js/\">js特效</a>&gt;<a\r\n");
-      out.write("\t\t\t\thref=\"/js/5/\">导航菜单</a>\r\n");
-      out.write("\t\t</div>\r\n");
-      out.write("\t</div>\r\n");
-      out.write("\t");
+      out.write("<div id=\"main\">\r\n");
+      out.write("<div class=\"path\" id=\"navpath\"></div>\r\n");
+      out.write("<table id=\"rolelist\"  ></table>\r\n");
+      out.write("</div>\r\n");
       out.write("\r\n");
       out.write("<div id=\"div_foot\" class=\"footercss\" >\r\n");
       out.write("<table width=\"100%\" cellspacing=\"0\" cellpadding=\"5\" border=\"0\" style=\"padding: 8px 20px;display:table;height:40px;\">\r\n");

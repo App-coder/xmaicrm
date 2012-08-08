@@ -1,4 +1,4 @@
-package com.crm.settings.basic;
+package com.crm.settings.basic.action;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -9,19 +9,19 @@ import com.crm.action.BaseController;
 
 /**
  * 
- * 基本设置-登入历史
+ * 基本设置-全局共享规则
  * 
  * User: zhujun
  * Date: 2012-8-19
- * Time: 上午10:21:44
+ * Time: 上午10:16:00
  */
 @Controller
-@RequestMapping(value = "settings/loginhistory")
-public class XmLoginhistoryController extends BaseController {
+@RequestMapping(value = "settings/orgsharingdetailview")
+public class XmOrgSharingDetailViewController extends BaseController {
 
 	@RequestMapping(value = "/index", method = RequestMethod.GET)
 	public String index(ModelMap modelMap){
-		return "settings/basic/loginhistory";
+		return "settings/basic/orgsharingdetailview";
 	}
 	
 }

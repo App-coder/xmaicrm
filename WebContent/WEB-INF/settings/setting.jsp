@@ -61,13 +61,13 @@
 											<tbody>
 												<tr>
 													<td valign="top"><a
-														href="javascript:tab('部门机构','settings/group/index')"><img
+														href="settings/group/index"><img
 															width="48" height="48" border="0" title="部门机构" alt="部门机构"
 															src="resources/images/settings/panel/ico-groups.gif"></a></td>
 												</tr>
 												<tr>
 													<td valign="top" class="big"><a
-														href="javascript:tab('部门机构','settings/group/index')">部门机构</a></td>
+														href="settings/group/index">部门机构</a></td>
 												</tr>
 											</tbody>
 										</table>

@@ -1,20 +1,18 @@
-package com.crm.settings.basic;
+package com.crm.settings.basic.action;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.crm.action.BaseController;
-
 /**
- * 
- * 基本设置-部门机构
+ * 基本设置-系统日志
  * 
  * User: zhujun
  * Date: 2012-8-19
- * Time: 上午10:14:10
+ * Time: 上午10:20:04
  */
 @Controller
-@RequestMapping(value = "settings/group")
-public class XmGroupsController extends BaseController {
-	
+@RequestMapping(value = "audittrial")
+public class XmAuditTrialController extends BaseController {
+
 }

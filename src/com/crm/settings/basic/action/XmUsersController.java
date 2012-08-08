@@ -1,4 +1,4 @@
-package com.crm.settings.basic;
+package com.crm.settings.basic.action;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
