@@ -6,7 +6,7 @@
 			<li><a href="javascript:remindWind()">自定义提醒</a></li>
 			<li><a href="http://www.x-mai.com" target="_blank" >我要提问</a></li>
 			<li><a href="crm/role/config">帐号&设置</a></li>
-			<li><a href="crm/welcome/loginout">退出（BOSS）</a></li>
+			<li><a href="crm/welcome/loginout">退出（${login.userName}）</a></li>
 		</ul>
 </div>	
 <div id="nav_div">
@@ -22,7 +22,7 @@
 						<#if (menu.tabs?size>0)>
 							<#list menu.tabs as tb>
 								<#if tb??>
-								<li><a href="crm/module/${tb.name}/index?ptb=${menu.parenttab.parenttabLabel}">${tb.tablabel}</a></li>	
+								<li><a href="crm/module/${tb.name?lower_case}/index?ptb=${menu.parenttab.parenttabLabel}">${tb.tablabel}</a></li>	
 								</#if>
 							</#list>
 						</#if>

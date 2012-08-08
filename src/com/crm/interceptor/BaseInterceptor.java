@@ -16,10 +16,14 @@ public class BaseInterceptor implements HandlerInterceptor {
 	// preHandle()方法在业务处理器处理请求之前被调用  
 	public boolean preHandle(HttpServletRequest request, HttpServletResponse response,
 			Object obj) throws Exception {
-		if(request.getSession().getAttribute(Constant.USER)!=null){
+		String servletpath = request.getServletPath();
+		if(request.getSession().getAttribute(Constant.USERPERMISSION)!=null){
+			if(servletpath.equals("/crm/welcome/index")||servletpath.equals("/crm/welcome/login")){
+				response.sendRedirect("crm/module/home/index");
+			}
 			return true;
 		}else{
-			String servletpath = request.getServletPath();
+			servletpath = request.getServletPath();
 			if(servletpath.equals("/crm/welcome/index")||servletpath.equals("/crm/welcome/login")){
 				return true;
 			}

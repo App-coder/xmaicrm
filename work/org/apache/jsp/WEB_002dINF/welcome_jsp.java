@@ -11,8 +11,6 @@ public final class welcome_jsp extends org.apache.jasper.runtime.HttpJspBase
 
   private static java.util.List _jspx_dependants;
 
-  private org.apache.jasper.runtime.TagHandlerPool _005fjspx_005ftagPool_005fc_005fif_0026_005ftest;
-
   private javax.el.ExpressionFactory _el_expressionfactory;
   private org.apache.AnnotationProcessor _jsp_annotationprocessor;
 
@@ -21,13 +19,11 @@ public final class welcome_jsp extends org.apache.jasper.runtime.HttpJspBase
   }
 
   public void _jspInit() {
-    _005fjspx_005ftagPool_005fc_005fif_0026_005ftest = org.apache.jasper.runtime.TagHandlerPool.getTagHandlerPool(getServletConfig());
     _el_expressionfactory = _jspxFactory.getJspApplicationContext(getServletConfig().getServletContext()).getExpressionFactory();
     _jsp_annotationprocessor = (org.apache.AnnotationProcessor) getServletConfig().getServletContext().getAttribute(org.apache.AnnotationProcessor.class.getName());
   }
 
   public void _jspDestroy() {
-    _005fjspx_005ftagPool_005fc_005fif_0026_005ftest.release();
   }
 
   public void _jspService(HttpServletRequest request, HttpServletResponse response)
@@ -70,9 +66,20 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
       out.write("<meta http-equiv=\"Content-Type\" content=\"text/html; charset=utf-8\" />\r\n");
       out.write("<title>新麦CRM&nbsp;-&nbsp;客户管理系统</title>\r\n");
       out.write("<link href=\"resources/login/css/login.css\" rel=\"stylesheet\" type=\"text/css\" />\r\n");
+      out.write("<script type=\"text/javascript\" src=\"resources/easyui/jquery-1.7.2.min.js\"></script>\r\n");
       out.write("<script language=\"JavaScript\">\r\n");
       out.write("function fleshVerify(){ \r\n");
       out.write("\t$('#verifyImg').attr('src', '/kaptcha.jpg?' + Math.floor(Math.random()*100) ); \r\n");
+      out.write("}\r\n");
+      out.write("function submit(){\r\n");
+      out.write("    var userName = $(\"#userName\").val();\r\n");
+      out.write("    var userPassword = $(\"#userPassword\").val();\r\n");
+      out.write("    $.post('crm/welcome/login',{userName:userName,userPassword:userPassword},function(res){\r\n");
+      out.write("\t\tif(res.type == true){\r\n");
+      out.write("\t\t    window.location.href = \"crm/module/home/index\";\r\n");
+      out.write("\t\t}\r\n");
+      out.write("\t\t$(\"#redtip\").html(res.message);\r\n");
+      out.write("    },'json');\r\n");
       out.write("}\r\n");
       out.write("</script>\r\n");
       out.write("</head>\r\n");
@@ -83,24 +90,21 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
       out.write("<div id=\"login\">\r\n");
       out.write("    <div id=\"login_content\">\r\n");
       out.write("    <div class=\"loginForm\">\r\n");
-      out.write("            \t<form method=\"post\" action=\"crm/welcome/login\" >\r\n");
       out.write("\t\t\t\t<p>\r\n");
-      out.write("\t\t\t\t\t<input type=\"text\" name=\"userName\" value=\"admin\" autocomplete=\"false\" size=\"20\" class=\"login_input\" />\r\n");
+      out.write("\t\t\t\t\t<input type=\"text\" name=\"userName\" id=\"userName\" value=\"admin\" autocomplete=\"false\" size=\"20\" class=\"login_input\" />\r\n");
       out.write("\t\t\t\t</p>\r\n");
       out.write("\t\t\t\t<p>\r\n");
-      out.write("\t\t\t\t\t<input type=\"password\" name=\"userPassword\" value=\"admin\" autocomplete=\"false\" size=\"20\" class=\"login_input\" />\r\n");
+      out.write("\t\t\t\t\t<input type=\"password\" name=\"userPassword\" id=\"userPassword\" value=\"admin\" autocomplete=\"false\" size=\"20\" class=\"login_input\" />\r\n");
       out.write("\t\t\t\t</p>\r\n");
       out.write("\t\t\t\t<p>\r\n");
       out.write("\t\t\t\t\t<input type=\"text\" name=\"verify\" width=\"75px;\" autocomplete=\"false\" size=\"20\" class=\"login_input\" />\r\n");
       out.write("\t\t\t\t</p>\r\n");
       out.write("\t\t\t\t<p>\r\n");
-      out.write("\t\t\t\t<input class=\"login_btn sub\" type=\"submit\" name=\"form_submit\"   value=\" \" />\r\n");
+      out.write("\t\t\t\t<input class=\"login_btn sub\" type=\"button\" onclick=\"submit()\" name=\"form_submit\"   value=\" \" />\r\n");
       out.write("\t\t\t\t</p>\r\n");
-      out.write("\t\t\t\t");
-      if (_jspx_meth_c_005fif_005f0(_jspx_page_context))
-        return;
-      out.write("\r\n");
-      out.write("\t\t\t</form>\r\n");
+      out.write("\t\t\t\t<p>\r\n");
+      out.write("\t\t\t\t\t<span class=\"red\" id=\"redtip\"></span>\r\n");
+      out.write("\t\t\t\t</p>\r\n");
       out.write("\t\t</div>\r\n");
       out.write("    </div>\r\n");
       out.write("    <div style=\"text-align: center;margin-bottom: 20px;color:#C2C2C2;\">\r\n");
@@ -120,38 +124,5 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     } finally {
       _jspxFactory.releasePageContext(_jspx_page_context);
     }
-  }
-
-  private boolean _jspx_meth_c_005fif_005f0(PageContext _jspx_page_context)
-          throws Throwable {
-    PageContext pageContext = _jspx_page_context;
-    JspWriter out = _jspx_page_context.getOut();
-    //  c:if
-    org.apache.taglibs.standard.tag.rt.core.IfTag _jspx_th_c_005fif_005f0 = (org.apache.taglibs.standard.tag.rt.core.IfTag) _005fjspx_005ftagPool_005fc_005fif_0026_005ftest.get(org.apache.taglibs.standard.tag.rt.core.IfTag.class);
-    _jspx_th_c_005fif_005f0.setPageContext(_jspx_page_context);
-    _jspx_th_c_005fif_005f0.setParent(null);
-    // /WEB-INF/welcome.jsp(41,4) name = test type = boolean reqTime = true required = true fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
-    _jspx_th_c_005fif_005f0.setTest(((java.lang.Boolean) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${message!=null }", java.lang.Boolean.class, (PageContext)_jspx_page_context, null, false)).booleanValue());
-    int _jspx_eval_c_005fif_005f0 = _jspx_th_c_005fif_005f0.doStartTag();
-    if (_jspx_eval_c_005fif_005f0 != javax.servlet.jsp.tagext.Tag.SKIP_BODY) {
-      do {
-        out.write("\r\n");
-        out.write("\t\t\t\t\t<p>\r\n");
-        out.write("\t\t\t\t\t<span class=\"red\">");
-        out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${message }", java.lang.String.class, (PageContext)_jspx_page_context, null, false));
-        out.write("</span>\r\n");
-        out.write("\t\t\t\t\t</p>\r\n");
-        out.write("\t\t\t\t");
-        int evalDoAfterBody = _jspx_th_c_005fif_005f0.doAfterBody();
-        if (evalDoAfterBody != javax.servlet.jsp.tagext.BodyTag.EVAL_BODY_AGAIN)
-          break;
-      } while (true);
-    }
-    if (_jspx_th_c_005fif_005f0.doEndTag() == javax.servlet.jsp.tagext.Tag.SKIP_PAGE) {
-      _005fjspx_005ftagPool_005fc_005fif_0026_005ftest.reuse(_jspx_th_c_005fif_005f0);
-      return true;
-    }
-    _005fjspx_005ftagPool_005fc_005fif_0026_005ftest.reuse(_jspx_th_c_005fif_005f0);
-    return false;
   }
 }

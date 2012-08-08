@@ -19,8 +19,8 @@ ${navbar }
 		<div style="width:33%;">
 			<c:forEach items="${stuffs}" var="stuff" varStatus="vs" >
 			<c:if test="${vs.index%3==0 }">
-				<div title="${stuff.stufftitle }" style="height:280px;padding:10px;">
-					${stuff.stufftype }
+				<div title="${stuff.stufftitle }-${stuff.stufftype }" style="height:280px;">
+					<iframe frameborder="0" width="100%" height="100%" src="crm/portlets/${stuff.stufftype }/index"></iframe>
 				</div>
 			</c:if>
 			</c:forEach>
@@ -28,8 +28,8 @@ ${navbar }
 		<div style="width:33%;">
 			<c:forEach items="${stuffs}" var="stuff" varStatus="vs" >
 			<c:if test="${(vs.index+2)%3==0 }">
-				<div title="${stuff.stufftitle }" style="height:280px;padding:10px;">
-					${stuff.stufftype }
+				<div title="${stuff.stufftitle }-${stuff.stufftype }" style="height:280px;padding:10px;">
+					<iframe frameborder="0" width="100%" height="100%" src="crm/portlets/${stuff.stufftype }/index"></iframe>
 				</div>
 			</c:if>
 			</c:forEach>
@@ -37,8 +37,8 @@ ${navbar }
 		<div style="width:34%;">
 			<c:forEach items="${stuffs}" var="stuff" varStatus="vs" >
 			<c:if test="${(vs.index+1)%3==0 }">
-				<div title="${stuff.stufftitle }" style="height:280px;padding:10px;">
-					${stuff.stufftype }
+				<div title="${stuff.stufftitle }-${stuff.stufftype }" style="height:280px;padding:10px;">
+					<iframe frameborder="0" width="100%" height="100%" src="crm/portlets/${stuff.stufftype }/index"></iframe>
 				</div>
 			</c:if>
 			</c:forEach>

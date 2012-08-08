@@ -5,13 +5,23 @@
 <%
 String path = request.getContextPath();  
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/"; 
+String servletpath = request.getServletPath();
 %>    
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
 <base href="<%=basePath %>"/>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title></title>
+<title>
+<c:choose>
+	<c:when test="${ptb!=null&&tab!=null}">
+		${USERPERMISSION.user.userName}&nbsp;-&nbsp;${ptb }&nbsp;-&nbsp;${tab.tablabel }&nbsp;-&nbsp;新麦CRM&nbsp;-&nbsp;企业客户管理系统领跑者
+	</c:when>
+	<c:otherwise>
+		${USERPERMISSION.user.userName}&nbsp;-&nbsp;新麦CRM&nbsp;-&nbsp;企业客户管理系统领跑者
+	</c:otherwise>
+</c:choose>
+</title>
 <link rel="stylesheet" type="text/css" href="resources/easyui/themes/default/easyui.css">
 <link rel="stylesheet" type="text/css" href="resources/easyui/themes/icon.css">
 <link rel="stylesheet" type="text/css" href="resources/css.css">
