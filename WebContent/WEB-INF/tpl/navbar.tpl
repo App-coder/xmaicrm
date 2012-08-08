@@ -22,7 +22,7 @@
 						<#if (menu.tabs?size>0)>
 							<#list menu.tabs as tb>
 								<#if tb??>
-								<li><a href="crm/customview/viewIndex?entitytype=${tb.name}&ptb=${menu.parenttab.parenttabLabel}">${tb.tablabel}</a></li>	
+								<li><a href="crm/module/${tb.name}/index?ptb=${menu.parenttab.parenttabLabel}">${tb.tablabel}</a></li>	
 								</#if>
 							</#list>
 						</#if>
@@ -50,7 +50,7 @@
 									<#list menu.tabs as tb>
 										<#if tb??>
 											<#if permission.modulePermission[tb.tabid+'']??>
-												<li><a href="crm/customview/viewIndex?entitytype=${tb.name}&ptb=${menu.parenttab.parenttabLabel}">${tb.tablabel}</a></li>
+												<li><a href="crm/module/${tb.name}/index?ptb=${menu.parenttab.parenttabLabel}">${tb.tablabel}</a></li>
 											</#if>
 										</#if>
 									</#list>

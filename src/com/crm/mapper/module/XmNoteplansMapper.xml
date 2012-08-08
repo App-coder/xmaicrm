@@ -1,0 +1,280 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.crm.mapper.module.XmNoteplansMapper" >
+  <resultMap id="BaseResultMap" type="com.crm.model.XmNoteplans" >
+    <id column="noteplansid" property="noteplansid" jdbcType="INTEGER" />
+    <result column="noteplanname" property="noteplanname" jdbcType="VARCHAR" />
+    <result column="is_rl" property="isRl" jdbcType="VARCHAR" />
+    <result column="planstatus" property="planstatus" jdbcType="VARCHAR" />
+    <result column="ischangedsmow" property="ischangedsmow" jdbcType="VARCHAR" />
+    <result column="startdate" property="startdate" jdbcType="DATE" />
+    <result column="enddate" property="enddate" jdbcType="DATE" />
+    <result column="smcreatorid" property="smcreatorid" jdbcType="INTEGER" />
+    <result column="smownerid" property="smownerid" jdbcType="INTEGER" />
+    <result column="modifiedby" property="modifiedby" jdbcType="INTEGER" />
+    <result column="groupid" property="groupid" jdbcType="INTEGER" />
+    <result column="createdtime" property="createdtime" jdbcType="TIMESTAMP" />
+    <result column="modifiedtime" property="modifiedtime" jdbcType="TIMESTAMP" />
+    <result column="deleted" property="deleted" jdbcType="INTEGER" />
+    <result column="approved" property="approved" jdbcType="INTEGER" />
+    <result column="approvedby" property="approvedby" jdbcType="INTEGER" />
+  </resultMap>
+  <resultMap id="ResultMapWithBLOBs" type="com.crm.model.XmNoteplans" extends="BaseResultMap" >
+    <result column="executor" property="executor" jdbcType="LONGVARCHAR" />
+    <result column="description" property="description" jdbcType="LONGVARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    noteplansid, noteplanname, is_rl, planstatus, ischangedsmow, startdate, enddate, 
+    smcreatorid, smownerid, modifiedby, groupid, createdtime, modifiedtime, deleted, 
+    approved, approvedby
+  </sql>
+  <sql id="Blob_Column_List" >
+    executor, description
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="ResultMapWithBLOBs" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from xm_noteplans
+    where noteplansid = #{noteplansid,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from xm_noteplans
+    where noteplansid = #{noteplansid,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.crm.model.XmNoteplans" >
+    insert into xm_noteplans (noteplansid, noteplanname, is_rl, 
+      planstatus, ischangedsmow, startdate, 
+      enddate, smcreatorid, smownerid, 
+      modifiedby, groupid, createdtime, 
+      modifiedtime, deleted, approved, 
+      approvedby, executor, description
+      )
+    values (#{noteplansid,jdbcType=INTEGER}, #{noteplanname,jdbcType=VARCHAR}, #{isRl,jdbcType=VARCHAR}, 
+      #{planstatus,jdbcType=VARCHAR}, #{ischangedsmow,jdbcType=VARCHAR}, #{startdate,jdbcType=DATE}, 
+      #{enddate,jdbcType=DATE}, #{smcreatorid,jdbcType=INTEGER}, #{smownerid,jdbcType=INTEGER}, 
+      #{modifiedby,jdbcType=INTEGER}, #{groupid,jdbcType=INTEGER}, #{createdtime,jdbcType=TIMESTAMP}, 
+      #{modifiedtime,jdbcType=TIMESTAMP}, #{deleted,jdbcType=INTEGER}, #{approved,jdbcType=INTEGER}, 
+      #{approvedby,jdbcType=INTEGER}, #{executor,jdbcType=LONGVARCHAR}, #{description,jdbcType=LONGVARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.crm.model.XmNoteplans" >
+    insert into xm_noteplans
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="noteplansid != null" >
+        noteplansid,
+      </if>
+      <if test="noteplanname != null" >
+        noteplanname,
+      </if>
+      <if test="isRl != null" >
+        is_rl,
+      </if>
+      <if test="planstatus != null" >
+        planstatus,
+      </if>
+      <if test="ischangedsmow != null" >
+        ischangedsmow,
+      </if>
+      <if test="startdate != null" >
+        startdate,
+      </if>
+      <if test="enddate != null" >
+        enddate,
+      </if>
+      <if test="smcreatorid != null" >
+        smcreatorid,
+      </if>
+      <if test="smownerid != null" >
+        smownerid,
+      </if>
+      <if test="modifiedby != null" >
+        modifiedby,
+      </if>
+      <if test="groupid != null" >
+        groupid,
+      </if>
+      <if test="createdtime != null" >
+        createdtime,
+      </if>
+      <if test="modifiedtime != null" >
+        modifiedtime,
+      </if>
+      <if test="deleted != null" >
+        deleted,
+      </if>
+      <if test="approved != null" >
+        approved,
+      </if>
+      <if test="approvedby != null" >
+        approvedby,
+      </if>
+      <if test="executor != null" >
+        executor,
+      </if>
+      <if test="description != null" >
+        description,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="noteplansid != null" >
+        #{noteplansid,jdbcType=INTEGER},
+      </if>
+      <if test="noteplanname != null" >
+        #{noteplanname,jdbcType=VARCHAR},
+      </if>
+      <if test="isRl != null" >
+        #{isRl,jdbcType=VARCHAR},
+      </if>
+      <if test="planstatus != null" >
+        #{planstatus,jdbcType=VARCHAR},
+      </if>
+      <if test="ischangedsmow != null" >
+        #{ischangedsmow,jdbcType=VARCHAR},
+      </if>
+      <if test="startdate != null" >
+        #{startdate,jdbcType=DATE},
+      </if>
+      <if test="enddate != null" >
+        #{enddate,jdbcType=DATE},
+      </if>
+      <if test="smcreatorid != null" >
+        #{smcreatorid,jdbcType=INTEGER},
+      </if>
+      <if test="smownerid != null" >
+        #{smownerid,jdbcType=INTEGER},
+      </if>
+      <if test="modifiedby != null" >
+        #{modifiedby,jdbcType=INTEGER},
+      </if>
+      <if test="groupid != null" >
+        #{groupid,jdbcType=INTEGER},
+      </if>
+      <if test="createdtime != null" >
+        #{createdtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="modifiedtime != null" >
+        #{modifiedtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="deleted != null" >
+        #{deleted,jdbcType=INTEGER},
+      </if>
+      <if test="approved != null" >
+        #{approved,jdbcType=INTEGER},
+      </if>
+      <if test="approvedby != null" >
+        #{approvedby,jdbcType=INTEGER},
+      </if>
+      <if test="executor != null" >
+        #{executor,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="description != null" >
+        #{description,jdbcType=LONGVARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.crm.model.XmNoteplans" >
+    update xm_noteplans
+    <set >
+      <if test="noteplanname != null" >
+        noteplanname = #{noteplanname,jdbcType=VARCHAR},
+      </if>
+      <if test="isRl != null" >
+        is_rl = #{isRl,jdbcType=VARCHAR},
+      </if>
+      <if test="planstatus != null" >
+        planstatus = #{planstatus,jdbcType=VARCHAR},
+      </if>
+      <if test="ischangedsmow != null" >
+        ischangedsmow = #{ischangedsmow,jdbcType=VARCHAR},
+      </if>
+      <if test="startdate != null" >
+        startdate = #{startdate,jdbcType=DATE},
+      </if>
+      <if test="enddate != null" >
+        enddate = #{enddate,jdbcType=DATE},
+      </if>
+      <if test="smcreatorid != null" >
+        smcreatorid = #{smcreatorid,jdbcType=INTEGER},
+      </if>
+      <if test="smownerid != null" >
+        smownerid = #{smownerid,jdbcType=INTEGER},
+      </if>
+      <if test="modifiedby != null" >
+        modifiedby = #{modifiedby,jdbcType=INTEGER},
+      </if>
+      <if test="groupid != null" >
+        groupid = #{groupid,jdbcType=INTEGER},
+      </if>
+      <if test="createdtime != null" >
+        createdtime = #{createdtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="modifiedtime != null" >
+        modifiedtime = #{modifiedtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="deleted != null" >
+        deleted = #{deleted,jdbcType=INTEGER},
+      </if>
+      <if test="approved != null" >
+        approved = #{approved,jdbcType=INTEGER},
+      </if>
+      <if test="approvedby != null" >
+        approvedby = #{approvedby,jdbcType=INTEGER},
+      </if>
+      <if test="executor != null" >
+        executor = #{executor,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="description != null" >
+        description = #{description,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    where noteplansid = #{noteplansid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.crm.model.XmNoteplans" >
+    update xm_noteplans
+    set noteplanname = #{noteplanname,jdbcType=VARCHAR},
+      is_rl = #{isRl,jdbcType=VARCHAR},
+      planstatus = #{planstatus,jdbcType=VARCHAR},
+      ischangedsmow = #{ischangedsmow,jdbcType=VARCHAR},
+      startdate = #{startdate,jdbcType=DATE},
+      enddate = #{enddate,jdbcType=DATE},
+      smcreatorid = #{smcreatorid,jdbcType=INTEGER},
+      smownerid = #{smownerid,jdbcType=INTEGER},
+      modifiedby = #{modifiedby,jdbcType=INTEGER},
+      groupid = #{groupid,jdbcType=INTEGER},
+      createdtime = #{createdtime,jdbcType=TIMESTAMP},
+      modifiedtime = #{modifiedtime,jdbcType=TIMESTAMP},
+      deleted = #{deleted,jdbcType=INTEGER},
+      approved = #{approved,jdbcType=INTEGER},
+      approvedby = #{approvedby,jdbcType=INTEGER},
+      executor = #{executor,jdbcType=LONGVARCHAR},
+      description = #{description,jdbcType=LONGVARCHAR}
+    where noteplansid = #{noteplansid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.crm.model.XmNoteplans" >
+    update xm_noteplans
+    set noteplanname = #{noteplanname,jdbcType=VARCHAR},
+      is_rl = #{isRl,jdbcType=VARCHAR},
+      planstatus = #{planstatus,jdbcType=VARCHAR},
+      ischangedsmow = #{ischangedsmow,jdbcType=VARCHAR},
+      startdate = #{startdate,jdbcType=DATE},
+      enddate = #{enddate,jdbcType=DATE},
+      smcreatorid = #{smcreatorid,jdbcType=INTEGER},
+      smownerid = #{smownerid,jdbcType=INTEGER},
+      modifiedby = #{modifiedby,jdbcType=INTEGER},
+      groupid = #{groupid,jdbcType=INTEGER},
+      createdtime = #{createdtime,jdbcType=TIMESTAMP},
+      modifiedtime = #{modifiedtime,jdbcType=TIMESTAMP},
+      deleted = #{deleted,jdbcType=INTEGER},
+      approved = #{approved,jdbcType=INTEGER},
+      approvedby = #{approvedby,jdbcType=INTEGER}
+    where noteplansid = #{noteplansid,jdbcType=INTEGER}
+  </update>
+  <select id="getTotal" resultType="INTEGER" >
+	SELECT count(1) AS count FROM xm_noteplans LEFT JOIN xm_users ON xm_users.id = xm_noteplans.smownerid WHERE xm_noteplans.deleted = 0 and 1=1 ${filter}
+  </select>
+  <select id="loadList" resultMap="BaseResultMap">
+    select xm_noteplans.noteplanname,xm_users.user_name FROM xm_noteplans LEFT JOIN xm_users ON xm_users.id = xm_noteplans.smownerid WHERE xm_noteplans.deleted = 0 and 1=1 ${filter} limit #{start},#{rows}
+  </select>
+</mapper>

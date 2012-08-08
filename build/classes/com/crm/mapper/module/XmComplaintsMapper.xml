@@ -1,0 +1,365 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.crm.mapper.module.XmComplaintsMapper" >
+  <resultMap id="BaseResultMap" type="com.crm.model.XmComplaints" >
+    <id column="complaintsid" property="complaintsid" jdbcType="INTEGER" />
+    <result column="complaint607" property="complaint607" jdbcType="VARCHAR" />
+    <result column="inboundsearchsid" property="inboundsearchsid" jdbcType="INTEGER" />
+    <result column="contact_id" property="contactId" jdbcType="INTEGER" />
+    <result column="accountid" property="accountid" jdbcType="INTEGER" />
+    <result column="complaintname" property="complaintname" jdbcType="VARCHAR" />
+    <result column="complaint609" property="complaint609" jdbcType="DATE" />
+    <result column="complaint611" property="complaint611" jdbcType="VARCHAR" />
+    <result column="complaint613" property="complaint613" jdbcType="VARCHAR" />
+    <result column="complaint615" property="complaint615" jdbcType="VARCHAR" />
+    <result column="complaint617" property="complaint617" jdbcType="VARCHAR" />
+    <result column="smcreatorid" property="smcreatorid" jdbcType="INTEGER" />
+    <result column="smownerid" property="smownerid" jdbcType="INTEGER" />
+    <result column="modifiedby" property="modifiedby" jdbcType="INTEGER" />
+    <result column="groupid" property="groupid" jdbcType="INTEGER" />
+    <result column="createdtime" property="createdtime" jdbcType="TIMESTAMP" />
+    <result column="modifiedtime" property="modifiedtime" jdbcType="TIMESTAMP" />
+    <result column="deleted" property="deleted" jdbcType="INTEGER" />
+    <result column="approved" property="approved" jdbcType="INTEGER" />
+    <result column="approvedby" property="approvedby" jdbcType="INTEGER" />
+  </resultMap>
+  <resultMap id="ResultMapWithBLOBs" type="com.crm.model.XmComplaints" extends="BaseResultMap" >
+    <result column="complaint619" property="complaint619" jdbcType="LONGVARCHAR" />
+    <result column="complaint621" property="complaint621" jdbcType="LONGVARCHAR" />
+    <result column="complaint623" property="complaint623" jdbcType="LONGVARCHAR" />
+    <result column="complaint625" property="complaint625" jdbcType="LONGVARCHAR" />
+    <result column="description" property="description" jdbcType="LONGVARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    complaintsid, complaint607, inboundsearchsid, contact_id, accountid, complaintname, 
+    complaint609, complaint611, complaint613, complaint615, complaint617, smcreatorid, 
+    smownerid, modifiedby, groupid, createdtime, modifiedtime, deleted, approved, approvedby
+  </sql>
+  <sql id="Blob_Column_List" >
+    complaint619, complaint621, complaint623, complaint625, description
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="ResultMapWithBLOBs" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from xm_complaints
+    where complaintsid = #{complaintsid,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from xm_complaints
+    where complaintsid = #{complaintsid,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.crm.model.XmComplaints" >
+    insert into xm_complaints (complaintsid, complaint607, inboundsearchsid, 
+      contact_id, accountid, complaintname, 
+      complaint609, complaint611, complaint613, 
+      complaint615, complaint617, smcreatorid, 
+      smownerid, modifiedby, groupid, 
+      createdtime, modifiedtime, deleted, 
+      approved, approvedby, complaint619, 
+      complaint621, complaint623, complaint625, 
+      description)
+    values (#{complaintsid,jdbcType=INTEGER}, #{complaint607,jdbcType=VARCHAR}, #{inboundsearchsid,jdbcType=INTEGER}, 
+      #{contactId,jdbcType=INTEGER}, #{accountid,jdbcType=INTEGER}, #{complaintname,jdbcType=VARCHAR}, 
+      #{complaint609,jdbcType=DATE}, #{complaint611,jdbcType=VARCHAR}, #{complaint613,jdbcType=VARCHAR}, 
+      #{complaint615,jdbcType=VARCHAR}, #{complaint617,jdbcType=VARCHAR}, #{smcreatorid,jdbcType=INTEGER}, 
+      #{smownerid,jdbcType=INTEGER}, #{modifiedby,jdbcType=INTEGER}, #{groupid,jdbcType=INTEGER}, 
+      #{createdtime,jdbcType=TIMESTAMP}, #{modifiedtime,jdbcType=TIMESTAMP}, #{deleted,jdbcType=INTEGER}, 
+      #{approved,jdbcType=INTEGER}, #{approvedby,jdbcType=INTEGER}, #{complaint619,jdbcType=LONGVARCHAR}, 
+      #{complaint621,jdbcType=LONGVARCHAR}, #{complaint623,jdbcType=LONGVARCHAR}, #{complaint625,jdbcType=LONGVARCHAR}, 
+      #{description,jdbcType=LONGVARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.crm.model.XmComplaints" >
+    insert into xm_complaints
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="complaintsid != null" >
+        complaintsid,
+      </if>
+      <if test="complaint607 != null" >
+        complaint607,
+      </if>
+      <if test="inboundsearchsid != null" >
+        inboundsearchsid,
+      </if>
+      <if test="contactId != null" >
+        contact_id,
+      </if>
+      <if test="accountid != null" >
+        accountid,
+      </if>
+      <if test="complaintname != null" >
+        complaintname,
+      </if>
+      <if test="complaint609 != null" >
+        complaint609,
+      </if>
+      <if test="complaint611 != null" >
+        complaint611,
+      </if>
+      <if test="complaint613 != null" >
+        complaint613,
+      </if>
+      <if test="complaint615 != null" >
+        complaint615,
+      </if>
+      <if test="complaint617 != null" >
+        complaint617,
+      </if>
+      <if test="smcreatorid != null" >
+        smcreatorid,
+      </if>
+      <if test="smownerid != null" >
+        smownerid,
+      </if>
+      <if test="modifiedby != null" >
+        modifiedby,
+      </if>
+      <if test="groupid != null" >
+        groupid,
+      </if>
+      <if test="createdtime != null" >
+        createdtime,
+      </if>
+      <if test="modifiedtime != null" >
+        modifiedtime,
+      </if>
+      <if test="deleted != null" >
+        deleted,
+      </if>
+      <if test="approved != null" >
+        approved,
+      </if>
+      <if test="approvedby != null" >
+        approvedby,
+      </if>
+      <if test="complaint619 != null" >
+        complaint619,
+      </if>
+      <if test="complaint621 != null" >
+        complaint621,
+      </if>
+      <if test="complaint623 != null" >
+        complaint623,
+      </if>
+      <if test="complaint625 != null" >
+        complaint625,
+      </if>
+      <if test="description != null" >
+        description,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="complaintsid != null" >
+        #{complaintsid,jdbcType=INTEGER},
+      </if>
+      <if test="complaint607 != null" >
+        #{complaint607,jdbcType=VARCHAR},
+      </if>
+      <if test="inboundsearchsid != null" >
+        #{inboundsearchsid,jdbcType=INTEGER},
+      </if>
+      <if test="contactId != null" >
+        #{contactId,jdbcType=INTEGER},
+      </if>
+      <if test="accountid != null" >
+        #{accountid,jdbcType=INTEGER},
+      </if>
+      <if test="complaintname != null" >
+        #{complaintname,jdbcType=VARCHAR},
+      </if>
+      <if test="complaint609 != null" >
+        #{complaint609,jdbcType=DATE},
+      </if>
+      <if test="complaint611 != null" >
+        #{complaint611,jdbcType=VARCHAR},
+      </if>
+      <if test="complaint613 != null" >
+        #{complaint613,jdbcType=VARCHAR},
+      </if>
+      <if test="complaint615 != null" >
+        #{complaint615,jdbcType=VARCHAR},
+      </if>
+      <if test="complaint617 != null" >
+        #{complaint617,jdbcType=VARCHAR},
+      </if>
+      <if test="smcreatorid != null" >
+        #{smcreatorid,jdbcType=INTEGER},
+      </if>
+      <if test="smownerid != null" >
+        #{smownerid,jdbcType=INTEGER},
+      </if>
+      <if test="modifiedby != null" >
+        #{modifiedby,jdbcType=INTEGER},
+      </if>
+      <if test="groupid != null" >
+        #{groupid,jdbcType=INTEGER},
+      </if>
+      <if test="createdtime != null" >
+        #{createdtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="modifiedtime != null" >
+        #{modifiedtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="deleted != null" >
+        #{deleted,jdbcType=INTEGER},
+      </if>
+      <if test="approved != null" >
+        #{approved,jdbcType=INTEGER},
+      </if>
+      <if test="approvedby != null" >
+        #{approvedby,jdbcType=INTEGER},
+      </if>
+      <if test="complaint619 != null" >
+        #{complaint619,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="complaint621 != null" >
+        #{complaint621,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="complaint623 != null" >
+        #{complaint623,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="complaint625 != null" >
+        #{complaint625,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="description != null" >
+        #{description,jdbcType=LONGVARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.crm.model.XmComplaints" >
+    update xm_complaints
+    <set >
+      <if test="complaint607 != null" >
+        complaint607 = #{complaint607,jdbcType=VARCHAR},
+      </if>
+      <if test="inboundsearchsid != null" >
+        inboundsearchsid = #{inboundsearchsid,jdbcType=INTEGER},
+      </if>
+      <if test="contactId != null" >
+        contact_id = #{contactId,jdbcType=INTEGER},
+      </if>
+      <if test="accountid != null" >
+        accountid = #{accountid,jdbcType=INTEGER},
+      </if>
+      <if test="complaintname != null" >
+        complaintname = #{complaintname,jdbcType=VARCHAR},
+      </if>
+      <if test="complaint609 != null" >
+        complaint609 = #{complaint609,jdbcType=DATE},
+      </if>
+      <if test="complaint611 != null" >
+        complaint611 = #{complaint611,jdbcType=VARCHAR},
+      </if>
+      <if test="complaint613 != null" >
+        complaint613 = #{complaint613,jdbcType=VARCHAR},
+      </if>
+      <if test="complaint615 != null" >
+        complaint615 = #{complaint615,jdbcType=VARCHAR},
+      </if>
+      <if test="complaint617 != null" >
+        complaint617 = #{complaint617,jdbcType=VARCHAR},
+      </if>
+      <if test="smcreatorid != null" >
+        smcreatorid = #{smcreatorid,jdbcType=INTEGER},
+      </if>
+      <if test="smownerid != null" >
+        smownerid = #{smownerid,jdbcType=INTEGER},
+      </if>
+      <if test="modifiedby != null" >
+        modifiedby = #{modifiedby,jdbcType=INTEGER},
+      </if>
+      <if test="groupid != null" >
+        groupid = #{groupid,jdbcType=INTEGER},
+      </if>
+      <if test="createdtime != null" >
+        createdtime = #{createdtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="modifiedtime != null" >
+        modifiedtime = #{modifiedtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="deleted != null" >
+        deleted = #{deleted,jdbcType=INTEGER},
+      </if>
+      <if test="approved != null" >
+        approved = #{approved,jdbcType=INTEGER},
+      </if>
+      <if test="approvedby != null" >
+        approvedby = #{approvedby,jdbcType=INTEGER},
+      </if>
+      <if test="complaint619 != null" >
+        complaint619 = #{complaint619,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="complaint621 != null" >
+        complaint621 = #{complaint621,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="complaint623 != null" >
+        complaint623 = #{complaint623,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="complaint625 != null" >
+        complaint625 = #{complaint625,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="description != null" >
+        description = #{description,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    where complaintsid = #{complaintsid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.crm.model.XmComplaints" >
+    update xm_complaints
+    set complaint607 = #{complaint607,jdbcType=VARCHAR},
+      inboundsearchsid = #{inboundsearchsid,jdbcType=INTEGER},
+      contact_id = #{contactId,jdbcType=INTEGER},
+      accountid = #{accountid,jdbcType=INTEGER},
+      complaintname = #{complaintname,jdbcType=VARCHAR},
+      complaint609 = #{complaint609,jdbcType=DATE},
+      complaint611 = #{complaint611,jdbcType=VARCHAR},
+      complaint613 = #{complaint613,jdbcType=VARCHAR},
+      complaint615 = #{complaint615,jdbcType=VARCHAR},
+      complaint617 = #{complaint617,jdbcType=VARCHAR},
+      smcreatorid = #{smcreatorid,jdbcType=INTEGER},
+      smownerid = #{smownerid,jdbcType=INTEGER},
+      modifiedby = #{modifiedby,jdbcType=INTEGER},
+      groupid = #{groupid,jdbcType=INTEGER},
+      createdtime = #{createdtime,jdbcType=TIMESTAMP},
+      modifiedtime = #{modifiedtime,jdbcType=TIMESTAMP},
+      deleted = #{deleted,jdbcType=INTEGER},
+      approved = #{approved,jdbcType=INTEGER},
+      approvedby = #{approvedby,jdbcType=INTEGER},
+      complaint619 = #{complaint619,jdbcType=LONGVARCHAR},
+      complaint621 = #{complaint621,jdbcType=LONGVARCHAR},
+      complaint623 = #{complaint623,jdbcType=LONGVARCHAR},
+      complaint625 = #{complaint625,jdbcType=LONGVARCHAR},
+      description = #{description,jdbcType=LONGVARCHAR}
+    where complaintsid = #{complaintsid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.crm.model.XmComplaints" >
+    update xm_complaints
+    set complaint607 = #{complaint607,jdbcType=VARCHAR},
+      inboundsearchsid = #{inboundsearchsid,jdbcType=INTEGER},
+      contact_id = #{contactId,jdbcType=INTEGER},
+      accountid = #{accountid,jdbcType=INTEGER},
+      complaintname = #{complaintname,jdbcType=VARCHAR},
+      complaint609 = #{complaint609,jdbcType=DATE},
+      complaint611 = #{complaint611,jdbcType=VARCHAR},
+      complaint613 = #{complaint613,jdbcType=VARCHAR},
+      complaint615 = #{complaint615,jdbcType=VARCHAR},
+      complaint617 = #{complaint617,jdbcType=VARCHAR},
+      smcreatorid = #{smcreatorid,jdbcType=INTEGER},
+      smownerid = #{smownerid,jdbcType=INTEGER},
+      modifiedby = #{modifiedby,jdbcType=INTEGER},
+      groupid = #{groupid,jdbcType=INTEGER},
+      createdtime = #{createdtime,jdbcType=TIMESTAMP},
+      modifiedtime = #{modifiedtime,jdbcType=TIMESTAMP},
+      deleted = #{deleted,jdbcType=INTEGER},
+      approved = #{approved,jdbcType=INTEGER},
+      approvedby = #{approvedby,jdbcType=INTEGER}
+    where complaintsid = #{complaintsid,jdbcType=INTEGER}
+  </update>
+  <select id="getTotal" resultType="INTEGER" >
+  	SELECT count(1) AS count FROM xm_complaints LEFT JOIN xm_users ON xm_users.id = xm_complaints.smownerid left join xm_account ON xm_complaints.accountid=xm_account.accountid left join xm_contactdetails ON xm_complaints.contact_id=xm_contactdetails.contactid WHERE 1=1 ${filter}
+  </select>
+  <select id="loadList" resultMap="BaseResultMap" >
+  	select xm_complaints.complaintname,xm_users.user_name,xm_complaints.accountid,xm_complaints.complaint607,xm_complaints.complaint609,xm_complaints.complaint615,xm_complaints.complaint613,xm_complaints.createdtime ,xm_complaints.complaintsid as crmid FROM xm_complaints LEFT JOIN xm_users ON xm_users.id = xm_complaints.smownerid left join xm_account ON xm_complaints.accountid=xm_account.accountid left join xm_contactdetails ON xm_complaints.contact_id=xm_contactdetails.contactid WHERE 1=1 ${filter} limit #{start},#{rows}
+  </select>
+</mapper>

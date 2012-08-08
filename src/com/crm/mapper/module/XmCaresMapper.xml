@@ -1,0 +1,284 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.crm.mapper.module.XmCaresMapper" >
+  <resultMap id="BaseResultMap" type="com.crm.model.XmCares" >
+    <id column="caresid" property="caresid" jdbcType="INTEGER" />
+    <result column="carename" property="carename" jdbcType="VARCHAR" />
+    <result column="accountid" property="accountid" jdbcType="INTEGER" />
+    <result column="contact_id" property="contactId" jdbcType="INTEGER" />
+    <result column="caredate" property="caredate" jdbcType="DATE" />
+    <result column="caretype" property="caretype" jdbcType="VARCHAR" />
+    <result column="smcreatorid" property="smcreatorid" jdbcType="INTEGER" />
+    <result column="smownerid" property="smownerid" jdbcType="INTEGER" />
+    <result column="modifiedby" property="modifiedby" jdbcType="INTEGER" />
+    <result column="groupid" property="groupid" jdbcType="INTEGER" />
+    <result column="createdtime" property="createdtime" jdbcType="TIMESTAMP" />
+    <result column="modifiedtime" property="modifiedtime" jdbcType="TIMESTAMP" />
+    <result column="deleted" property="deleted" jdbcType="INTEGER" />
+    <result column="approved" property="approved" jdbcType="INTEGER" />
+    <result column="approvedby" property="approvedby" jdbcType="INTEGER" />
+  </resultMap>
+  <resultMap id="ResultMapWithBLOBs" type="com.crm.model.XmCares" extends="BaseResultMap" >
+    <result column="carecontent" property="carecontent" jdbcType="LONGVARCHAR" />
+    <result column="carefankui" property="carefankui" jdbcType="LONGVARCHAR" />
+    <result column="description" property="description" jdbcType="LONGVARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    caresid, carename, accountid, contact_id, caredate, caretype, smcreatorid, smownerid, 
+    modifiedby, groupid, createdtime, modifiedtime, deleted, approved, approvedby
+  </sql>
+  <sql id="Blob_Column_List" >
+    carecontent, carefankui, description
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="ResultMapWithBLOBs" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from xm_cares
+    where caresid = #{caresid,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from xm_cares
+    where caresid = #{caresid,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.crm.model.XmCares" >
+    insert into xm_cares (caresid, carename, accountid, 
+      contact_id, caredate, caretype, 
+      smcreatorid, smownerid, modifiedby, 
+      groupid, createdtime, modifiedtime, 
+      deleted, approved, approvedby, 
+      carecontent, carefankui, description
+      )
+    values (#{caresid,jdbcType=INTEGER}, #{carename,jdbcType=VARCHAR}, #{accountid,jdbcType=INTEGER}, 
+      #{contactId,jdbcType=INTEGER}, #{caredate,jdbcType=DATE}, #{caretype,jdbcType=VARCHAR}, 
+      #{smcreatorid,jdbcType=INTEGER}, #{smownerid,jdbcType=INTEGER}, #{modifiedby,jdbcType=INTEGER}, 
+      #{groupid,jdbcType=INTEGER}, #{createdtime,jdbcType=TIMESTAMP}, #{modifiedtime,jdbcType=TIMESTAMP}, 
+      #{deleted,jdbcType=INTEGER}, #{approved,jdbcType=INTEGER}, #{approvedby,jdbcType=INTEGER}, 
+      #{carecontent,jdbcType=LONGVARCHAR}, #{carefankui,jdbcType=LONGVARCHAR}, #{description,jdbcType=LONGVARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.crm.model.XmCares" >
+    insert into xm_cares
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="caresid != null" >
+        caresid,
+      </if>
+      <if test="carename != null" >
+        carename,
+      </if>
+      <if test="accountid != null" >
+        accountid,
+      </if>
+      <if test="contactId != null" >
+        contact_id,
+      </if>
+      <if test="caredate != null" >
+        caredate,
+      </if>
+      <if test="caretype != null" >
+        caretype,
+      </if>
+      <if test="smcreatorid != null" >
+        smcreatorid,
+      </if>
+      <if test="smownerid != null" >
+        smownerid,
+      </if>
+      <if test="modifiedby != null" >
+        modifiedby,
+      </if>
+      <if test="groupid != null" >
+        groupid,
+      </if>
+      <if test="createdtime != null" >
+        createdtime,
+      </if>
+      <if test="modifiedtime != null" >
+        modifiedtime,
+      </if>
+      <if test="deleted != null" >
+        deleted,
+      </if>
+      <if test="approved != null" >
+        approved,
+      </if>
+      <if test="approvedby != null" >
+        approvedby,
+      </if>
+      <if test="carecontent != null" >
+        carecontent,
+      </if>
+      <if test="carefankui != null" >
+        carefankui,
+      </if>
+      <if test="description != null" >
+        description,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="caresid != null" >
+        #{caresid,jdbcType=INTEGER},
+      </if>
+      <if test="carename != null" >
+        #{carename,jdbcType=VARCHAR},
+      </if>
+      <if test="accountid != null" >
+        #{accountid,jdbcType=INTEGER},
+      </if>
+      <if test="contactId != null" >
+        #{contactId,jdbcType=INTEGER},
+      </if>
+      <if test="caredate != null" >
+        #{caredate,jdbcType=DATE},
+      </if>
+      <if test="caretype != null" >
+        #{caretype,jdbcType=VARCHAR},
+      </if>
+      <if test="smcreatorid != null" >
+        #{smcreatorid,jdbcType=INTEGER},
+      </if>
+      <if test="smownerid != null" >
+        #{smownerid,jdbcType=INTEGER},
+      </if>
+      <if test="modifiedby != null" >
+        #{modifiedby,jdbcType=INTEGER},
+      </if>
+      <if test="groupid != null" >
+        #{groupid,jdbcType=INTEGER},
+      </if>
+      <if test="createdtime != null" >
+        #{createdtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="modifiedtime != null" >
+        #{modifiedtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="deleted != null" >
+        #{deleted,jdbcType=INTEGER},
+      </if>
+      <if test="approved != null" >
+        #{approved,jdbcType=INTEGER},
+      </if>
+      <if test="approvedby != null" >
+        #{approvedby,jdbcType=INTEGER},
+      </if>
+      <if test="carecontent != null" >
+        #{carecontent,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="carefankui != null" >
+        #{carefankui,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="description != null" >
+        #{description,jdbcType=LONGVARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.crm.model.XmCares" >
+    update xm_cares
+    <set >
+      <if test="carename != null" >
+        carename = #{carename,jdbcType=VARCHAR},
+      </if>
+      <if test="accountid != null" >
+        accountid = #{accountid,jdbcType=INTEGER},
+      </if>
+      <if test="contactId != null" >
+        contact_id = #{contactId,jdbcType=INTEGER},
+      </if>
+      <if test="caredate != null" >
+        caredate = #{caredate,jdbcType=DATE},
+      </if>
+      <if test="caretype != null" >
+        caretype = #{caretype,jdbcType=VARCHAR},
+      </if>
+      <if test="smcreatorid != null" >
+        smcreatorid = #{smcreatorid,jdbcType=INTEGER},
+      </if>
+      <if test="smownerid != null" >
+        smownerid = #{smownerid,jdbcType=INTEGER},
+      </if>
+      <if test="modifiedby != null" >
+        modifiedby = #{modifiedby,jdbcType=INTEGER},
+      </if>
+      <if test="groupid != null" >
+        groupid = #{groupid,jdbcType=INTEGER},
+      </if>
+      <if test="createdtime != null" >
+        createdtime = #{createdtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="modifiedtime != null" >
+        modifiedtime = #{modifiedtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="deleted != null" >
+        deleted = #{deleted,jdbcType=INTEGER},
+      </if>
+      <if test="approved != null" >
+        approved = #{approved,jdbcType=INTEGER},
+      </if>
+      <if test="approvedby != null" >
+        approvedby = #{approvedby,jdbcType=INTEGER},
+      </if>
+      <if test="carecontent != null" >
+        carecontent = #{carecontent,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="carefankui != null" >
+        carefankui = #{carefankui,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="description != null" >
+        description = #{description,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    where caresid = #{caresid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.crm.model.XmCares" >
+    update xm_cares
+    set carename = #{carename,jdbcType=VARCHAR},
+      accountid = #{accountid,jdbcType=INTEGER},
+      contact_id = #{contactId,jdbcType=INTEGER},
+      caredate = #{caredate,jdbcType=DATE},
+      caretype = #{caretype,jdbcType=VARCHAR},
+      smcreatorid = #{smcreatorid,jdbcType=INTEGER},
+      smownerid = #{smownerid,jdbcType=INTEGER},
+      modifiedby = #{modifiedby,jdbcType=INTEGER},
+      groupid = #{groupid,jdbcType=INTEGER},
+      createdtime = #{createdtime,jdbcType=TIMESTAMP},
+      modifiedtime = #{modifiedtime,jdbcType=TIMESTAMP},
+      deleted = #{deleted,jdbcType=INTEGER},
+      approved = #{approved,jdbcType=INTEGER},
+      approvedby = #{approvedby,jdbcType=INTEGER},
+      carecontent = #{carecontent,jdbcType=LONGVARCHAR},
+      carefankui = #{carefankui,jdbcType=LONGVARCHAR},
+      description = #{description,jdbcType=LONGVARCHAR}
+    where caresid = #{caresid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.crm.model.XmCares" >
+    update xm_cares
+    set carename = #{carename,jdbcType=VARCHAR},
+      accountid = #{accountid,jdbcType=INTEGER},
+      contact_id = #{contactId,jdbcType=INTEGER},
+      caredate = #{caredate,jdbcType=DATE},
+      caretype = #{caretype,jdbcType=VARCHAR},
+      smcreatorid = #{smcreatorid,jdbcType=INTEGER},
+      smownerid = #{smownerid,jdbcType=INTEGER},
+      modifiedby = #{modifiedby,jdbcType=INTEGER},
+      groupid = #{groupid,jdbcType=INTEGER},
+      createdtime = #{createdtime,jdbcType=TIMESTAMP},
+      modifiedtime = #{modifiedtime,jdbcType=TIMESTAMP},
+      deleted = #{deleted,jdbcType=INTEGER},
+      approved = #{approved,jdbcType=INTEGER},
+      approvedby = #{approvedby,jdbcType=INTEGER}
+    where caresid = #{caresid,jdbcType=INTEGER}
+  </update>
+  <select id="getTotal" resultType="INTEGER" >
+	SELECT count(1) AS count FROM xm_cares 
+	  LEFT JOIN xm_account ON xm_cares.accountid=xm_account.accountid 
+	  LEFT JOIN xm_contactdetails ON xm_cares.contact_id=xm_contactdetails.contactid 
+	  LEFT JOIN xm_users ON xm_users.id = xm_cares.smownerid WHERE xm_cares.deleted = 0 and 1=1 ${filter}
+  </select>
+  <select id="loadList" resultMap="BaseResultMap">
+    select xm_cares.*,xm_users.user_name FROM xm_cares 
+      LEFT JOIN xm_account ON xm_cares.accountid=xm_account.accountid 
+      LEFT JOIN xm_contactdetails ON xm_cares.contact_id=xm_contactdetails.contactid 
+      LEFT JOIN xm_users ON xm_users.id = xm_cares.smownerid WHERE xm_cares.deleted = 0 and 1=1 ${filter} limit #{start},#{rows}
+  </select>
+</mapper>

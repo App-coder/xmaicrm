@@ -1,0 +1,870 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.crm.mapper.module.XmAccountMapper" >
+  <resultMap id="BaseResultMap" type="com.crm.model.XmAccount" >
+    <id column="accountid" property="accountid" jdbcType="INTEGER" />
+    <result column="accountname" property="accountname" jdbcType="VARCHAR" />
+    <result column="customernum" property="customernum" jdbcType="VARCHAR" />
+    <result column="parentid" property="parentid" jdbcType="INTEGER" />
+    <result column="account_type" property="accountType" jdbcType="VARCHAR" />
+    <result column="industry" property="industry" jdbcType="VARCHAR" />
+    <result column="annualrevenue" property="annualrevenue" jdbcType="VARCHAR" />
+    <result column="rating" property="rating" jdbcType="VARCHAR" />
+    <result column="grade" property="grade" jdbcType="VARCHAR" />
+    <result column="phone" property="phone" jdbcType="VARCHAR" />
+    <result column="otherphone" property="otherphone" jdbcType="VARCHAR" />
+    <result column="email1" property="email1" jdbcType="VARCHAR" />
+    <result column="email2" property="email2" jdbcType="VARCHAR" />
+    <result column="website" property="website" jdbcType="VARCHAR" />
+    <result column="fax" property="fax" jdbcType="VARCHAR" />
+    <result column="employees" property="employees" jdbcType="VARCHAR" />
+    <result column="ownership" property="ownership" jdbcType="VARCHAR" />
+    <result column="leadsource" property="leadsource" jdbcType="VARCHAR" />
+    <result column="contact_date" property="contactDate" jdbcType="DATE" />
+    <result column="build_date" property="buildDate" jdbcType="DATE" />
+    <result column="notify_owner" property="notifyOwner" jdbcType="VARCHAR" />
+    <result column="bankname" property="bankname" jdbcType="VARCHAR" />
+    <result column="bank_accountname" property="bankAccountname" jdbcType="VARCHAR" />
+    <result column="bank_accountid" property="bankAccountid" jdbcType="VARCHAR" />
+    <result column="bank_taxid" property="bankTaxid" jdbcType="VARCHAR" />
+    <result column="payment_type" property="paymentType" jdbcType="VARCHAR" />
+    <result column="payment_credit" property="paymentCredit" jdbcType="VARCHAR" />
+    <result column="prefix" property="prefix" jdbcType="VARCHAR" />
+    <result column="ordernum" property="ordernum" jdbcType="INTEGER" />
+    <result column="ordertotal" property="ordertotal" jdbcType="DECIMAL" />
+    <result column="lastcontacttime" property="lastcontacttime" jdbcType="DATE" />
+    <result column="contacttimes" property="contacttimes" jdbcType="INTEGER" />
+    <result column="invoicedate" property="invoicedate" jdbcType="DATE" />
+    <result column="orderdate" property="orderdate" jdbcType="DATE" />
+    <result column="quotedate" property="quotedate" jdbcType="DATE" />
+    <result column="assignstatus" property="assignstatus" jdbcType="VARCHAR" />
+    <result column="startdate" property="startdate" jdbcType="DATE" />
+    <result column="enddate" property="enddate" jdbcType="DATE" />
+    <result column="bill_city" property="billCity" jdbcType="VARCHAR" />
+    <result column="bill_code" property="billCode" jdbcType="VARCHAR" />
+    <result column="bill_country" property="billCountry" jdbcType="VARCHAR" />
+    <result column="bill_state" property="billState" jdbcType="VARCHAR" />
+    <result column="bill_street" property="billStreet" jdbcType="VARCHAR" />
+    <result column="bill_pobox" property="billPobox" jdbcType="VARCHAR" />
+    <result column="smcreatorid" property="smcreatorid" jdbcType="INTEGER" />
+    <result column="smownerid" property="smownerid" jdbcType="INTEGER" />
+    <result column="modifiedby" property="modifiedby" jdbcType="INTEGER" />
+    <result column="groupid" property="groupid" jdbcType="INTEGER" />
+    <result column="createdtime" property="createdtime" jdbcType="TIMESTAMP" />
+    <result column="modifiedtime" property="modifiedtime" jdbcType="TIMESTAMP" />
+    <result column="deleted" property="deleted" jdbcType="INTEGER" />
+    <result column="approved" property="approved" jdbcType="INTEGER" />
+    <result column="approvedby" property="approvedby" jdbcType="INTEGER" />
+    <result column="cf_498" property="cf498" jdbcType="VARCHAR" />
+    <result column="cf_500" property="cf500" jdbcType="VARCHAR" />
+    <result column="cf_502" property="cf502" jdbcType="VARCHAR" />
+    <result column="cf_504" property="cf504" jdbcType="VARCHAR" />
+    <result column="cf_535" property="cf535" jdbcType="VARCHAR" />
+    <result column="keycontact" property="keycontact" jdbcType="VARCHAR" />
+    <result column="keymobile" property="keymobile" jdbcType="VARCHAR" />
+    <result column="latestnote" property="latestnote" jdbcType="VARCHAR" />
+    <result column="ispools" property="ispools" jdbcType="VARCHAR" />
+    <result column="cf_686" property="cf686" jdbcType="VARCHAR" />
+  </resultMap>
+  <resultMap id="ResultMapWithBLOBs" type="com.crm.model.XmAccount" extends="BaseResultMap" >
+    <result column="description" property="description" jdbcType="LONGVARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    accountid, accountname, customernum, parentid, account_type, industry, annualrevenue, 
+    rating, grade, phone, otherphone, email1, email2, website, fax, employees, ownership, 
+    leadsource, contact_date, build_date, notify_owner, bankname, bank_accountname, bank_accountid, 
+    bank_taxid, payment_type, payment_credit, prefix, ordernum, ordertotal, lastcontacttime, 
+    contacttimes, invoicedate, orderdate, quotedate, assignstatus, startdate, enddate, 
+    bill_city, bill_code, bill_country, bill_state, bill_street, bill_pobox, smcreatorid, 
+    smownerid, modifiedby, groupid, createdtime, modifiedtime, deleted, approved, approvedby, 
+    cf_498, cf_500, cf_502, cf_504, cf_535, keycontact, keymobile, latestnote, ispools, 
+    cf_686
+  </sql>
+  <sql id="Blob_Column_List" >
+    description
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="ResultMapWithBLOBs" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from xm_account
+    where accountid = #{accountid,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from xm_account
+    where accountid = #{accountid,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.crm.model.XmAccount" >
+    insert into xm_account (accountid, accountname, customernum, 
+      parentid, account_type, industry, 
+      annualrevenue, rating, grade, 
+      phone, otherphone, email1, 
+      email2, website, fax, 
+      employees, ownership, leadsource, 
+      contact_date, build_date, notify_owner, 
+      bankname, bank_accountname, bank_accountid, 
+      bank_taxid, payment_type, payment_credit, 
+      prefix, ordernum, ordertotal, 
+      lastcontacttime, contacttimes, invoicedate, 
+      orderdate, quotedate, assignstatus, 
+      startdate, enddate, bill_city, 
+      bill_code, bill_country, bill_state, 
+      bill_street, bill_pobox, smcreatorid, 
+      smownerid, modifiedby, groupid, 
+      createdtime, modifiedtime, deleted, 
+      approved, approvedby, cf_498, 
+      cf_500, cf_502, cf_504, 
+      cf_535, keycontact, keymobile, 
+      latestnote, ispools, cf_686, 
+      description)
+    values (#{accountid,jdbcType=INTEGER}, #{accountname,jdbcType=VARCHAR}, #{customernum,jdbcType=VARCHAR}, 
+      #{parentid,jdbcType=INTEGER}, #{accountType,jdbcType=VARCHAR}, #{industry,jdbcType=VARCHAR}, 
+      #{annualrevenue,jdbcType=VARCHAR}, #{rating,jdbcType=VARCHAR}, #{grade,jdbcType=VARCHAR}, 
+      #{phone,jdbcType=VARCHAR}, #{otherphone,jdbcType=VARCHAR}, #{email1,jdbcType=VARCHAR}, 
+      #{email2,jdbcType=VARCHAR}, #{website,jdbcType=VARCHAR}, #{fax,jdbcType=VARCHAR}, 
+      #{employees,jdbcType=VARCHAR}, #{ownership,jdbcType=VARCHAR}, #{leadsource,jdbcType=VARCHAR}, 
+      #{contactDate,jdbcType=DATE}, #{buildDate,jdbcType=DATE}, #{notifyOwner,jdbcType=VARCHAR}, 
+      #{bankname,jdbcType=VARCHAR}, #{bankAccountname,jdbcType=VARCHAR}, #{bankAccountid,jdbcType=VARCHAR}, 
+      #{bankTaxid,jdbcType=VARCHAR}, #{paymentType,jdbcType=VARCHAR}, #{paymentCredit,jdbcType=VARCHAR}, 
+      #{prefix,jdbcType=VARCHAR}, #{ordernum,jdbcType=INTEGER}, #{ordertotal,jdbcType=DECIMAL}, 
+      #{lastcontacttime,jdbcType=DATE}, #{contacttimes,jdbcType=INTEGER}, #{invoicedate,jdbcType=DATE}, 
+      #{orderdate,jdbcType=DATE}, #{quotedate,jdbcType=DATE}, #{assignstatus,jdbcType=VARCHAR}, 
+      #{startdate,jdbcType=DATE}, #{enddate,jdbcType=DATE}, #{billCity,jdbcType=VARCHAR}, 
+      #{billCode,jdbcType=VARCHAR}, #{billCountry,jdbcType=VARCHAR}, #{billState,jdbcType=VARCHAR}, 
+      #{billStreet,jdbcType=VARCHAR}, #{billPobox,jdbcType=VARCHAR}, #{smcreatorid,jdbcType=INTEGER}, 
+      #{smownerid,jdbcType=INTEGER}, #{modifiedby,jdbcType=INTEGER}, #{groupid,jdbcType=INTEGER}, 
+      #{createdtime,jdbcType=TIMESTAMP}, #{modifiedtime,jdbcType=TIMESTAMP}, #{deleted,jdbcType=INTEGER}, 
+      #{approved,jdbcType=INTEGER}, #{approvedby,jdbcType=INTEGER}, #{cf498,jdbcType=VARCHAR}, 
+      #{cf500,jdbcType=VARCHAR}, #{cf502,jdbcType=VARCHAR}, #{cf504,jdbcType=VARCHAR}, 
+      #{cf535,jdbcType=VARCHAR}, #{keycontact,jdbcType=VARCHAR}, #{keymobile,jdbcType=VARCHAR}, 
+      #{latestnote,jdbcType=VARCHAR}, #{ispools,jdbcType=VARCHAR}, #{cf686,jdbcType=VARCHAR}, 
+      #{description,jdbcType=LONGVARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.crm.model.XmAccount" >
+    insert into xm_account
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="accountid != null" >
+        accountid,
+      </if>
+      <if test="accountname != null" >
+        accountname,
+      </if>
+      <if test="customernum != null" >
+        customernum,
+      </if>
+      <if test="parentid != null" >
+        parentid,
+      </if>
+      <if test="accountType != null" >
+        account_type,
+      </if>
+      <if test="industry != null" >
+        industry,
+      </if>
+      <if test="annualrevenue != null" >
+        annualrevenue,
+      </if>
+      <if test="rating != null" >
+        rating,
+      </if>
+      <if test="grade != null" >
+        grade,
+      </if>
+      <if test="phone != null" >
+        phone,
+      </if>
+      <if test="otherphone != null" >
+        otherphone,
+      </if>
+      <if test="email1 != null" >
+        email1,
+      </if>
+      <if test="email2 != null" >
+        email2,
+      </if>
+      <if test="website != null" >
+        website,
+      </if>
+      <if test="fax != null" >
+        fax,
+      </if>
+      <if test="employees != null" >
+        employees,
+      </if>
+      <if test="ownership != null" >
+        ownership,
+      </if>
+      <if test="leadsource != null" >
+        leadsource,
+      </if>
+      <if test="contactDate != null" >
+        contact_date,
+      </if>
+      <if test="buildDate != null" >
+        build_date,
+      </if>
+      <if test="notifyOwner != null" >
+        notify_owner,
+      </if>
+      <if test="bankname != null" >
+        bankname,
+      </if>
+      <if test="bankAccountname != null" >
+        bank_accountname,
+      </if>
+      <if test="bankAccountid != null" >
+        bank_accountid,
+      </if>
+      <if test="bankTaxid != null" >
+        bank_taxid,
+      </if>
+      <if test="paymentType != null" >
+        payment_type,
+      </if>
+      <if test="paymentCredit != null" >
+        payment_credit,
+      </if>
+      <if test="prefix != null" >
+        prefix,
+      </if>
+      <if test="ordernum != null" >
+        ordernum,
+      </if>
+      <if test="ordertotal != null" >
+        ordertotal,
+      </if>
+      <if test="lastcontacttime != null" >
+        lastcontacttime,
+      </if>
+      <if test="contacttimes != null" >
+        contacttimes,
+      </if>
+      <if test="invoicedate != null" >
+        invoicedate,
+      </if>
+      <if test="orderdate != null" >
+        orderdate,
+      </if>
+      <if test="quotedate != null" >
+        quotedate,
+      </if>
+      <if test="assignstatus != null" >
+        assignstatus,
+      </if>
+      <if test="startdate != null" >
+        startdate,
+      </if>
+      <if test="enddate != null" >
+        enddate,
+      </if>
+      <if test="billCity != null" >
+        bill_city,
+      </if>
+      <if test="billCode != null" >
+        bill_code,
+      </if>
+      <if test="billCountry != null" >
+        bill_country,
+      </if>
+      <if test="billState != null" >
+        bill_state,
+      </if>
+      <if test="billStreet != null" >
+        bill_street,
+      </if>
+      <if test="billPobox != null" >
+        bill_pobox,
+      </if>
+      <if test="smcreatorid != null" >
+        smcreatorid,
+      </if>
+      <if test="smownerid != null" >
+        smownerid,
+      </if>
+      <if test="modifiedby != null" >
+        modifiedby,
+      </if>
+      <if test="groupid != null" >
+        groupid,
+      </if>
+      <if test="createdtime != null" >
+        createdtime,
+      </if>
+      <if test="modifiedtime != null" >
+        modifiedtime,
+      </if>
+      <if test="deleted != null" >
+        deleted,
+      </if>
+      <if test="approved != null" >
+        approved,
+      </if>
+      <if test="approvedby != null" >
+        approvedby,
+      </if>
+      <if test="cf498 != null" >
+        cf_498,
+      </if>
+      <if test="cf500 != null" >
+        cf_500,
+      </if>
+      <if test="cf502 != null" >
+        cf_502,
+      </if>
+      <if test="cf504 != null" >
+        cf_504,
+      </if>
+      <if test="cf535 != null" >
+        cf_535,
+      </if>
+      <if test="keycontact != null" >
+        keycontact,
+      </if>
+      <if test="keymobile != null" >
+        keymobile,
+      </if>
+      <if test="latestnote != null" >
+        latestnote,
+      </if>
+      <if test="ispools != null" >
+        ispools,
+      </if>
+      <if test="cf686 != null" >
+        cf_686,
+      </if>
+      <if test="description != null" >
+        description,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="accountid != null" >
+        #{accountid,jdbcType=INTEGER},
+      </if>
+      <if test="accountname != null" >
+        #{accountname,jdbcType=VARCHAR},
+      </if>
+      <if test="customernum != null" >
+        #{customernum,jdbcType=VARCHAR},
+      </if>
+      <if test="parentid != null" >
+        #{parentid,jdbcType=INTEGER},
+      </if>
+      <if test="accountType != null" >
+        #{accountType,jdbcType=VARCHAR},
+      </if>
+      <if test="industry != null" >
+        #{industry,jdbcType=VARCHAR},
+      </if>
+      <if test="annualrevenue != null" >
+        #{annualrevenue,jdbcType=VARCHAR},
+      </if>
+      <if test="rating != null" >
+        #{rating,jdbcType=VARCHAR},
+      </if>
+      <if test="grade != null" >
+        #{grade,jdbcType=VARCHAR},
+      </if>
+      <if test="phone != null" >
+        #{phone,jdbcType=VARCHAR},
+      </if>
+      <if test="otherphone != null" >
+        #{otherphone,jdbcType=VARCHAR},
+      </if>
+      <if test="email1 != null" >
+        #{email1,jdbcType=VARCHAR},
+      </if>
+      <if test="email2 != null" >
+        #{email2,jdbcType=VARCHAR},
+      </if>
+      <if test="website != null" >
+        #{website,jdbcType=VARCHAR},
+      </if>
+      <if test="fax != null" >
+        #{fax,jdbcType=VARCHAR},
+      </if>
+      <if test="employees != null" >
+        #{employees,jdbcType=VARCHAR},
+      </if>
+      <if test="ownership != null" >
+        #{ownership,jdbcType=VARCHAR},
+      </if>
+      <if test="leadsource != null" >
+        #{leadsource,jdbcType=VARCHAR},
+      </if>
+      <if test="contactDate != null" >
+        #{contactDate,jdbcType=DATE},
+      </if>
+      <if test="buildDate != null" >
+        #{buildDate,jdbcType=DATE},
+      </if>
+      <if test="notifyOwner != null" >
+        #{notifyOwner,jdbcType=VARCHAR},
+      </if>
+      <if test="bankname != null" >
+        #{bankname,jdbcType=VARCHAR},
+      </if>
+      <if test="bankAccountname != null" >
+        #{bankAccountname,jdbcType=VARCHAR},
+      </if>
+      <if test="bankAccountid != null" >
+        #{bankAccountid,jdbcType=VARCHAR},
+      </if>
+      <if test="bankTaxid != null" >
+        #{bankTaxid,jdbcType=VARCHAR},
+      </if>
+      <if test="paymentType != null" >
+        #{paymentType,jdbcType=VARCHAR},
+      </if>
+      <if test="paymentCredit != null" >
+        #{paymentCredit,jdbcType=VARCHAR},
+      </if>
+      <if test="prefix != null" >
+        #{prefix,jdbcType=VARCHAR},
+      </if>
+      <if test="ordernum != null" >
+        #{ordernum,jdbcType=INTEGER},
+      </if>
+      <if test="ordertotal != null" >
+        #{ordertotal,jdbcType=DECIMAL},
+      </if>
+      <if test="lastcontacttime != null" >
+        #{lastcontacttime,jdbcType=DATE},
+      </if>
+      <if test="contacttimes != null" >
+        #{contacttimes,jdbcType=INTEGER},
+      </if>
+      <if test="invoicedate != null" >
+        #{invoicedate,jdbcType=DATE},
+      </if>
+      <if test="orderdate != null" >
+        #{orderdate,jdbcType=DATE},
+      </if>
+      <if test="quotedate != null" >
+        #{quotedate,jdbcType=DATE},
+      </if>
+      <if test="assignstatus != null" >
+        #{assignstatus,jdbcType=VARCHAR},
+      </if>
+      <if test="startdate != null" >
+        #{startdate,jdbcType=DATE},
+      </if>
+      <if test="enddate != null" >
+        #{enddate,jdbcType=DATE},
+      </if>
+      <if test="billCity != null" >
+        #{billCity,jdbcType=VARCHAR},
+      </if>
+      <if test="billCode != null" >
+        #{billCode,jdbcType=VARCHAR},
+      </if>
+      <if test="billCountry != null" >
+        #{billCountry,jdbcType=VARCHAR},
+      </if>
+      <if test="billState != null" >
+        #{billState,jdbcType=VARCHAR},
+      </if>
+      <if test="billStreet != null" >
+        #{billStreet,jdbcType=VARCHAR},
+      </if>
+      <if test="billPobox != null" >
+        #{billPobox,jdbcType=VARCHAR},
+      </if>
+      <if test="smcreatorid != null" >
+        #{smcreatorid,jdbcType=INTEGER},
+      </if>
+      <if test="smownerid != null" >
+        #{smownerid,jdbcType=INTEGER},
+      </if>
+      <if test="modifiedby != null" >
+        #{modifiedby,jdbcType=INTEGER},
+      </if>
+      <if test="groupid != null" >
+        #{groupid,jdbcType=INTEGER},
+      </if>
+      <if test="createdtime != null" >
+        #{createdtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="modifiedtime != null" >
+        #{modifiedtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="deleted != null" >
+        #{deleted,jdbcType=INTEGER},
+      </if>
+      <if test="approved != null" >
+        #{approved,jdbcType=INTEGER},
+      </if>
+      <if test="approvedby != null" >
+        #{approvedby,jdbcType=INTEGER},
+      </if>
+      <if test="cf498 != null" >
+        #{cf498,jdbcType=VARCHAR},
+      </if>
+      <if test="cf500 != null" >
+        #{cf500,jdbcType=VARCHAR},
+      </if>
+      <if test="cf502 != null" >
+        #{cf502,jdbcType=VARCHAR},
+      </if>
+      <if test="cf504 != null" >
+        #{cf504,jdbcType=VARCHAR},
+      </if>
+      <if test="cf535 != null" >
+        #{cf535,jdbcType=VARCHAR},
+      </if>
+      <if test="keycontact != null" >
+        #{keycontact,jdbcType=VARCHAR},
+      </if>
+      <if test="keymobile != null" >
+        #{keymobile,jdbcType=VARCHAR},
+      </if>
+      <if test="latestnote != null" >
+        #{latestnote,jdbcType=VARCHAR},
+      </if>
+      <if test="ispools != null" >
+        #{ispools,jdbcType=VARCHAR},
+      </if>
+      <if test="cf686 != null" >
+        #{cf686,jdbcType=VARCHAR},
+      </if>
+      <if test="description != null" >
+        #{description,jdbcType=LONGVARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.crm.model.XmAccount" >
+    update xm_account
+    <set >
+      <if test="accountname != null" >
+        accountname = #{accountname,jdbcType=VARCHAR},
+      </if>
+      <if test="customernum != null" >
+        customernum = #{customernum,jdbcType=VARCHAR},
+      </if>
+      <if test="parentid != null" >
+        parentid = #{parentid,jdbcType=INTEGER},
+      </if>
+      <if test="accountType != null" >
+        account_type = #{accountType,jdbcType=VARCHAR},
+      </if>
+      <if test="industry != null" >
+        industry = #{industry,jdbcType=VARCHAR},
+      </if>
+      <if test="annualrevenue != null" >
+        annualrevenue = #{annualrevenue,jdbcType=VARCHAR},
+      </if>
+      <if test="rating != null" >
+        rating = #{rating,jdbcType=VARCHAR},
+      </if>
+      <if test="grade != null" >
+        grade = #{grade,jdbcType=VARCHAR},
+      </if>
+      <if test="phone != null" >
+        phone = #{phone,jdbcType=VARCHAR},
+      </if>
+      <if test="otherphone != null" >
+        otherphone = #{otherphone,jdbcType=VARCHAR},
+      </if>
+      <if test="email1 != null" >
+        email1 = #{email1,jdbcType=VARCHAR},
+      </if>
+      <if test="email2 != null" >
+        email2 = #{email2,jdbcType=VARCHAR},
+      </if>
+      <if test="website != null" >
+        website = #{website,jdbcType=VARCHAR},
+      </if>
+      <if test="fax != null" >
+        fax = #{fax,jdbcType=VARCHAR},
+      </if>
+      <if test="employees != null" >
+        employees = #{employees,jdbcType=VARCHAR},
+      </if>
+      <if test="ownership != null" >
+        ownership = #{ownership,jdbcType=VARCHAR},
+      </if>
+      <if test="leadsource != null" >
+        leadsource = #{leadsource,jdbcType=VARCHAR},
+      </if>
+      <if test="contactDate != null" >
+        contact_date = #{contactDate,jdbcType=DATE},
+      </if>
+      <if test="buildDate != null" >
+        build_date = #{buildDate,jdbcType=DATE},
+      </if>
+      <if test="notifyOwner != null" >
+        notify_owner = #{notifyOwner,jdbcType=VARCHAR},
+      </if>
+      <if test="bankname != null" >
+        bankname = #{bankname,jdbcType=VARCHAR},
+      </if>
+      <if test="bankAccountname != null" >
+        bank_accountname = #{bankAccountname,jdbcType=VARCHAR},
+      </if>
+      <if test="bankAccountid != null" >
+        bank_accountid = #{bankAccountid,jdbcType=VARCHAR},
+      </if>
+      <if test="bankTaxid != null" >
+        bank_taxid = #{bankTaxid,jdbcType=VARCHAR},
+      </if>
+      <if test="paymentType != null" >
+        payment_type = #{paymentType,jdbcType=VARCHAR},
+      </if>
+      <if test="paymentCredit != null" >
+        payment_credit = #{paymentCredit,jdbcType=VARCHAR},
+      </if>
+      <if test="prefix != null" >
+        prefix = #{prefix,jdbcType=VARCHAR},
+      </if>
+      <if test="ordernum != null" >
+        ordernum = #{ordernum,jdbcType=INTEGER},
+      </if>
+      <if test="ordertotal != null" >
+        ordertotal = #{ordertotal,jdbcType=DECIMAL},
+      </if>
+      <if test="lastcontacttime != null" >
+        lastcontacttime = #{lastcontacttime,jdbcType=DATE},
+      </if>
+      <if test="contacttimes != null" >
+        contacttimes = #{contacttimes,jdbcType=INTEGER},
+      </if>
+      <if test="invoicedate != null" >
+        invoicedate = #{invoicedate,jdbcType=DATE},
+      </if>
+      <if test="orderdate != null" >
+        orderdate = #{orderdate,jdbcType=DATE},
+      </if>
+      <if test="quotedate != null" >
+        quotedate = #{quotedate,jdbcType=DATE},
+      </if>
+      <if test="assignstatus != null" >
+        assignstatus = #{assignstatus,jdbcType=VARCHAR},
+      </if>
+      <if test="startdate != null" >
+        startdate = #{startdate,jdbcType=DATE},
+      </if>
+      <if test="enddate != null" >
+        enddate = #{enddate,jdbcType=DATE},
+      </if>
+      <if test="billCity != null" >
+        bill_city = #{billCity,jdbcType=VARCHAR},
+      </if>
+      <if test="billCode != null" >
+        bill_code = #{billCode,jdbcType=VARCHAR},
+      </if>
+      <if test="billCountry != null" >
+        bill_country = #{billCountry,jdbcType=VARCHAR},
+      </if>
+      <if test="billState != null" >
+        bill_state = #{billState,jdbcType=VARCHAR},
+      </if>
+      <if test="billStreet != null" >
+        bill_street = #{billStreet,jdbcType=VARCHAR},
+      </if>
+      <if test="billPobox != null" >
+        bill_pobox = #{billPobox,jdbcType=VARCHAR},
+      </if>
+      <if test="smcreatorid != null" >
+        smcreatorid = #{smcreatorid,jdbcType=INTEGER},
+      </if>
+      <if test="smownerid != null" >
+        smownerid = #{smownerid,jdbcType=INTEGER},
+      </if>
+      <if test="modifiedby != null" >
+        modifiedby = #{modifiedby,jdbcType=INTEGER},
+      </if>
+      <if test="groupid != null" >
+        groupid = #{groupid,jdbcType=INTEGER},
+      </if>
+      <if test="createdtime != null" >
+        createdtime = #{createdtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="modifiedtime != null" >
+        modifiedtime = #{modifiedtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="deleted != null" >
+        deleted = #{deleted,jdbcType=INTEGER},
+      </if>
+      <if test="approved != null" >
+        approved = #{approved,jdbcType=INTEGER},
+      </if>
+      <if test="approvedby != null" >
+        approvedby = #{approvedby,jdbcType=INTEGER},
+      </if>
+      <if test="cf498 != null" >
+        cf_498 = #{cf498,jdbcType=VARCHAR},
+      </if>
+      <if test="cf500 != null" >
+        cf_500 = #{cf500,jdbcType=VARCHAR},
+      </if>
+      <if test="cf502 != null" >
+        cf_502 = #{cf502,jdbcType=VARCHAR},
+      </if>
+      <if test="cf504 != null" >
+        cf_504 = #{cf504,jdbcType=VARCHAR},
+      </if>
+      <if test="cf535 != null" >
+        cf_535 = #{cf535,jdbcType=VARCHAR},
+      </if>
+      <if test="keycontact != null" >
+        keycontact = #{keycontact,jdbcType=VARCHAR},
+      </if>
+      <if test="keymobile != null" >
+        keymobile = #{keymobile,jdbcType=VARCHAR},
+      </if>
+      <if test="latestnote != null" >
+        latestnote = #{latestnote,jdbcType=VARCHAR},
+      </if>
+      <if test="ispools != null" >
+        ispools = #{ispools,jdbcType=VARCHAR},
+      </if>
+      <if test="cf686 != null" >
+        cf_686 = #{cf686,jdbcType=VARCHAR},
+      </if>
+      <if test="description != null" >
+        description = #{description,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    where accountid = #{accountid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.crm.model.XmAccount" >
+    update xm_account
+    set accountname = #{accountname,jdbcType=VARCHAR},
+      customernum = #{customernum,jdbcType=VARCHAR},
+      parentid = #{parentid,jdbcType=INTEGER},
+      account_type = #{accountType,jdbcType=VARCHAR},
+      industry = #{industry,jdbcType=VARCHAR},
+      annualrevenue = #{annualrevenue,jdbcType=VARCHAR},
+      rating = #{rating,jdbcType=VARCHAR},
+      grade = #{grade,jdbcType=VARCHAR},
+      phone = #{phone,jdbcType=VARCHAR},
+      otherphone = #{otherphone,jdbcType=VARCHAR},
+      email1 = #{email1,jdbcType=VARCHAR},
+      email2 = #{email2,jdbcType=VARCHAR},
+      website = #{website,jdbcType=VARCHAR},
+      fax = #{fax,jdbcType=VARCHAR},
+      employees = #{employees,jdbcType=VARCHAR},
+      ownership = #{ownership,jdbcType=VARCHAR},
+      leadsource = #{leadsource,jdbcType=VARCHAR},
+      contact_date = #{contactDate,jdbcType=DATE},
+      build_date = #{buildDate,jdbcType=DATE},
+      notify_owner = #{notifyOwner,jdbcType=VARCHAR},
+      bankname = #{bankname,jdbcType=VARCHAR},
+      bank_accountname = #{bankAccountname,jdbcType=VARCHAR},
+      bank_accountid = #{bankAccountid,jdbcType=VARCHAR},
+      bank_taxid = #{bankTaxid,jdbcType=VARCHAR},
+      payment_type = #{paymentType,jdbcType=VARCHAR},
+      payment_credit = #{paymentCredit,jdbcType=VARCHAR},
+      prefix = #{prefix,jdbcType=VARCHAR},
+      ordernum = #{ordernum,jdbcType=INTEGER},
+      ordertotal = #{ordertotal,jdbcType=DECIMAL},
+      lastcontacttime = #{lastcontacttime,jdbcType=DATE},
+      contacttimes = #{contacttimes,jdbcType=INTEGER},
+      invoicedate = #{invoicedate,jdbcType=DATE},
+      orderdate = #{orderdate,jdbcType=DATE},
+      quotedate = #{quotedate,jdbcType=DATE},
+      assignstatus = #{assignstatus,jdbcType=VARCHAR},
+      startdate = #{startdate,jdbcType=DATE},
+      enddate = #{enddate,jdbcType=DATE},
+      bill_city = #{billCity,jdbcType=VARCHAR},
+      bill_code = #{billCode,jdbcType=VARCHAR},
+      bill_country = #{billCountry,jdbcType=VARCHAR},
+      bill_state = #{billState,jdbcType=VARCHAR},
+      bill_street = #{billStreet,jdbcType=VARCHAR},
+      bill_pobox = #{billPobox,jdbcType=VARCHAR},
+      smcreatorid = #{smcreatorid,jdbcType=INTEGER},
+      smownerid = #{smownerid,jdbcType=INTEGER},
+      modifiedby = #{modifiedby,jdbcType=INTEGER},
+      groupid = #{groupid,jdbcType=INTEGER},
+      createdtime = #{createdtime,jdbcType=TIMESTAMP},
+      modifiedtime = #{modifiedtime,jdbcType=TIMESTAMP},
+      deleted = #{deleted,jdbcType=INTEGER},
+      approved = #{approved,jdbcType=INTEGER},
+      approvedby = #{approvedby,jdbcType=INTEGER},
+      cf_498 = #{cf498,jdbcType=VARCHAR},
+      cf_500 = #{cf500,jdbcType=VARCHAR},
+      cf_502 = #{cf502,jdbcType=VARCHAR},
+      cf_504 = #{cf504,jdbcType=VARCHAR},
+      cf_535 = #{cf535,jdbcType=VARCHAR},
+      keycontact = #{keycontact,jdbcType=VARCHAR},
+      keymobile = #{keymobile,jdbcType=VARCHAR},
+      latestnote = #{latestnote,jdbcType=VARCHAR},
+      ispools = #{ispools,jdbcType=VARCHAR},
+      cf_686 = #{cf686,jdbcType=VARCHAR},
+      description = #{description,jdbcType=LONGVARCHAR}
+    where accountid = #{accountid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.crm.model.XmAccount" >
+    update xm_account
+    set accountname = #{accountname,jdbcType=VARCHAR},
+      customernum = #{customernum,jdbcType=VARCHAR},
+      parentid = #{parentid,jdbcType=INTEGER},
+      account_type = #{accountType,jdbcType=VARCHAR},
+      industry = #{industry,jdbcType=VARCHAR},
+      annualrevenue = #{annualrevenue,jdbcType=VARCHAR},
+      rating = #{rating,jdbcType=VARCHAR},
+      grade = #{grade,jdbcType=VARCHAR},
+      phone = #{phone,jdbcType=VARCHAR},
+      otherphone = #{otherphone,jdbcType=VARCHAR},
+      email1 = #{email1,jdbcType=VARCHAR},
+      email2 = #{email2,jdbcType=VARCHAR},
+      website = #{website,jdbcType=VARCHAR},
+      fax = #{fax,jdbcType=VARCHAR},
+      employees = #{employees,jdbcType=VARCHAR},
+      ownership = #{ownership,jdbcType=VARCHAR},
+      leadsource = #{leadsource,jdbcType=VARCHAR},
+      contact_date = #{contactDate,jdbcType=DATE},
+      build_date = #{buildDate,jdbcType=DATE},
+      notify_owner = #{notifyOwner,jdbcType=VARCHAR},
+      bankname = #{bankname,jdbcType=VARCHAR},
+      bank_accountname = #{bankAccountname,jdbcType=VARCHAR},
+      bank_accountid = #{bankAccountid,jdbcType=VARCHAR},
+      bank_taxid = #{bankTaxid,jdbcType=VARCHAR},
+      payment_type = #{paymentType,jdbcType=VARCHAR},
+      payment_credit = #{paymentCredit,jdbcType=VARCHAR},
+      prefix = #{prefix,jdbcType=VARCHAR},
+      ordernum = #{ordernum,jdbcType=INTEGER},
+      ordertotal = #{ordertotal,jdbcType=DECIMAL},
+      lastcontacttime = #{lastcontacttime,jdbcType=DATE},
+      contacttimes = #{contacttimes,jdbcType=INTEGER},
+      invoicedate = #{invoicedate,jdbcType=DATE},
+      orderdate = #{orderdate,jdbcType=DATE},
+      quotedate = #{quotedate,jdbcType=DATE},
+      assignstatus = #{assignstatus,jdbcType=VARCHAR},
+      startdate = #{startdate,jdbcType=DATE},
+      enddate = #{enddate,jdbcType=DATE},
+      bill_city = #{billCity,jdbcType=VARCHAR},
+      bill_code = #{billCode,jdbcType=VARCHAR},
+      bill_country = #{billCountry,jdbcType=VARCHAR},
+      bill_state = #{billState,jdbcType=VARCHAR},
+      bill_street = #{billStreet,jdbcType=VARCHAR},
+      bill_pobox = #{billPobox,jdbcType=VARCHAR},
+      smcreatorid = #{smcreatorid,jdbcType=INTEGER},
+      smownerid = #{smownerid,jdbcType=INTEGER},
+      modifiedby = #{modifiedby,jdbcType=INTEGER},
+      groupid = #{groupid,jdbcType=INTEGER},
+      createdtime = #{createdtime,jdbcType=TIMESTAMP},
+      modifiedtime = #{modifiedtime,jdbcType=TIMESTAMP},
+      deleted = #{deleted,jdbcType=INTEGER},
+      approved = #{approved,jdbcType=INTEGER},
+      approvedby = #{approvedby,jdbcType=INTEGER},
+      cf_498 = #{cf498,jdbcType=VARCHAR},
+      cf_500 = #{cf500,jdbcType=VARCHAR},
+      cf_502 = #{cf502,jdbcType=VARCHAR},
+      cf_504 = #{cf504,jdbcType=VARCHAR},
+      cf_535 = #{cf535,jdbcType=VARCHAR},
+      keycontact = #{keycontact,jdbcType=VARCHAR},
+      keymobile = #{keymobile,jdbcType=VARCHAR},
+      latestnote = #{latestnote,jdbcType=VARCHAR},
+      ispools = #{ispools,jdbcType=VARCHAR},
+      cf_686 = #{cf686,jdbcType=VARCHAR}
+    where accountid = #{accountid,jdbcType=INTEGER}
+  </update>
+  
+  <select id="getTotal" resultType="INTEGER" >
+	SELECT count(1) AS count FROM xm_account LEFT JOIN xm_users ON xm_users.id = xm_account.smownerid WHERE 1=1 ${filter}
+  </select>
+  <select id="loadList" resultMap="BaseResultMap">
+    select xm_contactdetails.*,xm_users.user_name ,xm_contactdetails.contactid as crmid FROM xm_contactdetails LEFT JOIN xm_account ON xm_account.accountid = xm_contactdetails.accountid LEFT JOIN xm_users ON xm_users.id = xm_contactdetails.smownerid WHERE xm_contactdetails.deleted = 0  and 1=1 ${filter} limit #{start},#{rows}
+  </select>
+</mapper>
