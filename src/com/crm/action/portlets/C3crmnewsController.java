@@ -21,18 +21,18 @@ public class C3crmnewsController {
 	@RequestMapping(value = "/getJson")
 	@ResponseBody
 	public String getJson() {
-		Client client = null;
-		try {
-			client = new Client(new URL(
-					"http://127.0.0.1:85/index.php/webservice/news?wsdl"));
-			Object[] result1 = client.invoke("loadNews", new Object[]{100});
-
-			return result1[0]+"";
-		} catch (MalformedURLException e) {
-			e.printStackTrace();
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
+//		Client client = null;
+//		try {
+//			client = new Client(new URL(
+//					"http://127.0.0.1:85/index.php/webservice/news?wsdl"));
+//			Object[] result1 = client.invoke("loadNews", new Object[]{100});
+//
+//			return result1[0]+"";
+//		} catch (MalformedURLException e) {
+//			e.printStackTrace();
+//		} catch (Exception e) {
+//			e.printStackTrace();
+//		}
 		return "";
 	}
 
