@@ -185,6 +185,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
       out.write("\t\t</ul>\r\n");
       out.write("\t\t<div id=\"navMenu\">\r\n");
       out.write("\t\t\t<ul>\r\n");
+      out.write("\t\t\t\t<li class=\"split\"></li>\r\n");
       out.write("\t\t\t\t<li><a href=\"javascript:void(0)\" id=\"workspace\"\r\n");
       out.write("\t\t\t\t\tclass=\"easyui-menubutton\" data-options=\"menu:'#workspace_item'\">工作台</a></li>\r\n");
       out.write("\t\t\t\t<li class=\"split\"></li>\r\n");
