@@ -1,0 +1,657 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.crm.product.mapper.XmProductsMapper" >
+  <resultMap id="BaseResultMap" type="com.crm.model.XmProducts" >
+    <id column="productid" property="productid" jdbcType="INTEGER" />
+    <result column="productname" property="productname" jdbcType="VARCHAR" />
+    <result column="productcode" property="productcode" jdbcType="VARCHAR" />
+    <result column="catalogid" property="catalogid" jdbcType="VARCHAR" />
+    <result column="manufacturer" property="manufacturer" jdbcType="VARCHAR" />
+    <result column="qty_per_unit" property="qtyPerUnit" jdbcType="DECIMAL" />
+    <result column="unit_price" property="unitPrice" jdbcType="DECIMAL" />
+    <result column="reference_price" property="referencePrice" jdbcType="DECIMAL" />
+    <result column="cost_price" property="costPrice" jdbcType="DECIMAL" />
+    <result column="weight" property="weight" jdbcType="DECIMAL" />
+    <result column="pack_size" property="packSize" jdbcType="INTEGER" />
+    <result column="sales_start_date" property="salesStartDate" jdbcType="DATE" />
+    <result column="sales_end_date" property="salesEndDate" jdbcType="DATE" />
+    <result column="start_date" property="startDate" jdbcType="DATE" />
+    <result column="expiry_date" property="expiryDate" jdbcType="DATE" />
+    <result column="cost_factor" property="costFactor" jdbcType="INTEGER" />
+    <result column="commissionrate" property="commissionrate" jdbcType="DECIMAL" />
+    <result column="commissionmethod" property="commissionmethod" jdbcType="VARCHAR" />
+    <result column="discontinued" property="discontinued" jdbcType="INTEGER" />
+    <result column="usageunit" property="usageunit" jdbcType="VARCHAR" />
+    <result column="handler" property="handler" jdbcType="INTEGER" />
+    <result column="currency" property="currency" jdbcType="VARCHAR" />
+    <result column="reorderlevel" property="reorderlevel" jdbcType="INTEGER" />
+    <result column="website" property="website" jdbcType="VARCHAR" />
+    <result column="taxclass" property="taxclass" jdbcType="VARCHAR" />
+    <result column="mfr_part_no" property="mfrPartNo" jdbcType="VARCHAR" />
+    <result column="vendor_part_no" property="vendorPartNo" jdbcType="VARCHAR" />
+    <result column="serialno" property="serialno" jdbcType="VARCHAR" />
+    <result column="qtyinstock" property="qtyinstock" jdbcType="DECIMAL" />
+    <result column="productsheet" property="productsheet" jdbcType="VARCHAR" />
+    <result column="qtyindemand" property="qtyindemand" jdbcType="DECIMAL" />
+    <result column="glacct" property="glacct" jdbcType="VARCHAR" />
+    <result column="vendor_id" property="vendorId" jdbcType="INTEGER" />
+    <result column="smcreatorid" property="smcreatorid" jdbcType="INTEGER" />
+    <result column="smownerid" property="smownerid" jdbcType="INTEGER" />
+    <result column="modifiedby" property="modifiedby" jdbcType="INTEGER" />
+    <result column="groupid" property="groupid" jdbcType="INTEGER" />
+    <result column="createdtime" property="createdtime" jdbcType="TIMESTAMP" />
+    <result column="modifiedtime" property="modifiedtime" jdbcType="TIMESTAMP" />
+    <result column="deleted" property="deleted" jdbcType="INTEGER" />
+    <result column="approved" property="approved" jdbcType="INTEGER" />
+    <result column="approvedby" property="approvedby" jdbcType="INTEGER" />
+    <result column="isserialnumbers" property="isserialnumbers" jdbcType="VARCHAR" />
+    <result column="socknum" property="socknum" jdbcType="INTEGER" />
+    <result column="onnum" property="onnum" jdbcType="INTEGER" />
+  </resultMap>
+  <resultMap id="ResultMapWithBLOBs" type="com.crm.model.XmProducts" extends="BaseResultMap" >
+    <result column="product_description" property="productDescription" jdbcType="LONGVARCHAR" />
+    <result column="imagename" property="imagename" jdbcType="LONGVARCHAR" />
+    <result column="description" property="description" jdbcType="LONGVARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    productid, productname, productcode, catalogid, manufacturer, qty_per_unit, unit_price, 
+    reference_price, cost_price, weight, pack_size, sales_start_date, sales_end_date, 
+    start_date, expiry_date, cost_factor, commissionrate, commissionmethod, discontinued, 
+    usageunit, handler, currency, reorderlevel, website, taxclass, mfr_part_no, vendor_part_no, 
+    serialno, qtyinstock, productsheet, qtyindemand, glacct, vendor_id, smcreatorid, 
+    smownerid, modifiedby, groupid, createdtime, modifiedtime, deleted, approved, approvedby, 
+    isserialnumbers, socknum, onnum
+  </sql>
+  <sql id="Blob_Column_List" >
+    product_description, imagename, description
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="ResultMapWithBLOBs" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from xm_products
+    where productid = #{productid,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from xm_products
+    where productid = #{productid,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.crm.model.XmProducts" >
+    insert into xm_products (productid, productname, productcode, 
+      catalogid, manufacturer, qty_per_unit, 
+      unit_price, reference_price, cost_price, 
+      weight, pack_size, sales_start_date, 
+      sales_end_date, start_date, expiry_date, 
+      cost_factor, commissionrate, commissionmethod, 
+      discontinued, usageunit, handler, 
+      currency, reorderlevel, website, 
+      taxclass, mfr_part_no, vendor_part_no, 
+      serialno, qtyinstock, productsheet, 
+      qtyindemand, glacct, vendor_id, 
+      smcreatorid, smownerid, modifiedby, 
+      groupid, createdtime, modifiedtime, 
+      deleted, approved, approvedby, 
+      isserialnumbers, socknum, onnum, 
+      product_description, imagename, 
+      description)
+    values (#{productid,jdbcType=INTEGER}, #{productname,jdbcType=VARCHAR}, #{productcode,jdbcType=VARCHAR}, 
+      #{catalogid,jdbcType=VARCHAR}, #{manufacturer,jdbcType=VARCHAR}, #{qtyPerUnit,jdbcType=DECIMAL}, 
+      #{unitPrice,jdbcType=DECIMAL}, #{referencePrice,jdbcType=DECIMAL}, #{costPrice,jdbcType=DECIMAL}, 
+      #{weight,jdbcType=DECIMAL}, #{packSize,jdbcType=INTEGER}, #{salesStartDate,jdbcType=DATE}, 
+      #{salesEndDate,jdbcType=DATE}, #{startDate,jdbcType=DATE}, #{expiryDate,jdbcType=DATE}, 
+      #{costFactor,jdbcType=INTEGER}, #{commissionrate,jdbcType=DECIMAL}, #{commissionmethod,jdbcType=VARCHAR}, 
+      #{discontinued,jdbcType=INTEGER}, #{usageunit,jdbcType=VARCHAR}, #{handler,jdbcType=INTEGER}, 
+      #{currency,jdbcType=VARCHAR}, #{reorderlevel,jdbcType=INTEGER}, #{website,jdbcType=VARCHAR}, 
+      #{taxclass,jdbcType=VARCHAR}, #{mfrPartNo,jdbcType=VARCHAR}, #{vendorPartNo,jdbcType=VARCHAR}, 
+      #{serialno,jdbcType=VARCHAR}, #{qtyinstock,jdbcType=DECIMAL}, #{productsheet,jdbcType=VARCHAR}, 
+      #{qtyindemand,jdbcType=DECIMAL}, #{glacct,jdbcType=VARCHAR}, #{vendorId,jdbcType=INTEGER}, 
+      #{smcreatorid,jdbcType=INTEGER}, #{smownerid,jdbcType=INTEGER}, #{modifiedby,jdbcType=INTEGER}, 
+      #{groupid,jdbcType=INTEGER}, #{createdtime,jdbcType=TIMESTAMP}, #{modifiedtime,jdbcType=TIMESTAMP}, 
+      #{deleted,jdbcType=INTEGER}, #{approved,jdbcType=INTEGER}, #{approvedby,jdbcType=INTEGER}, 
+      #{isserialnumbers,jdbcType=VARCHAR}, #{socknum,jdbcType=INTEGER}, #{onnum,jdbcType=INTEGER}, 
+      #{productDescription,jdbcType=LONGVARCHAR}, #{imagename,jdbcType=LONGVARCHAR}, 
+      #{description,jdbcType=LONGVARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.crm.model.XmProducts" >
+    insert into xm_products
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="productid != null" >
+        productid,
+      </if>
+      <if test="productname != null" >
+        productname,
+      </if>
+      <if test="productcode != null" >
+        productcode,
+      </if>
+      <if test="catalogid != null" >
+        catalogid,
+      </if>
+      <if test="manufacturer != null" >
+        manufacturer,
+      </if>
+      <if test="qtyPerUnit != null" >
+        qty_per_unit,
+      </if>
+      <if test="unitPrice != null" >
+        unit_price,
+      </if>
+      <if test="referencePrice != null" >
+        reference_price,
+      </if>
+      <if test="costPrice != null" >
+        cost_price,
+      </if>
+      <if test="weight != null" >
+        weight,
+      </if>
+      <if test="packSize != null" >
+        pack_size,
+      </if>
+      <if test="salesStartDate != null" >
+        sales_start_date,
+      </if>
+      <if test="salesEndDate != null" >
+        sales_end_date,
+      </if>
+      <if test="startDate != null" >
+        start_date,
+      </if>
+      <if test="expiryDate != null" >
+        expiry_date,
+      </if>
+      <if test="costFactor != null" >
+        cost_factor,
+      </if>
+      <if test="commissionrate != null" >
+        commissionrate,
+      </if>
+      <if test="commissionmethod != null" >
+        commissionmethod,
+      </if>
+      <if test="discontinued != null" >
+        discontinued,
+      </if>
+      <if test="usageunit != null" >
+        usageunit,
+      </if>
+      <if test="handler != null" >
+        handler,
+      </if>
+      <if test="currency != null" >
+        currency,
+      </if>
+      <if test="reorderlevel != null" >
+        reorderlevel,
+      </if>
+      <if test="website != null" >
+        website,
+      </if>
+      <if test="taxclass != null" >
+        taxclass,
+      </if>
+      <if test="mfrPartNo != null" >
+        mfr_part_no,
+      </if>
+      <if test="vendorPartNo != null" >
+        vendor_part_no,
+      </if>
+      <if test="serialno != null" >
+        serialno,
+      </if>
+      <if test="qtyinstock != null" >
+        qtyinstock,
+      </if>
+      <if test="productsheet != null" >
+        productsheet,
+      </if>
+      <if test="qtyindemand != null" >
+        qtyindemand,
+      </if>
+      <if test="glacct != null" >
+        glacct,
+      </if>
+      <if test="vendorId != null" >
+        vendor_id,
+      </if>
+      <if test="smcreatorid != null" >
+        smcreatorid,
+      </if>
+      <if test="smownerid != null" >
+        smownerid,
+      </if>
+      <if test="modifiedby != null" >
+        modifiedby,
+      </if>
+      <if test="groupid != null" >
+        groupid,
+      </if>
+      <if test="createdtime != null" >
+        createdtime,
+      </if>
+      <if test="modifiedtime != null" >
+        modifiedtime,
+      </if>
+      <if test="deleted != null" >
+        deleted,
+      </if>
+      <if test="approved != null" >
+        approved,
+      </if>
+      <if test="approvedby != null" >
+        approvedby,
+      </if>
+      <if test="isserialnumbers != null" >
+        isserialnumbers,
+      </if>
+      <if test="socknum != null" >
+        socknum,
+      </if>
+      <if test="onnum != null" >
+        onnum,
+      </if>
+      <if test="productDescription != null" >
+        product_description,
+      </if>
+      <if test="imagename != null" >
+        imagename,
+      </if>
+      <if test="description != null" >
+        description,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="productid != null" >
+        #{productid,jdbcType=INTEGER},
+      </if>
+      <if test="productname != null" >
+        #{productname,jdbcType=VARCHAR},
+      </if>
+      <if test="productcode != null" >
+        #{productcode,jdbcType=VARCHAR},
+      </if>
+      <if test="catalogid != null" >
+        #{catalogid,jdbcType=VARCHAR},
+      </if>
+      <if test="manufacturer != null" >
+        #{manufacturer,jdbcType=VARCHAR},
+      </if>
+      <if test="qtyPerUnit != null" >
+        #{qtyPerUnit,jdbcType=DECIMAL},
+      </if>
+      <if test="unitPrice != null" >
+        #{unitPrice,jdbcType=DECIMAL},
+      </if>
+      <if test="referencePrice != null" >
+        #{referencePrice,jdbcType=DECIMAL},
+      </if>
+      <if test="costPrice != null" >
+        #{costPrice,jdbcType=DECIMAL},
+      </if>
+      <if test="weight != null" >
+        #{weight,jdbcType=DECIMAL},
+      </if>
+      <if test="packSize != null" >
+        #{packSize,jdbcType=INTEGER},
+      </if>
+      <if test="salesStartDate != null" >
+        #{salesStartDate,jdbcType=DATE},
+      </if>
+      <if test="salesEndDate != null" >
+        #{salesEndDate,jdbcType=DATE},
+      </if>
+      <if test="startDate != null" >
+        #{startDate,jdbcType=DATE},
+      </if>
+      <if test="expiryDate != null" >
+        #{expiryDate,jdbcType=DATE},
+      </if>
+      <if test="costFactor != null" >
+        #{costFactor,jdbcType=INTEGER},
+      </if>
+      <if test="commissionrate != null" >
+        #{commissionrate,jdbcType=DECIMAL},
+      </if>
+      <if test="commissionmethod != null" >
+        #{commissionmethod,jdbcType=VARCHAR},
+      </if>
+      <if test="discontinued != null" >
+        #{discontinued,jdbcType=INTEGER},
+      </if>
+      <if test="usageunit != null" >
+        #{usageunit,jdbcType=VARCHAR},
+      </if>
+      <if test="handler != null" >
+        #{handler,jdbcType=INTEGER},
+      </if>
+      <if test="currency != null" >
+        #{currency,jdbcType=VARCHAR},
+      </if>
+      <if test="reorderlevel != null" >
+        #{reorderlevel,jdbcType=INTEGER},
+      </if>
+      <if test="website != null" >
+        #{website,jdbcType=VARCHAR},
+      </if>
+      <if test="taxclass != null" >
+        #{taxclass,jdbcType=VARCHAR},
+      </if>
+      <if test="mfrPartNo != null" >
+        #{mfrPartNo,jdbcType=VARCHAR},
+      </if>
+      <if test="vendorPartNo != null" >
+        #{vendorPartNo,jdbcType=VARCHAR},
+      </if>
+      <if test="serialno != null" >
+        #{serialno,jdbcType=VARCHAR},
+      </if>
+      <if test="qtyinstock != null" >
+        #{qtyinstock,jdbcType=DECIMAL},
+      </if>
+      <if test="productsheet != null" >
+        #{productsheet,jdbcType=VARCHAR},
+      </if>
+      <if test="qtyindemand != null" >
+        #{qtyindemand,jdbcType=DECIMAL},
+      </if>
+      <if test="glacct != null" >
+        #{glacct,jdbcType=VARCHAR},
+      </if>
+      <if test="vendorId != null" >
+        #{vendorId,jdbcType=INTEGER},
+      </if>
+      <if test="smcreatorid != null" >
+        #{smcreatorid,jdbcType=INTEGER},
+      </if>
+      <if test="smownerid != null" >
+        #{smownerid,jdbcType=INTEGER},
+      </if>
+      <if test="modifiedby != null" >
+        #{modifiedby,jdbcType=INTEGER},
+      </if>
+      <if test="groupid != null" >
+        #{groupid,jdbcType=INTEGER},
+      </if>
+      <if test="createdtime != null" >
+        #{createdtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="modifiedtime != null" >
+        #{modifiedtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="deleted != null" >
+        #{deleted,jdbcType=INTEGER},
+      </if>
+      <if test="approved != null" >
+        #{approved,jdbcType=INTEGER},
+      </if>
+      <if test="approvedby != null" >
+        #{approvedby,jdbcType=INTEGER},
+      </if>
+      <if test="isserialnumbers != null" >
+        #{isserialnumbers,jdbcType=VARCHAR},
+      </if>
+      <if test="socknum != null" >
+        #{socknum,jdbcType=INTEGER},
+      </if>
+      <if test="onnum != null" >
+        #{onnum,jdbcType=INTEGER},
+      </if>
+      <if test="productDescription != null" >
+        #{productDescription,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="imagename != null" >
+        #{imagename,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="description != null" >
+        #{description,jdbcType=LONGVARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.crm.model.XmProducts" >
+    update xm_products
+    <set >
+      <if test="productname != null" >
+        productname = #{productname,jdbcType=VARCHAR},
+      </if>
+      <if test="productcode != null" >
+        productcode = #{productcode,jdbcType=VARCHAR},
+      </if>
+      <if test="catalogid != null" >
+        catalogid = #{catalogid,jdbcType=VARCHAR},
+      </if>
+      <if test="manufacturer != null" >
+        manufacturer = #{manufacturer,jdbcType=VARCHAR},
+      </if>
+      <if test="qtyPerUnit != null" >
+        qty_per_unit = #{qtyPerUnit,jdbcType=DECIMAL},
+      </if>
+      <if test="unitPrice != null" >
+        unit_price = #{unitPrice,jdbcType=DECIMAL},
+      </if>
+      <if test="referencePrice != null" >
+        reference_price = #{referencePrice,jdbcType=DECIMAL},
+      </if>
+      <if test="costPrice != null" >
+        cost_price = #{costPrice,jdbcType=DECIMAL},
+      </if>
+      <if test="weight != null" >
+        weight = #{weight,jdbcType=DECIMAL},
+      </if>
+      <if test="packSize != null" >
+        pack_size = #{packSize,jdbcType=INTEGER},
+      </if>
+      <if test="salesStartDate != null" >
+        sales_start_date = #{salesStartDate,jdbcType=DATE},
+      </if>
+      <if test="salesEndDate != null" >
+        sales_end_date = #{salesEndDate,jdbcType=DATE},
+      </if>
+      <if test="startDate != null" >
+        start_date = #{startDate,jdbcType=DATE},
+      </if>
+      <if test="expiryDate != null" >
+        expiry_date = #{expiryDate,jdbcType=DATE},
+      </if>
+      <if test="costFactor != null" >
+        cost_factor = #{costFactor,jdbcType=INTEGER},
+      </if>
+      <if test="commissionrate != null" >
+        commissionrate = #{commissionrate,jdbcType=DECIMAL},
+      </if>
+      <if test="commissionmethod != null" >
+        commissionmethod = #{commissionmethod,jdbcType=VARCHAR},
+      </if>
+      <if test="discontinued != null" >
+        discontinued = #{discontinued,jdbcType=INTEGER},
+      </if>
+      <if test="usageunit != null" >
+        usageunit = #{usageunit,jdbcType=VARCHAR},
+      </if>
+      <if test="handler != null" >
+        handler = #{handler,jdbcType=INTEGER},
+      </if>
+      <if test="currency != null" >
+        currency = #{currency,jdbcType=VARCHAR},
+      </if>
+      <if test="reorderlevel != null" >
+        reorderlevel = #{reorderlevel,jdbcType=INTEGER},
+      </if>
+      <if test="website != null" >
+        website = #{website,jdbcType=VARCHAR},
+      </if>
+      <if test="taxclass != null" >
+        taxclass = #{taxclass,jdbcType=VARCHAR},
+      </if>
+      <if test="mfrPartNo != null" >
+        mfr_part_no = #{mfrPartNo,jdbcType=VARCHAR},
+      </if>
+      <if test="vendorPartNo != null" >
+        vendor_part_no = #{vendorPartNo,jdbcType=VARCHAR},
+      </if>
+      <if test="serialno != null" >
+        serialno = #{serialno,jdbcType=VARCHAR},
+      </if>
+      <if test="qtyinstock != null" >
+        qtyinstock = #{qtyinstock,jdbcType=DECIMAL},
+      </if>
+      <if test="productsheet != null" >
+        productsheet = #{productsheet,jdbcType=VARCHAR},
+      </if>
+      <if test="qtyindemand != null" >
+        qtyindemand = #{qtyindemand,jdbcType=DECIMAL},
+      </if>
+      <if test="glacct != null" >
+        glacct = #{glacct,jdbcType=VARCHAR},
+      </if>
+      <if test="vendorId != null" >
+        vendor_id = #{vendorId,jdbcType=INTEGER},
+      </if>
+      <if test="smcreatorid != null" >
+        smcreatorid = #{smcreatorid,jdbcType=INTEGER},
+      </if>
+      <if test="smownerid != null" >
+        smownerid = #{smownerid,jdbcType=INTEGER},
+      </if>
+      <if test="modifiedby != null" >
+        modifiedby = #{modifiedby,jdbcType=INTEGER},
+      </if>
+      <if test="groupid != null" >
+        groupid = #{groupid,jdbcType=INTEGER},
+      </if>
+      <if test="createdtime != null" >
+        createdtime = #{createdtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="modifiedtime != null" >
+        modifiedtime = #{modifiedtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="deleted != null" >
+        deleted = #{deleted,jdbcType=INTEGER},
+      </if>
+      <if test="approved != null" >
+        approved = #{approved,jdbcType=INTEGER},
+      </if>
+      <if test="approvedby != null" >
+        approvedby = #{approvedby,jdbcType=INTEGER},
+      </if>
+      <if test="isserialnumbers != null" >
+        isserialnumbers = #{isserialnumbers,jdbcType=VARCHAR},
+      </if>
+      <if test="socknum != null" >
+        socknum = #{socknum,jdbcType=INTEGER},
+      </if>
+      <if test="onnum != null" >
+        onnum = #{onnum,jdbcType=INTEGER},
+      </if>
+      <if test="productDescription != null" >
+        product_description = #{productDescription,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="imagename != null" >
+        imagename = #{imagename,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="description != null" >
+        description = #{description,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    where productid = #{productid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.crm.model.XmProducts" >
+    update xm_products
+    set productname = #{productname,jdbcType=VARCHAR},
+      productcode = #{productcode,jdbcType=VARCHAR},
+      catalogid = #{catalogid,jdbcType=VARCHAR},
+      manufacturer = #{manufacturer,jdbcType=VARCHAR},
+      qty_per_unit = #{qtyPerUnit,jdbcType=DECIMAL},
+      unit_price = #{unitPrice,jdbcType=DECIMAL},
+      reference_price = #{referencePrice,jdbcType=DECIMAL},
+      cost_price = #{costPrice,jdbcType=DECIMAL},
+      weight = #{weight,jdbcType=DECIMAL},
+      pack_size = #{packSize,jdbcType=INTEGER},
+      sales_start_date = #{salesStartDate,jdbcType=DATE},
+      sales_end_date = #{salesEndDate,jdbcType=DATE},
+      start_date = #{startDate,jdbcType=DATE},
+      expiry_date = #{expiryDate,jdbcType=DATE},
+      cost_factor = #{costFactor,jdbcType=INTEGER},
+      commissionrate = #{commissionrate,jdbcType=DECIMAL},
+      commissionmethod = #{commissionmethod,jdbcType=VARCHAR},
+      discontinued = #{discontinued,jdbcType=INTEGER},
+      usageunit = #{usageunit,jdbcType=VARCHAR},
+      handler = #{handler,jdbcType=INTEGER},
+      currency = #{currency,jdbcType=VARCHAR},
+      reorderlevel = #{reorderlevel,jdbcType=INTEGER},
+      website = #{website,jdbcType=VARCHAR},
+      taxclass = #{taxclass,jdbcType=VARCHAR},
+      mfr_part_no = #{mfrPartNo,jdbcType=VARCHAR},
+      vendor_part_no = #{vendorPartNo,jdbcType=VARCHAR},
+      serialno = #{serialno,jdbcType=VARCHAR},
+      qtyinstock = #{qtyinstock,jdbcType=DECIMAL},
+      productsheet = #{productsheet,jdbcType=VARCHAR},
+      qtyindemand = #{qtyindemand,jdbcType=DECIMAL},
+      glacct = #{glacct,jdbcType=VARCHAR},
+      vendor_id = #{vendorId,jdbcType=INTEGER},
+      smcreatorid = #{smcreatorid,jdbcType=INTEGER},
+      smownerid = #{smownerid,jdbcType=INTEGER},
+      modifiedby = #{modifiedby,jdbcType=INTEGER},
+      groupid = #{groupid,jdbcType=INTEGER},
+      createdtime = #{createdtime,jdbcType=TIMESTAMP},
+      modifiedtime = #{modifiedtime,jdbcType=TIMESTAMP},
+      deleted = #{deleted,jdbcType=INTEGER},
+      approved = #{approved,jdbcType=INTEGER},
+      approvedby = #{approvedby,jdbcType=INTEGER},
+      isserialnumbers = #{isserialnumbers,jdbcType=VARCHAR},
+      socknum = #{socknum,jdbcType=INTEGER},
+      onnum = #{onnum,jdbcType=INTEGER},
+      product_description = #{productDescription,jdbcType=LONGVARCHAR},
+      imagename = #{imagename,jdbcType=LONGVARCHAR},
+      description = #{description,jdbcType=LONGVARCHAR}
+    where productid = #{productid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.crm.model.XmProducts" >
+    update xm_products
+    set productname = #{productname,jdbcType=VARCHAR},
+      productcode = #{productcode,jdbcType=VARCHAR},
+      catalogid = #{catalogid,jdbcType=VARCHAR},
+      manufacturer = #{manufacturer,jdbcType=VARCHAR},
+      qty_per_unit = #{qtyPerUnit,jdbcType=DECIMAL},
+      unit_price = #{unitPrice,jdbcType=DECIMAL},
+      reference_price = #{referencePrice,jdbcType=DECIMAL},
+      cost_price = #{costPrice,jdbcType=DECIMAL},
+      weight = #{weight,jdbcType=DECIMAL},
+      pack_size = #{packSize,jdbcType=INTEGER},
+      sales_start_date = #{salesStartDate,jdbcType=DATE},
+      sales_end_date = #{salesEndDate,jdbcType=DATE},
+      start_date = #{startDate,jdbcType=DATE},
+      expiry_date = #{expiryDate,jdbcType=DATE},
+      cost_factor = #{costFactor,jdbcType=INTEGER},
+      commissionrate = #{commissionrate,jdbcType=DECIMAL},
+      commissionmethod = #{commissionmethod,jdbcType=VARCHAR},
+      discontinued = #{discontinued,jdbcType=INTEGER},
+      usageunit = #{usageunit,jdbcType=VARCHAR},
+      handler = #{handler,jdbcType=INTEGER},
+      currency = #{currency,jdbcType=VARCHAR},
+      reorderlevel = #{reorderlevel,jdbcType=INTEGER},
+      website = #{website,jdbcType=VARCHAR},
+      taxclass = #{taxclass,jdbcType=VARCHAR},
+      mfr_part_no = #{mfrPartNo,jdbcType=VARCHAR},
+      vendor_part_no = #{vendorPartNo,jdbcType=VARCHAR},
+      serialno = #{serialno,jdbcType=VARCHAR},
+      qtyinstock = #{qtyinstock,jdbcType=DECIMAL},
+      productsheet = #{productsheet,jdbcType=VARCHAR},
+      qtyindemand = #{qtyindemand,jdbcType=DECIMAL},
+      glacct = #{glacct,jdbcType=VARCHAR},
+      vendor_id = #{vendorId,jdbcType=INTEGER},
+      smcreatorid = #{smcreatorid,jdbcType=INTEGER},
+      smownerid = #{smownerid,jdbcType=INTEGER},
+      modifiedby = #{modifiedby,jdbcType=INTEGER},
+      groupid = #{groupid,jdbcType=INTEGER},
+      createdtime = #{createdtime,jdbcType=TIMESTAMP},
+      modifiedtime = #{modifiedtime,jdbcType=TIMESTAMP},
+      deleted = #{deleted,jdbcType=INTEGER},
+      approved = #{approved,jdbcType=INTEGER},
+      approvedby = #{approvedby,jdbcType=INTEGER},
+      isserialnumbers = #{isserialnumbers,jdbcType=VARCHAR},
+      socknum = #{socknum,jdbcType=INTEGER},
+      onnum = #{onnum,jdbcType=INTEGER}
+    where productid = #{productid,jdbcType=INTEGER}
+  </update>
+</mapper>

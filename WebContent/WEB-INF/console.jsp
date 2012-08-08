@@ -102,6 +102,7 @@
 		</ul>
 		<div id="navMenu">
 			<ul>
+				<li class="split"></li>
 				<li><a href="javascript:void(0)" id="workspace"
 					class="easyui-menubutton" data-options="menu:'#workspace_item'">工作台</a></li>
 				<li class="split"></li>
