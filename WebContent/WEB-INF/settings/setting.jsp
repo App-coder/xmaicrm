@@ -322,25 +322,7 @@
 										</table>
 									</td>
 									
-									<td width="12.5%" valign="top">
-										<table width="100%" class="tab_center" cellspacing="0"
-											cellpadding="5" border="0">
-											<tbody>
-												<tr>
-													<td valign="top"><a
-														href="crm/settings/multiapprove/index"><img
-															width="48" height="48" border="0"
-															src="resources/images/settings/panel/approvelist.gif"></a></td>
-												</tr>
-												<tr>
-													<td valign="top" class="big"><a
-														href="crm/settings/multiapprove/index">审批流程</a></td>
-												</tr>
-											</tbody>
-										</table>
-									</td>
-<!-- 
-									<td width="12.5%" valign="top">
+																	<td width="12.5%" valign="top">
 										<table width="100%" class="tab_center" cellspacing="0"
 											cellpadding="5" border="0">
 											<tbody>
@@ -357,10 +339,10 @@
 											</tbody>
 										</table>
 									</td>
-									 -->
+
 								</tr>
 								<tr>
-								<!-- 
+
 									<td width="12.5%" valign="top">
 										<table width="100%" class="tab_center" cellspacing="0"
 											cellpadding="5" border="0">
@@ -378,8 +360,24 @@
 											</tbody>
 										</table>
 									</td>
-								 -->
 									
+									<td width="12.5%" valign="top">
+										<table width="100%" class="tab_center" cellspacing="0"
+											cellpadding="5" border="0">
+											<tbody>
+												<tr>
+													<td valign="top"><a
+														href="crm/settings/multiapprove/index"><img
+															width="48" height="48" border="0"
+															src="resources/images/settings/panel/approvelist.gif"></a></td>
+												</tr>
+												<tr>
+													<td valign="top" class="big"><a
+														href="crm/settings/multiapprove/index">审批流程</a></td>
+												</tr>
+											</tbody>
+										</table>
+									</td>
 									
 									<td width="12.5%" valign="top">
 										<table width="100%" class="tab_center" cellspacing="0"
@@ -399,8 +397,24 @@
 										</table>
 									</td>
 									
-									<td width="12.5%" valign="top"></td>
-									<td width="12.5%" valign="top"></td>
+								 <td width="12.5%" valign="top">
+										<table width="100%" class="tab_center" cellspacing="0"
+											cellpadding="5" border="0">
+											<tbody>
+												<tr>
+													<td valign="top"><a
+														href="javascript:tab('关联产品字段','settings/multiapprove/index')"><img
+															width="48" height="48" border="0"
+															src="resources/images/settings/panel/productfield.gif"></a></td>
+												</tr>
+												<tr>
+													<td valign="top" class="big"><a
+														href="javascript:tab('关联产品字段','settings/multiapprove/index')">关联信息模块</a></td>
+												</tr>
+											</tbody>
+										</table>
+									</td>
+									
 									<td width="12.5%" valign="top"></td>
 									<td width="12.5%" valign="top"></td>
 									<td width="12.5%" valign="top"></td>
@@ -445,7 +459,6 @@
 										</table>
 									</td>
 									
-									<!-- 
 									<td width="12.5%" valign="top">
 										<table width="100%" class="tab_center" cellspacing="0"
 											cellpadding="5" border="0">
@@ -465,7 +478,6 @@
 											</tbody>
 										</table>
 									</td>
- -->
 									<td width="12.5%" valign="top">
 										<!-- icon 16-->
 										<table width="100%" class="tab_center" cellspacing="0"
@@ -571,7 +583,6 @@
 										</table>
 									</td>
 									
-									<!-- 
 									<td width="12.5%" valign="top">
 										<table width="100%" class="tab_center" cellspacing="0"
 											cellpadding="5" border="0">
@@ -591,9 +602,11 @@
 											</tbody>
 										</table>
 									</td>
-									 -->
 									
-									<td width="12.5%" valign="top">
+									
+								</tr>
+								<tr >
+<td width="12.5%" valign="top">
 										<!-- icon 11-->
 										<table width="100%" class="tab_center" cellspacing="0"
 											cellpadding="5" border="0">
@@ -612,12 +625,6 @@
 
 											</tbody>
 										</table>
-									</td>
-									<td width="12.5%" valign="top">
-									</td>
-								</tr>
-								<tr style="display:none;">
-								<td width="12.5%" valign="top">
 									</td>
 									<td width="12.5%" valign="top">
 									</td>
