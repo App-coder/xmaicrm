@@ -5,7 +5,6 @@ import java.util.List;
 
 import net.sf.json.JSONArray;
 import net.sf.json.JSONObject;
-import net.sf.json.JsonConfig;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -13,7 +12,6 @@ import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.crm.action.BaseController;
@@ -21,7 +19,6 @@ import com.crm.bean.easyui.ListBean;
 import com.crm.model.XmCangkuInfo;
 import com.crm.model.XmStaffMonthly;
 import com.crm.report.service.XmIntegradedreportsService;
-import com.crm.util.JsonDateValueProcessor;
 import com.crm.util.JsonUtil;
 /**
  * 

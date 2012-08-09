@@ -7,8 +7,10 @@ import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.apache.log4j.Logger;
 import org.springframework.web.servlet.HandlerInterceptor;
 import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.util.Log4jConfigListener;
 
 import com.crm.model.XmEntityname;
 import com.crm.model.XmTab;
@@ -58,6 +60,7 @@ public class BaseInterceptor implements HandlerInterceptor {
 			CacheManager.putInCache(Constant.TABBYLAB, hmlabtabs);
 		}
 
+		Logger.getLogger("").info("ttt");
 		return true;
 	}
 	

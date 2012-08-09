@@ -4,7 +4,7 @@ import javax.servlet.*;
 import javax.servlet.http.*;
 import javax.servlet.jsp.*;
 
-public final class users_jsp extends org.apache.jasper.runtime.HttpJspBase
+public final class deforgshare_jsp extends org.apache.jasper.runtime.HttpJspBase
     implements org.apache.jasper.runtime.JspSourceDependent {
 
   private static final JspFactory _jspxFactory = JspFactory.getDefaultFactory();
@@ -104,7 +104,7 @@ String win_topbar = "closed=\"true\" modal=\"true\" collapsible=\"false\"  dragg
       out.write("    ");
       out.write("\r\n");
       out.write("<script>\r\n");
-      out.write("var pathname = \"系统用户\";\r\n");
+      out.write("var pathname = \"全局共享规则\";\r\n");
       out.write("</script>\r\n");
       out.write("\r\n");
       out.write("<script>\r\n");
@@ -120,7 +120,7 @@ String win_topbar = "closed=\"true\" modal=\"true\" collapsible=\"false\"  dragg
       out.write("});\r\n");
       out.write("</script>");
       out.write("\r\n");
-      out.write("<script type=\"text/javascript\" src=\"resources/desktop/settings/basic/users.js\"></script>\r\n");
+      out.write("<script type=\"text/javascript\" src=\"resources/desktop/settings/basic/deforgshare.js\"></script>\r\n");
       out.write("</head>\r\n");
       out.write("<body id=\"wrap\">\r\n");
       out.write("\r\n");
@@ -256,7 +256,7 @@ String win_topbar = "closed=\"true\" modal=\"true\" collapsible=\"false\"  dragg
       out.write("\r\n");
       out.write("<div id=\"main\">\r\n");
       out.write("<div class=\"path\" id=\"navpath\"></div>\r\n");
-      out.write("<table id=\"user_list\" data-options=\"fitColumns:true\"></table>\r\n");
+      out.write("sdfsd\r\n");
       out.write("</div>\r\n");
       out.write("\r\n");
       out.write("<div id=\"div_foot\" class=\"footercss\" >\r\n");

@@ -16,12 +16,12 @@ import com.crm.action.BaseController;
  * Time: 上午10:16:00
  */
 @Controller
-@RequestMapping(value = "settings/orgsharingdetailview")
-public class XmOrgSharingDetailViewController extends BaseController {
+@RequestMapping(value = "settings/deforgshare")
+public class XmDefOrgShareController extends BaseController {
 
 	@RequestMapping(value = "/index", method = RequestMethod.GET)
 	public String index(ModelMap modelMap){
-		return "settings/basic/orgsharingdetailview";
+		return "settings/basic/deforgshare";
 	}
 	
 }
