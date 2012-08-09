@@ -43,7 +43,7 @@ a {
 <div class="path"><a href="/">报表</a>&gt;<a href="/sc/">综合报表</a></div>
 
 <div class="container">
-	<div class="easyui-layout" fit="true">
+	<div class="easyui-layout">
 		<div data-options="region:'north',border:false">
 			<div class="d_view ">
 				<span class="icon-filter view_span" >年度选择：</span>
@@ -57,7 +57,7 @@ a {
 		</div>
 		<div data-options="region:'center',border:false" style="overflow: hidden;">
 			<div class="easyui-panel"  
-			     collapsible="true" data-options="fit:true" style="padding:5px;">
+			     collapsible="true"  style="padding:5px;">
 				<table class="report_panel">
 				   <tr>
 				   <td class="report_details">
