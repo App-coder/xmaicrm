@@ -4,6 +4,9 @@ import java.math.BigDecimal;
 import java.util.Date;
 
 public class XmSalesorder {
+	
+	private Integer crmid;
+	
     private Integer salesorderid;
 
     private String subject;
@@ -82,7 +85,15 @@ public class XmSalesorder {
 
     private String description;
 
-    public Integer getSalesorderid() {
+    public Integer getCrmid() {
+		return crmid;
+	}
+
+	public void setCrmid(Integer crmid) {
+		this.crmid = crmid;
+	}
+
+	public Integer getSalesorderid() {
         return salesorderid;
     }
 

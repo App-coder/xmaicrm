@@ -19,6 +19,14 @@ import com.crm.service.module.XmAccountService;
 import com.crm.util.CacheUtil;
 import com.crm.util.Constant;
 
+/**
+ * 
+ * 最近联系客户
+ * 
+ * User: zhujun
+ * Date: 2012-8-8
+ * Time: 下午10:24:25
+ */
 @Controller
 @SessionAttributes(Constant.USERPERMISSION)
 @RequestMapping(value = "crm/portlets/top_account")

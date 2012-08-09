@@ -28,4 +28,6 @@ public interface XmQuotesMapper extends ModuleMapper<XmQuotes>{
 
 	List<XmQuotes> loadList(@Param("start") int start,@Param("rows") int rows,@Param("filter") String filter);
 
+	List<XmQuotes> getTopQuote(@Param("userid") Integer userid);
+
 }

@@ -9,10 +9,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.alibaba.fastjson.JSON;
-import com.crm.bean.portlets.Salesyearinfo;
-import com.crm.bean.portlets.salesyearinfo.ExpensesStat;
-import com.crm.bean.portlets.salesyearinfo.GatherStat;
-import com.crm.bean.portlets.salesyearinfo.SalesorderStat;
+import com.crm.bean.crm.portlets.Salesyearinfo;
+import com.crm.bean.crm.portlets.salesyearinfo.ExpensesStat;
+import com.crm.bean.crm.portlets.salesyearinfo.GatherStat;
+import com.crm.bean.crm.portlets.salesyearinfo.SalesorderStat;
 import com.crm.service.module.XmAccountService;
 import com.crm.service.module.XmExpensesService;
 import com.crm.service.module.XmSalesorderService;

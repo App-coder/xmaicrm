@@ -51,6 +51,8 @@ public class XmNotes {
 
     private String description;
 
+    private String accountname;
+    
     public Integer getNotesid() {
         return notesid;
     }
@@ -242,4 +244,15 @@ public class XmNotes {
     public void setDescription(String description) {
         this.description = description == null ? null : description.trim();
     }
+
+	public String getAccountname() {
+		return accountname;
+	}
+
+	public void setAccountname(String accountname) {
+		this.accountname = accountname;
+	}
+    
+    
+    
 }

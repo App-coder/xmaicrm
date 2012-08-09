@@ -3,7 +3,7 @@ package com.crm.service.portlets;
 import java.util.List;
 
 import com.crm.bean.crm.portlets.GatherYear;
-import com.crm.bean.portlets.salesyearinfo.GatherStat;
+import com.crm.bean.crm.portlets.salesyearinfo.GatherStat;
 import com.crm.model.XmGathers;
 
 public interface XmGathersService {
@@ -23,6 +23,8 @@ public interface XmGathersService {
 	GatherStat getGatherStat(String year);
 
 	String getSumOfGatherByUserAndLast(Integer id, String start, String end);
+
+	List<XmGathers> getTopGather(int userid);
 
 
 }

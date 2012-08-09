@@ -1,6 +1,6 @@
 package com.crm.service.module;
 
-import com.crm.bean.portlets.salesyearinfo.ExpensesStat;
+import com.crm.bean.crm.portlets.salesyearinfo.ExpensesStat;
 
 public interface XmExpensesService{
 

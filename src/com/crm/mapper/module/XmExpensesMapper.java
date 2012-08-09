@@ -4,7 +4,7 @@ import java.util.List;
 
 import org.apache.ibatis.annotations.Param;
 
-import com.crm.bean.portlets.salesyearinfo.ExpensesStat;
+import com.crm.bean.crm.portlets.salesyearinfo.ExpensesStat;
 import com.crm.model.XmExpenses;
 
 public interface XmExpensesMapper {

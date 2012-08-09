@@ -4,7 +4,7 @@ import javax.annotation.Resource;
 
 import org.springframework.stereotype.Service;
 
-import com.crm.bean.portlets.salesyearinfo.ExpensesStat;
+import com.crm.bean.crm.portlets.salesyearinfo.ExpensesStat;
 import com.crm.mapper.module.XmExpensesMapper;
 import com.crm.service.module.XmExpensesService;
 

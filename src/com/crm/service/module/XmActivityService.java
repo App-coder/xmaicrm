@@ -8,4 +8,5 @@ public interface XmActivityService {
 
 	List<XmActivity> getTopActivity(String smownerid);
 
+
 }

@@ -24,6 +24,14 @@ import com.crm.util.Constant;
 import com.crm.util.DateUtil;
 import com.crm.util.time.TimeGet;
 
+/**
+ * 
+ * 个人本月销售记录
+ * 
+ * User: zhujun
+ * Date: 2012-8-9
+ * Time: 下午1:54:22
+ */
 @Controller
 @SessionAttributes(Constant.USERPERMISSION)
 @RequestMapping(value = "crm/portlets/top_performance")

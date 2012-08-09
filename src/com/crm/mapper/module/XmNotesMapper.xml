@@ -363,4 +363,16 @@
   <select id="getNoteOfUserAndLast" resultType="INTEGER">
   	select count(*) as rowsnum from xm_notes WHERE deleted =0 AND smownerid='${userid}' and contact_date between '${start} 00:00:00' and '${end} 23:59:00';
   </select>
+  <select id="getTopNotes" resultMap="BaseResultMap" >
+  	SELECT
+		xm_notes.*, xm_account.accountname
+	FROM
+		xm_notes
+	LEFT JOIN xm_account ON xm_account.accountid = xm_notes.accountid
+	WHERE
+		xm_notes.deleted = 0
+	AND xm_notes.smownerid = #{userid}
+	ORDER BY
+		xm_notes.contact_date DESC limit 0,20;
+  </select>
 </mapper>

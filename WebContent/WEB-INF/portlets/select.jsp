@@ -149,5 +149,30 @@
 		</table> 
 		</div>
 	</c:when>
+	<c:when test="${stuff.stufftype == 'top_account' }">
+		<table id="tab_topaccount"></table>
+	</c:when>
+	<c:when test="${ stuff.stufftype == 'today_account' }">
+		<table id="tab_todayaccount"></table>
+	</c:when>
+	<c:when test="${stuff.stufftype == 'top_calendar'  }">
+		<table id="tab_topcalendar"></table>
+	</c:when>
+	<c:when test="${stuff.stufftype =='top_gather' }">
+		<table id="tab_topgather"></table>
+	</c:when>
+	<c:when test="${ stuff.stufftype =='top_notes' }">
+		<table id="tab_topnotes"></table>
+	</c:when>
+	<c:when test="${stuff.stufftype == 'top_quote' }">
+		<table id="tab_topquote"></table>
+	</c:when>
+	<c:when test="${ stuff.stufftype =='top_salesorder' }">
+		<table id="tab_topsalesorder"></table>
+	</c:when>
+	<c:when test="${stuff.stufftype =='top_performance' }">
+		<table id="tab_topperformance" class="tablist"  >
+		</table>
+	</c:when>
 </c:choose>
   

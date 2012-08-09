@@ -982,4 +982,16 @@
 		xm_account.deleted = 0
 	AND xm_campaignaccountrel.campaignid = #{campaignid}
   </select>
+  <select id="getTodayaccount" resultMap="BaseResultMap" >
+  	SELECT
+		xm_account.*
+	FROM
+		xm_account
+	WHERE
+		deleted = 0
+	AND smownerid = #{smownerid}
+	AND xm_account.contact_date = #{contactdate}
+	ORDER BY
+		xm_account.lastcontacttime DESC;
+  </select>
 </mapper>

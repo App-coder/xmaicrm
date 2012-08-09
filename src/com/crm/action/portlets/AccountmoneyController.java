@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.alibaba.fastjson.JSON;
-import com.crm.bean.portlets.AccountMoney;
+import com.crm.bean.crm.portlets.AccountMoney;
 import com.crm.model.XmGathers;
 import com.crm.service.portlets.XmGathersService;
 import com.crm.util.CacheUtil;

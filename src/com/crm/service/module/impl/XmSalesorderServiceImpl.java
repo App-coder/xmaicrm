@@ -8,7 +8,7 @@ import org.springframework.stereotype.Service;
 
 import com.crm.bean.amcharts.portlets.Salesbymonth;
 import com.crm.bean.amcharts.portlets.Salesyear;
-import com.crm.bean.portlets.salesyearinfo.SalesorderStat;
+import com.crm.bean.crm.portlets.salesyearinfo.SalesorderStat;
 import com.crm.mapper.module.XmSalesorderMapper;
 import com.crm.mapper.util.CvFilter;
 import com.crm.service.module.XmSalesorderService;

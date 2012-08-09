@@ -6,7 +6,8 @@ import org.apache.ibatis.annotations.Param;
 
 import com.crm.bean.amcharts.portlets.Salesbymonth;
 import com.crm.bean.amcharts.portlets.Salesyear;
-import com.crm.bean.portlets.salesyearinfo.SalesorderStat;
+import com.crm.bean.crm.portlets.UserSalesbymonth;
+import com.crm.bean.crm.portlets.salesyearinfo.SalesorderStat;
 import com.crm.mapper.ModuleMapper;
 import com.crm.model.XmSalesorder;
 
@@ -38,4 +39,9 @@ public interface XmSalesorderMapper extends ModuleMapper<XmSalesorder> {
 	int getSaleOrderOfUserAndLast(@Param("userid") Integer userid,@Param("start") String start,@Param("end") String end);
 
 	String getSumOfOrderByUserAndLast(@Param("userid") Integer userid,@Param("start") String start,@Param("end") String end);
+
+	List<XmSalesorder> getTopSalesorder(@Param("userid") Integer userid);
+
+	List<UserSalesbymonth> getUserSalesbymonth(@Param("userid") Integer userid,@Param("sday") String sday,
+			@Param("eday") String eday);
 }

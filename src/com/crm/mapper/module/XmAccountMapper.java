@@ -43,4 +43,6 @@ public interface XmAccountMapper extends ModuleMapper<XmAccount> {
 	List<XmAccount> getAccountsExist(@Param("campaignid") int campaignid);
 
 	int getTotalAccount(@Param("campaignid") int campaignid);
+
+	List<XmAccount> getTodayaccount(@Param("smownerid") String smownerid,@Param("contactdate") String contactdate);
 }

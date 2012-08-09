@@ -1,5 +1,6 @@
 package com.crm.service.portlets.impl;
 
+import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 
@@ -26,6 +27,18 @@ public class XmActivityServiceImpl implements XmActivityService {
 	public List<XmActivity> getNotokcalendar(Integer userid) {
 		String today = DateUtil.format(new Date(),DateUtil.C_DATE_PATTON_DEFAULT);
 		return this.xmActivityMapper.getNotokcalendar(today,userid);
+	}
+
+
+	@Override
+	public List<XmActivity> getTopCalendar(String userid) {
+		Calendar calendar = Calendar.getInstance();
+		calendar.add(Calendar.WEEK_OF_MONTH, 1);
+		
+		String now = DateUtil.format(new Date(),DateUtil.C_DATE_PATTON_DEFAULT);
+		String next = DateUtil.format(calendar.getTime(),DateUtil.C_DATE_PATTON_DEFAULT);
+				
+		return this.xmActivityMapper.getTopCalendar(userid,now,next);
 	}
 
 }

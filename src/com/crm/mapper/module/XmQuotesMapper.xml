@@ -33,6 +33,7 @@
     <result column="deleted" property="deleted" jdbcType="INTEGER" />
     <result column="approved" property="approved" jdbcType="INTEGER" />
     <result column="approvedby" property="approvedby" jdbcType="INTEGER" />
+    <result column="accountname" property="accountname" jdbcType="VARCHAR" />
   </resultMap>
   <resultMap id="ResultMapWithBLOBs" type="com.crm.model.XmQuotes" extends="BaseResultMap" >
     <result column="terms_conditions" property="termsConditions" jdbcType="LONGVARCHAR" />
@@ -467,5 +468,23 @@
   </select>
   <select id="loadList" resultMap="BaseResultMap" >
   	select xm_quotes.* FROM xm_quotes LEFT OUTER JOIN xm_account ON xm_account.accountid = xm_quotes.accountid LEFT OUTER JOIN xm_potential ON xm_potential.potentialid = xm_quotes.potentialid LEFT JOIN xm_users ON xm_users.id = xm_quotes.smownerid WHERE 1=1 ${filter} limit #{start},#{rows}
+  </select>
+  <select id="getTopQuote" resultMap="BaseResultMap" >
+  	SELECT
+		xm_quotes.quoteid AS crmid,
+		xm_users.user_name,
+		xm_quotes.*, xm_potential.potentialname,
+		xm_account.accountname
+	FROM
+		xm_quotes
+	LEFT OUTER JOIN xm_account ON xm_account.accountid = xm_quotes.accountid
+	LEFT OUTER JOIN xm_potential ON xm_potential.potentialid = xm_quotes.potentialid
+	LEFT JOIN xm_users ON xm_users.id = xm_quotes.smownerid
+	WHERE
+		xm_quotes.deleted = 0
+	AND xm_quotes.smownerid = #{userid}
+	ORDER BY
+		xm_quotes.createdtime DESC 
+		limit 0,10;
   </select>
 </mapper>

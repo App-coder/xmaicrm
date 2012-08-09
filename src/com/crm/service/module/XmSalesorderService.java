@@ -4,7 +4,7 @@ import java.util.List;
 
 import com.crm.bean.amcharts.portlets.Salesbymonth;
 import com.crm.bean.amcharts.portlets.Salesyear;
-import com.crm.bean.portlets.salesyearinfo.SalesorderStat;
+import com.crm.bean.crm.portlets.salesyearinfo.SalesorderStat;
 
 
 public interface XmSalesorderService {

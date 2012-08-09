@@ -5,7 +5,7 @@ import java.util.List;
 import org.apache.ibatis.annotations.Param;
 
 import com.crm.bean.crm.portlets.GatherYear;
-import com.crm.bean.portlets.salesyearinfo.GatherStat;
+import com.crm.bean.crm.portlets.salesyearinfo.GatherStat;
 import com.crm.model.XmGathers;
 
 public interface XmGathersMapper {
@@ -38,5 +38,7 @@ public interface XmGathersMapper {
 	GatherStat getGatherStat(@Param("year") String year);
 
 	String getSumOfGatherByUserAndLast(@Param("userid") Integer userid,@Param("start") String start,@Param("end") String end);
+
+	List<XmGathers> getTopGather(@Param("userid") int userid,@Param("now") String now,@Param("next") String next);
 
 }

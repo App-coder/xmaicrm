@@ -2,6 +2,7 @@ package com.crm.service.portlets.impl;
 
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 
 import javax.annotation.Resource;
@@ -9,10 +10,11 @@ import javax.annotation.Resource;
 import org.springframework.stereotype.Component;
 
 import com.crm.bean.crm.portlets.GatherYear;
-import com.crm.bean.portlets.salesyearinfo.GatherStat;
+import com.crm.bean.crm.portlets.salesyearinfo.GatherStat;
 import com.crm.mapper.module.XmGathersMapper;
 import com.crm.model.XmGathers;
 import com.crm.service.portlets.XmGathersService;
+import com.crm.util.DateUtil;
 @Component("com.crm.service.portlets.impl.xmGathersService")
 public class XmGathersServiceImpl implements XmGathersService {
 
@@ -78,5 +80,15 @@ public class XmGathersServiceImpl implements XmGathersService {
 		return this.xmGathersMapper.getSumOfGatherByUserAndLast(id,start,end);
 	}
 
+	@Override
+	public List<XmGathers> getTopGather(int userid) {
+		Calendar calendar = Calendar.getInstance();
+		calendar.add(Calendar.MONTH, 1);
+		
+		String now = DateUtil.format(new Date(),DateUtil.C_DATE_PATTON_DEFAULT);
+		String next  = DateUtil.format(calendar.getTime(),DateUtil.C_DATE_PATTON_DEFAULT);
+
+		return this.xmGathersMapper.getTopGather(userid,now,next);
+	}
 
 }
