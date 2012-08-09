@@ -25,6 +25,11 @@ public class XmRoleController extends BaseController {
 	}
 
 
+	/**
+	 * 得到权限列表，用于CUSTOMVIEW视图的权限选择
+	 * 
+	 * @return
+	 */
 	@RequestMapping(value = "/getroles", method = RequestMethod.GET)
 	@ResponseBody
 	public String getroles(){

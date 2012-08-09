@@ -1,5 +1,6 @@
 package com.crm.action;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.annotation.Resource;
@@ -15,11 +16,19 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.crm.bean.crm.Message;
 import com.crm.bean.easyui.Column;
 import com.crm.bean.easyui.ListBean;
+import com.crm.bean.html.TimeOptions;
+import com.crm.model.XmBlocks;
 import com.crm.model.XmCustomview;
+import com.crm.model.XmField;
+import com.crm.model.XmTab;
+import com.crm.service.XmBlocksService;
 import com.crm.service.XmCustomViewService;
 import com.crm.service.XmCvadvfilterService;
 import com.crm.service.XmCvcolumnlistService;
 import com.crm.service.XmCvstdfilterService;
+import com.crm.service.XmFieldService;
+import com.crm.service.XmTabService;
+import com.crm.util.HtmlUtil;
 
 @Controller
 @RequestMapping(value = "customview")
@@ -48,6 +57,24 @@ public class XmCustomViewController extends BaseController {
 	public void setXmCvstdfilterService(XmCvstdfilterService xmCvstdfilterService) {
 		this.xmCvstdfilterService = xmCvstdfilterService;
 	}
+	
+	XmTabService xmTabService;
+	@Resource(name="xmTabService")
+	public void setXmTabService(XmTabService xmTabService) {
+		this.xmTabService = xmTabService;
+	}
+	
+	XmBlocksService xmBlocksService;
+	@Resource(name="xmBlocksService")
+	public void setXmBlocksService(XmBlocksService xmBlocksService) {
+		this.xmBlocksService = xmBlocksService;
+	}
+	
+	XmFieldService xmFieldService;
+	@Resource(name="xmFieldService")
+	public void setXmFieldService(XmFieldService xmFieldService) {
+		this.xmFieldService = xmFieldService;
+	}
 
 
 	@RequestMapping(value = "/queryByEntityType", method = RequestMethod.GET)
@@ -56,7 +83,7 @@ public class XmCustomViewController extends BaseController {
 		return this.arrayToJson(list);
 	}
 	
-
+	
 	/**
 	 * 
 	 * 取得COLUMN的JSON字符串
@@ -77,7 +104,25 @@ public class XmCustomViewController extends BaseController {
 	@RequestMapping(value = "/index", method = RequestMethod.GET)
 	public String index(@Param("entitytype") String entitytype,ModelMap modelmap){
 		
+		XmTab tab = this.xmTabService.getTabByName(entitytype);
+		List<XmBlocks> blocks = this.xmBlocksService.getBlocksByTabId(tab.getTabid());
+		List<List<XmField>> fieldsList = new ArrayList<List<XmField>>();
+		for(int i=0;i<blocks.size();i++){
+			XmBlocks b = blocks.get(i);
+			List<XmField> fds = this.xmFieldService.getFieldByBlockAndTab(tab.getTabid(),b.getBlockid());
+			fieldsList.add(fds);
+		}
+
+		modelmap.addAttribute("optionstr", HtmlUtil.getMultSelect(blocks, fieldsList));
+		modelmap.addAttribute("colloptionstr",HtmlUtil.getCollectSelect(blocks, fieldsList));
+		modelmap.addAttribute("filter",HtmlUtil.getFilter());
 		modelmap.addAttribute("entitytype", entitytype);
+		
+		modelmap.addAttribute("timeoptions",new TimeOptions());
+		
+		//选择查询字段
+		List<XmField> searchFields = this.xmFieldService.getSearchFields(tab.getTabid());
+		modelmap.addAttribute("searchfields",HtmlUtil.getSearchFields(searchFields));
 		
 		return "public/customview";
 	}

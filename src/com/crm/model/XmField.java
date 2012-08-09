@@ -38,6 +38,8 @@ public class XmField {
     private Integer quickcreatesequence;
 
     private String infoType;
+    
+    private String tablabel;
 
     public Integer getFieldid() {
         return fieldid;
@@ -190,4 +192,15 @@ public class XmField {
     public void setInfoType(String infoType) {
         this.infoType = infoType == null ? null : infoType.trim();
     }
+
+	public String getTablabel() {
+		return tablabel;
+	}
+
+	public void setTablabel(String tablabel) {
+		this.tablabel = tablabel;
+	}
+    
+    
+    
 }
