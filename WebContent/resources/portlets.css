@@ -1,0 +1,9 @@
+body{margin:0px;padding:0px;}
+body, input, button, select, textarea{font: Tahoma,'Microsoft Yahei','Simsun'}
+*{font-size:12px;}
+.tablist{width:100%;border-collapse: collapse;}
+.tablist tr td{height:25px;border:1px dotted #CCCCCC;}
+.pl10{padding-left:10px;}
+.pl5{padding-left:5px;}
+
+.tabcalendar{width:100%;border-collapse: collapse;}
