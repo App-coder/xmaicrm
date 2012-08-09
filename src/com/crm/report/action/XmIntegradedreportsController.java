@@ -96,13 +96,13 @@ public class XmIntegradedreportsController extends BaseController {
 		list.setRows(ls);
 		switch(id){
 		case 5:
-			list.setFooter(this.xmIntegradedreportsService.getReportFooter(id, duedate));
+			list.setReport_footer(this.xmIntegradedreportsService.getReportFooter(id, duedate));
 			break;
 		case 8:
-			list.setFooter(this.xmIntegradedreportsService.getReportFooter(id, duedate));
+			list.setReport_footer(this.xmIntegradedreportsService.getReportFooter(id, duedate));
 			break;
 		case 9:
-			list.setFooter(this.xmIntegradedreportsService.getReportFooter(id, duedate));
+			list.setReport_footer(this.xmIntegradedreportsService.getReportFooter(id, duedate));
 			break;
 		}
 		return objToJson(list, JsonUtil.configJson(USERSALES_EXCLUDES));

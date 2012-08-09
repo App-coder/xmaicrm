@@ -7,6 +7,7 @@ public class ListBean {
 	private long total;
 	private List rows;
 	private List<HashMap<String, String>> footer;
+    private List<Object> report_footer;
 	
 	public ListBean(){
 		
@@ -37,6 +38,15 @@ public class ListBean {
 	public void setFooter(List<HashMap<String, String>> footer) {
 		this.footer = footer;
 	}
+
+	public List<Object> getReport_footer() {
+		return report_footer;
+	}
+
+	public void setReport_footer(List<Object> report_footer) {
+		this.report_footer = report_footer;
+	}
+	
 
 
 	
