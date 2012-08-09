@@ -79,14 +79,17 @@ public class CacheDataServiceImpl implements CacheDataService {
 			List<MenuBar> menubar = new ArrayList<MenuBar>();
 			List<XmParenttab> parenttabs = this.xmParenttabService
 					.getVisibleParenttab();
+			HashMap<Integer, XmParenttab> parenttab = new HashMap<Integer,XmParenttab>();
 			for (int i = 0; i < parenttabs.size(); i++) {
 				MenuBar menu = new MenuBar();
 				menu.setParenttab(parenttabs.get(i));
 				menu.setTabs(this.xmTabService.existParenttabList(parenttabs
 						.get(i).getParenttabid()));
 				menubar.add(menu);
+				parenttab.put(parenttabs.get(i).getParenttabid(),parenttabs.get(i));
 			}
 			CacheManager.putInCache(Constant.MENUBAR,menubar);
+			CacheManager.putInCache(Constant.PARENTTAB,parenttab);
 		}
 	}
 	

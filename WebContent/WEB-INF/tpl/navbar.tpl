@@ -22,7 +22,7 @@
 						<#if (menu.tabs?size>0)>
 							<#list menu.tabs as tb>
 								<#if tb??>
-								<li><a href="crm/module/${tb.name?lower_case}/index?ptb=${menu.parenttab.parenttabLabel}">${tb.tablabel}</a></li>	
+								<li><a href="crm/module/${tb.name?lower_case}/index?ptb=${menu.parenttab.parenttabid}">${tb.tablabel}</a></li>	
 								</#if>
 							</#list>
 						</#if>

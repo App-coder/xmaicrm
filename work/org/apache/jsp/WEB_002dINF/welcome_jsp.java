@@ -77,6 +77,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
       out.write("    $.post('crm/welcome/login',{userName:userName,userPassword:userPassword},function(res){\r\n");
       out.write("\t\tif(res.type == true){\r\n");
       out.write("\t\t    window.location.href = \"crm/module/home/index\";\r\n");
+      out.write("\t\t    return;\r\n");
       out.write("\t\t}\r\n");
       out.write("\t\t$(\"#redtip\").html(res.message);\r\n");
       out.write("    },'json');\r\n");

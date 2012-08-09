@@ -3,8 +3,8 @@
 /*easyui*/
 *{font-size:12px;}
 html, body, #wrap {height: 100%;}
-body > #wrap {height: auto; min-height: 100%;}
-body{margin:0px;padding:0px;min-width:1024px;}
+body > #wrap {height: auto; min-height: 100%;min-width:1024px;}
+body{margin:0px;padding:0px;}
 body, input, button, select, textarea{font: Tahoma,'Microsoft Yahei','Simsun'}
 
 textarea{ resize: none;}

@@ -55,7 +55,7 @@ ${navbar }
 </div>
 <div id="main">
 <div id="navpath" class="path">
-${ptb }&gt;<a href="crm/customview/viewIndex?entitytype=${entityname.modulename }&ptb=${ptb }">${tab.tablabel}</a>
+${ptb.parenttabLabel }&gt;<a href="crm/customview/viewIndex?entitytype=${entityname.modulename }&ptb=${ptb.parenttabid }">${tab.tablabel}</a>
 </div>
 	<div class="d_view ">
 				<span class="icon-filter ">视图：</span> <select

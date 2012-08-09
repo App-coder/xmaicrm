@@ -15,7 +15,7 @@ String servletpath = request.getServletPath();
 <title>
 <c:choose>
 	<c:when test="${ptb!=null&&tab!=null}">
-		${USERPERMISSION.user.userName}&nbsp;-&nbsp;${ptb }&nbsp;-&nbsp;${tab.tablabel }&nbsp;-&nbsp;新麦CRM&nbsp;-&nbsp;企业客户管理系统领跑者
+		${USERPERMISSION.user.userName}&nbsp;-&nbsp;${ptb.parenttabLabel }&nbsp;-&nbsp;${tab.tablabel }&nbsp;-&nbsp;新麦CRM&nbsp;-&nbsp;企业客户管理系统领跑者
 	</c:when>
 	<c:otherwise>
 		${USERPERMISSION.user.userName}&nbsp;-&nbsp;新麦CRM&nbsp;-&nbsp;企业客户管理系统领跑者
