@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <something-else-entirely>
 	<proxool>
-		<alias>shop</alias>
+		<alias>xmaicrm</alias>
 		<driver-url>jdbc:mysql://localhost:3306/xmaicrm</driver-url>
 		<driver-class>com.mysql.jdbc.Driver</driver-class>
 		<driver-properties>
 			<property name="user" value="root" />
-			<property name="password" value="" />
+			<property name="password" value="root" />
 			<property name="useUnicode" value="true" />
 			<property name="characterEncoding" value="UTF-8" />
 		</driver-properties>
