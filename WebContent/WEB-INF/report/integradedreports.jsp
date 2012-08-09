@@ -57,7 +57,7 @@ a {
 		</div>
 		<div data-options="region:'center',border:false" style="overflow: hidden;">
 			<div class="easyui-panel"  
-			     collapsible="true"  style="padding:5px;">
+			     collapsible="true" data-options="fit:true" style="padding:5px;">
 				<table class="report_panel">
 				   <tr>
 				   <td class="report_details">
