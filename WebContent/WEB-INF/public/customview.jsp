@@ -17,12 +17,9 @@ var entitytype = '${entitytype}';
 		$("#startdate").datebox('setValue', '');
 		$("#enddate").datebox('setValue', '');
 		
-	    $("#startdate").datebox({disabled:false});
-		$("#enddate").datebox({disabled:false});
+		$("#form_customview").find("input[name=startdate]").val("");
+		$("#form_customview").find("input[name=enddate]").val("");
 		
-	}else{
-	    $("#startdate").datebox({disabled:true});
-		$("#enddate").datebox({disabled:true});
 	}
 
 	if (type == "today") {
@@ -175,14 +172,16 @@ var entitytype = '${entitytype}';
 			<%=win_topbar%> title="属性编辑" >
 			<div class="easyui-layout" data-options="fit:true,border:false">
 			<div data-options="region:'center',border:false" style="padding:10px;background:#fff;border:1px solid #ccc;">
-					<form name="form_${entitytype}_customview" id="form_customview" method="post" >
+					<form name="form_customview" id="form_customview" method="post" >
 					<input type="hidden" name="id" />
 					<input type="hidden" name="action"  />
-					<input type="hidden" name="entitytype" value="${entitytype}"/>
+					<input type="hidden" name="entitytype" />
 					<input type="hidden" name="setpublic" />
 					<input type="hidden" name="ispublic" />
 					<input type="hidden" name="setdefault" />
 					<input type="hidden" name="setmetrics" />
+					<input type="hidden" name="startdate" />
+					<input type="hidden" name="enddate" />
 					
 						<fieldset>
 							<legend>基本信息</legend>
@@ -199,7 +198,7 @@ var entitytype = '${entitytype}';
 									<td width="33%">首页关键视图列表中显示&nbsp;&nbsp;<input
 										type="checkbox" id="setmetrics" /></td>
 									<td width="33%">公共视图&nbsp;&nbsp;<input type="checkbox"
-										id="ispublic" value="0" /></td>
+										id="ispublic" /></td>
 								</tr>
 							</table>
 						</fieldset>
@@ -208,27 +207,27 @@ var entitytype = '${entitytype}';
 							<legend>选择列表中显示字段 </legend>
 							<table class="tab_form">
 								<tr>
-									<td><select class="text" name="column_1"> ${optionstr }
+									<td><select class="text" name="column_1" onchange="updateCol(this)" > ${optionstr }
 									</select></td>
-									<td><select class="text" name="column_2"> ${optionstr }
+									<td><select class="text" name="column_2" onchange="updateCol(this)"> ${optionstr }
 									</select></td>
-									<td><select class="text" name="column_3"> ${optionstr }
-									</select></td>
-								</tr>
-								<tr>
-									<td><select class="text" name="column_4"> ${optionstr }
-									</select></td>
-									<td><select class="text" name="column_5"> ${optionstr }
-									</select></td>
-									<td><select class="text" name="column_6"> ${optionstr }
+									<td><select class="text" name="column_3" onchange="updateCol(this)"> ${optionstr }
 									</select></td>
 								</tr>
 								<tr>
-									<td><select class="text" name="column_7"> ${optionstr }
+									<td><select class="text" name="column_4" onchange="updateCol(this)"> ${optionstr }
 									</select></td>
-									<td><select class="text" name="column_8"> ${optionstr }
+									<td><select class="text" name="column_5" onchange="updateCol(this)"> ${optionstr }
 									</select></td>
-									<td><select class="text" name="column_9"> ${optionstr }
+									<td><select class="text" name="column_6" onchange="updateCol(this)"> ${optionstr }
+									</select></td>
+								</tr>
+								<tr>
+									<td><select class="text" name="column_7" onchange="updateCol(this)"> ${optionstr }
+									</select></td>
+									<td><select class="text" name="column_8" onchange="updateCol(this)"> ${optionstr }
+									</select></td>
+									<td><select class="text" name="column_9" onchange="updateCol(this)"> ${optionstr }
 									</select></td>
 							</table>
 						</fieldset>
@@ -318,13 +317,13 @@ var entitytype = '${entitytype}';
 														</tr>
 														<tr>
 															<td class="edittd">开始日期</td>
-															<td><input type="text" name="startdate"
+															<td><input type="text"
 																id="startdate" editable="false"
 																class="text easyui-datebox" /></td>
 														</tr>
 														<tr>
 															<td class="edittd">结束日期</td>
-															<td><input type="text" name="enddate" id="enddate"
+															<td><input type="text" id="enddate"
 																editable="false" class="text easyui-datebox" /></td>
 														</tr>
 													</table>
@@ -340,7 +339,7 @@ var entitytype = '${entitytype}';
 													<legend>根据字段设置过滤条件</legend>
 													<table class="tab_form">
 														<tr>
-															<td><select class="text" name="advfiltercol_1" onchange="setComp(this.value,'comparator_1')" >${optionstr }</select></td>
+															<td><select class="text"  name="advfiltercol_1" onchange="setComp(this.value,'comparator_1')" >${optionstr }</select></td>
 															<td><select class="text" name="comparator_1">${filter }</select></td>
 															<td><input type="text" class="text" name="fv_1" /></td>
 														</tr>

@@ -37,6 +37,12 @@ public interface XmCustomViewService {
 
 	List<XmCustomview> loadList(String entitytype, int page, int rows);
 
+	int getTotal(String entitytype);
+
+
+	List<Object> getChartData(String grouptype, List<CVColumn> cols,
+			String pickfieldtable, String pickfieldname, String pickfieldcolname);
+
 	
 
 }

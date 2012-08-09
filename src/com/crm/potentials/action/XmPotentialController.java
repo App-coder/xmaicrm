@@ -28,17 +28,6 @@ import com.crm.service.XmFieldService;
 @RequestMapping(value = "potential")
 public class XmPotentialController extends BaseController  {
 	
-	ModuleUtil moduleUtil;
-	@Resource(name="moduleUtil")
-	public void setModuleUtil(ModuleUtil moduleUtil) {
-		this.moduleUtil = moduleUtil;
-	}
-	
-	XmCustomViewService xmCustomViewService;
-	@Resource(name="xmCustomViewService")
-	public void setXmCustomViewService(XmCustomViewService xmCustomViewService) {
-		this.xmCustomViewService = xmCustomViewService;
-	}
 	
 	XmPotentialService xmPotentialService;
 	@Resource(name="xmPotentialService")
@@ -46,13 +35,6 @@ public class XmPotentialController extends BaseController  {
 		this.xmPotentialService = xmPotentialService;
 	}
 
-	@RequestMapping(value = "/index", method = RequestMethod.GET)
-	public String index(ModelMap modelMap){
-		this.moduleUtil.setViewProp(modelMap,"Potentials");
-		return "potential/potential";
-	}
-	
-	
 	
 	/**
 	 * 销售导航

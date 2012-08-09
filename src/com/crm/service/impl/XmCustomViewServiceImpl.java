@@ -6,6 +6,7 @@ import javax.annotation.Resource;
 
 import org.springframework.stereotype.Service;
 
+import com.crm.bean.amcharts.ReportData;
 import com.crm.bean.easyui.expand.CVColumn;
 import com.crm.mapper.XmCustomviewMapper;
 import com.crm.mapper.util.CvFilter;
@@ -13,6 +14,7 @@ import com.crm.model.XmCustomview;
 import com.crm.model.XmCvadvfilter;
 import com.crm.model.XmCvstdfilter;
 import com.crm.service.XmCustomViewService;
+import com.crm.util.JsonUtil;
 
 @Service("xmCustomViewService")
 public class XmCustomViewServiceImpl implements XmCustomViewService {
@@ -112,4 +114,35 @@ public class XmCustomViewServiceImpl implements XmCustomViewService {
 		int start = (page-1)*rows;
 		return this.xmCustomviewMapper.loadListByPage(entitytype,start,rows);
 	}
+
+	@Override
+	public int getTotal(String entitytype) {
+		return this.xmCustomviewMapper.getTotal(entitytype);
+	}
+
+	@Override
+	public List<Object> getChartData(String grouptype,List<CVColumn> cols,String pickfieldtable,String pickfieldname,String pickfieldcolname) {
+		
+		//用户关联的判断
+		String userjoin = "";
+		if(cols.size()>0){
+			for(int i=0;i<cols.size();i++){
+				if(cols.get(i).getFieldname().equals("assigned_user_id")){
+					userjoin += " INNER JOIN xm_users on "+cols.get(i).getFieldtabname()+"."+cols.get(i).getFieldcolname()+"=xm_users.id ";
+					break;
+				}
+			}
+		}
+		
+		String resultsql = null;
+		if(grouptype.equals("count")){
+			resultsql = "SELECT "+pickfieldtable+"."+pickfieldname+",count(*) as totalcountval FROM "+pickfieldtable+" "+userjoin+" WHERE "+pickfieldtable+".deleted = 0 group by "+pickfieldtable+"."+pickfieldname+" ";
+		}else{
+			ReportData rdata = (ReportData)JsonUtil.getObject4JsonString(grouptype, ReportData.class);
+			resultsql = "SELECT "+pickfieldtable+"."+pickfieldname+",sum("+pickfieldtable+"."+rdata.getFieldname()+") as totalcountval FROM "+pickfieldtable+" "+userjoin+" WHERE "+pickfieldtable+".deleted = 0 group by "+pickfieldtable+"."+pickfieldname+"  ";
+		}
+		
+		return xmCustomviewMapper.getChartData(resultsql);
+	}
+
 }

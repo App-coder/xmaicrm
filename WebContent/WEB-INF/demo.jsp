@@ -1,8 +1,13 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"
-	pageEncoding="utf-8"%>
+    pageEncoding="utf-8"%>
+<%@ include file="../head.jsp"%>
 <%@ include file="../common/config.jsp"%>
-<!-- 页面注释 -->
-<script type="text/javascript" src="resources/desktop/potential/index.js"></script>
-<div class="container">
-
+</head>
+<body id="wrap">
+<%@ include file="../nav.jsp"%>
+<div id="main">
+sdfsd
 </div>
+<%@ include file="../foot.jsp"%>
+</body>
+</html>

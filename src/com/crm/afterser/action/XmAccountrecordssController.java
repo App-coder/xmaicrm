@@ -35,24 +35,5 @@ public class XmAccountrecordssController extends BaseController {
 		this.xmAccountrecordssService = xmAccountrecordssService;
 	}
 
-	ModuleUtil moduleUtil;
-	@Resource(name="moduleUtil")
-	public void setModuleUtil(ModuleUtil moduleUtil) {
-		this.moduleUtil = moduleUtil;
-	}
-	
-	XmCustomViewService xmCustomViewService;
-	@Resource(name="xmCustomViewService")
-	public void setXmCustomViewService(XmCustomViewService xmCustomViewService) {
-		this.xmCustomViewService = xmCustomViewService;
-	}
-	
-	
-	@RequestMapping(value = "/index", method = RequestMethod.GET)
-	public String index(ModelMap modelMap){
-		this.moduleUtil.setViewProp(modelMap,"Accountrecordss");
-		return "afterser/accountrecordss";
-	}
-	
 
 }

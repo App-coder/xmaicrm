@@ -40,73 +40,9 @@ import com.crm.util.JsonDateValueProcessor;
 @RequestMapping(value = "campaign")
 public class XmCampaignController extends BaseController {
 	
-	XmCvcolumnlistService xmCvcolumnlistService;
-	@Resource(name="xmCvcolumnlistService")
-	public void setXmCvcolumnlistService(XmCvcolumnlistService xmCvcolumnlistService) {
-		this.xmCvcolumnlistService = xmCvcolumnlistService;
-	}
-	
 	XmCampaignService xmCampaignService;
 	@Resource(name="xmCampaignService")
 	public void setXmCampaignService(XmCampaignService xmCampaignService) {
 		this.xmCampaignService = xmCampaignService;
-	}
-	
-	XmCvstdfilterService xmCvstdfilterService;
-	@Resource(name="xmCvstdfilterService")
-	public void setXmCvstdfilterService(XmCvstdfilterService xmCvstdfilterService) {
-		this.xmCvstdfilterService = xmCvstdfilterService;
-	}
-	
-	XmCvadvfilterService xmCvadvfilterService;
-	@Resource(name="xmCvadvfilterService")
-	public void setXmCvadvfilterService(XmCvadvfilterService xmCvadvfilterService) {
-		this.xmCvadvfilterService = xmCvadvfilterService;
-	}
-
-	ModuleUtil moduleUtil;
-	@Resource(name="moduleUtil")
-	public void setModuleUtil(ModuleUtil moduleUtil) {
-		this.moduleUtil = moduleUtil;
-	}
-	
-	XmCustomViewService xmCustomViewService;
-	@Resource(name="xmCustomViewService")
-	public void setXmCustomViewService(XmCustomViewService xmCustomViewService) {
-		this.xmCustomViewService = xmCustomViewService;
-	}
-	
-	@RequestMapping(value = "/index", method = RequestMethod.GET)
-	public String index(ModelMap modelMap){
-		this.moduleUtil.setViewProp(modelMap,"Campaigns");
-		return "marketing/campaigns";
-	}
-	
-	
-	/**
-	 * 根据视图ID返回对应的JSON
-	 * 
-	 * @param page 页数
-	 * @param rows 行数
-	 * @param viewid 视图ID
-	 * @return
-	 */
-	@RequestMapping(value = "/renderView", method = RequestMethod.POST)
-	@ResponseBody
-	public String renderView(int page,int rows,String entitytype,int viewid){
-		XmCustomview customview = this.xmCustomViewService.selectByPrimaryKey(entitytype,viewid);
-		List<CVColumn> cols = this.xmCvcolumnlistService.getViewColumn(customview);
-		XmCvstdfilter stdfilter = xmCvstdfilterService.getStdfilterByCvid(viewid);
-		List<XmCvadvfilter> advfilter = xmCvadvfilterService.getAdvFilters(viewid);
-		
-		int total = this.xmCampaignService.getTotal(viewid,customview,stdfilter,advfilter,cols);
-		List<Object> ls = this.xmCampaignService.loadList(page,rows,viewid,customview,stdfilter,advfilter,cols);
-		
-		ListBean list = new ListBean();
-		list.setRows(ls);
-		list.setTotal(total);
-		JsonConfig jsonConfig = new JsonConfig();
-		jsonConfig.registerJsonValueProcessor(java.util.Date.class, new JsonDateValueProcessor("yyyy-MM-dd"));
-		return objToJson(list,jsonConfig);
 	}
 }

@@ -26,27 +26,6 @@ public class XmInvoiceController extends BaseController{
 	public void setXmInvoiceService(XmInvoiceService xmInvoiceService) {
 		this.xmInvoiceService = xmInvoiceService;
 	}
-
-	ModuleUtil moduleUtil;
-	@Resource(name="moduleUtil")
-	public void setModuleUtil(ModuleUtil moduleUtil) {
-		this.moduleUtil = moduleUtil;
-	}
-	
-	XmCustomViewService xmCustomViewService;
-	@Resource(name="xmCustomViewService")
-	public void setXmCustomViewService(XmCustomViewService xmCustomViewService) {
-		this.xmCustomViewService = xmCustomViewService;
-	}
-	
-	@RequestMapping(value = "/index", method = RequestMethod.GET)
-	public String index(ModelMap modelMap){
-		
-		this.moduleUtil.setViewProp(modelMap,"Invoice");
-		
-		return "potential/invoice";
-	}
-	
 	
 	
 }

@@ -7,7 +7,7 @@ import com.crm.model.XmField;
 
 public class HtmlUtil {
 	public static String getMultSelect(List<XmBlocks> blocks,
-			List<List<XmField>> fieldslist,String entitytype) {
+			List<List<XmField>> fieldslist, String entitytype) {
 		StringBuffer multSelectStr = new StringBuffer();
 		multSelectStr.append("<option value=''>无</option>");
 		if (blocks.size() >= 1) {
@@ -15,10 +15,12 @@ public class HtmlUtil {
 				multSelectStr.append("<optgroup  label=\""
 						+ blocks.get(i).getBlocklabel() + "\">");
 				/*
-				 * $columnlist = Array ($fieldlabel =>'$fieldtablename:$fieldcolname:$fieldname:$module_$fieldlabel1:$fieldtypeofdata',
-				  $fieldlabel1 =>'$fieldtablename1:$fieldcolname1:$fieldname1:$module_$fieldlabel11:$fieldtypeofdata1',
-				  |
-				  $fieldlabeln =>'$fieldtablenamen:$fieldcolnamen:$fieldnamen:$module_$fieldlabel1n:$fieldtypeofdatan')
+				 * $columnlist = Array ($fieldlabel =>
+				 * '$fieldtablename:$fieldcolname:$fieldname:$module_$fieldlabel1:$fieldtypeofdata',
+				 * $fieldlabel1 =>
+				 * '$fieldtablename1:$fieldcolname1:$fieldname1:$module_$fieldlabel11:$fieldtypeofdata1',
+				 * | $fieldlabeln =>
+				 * '$fieldtablenamen:$fieldcolnamen:$fieldnamen:$module_$fieldlabel1n:$fieldtypeofdatan')
 				 * 
 				 * 用于EASYUI展示 title field resizable
 				 * 
@@ -26,18 +28,24 @@ public class HtmlUtil {
 				 */
 				for (int j = 0; j < fieldslist.get(i).size(); j++) {
 					// multSelectStr.append("<option value='{\"field\":\""+fieldslist.get(i).get(j).getFieldname()+"\",\"resizable\":false,\"title\":\""+fieldslist.get(i).get(j).getFieldlabel()+"\",\"table\":\""+fieldslist.get(i).get(j).getTablename()+"\",\"column\":\""+fieldslist.get(i).get(j).getColumnname()+"\",\"type\":\""+fieldslist.get(i).get(j).getTypeofdata()+"\"}' >"+fieldslist.get(i).get(j).getFieldlabel()+"</option>");
-					multSelectStr.append("<option value='{"
-							+"\"title\":\""+fieldslist.get(i).get(j).getFieldlabel()+"\","
-							+"\"field\":\""+fieldslist.get(i).get(j).getFieldname()+"\","
-							+"\"resizable\":false,"
-							+"\"fieldtabname\":\""+fieldslist.get(i).get(j).getTablename()+"\","
-							+"\"fieldcolname\":\""+fieldslist.get(i).get(j).getColumnname()+"\","
-							+"\"fieldname\":\""+fieldslist.get(i).get(j).getFieldname()+"\","
-							+"\"entitytype\":\""+entitytype+"\","
-							+"\"fieldlabel\":\""+fieldslist.get(i).get(j).getFieldlabel()+"\","
-							+"\"fieldtypeofdata\":\""+fieldslist.get(i).get(j).getTypeofdata()+"\""
-							+"}' >"
-							+ fieldslist.get(i).get(j).getFieldlabel()
+					multSelectStr.append("<option fid='"
+							+ fieldslist.get(i).get(j).getFieldid()
+							+ "' value='{" + "\"title\":\""
+							+ fieldslist.get(i).get(j).getFieldlabel() + "\","
+							+ "\"field\":\""
+							+ fieldslist.get(i).get(j).getFieldname() + "\","
+							+ "\"resizable\":false," + "\"fieldtabname\":\""
+							+ fieldslist.get(i).get(j).getTablename() + "\","
+							+ "\"fieldcolname\":\""
+							+ fieldslist.get(i).get(j).getColumnname() + "\","
+							+ "\"fieldname\":\""
+							+ fieldslist.get(i).get(j).getFieldname() + "\","
+							+ "\"entitytype\":\"" + entitytype + "\","
+							+ "\"fieldlabel\":\""
+							+ fieldslist.get(i).get(j).getFieldlabel() + "\","
+							+ "\"fieldtypeofdata\":\""
+							+ fieldslist.get(i).get(j).getTypeofdata() + "\""
+							+ "}' >" + fieldslist.get(i).get(j).getFieldlabel()
 							+ "</option>");
 				}
 				multSelectStr.append("</optgroup>");
@@ -48,7 +56,7 @@ public class HtmlUtil {
 	}
 
 	public static String getCollectSelect(List<XmBlocks> blocks,
-			List<List<XmField>> fieldslist) {
+			List<List<XmField>> fieldslist, String entitytype) {
 		StringBuffer collectSelectStr = new StringBuffer();
 		collectSelectStr.append("<option value=''>无</option>");
 		if (blocks.size() >= 1) {
@@ -63,17 +71,25 @@ public class HtmlUtil {
 									+ blocks.get(i).getBlocklabel() + "\">");
 						}
 						exist = true;
-						collectSelectStr.append("<option value='{\"field\":\""
-								+ fieldslist.get(i).get(j).getFieldname()
-								+ "\",\"resizable\":false,\"title\":\""
+						collectSelectStr.append("<option fid='"
+								+ fieldslist.get(i).get(j).getFieldid()
+								+ "' value='{" + "\"title\":\""
 								+ fieldslist.get(i).get(j).getFieldlabel()
-								+ "\",\"table\":\""
+								+ "\"," + "\"field\":\""
+								+ fieldslist.get(i).get(j).getFieldname()
+								+ "\"," + "\"resizable\":false,"
+								+ "\"fieldtabname\":\""
 								+ fieldslist.get(i).get(j).getTablename()
-								+ "\",\"column\":\""
+								+ "\"," + "\"fieldcolname\":\""
 								+ fieldslist.get(i).get(j).getColumnname()
-								+ "\",\"type\":\""
+								+ "\"," + "\"fieldname\":\""
+								+ fieldslist.get(i).get(j).getFieldname()
+								+ "\"," + "\"entitytype\":\"" + entitytype
+								+ "\"," + "\"fieldlabel\":\""
+								+ fieldslist.get(i).get(j).getFieldlabel()
+								+ "\"," + "\"fieldtypeofdata\":\""
 								+ fieldslist.get(i).get(j).getTypeofdata()
-								+ "\"}' >"
+								+ "\"" + "}' >"
 								+ fieldslist.get(i).get(j).getFieldlabel()
 								+ "</option>");
 					}
@@ -114,6 +130,14 @@ public class HtmlUtil {
 		stringBuffer.append("<option value=\"m\">小于等于</option>");
 		stringBuffer.append("<option value=\"h\">大于等于</option>");
 		return stringBuffer.toString();
+	}
+
+	public static String setColor(int index, int mo) {
+		String[] colors = new String[]{"#FF0F00", "#FF6600", "#FF9E01",
+				"#FCD202", "#F8FF01", "#B0DE09", "#04D215", "#0D8ECF", "#0D52D1", "#2A0CD0", "#8A0CCF", "#CD0D74",
+				"#754DEB", "#DDDDDD", "#999999", "#333333", "#000000"};
+		int color_index = colors.length + index;
+		return colors[color_index % mo];
 	}
 
 }

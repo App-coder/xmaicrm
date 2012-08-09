@@ -18,6 +18,7 @@ import com.crm.model.XmTab;
 import com.crm.service.XmCustomViewService;
 import com.crm.service.XmCvcolumnlistService;
 import com.crm.service.XmFieldService;
+import com.crm.util.JsonUtil;
 import com.crm.util.crm.CustomViewUtil;
 
 /**
@@ -54,10 +55,9 @@ public class ModuleUtil extends BaseController{
 	 * @param modelMap
 	 * @param tabname 表名
 	 */
-	public void setViewProp(ModelMap modelMap,String tabname){
+	public void setViewProp(ModelMap modelMap,String tabname,XmTab current){
 		//得到默认的view
 		XmCustomview customview = this.xmCustomViewService.selectByPrimaryKey(tabname,-1);
-		
 		try {
 			List<CVColumn> cols = this.xmCvcolumnlistService.getColumns(customview);
 			List<Column> reset = new ArrayList<Column>();
@@ -65,18 +65,25 @@ public class ModuleUtil extends BaseController{
 				for(int i=0;i<cols.size();i++){
 					CVColumn n = cols.get(i);
 					Column ne = new Column();
-					if(n.getFieldname().indexOf("assigned_")!=-1){
-						ne.setField("user_name");
-					}else if(n.getFieldname().indexOf("_")!=-1){
-						XmTab tab = CustomViewUtil.getTabByLab(n.getFieldlabel());
-						XmEntityname et = CustomViewUtil.getEntitynameByET(tab.getName());
-						ne.setField(et.getFieldname());
-					}else{
-						ne.setField(n.getFieldcolname());
+					if(n!=null){
+						if(n.getFieldname()!=null){
+							if(n.getFieldname().indexOf("assigned_")!=-1){
+								ne.setField("user_name");
+							}
+							/*
+							else if(n.getFieldname().indexOf("_")!=-1){
+								XmEntityname et = CustomViewUtil.getEntitynameByET(n.getEntitytype());
+								ne.setField(et.getFieldname());
+							}
+							*/
+							else{
+								ne.setField(n.getFieldcolname());
+							}
+							ne.setTitle(n.getTitle());
+							ne.setResizable(false);
+							reset.add(ne);
+						}
 					}
-					ne.setTitle(n.getTitle());
-					ne.setResizable(false);
-					reset.add(ne);
 				}
 			}
 			modelMap.addAttribute("dview",arrayToJson(reset));
@@ -91,6 +98,35 @@ public class ModuleUtil extends BaseController{
 		
 		//底部报表
 		List<XmField> repfields = this.xmFieldService.getReportField(tabname);
+		if(customview!=null){
+			if(!customview.getEntitytype().equals("Products")&&!customview.getEntitytype().equals("Faq")&&!customview.getEntitytype().equals("PriceBooks")){
+				XmField uf = new XmField();
+				uf.setFieldname("assign_user_id");
+				uf.setTablename("xm_users");
+				uf.setColumnname("user_name");
+				uf.setFieldlabel("负责人");
+				repfields.add(uf);
+			}
+		}
+		
+		if(repfields.size()>=1){
+			List<XmField> reportitems = xmFieldService.getReportItems(current.getTabid());
+			StringBuffer sb = new StringBuffer();
+			sb.append("<option value=\"count\" >记录数</option>");
+			for(int i=0;i<reportitems.size();i++){
+				String fieldtype = reportitems.get(i).getTypeofdata().substring(0,reportitems.get(i).getTypeofdata().indexOf("~"));
+				Boolean isid = reportitems.get(i).getColumnname().substring(reportitems.get(i).getColumnname().length()-2).equals("id");
+				if(!fieldtype.equals("V") && !isid &&!(fieldtype.equals("D"))){
+					if ( !(fieldtype.equals("N")) || !( fieldtype.equals("NN") ) ){
+						String item = "{\"fieldlabel\":\""+reportitems.get(i).getFieldlabel()+"\",\"fieldname\":\""+reportitems.get(i).getFieldname()+"\",\"fieldtablename\":\""+reportitems.get(i).getTablename()+"\",\"fieldcolname\":\""+reportitems.get(i).getColumnname()+"\"}";
+						sb.append("<option value=\'"+item+"\' >"+reportitems.get(i).getFieldlabel()+"</option>");
+					}
+				}
+			}
+			modelMap.addAttribute("reportoptions",sb.toString());
+		}
+		
+		
 		modelMap.addAttribute("repfields",repfields);
 	}
 }

@@ -24,4 +24,10 @@ public class XmEntitynameServiceImpl implements XmEntitynameService {
 		return this.xmEntitynameMapper.getEntityname();
 	}
 
+
+	@Override
+	public XmEntityname getEntityByModule(String module) {
+		return this.xmEntitynameMapper.getEntityByModule(module);
+	}
+
 }

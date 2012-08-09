@@ -31,8 +31,7 @@
 		<li class="top"><a href="#nogo2" class="top_link"><span
 				class="down">客户</span></a>
 			<ul class="sub">
-				<li><a
-					href="javascript:tab('客户','customview/viewIndex?entitytype=Accounts')">客户</a></li>
+				<li><a href="customview/viewIndex?entitytype=Accounts">客户</a></li>
 				<li><a href="javascript:tab('联系人','contact/index')">联系人</a></li>
 				<li><a href="javascript:tab('客户关怀','care/index')">客户关怀</a></li>
 				<li><a href="javascript:tab('联系记录','note/index')">联系记录</a></li>
@@ -44,7 +43,7 @@
 		<li class="top"><a href="#nogo22" class="top_link"><span
 				class="down">产品</span></a>
 			<ul class="sub">
-				<li><a href="javascript:tab('产品列表','product/index')">产品列表</a></li>
+				<li><a href="customview/viewIndex?entitytype=Products">产品列表</a></li>
 				<li><a href="javascript:tab('产品分类','catalog/index')">产品分类</a></li>
 				<li><a href="javascript:tab('产品序号','serialnumbers/index')">产品序号</a></li>
 			</ul></li>
@@ -52,9 +51,9 @@
 				class="down">销售</span></a>
 			<ul class="sub">
 				<li><a href="javascript:tab('销售导航','potential/nav')">销售导航</a></li>
-				<li><a href="javascript:tab('销售机会','potential/index')">销售机会</a></li>
+				<li><a href="customview/viewIndex?entitytype=Potentials">销售机会</a></li>
 				<li><a href="javascript:tab('销售漏斗','potential/funnel')">销售漏斗</a></li>
-				<li><a href="javascript:tab('报价单','quotes/index')">报价单</a></li>
+				<li><a href="customview/viewIndex?entitytype=Quotes">报价单</a></li>
 				<li><a href="javascript:tab('竞争对手','duishous/index')">竞争对手</a></li>
 				<li><a href="javascript:tab('合同订单','salesorder/index')">合同订单</a></li>
 				<li><a href="javascript:tab('发货单','invoice/index')">发货单</a></li>
@@ -125,8 +124,8 @@
 		<li class="top"><a href="#nogo57" class="top_link"><span
 				class="down">控制面板</span></a>
 			<ul class="sub">
-				<li><a href="javascript:tab('控制面板','setting/index')">控制面板</a></li>
-				<li><a href="javascript:tab('业务规则','workflow/index')">业务规则</a></li>
+				<li><a href="setting/index" >控制面板</a></li>
+				<li><a href="workflow/index" >业务规则</a></li>
 			</ul></li>
 	</ul>
 </div>

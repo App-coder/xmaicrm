@@ -8,6 +8,8 @@ public class XmRole {
     private String parentrole;
 
     private Integer depth;
+    
+    private String state;
 
     public String getRoleid() {
         return roleid;
@@ -40,4 +42,15 @@ public class XmRole {
     public void setDepth(Integer depth) {
         this.depth = depth;
     }
+
+	public String getState() {
+		return state;
+	}
+
+	public void setState(String state) {
+		this.state = state;
+	}
+    
+    
+    
 }

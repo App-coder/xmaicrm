@@ -39,9 +39,11 @@ public class XmCvcolumnlistServiceImpl implements XmCvcolumnlistService {
 		List<XmCvcolumnlist> columns = this.getXmCvcolumnlistByCvid(customview.getCvid());
 		if(columns.size()>=1){
 			for(XmCvcolumnlist column : columns){
-				CVColumn c = (CVColumn)JsonUtil.getObject4JsonString(column.getColumnname(), CVColumn.class);
-				c.setResizable(false);
-				cols.add(c);
+				if(column.getColumnname()!=""&&column.getColumnname()!=null){
+					CVColumn c = (CVColumn)JsonUtil.getObject4JsonString(column.getColumnname(), CVColumn.class);
+					c.setResizable(false);
+					cols.add(c);
+				}
 			}
 		}
 		
@@ -101,8 +103,10 @@ public class XmCvcolumnlistServiceImpl implements XmCvcolumnlistService {
 			collect.setResizable(false);
 			boolean exist = false;
 			for(CVColumn co :cols){
-				if(co.getField().equals(collect.getField())){
-					exist = true;
+				if(co!=null){
+					if(co.getField().equals(collect.getField())){
+						exist = true;
+					}
 				}
 			}
 			if(!exist){

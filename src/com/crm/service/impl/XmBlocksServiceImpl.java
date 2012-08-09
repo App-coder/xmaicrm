@@ -25,4 +25,10 @@ public class XmBlocksServiceImpl implements XmBlocksService {
 		return this.xmBlocksMapper.getBlocksByTabId(tabid);
 	}
 
+
+	@Override
+	public List<XmBlocks> getFieldBlocksByTabId(Integer tabid) {
+		return this.xmBlocksMapper.getFieldBlocksByTabId(tabid);
+	}
+
 }

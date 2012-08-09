@@ -22,30 +22,12 @@ import com.crm.service.XmCustomViewService;
 @RequestMapping(value = "quotes")
 public class XmQuotesController extends BaseController{
 	
-	ModuleUtil moduleUtil;
-	@Resource(name="moduleUtil")
-	public void setModuleUtil(ModuleUtil moduleUtil) {
-		this.moduleUtil = moduleUtil;
-	}
-
-	XmCustomViewService xmCustomViewService;
-	@Resource(name="xmCustomViewService")
-	public void setXmCustomViewService(XmCustomViewService xmCustomViewService) {
-		this.xmCustomViewService = xmCustomViewService;
-	}
-	
 	XmQuotesService xmQuotesService;
 	@Resource(name="xmQuotesService")
 	public void setXmQuotesService(XmQuotesService xmQuotesService) {
 		this.xmQuotesService = xmQuotesService;
 	}
 
-	@RequestMapping(value = "/index", method = RequestMethod.GET)
-	public String index(ModelMap modelMap){
-		this.moduleUtil.setViewProp(modelMap,"Quotes");
-		return "potential/quotes";
-	}
-	
 	
 	
 }

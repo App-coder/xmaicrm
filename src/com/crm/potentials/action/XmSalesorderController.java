@@ -30,32 +30,11 @@ import com.crm.service.XmCustomViewService;
 @RequestMapping(value = "salesorder")
 public class XmSalesorderController extends BaseController {
 	
-	ModuleUtil moduleUtil;
-	@Resource(name="moduleUtil")
-	public void setModuleUtil(ModuleUtil moduleUtil) {
-		this.moduleUtil = moduleUtil;
-	}
-
-	XmCustomViewService xmCustomViewService;
-	@Resource(name="xmCustomViewService")
-	public void setXmCustomViewService(XmCustomViewService xmCustomViewService) {
-		this.xmCustomViewService = xmCustomViewService;
-	}
-	
 	XmSalesorderService xmSalesorderService;
 	@Resource(name="xmSalesorderService")
 	public void setXmSalesorderService(XmSalesorderService xmSalesorderService) {
 		this.xmSalesorderService = xmSalesorderService;
 	}
 
-
-	@RequestMapping(value = "/index", method = RequestMethod.GET)
-	public String index(ModelMap modelMap){
-		this.moduleUtil.setViewProp(modelMap,"SalesOrder");
-		return "potential/salesorder";
-	}
-	
-	
-	
 	
 }

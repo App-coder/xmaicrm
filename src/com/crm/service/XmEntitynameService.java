@@ -8,5 +8,7 @@ public interface XmEntitynameService {
 
 	List<XmEntityname> getEntityname();
 
+	XmEntityname getEntityByModule(String module);
+
 
 }

@@ -52,7 +52,9 @@ table .tb_list td.righttd{padding-left:10px;}
 
 .tab_form{width:100%;font:12px/1.5 Tahoma,'Microsoft Yahei','Simsun';}
 .tab_form .edittd{width:110px;text-align: right;padding-right:10px;}
+.tab_form .edittd2{width:200px;text-align: right;padding-right:10px;}
 .tab_form input.text,.tab_form select.text{width:180px;margin-right: 10px;border:1px solid #D2D2D2;height: 20px;}
+.tab_form input.text2,.tab_form select.text2{width:250px;margin-right: 10px;border:1px solid #D2D2D2;height: 20px;}
 .tab_form textarea{width:90%;}
 .textborder{border:1px solid #D2D2D2;}
 
@@ -129,7 +131,7 @@ fieldset legend{color:#15428B;}
 .tab_center tbody tr td{text-align: center !important;}
 .wtop{text-align: center;padding:5px;line-height: 20px;}
 #div_foot{bottom:0px;height: 40px;clear:both;width:100%;}
-#main {padding:0 15px 45px;height:500px;} /* 蹇呴』浣跨敤鍜宖ooter鐩稿悓鐨勯珮搴� */
+#main {padding:0 15px 45px;min-height:500px;} /* 蹇呴』浣跨敤鍜宖ooter鐩稿悓鐨勯珮搴� */
 .path{
     height: 30px;
     line-height: 30px;
@@ -141,9 +143,17 @@ fieldset legend{color:#15428B;}
     padding: 3px 5px;
     white-space: normal;
 }
-
-.po{
-  font-size: 15pt; 
-  font-family: 黑体; 
-  color: #999999
+.div_stat{
+	display: block;
+	border:1px solid #CCCCCC;
+	border-top:none;
+	height: 30px;
+    line-height: 30px;
+	padding-bottom: 2px;
+    padding-left: 30px;
+    padding-top: 2px;
 }
+.reporttab{width:100%;border-collapse: collapse;}
+.reporttab td,.reporttab th{border:1px solid #8DB2E3;height:25px;line-height:25px;text-align: center;}
+
+.mb_10{margin-bottom:10px;}

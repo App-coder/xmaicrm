@@ -1,11 +1,12 @@
 package com.crm.bean.easyui;
 
+import java.util.HashMap;
 import java.util.List;
 
 public class ListBean {
 	private long total;
 	private List rows;
-	private List footer;
+	private List<HashMap<String, String>> footer;
 	
 	public ListBean(){
 		
@@ -29,14 +30,14 @@ public class ListBean {
 		this.rows = rows;
 	}
 
-	public List getFooter() {
+	public List<HashMap<String, String>> getFooter() {
 		return footer;
 	}
 
-	public void setFooter(List footer) {
+	public void setFooter(List<HashMap<String, String>> footer) {
 		this.footer = footer;
 	}
-	
-	
+
+
 	
 }

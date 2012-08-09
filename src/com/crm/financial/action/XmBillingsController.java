@@ -49,12 +49,6 @@ public class XmBillingsController extends BaseController {
 		this.xmCustomViewService = xmCustomViewService;
 	}
 	
-	@RequestMapping(value = "/index", method = RequestMethod.GET)
-	public String index(ModelMap modelMap){
-		this.moduleUtil.setViewProp(modelMap,"Expenses");
-		return "financial/billings";
-	}
-	
 	/**
 	 * 根据视图ID返回对应的JSON
 	 * 

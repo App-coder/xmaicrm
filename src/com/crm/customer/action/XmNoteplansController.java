@@ -22,28 +22,10 @@ import com.crm.customer.service.XmNoteplansService;
 @Controller
 @RequestMapping(value = "noteplans")
 public class XmNoteplansController extends BaseController{
-	ModuleUtil moduleUtil;
-	@Resource(name="moduleUtil")
-	public void setModuleUtil(ModuleUtil moduleUtil) {
-		this.moduleUtil = moduleUtil;
-	}
-	
-	XmCustomViewService xmCustomViewService;
-	@Resource(name="xmCustomViewService")
-	public void setXmCustomViewService(XmCustomViewService xmCustomViewService) {
-		this.xmCustomViewService = xmCustomViewService;
-	}
-	
 	XmNoteplansService xmNoteplansService;
 	@Resource(name="xmNoteplansService")
 	public void setXmNoteplansService(XmNoteplansService xmNoteplansService) {
 		this.xmNoteplansService = xmNoteplansService;
-	}
-	
-	@RequestMapping(value = "/index", method = RequestMethod.GET)
-	public String index(ModelMap modelMap){
-		this.moduleUtil.setViewProp(modelMap,"Notes");
-		return "customer/noteplans";
 	}
 	
 	

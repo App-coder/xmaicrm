@@ -144,4 +144,13 @@
   <select id="loadListBySql"  resultType="map" >
   	${listsql} limit #{start},#{rows}
   </select>
+  <select id="loadListByPage" resultMap="BaseResultMap"  >
+  		select <include refid="Base_Column_List" /> from xm_customview where entitytype=#{entitytype} order by cvid asc limit #{start},#{rows}
+  </select>
+  <select id="getTotal" resultType="INTEGER" >
+  	select count(*) from xm_customview where entitytype=#{entitytype}
+  </select>
+  <select id="getChartData" resultType="map">
+  	${resultsql}
+  </select>
 </mapper>

@@ -1,161 +1,170 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"
-	pageEncoding="utf-8"%>
-<%@ include file="../../header.jsp"%>
-<script src="resources/amcharts/amcharts.js" type="text/javascript"></script>        
-        <script type="text/javascript">
-            var chart;
-            var chartData = [];
+    pageEncoding="utf-8"%>
+<%@ include file="../../head.jsp"%>
+<!-- amchart -->
+<script type="text/javascript" src="resources/amcharts/amcharts.js"></script>    
+<%@ include file="../../common/config.jsp"%>
+<script>
+var graphtype = "${graphtype}";
+var assemble = $.parseJSON('${assemble}') ;
 
-            AmCharts.ready(function () {
-                // generate some random data first   
-                generateChartData();
+var chartData = assemble.data.data;
+//3d的柱状图 id="s_chart"
+if(graphtype == 'vertical3D'){
+	AmCharts.ready(function(){
+	    	var chart = new AmCharts.AmSerialChart();
+	        chart.dataProvider = chartData;
+	        chart.categoryField = "categoryField";
+	        chart.depth3D = 20;
+	        chart.angle = 30;
 
-                // SERIAL CHART
-                chart = new AmCharts.AmSerialChart();
-                chart.pathToImages = "../amcharts/images/";
-                chart.marginLeft = 0;
-                chart.marginRight = 0;
-                chart.marginTop = 0;
-                chart.dataProvider = chartData;
-                chart.categoryField = "date";
+	        var categoryAxis = chart.categoryAxis;
+	        categoryAxis.labelRotation = 90;
+	        categoryAxis.dashLength = 5;
+	        categoryAxis.gridPosition = "start";
 
-                // AXES
-                // category
-                var categoryAxis = chart.categoryAxis;
-                categoryAxis.parseDates = true; // as our data is date-based, we set parseDates to true
-                categoryAxis.minPeriod = "DD"; // our data is daily, so we set minPeriod to DD
-                // value axis
-                var valueAxis = new AmCharts.ValueAxis();
-                valueAxis.inside = true;
-                valueAxis.tickLength = 0;
-                valueAxis.axisAlpha = 0;
-                valueAxis.minimum = 100;
-                valueAxis.maximum = 140;
-                chart.addValueAxis(valueAxis);
+	        chart.addTitle("${title}");
 
-                // GRAPH
-                var graph = new AmCharts.AmGraph();
-                graph.dashLength = 3;
-                graph.lineColor = "#7717D7";
-                graph.valueField = "visits";
-                graph.dashLength = 3;
-                graph.bullet = "round";
-                chart.addGraph(graph);
+	        var graph = new AmCharts.AmGraph();
+	        graph.valueField = "valueField";
+	        graph.colorField = "colorField";
+	        graph.balloonText = "[[category]]: [[value]]";
+	        graph.type = "column";
+	        graph.lineAlpha = 0;
+	        graph.fillAlphas = 1;
+	        chart.addGraph(graph);
+	        
+	        chart.write("reportchart"); 
+	});
+}else if(graphtype == 'vertical2D'){
+    //2d柱状图
+    AmCharts.ready(function () {
+        chart = new AmCharts.AmSerialChart();
+        chart.dataProvider = chartData;
+        chart.categoryField = "categoryField";
+        chart.startDuration = 1;
+        
+        var categoryAxis = chart.categoryAxis;
+        categoryAxis.labelRotation = 90;
+        categoryAxis.gridPosition = "start";
+        
+        chart.addTitle("${title}");
 
-                // CURSOR
-                var chartCursor = new AmCharts.ChartCursor();
-                chartCursor.cursorAlpha = 0;
-                chart.addChartCursor(chartCursor);
+        var graph = new AmCharts.AmGraph();
+        graph.valueField = "valueField";
+        graph.balloonText = "[[category]]: [[value]]";
+        graph.type = "column";
+        graph.lineAlpha = 0;
+        graph.fillAlphas = 0.8;
+        chart.addGraph(graph);
 
-                // GUIDES are used to create horizontal range fills
-                var guide = new AmCharts.Guide();
-                guide.value = 0;
-                guide.toValue = 105;
-                guide.fillColor = "#CC0000";
-                guide.fillAlpha = 0.2;
-                guide.lineAlpha = 0;
-                valueAxis.addGuide(guide);
+        chart.write("reportchart"); 
+    });
+}else if(graphtype == "Line2D"){
+    
+    AmCharts.ready(function () {
+        chart = new AmCharts.AmSerialChart();
+        chart.dataProvider = chartData;
+        chart.categoryField = "categoryField";
+        
+        chart.addTitle("${title}");
+        
+        var categoryAxis = chart.categoryAxis;
+        categoryAxis.minPeriod = "DD";
+        
+        var valueAxis = new AmCharts.ValueAxis();
+        valueAxis.inside = true;
+        valueAxis.tickLength = 0;
+        valueAxis.axisAlpha = 0;
+        chart.addValueAxis(valueAxis);
 
-                var guide = new AmCharts.Guide();
-                guide.value = 105;
-                guide.toValue = 110;
-                guide.fillColor = "#CC0000";
-                guide.fillAlpha = 0.15;
-                guide.lineAlpha = 0;
-                valueAxis.addGuide(guide);
+        var graph = new AmCharts.AmGraph();
+        graph.dashLength = 3;
+        graph.lineColor = "#7717D7";
+        graph.valueField = "valueField";
+        graph.dashLength = 3;
+        graph.bullet = "round";
+        chart.addGraph(graph);
 
-                var guide = new AmCharts.Guide();
-                guide.value = 110;
-                guide.toValue = 115;
-                guide.fillColor = "#CC0000";
-                guide.fillAlpha = 0.1;
-                guide.lineAlpha = 0;
-                valueAxis.addGuide(guide);
+        var chartCursor = new AmCharts.ChartCursor();
+        chartCursor.cursorAlpha = 0;
+        chart.addChartCursor(chartCursor);
 
-                var guide = new AmCharts.Guide();
-                guide.value = 115;
-                guide.toValue = 120;
-                guide.fillColor = "#CC0000";
-                guide.fillAlpha = 0.05;
-                guide.lineAlpha = 0;
-                valueAxis.addGuide(guide);
+        chart.write("reportchart"); 
+    });
+}else if(graphtype=='Pie3D'){
+    //3D饼图
+    AmCharts.ready(function () {
+        // PIE CHART
+        chart = new AmCharts.AmPieChart();
+        chart.dataProvider = chartData;
+        chart.titleField = "categoryField";
+        chart.valueField = "valueField";
+        chart.outlineColor = "#FFFFFF";
+        chart.outlineAlpha = 0.8;
+        chart.outlineThickness = 2;
+        
+        chart.addTitle("${title}");
+        
+        chart.depth3D = 15;
+        chart.angle = 30;
 
-                var guide = new AmCharts.Guide();
-                guide.value = 120;
-                guide.toValue = 125;
-                guide.fillColor = "#0000cc";
-                guide.fillAlpha = 0.05;
-                guide.lineAlpha = 0;
-                valueAxis.addGuide(guide);
+        chart.write("reportchart");
+    });
+    
+}else if(graphtype == 'Pie2D'){
+    //2d饼图
+    AmCharts.ready(function () {
+        chart = new AmCharts.AmPieChart();
+        chart.dataProvider = chartData;
+        chart.titleField = "categoryField";
+        chart.valueField = "valueField";
+        chart.outlineColor = "#FFFFFF";
+        chart.outlineAlpha = 0.8;
+        chart.outlineThickness = 2;
+        
+        chart.addTitle("${title}");
 
-                var guide = new AmCharts.Guide();
-                guide.value = 125;
-                guide.toValue = 130;
-                guide.fillColor = "#0000cc";
-                guide.fillAlpha = 0.1;
-                guide.lineAlpha = 0;
-                valueAxis.addGuide(guide);
-
-                var guide = new AmCharts.Guide();
-                guide.value = 130;
-                guide.toValue = 135;
-                guide.fillColor = "#0000cc";
-                guide.fillAlpha = 0.15;
-                guide.lineAlpha = 0;
-                valueAxis.addGuide(guide);
-
-                var guide = new AmCharts.Guide();
-                guide.value = 135;
-                guide.toValue = 140;
-                guide.fillColor = "#0000cc";
-                guide.fillAlpha = 0.2;
-                guide.lineAlpha = 0;
-                valueAxis.addGuide(guide);
-
-                // WRITE
-                chart.write("s_chart");
-            });
-
-            // generate some random data
-            function generateChartData() {
-                var firstDate = new Date();
-                firstDate.setDate(firstDate.getDate() - 10);
-
-                for (var i = 0; i < 10; i++) {
-                    var newDate = new Date(firstDate);
-                    newDate.setDate(newDate.getDate() + i);
-
-                    var visits = Math.round(Math.random() * 40) + 100;
-
-                    chartData.push({
-                        date: newDate,
-                        visits: visits
-                    });
-                }
-            }
-        </script>
+        chart.write("reportchart");
+    });
+}
+</script>
 </head>
-<body>
-	<div class="wtop">
-		显示类型：<select name="graphtype" class="text">
-			<option value="vertical3D">3D柱图</option>
-			<option selected="" value="vertical2D">2D柱图</option>
-			<option value="Line2D">折线图</option>
-			<option value="Pie3D">3D饼图</option>
-			<option value="Pie2D">2D饼图</option>
-		</select>&nbsp;&nbsp;统计项目：<select name="grouptype" class="text">
-			<option selected="" value="count">记录数</option>
-			<option value="订单数量;ordernum;ec_account;ordernum">订单数量</option>
-			<option value="订单金额;ordertotal;ec_account;ordertotal">订单金额</option>
-		</select>&nbsp;&nbsp;<a href="#" iconCls="icon-view" class="easyui-linkbutton">预览</a>
+<body id="wrap">
+<div class="easyui-tabs">
+	<div title="报表图形" class="p10">
+		<div id="reportchart" style="width:100%;height:379px;"></div>
 	</div>
-	<div class="easyui-tabs">
-		<div title="报表图形" class="p10">
-			<div id="s_chart" style="width: 100%; height: 362px;"></div>
-		</div>
-		<div title="报表数据" class="p10">tab2</div>
+	<div title="报表数据" class="p10">
+		<table class="reporttab">
+			<thead>
+				<th colspan="2">
+					${title}
+				</th>
+			</thead>
+			<tbody>
+				<tr>
+					<td>${reporttext}</td>
+					<td>${grouptitle}</td>
+				</tr>
+				<c:forEach items="${assembleobj.picklist }" var="p" >
+					<tr>
+						<td width="50%">${p.colvalue }</td>
+						<c:set var="exist" value="false"></c:set>
+						<c:forEach items="${assembleobj.data.data }" var="d">
+							<c:if test="${d.categoryField == p.colvalue }">
+								<td>${d.valueField }</td>
+								<c:set var="exist" value="true"></c:set>
+							</c:if>
+						</c:forEach>
+						<c:if test="${exist == false }">
+							<td width="50%">0</td>
+						</c:if>
+					</tr>
+				</c:forEach>
+			</tbody>
+		</table>
 	</div>
+</div>
 </body>
 </html>
-
-
