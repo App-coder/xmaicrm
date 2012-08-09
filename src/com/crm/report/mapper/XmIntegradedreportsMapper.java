@@ -1,6 +1,7 @@
 package com.crm.report.mapper;
 
 import java.util.List;
+import java.util.Map;
 
 import org.apache.ibatis.annotations.Param;
 
@@ -8,7 +9,6 @@ import com.crm.mapper.ModuleMapper;
 import com.crm.model.XmCangkuInfo;
 import com.crm.model.XmGathers;
 import com.crm.model.XmSalesTotal;
-import com.crm.model.XmUsersalesinforeport;
 
 public interface XmIntegradedreportsMapper extends ModuleMapper<XmGathers> {
     int deleteByPrimaryKey(Integer gathersid);
@@ -33,8 +33,11 @@ public interface XmIntegradedreportsMapper extends ModuleMapper<XmGathers> {
     List<XmCangkuInfo> queryCangkuTotal();
     List<XmCangkuInfo> getCangkuFooter();
     
-    //人员签署合同明细表
-    List<XmUsersalesinforeport>queryUsersalesinforeport(@Param("start") int start,@Param("rows") int rows,@Param("id") int id,@Param("duedate") String duedate);
+    List<Object> getReportFooter(@Param("id") int id,@Param("duedate") String duedate);
     
+    
+    List<Object>queryIntegradedreport(@Param("id") int id,@Param("duedate") String duedate);
+    
+    List<Object> getMerge(@Param("id") int id,@Param("duedate") String duedate);
     int getTotal(@Param("id") int id,@Param("duedate") String duedate);
 }

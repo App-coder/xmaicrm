@@ -1,13 +1,11 @@
 package com.crm.report.action;
 
 import java.io.UnsupportedEncodingException;
-import java.net.URLDecoder;
-import java.net.URLEncoder;
-import java.util.ArrayList;
 import java.util.List;
 
 import net.sf.json.JSONArray;
 import net.sf.json.JSONObject;
+import net.sf.json.JsonConfig;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -15,14 +13,15 @@ import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.crm.action.BaseController;
 import com.crm.bean.easyui.ListBean;
 import com.crm.model.XmCangkuInfo;
 import com.crm.model.XmStaffMonthly;
-import com.crm.model.XmUsersalesinforeport;
 import com.crm.report.service.XmIntegradedreportsService;
+import com.crm.util.JsonDateValueProcessor;
 import com.crm.util.JsonUtil;
 /**
  * 
@@ -88,17 +87,34 @@ public class XmIntegradedreportsController extends BaseController {
 		return objToJson(ls, JsonUtil.configJson(CANGKU_EXCLUDES));
 	}
 	
-	//人员签署订单明细
-	@RequestMapping(value = "/modelreports/{id}/{duedate}", method = RequestMethod.POST)
+	//销售明细, 采购和仓库管理统计公共方法
+	@RequestMapping(value = "/modelreports", method = RequestMethod.POST)
 	@ResponseBody
-	public String usersalesinforeport(int page,int rows,@PathVariable("id") int id,@PathVariable("duedate") String duedate,ModelMap modelMap){
-		page = (page -1)*rows;
-		List<XmUsersalesinforeport> ls=this.xmIntegradedreportsService.queryUsersalesinforeport(page,rows,id,duedate);
-		int total=this.xmIntegradedreportsService.getTotal(id,duedate);
+	public String modelreports(int id,String duedate,ModelMap modelMap){
+		List<Object> ls=this.xmIntegradedreportsService.queryIntegradedreport(id,duedate);
 		ListBean list = new ListBean();
-		list.setTotal(total);
 		list.setRows(ls);
+		switch(id){
+		case 5:
+			list.setFooter(this.xmIntegradedreportsService.getReportFooter(id, duedate));
+			break;
+		case 8:
+			list.setFooter(this.xmIntegradedreportsService.getReportFooter(id, duedate));
+			break;
+		case 9:
+			list.setFooter(this.xmIntegradedreportsService.getReportFooter(id, duedate));
+			break;
+		}
 		return objToJson(list, JsonUtil.configJson(USERSALES_EXCLUDES));
+	}
+	
+	@RequestMapping(value = "/modelmerge/{id}/{duedate}", method = RequestMethod.GET)
+	@ResponseBody
+	public String modelMerge(@PathVariable("id") int id,@PathVariable("duedate") String duedate,ModelMap modelMap){
+		List<Object> ls=this.xmIntegradedreportsService.getMerge(id, duedate);
+		ListBean list = new ListBean();
+		list.setRows(ls);
+   		return objToJson(list);
 	}
 	
 	

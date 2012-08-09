@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=utf-8" pageEncoding="utf-8"%>
-<%@ include file="../common/config.jsp" %>
+<%@ include file="../head.jsp"%>
+<%@ include file="../common/config.jsp"%>
 <script>
 var duedate="${duedate}";
 var id=${id};
@@ -10,12 +11,21 @@ var id=${id};
 <script type="text/javascript" 	src="resources/desktop/report/querysql.js"></script>
 
 
-
+<body id="wrap">
+<div id="main">
 <div class="container">
-	<div class="easyui-layout" fit="true">
-		<div data-options="region:'center',border:false"
-			style="overflow: hidden">
-			<table id="modelreports" data-options="fit:true,fitColumns:true"></table>
+        <table border="0" width="100%" height="40" class=small>
+		  <tr>
+		    <td width="100%">
+		      <p class='po'>
+		        
+		      </p>   
+		    </td>
+		  </tr>
+		</table>
+		<div style="height:600px">
+		<table id="modelreports" data-options="fit:true,fitColumns:true"></table>
 		</div>
-	</div>
 </div>
+</div>
+</body>
