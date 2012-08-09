@@ -297,7 +297,7 @@
       approvedby = #{approvedby,jdbcType=INTEGER}
     where expensesid = #{expensesid,jdbcType=INTEGER}
   </update>
-  <select id="getExpensesStat" resultType="com.crm.bean.portlets.salesyearinfo.ExpensesStat" >
+  <select id="getExpensesStat" resultType="com.crm.bean.crm.portlets.salesyearinfo.ExpensesStat" >
   	select count(*) as expensescount,sum(IFNULL(total,0.00)) as sumexpensestotal from xm_expenses where xm_expenses.deleted = 0 and xm_expenses.expensestatus = '已批准' and xm_expenses.expensedate between '${year}-01-01 00:00:00' and '${year}-12-31 23:59:00';
   </select>
   <select id="getExpensesmonth" resultMap="BaseResultMap" >
