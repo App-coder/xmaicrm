@@ -1,5 +1,7 @@
 package com.crm.model;
 
+import java.util.Date;
+
 public class XmUsersalesinforeport {
 	private String last_name;
 	private Integer salesorderid;
@@ -9,6 +11,8 @@ public class XmUsersalesinforeport {
 	private Float actualamount;
 	private Float billingamount;
 	private Float notamount;
+	
+	
 	public String getLast_name() {
 		return last_name;
 	}

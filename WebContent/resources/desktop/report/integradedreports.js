@@ -56,7 +56,8 @@ function integradedreports(i,j){
 	params="{'duedate':\""+duedate+"\",'id':"+reports[i-4].id+"}";
 	
 	tburl="integradedreports/modelreports/index/"+params+"";
-	tab(tbname,tburl);
+	window.open (tburl);
+//	tab(tbname,tburl);
 }
 
 

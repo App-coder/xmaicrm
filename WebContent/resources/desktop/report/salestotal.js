@@ -7,15 +7,17 @@ var staffMonthly_columns=[[
 	   {field:'total',title:'合计'}
     ]];
 
-$('#staffMonthly').datagrid({
+$(function(){
+	$('#staffMonthly').datagrid({
 		url : 'integradedreports/salestotal/staffMonthly',
 		doSize:true,
 		collapsible : false,
 		//idField : account_id,
 		singleSelect : true,
 		//queryParams:{entitytype:account_entitytype,viewid:account_viewid},
-		columns : staffMonthly_columns
-		/*onLoadSuccess:function(data){
-		    $('#account_list').datagrid('fixColumnSize'); 
-		}*/
+		columns : staffMonthly_columns,
+		onLoadSuccess:function(data){
+		    $('#staffMonthly').datagrid('fixColumnSize'); 
+		}
+    });
 });

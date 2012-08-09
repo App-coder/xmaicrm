@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 
 import com.crm.model.XmCangkuInfo;
+import com.crm.model.XmIntegradedModel;
 import com.crm.model.XmSalesTotal;
 import com.crm.model.XmStaffMonthly;
 import com.crm.model.XmUsersalesinforeport;
@@ -43,10 +44,20 @@ public class XmIntegradedreportsServiceImpl implements XmIntegradedreportsServic
 	};
 	
 	@Override
-	public List<XmUsersalesinforeport> queryUsersalesinforeport(int page,int rows,int id,String duedate) {
-		return this.xmIntegradedreportsMapper.queryUsersalesinforeport(page,rows,id,duedate);
+	public List<Object> getReportFooter(int id, String duedate) {
+        return this.xmIntegradedreportsMapper.getReportFooter(id, duedate);
+	}
+	
+	@Override
+	public List<Object> queryIntegradedreport(int id,String duedate) {
+		return this.xmIntegradedreportsMapper.queryIntegradedreport(id,duedate);
 	}
 
+	@Override
+	public List<Object> getMerge(int id, String duedate) {
+		return this.xmIntegradedreportsMapper.getMerge(id, duedate);
+	}
+	
 	@Override
 	public int getTotal(int id,String duedate) {
 		return this.xmIntegradedreportsMapper.getTotal(id,duedate);

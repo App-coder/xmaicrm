@@ -4,17 +4,16 @@
 <%@ include file="../head.jsp"%>
 <%@ include file="../common/config.jsp"%>
 
-
-<script>
-   <c:choose>
-      <c:when test="${year!=null}">
-         var year=${year};
-      </c:when>
-      <c:otherwise>
-         <c:set  var="year" value="2012"></c:set> 
-      </c:otherwise>
-   </c:choose>
-</script>
+ <c:choose>
+    <c:when test="${year!=null}">
+       <script>
+       var year=${year};
+       </script>
+    </c:when>
+    <c:otherwise>
+       <c:set  var="year" value="2012"></c:set> 
+    </c:otherwise>
+ </c:choose>
    
 <script type="text/javascript" src="resources/desktop/report/reports.js"></script>
 <script type="text/javascript" src="resources/desktop/report/integradedreports.js"></script>
@@ -41,7 +40,7 @@ a {
 <body id="wrap">
 <%@ include file="../nav.jsp"%>
 <div id="main">
-<div class="path"><a href="/">市场管理</a>&gt;<a href="/sc/">营销活动</a></div>
+<div class="path"><a href="/">报表</a>&gt;<a href="/sc/">综合报表</a></div>
 
 <div class="container">
 	<div class="easyui-layout" fit="true">
@@ -57,7 +56,7 @@ a {
 			</div>
 		</div>
 		<div data-options="region:'center',border:false" style="overflow: hidden;">
-			<div class="easyui-panel" title="综合报表"  
+			<div class="easyui-panel"  
 			     collapsible="true" data-options="fit:true" style="padding:5px;">
 				<table class="report_panel">
 				   <tr>
@@ -76,7 +75,7 @@ a {
 									  <a target="_blank" href="index?action=IntegradedreportsAjax&file=basicyear&parenttab=Analytics&year=2011">年度基本情况表</a></td>
 									<td style="line-height: 30px;">
 									  <font color="#3366FF">2.</font>
-									  <a href="javascript:tab('销售综合汇总表','integradedreports/salestotal/index')">销售综合汇总表</a></td>
+									  <a target="_blank" href="integradedreports/salestotal/index">销售综合汇总表</a></td>
 								</tr>
 							</tbody>
 						</table>
@@ -94,7 +93,7 @@ a {
 								<tr bgcolor="white">
 									<td height="40" align="right" style="line-height:30px;">
 									  <font color="#3366FF">3.</font>
-									  <a href="javascript:tab('当前库存资产','integradedreports/cangkuinfo/index')">当前库存资产</a></td>
+									  <a target="_blank" href="integradedreports/cangkuinfo/index">当前库存资产</a></td>
 								</tr>
 							</tbody>
 						</table>
@@ -117,7 +116,7 @@ a {
 				</table>
 				
 				<!-- 采购和仓库管理统计表 -->
-				<table class="report_pane">
+				<table class="report_panel">
 				   <tr>
 					   <td class="report_details">
 						   <fieldset>
