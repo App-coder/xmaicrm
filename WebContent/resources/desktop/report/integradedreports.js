@@ -47,7 +47,6 @@ function table2(){
 
 
 function integradedreports(i,j){
-	
 	if(j==0)
 		duedate="BETWEEN '"+year+"-01-01 00:00:00 00:00:00' AND '"+year+"-12-31 23:59:59 23:59:00'";
 	else
@@ -57,7 +56,6 @@ function integradedreports(i,j){
 	
 	tburl="integradedreports/modelreports/index/"+params+"";
 	window.open (tburl);
-//	tab(tbname,tburl);
 }
 
 
