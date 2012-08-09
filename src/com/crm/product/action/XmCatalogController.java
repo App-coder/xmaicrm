@@ -8,6 +8,7 @@ import javax.annotation.Resource;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.crm.action.BaseController;
 import com.crm.bean.easyui.Tree;
@@ -26,6 +27,7 @@ public class XmCatalogController extends BaseController{
 
 
 	@RequestMapping(value = "/getCatalogById", method = RequestMethod.GET)
+	@ResponseBody
 	public String getCatalogById(String parentid){
 		
 		List<XmCatalog> catalog = this.xmCatalogService.getCatalogById(parentid);

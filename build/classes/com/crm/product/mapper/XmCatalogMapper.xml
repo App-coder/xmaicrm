@@ -8,7 +8,7 @@
     <result column="sortorder" property="sortorder" jdbcType="INTEGER" />
     <result column="depth" property="depth" jdbcType="INTEGER" />
     <result column="parentcatalogid" property="parentcatalogid" jdbcType="VARCHAR" />
-    <result column="childcount" property="sortorder" jdbcType="INTEGER" />
+    <result column="childcount" property="childcount" jdbcType="INTEGER" />
   </resultMap>
   <sql id="Base_Column_List" >
     catalogid, catalogname, parentcatalog, sortorder, depth, parentcatalogid
