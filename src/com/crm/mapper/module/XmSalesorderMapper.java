@@ -44,4 +44,9 @@ public interface XmSalesorderMapper extends ModuleMapper<XmSalesorder> {
 
 	List<UserSalesbymonth> getUserSalesbymonth(@Param("userid") Integer userid,@Param("sday") String sday,
 			@Param("eday") String eday);
+
+	String getFinishedByUser(@Param("firstDayOfMonth") String firstDayOfMonth,@Param("lastDayOfMonth") String lastDayOfMonth,
+			@Param("userid") Integer userid);
+
+	
 }

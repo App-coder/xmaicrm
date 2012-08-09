@@ -1,24 +1,17 @@
-<graph labelDisplay='WRAP' showvalues='0' numDivLines='4' formatNumberScale='0' decimalPrecision='0' anchorSides='10' anchorRadius='3' anchorBorderColor='009900' outCnvBaseFontSize='12' baseFontSize='12'>
+<graph caption='销售任务完成情况统计图' labelDisplay='WRAP' shownames='1' showvalues='0' decimals='0' numDivLines='4' formatNumberScale='0' decimalPrecision='0' anchorSides='10' anchorRadius='3' anchorBorderColor='009900' outCnvBaseFontSize='12' baseFontSize='12'>
 	<categories>
-		<category name='2012-03' />
-		<category name='2012-04' />
-		<category name='2012-05' />
-		<category name='2012-06' />
-		<category name='2012-07' />
+		<category label='2012-06' />
+		<category label='2012-07' />
+		<category label='2012-08' />
 	</categories>
-	<dataset seriesName='合同订单金额' color='AFD8F8' showValues='0'>
-		<set value='217978' />
-		<set value='444847' />
-		<set value='10390' />
-		<set value='769222' />
-		<set value='91300' />
+	<dataset seriesName='目标' color='AFD8F8' showValues='0'>
+		<set value='500000' />
+		<set value='350000' />
+		<set value='500000' />
 	</dataset>
-	<dataset seriesName='合同订单数量' color='8BBA00' showValues='0'
-		parentYAxis='S'>
-		<set value='1' />
-		<set value='3' />
-		<set value='1' />
-		<set value='15' />
-		<set value='4' />
+	<dataset seriesName='完成' color='F6BD0F' showValues='0'>
+		<set value='769222.4200' />
+		<set value='98500.0000' />
+		<set value='14634.9000' />
 	</dataset>
 </graph>

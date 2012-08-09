@@ -11,4 +11,15 @@ public interface XmSalesorderService {
 
 	List<UserSalesbymonth> getUserSalesbymonth(Integer userid);
 
+	/**
+	 * 
+	 * 每月完成多少销售订单
+	 * 
+	 * @param firstDayOfMonth
+	 * @param lastDayOfMonth
+	 * @param id
+	 * @return
+	 */
+	String getFinish(String firstDayOfMonth, String lastDayOfMonth, Integer userid);
+
 }

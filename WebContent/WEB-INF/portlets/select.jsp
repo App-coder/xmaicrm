@@ -177,5 +177,8 @@
 	<c:when test="${stuff.stufftype == 'user_salesbymonth'}">
 		<div id="chart_user_salesbymonth" style="width:100%;height:252px;"></div>
 	</c:when>
+	<c:when test="${ stuff.stufftype =='user_salesfinishedbymonth' }">
+		<div id="chart_user_salesfinishedbymonth" style="width:100%;height:252px;"></div>
+	</c:when>
 </c:choose>
   

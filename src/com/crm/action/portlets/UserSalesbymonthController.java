@@ -41,10 +41,10 @@ public class UserSalesbymonthController {
 	@ResponseBody
 	public String getXml(@ModelAttribute(Constant.USERPERMISSION) UserPermission userPermission){
 		
-//		Object cache = CacheUtil.getKeyCache(CacheUtil.getMethKey(),CacheUtil.defRefreshTime);
-//		if(cache!=null){
-//			return cache.toString();
-//		}
+		Object cache = CacheUtil.getKeyCache(CacheUtil.getMethKey(),CacheUtil.defRefreshTime);
+		if(cache!=null){
+			return cache.toString();
+		}
 		
 		List<UserSalesbymonth> usm = this.xmSalesorderService.getUserSalesbymonth(userPermission.getUser().getId());
 		

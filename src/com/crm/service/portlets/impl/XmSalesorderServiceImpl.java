@@ -43,4 +43,11 @@ public class XmSalesorderServiceImpl implements XmSalesorderService {
 		return this.xmSalesorderMapper.getUserSalesbymonth(userid,sday,eday);
 	}
 
+
+	@Override
+	public String getFinish(String firstDayOfMonth, String lastDayOfMonth,
+			Integer userid) {
+		return this.xmSalesorderMapper.getFinishedByUser(firstDayOfMonth, lastDayOfMonth,userid);
+	}
+
 }

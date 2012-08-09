@@ -630,4 +630,24 @@
 	ORDER BY
 		m;
    </select>
+   <select id="getFinishedByUser" resultType="String">
+   	SELECT
+		sum(
+			(
+				CASE
+				WHEN xm_salesorder.currency_rate > 0 THEN
+					xm_salesorder.currency_rate
+				ELSE
+					1
+				END
+			)* xm_salesorder.total
+		)AS total
+	FROM
+		xm_salesorder
+	WHERE
+		xm_salesorder.deleted = 0
+	AND xm_salesorder.smownerid = #{userid}
+	AND duedate BETWEEN #{firstDayOfMonth}
+	AND #{lastDayOfMonth}
+   </select>
 </mapper>

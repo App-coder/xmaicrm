@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.crm.mapper.XmSalesobjectMapper" >
+  <resultMap id="BaseResultMap" type="com.crm.model.XmSalesobject" >
+    <result column="userid" property="userid" jdbcType="INTEGER" />
+    <result column="object_type" property="objectType" jdbcType="VARCHAR" />
+    <result column="object_num" property="objectNum" jdbcType="INTEGER" />
+    <result column="object_year" property="objectYear" jdbcType="VARCHAR" />
+    <result column="requirement562" property="requirement562" jdbcType="DATE" />
+    <result column="object_month" property="objectMonth" jdbcType="VARCHAR" />
+  </resultMap>
+  <insert id="insert" parameterType="com.crm.model.XmSalesobject" >
+    insert into xm_salesobject (userid, object_type, object_num, 
+      object_year, requirement562, object_month
+      )
+    values (#{userid,jdbcType=INTEGER}, #{objectType,jdbcType=VARCHAR}, #{objectNum,jdbcType=INTEGER}, 
+      #{objectYear,jdbcType=VARCHAR}, #{requirement562,jdbcType=DATE}, #{objectMonth,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.crm.model.XmSalesobject" >
+    insert into xm_salesobject
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="userid != null" >
+        userid,
+      </if>
+      <if test="objectType != null" >
+        object_type,
+      </if>
+      <if test="objectNum != null" >
+        object_num,
+      </if>
+      <if test="objectYear != null" >
+        object_year,
+      </if>
+      <if test="requirement562 != null" >
+        requirement562,
+      </if>
+      <if test="objectMonth != null" >
+        object_month,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="userid != null" >
+        #{userid,jdbcType=INTEGER},
+      </if>
+      <if test="objectType != null" >
+        #{objectType,jdbcType=VARCHAR},
+      </if>
+      <if test="objectNum != null" >
+        #{objectNum,jdbcType=INTEGER},
+      </if>
+      <if test="objectYear != null" >
+        #{objectYear,jdbcType=VARCHAR},
+      </if>
+      <if test="requirement562 != null" >
+        #{requirement562,jdbcType=DATE},
+      </if>
+      <if test="objectMonth != null" >
+        #{objectMonth,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="getAim" resultType="String">
+  	SELECT
+		object_num
+	FROM
+		xm_salesobject
+	WHERE
+		userid = '${id}'
+	AND object_type = #{type}
+	AND object_year = #{y} 
+	AND object_month = #{m} 
+  </select>
+</mapper>
