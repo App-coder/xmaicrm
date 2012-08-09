@@ -73,7 +73,7 @@
 										</table>
 									</td>
 
-<!-- 
+
 									<td width="12.5%" valign="top">
 										<table width="100%" class="tab_center" cellspacing="0"
 											cellpadding="5" border="0">
@@ -113,7 +113,7 @@
 											</tbody>
 										</table>
 									</td>
- -->									
+								
 									
 									
 									<td width="12.5%" valign="top">
@@ -123,13 +123,13 @@
 											<tbody>
 												<tr>
 													<td valign="top"><a
-														href="javascript:tab('系统日志','settings/loginhistory/index')"><img
+														href="settings/systemlog/index"><img
 															width="48" height="48" border="0" title="系统日志" alt="系统日志"
 															src="resources/images/settings/panel/audit.gif"></a></td>
 												</tr>
 												<tr>
 													<td valign="top" class="big"><a
-														href="javascript:tab('系统日志','settings/loginhistory/index')">系统日志</a></td>
+														href="settings/systemlog/index">系统日志</a></td>
 												</tr>
 											</tbody>
 										</table>
