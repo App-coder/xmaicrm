@@ -73,28 +73,27 @@
 										</table>
 									</td>
 
+<!-- 
 									<td width="12.5%" valign="top">
-										<!-- icon 5-->
 										<table width="100%" class="tab_center" cellspacing="0"
 											cellpadding="5" border="0">
 											<tbody>
 												<tr>
 													<td valign="top"><a
-														href="javascript:tab('全局共享规则','settings/orgsharingdetailview/index')"><img
+														href="settings/deforgshare/index"><img
 															width="48" height="48" border="0" title="全局共享规则"
 															alt="全局共享规则"
 															src="resources/images/settings/panel/shareaccess.gif"></a></td>
 												</tr>
 												<tr>
 													<td valign="top" class="big"><a
-														href="javascript:tab('全局共享规则','settings/orgsharingdetailview/index')">全局共享规则</a></td>
+														href="settings/deforgshare/index">全局共享规则</a></td>
 												</tr>
 
 											</tbody>
 										</table>
 									</td>
 									<td width="12.5%" valign="top">
-										<!-- icon 5-->
 										<table width="100%" class="tab_center" cellspacing="0"
 											cellpadding="5" border="0">
 											<tbody>
@@ -114,6 +113,8 @@
 											</tbody>
 										</table>
 									</td>
+ -->									
+									
 									
 									<td width="12.5%" valign="top">
 										<!-- icon 8-->
@@ -153,7 +154,9 @@
 										</table>
 									</td>
 									<td width="12.5%" valign="top"></td>
-									<!-- Row 3 -->
+									<td width="12.5%" valign="top"></td>
+									<td width="12.5%" valign="top"></td>
+									
 								</tr>
 								<tr>
 								</tr>

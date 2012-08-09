@@ -26,6 +26,9 @@
 	<c:when test="${pathname=='部门机构' }">
 		${syssetting }&gt;<a href="${url }">部门机构</a>
 	</c:when>
+	<c:when test="${pathname=='全局共享规则' }">
+		${syssetting }&gt;<a href="${url }">全局共享规则</a>
+	</c:when>	
 	<c:otherwise>
 		导航设置不正确！
 	</c:otherwise>
