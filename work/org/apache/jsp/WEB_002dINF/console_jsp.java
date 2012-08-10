@@ -100,7 +100,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
       out.write("\t\t\t<div>群发邮件</div>\r\n");
       out.write("\t\t</div>\r\n");
       out.write("\t\t<div id=\"customer_item\"  style=\"width: 120px;\" class=\"navmenuitem\"  >\r\n");
-      out.write("\t\t\t<div><a href=\"javascript:tab('客户','Customer/Accounts')\">客户</a></div>\r\n");
+      out.write("\t\t\t<div><a href=\"javascript:tab('客户','customer/accounts')\">客户</a></div>\r\n");
       out.write("\t\t\t<div>联系人</div>\r\n");
       out.write("\t\t\t<div>客户关怀</div>\r\n");
       out.write("\t\t\t<div>联系记录</div>\r\n");

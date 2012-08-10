@@ -38,7 +38,7 @@ select tablename from ec_field where tabid='2' and columnname like '%modifiedtim
 
 select ec_potential.potentialname,ec_potential.accountid,ec_potential.sales_stage,ec_potential.probability,ec_potential.closingdate,ec_users.user_name,ec_potential.nextstep,ec_potential.createdtime,ec_potential.modifiedtime ,ec_potential.potentialid as crmid FROM ec_potential LEFT JOIN ec_account ON ec_potential.accountid = ec_account.accountid LEFT JOIN ec_users ON ec_users.id = ec_potential.smownerid WHERE ec_potential.deleted = 0 ;
 
-&viewname=14SELECT DISTINCT ec_field.fieldname,ec_field.columnname,ec_field.uitype FROM ec_field LEFT JOIN ec_def_org_field ON ec_def_org_field.fieldid = ec_field.fieldid WHERE ec_field.tabid = 2 AND (ec_def_org_field.visible = 0 or ec_field.displaytype=3) ;
+SELECT DISTINCT ec_field.fieldname,ec_field.columnname,ec_field.uitype FROM ec_field LEFT JOIN ec_def_org_field ON ec_def_org_field.fieldid = ec_field.fieldid WHERE ec_field.tabid = 2 AND (ec_def_org_field.visible = 0 or ec_field.displaytype=3) ;
 
 select accountname from ec_account where accountid=1168;
 
