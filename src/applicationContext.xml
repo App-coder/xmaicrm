@@ -85,7 +85,7 @@
 
 	<!-- DAO层由 MapperScannerConfigurer自动生成mapper bean -->
 	<bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
-		<property name="basePackage" value="com.crm.*.mapper" />
+		<property name="basePackage" value="com.crm.**.mapper" />
 	</bean>
 
 	<!-- Service层 -->

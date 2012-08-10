@@ -22,8 +22,6 @@ public class CustomViewController extends BaseController {
 		this.xmCustomViewService = xmCustomViewService;
 	}
 
-
-
 	@RequestMapping(value = "/queryByEntityType", method = RequestMethod.GET)
 	public String getViewList(@RequestParam("entitytype") String entitytype){
 		List<XmCustomview> list=this.xmCustomViewService.queryByEntityType(entitytype);
