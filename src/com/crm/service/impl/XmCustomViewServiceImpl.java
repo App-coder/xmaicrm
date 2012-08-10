@@ -22,4 +22,9 @@ public class XmCustomViewServiceImpl implements XmCustomViewService {
 	public List<XmCustomview> queryByEntityType(String entitytype) {
 		return this.queryByEntityType(entitytype);
 	}
+
+	@Override
+	public int getDefault(String string) {
+		return this.xmCustomviewMapper.getDefault(string);
+	}
 }

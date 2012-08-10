@@ -6,6 +6,8 @@ import com.crm.model.XmCustomview;
 
 public interface XmCustomViewService {
 	List<XmCustomview> queryByEntityType(String entitytype);
+
+	int getDefault(String string);
 	
 
 }
