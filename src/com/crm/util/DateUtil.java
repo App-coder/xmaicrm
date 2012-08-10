@@ -275,6 +275,18 @@ public class DateUtil {
 		calendar.add(GregorianCalendar.DATE, 1);
 		return calendar.getTime();
 	}
+	
+	/**
+	 * 根据天和时间整合成日期格式
+	 * 
+	 * @param day 天
+	 * @param time 时间
+	 * @return
+	 */
+	public static Date getDateFromDayAndTime(String day,String time){
+		String timestr = day+" "+time+":00";
+		return DateUtil.parseDateTime(timestr);
+	}
 
 	public static void main(String[] args) {
 		// Date date1 = DateUtil.addDays(DateUtil.getCurrentDate(),1);

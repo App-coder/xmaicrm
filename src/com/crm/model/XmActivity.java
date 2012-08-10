@@ -64,6 +64,8 @@ public class XmActivity {
     private Integer approvedby;
 
     private String description;
+    
+    private String username;
 
     public Integer getActivityid() {
         return activityid;
@@ -312,4 +314,15 @@ public class XmActivity {
     public void setDescription(String description) {
         this.description = description == null ? null : description.trim();
     }
+
+	public String getUsername() {
+		return username;
+	}
+
+	public void setUsername(String username) {
+		this.username = username;
+	}
+    
+    
+    
 }

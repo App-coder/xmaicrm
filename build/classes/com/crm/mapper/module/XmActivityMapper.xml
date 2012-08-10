@@ -565,4 +565,42 @@
 	ORDER BY
 		date_start;
   </select>
+  <select id="getDayActivity" resultMap="BaseResultMap" >
+  	SELECT
+		xm_activity.*, xm_users.user_name
+	FROM
+		xm_activity
+	LEFT JOIN xm_recurringevents ON xm_activity.activityid = xm_recurringevents.activityid
+	LEFT JOIN xm_users ON xm_users.id = xm_activity.smownerid
+	LEFT JOIN xm_salesmanactivityrel ON xm_salesmanactivityrel.activityid = xm_activity.activityid
+	WHERE
+		xm_activity.deleted = 0
+	AND(
+		xm_activity.date_start <![CDATA[<]]> #{tomorrow}
+		AND xm_activity.date_start >= #{now}
+	)
+	AND xm_recurringevents.activityid IS NULL
+	ORDER BY
+		xm_activity.date_start,
+		xm_activity.time_start;
+  </select>
+  <select id="getActivitiesInInterval" resultMap="BaseResultMap" >
+  	SELECT
+		xm_activity.*, xm_users.user_name
+	FROM
+		xm_activity
+	LEFT JOIN xm_recurringevents ON xm_activity.activityid = xm_recurringevents.activityid
+	LEFT JOIN xm_users ON xm_users.id = xm_activity.smownerid
+	LEFT JOIN xm_salesmanactivityrel ON xm_salesmanactivityrel.activityid = xm_activity.activityid
+	WHERE
+		xm_activity.deleted = 0
+	AND(
+		xm_activity.date_start  <![CDATA[<=]]> #{finish}
+		AND xm_activity.date_start >= #{begin}
+	)
+	AND xm_recurringevents.activityid IS NULL
+	ORDER BY
+		xm_activity.date_start,
+		xm_activity.time_start;
+  </select>
 </mapper>

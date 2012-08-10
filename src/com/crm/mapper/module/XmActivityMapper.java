@@ -31,4 +31,22 @@ public interface XmActivityMapper {
 	List<XmActivity> getNotokcalendar(@Param("today") String today,@Param("userid") Integer userid);
 
 	List<XmActivity> getTopCalendar(@Param("userid") String userid,@Param("now") String now,@Param("next") String next);
+
+	/**
+	 * 得到当天的日程
+	 * 
+	 * @param now
+	 * @param tomorrow
+	 * @return
+	 */
+	List<XmActivity> getDayActivity(@Param("now") String now,@Param("tomorrow") String tomorrow);
+
+	/**
+	 * 时间间隔内取事件
+	 * 
+	 * @param begin
+	 * @param finish
+	 * @return
+	 */
+	List<XmActivity> getActivitiesInInterval(@Param("begin") String begin,@Param("finish") String finish);
 }

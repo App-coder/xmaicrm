@@ -17,15 +17,14 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <link rel="stylesheet" type="text/css" href="resources/easyui/themes/icon.css"/>
 <link rel="stylesheet" type="text/css" href="resources/css.css"/>
 <link rel="stylesheet" type="text/css" href="resources/easyui_update.css"/>
-
 <link rel="stylesheet" type="text/css" href="resources/css.css" />
 <link rel='stylesheet' type='text/css' href='resources/plugins/fullcalendar/cupertino/theme.css' />
 <link rel='stylesheet' type='text/css' href='resources/plugins/fullcalendar/fullcalendar.css' />
 <link rel='stylesheet' type='text/css' href='resources/plugins/fullcalendar/fullcalendar.print.css' media='print' />
+<script type='text/javascript' src='resources/lib/date.js'></script>
 <script type='text/javascript' src='resources/plugins/fullcalendar/jquery-1.8.1.min.js'></script>
 <script type='text/javascript' src='resources/plugins/fullcalendar/jquery-ui-1.8.23.custom.min.js'></script>
 <script type='text/javascript' src='resources/plugins/fullcalendar/fullcalendar.min.js' charset="utf-8"></script>
-
 <script type="text/javascript" src="resources/desktop/module/calendar/view.js"></script>
 
 </head>

@@ -76,15 +76,14 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
       out.write("<link rel=\"stylesheet\" type=\"text/css\" href=\"resources/easyui/themes/icon.css\"/>\r\n");
       out.write("<link rel=\"stylesheet\" type=\"text/css\" href=\"resources/css.css\"/>\r\n");
       out.write("<link rel=\"stylesheet\" type=\"text/css\" href=\"resources/easyui_update.css\"/>\r\n");
-      out.write("\r\n");
       out.write("<link rel=\"stylesheet\" type=\"text/css\" href=\"resources/css.css\" />\r\n");
       out.write("<link rel='stylesheet' type='text/css' href='resources/plugins/fullcalendar/cupertino/theme.css' />\r\n");
       out.write("<link rel='stylesheet' type='text/css' href='resources/plugins/fullcalendar/fullcalendar.css' />\r\n");
       out.write("<link rel='stylesheet' type='text/css' href='resources/plugins/fullcalendar/fullcalendar.print.css' media='print' />\r\n");
+      out.write("<script type='text/javascript' src='resources/lib/date.js'></script>\r\n");
       out.write("<script type='text/javascript' src='resources/plugins/fullcalendar/jquery-1.8.1.min.js'></script>\r\n");
       out.write("<script type='text/javascript' src='resources/plugins/fullcalendar/jquery-ui-1.8.23.custom.min.js'></script>\r\n");
       out.write("<script type='text/javascript' src='resources/plugins/fullcalendar/fullcalendar.min.js' charset=\"utf-8\"></script>\r\n");
-      out.write("\r\n");
       out.write("<script type=\"text/javascript\" src=\"resources/desktop/module/calendar/view.js\"></script>\r\n");
       out.write("\r\n");
       out.write("</head>\r\n");

@@ -13,14 +13,19 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.alibaba.fastjson.JSON;
 import com.crm.action.util.ModuleUtil;
+import com.crm.bean.crm.module.calendar.Event;
 import com.crm.bean.easyui.ComboTree;
+import com.crm.model.XmActivity;
 import com.crm.model.XmGroups;
 import com.crm.model.XmUsers;
+import com.crm.service.module.XmActivityService;
 import com.crm.service.settings.basic.XmGroupsService;
 import com.crm.service.settings.basic.XmUsersService;
 import com.crm.util.ActionUtil;
+import com.crm.util.DateUtil;
 import com.crm.util.MathUtil;
 import com.crm.util.actionutil.ActionCls;
+import com.crm.util.crm.CalendarUtil;
 
 /**
  * 
@@ -34,6 +39,12 @@ import com.crm.util.actionutil.ActionCls;
 @RequestMapping(value = "crm/module/calendar")
 public class XmCalendarController {
 	
+	XmActivityService xmActivityService;
+	@Resource(name="xmActivityService")
+	public void setXmActivityService(XmActivityService xmActivityService) {
+		this.xmActivityService = xmActivityService;
+	}
+
 	ActionCls actionCls;
 	@Resource(name="actionCls")
 	public void setActionCls(ActionCls actionCls) {
@@ -75,8 +86,58 @@ public class XmCalendarController {
 	}
 	
 	@RequestMapping(value = "/view")
-	public String view(){
+	public String view(ModelMap modelmap){
+		
+//		List<Event> events = new ArrayList<Event>();
+//		//默认视图是天，得到当天的事件
+//		List<XmActivity> activitys = this.xmActivityService.getDayActivity();
+//		if(activitys.size()>0){
+//			for(int i=0;i<activitys.size();i++){
+//				Event e = new Event();
+//				e.setId(activitys.get(i).getAccountid()+"");
+//				e.setTitle(activitys.get(i).getSubject());
+//				e.setStart( DateUtil.getDateFromDayAndTime(DateUtil.format(activitys.get(i).getDateStart(),DateUtil.C_DATE_PATTON_DEFAULT), activitys.get(i).getTimeStart()));
+//				e.setEnd(DateUtil.getDateFromDayAndTime(DateUtil.format(activitys.get(i).getDueDate(),DateUtil.C_DATE_PATTON_DEFAULT), activitys.get(i).getTimeEnd()));
+//				if(activitys.get(i).getStatus() == ""){
+//					CalendarUtil.setStyle(e, activitys.get(i));
+//				}
+//				events.add(e);
+//			}
+//		}
+//		modelmap.addAttribute("events",JSON.toJSONStringWithDateFormat(events, DateUtil.C_TIME_PATTON_DEFAULT));
+		
 		return "module/calendar/view";
+	}
+	
+	/**
+	 * 
+	 * 根据开始时间和结束时间取得事件
+	 * 
+	 * @param start 开始时间
+	 * @param end 结束时间
+	 * @return
+	 */
+	@RequestMapping(value = "/getEvent")
+	@ResponseBody
+	public String getEvent(String start,String end,ModelMap modelmap){
+		List<Event> events = new ArrayList<Event>();
+		//默认视图是天，得到当天的事件
+		List<XmActivity> activitys = this.xmActivityService.getActivity(start,end);
+		if(activitys.size()>0){
+			for(int i=0;i<activitys.size();i++){
+				Event e = new Event();
+				e.setId(activitys.get(i).getAccountid()+"");
+				e.setTitle(activitys.get(i).getSubject());
+				e.setStart( DateUtil.getDateFromDayAndTime(DateUtil.format(activitys.get(i).getDateStart(),DateUtil.C_DATE_PATTON_DEFAULT), activitys.get(i).getTimeStart()));
+				e.setEnd(DateUtil.getDateFromDayAndTime(DateUtil.format(activitys.get(i).getDueDate(),DateUtil.C_DATE_PATTON_DEFAULT), activitys.get(i).getTimeEnd()));
+				if(activitys.get(i).getStatus() == ""){
+					CalendarUtil.setStyle(e, activitys.get(i));
+				}
+				events.add(e);
+			}
+		}
+		
+		return JSON.toJSONStringWithDateFormat(events, DateUtil.C_TIME_PATTON_DEFAULT);
 	}
 	
 	/**
