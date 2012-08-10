@@ -22,4 +22,6 @@ public interface XmCvcolumnlistMapper {
     List<XmCvcolumnlist> getXmCvcolumnlistByCvid(@Param("cvid") Integer cvid);
 
 	void deleteCv(@Param("cvid") Integer cvid);
+
+	void deleteCvColumnlistByCvid(@Param("cvid") Integer cvid);
 }

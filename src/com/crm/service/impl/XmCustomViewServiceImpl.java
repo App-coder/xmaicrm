@@ -64,4 +64,14 @@ public class XmCustomViewServiceImpl implements XmCustomViewService {
 		}
 		return false;
 	}
+
+	@Override
+	public Integer insert(XmCustomview cv) {
+		return this.xmCustomviewMapper.insert(cv);
+	}
+
+	@Override
+	public void update(XmCustomview cv) {
+		this.xmCustomviewMapper.updateByPrimaryKey(cv);
+	}
 }

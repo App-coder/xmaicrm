@@ -8,5 +8,7 @@ public interface XmCvadvfilterService {
 
 	void deleteCv(int cvid);
 
+	void insert(XmCvadvfilter advfilter);
+
 
 }

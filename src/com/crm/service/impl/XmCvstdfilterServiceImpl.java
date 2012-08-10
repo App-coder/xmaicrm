@@ -24,4 +24,10 @@ public class XmCvstdfilterServiceImpl implements XmCvstdfilterService{
 	}
 
 
+	@Override
+	public void insert(XmCvstdfilter stdfilter) {
+		this.xmCvstdfilterMapper.insert(stdfilter);
+	}
+
+
 }

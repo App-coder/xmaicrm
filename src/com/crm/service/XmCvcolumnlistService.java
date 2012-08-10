@@ -14,5 +14,9 @@ public interface XmCvcolumnlistService {
 
 	void deleteCv(int cvid);
 
+	void insert(XmCvcolumnlist col);
+
+	void deleteCvColumnlistByCvid(Integer id);
+
 
 }

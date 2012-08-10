@@ -67,4 +67,17 @@ public class XmCvcolumnlistServiceImpl implements XmCvcolumnlistService {
 		
 	}
 
+
+	@Override
+	public void insert(XmCvcolumnlist col) {
+		this.xmCvcolumnlistMapper.insert(col);
+	}
+
+
+	@Override
+	public void deleteCvColumnlistByCvid(Integer id) {
+		this.xmCvcolumnlistMapper.deleteCv(id);
+		
+	}
+
 }

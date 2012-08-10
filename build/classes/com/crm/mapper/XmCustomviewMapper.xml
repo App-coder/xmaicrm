@@ -29,7 +29,7 @@
     delete from xm_customview
     where cvid = #{cvid,jdbcType=INTEGER}
   </delete>
-  <insert id="insert" parameterType="com.crm.model.XmCustomview" >
+  <insert id="insert" parameterType="com.crm.model.XmCustomview" keyProperty="cvid" >
     insert into xm_customview (cvid, viewname, setdefault, 
       setmetrics, entitytype, setpublic, 
       collectcolumn)

@@ -165,25 +165,32 @@
 			style="width: 700px; height: 480px;" class="easyui-window"
 			<%=win_topbar%> title="属性编辑">
 			<div class="easyui-layout" data-options="fit:true">
-
 				<div region="center" border="false" class="bdcenter">
-					<form action="" name="form_customview" id="form_customview">
+					<form name="form_customview" id="form_customview" method="post" >
+					<input type="hidden" name="id" />
+					<input type="hidden" name="action"  />
+					<input type="hidden" name="entitytype" value="${entitytype}"/>
+					<input type="hidden" name="setpublic" />
+					<input type="hidden" name="ispublic" />
+					<input type="hidden" name="setdefault" />
+					<input type="hidden" name="setmetrics" />
+					
 						<fieldset>
 							<legend>基本信息</legend>
 							<table class="tab_form">
 								<tr>
-									<td width="33%">视图名称&nbsp;&nbsp;<input type="text"
+									<td width="33%">视图名称&nbsp;&nbsp;<input name="viewname" type="text"
 										class="text" /></td>
-									<td width="33%">默认视图&nbsp;&nbsp;<input type="checkbox" /></td>
+									<td width="33%">默认视图&nbsp;&nbsp;<input id="setdefault" type="checkbox" /></td>
 									<td width="33%" rowspan="2">角色&nbsp;&nbsp;<select
-										multiple="multiple" class="text" id="setpublic"
-										name="setpublic" style="height: 50px;"></select></td>
+										multiple="multiple" class="text" 
+										id="roles" style="height: 50px;"></select></td>
 								</tr>
 								<tr>
 									<td width="33%">首页关键视图列表中显示&nbsp;&nbsp;<input
-										type="checkbox" /></td>
+										type="checkbox" id="setmetrics" /></td>
 									<td width="33%">公共视图&nbsp;&nbsp;<input type="checkbox"
-										name="ck_public" /></td>
+										id="ispublic" value="0" /></td>
 								</tr>
 							</table>
 						</fieldset>
@@ -192,27 +199,27 @@
 							<legend>选择列表中显示字段 </legend>
 							<table class="tab_form">
 								<tr>
-									<td><select class="text"> ${optionstr }
+									<td><select class="text" name="column_1"> ${optionstr }
 									</select></td>
-									<td><select class="text"> ${optionstr }
+									<td><select class="text" name="column_2"> ${optionstr }
 									</select></td>
-									<td><select class="text"> ${optionstr }
-									</select></td>
-								</tr>
-								<tr>
-									<td><select class="text"> ${optionstr }
-									</select></td>
-									<td><select class="text"> ${optionstr }
-									</select></td>
-									<td><select class="text"> ${optionstr }
+									<td><select class="text" name="column_3"> ${optionstr }
 									</select></td>
 								</tr>
 								<tr>
-									<td><select class="text"> ${optionstr }
+									<td><select class="text" name="column_4"> ${optionstr }
 									</select></td>
-									<td><select class="text"> ${optionstr }
+									<td><select class="text" name="column_5"> ${optionstr }
 									</select></td>
-									<td><select class="text"> ${optionstr }
+									<td><select class="text" name="column_6"> ${optionstr }
+									</select></td>
+								</tr>
+								<tr>
+									<td><select class="text" name="column_7"> ${optionstr }
+									</select></td>
+									<td><select class="text" name="column_8"> ${optionstr }
+									</select></td>
+									<td><select class="text" name="column_9"> ${optionstr }
 									</select></td>
 							</table>
 						</fieldset>
@@ -221,7 +228,7 @@
 							<legend>选择列表中汇总字段</legend>
 							<table class="tab_form">
 								<tr>
-									<td><select class="text"> ${colloptionstr }
+									<td><select class="text"  name="column_collect"> ${colloptionstr }
 									</select></td>
 									<td></td>
 									<td></td>
@@ -246,14 +253,14 @@
 													<table class="tab_form">
 														<tr>
 															<td class="edittd">选择查询字段</td>
-															<td><select class="text"> ${searchfields }
+															<td><select class="text" name="column_stdfilter" > ${searchfields }
 															</select></td>
 														</tr>
 														<tr>
 															<td class="edittd">选择时间段</td>
 															<td><select
 																onchange="showDateRange(this.options[this.selectedIndex].value )"
-																class="select" name="stdDateFilter">
+																class="select" name="stddatefilter">
 																	<option value="custom">自定义</option>
 																	<option value="prevfy">上财年</option>
 																	<option value="thisfy">本财年</option>
@@ -324,29 +331,29 @@
 													<legend>根据字段设置过滤条件</legend>
 													<table class="tab_form">
 														<tr>
-															<td><select class="text">${optionstr }</select></td>
-															<td><select class="text">${filter }</select></td>
-															<td><input type="text" class="text" /></td>
+															<td><select class="text" name="advfiltercol_1">${optionstr }</select></td>
+															<td><select class="text" name="comparator_1">${filter }</select></td>
+															<td><input type="text" class="text" name="fv_1" /></td>
 														</tr>
 														<tr>
-															<td><select class="text">${optionstr }</select></td>
-															<td><select class="text">${filter }</select></td>
-															<td><input type="text" class="text" /></td>
+															<td><select class="text" name="advfiltercol_2">${optionstr }</select></td>
+															<td><select class="text" name="comparator_2">${filter }</select></td>
+															<td><input type="text" class="text" name="fv_2" /></td>
 														</tr>
 														<tr>
-															<td><select class="text">${optionstr }</select></td>
-															<td><select class="text">${filter }</select></td>
-															<td><input type="text" class="text" /></td>
+															<td><select class="text" name="advfiltercol_3">${optionstr }</select></td>
+															<td><select class="text" name="comparator_3">${filter }</select></td>
+															<td><input type="text" class="text" name="fv_3" /></td>
 														</tr>
 														<tr>
-															<td><select class="text">${optionstr }</select></td>
-															<td><select class="text">${filter }</select></td>
-															<td><input type="text" class="text" /></td>
+															<td><select class="text" name="advfiltercol_4">${optionstr }</select></td>
+															<td><select class="text" name="comparator_4">${filter }</select></td>
+															<td><input type="text" class="text" name="fv_4" /></td>
 														</tr>
 														<tr>
-															<td><select class="text">${optionstr }</select></td>
-															<td><select class="text">${filter }</select></td>
-															<td><input type="text" class="text" /></td>
+															<td><select class="text" name="advfiltercol_5">${optionstr }</select></td>
+															<td><select class="text" name="comparator_5">${filter }</select></td>
+															<td><input type="text" class="text" name="fv_5" /></td>
 														</tr>																																																								
 													</table>
 												</fieldset>

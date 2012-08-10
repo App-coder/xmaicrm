@@ -6,5 +6,7 @@ public interface XmCvstdfilterService {
 
 	void deleteCv(int cvid);
 
+	void insert(XmCvstdfilter stdfilter);
+
 
 }

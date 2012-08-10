@@ -10,16 +10,63 @@ $(function() {
 
 });
 function initBind() {
-    $("#form_customview").find("input[name=ck_public]").click(
+    
+    $('#form_customview').form({  
+        url:'customview/editView',  
+        onSubmit: function(){
+            //设置ckbox值
+            if($('#form_customview').find("input[id=setdefault]").attr("checked") == "checked"){
+        	$('#form_customview').find("input[name=setdefault]").val(1);
+            }else{
+        	$('#form_customview').find("input[name=setdefault]").val(0);
+            }
+            
+            if($('#form_customview').find("input[id=ispublic]").attr("checked") == "checked"){
+        	$('#form_customview').find("input[name=ispublic]").val(1);
+            }else{
+        	$('#form_customview').find("input[name=ispublic]").val(0);
+        	
+        	//设置public setpublic
+        	var setpublic = "";
+        	var rolesselects = $("#roles").find("option[selected=selected]");
+        	for(var i=0;i<rolesselects.length;i++){
+        	    if(i==0){
+        		setpublic +=rolesselects[i].attr("value");
+        	    }else{
+        		setpublic +=","+rolesselects[i].attr("value");
+        	    }
+        	}
+        
+        	//$('#form_customview').find("input[name=setpublic]").val();
+            }
+            
+            if($('#form_customview').find("input[id=setmetrics]").attr("checked") == "checked"){
+        	$('#form_customview').find("input[name=setmetrics]").val(1);
+            }else{
+        	$('#form_customview').find("input[name=setmetrics]").val(0);
+            }
+            
+            //验证
+            if($('#form_customview').form("validate")){
+        	return true;
+            }
+            return false;
+        },  
+        success:function(data){
+            
+        }  
+    });  
+    
+    $("#form_customview").find("input[id=ispublic]").click(
 	    function() {
-		var cked = $("#form_customview").find("input[name=ck_public]")
+		var cked = $("#form_customview").find("input[id=ispublic]")
 			.attr("checked");
 		if (cked == "checked") {
-		    $("#form_customview").find("select[name=setpublic]").attr(
+		    $("#form_customview").find("select[id=roles]").attr(
 			    "disabled", "disabled");
-		    $("#form_customview").find("select[name=setpublic]").find("option").removeAttr("selected");
+		    $("#form_customview").find("select[id=roles]").find("option").removeAttr("selected");
 		} else {
-		    $("#form_customview").find("select[name=setpublic]")
+		    $("#form_customview").find("select[id=roles]")
 			    .removeAttr("disabled");
 		}
 
@@ -35,7 +82,7 @@ function initContainer() {
 			+ "</option>";
 	    }
 	}
-	$("#form_customview").find("select[name=setpublic]").html(ostr);
+	$("#form_customview").find("select[id=roles]").html(ostr);
     }, 'json');
 }
 function initGrid() {
@@ -57,14 +104,16 @@ function initGrid() {
 	    iconCls : 'icon-add',
 	    handler : function() {
 		$("#customview_edit").window("open");
+		$("#form_customview").find("input[name=action]").val("add");
 	    }
 	}, {
 	    text : '编辑',
 	    iconCls : 'icon-edit',
 	    handler : function() {
 		var selected = $('#customview_list').datagrid('getSelected');
+		$("#form_customview").find("input[name=action]").val("update");
 		if (selected) {
-
+		    $("#form_customview").find("input[name=id]").val(selected.id);
 		} else {
 		    message('请选择一行！');
 		}

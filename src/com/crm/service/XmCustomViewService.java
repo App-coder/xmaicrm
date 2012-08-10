@@ -19,6 +19,10 @@ public interface XmCustomViewService {
 
 	boolean deleteCv(int cvid);
 
+	Integer insert(XmCustomview cv);
+
+	void update(XmCustomview cv);
+
 	
 
 }
