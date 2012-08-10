@@ -19,6 +19,7 @@ import com.crm.model.XmUsers;
 import com.crm.service.settings.basic.XmGroupsService;
 import com.crm.service.settings.basic.XmUsersService;
 import com.crm.util.ActionUtil;
+import com.crm.util.MathUtil;
 import com.crm.util.actionutil.ActionCls;
 
 /**
@@ -61,6 +62,7 @@ public class XmCalendarController {
 	@RequestMapping(value = "/index")
 	public String index(int ptb,ModelMap modelMap) throws UnsupportedEncodingException{
 		ActionUtil.setTitle("Events", ptb, modelMap, this.moduleUtil);
+		modelMap.addAttribute("rd",MathUtil.getRd());
 		return "module/calendar/index";
 	}
 	

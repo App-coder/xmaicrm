@@ -197,8 +197,23 @@ public class HtmlUtil {
 				fieldstr +="</select>";
 			}else if(xmField.getTabid().equals("16")&&xmField.getFieldname().equals("salutationtype")){
 				//使用PICKLIST
-				
-				
+				List<XmPicklist> plist = xmPicklistService.getPickListValue(xmField.getFieldname());
+				fieldstr +="<select name=\""+xmField.getColumnname()+"\" class=\"text2\" >";
+				for(int i=0;i<plist.size();i++){
+					fieldstr +="<option value="+plist.get(i).getColvalue()+">"+plist.get(i).getColvalue()+"</option>";
+				}
+				fieldstr +="</select>";
+			}else if(xmField.getUitype().equals("51")){
+				HashMap<String, XmEntityname> hm_noline = (HashMap<String, XmEntityname>)CacheUtil.getFromCache(Constant.ENTITYNAME_NOLINE);
+				if(!xmField.getFieldname().equals("activityid")){
+					XmEntityname et = hm_noline.get(xmField.getFieldname().replace("_", ""));
+					fieldstr +="<input type=\"hidden\" name=\""+xmField.getColumnname()+"\" value=\""+getMapVal(obj,xmField.getColumnname())+"\" class=\"text2\"  />";
+					fieldstr +="<input type=\"text\" name=\""+xmField.getColumnname()+"_text\" class=\"text2\" value=\""+getText(getMapVal(obj,xmField.getColumnname()),et,xmCustomViewService)+"\" readonly=\"readonly\" />";
+					fieldstr +="<a class=\"easyui-linkbutton mgl_10\" title=\"查询\" data-options=\"iconCls:'icon-search'\" href=\"javascript:showOptionPanel('"+et.getModulename()+"','"+xmField.getColumnname()+"','"+xmField.getFieldlabel()+"')\" ></a>";
+					fieldstr +="<a class=\"easyui-linkbutton mgl_10\" title=\"清空\" data-options=\"iconCls:'icon-clear'\" ></a>";
+				}
+			}else if(xmField.getUitype().equals("57")){
+				fieldstr +="<select name=\""+xmField.getColumnname()+"\"  ><option></option></select>";
 			}else{
 				//两个条件的情况
 				if(tds.length==2){
@@ -268,12 +283,24 @@ public class HtmlUtil {
 				fieldstr +="<input type=\"text\" name=\""+xmField.getColumnname()+"\" class=\"easyui-numberbox text2\" value=\""+getMapVal(obj,xmField.getColumnname())+"\" data-options=\"precision:2\" ></input><span class=\"must\">*</span>";
 			}
 		}else if(tds[0].equals("I")){
-			//还需要根据字段是否是REL字段进行区分操作
-			if(tds[1].equals("M")){
-				fieldstr +="<input type=\"text\" name=\""+xmField.getColumnname()+"\" class=\"easyui-numberbox text2\" value=\""+getMapVal(obj,xmField.getColumnname())+"\" data-options=\"precision:0,required:true\" ></input><span class=\"must\">*</span>";
+			if(xmField.getUitype().equals("51")){
+				HashMap<String, XmEntityname> hm_noline = (HashMap<String, XmEntityname>)CacheUtil.getFromCache(Constant.ENTITYNAME_NOLINE);
+				if(!xmField.getFieldname().equals("activityid")){
+					XmEntityname et = hm_noline.get(xmField.getFieldname().replace("_", ""));
+					fieldstr +="<input type=\"hidden\" name=\""+xmField.getColumnname()+"\" value=\""+getMapVal(obj,xmField.getColumnname())+"\" class=\"text2\"  />";
+					fieldstr +="<input type=\"text\" name=\""+xmField.getColumnname()+"_text\" class=\"text2\" value=\""+getText(getMapVal(obj,xmField.getColumnname()),et,xmCustomViewService)+"\" readonly=\"readonly\" />";
+					fieldstr +="<a class=\"easyui-linkbutton mgl_10\" title=\"查询\" data-options=\"iconCls:'icon-search'\" href=\"javascript:showOptionPanel('"+et.getModulename()+"','"+xmField.getColumnname()+"','"+xmField.getFieldlabel()+"')\" ></a>";
+					fieldstr +="<a class=\"easyui-linkbutton mgl_10\" title=\"清空\" data-options=\"iconCls:'icon-clear'\" ></a>";
+				}
 			}else{
-				fieldstr +="<input type=\"text\" name=\""+xmField.getColumnname()+"\" class=\"easyui-numberbox text2\" value=\""+getMapVal(obj,xmField.getColumnname())+"\" data-options=\"precision:0\" ></input><span class=\"must\">*</span>";
+				//还需要根据字段是否是REL字段进行区分操作
+				if(tds[1].equals("M")){
+					fieldstr +="<input type=\"text\" name=\""+xmField.getColumnname()+"\" class=\"easyui-numberbox text2\" value=\""+getMapVal(obj,xmField.getColumnname())+"\" data-options=\"precision:0,required:true\" ></input><span class=\"must\">*</span>";
+				}else{
+					fieldstr +="<input type=\"text\" name=\""+xmField.getColumnname()+"\" class=\"easyui-numberbox text2\" value=\""+getMapVal(obj,xmField.getColumnname())+"\" data-options=\"precision:0\" ></input><span class=\"must\">*</span>";
+				}
 			}
+			
 		}else if(tds[0].equals("T")){
 			if(tds[1].equals("M")){
 				fieldstr += "<input type=\"text\" name=\""+xmField.getColumnname()+"\" value=\""+getMapVal(obj,xmField.getColumnname())+"\" class=\"easyui-datetimebox\"  style=\"width:250px\" formatter=\"datetimeboxFormatter\" data-options=\"required:true\" /><span class=\"must\">*</span>";	

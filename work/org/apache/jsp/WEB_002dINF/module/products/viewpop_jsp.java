@@ -1,27 +1,20 @@
-package org.apache.jsp.WEB_002dINF.module.calendar;
+package org.apache.jsp.WEB_002dINF.module.products;
 
 import javax.servlet.*;
 import javax.servlet.http.*;
 import javax.servlet.jsp.*;
 
-public final class index_jsp extends org.apache.jasper.runtime.HttpJspBase
+public final class viewpop_jsp extends org.apache.jasper.runtime.HttpJspBase
     implements org.apache.jasper.runtime.JspSourceDependent {
-
-static private org.apache.jasper.runtime.ProtectedFunctionMapper _jspx_fnmap_0;
-
-static {
-  _jspx_fnmap_0= org.apache.jasper.runtime.ProtectedFunctionMapper.getMapForFunction("fn:toLowerCase", org.apache.taglibs.standard.functions.Functions.class, "toLowerCase", new Class[] {java.lang.String.class});
-}
 
   private static final JspFactory _jspxFactory = JspFactory.getDefaultFactory();
 
   private static java.util.List _jspx_dependants;
 
   static {
-    _jspx_dependants = new java.util.ArrayList(5);
-    _jspx_dependants.add("/WEB-INF/module/calendar/../../head.jsp");
-    _jspx_dependants.add("/WEB-INF/module/calendar/../../common/config.jsp");
-    _jspx_dependants.add("/WEB-INF/module/calendar/../../foot.jsp");
+    _jspx_dependants = new java.util.ArrayList(4);
+    _jspx_dependants.add("/WEB-INF/module/products/../../head.jsp");
+    _jspx_dependants.add("/WEB-INF/module/products/../../common/config.jsp");
     _jspx_dependants.add("/WEB-INF/tld/jstl/fn.tld");
     _jspx_dependants.add("/WEB-INF/tld/oscache/oscache.tld");
   }
@@ -141,12 +134,12 @@ String win_topbar = "resizable=\"false\"  closed=\"true\" modal=\"true\" collaps
 String win_bar_1 = "resizable=\"false\"  closed=\"true\" modal=\"false\" collapsible=\"false\"  draggable=\"true\" minimizable=\"false\" maximizable=\"false\" inline=\"false\"";
 
       out.write("    ");
-      out.write("\r\n");
-      out.write("\r\n");
+      out.write('\r');
+      out.write('\n');
       if (_jspx_meth_c_005fchoose_005f1(_jspx_page_context))
         return;
       out.write("\r\n");
-      out.write("<script>\r\n");
+      out.write("<script >\r\n");
       out.write("//定义页面变量，需要前缀，防止多页面变量重复\r\n");
       out.write("var entitytype = '");
       out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${entitytype}", java.lang.String.class, (PageContext)_jspx_page_context, null, false));
@@ -161,188 +154,37 @@ String win_bar_1 = "resizable=\"false\"  closed=\"true\" modal=\"false\" collaps
       out.write("var tablabel = '");
       out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${tab.tablabel}", java.lang.String.class, (PageContext)_jspx_page_context, null, false));
       out.write("';\r\n");
-      out.write("var ptb = ");
-      out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${ptb.parenttabid }", java.lang.String.class, (PageContext)_jspx_page_context, null, false));
-      out.write(";\r\n");
+      out.write("var columnname = '");
+      out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${columnname}", java.lang.String.class, (PageContext)_jspx_page_context, null, false));
+      out.write("';\r\n");
       out.write("</script>\r\n");
-      out.write("\r\n");
-      out.write("<script type=\"text/javascript\" src=\"resources/desktop/module/calendar/index.js\"></script>\r\n");
-      out.write("\t\r\n");
+      out.write("<script type=\"text/javascript\" src=\"resources/desktop/module/products/viewpop.js\"></script>\r\n");
       out.write("</head>\r\n");
-      out.write("<body id=\"wrap\">\r\n");
+      out.write("<body class=\"easyui-layout\" data-options=\"border:false\" >  \r\n");
+      out.write("<div data-options=\"region:'north',border:false\" >\r\n");
+      out.write("<div class=\"d_view \">\r\n");
+      out.write("<span class=\"icon-filter \">视图：</span> <select\r\n");
+      out.write("\tclass=\"sel_120\" onchange=\"reloadView(this.value)\" >\r\n");
       out.write("\t");
-      out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${navbar }", java.lang.String.class, (PageContext)_jspx_page_context, null, false));
-      out.write("\r\n");
-      out.write("\t<div class=\"hidden\"></div>\r\n");
-      out.write("\t<div id=\"main\">\r\n");
-      out.write("\t\t<div id=\"navpath\" class=\"path\">\r\n");
-      out.write("\t\t\t");
-      out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${ptb.parenttabLabel }", java.lang.String.class, (PageContext)_jspx_page_context, null, false));
-      out.write("&gt;<a\r\n");
-      out.write("\t\t\t\thref=\"crm/module/");
-      out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${fn:toLowerCase(entityname.modulename) }", java.lang.String.class, (PageContext)_jspx_page_context, _jspx_fnmap_0, false));
-      out.write("/index?ptb=");
-      out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${ptb.parenttabid }", java.lang.String.class, (PageContext)_jspx_page_context, null, false));
-      out.write('"');
-      out.write('>');
-      out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${tab.tablabel}", java.lang.String.class, (PageContext)_jspx_page_context, null, false));
-      out.write("</a>\r\n");
-      out.write("\t\t</div>\r\n");
-      out.write("\t\t\r\n");
-      out.write("\t\t<div class=\"easyui-tabs\"   >  \r\n");
-      out.write("\t        <div title=\"日程安排\" style=\"overflow:hidden;\"  >  \r\n");
-      out.write("\t        \t<iframe width=\"100%\" height=\"650px\"  frameborder=\"0\" src=\"crm/module/calendar/view?_rd=");
-      out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${rd }", java.lang.String.class, (PageContext)_jspx_page_context, null, false));
-      out.write("\" ></iframe>\r\n");
-      out.write("\t        </div>  \r\n");
-      out.write("\t        <div title=\"列表视图\" class=\"p10\" >\r\n");
-      out.write("\t        \t \r\n");
-      out.write("        \t \t<div class=\"d_view \">\r\n");
-      out.write("\t\t\t\t\t<span class=\"icon-filter \">视图：</span> <select\r\n");
-      out.write("\t\t\t\t\t\tclass=\"sel_120\" onchange=\"reloadView(this.value)\" >\r\n");
-      out.write("\t\t\t\t\t\t");
       if (_jspx_meth_c_005fforEach_005f0(_jspx_page_context))
         return;
       out.write("\r\n");
-      out.write("\t\t\t\t\t</select> <a\r\n");
-      out.write("\t\t\t\t\t\thref=\"crm/customview/index?entitytype=");
+      out.write("</select> <a\r\n");
+      out.write("\thref=\"crm/customview/index?entitytype=");
       out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${entitytype}", java.lang.String.class, (PageContext)_jspx_page_context, null, false));
       out.write("&ptb=");
       out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${ptb.parenttabid }", java.lang.String.class, (PageContext)_jspx_page_context, null, false));
       out.write("\"\r\n");
-      out.write("\t\t\t\t\t\tclass=\"easyui-linkbutton\"\r\n");
-      out.write("\t\t\t\t\t\tdata-options=\"plain:true,iconCls:'icon-view'\">视图管理</a>\r\n");
-      out.write("\t\t\t\t</div>\r\n");
-      out.write("\t\t\t\t<div id=\"tabbar\" class=\"gtb\" style=\"display: block;\" >  \r\n");
-      out.write("\t\t\t查看范围：<select class=\"easyui-combotree\" style=\"width:200px;\" data-options=\"url:'crm/module/calendar/getCondition'\"></select>\r\n");
-      out.write("\t\t\t\t\t\t<a class=\"easyui-linkbutton\" data-options=\"plain:true\" iconCls=\"icon-add\" onclick=\"insert()\" >添加</a>\r\n");
-      out.write("\t\t\t\t\t\t<a class=\"easyui-linkbutton\" data-options=\"plain:true\" iconCls=\"icon-edit\" >修改</a>\r\n");
-      out.write("\t\t\t\t\t\t<a class=\"easyui-linkbutton\" data-options=\"plain:true\" iconCls=\"icon-edit\" >批量修改</a>\r\n");
-      out.write("\t\t\t\t\t\t<a class=\"easyui-linkbutton\" data-options=\"plain:true\" iconCls=\"icon-view\" onclick=\"view()\" >预览</a>\r\n");
-      out.write("\t\t\t\t\t\t<a class=\"easyui-linkbutton\" data-options=\"plain:true\" iconCls=\"icon-edit\" >修改负责人</a>\r\n");
-      out.write("\t\t\t\t\t\t<a class=\"easyui-linkbutton\" data-options=\"plain:true\" iconCls=\"icon-share\" >共享</a>\r\n");
-      out.write("\t\t\t\t\t\t<a class=\"easyui-linkbutton\" data-options=\"plain:true\" iconCls=\"icon-remove\" >删除</a>\r\n");
-      out.write("\t\t\t\t</div>\r\n");
-      out.write("\t\t\t\t<table id=\"view_list\"\r\n");
-      out.write("\t\t\t\t\tdata-options=\"fitColumns:true\" toolbar=\"#tabbar\"   ></table>\r\n");
-      out.write("\t\t\t\t\t<div class=\"stat_div hidden\"></div>\r\n");
-      out.write("\t        \t \r\n");
-      out.write("\t        </div>\t        \r\n");
-      out.write("\t    </div>  \r\n");
-      out.write("\t\t\r\n");
-      out.write("\t</div>\r\n");
-      out.write("\t");
-      out.write("\r\n");
-      out.write("<div id=\"div_foot\" class=\"footercss\">\r\n");
-      out.write("\t<table width=\"100%\" cellspacing=\"0\" cellpadding=\"5\" border=\"0\"\r\n");
-      out.write("\t\tstyle=\"padding: 8px 20px; display: table; height: 40px;\">\r\n");
-      out.write("\t\t<tbody>\r\n");
-      out.write("\t\t\t<tr>\r\n");
-      out.write("\t\t\t\t<td align=\"left\" class=\"small\"><span\r\n");
-      out.write("\t\t\t\t\tstyle=\"color: rgb(153, 153, 153);\">Powered by 新麦 CRM <span\r\n");
-      out.write("\t\t\t\t\t\tid=\"_vtiger_product_version_\">2.0</span></span></td>\r\n");
-      out.write("\t\t\t\t<td align=\"right\" class=\"small\"><span>&copy; 2012-2014 <a\r\n");
-      out.write("\t\t\t\t\t\thref=\"http://www.x-mai.com\" target=\"_blank\">x-mai.com</a>\r\n");
-      out.write("\t\t\t\t</span></td>\r\n");
-      out.write("\t\t\t</tr>\r\n");
-      out.write("\t\t</tbody>\r\n");
-      out.write("\t</table>\r\n");
+      out.write("\tclass=\"easyui-linkbutton\"\r\n");
+      out.write("\tdata-options=\"plain:true,iconCls:'icon-view'\">视图管理</a>\r\n");
       out.write("</div>\r\n");
-      out.write("<div class=\"hidden\">\r\n");
-      out.write("\t<div id=\"wind_msg\" iconCls=\"icon-save\"\r\n");
-      out.write("\t\tstyle=\"width: 700px; height: 432px;\" class=\"easyui-window p10\"\r\n");
-      out.write("\t\t");
-      out.print(win_topbar);
-      out.write(" title=\"手机短信\">\r\n");
-      out.write("\t\t<div class=\"easyui-tabs\" fit=\"true\">\r\n");
-      out.write("\t\t\t<div title=\"发短信\" class=\"p10\">\r\n");
-      out.write("\t\t\t\t<table class=\"tab_form\">\r\n");
-      out.write("\t\t\t\t\t<tr>\r\n");
-      out.write("\t\t\t\t\t\t<td class=\"edittd\" valign=\"top\">短信账号</td>\r\n");
-      out.write("\t\t\t\t\t\t<td valign=\"top\"><textarea style=\"height: 78px;\"></textarea></td>\r\n");
-      out.write("\t\t\t\t\t\t<td valign=\"top\" style=\"width: 100px;\" rowspan=\"2\"><a\r\n");
-      out.write("\t\t\t\t\t\t\tclass=\"easyui-linkbutton mgb_5\" width=\"90px\"\r\n");
-      out.write("\t\t\t\t\t\t\tonclick=\"formsubmit('form_customview')\">选择联系人</a><br> <a\r\n");
-      out.write("\t\t\t\t\t\t\tclass=\"easyui-linkbutton mgb_5\" width=\"90px\"\r\n");
-      out.write("\t\t\t\t\t\t\tonclick=\"formsubmit('form_customview')\">选择用户</a><br> <a\r\n");
-      out.write("\t\t\t\t\t\t\tclass=\"easyui-linkbutton mgb_5\" width=\"90px\"\r\n");
-      out.write("\t\t\t\t\t\t\tonclick=\"formsubmit('form_customview')\">选择供应商</a></td>\r\n");
-      out.write("\t\t\t\t\t</tr>\r\n");
-      out.write("\t\t\t\t\t<tr>\r\n");
-      out.write("\t\t\t\t\t\t<td class=\"edittd\" valign=\"top\">短信内容</td>\r\n");
-      out.write("\t\t\t\t\t\t<td valign=\"top\"><textarea style=\"height: 78px;\"></textarea>\r\n");
-      out.write("\t\t\t\t\t\t</td>\r\n");
-      out.write("\t\t\t\t\t</tr>\r\n");
-      out.write("\t\t\t\t\t<tr>\r\n");
-      out.write("\t\t\t\t\t\t<td></td>\r\n");
-      out.write("\t\t\t\t\t\t<td>你还能输入:<span class=\"red\">65</span>个字...\r\n");
-      out.write("\t\t\t\t\t\t</td>\r\n");
-      out.write("\t\t\t\t\t\t<td></td>\r\n");
-      out.write("\t\t\t\t\t</tr>\r\n");
-      out.write("\t\t\t\t\t<tr>\r\n");
-      out.write("\t\t\t\t\t\t<td></td>\r\n");
-      out.write("\t\t\t\t\t\t<td colspan=\"2\"><a class=\"easyui-linkbutton\"\r\n");
-      out.write("\t\t\t\t\t\t\ticonCls=\"icon-ok\" href=\"javascript:void(0)\"\r\n");
-      out.write("\t\t\t\t\t\t\tonclick=\"formsubmit('form_customview')\">发送</a> <a\r\n");
-      out.write("\t\t\t\t\t\t\tclass=\"easyui-linkbutton fr\" iconCls=\"icon-ok\"\r\n");
-      out.write("\t\t\t\t\t\t\thref=\"javascript:void(0)\" onclick=\"formsubmit('form_customview')\">测试发送给自己</a>\r\n");
-      out.write("\t\t\t\t\t\t</td>\r\n");
-      out.write("\t\t\t\t\t</tr>\r\n");
-      out.write("\t\t\t\t</table>\r\n");
-      out.write("\t\t\t</div>\r\n");
-      out.write("\t\t\t<div title=\"收件箱\" class=\"p10\">\r\n");
-      out.write("\t\t\t\t<table id=\"messagelist\"></table>\r\n");
-      out.write("\t\t\t</div>\r\n");
-      out.write("\t\t\t<div title=\"查看余额\" class=\"p10\">\r\n");
-      out.write("\t\t\t\t<table class=\"tab_form\">\r\n");
-      out.write("\t\t\t\t\t<tr>\r\n");
-      out.write("\t\t\t\t\t\t<td class=\"edittd\">余额</td>\r\n");
-      out.write("\t\t\t\t\t\t<td></td>\r\n");
-      out.write("\t\t\t\t\t</tr>\r\n");
-      out.write("\t\t\t\t</table>\r\n");
-      out.write("\t\t\t</div>\r\n");
-      out.write("\t\t</div>\r\n");
-      out.write("\t</div>\r\n");
-      out.write("\t<div id=\"wind_approve\" iconCls=\"icon-save\"\r\n");
-      out.write("\t\tstyle=\"width: 700px; height: 432px;\" class=\"easyui-window p10\"\r\n");
-      out.write("\t\t");
-      out.print(win_topbar);
-      out.write(" title=\"我的审批中心\">\r\n");
-      out.write("\t\t<div class=\"easyui-tabs\" fit=\"true\">\r\n");
-      out.write("\t\t\t<div title=\"未审批\" class=\"p10\">\r\n");
-      out.write("\t\t\t\t<table id=\"willapprove\"></table>\r\n");
-      out.write("\t\t\t</div>\r\n");
-      out.write("\t\t\t<div title=\"已审批\" class=\"p10\">\r\n");
-      out.write("\t\t\t\t<table id=\"hasapprove\"></table>\r\n");
-      out.write("\t\t\t</div>\r\n");
-      out.write("\t\t</div>\r\n");
-      out.write("\t</div>\r\n");
-      out.write("\t<div id=\"wind_remind\" iconCls=\"icon-save\"\r\n");
-      out.write("\t\tstyle=\"width: 700px; height: 432px;\" class=\"easyui-window p10\"\r\n");
-      out.write("\t\t");
-      out.print(win_topbar);
-      out.write(" title=\"自定义提醒\">\r\n");
-      out.write("\t\t\t\t<table class=\"tab_form\">\r\n");
-      out.write("\t\t\t\t\t<tr>\r\n");
-      out.write("\t\t\t\t\t\t<td><input type=\"text\" class=\"text\" /> <a\r\n");
-      out.write("\t\t\t\t\t\t\tclass=\"easyui-linkbutton\" iconCls=\"icon-search\"\r\n");
-      out.write("\t\t\t\t\t\t\thref=\"javascript:void(0)\" onclick=\"formsubmit('form_customview')\">立即查找</a>\r\n");
-      out.write("\t\t\t\t\t\t\t<a class=\"easyui-linkbutton\" iconCls=\"icon-add\"\r\n");
-      out.write("\t\t\t\t\t\t\thref=\"javascript:void(0)\" onclick=\"formsubmit('form_customview')\">创建提醒</a>\r\n");
-      out.write("\t\t\t\t\t\t</td>\r\n");
-      out.write("\t\t\t\t\t</tr>\r\n");
-      out.write("\t\t\t\t</table>\r\n");
-      out.write("\t\t\t\t<div class=\"easyui-tabs\" style=\"height:345px;\" >\r\n");
-      out.write("\t\t\t\t\t<div title=\"运行中\" class=\"p10\">\r\n");
-      out.write("\t\t\t\t\t\t<table id=\"runremind\"></table>\r\n");
-      out.write("\t\t\t\t\t</div>\r\n");
-      out.write("\t\t\t\t\t<div title=\"已结束\" class=\"p10\">\r\n");
-      out.write("\t\t\t\t\t\t<table id=\"overremind\"></table>\r\n");
-      out.write("\t\t\t\t\t</div>\r\n");
-      out.write("\t\t\t\t</div>\r\n");
-      out.write("\t</div>\r\n");
       out.write("</div>\r\n");
-      out.write("<script type=\"text/javascript\" src=\"resources/desktop/foot.js\"></script>\r\n");
+      out.write("<div data-options=\"region:'west',border:false\" style=\"width:150px;\">\r\n");
+      out.write("\t<ul id=\"catalog\" class=\"easyui-tree\" url=\"crm/module/catalogs/getCatalogAll\" method=\"get\" lines=\"true\" ></ul>\r\n");
+      out.write("</div>  \r\n");
+      out.write("<div data-options=\"region:'center',border:false\" >\r\n");
+      out.write("\t<table id=\"view_list\" data-options=\"fitColumns:true,fit:true\"  ></table>\r\n");
+      out.write("</div>  \r\n");
       out.write("\r\n");
       out.write("</body>\r\n");
       out.write("</html>");
@@ -402,7 +244,7 @@ String win_bar_1 = "resizable=\"false\"  closed=\"true\" modal=\"false\" collaps
     org.apache.taglibs.standard.tag.rt.core.WhenTag _jspx_th_c_005fwhen_005f0 = (org.apache.taglibs.standard.tag.rt.core.WhenTag) _005fjspx_005ftagPool_005fc_005fwhen_0026_005ftest.get(org.apache.taglibs.standard.tag.rt.core.WhenTag.class);
     _jspx_th_c_005fwhen_005f0.setPageContext(_jspx_page_context);
     _jspx_th_c_005fwhen_005f0.setParent((javax.servlet.jsp.tagext.Tag) _jspx_th_c_005fchoose_005f0);
-    // /WEB-INF/module/calendar/../../head.jsp(17,1) name = test type = boolean reqTime = true required = true fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
+    // /WEB-INF/module/products/../../head.jsp(17,1) name = test type = boolean reqTime = true required = true fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
     _jspx_th_c_005fwhen_005f0.setTest(((java.lang.Boolean) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${ptb!=null&&tab!=null}", java.lang.Boolean.class, (PageContext)_jspx_page_context, null, false)).booleanValue());
     int _jspx_eval_c_005fwhen_005f0 = _jspx_th_c_005fwhen_005f0.doStartTag();
     if (_jspx_eval_c_005fwhen_005f0 != javax.servlet.jsp.tagext.Tag.SKIP_BODY) {
@@ -502,7 +344,7 @@ String win_bar_1 = "resizable=\"false\"  closed=\"true\" modal=\"false\" collaps
     org.apache.taglibs.standard.tag.rt.core.WhenTag _jspx_th_c_005fwhen_005f1 = (org.apache.taglibs.standard.tag.rt.core.WhenTag) _005fjspx_005ftagPool_005fc_005fwhen_0026_005ftest.get(org.apache.taglibs.standard.tag.rt.core.WhenTag.class);
     _jspx_th_c_005fwhen_005f1.setPageContext(_jspx_page_context);
     _jspx_th_c_005fwhen_005f1.setParent((javax.servlet.jsp.tagext.Tag) _jspx_th_c_005fchoose_005f1);
-    // /WEB-INF/module/calendar/index.jsp(7,1) name = test type = boolean reqTime = true required = true fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
+    // /WEB-INF/module/products/viewpop.jsp(6,1) name = test type = boolean reqTime = true required = true fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
     _jspx_th_c_005fwhen_005f1.setTest(((java.lang.Boolean) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${customview.cvid!=null && dview!=null}", java.lang.Boolean.class, (PageContext)_jspx_page_context, null, false)).booleanValue());
     int _jspx_eval_c_005fwhen_005f1 = _jspx_th_c_005fwhen_005f1.doStartTag();
     if (_jspx_eval_c_005fwhen_005f1 != javax.servlet.jsp.tagext.Tag.SKIP_BODY) {
@@ -569,9 +411,9 @@ String win_bar_1 = "resizable=\"false\"  closed=\"true\" modal=\"false\" collaps
     org.apache.taglibs.standard.tag.rt.core.ForEachTag _jspx_th_c_005fforEach_005f0 = (org.apache.taglibs.standard.tag.rt.core.ForEachTag) _005fjspx_005ftagPool_005fc_005fforEach_0026_005fvar_005fitems.get(org.apache.taglibs.standard.tag.rt.core.ForEachTag.class);
     _jspx_th_c_005fforEach_005f0.setPageContext(_jspx_page_context);
     _jspx_th_c_005fforEach_005f0.setParent(null);
-    // /WEB-INF/module/calendar/index.jsp(52,6) name = items type = java.lang.Object reqTime = true required = false fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
+    // /WEB-INF/module/products/viewpop.jsp(36,1) name = items type = java.lang.Object reqTime = true required = false fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
     _jspx_th_c_005fforEach_005f0.setItems((java.lang.Object) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${views}", java.lang.Object.class, (PageContext)_jspx_page_context, null, false));
-    // /WEB-INF/module/calendar/index.jsp(52,6) name = var type = java.lang.String reqTime = false required = false fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
+    // /WEB-INF/module/products/viewpop.jsp(36,1) name = var type = java.lang.String reqTime = false required = false fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
     _jspx_th_c_005fforEach_005f0.setVar("v");
     int[] _jspx_push_body_count_c_005fforEach_005f0 = new int[] { 0 };
     try {
@@ -579,13 +421,13 @@ String win_bar_1 = "resizable=\"false\"  closed=\"true\" modal=\"false\" collaps
       if (_jspx_eval_c_005fforEach_005f0 != javax.servlet.jsp.tagext.Tag.SKIP_BODY) {
         do {
           out.write("\r\n");
-          out.write("\t\t\t\t\t\t\t<option value=\"");
+          out.write("\t\t<option value=\"");
           out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${v.cvid }", java.lang.String.class, (PageContext)_jspx_page_context, null, false));
           out.write('"');
           out.write('>');
           out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${v.viewname}", java.lang.String.class, (PageContext)_jspx_page_context, null, false));
           out.write("</option>\r\n");
-          out.write("\t\t\t\t\t\t");
+          out.write("\t");
           int evalDoAfterBody = _jspx_th_c_005fforEach_005f0.doAfterBody();
           if (evalDoAfterBody != javax.servlet.jsp.tagext.BodyTag.EVAL_BODY_AGAIN)
             break;

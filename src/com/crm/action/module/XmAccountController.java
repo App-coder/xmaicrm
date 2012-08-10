@@ -33,6 +33,14 @@ import com.crm.util.ActionUtil;
 import com.crm.util.actionutil.ActionCls;
 import com.crm.util.crm.CustomViewUtil;
 
+/**
+ * 
+ * 客户控制
+ * 
+ * User: zhujun
+ * Date: 2012-8-10
+ * Time: 下午9:31:43
+ */
 @Controller
 @RequestMapping(value = "crm/module/accounts")
 public class XmAccountController extends BaseController{
