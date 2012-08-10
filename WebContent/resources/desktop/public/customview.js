@@ -27,17 +27,9 @@ function initBind() {
         	$('#form_customview').find("input[name=ispublic]").val(0);
         	
         	//设置public setpublic
-        	var setpublic = "";
-        	var rolesselects = $("#roles").find("option[selected=selected]");
-        	for(var i=0;i<rolesselects.length;i++){
-        	    if(i==0){
-        		setpublic +=rolesselects[i].attr("value");
-        	    }else{
-        		setpublic +=","+rolesselects[i].attr("value");
-        	    }
-        	}
-        
-        	//$('#form_customview').find("input[name=setpublic]").val();
+        	var setpublic = $("#roles").val();
+        	$('#form_customview').find("input[name=setpublic]").val(setpublic);
+        	
             }
             
             if($('#form_customview').find("input[id=setmetrics]").attr("checked") == "checked"){
