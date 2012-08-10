@@ -19,6 +19,7 @@ import com.crm.model.XmUsers;
 import com.crm.service.settings.basic.XmGroupsService;
 import com.crm.service.settings.basic.XmUsersService;
 import com.crm.util.ActionUtil;
+import com.crm.util.actionutil.ActionCls;
 
 /**
  * 
@@ -31,6 +32,12 @@ import com.crm.util.ActionUtil;
 @Controller
 @RequestMapping(value = "crm/module/calendar")
 public class XmCalendarController {
+	
+	ActionCls actionCls;
+	@Resource(name="actionCls")
+	public void setActionCls(ActionCls actionCls) {
+		this.actionCls = actionCls;
+	}
 	
 	XmGroupsService xmGroupsService;
 	@Resource(name="xmGroupsService")
@@ -55,6 +62,14 @@ public class XmCalendarController {
 	public String index(int ptb,ModelMap modelMap) throws UnsupportedEncodingException{
 		ActionUtil.setTitle("Events", ptb, modelMap, this.moduleUtil);
 		return "module/calendar/index";
+	}
+	
+	@RequestMapping(value = "/showedit")
+	public String showedit(int recordid,String module,int ptb,ModelMap modelmap){
+		
+		this.actionCls.showEdit(ptb, module, modelmap,recordid);
+		
+		return "module/calendar/edit";
 	}
 	
 	@RequestMapping(value = "/view")
@@ -122,7 +137,7 @@ public class XmCalendarController {
 				if(users.get(j).getGroupid().equals(group.getId())){
 					ComboTree u = new ComboTree();
 					u.setId(users.get(j).getId()+"");
-					u.setText(users.get(j).getUserName());
+					u.setText(users.get(j).getLastName());
 					u.setIconCls("icon-user");
 					childs.add(u);
 				}

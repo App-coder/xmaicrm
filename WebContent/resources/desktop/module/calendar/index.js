@@ -54,6 +54,7 @@ function reloadView(val){
 		pageSize:20
 	});
     },'json');
-    
-    
+}
+function insert(){
+    window.location.href="crm/module/calendar/showedit?recordid=0&ptb="+ptb+"&module="+entitytype;
 }

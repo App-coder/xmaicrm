@@ -59,7 +59,7 @@ var ptb = ${ptb.parenttabid };
 				</div>
 				<div id="tabbar" class="gtb" style="display: block;" >  
 			查看范围：<select class="easyui-combotree" style="width:200px;" data-options="url:'crm/module/calendar/getCondition'"></select>
-						<a class="easyui-linkbutton" data-options="plain:true" iconCls="icon-add" >添加</a>
+						<a class="easyui-linkbutton" data-options="plain:true" iconCls="icon-add" onclick="insert()" >添加</a>
 						<a class="easyui-linkbutton" data-options="plain:true" iconCls="icon-edit" >修改</a>
 						<a class="easyui-linkbutton" data-options="plain:true" iconCls="icon-edit" >批量修改</a>
 						<a class="easyui-linkbutton" data-options="plain:true" iconCls="icon-view" onclick="view()" >预览</a>

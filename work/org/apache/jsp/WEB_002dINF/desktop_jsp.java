@@ -872,6 +872,11 @@ String win_bar_1 = "resizable=\"false\"  closed=\"true\" modal=\"false\" collaps
           return true;
         out.write('\r');
         out.write('\n');
+        out.write('	');
+        if (_jspx_meth_c_005fwhen_005f31(_jspx_th_c_005fchoose_005f1, _jspx_page_context, _jspx_push_body_count_c_005fforEach_005f1))
+          return true;
+        out.write('\r');
+        out.write('\n');
         int evalDoAfterBody = _jspx_th_c_005fchoose_005f1.doAfterBody();
         if (evalDoAfterBody != javax.servlet.jsp.tagext.BodyTag.EVAL_BODY_AGAIN)
           break;
@@ -1840,6 +1845,35 @@ String win_bar_1 = "resizable=\"false\"  closed=\"true\" modal=\"false\" collaps
     return false;
   }
 
+  private boolean _jspx_meth_c_005fwhen_005f31(javax.servlet.jsp.tagext.JspTag _jspx_th_c_005fchoose_005f1, PageContext _jspx_page_context, int[] _jspx_push_body_count_c_005fforEach_005f1)
+          throws Throwable {
+    PageContext pageContext = _jspx_page_context;
+    JspWriter out = _jspx_page_context.getOut();
+    //  c:when
+    org.apache.taglibs.standard.tag.rt.core.WhenTag _jspx_th_c_005fwhen_005f31 = (org.apache.taglibs.standard.tag.rt.core.WhenTag) _005fjspx_005ftagPool_005fc_005fwhen_0026_005ftest.get(org.apache.taglibs.standard.tag.rt.core.WhenTag.class);
+    _jspx_th_c_005fwhen_005f31.setPageContext(_jspx_page_context);
+    _jspx_th_c_005fwhen_005f31.setParent((javax.servlet.jsp.tagext.Tag) _jspx_th_c_005fchoose_005f1);
+    // /WEB-INF/portlets/select.jsp(180,1) name = test type = boolean reqTime = true required = true fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
+    _jspx_th_c_005fwhen_005f31.setTest(((java.lang.Boolean) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${ stuff.stufftype =='user_salesfinishedbymonth' }", java.lang.Boolean.class, (PageContext)_jspx_page_context, null, false)).booleanValue());
+    int _jspx_eval_c_005fwhen_005f31 = _jspx_th_c_005fwhen_005f31.doStartTag();
+    if (_jspx_eval_c_005fwhen_005f31 != javax.servlet.jsp.tagext.Tag.SKIP_BODY) {
+      do {
+        out.write("\r\n");
+        out.write("\t\t<div id=\"chart_user_salesfinishedbymonth\" style=\"width:100%;height:252px;\"></div>\r\n");
+        out.write("\t");
+        int evalDoAfterBody = _jspx_th_c_005fwhen_005f31.doAfterBody();
+        if (evalDoAfterBody != javax.servlet.jsp.tagext.BodyTag.EVAL_BODY_AGAIN)
+          break;
+      } while (true);
+    }
+    if (_jspx_th_c_005fwhen_005f31.doEndTag() == javax.servlet.jsp.tagext.Tag.SKIP_PAGE) {
+      _005fjspx_005ftagPool_005fc_005fwhen_0026_005ftest.reuse(_jspx_th_c_005fwhen_005f31);
+      return true;
+    }
+    _005fjspx_005ftagPool_005fc_005fwhen_0026_005ftest.reuse(_jspx_th_c_005fwhen_005f31);
+    return false;
+  }
+
   private boolean _jspx_meth_c_005fforEach_005f2(PageContext _jspx_page_context)
           throws Throwable {
     PageContext pageContext = _jspx_page_context;
@@ -1938,11 +1972,6 @@ String win_bar_1 = "resizable=\"false\"  closed=\"true\" modal=\"false\" collaps
         out.write('\r');
         out.write('\n');
         out.write('	');
-        if (_jspx_meth_c_005fwhen_005f31(_jspx_th_c_005fchoose_005f2, _jspx_page_context, _jspx_push_body_count_c_005fforEach_005f2))
-          return true;
-        out.write('\r');
-        out.write('\n');
-        out.write('	');
         if (_jspx_meth_c_005fwhen_005f32(_jspx_th_c_005fchoose_005f2, _jspx_page_context, _jspx_push_body_count_c_005fforEach_005f2))
           return true;
         out.write('\r');
@@ -1980,13 +2009,13 @@ String win_bar_1 = "resizable=\"false\"  closed=\"true\" modal=\"false\" collaps
         out.write('	');
         if (_jspx_meth_c_005fwhen_005f39(_jspx_th_c_005fchoose_005f2, _jspx_page_context, _jspx_push_body_count_c_005fforEach_005f2))
           return true;
-        out.write("\t\r\n");
-        out.write("\t");
-        if (_jspx_meth_c_005fwhen_005f40(_jspx_th_c_005fchoose_005f2, _jspx_page_context, _jspx_push_body_count_c_005fforEach_005f2))
-          return true;
         out.write('\r');
         out.write('\n');
         out.write('	');
+        if (_jspx_meth_c_005fwhen_005f40(_jspx_th_c_005fchoose_005f2, _jspx_page_context, _jspx_push_body_count_c_005fforEach_005f2))
+          return true;
+        out.write("\t\r\n");
+        out.write("\t");
         if (_jspx_meth_c_005fwhen_005f41(_jspx_th_c_005fchoose_005f2, _jspx_page_context, _jspx_push_body_count_c_005fforEach_005f2))
           return true;
         out.write('\r');
@@ -2086,6 +2115,16 @@ String win_bar_1 = "resizable=\"false\"  closed=\"true\" modal=\"false\" collaps
           return true;
         out.write('\r');
         out.write('\n');
+        out.write('	');
+        if (_jspx_meth_c_005fwhen_005f61(_jspx_th_c_005fchoose_005f2, _jspx_page_context, _jspx_push_body_count_c_005fforEach_005f2))
+          return true;
+        out.write('\r');
+        out.write('\n');
+        out.write('	');
+        if (_jspx_meth_c_005fwhen_005f62(_jspx_th_c_005fchoose_005f2, _jspx_page_context, _jspx_push_body_count_c_005fforEach_005f2))
+          return true;
+        out.write('\r');
+        out.write('\n');
         int evalDoAfterBody = _jspx_th_c_005fchoose_005f2.doAfterBody();
         if (evalDoAfterBody != javax.servlet.jsp.tagext.BodyTag.EVAL_BODY_AGAIN)
           break;
@@ -2099,37 +2138,6 @@ String win_bar_1 = "resizable=\"false\"  closed=\"true\" modal=\"false\" collaps
     return false;
   }
 
-  private boolean _jspx_meth_c_005fwhen_005f31(javax.servlet.jsp.tagext.JspTag _jspx_th_c_005fchoose_005f2, PageContext _jspx_page_context, int[] _jspx_push_body_count_c_005fforEach_005f2)
-          throws Throwable {
-    PageContext pageContext = _jspx_page_context;
-    JspWriter out = _jspx_page_context.getOut();
-    //  c:when
-    org.apache.taglibs.standard.tag.rt.core.WhenTag _jspx_th_c_005fwhen_005f31 = (org.apache.taglibs.standard.tag.rt.core.WhenTag) _005fjspx_005ftagPool_005fc_005fwhen_0026_005ftest.get(org.apache.taglibs.standard.tag.rt.core.WhenTag.class);
-    _jspx_th_c_005fwhen_005f31.setPageContext(_jspx_page_context);
-    _jspx_th_c_005fwhen_005f31.setParent((javax.servlet.jsp.tagext.Tag) _jspx_th_c_005fchoose_005f2);
-    // /WEB-INF/portlets/select.jsp(5,1) name = test type = boolean reqTime = true required = true fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
-    _jspx_th_c_005fwhen_005f31.setTest(((java.lang.Boolean) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${stuff.stufftype == 'accountmoney'}", java.lang.Boolean.class, (PageContext)_jspx_page_context, null, false)).booleanValue());
-    int _jspx_eval_c_005fwhen_005f31 = _jspx_th_c_005fwhen_005f31.doStartTag();
-    if (_jspx_eval_c_005fwhen_005f31 != javax.servlet.jsp.tagext.Tag.SKIP_BODY) {
-      do {
-        out.write("\r\n");
-        out.write("\t\t<!-- 应收款，应付款，客户汇总 -->\r\n");
-        out.write("\t\t<table class=\"tablist\" id=\"tab_accountmoney\">\r\n");
-        out.write("\t\t</table>\r\n");
-        out.write("\t");
-        int evalDoAfterBody = _jspx_th_c_005fwhen_005f31.doAfterBody();
-        if (evalDoAfterBody != javax.servlet.jsp.tagext.BodyTag.EVAL_BODY_AGAIN)
-          break;
-      } while (true);
-    }
-    if (_jspx_th_c_005fwhen_005f31.doEndTag() == javax.servlet.jsp.tagext.Tag.SKIP_PAGE) {
-      _005fjspx_005ftagPool_005fc_005fwhen_0026_005ftest.reuse(_jspx_th_c_005fwhen_005f31);
-      return true;
-    }
-    _005fjspx_005ftagPool_005fc_005fwhen_0026_005ftest.reuse(_jspx_th_c_005fwhen_005f31);
-    return false;
-  }
-
   private boolean _jspx_meth_c_005fwhen_005f32(javax.servlet.jsp.tagext.JspTag _jspx_th_c_005fchoose_005f2, PageContext _jspx_page_context, int[] _jspx_push_body_count_c_005fforEach_005f2)
           throws Throwable {
     PageContext pageContext = _jspx_page_context;
@@ -2138,13 +2146,15 @@ String win_bar_1 = "resizable=\"false\"  closed=\"true\" modal=\"false\" collaps
     org.apache.taglibs.standard.tag.rt.core.WhenTag _jspx_th_c_005fwhen_005f32 = (org.apache.taglibs.standard.tag.rt.core.WhenTag) _005fjspx_005ftagPool_005fc_005fwhen_0026_005ftest.get(org.apache.taglibs.standard.tag.rt.core.WhenTag.class);
     _jspx_th_c_005fwhen_005f32.setPageContext(_jspx_page_context);
     _jspx_th_c_005fwhen_005f32.setParent((javax.servlet.jsp.tagext.Tag) _jspx_th_c_005fchoose_005f2);
-    // /WEB-INF/portlets/select.jsp(10,1) name = test type = boolean reqTime = true required = true fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
-    _jspx_th_c_005fwhen_005f32.setTest(((java.lang.Boolean) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${stuff.stufftype == 'gathersyear'}", java.lang.Boolean.class, (PageContext)_jspx_page_context, null, false)).booleanValue());
+    // /WEB-INF/portlets/select.jsp(5,1) name = test type = boolean reqTime = true required = true fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
+    _jspx_th_c_005fwhen_005f32.setTest(((java.lang.Boolean) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${stuff.stufftype == 'accountmoney'}", java.lang.Boolean.class, (PageContext)_jspx_page_context, null, false)).booleanValue());
     int _jspx_eval_c_005fwhen_005f32 = _jspx_th_c_005fwhen_005f32.doStartTag();
     if (_jspx_eval_c_005fwhen_005f32 != javax.servlet.jsp.tagext.Tag.SKIP_BODY) {
       do {
         out.write("\r\n");
-        out.write("\t\t<div id=\"chart_gathersyear\" style=\"width:100%;height:252px;\"></div>\r\n");
+        out.write("\t\t<!-- 应收款，应付款，客户汇总 -->\r\n");
+        out.write("\t\t<table class=\"tablist\" id=\"tab_accountmoney\">\r\n");
+        out.write("\t\t</table>\r\n");
         out.write("\t");
         int evalDoAfterBody = _jspx_th_c_005fwhen_005f32.doAfterBody();
         if (evalDoAfterBody != javax.servlet.jsp.tagext.BodyTag.EVAL_BODY_AGAIN)
@@ -2167,13 +2177,13 @@ String win_bar_1 = "resizable=\"false\"  closed=\"true\" modal=\"false\" collaps
     org.apache.taglibs.standard.tag.rt.core.WhenTag _jspx_th_c_005fwhen_005f33 = (org.apache.taglibs.standard.tag.rt.core.WhenTag) _005fjspx_005ftagPool_005fc_005fwhen_0026_005ftest.get(org.apache.taglibs.standard.tag.rt.core.WhenTag.class);
     _jspx_th_c_005fwhen_005f33.setPageContext(_jspx_page_context);
     _jspx_th_c_005fwhen_005f33.setParent((javax.servlet.jsp.tagext.Tag) _jspx_th_c_005fchoose_005f2);
-    // /WEB-INF/portlets/select.jsp(13,1) name = test type = boolean reqTime = true required = true fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
-    _jspx_th_c_005fwhen_005f33.setTest(((java.lang.Boolean) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${stuff.stufftype == 'com_gathersfinishedbymonth' }", java.lang.Boolean.class, (PageContext)_jspx_page_context, null, false)).booleanValue());
+    // /WEB-INF/portlets/select.jsp(10,1) name = test type = boolean reqTime = true required = true fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
+    _jspx_th_c_005fwhen_005f33.setTest(((java.lang.Boolean) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${stuff.stufftype == 'gathersyear'}", java.lang.Boolean.class, (PageContext)_jspx_page_context, null, false)).booleanValue());
     int _jspx_eval_c_005fwhen_005f33 = _jspx_th_c_005fwhen_005f33.doStartTag();
     if (_jspx_eval_c_005fwhen_005f33 != javax.servlet.jsp.tagext.Tag.SKIP_BODY) {
       do {
         out.write("\r\n");
-        out.write("\t\t<div id=\"chart_comgathersfinishedbymonth\" style=\"width:100%;height:252px;\"></div>\r\n");
+        out.write("\t\t<div id=\"chart_gathersyear\" style=\"width:100%;height:252px;\"></div>\r\n");
         out.write("\t");
         int evalDoAfterBody = _jspx_th_c_005fwhen_005f33.doAfterBody();
         if (evalDoAfterBody != javax.servlet.jsp.tagext.BodyTag.EVAL_BODY_AGAIN)
@@ -2196,13 +2206,13 @@ String win_bar_1 = "resizable=\"false\"  closed=\"true\" modal=\"false\" collaps
     org.apache.taglibs.standard.tag.rt.core.WhenTag _jspx_th_c_005fwhen_005f34 = (org.apache.taglibs.standard.tag.rt.core.WhenTag) _005fjspx_005ftagPool_005fc_005fwhen_0026_005ftest.get(org.apache.taglibs.standard.tag.rt.core.WhenTag.class);
     _jspx_th_c_005fwhen_005f34.setPageContext(_jspx_page_context);
     _jspx_th_c_005fwhen_005f34.setParent((javax.servlet.jsp.tagext.Tag) _jspx_th_c_005fchoose_005f2);
-    // /WEB-INF/portlets/select.jsp(16,1) name = test type = boolean reqTime = true required = true fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
-    _jspx_th_c_005fwhen_005f34.setTest(((java.lang.Boolean) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${stuff.stufftype == 'top_salesbymonth' }", java.lang.Boolean.class, (PageContext)_jspx_page_context, null, false)).booleanValue());
+    // /WEB-INF/portlets/select.jsp(13,1) name = test type = boolean reqTime = true required = true fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
+    _jspx_th_c_005fwhen_005f34.setTest(((java.lang.Boolean) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${stuff.stufftype == 'com_gathersfinishedbymonth' }", java.lang.Boolean.class, (PageContext)_jspx_page_context, null, false)).booleanValue());
     int _jspx_eval_c_005fwhen_005f34 = _jspx_th_c_005fwhen_005f34.doStartTag();
     if (_jspx_eval_c_005fwhen_005f34 != javax.servlet.jsp.tagext.Tag.SKIP_BODY) {
       do {
         out.write("\r\n");
-        out.write("\t\t<div id=\"chart_top_salesbymonth\" style=\"width:100%;height:252px;\"></div>\r\n");
+        out.write("\t\t<div id=\"chart_comgathersfinishedbymonth\" style=\"width:100%;height:252px;\"></div>\r\n");
         out.write("\t");
         int evalDoAfterBody = _jspx_th_c_005fwhen_005f34.doAfterBody();
         if (evalDoAfterBody != javax.servlet.jsp.tagext.BodyTag.EVAL_BODY_AGAIN)
@@ -2225,10 +2235,39 @@ String win_bar_1 = "resizable=\"false\"  closed=\"true\" modal=\"false\" collaps
     org.apache.taglibs.standard.tag.rt.core.WhenTag _jspx_th_c_005fwhen_005f35 = (org.apache.taglibs.standard.tag.rt.core.WhenTag) _005fjspx_005ftagPool_005fc_005fwhen_0026_005ftest.get(org.apache.taglibs.standard.tag.rt.core.WhenTag.class);
     _jspx_th_c_005fwhen_005f35.setPageContext(_jspx_page_context);
     _jspx_th_c_005fwhen_005f35.setParent((javax.servlet.jsp.tagext.Tag) _jspx_th_c_005fchoose_005f2);
-    // /WEB-INF/portlets/select.jsp(19,1) name = test type = boolean reqTime = true required = true fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
-    _jspx_th_c_005fwhen_005f35.setTest(((java.lang.Boolean) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${stuff.stufftype =='salesyearinfo' }", java.lang.Boolean.class, (PageContext)_jspx_page_context, null, false)).booleanValue());
+    // /WEB-INF/portlets/select.jsp(16,1) name = test type = boolean reqTime = true required = true fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
+    _jspx_th_c_005fwhen_005f35.setTest(((java.lang.Boolean) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${stuff.stufftype == 'top_salesbymonth' }", java.lang.Boolean.class, (PageContext)_jspx_page_context, null, false)).booleanValue());
     int _jspx_eval_c_005fwhen_005f35 = _jspx_th_c_005fwhen_005f35.doStartTag();
     if (_jspx_eval_c_005fwhen_005f35 != javax.servlet.jsp.tagext.Tag.SKIP_BODY) {
+      do {
+        out.write("\r\n");
+        out.write("\t\t<div id=\"chart_top_salesbymonth\" style=\"width:100%;height:252px;\"></div>\r\n");
+        out.write("\t");
+        int evalDoAfterBody = _jspx_th_c_005fwhen_005f35.doAfterBody();
+        if (evalDoAfterBody != javax.servlet.jsp.tagext.BodyTag.EVAL_BODY_AGAIN)
+          break;
+      } while (true);
+    }
+    if (_jspx_th_c_005fwhen_005f35.doEndTag() == javax.servlet.jsp.tagext.Tag.SKIP_PAGE) {
+      _005fjspx_005ftagPool_005fc_005fwhen_0026_005ftest.reuse(_jspx_th_c_005fwhen_005f35);
+      return true;
+    }
+    _005fjspx_005ftagPool_005fc_005fwhen_0026_005ftest.reuse(_jspx_th_c_005fwhen_005f35);
+    return false;
+  }
+
+  private boolean _jspx_meth_c_005fwhen_005f36(javax.servlet.jsp.tagext.JspTag _jspx_th_c_005fchoose_005f2, PageContext _jspx_page_context, int[] _jspx_push_body_count_c_005fforEach_005f2)
+          throws Throwable {
+    PageContext pageContext = _jspx_page_context;
+    JspWriter out = _jspx_page_context.getOut();
+    //  c:when
+    org.apache.taglibs.standard.tag.rt.core.WhenTag _jspx_th_c_005fwhen_005f36 = (org.apache.taglibs.standard.tag.rt.core.WhenTag) _005fjspx_005ftagPool_005fc_005fwhen_0026_005ftest.get(org.apache.taglibs.standard.tag.rt.core.WhenTag.class);
+    _jspx_th_c_005fwhen_005f36.setPageContext(_jspx_page_context);
+    _jspx_th_c_005fwhen_005f36.setParent((javax.servlet.jsp.tagext.Tag) _jspx_th_c_005fchoose_005f2);
+    // /WEB-INF/portlets/select.jsp(19,1) name = test type = boolean reqTime = true required = true fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
+    _jspx_th_c_005fwhen_005f36.setTest(((java.lang.Boolean) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${stuff.stufftype =='salesyearinfo' }", java.lang.Boolean.class, (PageContext)_jspx_page_context, null, false)).booleanValue());
+    int _jspx_eval_c_005fwhen_005f36 = _jspx_th_c_005fwhen_005f36.doStartTag();
+    if (_jspx_eval_c_005fwhen_005f36 != javax.servlet.jsp.tagext.Tag.SKIP_BODY) {
       do {
         out.write("\r\n");
         out.write("\t\t<table class=\"tabsaleyearinfo\">\r\n");
@@ -2257,35 +2296,6 @@ String win_bar_1 = "resizable=\"false\"  closed=\"true\" modal=\"false\" collaps
         out.write("\t\t</tbody>\r\n");
         out.write("\t</table>\r\n");
         out.write("\t");
-        int evalDoAfterBody = _jspx_th_c_005fwhen_005f35.doAfterBody();
-        if (evalDoAfterBody != javax.servlet.jsp.tagext.BodyTag.EVAL_BODY_AGAIN)
-          break;
-      } while (true);
-    }
-    if (_jspx_th_c_005fwhen_005f35.doEndTag() == javax.servlet.jsp.tagext.Tag.SKIP_PAGE) {
-      _005fjspx_005ftagPool_005fc_005fwhen_0026_005ftest.reuse(_jspx_th_c_005fwhen_005f35);
-      return true;
-    }
-    _005fjspx_005ftagPool_005fc_005fwhen_0026_005ftest.reuse(_jspx_th_c_005fwhen_005f35);
-    return false;
-  }
-
-  private boolean _jspx_meth_c_005fwhen_005f36(javax.servlet.jsp.tagext.JspTag _jspx_th_c_005fchoose_005f2, PageContext _jspx_page_context, int[] _jspx_push_body_count_c_005fforEach_005f2)
-          throws Throwable {
-    PageContext pageContext = _jspx_page_context;
-    JspWriter out = _jspx_page_context.getOut();
-    //  c:when
-    org.apache.taglibs.standard.tag.rt.core.WhenTag _jspx_th_c_005fwhen_005f36 = (org.apache.taglibs.standard.tag.rt.core.WhenTag) _005fjspx_005ftagPool_005fc_005fwhen_0026_005ftest.get(org.apache.taglibs.standard.tag.rt.core.WhenTag.class);
-    _jspx_th_c_005fwhen_005f36.setPageContext(_jspx_page_context);
-    _jspx_th_c_005fwhen_005f36.setParent((javax.servlet.jsp.tagext.Tag) _jspx_th_c_005fchoose_005f2);
-    // /WEB-INF/portlets/select.jsp(46,1) name = test type = boolean reqTime = true required = true fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
-    _jspx_th_c_005fwhen_005f36.setTest(((java.lang.Boolean) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${stuff.stufftype == 'key_customview'}", java.lang.Boolean.class, (PageContext)_jspx_page_context, null, false)).booleanValue());
-    int _jspx_eval_c_005fwhen_005f36 = _jspx_th_c_005fwhen_005f36.doStartTag();
-    if (_jspx_eval_c_005fwhen_005f36 != javax.servlet.jsp.tagext.Tag.SKIP_BODY) {
-      do {
-        out.write("\r\n");
-        out.write("\t\t<table id=\"tab_keycustomview\"></table>\r\n");
-        out.write("\t");
         int evalDoAfterBody = _jspx_th_c_005fwhen_005f36.doAfterBody();
         if (evalDoAfterBody != javax.servlet.jsp.tagext.BodyTag.EVAL_BODY_AGAIN)
           break;
@@ -2307,13 +2317,13 @@ String win_bar_1 = "resizable=\"false\"  closed=\"true\" modal=\"false\" collaps
     org.apache.taglibs.standard.tag.rt.core.WhenTag _jspx_th_c_005fwhen_005f37 = (org.apache.taglibs.standard.tag.rt.core.WhenTag) _005fjspx_005ftagPool_005fc_005fwhen_0026_005ftest.get(org.apache.taglibs.standard.tag.rt.core.WhenTag.class);
     _jspx_th_c_005fwhen_005f37.setPageContext(_jspx_page_context);
     _jspx_th_c_005fwhen_005f37.setParent((javax.servlet.jsp.tagext.Tag) _jspx_th_c_005fchoose_005f2);
-    // /WEB-INF/portlets/select.jsp(49,1) name = test type = boolean reqTime = true required = true fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
-    _jspx_th_c_005fwhen_005f37.setTest(((java.lang.Boolean) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${stuff.stufftype == 'salesyear'}", java.lang.Boolean.class, (PageContext)_jspx_page_context, null, false)).booleanValue());
+    // /WEB-INF/portlets/select.jsp(46,1) name = test type = boolean reqTime = true required = true fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
+    _jspx_th_c_005fwhen_005f37.setTest(((java.lang.Boolean) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${stuff.stufftype == 'key_customview'}", java.lang.Boolean.class, (PageContext)_jspx_page_context, null, false)).booleanValue());
     int _jspx_eval_c_005fwhen_005f37 = _jspx_th_c_005fwhen_005f37.doStartTag();
     if (_jspx_eval_c_005fwhen_005f37 != javax.servlet.jsp.tagext.Tag.SKIP_BODY) {
       do {
         out.write("\r\n");
-        out.write("\t\t<div id=\"chart_salesyear\" style=\"width:100%;height:252px;\"></div>\r\n");
+        out.write("\t\t<table id=\"tab_keycustomview\"></table>\r\n");
         out.write("\t");
         int evalDoAfterBody = _jspx_th_c_005fwhen_005f37.doAfterBody();
         if (evalDoAfterBody != javax.servlet.jsp.tagext.BodyTag.EVAL_BODY_AGAIN)
@@ -2336,13 +2346,13 @@ String win_bar_1 = "resizable=\"false\"  closed=\"true\" modal=\"false\" collaps
     org.apache.taglibs.standard.tag.rt.core.WhenTag _jspx_th_c_005fwhen_005f38 = (org.apache.taglibs.standard.tag.rt.core.WhenTag) _005fjspx_005ftagPool_005fc_005fwhen_0026_005ftest.get(org.apache.taglibs.standard.tag.rt.core.WhenTag.class);
     _jspx_th_c_005fwhen_005f38.setPageContext(_jspx_page_context);
     _jspx_th_c_005fwhen_005f38.setParent((javax.servlet.jsp.tagext.Tag) _jspx_th_c_005fchoose_005f2);
-    // /WEB-INF/portlets/select.jsp(52,1) name = test type = boolean reqTime = true required = true fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
-    _jspx_th_c_005fwhen_005f38.setTest(((java.lang.Boolean) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${stuff.stufftype == 'top_potential'}", java.lang.Boolean.class, (PageContext)_jspx_page_context, null, false)).booleanValue());
+    // /WEB-INF/portlets/select.jsp(49,1) name = test type = boolean reqTime = true required = true fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
+    _jspx_th_c_005fwhen_005f38.setTest(((java.lang.Boolean) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${stuff.stufftype == 'salesyear'}", java.lang.Boolean.class, (PageContext)_jspx_page_context, null, false)).booleanValue());
     int _jspx_eval_c_005fwhen_005f38 = _jspx_th_c_005fwhen_005f38.doStartTag();
     if (_jspx_eval_c_005fwhen_005f38 != javax.servlet.jsp.tagext.Tag.SKIP_BODY) {
       do {
         out.write("\r\n");
-        out.write("\t\t<table id=\"tab_toppotential\"></table>\r\n");
+        out.write("\t\t<div id=\"chart_salesyear\" style=\"width:100%;height:252px;\"></div>\r\n");
         out.write("\t");
         int evalDoAfterBody = _jspx_th_c_005fwhen_005f38.doAfterBody();
         if (evalDoAfterBody != javax.servlet.jsp.tagext.BodyTag.EVAL_BODY_AGAIN)
@@ -2365,10 +2375,39 @@ String win_bar_1 = "resizable=\"false\"  closed=\"true\" modal=\"false\" collaps
     org.apache.taglibs.standard.tag.rt.core.WhenTag _jspx_th_c_005fwhen_005f39 = (org.apache.taglibs.standard.tag.rt.core.WhenTag) _005fjspx_005ftagPool_005fc_005fwhen_0026_005ftest.get(org.apache.taglibs.standard.tag.rt.core.WhenTag.class);
     _jspx_th_c_005fwhen_005f39.setPageContext(_jspx_page_context);
     _jspx_th_c_005fwhen_005f39.setParent((javax.servlet.jsp.tagext.Tag) _jspx_th_c_005fchoose_005f2);
-    // /WEB-INF/portlets/select.jsp(55,1) name = test type = boolean reqTime = true required = true fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
-    _jspx_th_c_005fwhen_005f39.setTest(((java.lang.Boolean) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${stuff.stufftype ==  'datelogs'}", java.lang.Boolean.class, (PageContext)_jspx_page_context, null, false)).booleanValue());
+    // /WEB-INF/portlets/select.jsp(52,1) name = test type = boolean reqTime = true required = true fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
+    _jspx_th_c_005fwhen_005f39.setTest(((java.lang.Boolean) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${stuff.stufftype == 'top_potential'}", java.lang.Boolean.class, (PageContext)_jspx_page_context, null, false)).booleanValue());
     int _jspx_eval_c_005fwhen_005f39 = _jspx_th_c_005fwhen_005f39.doStartTag();
     if (_jspx_eval_c_005fwhen_005f39 != javax.servlet.jsp.tagext.Tag.SKIP_BODY) {
+      do {
+        out.write("\r\n");
+        out.write("\t\t<table id=\"tab_toppotential\"></table>\r\n");
+        out.write("\t");
+        int evalDoAfterBody = _jspx_th_c_005fwhen_005f39.doAfterBody();
+        if (evalDoAfterBody != javax.servlet.jsp.tagext.BodyTag.EVAL_BODY_AGAIN)
+          break;
+      } while (true);
+    }
+    if (_jspx_th_c_005fwhen_005f39.doEndTag() == javax.servlet.jsp.tagext.Tag.SKIP_PAGE) {
+      _005fjspx_005ftagPool_005fc_005fwhen_0026_005ftest.reuse(_jspx_th_c_005fwhen_005f39);
+      return true;
+    }
+    _005fjspx_005ftagPool_005fc_005fwhen_0026_005ftest.reuse(_jspx_th_c_005fwhen_005f39);
+    return false;
+  }
+
+  private boolean _jspx_meth_c_005fwhen_005f40(javax.servlet.jsp.tagext.JspTag _jspx_th_c_005fchoose_005f2, PageContext _jspx_page_context, int[] _jspx_push_body_count_c_005fforEach_005f2)
+          throws Throwable {
+    PageContext pageContext = _jspx_page_context;
+    JspWriter out = _jspx_page_context.getOut();
+    //  c:when
+    org.apache.taglibs.standard.tag.rt.core.WhenTag _jspx_th_c_005fwhen_005f40 = (org.apache.taglibs.standard.tag.rt.core.WhenTag) _005fjspx_005ftagPool_005fc_005fwhen_0026_005ftest.get(org.apache.taglibs.standard.tag.rt.core.WhenTag.class);
+    _jspx_th_c_005fwhen_005f40.setPageContext(_jspx_page_context);
+    _jspx_th_c_005fwhen_005f40.setParent((javax.servlet.jsp.tagext.Tag) _jspx_th_c_005fchoose_005f2);
+    // /WEB-INF/portlets/select.jsp(55,1) name = test type = boolean reqTime = true required = true fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
+    _jspx_th_c_005fwhen_005f40.setTest(((java.lang.Boolean) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${stuff.stufftype ==  'datelogs'}", java.lang.Boolean.class, (PageContext)_jspx_page_context, null, false)).booleanValue());
+    int _jspx_eval_c_005fwhen_005f40 = _jspx_th_c_005fwhen_005f40.doStartTag();
+    if (_jspx_eval_c_005fwhen_005f40 != javax.servlet.jsp.tagext.Tag.SKIP_BODY) {
       do {
         out.write("\r\n");
         out.write("\t<table class=\"tabcalendar\">\r\n");
@@ -2408,35 +2447,6 @@ String win_bar_1 = "resizable=\"false\"  closed=\"true\" modal=\"false\" collaps
         out.write("\t\t</tbody>\r\n");
         out.write("\t</table>\r\n");
         out.write("\t");
-        int evalDoAfterBody = _jspx_th_c_005fwhen_005f39.doAfterBody();
-        if (evalDoAfterBody != javax.servlet.jsp.tagext.BodyTag.EVAL_BODY_AGAIN)
-          break;
-      } while (true);
-    }
-    if (_jspx_th_c_005fwhen_005f39.doEndTag() == javax.servlet.jsp.tagext.Tag.SKIP_PAGE) {
-      _005fjspx_005ftagPool_005fc_005fwhen_0026_005ftest.reuse(_jspx_th_c_005fwhen_005f39);
-      return true;
-    }
-    _005fjspx_005ftagPool_005fc_005fwhen_0026_005ftest.reuse(_jspx_th_c_005fwhen_005f39);
-    return false;
-  }
-
-  private boolean _jspx_meth_c_005fwhen_005f40(javax.servlet.jsp.tagext.JspTag _jspx_th_c_005fchoose_005f2, PageContext _jspx_page_context, int[] _jspx_push_body_count_c_005fforEach_005f2)
-          throws Throwable {
-    PageContext pageContext = _jspx_page_context;
-    JspWriter out = _jspx_page_context.getOut();
-    //  c:when
-    org.apache.taglibs.standard.tag.rt.core.WhenTag _jspx_th_c_005fwhen_005f40 = (org.apache.taglibs.standard.tag.rt.core.WhenTag) _005fjspx_005ftagPool_005fc_005fwhen_0026_005ftest.get(org.apache.taglibs.standard.tag.rt.core.WhenTag.class);
-    _jspx_th_c_005fwhen_005f40.setPageContext(_jspx_page_context);
-    _jspx_th_c_005fwhen_005f40.setParent((javax.servlet.jsp.tagext.Tag) _jspx_th_c_005fchoose_005f2);
-    // /WEB-INF/portlets/select.jsp(93,1) name = test type = boolean reqTime = true required = true fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
-    _jspx_th_c_005fwhen_005f40.setTest(((java.lang.Boolean) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${stuff.stufftype == 'salesfunnels'}", java.lang.Boolean.class, (PageContext)_jspx_page_context, null, false)).booleanValue());
-    int _jspx_eval_c_005fwhen_005f40 = _jspx_th_c_005fwhen_005f40.doStartTag();
-    if (_jspx_eval_c_005fwhen_005f40 != javax.servlet.jsp.tagext.Tag.SKIP_BODY) {
-      do {
-        out.write("\r\n");
-        out.write("\t\t<div id=\"portlets_salesfunnels\"></div>\r\n");
-        out.write("\t");
         int evalDoAfterBody = _jspx_th_c_005fwhen_005f40.doAfterBody();
         if (evalDoAfterBody != javax.servlet.jsp.tagext.BodyTag.EVAL_BODY_AGAIN)
           break;
@@ -2458,13 +2468,13 @@ String win_bar_1 = "resizable=\"false\"  closed=\"true\" modal=\"false\" collaps
     org.apache.taglibs.standard.tag.rt.core.WhenTag _jspx_th_c_005fwhen_005f41 = (org.apache.taglibs.standard.tag.rt.core.WhenTag) _005fjspx_005ftagPool_005fc_005fwhen_0026_005ftest.get(org.apache.taglibs.standard.tag.rt.core.WhenTag.class);
     _jspx_th_c_005fwhen_005f41.setPageContext(_jspx_page_context);
     _jspx_th_c_005fwhen_005f41.setParent((javax.servlet.jsp.tagext.Tag) _jspx_th_c_005fchoose_005f2);
-    // /WEB-INF/portlets/select.jsp(96,1) name = test type = boolean reqTime = true required = true fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
-    _jspx_th_c_005fwhen_005f41.setTest(((java.lang.Boolean) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${stuff.stufftype == 'com_salesfinishedbymonth' }", java.lang.Boolean.class, (PageContext)_jspx_page_context, null, false)).booleanValue());
+    // /WEB-INF/portlets/select.jsp(93,1) name = test type = boolean reqTime = true required = true fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
+    _jspx_th_c_005fwhen_005f41.setTest(((java.lang.Boolean) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${stuff.stufftype == 'salesfunnels'}", java.lang.Boolean.class, (PageContext)_jspx_page_context, null, false)).booleanValue());
     int _jspx_eval_c_005fwhen_005f41 = _jspx_th_c_005fwhen_005f41.doStartTag();
     if (_jspx_eval_c_005fwhen_005f41 != javax.servlet.jsp.tagext.Tag.SKIP_BODY) {
       do {
         out.write("\r\n");
-        out.write("\t\t<div id=\"chart_salesfinishedbymonth\" style=\"width:100%;height:250px;\"></div>\r\n");
+        out.write("\t\t<div id=\"portlets_salesfunnels\"></div>\r\n");
         out.write("\t");
         int evalDoAfterBody = _jspx_th_c_005fwhen_005f41.doAfterBody();
         if (evalDoAfterBody != javax.servlet.jsp.tagext.BodyTag.EVAL_BODY_AGAIN)
@@ -2487,13 +2497,13 @@ String win_bar_1 = "resizable=\"false\"  closed=\"true\" modal=\"false\" collaps
     org.apache.taglibs.standard.tag.rt.core.WhenTag _jspx_th_c_005fwhen_005f42 = (org.apache.taglibs.standard.tag.rt.core.WhenTag) _005fjspx_005ftagPool_005fc_005fwhen_0026_005ftest.get(org.apache.taglibs.standard.tag.rt.core.WhenTag.class);
     _jspx_th_c_005fwhen_005f42.setPageContext(_jspx_page_context);
     _jspx_th_c_005fwhen_005f42.setParent((javax.servlet.jsp.tagext.Tag) _jspx_th_c_005fchoose_005f2);
-    // /WEB-INF/portlets/select.jsp(99,1) name = test type = boolean reqTime = true required = true fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
-    _jspx_th_c_005fwhen_005f42.setTest(((java.lang.Boolean) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${ stuff.stufftype == 'cangkuassets' }", java.lang.Boolean.class, (PageContext)_jspx_page_context, null, false)).booleanValue());
+    // /WEB-INF/portlets/select.jsp(96,1) name = test type = boolean reqTime = true required = true fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
+    _jspx_th_c_005fwhen_005f42.setTest(((java.lang.Boolean) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${stuff.stufftype == 'com_salesfinishedbymonth' }", java.lang.Boolean.class, (PageContext)_jspx_page_context, null, false)).booleanValue());
     int _jspx_eval_c_005fwhen_005f42 = _jspx_th_c_005fwhen_005f42.doStartTag();
     if (_jspx_eval_c_005fwhen_005f42 != javax.servlet.jsp.tagext.Tag.SKIP_BODY) {
       do {
         out.write("\r\n");
-        out.write("\t\t<table id=\"tab_cangkuassets\"></table>\r\n");
+        out.write("\t\t<div id=\"chart_salesfinishedbymonth\" style=\"width:100%;height:250px;\"></div>\r\n");
         out.write("\t");
         int evalDoAfterBody = _jspx_th_c_005fwhen_005f42.doAfterBody();
         if (evalDoAfterBody != javax.servlet.jsp.tagext.BodyTag.EVAL_BODY_AGAIN)
@@ -2516,13 +2526,13 @@ String win_bar_1 = "resizable=\"false\"  closed=\"true\" modal=\"false\" collaps
     org.apache.taglibs.standard.tag.rt.core.WhenTag _jspx_th_c_005fwhen_005f43 = (org.apache.taglibs.standard.tag.rt.core.WhenTag) _005fjspx_005ftagPool_005fc_005fwhen_0026_005ftest.get(org.apache.taglibs.standard.tag.rt.core.WhenTag.class);
     _jspx_th_c_005fwhen_005f43.setPageContext(_jspx_page_context);
     _jspx_th_c_005fwhen_005f43.setParent((javax.servlet.jsp.tagext.Tag) _jspx_th_c_005fchoose_005f2);
-    // /WEB-INF/portlets/select.jsp(102,1) name = test type = boolean reqTime = true required = true fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
-    _jspx_th_c_005fwhen_005f43.setTest(((java.lang.Boolean) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${stuff.stufftype =='AccountMemdays' }", java.lang.Boolean.class, (PageContext)_jspx_page_context, null, false)).booleanValue());
+    // /WEB-INF/portlets/select.jsp(99,1) name = test type = boolean reqTime = true required = true fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
+    _jspx_th_c_005fwhen_005f43.setTest(((java.lang.Boolean) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${ stuff.stufftype == 'cangkuassets' }", java.lang.Boolean.class, (PageContext)_jspx_page_context, null, false)).booleanValue());
     int _jspx_eval_c_005fwhen_005f43 = _jspx_th_c_005fwhen_005f43.doStartTag();
     if (_jspx_eval_c_005fwhen_005f43 != javax.servlet.jsp.tagext.Tag.SKIP_BODY) {
       do {
         out.write("\r\n");
-        out.write("\t\t<table id=\"tab_AccountMemdays\"></table>\r\n");
+        out.write("\t\t<table id=\"tab_cangkuassets\"></table>\r\n");
         out.write("\t");
         int evalDoAfterBody = _jspx_th_c_005fwhen_005f43.doAfterBody();
         if (evalDoAfterBody != javax.servlet.jsp.tagext.BodyTag.EVAL_BODY_AGAIN)
@@ -2545,14 +2555,13 @@ String win_bar_1 = "resizable=\"false\"  closed=\"true\" modal=\"false\" collaps
     org.apache.taglibs.standard.tag.rt.core.WhenTag _jspx_th_c_005fwhen_005f44 = (org.apache.taglibs.standard.tag.rt.core.WhenTag) _005fjspx_005ftagPool_005fc_005fwhen_0026_005ftest.get(org.apache.taglibs.standard.tag.rt.core.WhenTag.class);
     _jspx_th_c_005fwhen_005f44.setPageContext(_jspx_page_context);
     _jspx_th_c_005fwhen_005f44.setParent((javax.servlet.jsp.tagext.Tag) _jspx_th_c_005fchoose_005f2);
-    // /WEB-INF/portlets/select.jsp(105,1) name = test type = boolean reqTime = true required = true fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
-    _jspx_th_c_005fwhen_005f44.setTest(((java.lang.Boolean) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${stuff.stufftype=='announcements' }", java.lang.Boolean.class, (PageContext)_jspx_page_context, null, false)).booleanValue());
+    // /WEB-INF/portlets/select.jsp(102,1) name = test type = boolean reqTime = true required = true fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
+    _jspx_th_c_005fwhen_005f44.setTest(((java.lang.Boolean) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${stuff.stufftype =='AccountMemdays' }", java.lang.Boolean.class, (PageContext)_jspx_page_context, null, false)).booleanValue());
     int _jspx_eval_c_005fwhen_005f44 = _jspx_th_c_005fwhen_005f44.doStartTag();
     if (_jspx_eval_c_005fwhen_005f44 != javax.servlet.jsp.tagext.Tag.SKIP_BODY) {
       do {
         out.write("\r\n");
-        out.write("\t\t<table class=\"tablist\" id=\"tab_announcements\">\r\n");
-        out.write("\t\t</table>\r\n");
+        out.write("\t\t<table id=\"tab_AccountMemdays\"></table>\r\n");
         out.write("\t");
         int evalDoAfterBody = _jspx_th_c_005fwhen_005f44.doAfterBody();
         if (evalDoAfterBody != javax.servlet.jsp.tagext.BodyTag.EVAL_BODY_AGAIN)
@@ -2575,16 +2584,13 @@ String win_bar_1 = "resizable=\"false\"  closed=\"true\" modal=\"false\" collaps
     org.apache.taglibs.standard.tag.rt.core.WhenTag _jspx_th_c_005fwhen_005f45 = (org.apache.taglibs.standard.tag.rt.core.WhenTag) _005fjspx_005ftagPool_005fc_005fwhen_0026_005ftest.get(org.apache.taglibs.standard.tag.rt.core.WhenTag.class);
     _jspx_th_c_005fwhen_005f45.setPageContext(_jspx_page_context);
     _jspx_th_c_005fwhen_005f45.setParent((javax.servlet.jsp.tagext.Tag) _jspx_th_c_005fchoose_005f2);
-    // /WEB-INF/portlets/select.jsp(109,1) name = test type = boolean reqTime = true required = true fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
-    _jspx_th_c_005fwhen_005f45.setTest(((java.lang.Boolean) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${stuff.stufftype=='c3crm_news' }", java.lang.Boolean.class, (PageContext)_jspx_page_context, null, false)).booleanValue());
+    // /WEB-INF/portlets/select.jsp(105,1) name = test type = boolean reqTime = true required = true fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
+    _jspx_th_c_005fwhen_005f45.setTest(((java.lang.Boolean) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${stuff.stufftype=='announcements' }", java.lang.Boolean.class, (PageContext)_jspx_page_context, null, false)).booleanValue());
     int _jspx_eval_c_005fwhen_005f45 = _jspx_th_c_005fwhen_005f45.doStartTag();
     if (_jspx_eval_c_005fwhen_005f45 != javax.servlet.jsp.tagext.Tag.SKIP_BODY) {
       do {
         out.write("\r\n");
-        out.write("\t\t<table class=\"tablist\" id=\"tab_c3crm_news\">\r\n");
-        out.write("\t\t\t<tr>\r\n");
-        out.write("\t\t\t\t<td class=\"pl5\">暂不可用</td>\r\n");
-        out.write("\t\t\t</tr>\r\n");
+        out.write("\t\t<table class=\"tablist\" id=\"tab_announcements\">\r\n");
         out.write("\t\t</table>\r\n");
         out.write("\t");
         int evalDoAfterBody = _jspx_th_c_005fwhen_005f45.doAfterBody();
@@ -2608,13 +2614,17 @@ String win_bar_1 = "resizable=\"false\"  closed=\"true\" modal=\"false\" collaps
     org.apache.taglibs.standard.tag.rt.core.WhenTag _jspx_th_c_005fwhen_005f46 = (org.apache.taglibs.standard.tag.rt.core.WhenTag) _005fjspx_005ftagPool_005fc_005fwhen_0026_005ftest.get(org.apache.taglibs.standard.tag.rt.core.WhenTag.class);
     _jspx_th_c_005fwhen_005f46.setPageContext(_jspx_page_context);
     _jspx_th_c_005fwhen_005f46.setParent((javax.servlet.jsp.tagext.Tag) _jspx_th_c_005fchoose_005f2);
-    // /WEB-INF/portlets/select.jsp(116,1) name = test type = boolean reqTime = true required = true fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
-    _jspx_th_c_005fwhen_005f46.setTest(((java.lang.Boolean) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${ stuff.stufftype =='expensesmonth' }", java.lang.Boolean.class, (PageContext)_jspx_page_context, null, false)).booleanValue());
+    // /WEB-INF/portlets/select.jsp(109,1) name = test type = boolean reqTime = true required = true fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
+    _jspx_th_c_005fwhen_005f46.setTest(((java.lang.Boolean) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${stuff.stufftype=='c3crm_news' }", java.lang.Boolean.class, (PageContext)_jspx_page_context, null, false)).booleanValue());
     int _jspx_eval_c_005fwhen_005f46 = _jspx_th_c_005fwhen_005f46.doStartTag();
     if (_jspx_eval_c_005fwhen_005f46 != javax.servlet.jsp.tagext.Tag.SKIP_BODY) {
       do {
         out.write("\r\n");
-        out.write("\t\t<table id=\"tab_expensesmonth\"></table>\r\n");
+        out.write("\t\t<table class=\"tablist\" id=\"tab_c3crm_news\">\r\n");
+        out.write("\t\t\t<tr>\r\n");
+        out.write("\t\t\t\t<td class=\"pl5\">暂不可用</td>\r\n");
+        out.write("\t\t\t</tr>\r\n");
+        out.write("\t\t</table>\r\n");
         out.write("\t");
         int evalDoAfterBody = _jspx_th_c_005fwhen_005f46.doAfterBody();
         if (evalDoAfterBody != javax.servlet.jsp.tagext.BodyTag.EVAL_BODY_AGAIN)
@@ -2637,16 +2647,13 @@ String win_bar_1 = "resizable=\"false\"  closed=\"true\" modal=\"false\" collaps
     org.apache.taglibs.standard.tag.rt.core.WhenTag _jspx_th_c_005fwhen_005f47 = (org.apache.taglibs.standard.tag.rt.core.WhenTag) _005fjspx_005ftagPool_005fc_005fwhen_0026_005ftest.get(org.apache.taglibs.standard.tag.rt.core.WhenTag.class);
     _jspx_th_c_005fwhen_005f47.setPageContext(_jspx_page_context);
     _jspx_th_c_005fwhen_005f47.setParent((javax.servlet.jsp.tagext.Tag) _jspx_th_c_005fchoose_005f2);
-    // /WEB-INF/portlets/select.jsp(119,1) name = test type = boolean reqTime = true required = true fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
-    _jspx_th_c_005fwhen_005f47.setTest(((java.lang.Boolean) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${ stuff.stufftype =='free_tags' }", java.lang.Boolean.class, (PageContext)_jspx_page_context, null, false)).booleanValue());
+    // /WEB-INF/portlets/select.jsp(116,1) name = test type = boolean reqTime = true required = true fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
+    _jspx_th_c_005fwhen_005f47.setTest(((java.lang.Boolean) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${ stuff.stufftype =='expensesmonth' }", java.lang.Boolean.class, (PageContext)_jspx_page_context, null, false)).booleanValue());
     int _jspx_eval_c_005fwhen_005f47 = _jspx_th_c_005fwhen_005f47.doStartTag();
     if (_jspx_eval_c_005fwhen_005f47 != javax.servlet.jsp.tagext.Tag.SKIP_BODY) {
       do {
         out.write("\r\n");
-        out.write("\t\t<div id=\"div_free_tags\" class=\"tag p10\">\r\n");
-        out.write("\t\t\t<ul>\r\n");
-        out.write("\t\t\t</ul>\r\n");
-        out.write("\t\t</div>\r\n");
+        out.write("\t\t<table id=\"tab_expensesmonth\"></table>\r\n");
         out.write("\t");
         int evalDoAfterBody = _jspx_th_c_005fwhen_005f47.doAfterBody();
         if (evalDoAfterBody != javax.servlet.jsp.tagext.BodyTag.EVAL_BODY_AGAIN)
@@ -2669,13 +2676,16 @@ String win_bar_1 = "resizable=\"false\"  closed=\"true\" modal=\"false\" collaps
     org.apache.taglibs.standard.tag.rt.core.WhenTag _jspx_th_c_005fwhen_005f48 = (org.apache.taglibs.standard.tag.rt.core.WhenTag) _005fjspx_005ftagPool_005fc_005fwhen_0026_005ftest.get(org.apache.taglibs.standard.tag.rt.core.WhenTag.class);
     _jspx_th_c_005fwhen_005f48.setPageContext(_jspx_page_context);
     _jspx_th_c_005fwhen_005f48.setParent((javax.servlet.jsp.tagext.Tag) _jspx_th_c_005fchoose_005f2);
-    // /WEB-INF/portlets/select.jsp(125,1) name = test type = boolean reqTime = true required = true fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
-    _jspx_th_c_005fwhen_005f48.setTest(((java.lang.Boolean) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${ stuff.stufftype =='note_pad' }", java.lang.Boolean.class, (PageContext)_jspx_page_context, null, false)).booleanValue());
+    // /WEB-INF/portlets/select.jsp(119,1) name = test type = boolean reqTime = true required = true fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
+    _jspx_th_c_005fwhen_005f48.setTest(((java.lang.Boolean) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${ stuff.stufftype =='free_tags' }", java.lang.Boolean.class, (PageContext)_jspx_page_context, null, false)).booleanValue());
     int _jspx_eval_c_005fwhen_005f48 = _jspx_th_c_005fwhen_005f48.doStartTag();
     if (_jspx_eval_c_005fwhen_005f48 != javax.servlet.jsp.tagext.Tag.SKIP_BODY) {
       do {
         out.write("\r\n");
-        out.write("\t\t<textarea name=\"content\" style=\"width:99%;height:250px;border:1px solid gray;\" id=\"content\" onblur=\"setNotepad()\" ></textarea>\r\n");
+        out.write("\t\t<div id=\"div_free_tags\" class=\"tag p10\">\r\n");
+        out.write("\t\t\t<ul>\r\n");
+        out.write("\t\t\t</ul>\r\n");
+        out.write("\t\t</div>\r\n");
         out.write("\t");
         int evalDoAfterBody = _jspx_th_c_005fwhen_005f48.doAfterBody();
         if (evalDoAfterBody != javax.servlet.jsp.tagext.BodyTag.EVAL_BODY_AGAIN)
@@ -2698,13 +2708,13 @@ String win_bar_1 = "resizable=\"false\"  closed=\"true\" modal=\"false\" collaps
     org.apache.taglibs.standard.tag.rt.core.WhenTag _jspx_th_c_005fwhen_005f49 = (org.apache.taglibs.standard.tag.rt.core.WhenTag) _005fjspx_005ftagPool_005fc_005fwhen_0026_005ftest.get(org.apache.taglibs.standard.tag.rt.core.WhenTag.class);
     _jspx_th_c_005fwhen_005f49.setPageContext(_jspx_page_context);
     _jspx_th_c_005fwhen_005f49.setParent((javax.servlet.jsp.tagext.Tag) _jspx_th_c_005fchoose_005f2);
-    // /WEB-INF/portlets/select.jsp(128,1) name = test type = boolean reqTime = true required = true fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
-    _jspx_th_c_005fwhen_005f49.setTest(((java.lang.Boolean) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${stuff.stufftype=='notok_calendar' }", java.lang.Boolean.class, (PageContext)_jspx_page_context, null, false)).booleanValue());
+    // /WEB-INF/portlets/select.jsp(125,1) name = test type = boolean reqTime = true required = true fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
+    _jspx_th_c_005fwhen_005f49.setTest(((java.lang.Boolean) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${ stuff.stufftype =='note_pad' }", java.lang.Boolean.class, (PageContext)_jspx_page_context, null, false)).booleanValue());
     int _jspx_eval_c_005fwhen_005f49 = _jspx_th_c_005fwhen_005f49.doStartTag();
     if (_jspx_eval_c_005fwhen_005f49 != javax.servlet.jsp.tagext.Tag.SKIP_BODY) {
       do {
         out.write("\r\n");
-        out.write("\t\t<table id=\"tab_notok_calendar\"></table>\r\n");
+        out.write("\t\t<textarea name=\"content\" style=\"width:99%;height:250px;border:1px solid gray;\" id=\"content\" onblur=\"setNotepad()\" ></textarea>\r\n");
         out.write("\t");
         int evalDoAfterBody = _jspx_th_c_005fwhen_005f49.doAfterBody();
         if (evalDoAfterBody != javax.servlet.jsp.tagext.BodyTag.EVAL_BODY_AGAIN)
@@ -2727,13 +2737,13 @@ String win_bar_1 = "resizable=\"false\"  closed=\"true\" modal=\"false\" collaps
     org.apache.taglibs.standard.tag.rt.core.WhenTag _jspx_th_c_005fwhen_005f50 = (org.apache.taglibs.standard.tag.rt.core.WhenTag) _005fjspx_005ftagPool_005fc_005fwhen_0026_005ftest.get(org.apache.taglibs.standard.tag.rt.core.WhenTag.class);
     _jspx_th_c_005fwhen_005f50.setPageContext(_jspx_page_context);
     _jspx_th_c_005fwhen_005f50.setParent((javax.servlet.jsp.tagext.Tag) _jspx_th_c_005fchoose_005f2);
-    // /WEB-INF/portlets/select.jsp(131,1) name = test type = boolean reqTime = true required = true fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
-    _jspx_th_c_005fwhen_005f50.setTest(((java.lang.Boolean) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${stuff.stufftype=='online_users' }", java.lang.Boolean.class, (PageContext)_jspx_page_context, null, false)).booleanValue());
+    // /WEB-INF/portlets/select.jsp(128,1) name = test type = boolean reqTime = true required = true fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
+    _jspx_th_c_005fwhen_005f50.setTest(((java.lang.Boolean) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${stuff.stufftype=='notok_calendar' }", java.lang.Boolean.class, (PageContext)_jspx_page_context, null, false)).booleanValue());
     int _jspx_eval_c_005fwhen_005f50 = _jspx_th_c_005fwhen_005f50.doStartTag();
     if (_jspx_eval_c_005fwhen_005f50 != javax.servlet.jsp.tagext.Tag.SKIP_BODY) {
       do {
         out.write("\r\n");
-        out.write("\t\t<table id=\"tab_online_users\"></table>\r\n");
+        out.write("\t\t<table id=\"tab_notok_calendar\"></table>\r\n");
         out.write("\t");
         int evalDoAfterBody = _jspx_th_c_005fwhen_005f50.doAfterBody();
         if (evalDoAfterBody != javax.servlet.jsp.tagext.BodyTag.EVAL_BODY_AGAIN)
@@ -2756,28 +2766,13 @@ String win_bar_1 = "resizable=\"false\"  closed=\"true\" modal=\"false\" collaps
     org.apache.taglibs.standard.tag.rt.core.WhenTag _jspx_th_c_005fwhen_005f51 = (org.apache.taglibs.standard.tag.rt.core.WhenTag) _005fjspx_005ftagPool_005fc_005fwhen_0026_005ftest.get(org.apache.taglibs.standard.tag.rt.core.WhenTag.class);
     _jspx_th_c_005fwhen_005f51.setPageContext(_jspx_page_context);
     _jspx_th_c_005fwhen_005f51.setParent((javax.servlet.jsp.tagext.Tag) _jspx_th_c_005fchoose_005f2);
-    // /WEB-INF/portlets/select.jsp(134,1) name = test type = boolean reqTime = true required = true fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
-    _jspx_th_c_005fwhen_005f51.setTest(((java.lang.Boolean) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${stuff.stufftype=='short_cuts' }", java.lang.Boolean.class, (PageContext)_jspx_page_context, null, false)).booleanValue());
+    // /WEB-INF/portlets/select.jsp(131,1) name = test type = boolean reqTime = true required = true fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
+    _jspx_th_c_005fwhen_005f51.setTest(((java.lang.Boolean) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${stuff.stufftype=='online_users' }", java.lang.Boolean.class, (PageContext)_jspx_page_context, null, false)).booleanValue());
     int _jspx_eval_c_005fwhen_005f51 = _jspx_th_c_005fwhen_005f51.doStartTag();
     if (_jspx_eval_c_005fwhen_005f51 != javax.servlet.jsp.tagext.Tag.SKIP_BODY) {
       do {
         out.write("\r\n");
-        out.write("\t\t<div class=\"p10\">\r\n");
-        out.write("\t\t<table class=\"tabview\">\r\n");
-        out.write("\t\t\t<tr>\r\n");
-        out.write("\t\t\t\t<td><a href=\"crm/module/accounts/showedit?recordid=0&ptb=-1&module=Accounts\">新增客户</a></td><td><a href=\"crm/module/contacts/showedit?recordid=0&ptb=-1&module=Contacts\">新增联系人</a></td>\r\n");
-        out.write("\t\t\t</tr>\r\n");
-        out.write("\t\t\t<tr>\r\n");
-        out.write("\t\t\t\t<td><a href=\"crm/module/notes/showedit?recordid=0&ptb=-1&module=Notes\">新增联系记录</a></td><td><a href=\"crm/module/potentials/showedit?recordid=0&ptb=-1&module=Potentials\">新增销售机会</a></td>\r\n");
-        out.write("\t\t\t</tr>\r\n");
-        out.write("\t\t\t<tr>\r\n");
-        out.write("\t\t\t\t<td><a href=\"crm/module/funnels/index?ptb=5\" >销售漏斗</a></td><td><a href=\"crm/module/quotes/showedit?recordid=0&ptb=-1&module=Quotes\">新增报价</a></td>\r\n");
-        out.write("\t\t\t</tr>\r\n");
-        out.write("\t\t\t<tr>\r\n");
-        out.write("\t\t\t\t<td><a href=\"crm/module/salesorder/showedit?recordid=0&ptb=-1&module=SalesOrder\" >新增合同订单</a></td><td><a href=\"crm/module/performances/index?ptb=-1\" >员工绩效</a></td>\r\n");
-        out.write("\t\t\t</tr>\r\n");
-        out.write("\t\t</table> \r\n");
-        out.write("\t\t</div>\r\n");
+        out.write("\t\t<table id=\"tab_online_users\"></table>\r\n");
         out.write("\t");
         int evalDoAfterBody = _jspx_th_c_005fwhen_005f51.doAfterBody();
         if (evalDoAfterBody != javax.servlet.jsp.tagext.BodyTag.EVAL_BODY_AGAIN)
@@ -2800,13 +2795,28 @@ String win_bar_1 = "resizable=\"false\"  closed=\"true\" modal=\"false\" collaps
     org.apache.taglibs.standard.tag.rt.core.WhenTag _jspx_th_c_005fwhen_005f52 = (org.apache.taglibs.standard.tag.rt.core.WhenTag) _005fjspx_005ftagPool_005fc_005fwhen_0026_005ftest.get(org.apache.taglibs.standard.tag.rt.core.WhenTag.class);
     _jspx_th_c_005fwhen_005f52.setPageContext(_jspx_page_context);
     _jspx_th_c_005fwhen_005f52.setParent((javax.servlet.jsp.tagext.Tag) _jspx_th_c_005fchoose_005f2);
-    // /WEB-INF/portlets/select.jsp(152,1) name = test type = boolean reqTime = true required = true fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
-    _jspx_th_c_005fwhen_005f52.setTest(((java.lang.Boolean) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${stuff.stufftype == 'top_account' }", java.lang.Boolean.class, (PageContext)_jspx_page_context, null, false)).booleanValue());
+    // /WEB-INF/portlets/select.jsp(134,1) name = test type = boolean reqTime = true required = true fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
+    _jspx_th_c_005fwhen_005f52.setTest(((java.lang.Boolean) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${stuff.stufftype=='short_cuts' }", java.lang.Boolean.class, (PageContext)_jspx_page_context, null, false)).booleanValue());
     int _jspx_eval_c_005fwhen_005f52 = _jspx_th_c_005fwhen_005f52.doStartTag();
     if (_jspx_eval_c_005fwhen_005f52 != javax.servlet.jsp.tagext.Tag.SKIP_BODY) {
       do {
         out.write("\r\n");
-        out.write("\t\t<table id=\"tab_topaccount\"></table>\r\n");
+        out.write("\t\t<div class=\"p10\">\r\n");
+        out.write("\t\t<table class=\"tabview\">\r\n");
+        out.write("\t\t\t<tr>\r\n");
+        out.write("\t\t\t\t<td><a href=\"crm/module/accounts/showedit?recordid=0&ptb=-1&module=Accounts\">新增客户</a></td><td><a href=\"crm/module/contacts/showedit?recordid=0&ptb=-1&module=Contacts\">新增联系人</a></td>\r\n");
+        out.write("\t\t\t</tr>\r\n");
+        out.write("\t\t\t<tr>\r\n");
+        out.write("\t\t\t\t<td><a href=\"crm/module/notes/showedit?recordid=0&ptb=-1&module=Notes\">新增联系记录</a></td><td><a href=\"crm/module/potentials/showedit?recordid=0&ptb=-1&module=Potentials\">新增销售机会</a></td>\r\n");
+        out.write("\t\t\t</tr>\r\n");
+        out.write("\t\t\t<tr>\r\n");
+        out.write("\t\t\t\t<td><a href=\"crm/module/funnels/index?ptb=5\" >销售漏斗</a></td><td><a href=\"crm/module/quotes/showedit?recordid=0&ptb=-1&module=Quotes\">新增报价</a></td>\r\n");
+        out.write("\t\t\t</tr>\r\n");
+        out.write("\t\t\t<tr>\r\n");
+        out.write("\t\t\t\t<td><a href=\"crm/module/salesorder/showedit?recordid=0&ptb=-1&module=SalesOrder\" >新增合同订单</a></td><td><a href=\"crm/module/performances/index?ptb=-1\" >员工绩效</a></td>\r\n");
+        out.write("\t\t\t</tr>\r\n");
+        out.write("\t\t</table> \r\n");
+        out.write("\t\t</div>\r\n");
         out.write("\t");
         int evalDoAfterBody = _jspx_th_c_005fwhen_005f52.doAfterBody();
         if (evalDoAfterBody != javax.servlet.jsp.tagext.BodyTag.EVAL_BODY_AGAIN)
@@ -2829,13 +2839,13 @@ String win_bar_1 = "resizable=\"false\"  closed=\"true\" modal=\"false\" collaps
     org.apache.taglibs.standard.tag.rt.core.WhenTag _jspx_th_c_005fwhen_005f53 = (org.apache.taglibs.standard.tag.rt.core.WhenTag) _005fjspx_005ftagPool_005fc_005fwhen_0026_005ftest.get(org.apache.taglibs.standard.tag.rt.core.WhenTag.class);
     _jspx_th_c_005fwhen_005f53.setPageContext(_jspx_page_context);
     _jspx_th_c_005fwhen_005f53.setParent((javax.servlet.jsp.tagext.Tag) _jspx_th_c_005fchoose_005f2);
-    // /WEB-INF/portlets/select.jsp(155,1) name = test type = boolean reqTime = true required = true fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
-    _jspx_th_c_005fwhen_005f53.setTest(((java.lang.Boolean) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${ stuff.stufftype == 'today_account' }", java.lang.Boolean.class, (PageContext)_jspx_page_context, null, false)).booleanValue());
+    // /WEB-INF/portlets/select.jsp(152,1) name = test type = boolean reqTime = true required = true fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
+    _jspx_th_c_005fwhen_005f53.setTest(((java.lang.Boolean) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${stuff.stufftype == 'top_account' }", java.lang.Boolean.class, (PageContext)_jspx_page_context, null, false)).booleanValue());
     int _jspx_eval_c_005fwhen_005f53 = _jspx_th_c_005fwhen_005f53.doStartTag();
     if (_jspx_eval_c_005fwhen_005f53 != javax.servlet.jsp.tagext.Tag.SKIP_BODY) {
       do {
         out.write("\r\n");
-        out.write("\t\t<table id=\"tab_todayaccount\"></table>\r\n");
+        out.write("\t\t<table id=\"tab_topaccount\"></table>\r\n");
         out.write("\t");
         int evalDoAfterBody = _jspx_th_c_005fwhen_005f53.doAfterBody();
         if (evalDoAfterBody != javax.servlet.jsp.tagext.BodyTag.EVAL_BODY_AGAIN)
@@ -2858,13 +2868,13 @@ String win_bar_1 = "resizable=\"false\"  closed=\"true\" modal=\"false\" collaps
     org.apache.taglibs.standard.tag.rt.core.WhenTag _jspx_th_c_005fwhen_005f54 = (org.apache.taglibs.standard.tag.rt.core.WhenTag) _005fjspx_005ftagPool_005fc_005fwhen_0026_005ftest.get(org.apache.taglibs.standard.tag.rt.core.WhenTag.class);
     _jspx_th_c_005fwhen_005f54.setPageContext(_jspx_page_context);
     _jspx_th_c_005fwhen_005f54.setParent((javax.servlet.jsp.tagext.Tag) _jspx_th_c_005fchoose_005f2);
-    // /WEB-INF/portlets/select.jsp(158,1) name = test type = boolean reqTime = true required = true fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
-    _jspx_th_c_005fwhen_005f54.setTest(((java.lang.Boolean) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${stuff.stufftype == 'top_calendar'  }", java.lang.Boolean.class, (PageContext)_jspx_page_context, null, false)).booleanValue());
+    // /WEB-INF/portlets/select.jsp(155,1) name = test type = boolean reqTime = true required = true fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
+    _jspx_th_c_005fwhen_005f54.setTest(((java.lang.Boolean) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${ stuff.stufftype == 'today_account' }", java.lang.Boolean.class, (PageContext)_jspx_page_context, null, false)).booleanValue());
     int _jspx_eval_c_005fwhen_005f54 = _jspx_th_c_005fwhen_005f54.doStartTag();
     if (_jspx_eval_c_005fwhen_005f54 != javax.servlet.jsp.tagext.Tag.SKIP_BODY) {
       do {
         out.write("\r\n");
-        out.write("\t\t<table id=\"tab_topcalendar\"></table>\r\n");
+        out.write("\t\t<table id=\"tab_todayaccount\"></table>\r\n");
         out.write("\t");
         int evalDoAfterBody = _jspx_th_c_005fwhen_005f54.doAfterBody();
         if (evalDoAfterBody != javax.servlet.jsp.tagext.BodyTag.EVAL_BODY_AGAIN)
@@ -2887,13 +2897,13 @@ String win_bar_1 = "resizable=\"false\"  closed=\"true\" modal=\"false\" collaps
     org.apache.taglibs.standard.tag.rt.core.WhenTag _jspx_th_c_005fwhen_005f55 = (org.apache.taglibs.standard.tag.rt.core.WhenTag) _005fjspx_005ftagPool_005fc_005fwhen_0026_005ftest.get(org.apache.taglibs.standard.tag.rt.core.WhenTag.class);
     _jspx_th_c_005fwhen_005f55.setPageContext(_jspx_page_context);
     _jspx_th_c_005fwhen_005f55.setParent((javax.servlet.jsp.tagext.Tag) _jspx_th_c_005fchoose_005f2);
-    // /WEB-INF/portlets/select.jsp(161,1) name = test type = boolean reqTime = true required = true fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
-    _jspx_th_c_005fwhen_005f55.setTest(((java.lang.Boolean) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${stuff.stufftype =='top_gather' }", java.lang.Boolean.class, (PageContext)_jspx_page_context, null, false)).booleanValue());
+    // /WEB-INF/portlets/select.jsp(158,1) name = test type = boolean reqTime = true required = true fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
+    _jspx_th_c_005fwhen_005f55.setTest(((java.lang.Boolean) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${stuff.stufftype == 'top_calendar'  }", java.lang.Boolean.class, (PageContext)_jspx_page_context, null, false)).booleanValue());
     int _jspx_eval_c_005fwhen_005f55 = _jspx_th_c_005fwhen_005f55.doStartTag();
     if (_jspx_eval_c_005fwhen_005f55 != javax.servlet.jsp.tagext.Tag.SKIP_BODY) {
       do {
         out.write("\r\n");
-        out.write("\t\t<table id=\"tab_topgather\"></table>\r\n");
+        out.write("\t\t<table id=\"tab_topcalendar\"></table>\r\n");
         out.write("\t");
         int evalDoAfterBody = _jspx_th_c_005fwhen_005f55.doAfterBody();
         if (evalDoAfterBody != javax.servlet.jsp.tagext.BodyTag.EVAL_BODY_AGAIN)
@@ -2916,13 +2926,13 @@ String win_bar_1 = "resizable=\"false\"  closed=\"true\" modal=\"false\" collaps
     org.apache.taglibs.standard.tag.rt.core.WhenTag _jspx_th_c_005fwhen_005f56 = (org.apache.taglibs.standard.tag.rt.core.WhenTag) _005fjspx_005ftagPool_005fc_005fwhen_0026_005ftest.get(org.apache.taglibs.standard.tag.rt.core.WhenTag.class);
     _jspx_th_c_005fwhen_005f56.setPageContext(_jspx_page_context);
     _jspx_th_c_005fwhen_005f56.setParent((javax.servlet.jsp.tagext.Tag) _jspx_th_c_005fchoose_005f2);
-    // /WEB-INF/portlets/select.jsp(164,1) name = test type = boolean reqTime = true required = true fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
-    _jspx_th_c_005fwhen_005f56.setTest(((java.lang.Boolean) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${ stuff.stufftype =='top_notes' }", java.lang.Boolean.class, (PageContext)_jspx_page_context, null, false)).booleanValue());
+    // /WEB-INF/portlets/select.jsp(161,1) name = test type = boolean reqTime = true required = true fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
+    _jspx_th_c_005fwhen_005f56.setTest(((java.lang.Boolean) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${stuff.stufftype =='top_gather' }", java.lang.Boolean.class, (PageContext)_jspx_page_context, null, false)).booleanValue());
     int _jspx_eval_c_005fwhen_005f56 = _jspx_th_c_005fwhen_005f56.doStartTag();
     if (_jspx_eval_c_005fwhen_005f56 != javax.servlet.jsp.tagext.Tag.SKIP_BODY) {
       do {
         out.write("\r\n");
-        out.write("\t\t<table id=\"tab_topnotes\"></table>\r\n");
+        out.write("\t\t<table id=\"tab_topgather\"></table>\r\n");
         out.write("\t");
         int evalDoAfterBody = _jspx_th_c_005fwhen_005f56.doAfterBody();
         if (evalDoAfterBody != javax.servlet.jsp.tagext.BodyTag.EVAL_BODY_AGAIN)
@@ -2945,13 +2955,13 @@ String win_bar_1 = "resizable=\"false\"  closed=\"true\" modal=\"false\" collaps
     org.apache.taglibs.standard.tag.rt.core.WhenTag _jspx_th_c_005fwhen_005f57 = (org.apache.taglibs.standard.tag.rt.core.WhenTag) _005fjspx_005ftagPool_005fc_005fwhen_0026_005ftest.get(org.apache.taglibs.standard.tag.rt.core.WhenTag.class);
     _jspx_th_c_005fwhen_005f57.setPageContext(_jspx_page_context);
     _jspx_th_c_005fwhen_005f57.setParent((javax.servlet.jsp.tagext.Tag) _jspx_th_c_005fchoose_005f2);
-    // /WEB-INF/portlets/select.jsp(167,1) name = test type = boolean reqTime = true required = true fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
-    _jspx_th_c_005fwhen_005f57.setTest(((java.lang.Boolean) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${stuff.stufftype == 'top_quote' }", java.lang.Boolean.class, (PageContext)_jspx_page_context, null, false)).booleanValue());
+    // /WEB-INF/portlets/select.jsp(164,1) name = test type = boolean reqTime = true required = true fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
+    _jspx_th_c_005fwhen_005f57.setTest(((java.lang.Boolean) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${ stuff.stufftype =='top_notes' }", java.lang.Boolean.class, (PageContext)_jspx_page_context, null, false)).booleanValue());
     int _jspx_eval_c_005fwhen_005f57 = _jspx_th_c_005fwhen_005f57.doStartTag();
     if (_jspx_eval_c_005fwhen_005f57 != javax.servlet.jsp.tagext.Tag.SKIP_BODY) {
       do {
         out.write("\r\n");
-        out.write("\t\t<table id=\"tab_topquote\"></table>\r\n");
+        out.write("\t\t<table id=\"tab_topnotes\"></table>\r\n");
         out.write("\t");
         int evalDoAfterBody = _jspx_th_c_005fwhen_005f57.doAfterBody();
         if (evalDoAfterBody != javax.servlet.jsp.tagext.BodyTag.EVAL_BODY_AGAIN)
@@ -2974,13 +2984,13 @@ String win_bar_1 = "resizable=\"false\"  closed=\"true\" modal=\"false\" collaps
     org.apache.taglibs.standard.tag.rt.core.WhenTag _jspx_th_c_005fwhen_005f58 = (org.apache.taglibs.standard.tag.rt.core.WhenTag) _005fjspx_005ftagPool_005fc_005fwhen_0026_005ftest.get(org.apache.taglibs.standard.tag.rt.core.WhenTag.class);
     _jspx_th_c_005fwhen_005f58.setPageContext(_jspx_page_context);
     _jspx_th_c_005fwhen_005f58.setParent((javax.servlet.jsp.tagext.Tag) _jspx_th_c_005fchoose_005f2);
-    // /WEB-INF/portlets/select.jsp(170,1) name = test type = boolean reqTime = true required = true fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
-    _jspx_th_c_005fwhen_005f58.setTest(((java.lang.Boolean) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${ stuff.stufftype =='top_salesorder' }", java.lang.Boolean.class, (PageContext)_jspx_page_context, null, false)).booleanValue());
+    // /WEB-INF/portlets/select.jsp(167,1) name = test type = boolean reqTime = true required = true fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
+    _jspx_th_c_005fwhen_005f58.setTest(((java.lang.Boolean) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${stuff.stufftype == 'top_quote' }", java.lang.Boolean.class, (PageContext)_jspx_page_context, null, false)).booleanValue());
     int _jspx_eval_c_005fwhen_005f58 = _jspx_th_c_005fwhen_005f58.doStartTag();
     if (_jspx_eval_c_005fwhen_005f58 != javax.servlet.jsp.tagext.Tag.SKIP_BODY) {
       do {
         out.write("\r\n");
-        out.write("\t\t<table id=\"tab_topsalesorder\"></table>\r\n");
+        out.write("\t\t<table id=\"tab_topquote\"></table>\r\n");
         out.write("\t");
         int evalDoAfterBody = _jspx_th_c_005fwhen_005f58.doAfterBody();
         if (evalDoAfterBody != javax.servlet.jsp.tagext.BodyTag.EVAL_BODY_AGAIN)
@@ -3003,14 +3013,13 @@ String win_bar_1 = "resizable=\"false\"  closed=\"true\" modal=\"false\" collaps
     org.apache.taglibs.standard.tag.rt.core.WhenTag _jspx_th_c_005fwhen_005f59 = (org.apache.taglibs.standard.tag.rt.core.WhenTag) _005fjspx_005ftagPool_005fc_005fwhen_0026_005ftest.get(org.apache.taglibs.standard.tag.rt.core.WhenTag.class);
     _jspx_th_c_005fwhen_005f59.setPageContext(_jspx_page_context);
     _jspx_th_c_005fwhen_005f59.setParent((javax.servlet.jsp.tagext.Tag) _jspx_th_c_005fchoose_005f2);
-    // /WEB-INF/portlets/select.jsp(173,1) name = test type = boolean reqTime = true required = true fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
-    _jspx_th_c_005fwhen_005f59.setTest(((java.lang.Boolean) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${stuff.stufftype =='top_performance' }", java.lang.Boolean.class, (PageContext)_jspx_page_context, null, false)).booleanValue());
+    // /WEB-INF/portlets/select.jsp(170,1) name = test type = boolean reqTime = true required = true fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
+    _jspx_th_c_005fwhen_005f59.setTest(((java.lang.Boolean) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${ stuff.stufftype =='top_salesorder' }", java.lang.Boolean.class, (PageContext)_jspx_page_context, null, false)).booleanValue());
     int _jspx_eval_c_005fwhen_005f59 = _jspx_th_c_005fwhen_005f59.doStartTag();
     if (_jspx_eval_c_005fwhen_005f59 != javax.servlet.jsp.tagext.Tag.SKIP_BODY) {
       do {
         out.write("\r\n");
-        out.write("\t\t<table id=\"tab_topperformance\" class=\"tablist\"  >\r\n");
-        out.write("\t\t</table>\r\n");
+        out.write("\t\t<table id=\"tab_topsalesorder\"></table>\r\n");
         out.write("\t");
         int evalDoAfterBody = _jspx_th_c_005fwhen_005f59.doAfterBody();
         if (evalDoAfterBody != javax.servlet.jsp.tagext.BodyTag.EVAL_BODY_AGAIN)
@@ -3033,13 +3042,14 @@ String win_bar_1 = "resizable=\"false\"  closed=\"true\" modal=\"false\" collaps
     org.apache.taglibs.standard.tag.rt.core.WhenTag _jspx_th_c_005fwhen_005f60 = (org.apache.taglibs.standard.tag.rt.core.WhenTag) _005fjspx_005ftagPool_005fc_005fwhen_0026_005ftest.get(org.apache.taglibs.standard.tag.rt.core.WhenTag.class);
     _jspx_th_c_005fwhen_005f60.setPageContext(_jspx_page_context);
     _jspx_th_c_005fwhen_005f60.setParent((javax.servlet.jsp.tagext.Tag) _jspx_th_c_005fchoose_005f2);
-    // /WEB-INF/portlets/select.jsp(177,1) name = test type = boolean reqTime = true required = true fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
-    _jspx_th_c_005fwhen_005f60.setTest(((java.lang.Boolean) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${stuff.stufftype == 'user_salesbymonth'}", java.lang.Boolean.class, (PageContext)_jspx_page_context, null, false)).booleanValue());
+    // /WEB-INF/portlets/select.jsp(173,1) name = test type = boolean reqTime = true required = true fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
+    _jspx_th_c_005fwhen_005f60.setTest(((java.lang.Boolean) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${stuff.stufftype =='top_performance' }", java.lang.Boolean.class, (PageContext)_jspx_page_context, null, false)).booleanValue());
     int _jspx_eval_c_005fwhen_005f60 = _jspx_th_c_005fwhen_005f60.doStartTag();
     if (_jspx_eval_c_005fwhen_005f60 != javax.servlet.jsp.tagext.Tag.SKIP_BODY) {
       do {
         out.write("\r\n");
-        out.write("\t\t<div id=\"chart_user_salesbymonth\" style=\"width:100%;height:252px;\"></div>\r\n");
+        out.write("\t\t<table id=\"tab_topperformance\" class=\"tablist\"  >\r\n");
+        out.write("\t\t</table>\r\n");
         out.write("\t");
         int evalDoAfterBody = _jspx_th_c_005fwhen_005f60.doAfterBody();
         if (evalDoAfterBody != javax.servlet.jsp.tagext.BodyTag.EVAL_BODY_AGAIN)
@@ -3051,6 +3061,64 @@ String win_bar_1 = "resizable=\"false\"  closed=\"true\" modal=\"false\" collaps
       return true;
     }
     _005fjspx_005ftagPool_005fc_005fwhen_0026_005ftest.reuse(_jspx_th_c_005fwhen_005f60);
+    return false;
+  }
+
+  private boolean _jspx_meth_c_005fwhen_005f61(javax.servlet.jsp.tagext.JspTag _jspx_th_c_005fchoose_005f2, PageContext _jspx_page_context, int[] _jspx_push_body_count_c_005fforEach_005f2)
+          throws Throwable {
+    PageContext pageContext = _jspx_page_context;
+    JspWriter out = _jspx_page_context.getOut();
+    //  c:when
+    org.apache.taglibs.standard.tag.rt.core.WhenTag _jspx_th_c_005fwhen_005f61 = (org.apache.taglibs.standard.tag.rt.core.WhenTag) _005fjspx_005ftagPool_005fc_005fwhen_0026_005ftest.get(org.apache.taglibs.standard.tag.rt.core.WhenTag.class);
+    _jspx_th_c_005fwhen_005f61.setPageContext(_jspx_page_context);
+    _jspx_th_c_005fwhen_005f61.setParent((javax.servlet.jsp.tagext.Tag) _jspx_th_c_005fchoose_005f2);
+    // /WEB-INF/portlets/select.jsp(177,1) name = test type = boolean reqTime = true required = true fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
+    _jspx_th_c_005fwhen_005f61.setTest(((java.lang.Boolean) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${stuff.stufftype == 'user_salesbymonth'}", java.lang.Boolean.class, (PageContext)_jspx_page_context, null, false)).booleanValue());
+    int _jspx_eval_c_005fwhen_005f61 = _jspx_th_c_005fwhen_005f61.doStartTag();
+    if (_jspx_eval_c_005fwhen_005f61 != javax.servlet.jsp.tagext.Tag.SKIP_BODY) {
+      do {
+        out.write("\r\n");
+        out.write("\t\t<div id=\"chart_user_salesbymonth\" style=\"width:100%;height:252px;\"></div>\r\n");
+        out.write("\t");
+        int evalDoAfterBody = _jspx_th_c_005fwhen_005f61.doAfterBody();
+        if (evalDoAfterBody != javax.servlet.jsp.tagext.BodyTag.EVAL_BODY_AGAIN)
+          break;
+      } while (true);
+    }
+    if (_jspx_th_c_005fwhen_005f61.doEndTag() == javax.servlet.jsp.tagext.Tag.SKIP_PAGE) {
+      _005fjspx_005ftagPool_005fc_005fwhen_0026_005ftest.reuse(_jspx_th_c_005fwhen_005f61);
+      return true;
+    }
+    _005fjspx_005ftagPool_005fc_005fwhen_0026_005ftest.reuse(_jspx_th_c_005fwhen_005f61);
+    return false;
+  }
+
+  private boolean _jspx_meth_c_005fwhen_005f62(javax.servlet.jsp.tagext.JspTag _jspx_th_c_005fchoose_005f2, PageContext _jspx_page_context, int[] _jspx_push_body_count_c_005fforEach_005f2)
+          throws Throwable {
+    PageContext pageContext = _jspx_page_context;
+    JspWriter out = _jspx_page_context.getOut();
+    //  c:when
+    org.apache.taglibs.standard.tag.rt.core.WhenTag _jspx_th_c_005fwhen_005f62 = (org.apache.taglibs.standard.tag.rt.core.WhenTag) _005fjspx_005ftagPool_005fc_005fwhen_0026_005ftest.get(org.apache.taglibs.standard.tag.rt.core.WhenTag.class);
+    _jspx_th_c_005fwhen_005f62.setPageContext(_jspx_page_context);
+    _jspx_th_c_005fwhen_005f62.setParent((javax.servlet.jsp.tagext.Tag) _jspx_th_c_005fchoose_005f2);
+    // /WEB-INF/portlets/select.jsp(180,1) name = test type = boolean reqTime = true required = true fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
+    _jspx_th_c_005fwhen_005f62.setTest(((java.lang.Boolean) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${ stuff.stufftype =='user_salesfinishedbymonth' }", java.lang.Boolean.class, (PageContext)_jspx_page_context, null, false)).booleanValue());
+    int _jspx_eval_c_005fwhen_005f62 = _jspx_th_c_005fwhen_005f62.doStartTag();
+    if (_jspx_eval_c_005fwhen_005f62 != javax.servlet.jsp.tagext.Tag.SKIP_BODY) {
+      do {
+        out.write("\r\n");
+        out.write("\t\t<div id=\"chart_user_salesfinishedbymonth\" style=\"width:100%;height:252px;\"></div>\r\n");
+        out.write("\t");
+        int evalDoAfterBody = _jspx_th_c_005fwhen_005f62.doAfterBody();
+        if (evalDoAfterBody != javax.servlet.jsp.tagext.BodyTag.EVAL_BODY_AGAIN)
+          break;
+      } while (true);
+    }
+    if (_jspx_th_c_005fwhen_005f62.doEndTag() == javax.servlet.jsp.tagext.Tag.SKIP_PAGE) {
+      _005fjspx_005ftagPool_005fc_005fwhen_0026_005ftest.reuse(_jspx_th_c_005fwhen_005f62);
+      return true;
+    }
+    _005fjspx_005ftagPool_005fc_005fwhen_0026_005ftest.reuse(_jspx_th_c_005fwhen_005f62);
     return false;
   }
 
@@ -3152,16 +3220,6 @@ String win_bar_1 = "resizable=\"false\"  closed=\"true\" modal=\"false\" collaps
         out.write('\r');
         out.write('\n');
         out.write('	');
-        if (_jspx_meth_c_005fwhen_005f61(_jspx_th_c_005fchoose_005f3, _jspx_page_context, _jspx_push_body_count_c_005fforEach_005f3))
-          return true;
-        out.write('\r');
-        out.write('\n');
-        out.write('	');
-        if (_jspx_meth_c_005fwhen_005f62(_jspx_th_c_005fchoose_005f3, _jspx_page_context, _jspx_push_body_count_c_005fforEach_005f3))
-          return true;
-        out.write('\r');
-        out.write('\n');
-        out.write('	');
         if (_jspx_meth_c_005fwhen_005f63(_jspx_th_c_005fchoose_005f3, _jspx_page_context, _jspx_push_body_count_c_005fforEach_005f3))
           return true;
         out.write('\r');
@@ -3194,8 +3252,9 @@ String win_bar_1 = "resizable=\"false\"  closed=\"true\" modal=\"false\" collaps
         out.write('	');
         if (_jspx_meth_c_005fwhen_005f69(_jspx_th_c_005fchoose_005f3, _jspx_page_context, _jspx_push_body_count_c_005fforEach_005f3))
           return true;
-        out.write("\t\r\n");
-        out.write("\t");
+        out.write('\r');
+        out.write('\n');
+        out.write('	');
         if (_jspx_meth_c_005fwhen_005f70(_jspx_th_c_005fchoose_005f3, _jspx_page_context, _jspx_push_body_count_c_005fforEach_005f3))
           return true;
         out.write('\r');
@@ -3203,9 +3262,8 @@ String win_bar_1 = "resizable=\"false\"  closed=\"true\" modal=\"false\" collaps
         out.write('	');
         if (_jspx_meth_c_005fwhen_005f71(_jspx_th_c_005fchoose_005f3, _jspx_page_context, _jspx_push_body_count_c_005fforEach_005f3))
           return true;
-        out.write('\r');
-        out.write('\n');
-        out.write('	');
+        out.write("\t\r\n");
+        out.write("\t");
         if (_jspx_meth_c_005fwhen_005f72(_jspx_th_c_005fchoose_005f3, _jspx_page_context, _jspx_push_body_count_c_005fforEach_005f3))
           return true;
         out.write('\r');
@@ -3300,6 +3358,21 @@ String win_bar_1 = "resizable=\"false\"  closed=\"true\" modal=\"false\" collaps
           return true;
         out.write('\r');
         out.write('\n');
+        out.write('	');
+        if (_jspx_meth_c_005fwhen_005f91(_jspx_th_c_005fchoose_005f3, _jspx_page_context, _jspx_push_body_count_c_005fforEach_005f3))
+          return true;
+        out.write('\r');
+        out.write('\n');
+        out.write('	');
+        if (_jspx_meth_c_005fwhen_005f92(_jspx_th_c_005fchoose_005f3, _jspx_page_context, _jspx_push_body_count_c_005fforEach_005f3))
+          return true;
+        out.write('\r');
+        out.write('\n');
+        out.write('	');
+        if (_jspx_meth_c_005fwhen_005f93(_jspx_th_c_005fchoose_005f3, _jspx_page_context, _jspx_push_body_count_c_005fforEach_005f3))
+          return true;
+        out.write('\r');
+        out.write('\n');
         int evalDoAfterBody = _jspx_th_c_005fchoose_005f3.doAfterBody();
         if (evalDoAfterBody != javax.servlet.jsp.tagext.BodyTag.EVAL_BODY_AGAIN)
           break;
@@ -3313,66 +3386,6 @@ String win_bar_1 = "resizable=\"false\"  closed=\"true\" modal=\"false\" collaps
     return false;
   }
 
-  private boolean _jspx_meth_c_005fwhen_005f61(javax.servlet.jsp.tagext.JspTag _jspx_th_c_005fchoose_005f3, PageContext _jspx_page_context, int[] _jspx_push_body_count_c_005fforEach_005f3)
-          throws Throwable {
-    PageContext pageContext = _jspx_page_context;
-    JspWriter out = _jspx_page_context.getOut();
-    //  c:when
-    org.apache.taglibs.standard.tag.rt.core.WhenTag _jspx_th_c_005fwhen_005f61 = (org.apache.taglibs.standard.tag.rt.core.WhenTag) _005fjspx_005ftagPool_005fc_005fwhen_0026_005ftest.get(org.apache.taglibs.standard.tag.rt.core.WhenTag.class);
-    _jspx_th_c_005fwhen_005f61.setPageContext(_jspx_page_context);
-    _jspx_th_c_005fwhen_005f61.setParent((javax.servlet.jsp.tagext.Tag) _jspx_th_c_005fchoose_005f3);
-    // /WEB-INF/portlets/select.jsp(5,1) name = test type = boolean reqTime = true required = true fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
-    _jspx_th_c_005fwhen_005f61.setTest(((java.lang.Boolean) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${stuff.stufftype == 'accountmoney'}", java.lang.Boolean.class, (PageContext)_jspx_page_context, null, false)).booleanValue());
-    int _jspx_eval_c_005fwhen_005f61 = _jspx_th_c_005fwhen_005f61.doStartTag();
-    if (_jspx_eval_c_005fwhen_005f61 != javax.servlet.jsp.tagext.Tag.SKIP_BODY) {
-      do {
-        out.write("\r\n");
-        out.write("\t\t<!-- 应收款，应付款，客户汇总 -->\r\n");
-        out.write("\t\t<table class=\"tablist\" id=\"tab_accountmoney\">\r\n");
-        out.write("\t\t</table>\r\n");
-        out.write("\t");
-        int evalDoAfterBody = _jspx_th_c_005fwhen_005f61.doAfterBody();
-        if (evalDoAfterBody != javax.servlet.jsp.tagext.BodyTag.EVAL_BODY_AGAIN)
-          break;
-      } while (true);
-    }
-    if (_jspx_th_c_005fwhen_005f61.doEndTag() == javax.servlet.jsp.tagext.Tag.SKIP_PAGE) {
-      _005fjspx_005ftagPool_005fc_005fwhen_0026_005ftest.reuse(_jspx_th_c_005fwhen_005f61);
-      return true;
-    }
-    _005fjspx_005ftagPool_005fc_005fwhen_0026_005ftest.reuse(_jspx_th_c_005fwhen_005f61);
-    return false;
-  }
-
-  private boolean _jspx_meth_c_005fwhen_005f62(javax.servlet.jsp.tagext.JspTag _jspx_th_c_005fchoose_005f3, PageContext _jspx_page_context, int[] _jspx_push_body_count_c_005fforEach_005f3)
-          throws Throwable {
-    PageContext pageContext = _jspx_page_context;
-    JspWriter out = _jspx_page_context.getOut();
-    //  c:when
-    org.apache.taglibs.standard.tag.rt.core.WhenTag _jspx_th_c_005fwhen_005f62 = (org.apache.taglibs.standard.tag.rt.core.WhenTag) _005fjspx_005ftagPool_005fc_005fwhen_0026_005ftest.get(org.apache.taglibs.standard.tag.rt.core.WhenTag.class);
-    _jspx_th_c_005fwhen_005f62.setPageContext(_jspx_page_context);
-    _jspx_th_c_005fwhen_005f62.setParent((javax.servlet.jsp.tagext.Tag) _jspx_th_c_005fchoose_005f3);
-    // /WEB-INF/portlets/select.jsp(10,1) name = test type = boolean reqTime = true required = true fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
-    _jspx_th_c_005fwhen_005f62.setTest(((java.lang.Boolean) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${stuff.stufftype == 'gathersyear'}", java.lang.Boolean.class, (PageContext)_jspx_page_context, null, false)).booleanValue());
-    int _jspx_eval_c_005fwhen_005f62 = _jspx_th_c_005fwhen_005f62.doStartTag();
-    if (_jspx_eval_c_005fwhen_005f62 != javax.servlet.jsp.tagext.Tag.SKIP_BODY) {
-      do {
-        out.write("\r\n");
-        out.write("\t\t<div id=\"chart_gathersyear\" style=\"width:100%;height:252px;\"></div>\r\n");
-        out.write("\t");
-        int evalDoAfterBody = _jspx_th_c_005fwhen_005f62.doAfterBody();
-        if (evalDoAfterBody != javax.servlet.jsp.tagext.BodyTag.EVAL_BODY_AGAIN)
-          break;
-      } while (true);
-    }
-    if (_jspx_th_c_005fwhen_005f62.doEndTag() == javax.servlet.jsp.tagext.Tag.SKIP_PAGE) {
-      _005fjspx_005ftagPool_005fc_005fwhen_0026_005ftest.reuse(_jspx_th_c_005fwhen_005f62);
-      return true;
-    }
-    _005fjspx_005ftagPool_005fc_005fwhen_0026_005ftest.reuse(_jspx_th_c_005fwhen_005f62);
-    return false;
-  }
-
   private boolean _jspx_meth_c_005fwhen_005f63(javax.servlet.jsp.tagext.JspTag _jspx_th_c_005fchoose_005f3, PageContext _jspx_page_context, int[] _jspx_push_body_count_c_005fforEach_005f3)
           throws Throwable {
     PageContext pageContext = _jspx_page_context;
@@ -3381,13 +3394,15 @@ String win_bar_1 = "resizable=\"false\"  closed=\"true\" modal=\"false\" collaps
     org.apache.taglibs.standard.tag.rt.core.WhenTag _jspx_th_c_005fwhen_005f63 = (org.apache.taglibs.standard.tag.rt.core.WhenTag) _005fjspx_005ftagPool_005fc_005fwhen_0026_005ftest.get(org.apache.taglibs.standard.tag.rt.core.WhenTag.class);
     _jspx_th_c_005fwhen_005f63.setPageContext(_jspx_page_context);
     _jspx_th_c_005fwhen_005f63.setParent((javax.servlet.jsp.tagext.Tag) _jspx_th_c_005fchoose_005f3);
-    // /WEB-INF/portlets/select.jsp(13,1) name = test type = boolean reqTime = true required = true fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
-    _jspx_th_c_005fwhen_005f63.setTest(((java.lang.Boolean) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${stuff.stufftype == 'com_gathersfinishedbymonth' }", java.lang.Boolean.class, (PageContext)_jspx_page_context, null, false)).booleanValue());
+    // /WEB-INF/portlets/select.jsp(5,1) name = test type = boolean reqTime = true required = true fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
+    _jspx_th_c_005fwhen_005f63.setTest(((java.lang.Boolean) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${stuff.stufftype == 'accountmoney'}", java.lang.Boolean.class, (PageContext)_jspx_page_context, null, false)).booleanValue());
     int _jspx_eval_c_005fwhen_005f63 = _jspx_th_c_005fwhen_005f63.doStartTag();
     if (_jspx_eval_c_005fwhen_005f63 != javax.servlet.jsp.tagext.Tag.SKIP_BODY) {
       do {
         out.write("\r\n");
-        out.write("\t\t<div id=\"chart_comgathersfinishedbymonth\" style=\"width:100%;height:252px;\"></div>\r\n");
+        out.write("\t\t<!-- 应收款，应付款，客户汇总 -->\r\n");
+        out.write("\t\t<table class=\"tablist\" id=\"tab_accountmoney\">\r\n");
+        out.write("\t\t</table>\r\n");
         out.write("\t");
         int evalDoAfterBody = _jspx_th_c_005fwhen_005f63.doAfterBody();
         if (evalDoAfterBody != javax.servlet.jsp.tagext.BodyTag.EVAL_BODY_AGAIN)
@@ -3410,13 +3425,13 @@ String win_bar_1 = "resizable=\"false\"  closed=\"true\" modal=\"false\" collaps
     org.apache.taglibs.standard.tag.rt.core.WhenTag _jspx_th_c_005fwhen_005f64 = (org.apache.taglibs.standard.tag.rt.core.WhenTag) _005fjspx_005ftagPool_005fc_005fwhen_0026_005ftest.get(org.apache.taglibs.standard.tag.rt.core.WhenTag.class);
     _jspx_th_c_005fwhen_005f64.setPageContext(_jspx_page_context);
     _jspx_th_c_005fwhen_005f64.setParent((javax.servlet.jsp.tagext.Tag) _jspx_th_c_005fchoose_005f3);
-    // /WEB-INF/portlets/select.jsp(16,1) name = test type = boolean reqTime = true required = true fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
-    _jspx_th_c_005fwhen_005f64.setTest(((java.lang.Boolean) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${stuff.stufftype == 'top_salesbymonth' }", java.lang.Boolean.class, (PageContext)_jspx_page_context, null, false)).booleanValue());
+    // /WEB-INF/portlets/select.jsp(10,1) name = test type = boolean reqTime = true required = true fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
+    _jspx_th_c_005fwhen_005f64.setTest(((java.lang.Boolean) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${stuff.stufftype == 'gathersyear'}", java.lang.Boolean.class, (PageContext)_jspx_page_context, null, false)).booleanValue());
     int _jspx_eval_c_005fwhen_005f64 = _jspx_th_c_005fwhen_005f64.doStartTag();
     if (_jspx_eval_c_005fwhen_005f64 != javax.servlet.jsp.tagext.Tag.SKIP_BODY) {
       do {
         out.write("\r\n");
-        out.write("\t\t<div id=\"chart_top_salesbymonth\" style=\"width:100%;height:252px;\"></div>\r\n");
+        out.write("\t\t<div id=\"chart_gathersyear\" style=\"width:100%;height:252px;\"></div>\r\n");
         out.write("\t");
         int evalDoAfterBody = _jspx_th_c_005fwhen_005f64.doAfterBody();
         if (evalDoAfterBody != javax.servlet.jsp.tagext.BodyTag.EVAL_BODY_AGAIN)
@@ -3439,10 +3454,68 @@ String win_bar_1 = "resizable=\"false\"  closed=\"true\" modal=\"false\" collaps
     org.apache.taglibs.standard.tag.rt.core.WhenTag _jspx_th_c_005fwhen_005f65 = (org.apache.taglibs.standard.tag.rt.core.WhenTag) _005fjspx_005ftagPool_005fc_005fwhen_0026_005ftest.get(org.apache.taglibs.standard.tag.rt.core.WhenTag.class);
     _jspx_th_c_005fwhen_005f65.setPageContext(_jspx_page_context);
     _jspx_th_c_005fwhen_005f65.setParent((javax.servlet.jsp.tagext.Tag) _jspx_th_c_005fchoose_005f3);
-    // /WEB-INF/portlets/select.jsp(19,1) name = test type = boolean reqTime = true required = true fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
-    _jspx_th_c_005fwhen_005f65.setTest(((java.lang.Boolean) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${stuff.stufftype =='salesyearinfo' }", java.lang.Boolean.class, (PageContext)_jspx_page_context, null, false)).booleanValue());
+    // /WEB-INF/portlets/select.jsp(13,1) name = test type = boolean reqTime = true required = true fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
+    _jspx_th_c_005fwhen_005f65.setTest(((java.lang.Boolean) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${stuff.stufftype == 'com_gathersfinishedbymonth' }", java.lang.Boolean.class, (PageContext)_jspx_page_context, null, false)).booleanValue());
     int _jspx_eval_c_005fwhen_005f65 = _jspx_th_c_005fwhen_005f65.doStartTag();
     if (_jspx_eval_c_005fwhen_005f65 != javax.servlet.jsp.tagext.Tag.SKIP_BODY) {
+      do {
+        out.write("\r\n");
+        out.write("\t\t<div id=\"chart_comgathersfinishedbymonth\" style=\"width:100%;height:252px;\"></div>\r\n");
+        out.write("\t");
+        int evalDoAfterBody = _jspx_th_c_005fwhen_005f65.doAfterBody();
+        if (evalDoAfterBody != javax.servlet.jsp.tagext.BodyTag.EVAL_BODY_AGAIN)
+          break;
+      } while (true);
+    }
+    if (_jspx_th_c_005fwhen_005f65.doEndTag() == javax.servlet.jsp.tagext.Tag.SKIP_PAGE) {
+      _005fjspx_005ftagPool_005fc_005fwhen_0026_005ftest.reuse(_jspx_th_c_005fwhen_005f65);
+      return true;
+    }
+    _005fjspx_005ftagPool_005fc_005fwhen_0026_005ftest.reuse(_jspx_th_c_005fwhen_005f65);
+    return false;
+  }
+
+  private boolean _jspx_meth_c_005fwhen_005f66(javax.servlet.jsp.tagext.JspTag _jspx_th_c_005fchoose_005f3, PageContext _jspx_page_context, int[] _jspx_push_body_count_c_005fforEach_005f3)
+          throws Throwable {
+    PageContext pageContext = _jspx_page_context;
+    JspWriter out = _jspx_page_context.getOut();
+    //  c:when
+    org.apache.taglibs.standard.tag.rt.core.WhenTag _jspx_th_c_005fwhen_005f66 = (org.apache.taglibs.standard.tag.rt.core.WhenTag) _005fjspx_005ftagPool_005fc_005fwhen_0026_005ftest.get(org.apache.taglibs.standard.tag.rt.core.WhenTag.class);
+    _jspx_th_c_005fwhen_005f66.setPageContext(_jspx_page_context);
+    _jspx_th_c_005fwhen_005f66.setParent((javax.servlet.jsp.tagext.Tag) _jspx_th_c_005fchoose_005f3);
+    // /WEB-INF/portlets/select.jsp(16,1) name = test type = boolean reqTime = true required = true fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
+    _jspx_th_c_005fwhen_005f66.setTest(((java.lang.Boolean) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${stuff.stufftype == 'top_salesbymonth' }", java.lang.Boolean.class, (PageContext)_jspx_page_context, null, false)).booleanValue());
+    int _jspx_eval_c_005fwhen_005f66 = _jspx_th_c_005fwhen_005f66.doStartTag();
+    if (_jspx_eval_c_005fwhen_005f66 != javax.servlet.jsp.tagext.Tag.SKIP_BODY) {
+      do {
+        out.write("\r\n");
+        out.write("\t\t<div id=\"chart_top_salesbymonth\" style=\"width:100%;height:252px;\"></div>\r\n");
+        out.write("\t");
+        int evalDoAfterBody = _jspx_th_c_005fwhen_005f66.doAfterBody();
+        if (evalDoAfterBody != javax.servlet.jsp.tagext.BodyTag.EVAL_BODY_AGAIN)
+          break;
+      } while (true);
+    }
+    if (_jspx_th_c_005fwhen_005f66.doEndTag() == javax.servlet.jsp.tagext.Tag.SKIP_PAGE) {
+      _005fjspx_005ftagPool_005fc_005fwhen_0026_005ftest.reuse(_jspx_th_c_005fwhen_005f66);
+      return true;
+    }
+    _005fjspx_005ftagPool_005fc_005fwhen_0026_005ftest.reuse(_jspx_th_c_005fwhen_005f66);
+    return false;
+  }
+
+  private boolean _jspx_meth_c_005fwhen_005f67(javax.servlet.jsp.tagext.JspTag _jspx_th_c_005fchoose_005f3, PageContext _jspx_page_context, int[] _jspx_push_body_count_c_005fforEach_005f3)
+          throws Throwable {
+    PageContext pageContext = _jspx_page_context;
+    JspWriter out = _jspx_page_context.getOut();
+    //  c:when
+    org.apache.taglibs.standard.tag.rt.core.WhenTag _jspx_th_c_005fwhen_005f67 = (org.apache.taglibs.standard.tag.rt.core.WhenTag) _005fjspx_005ftagPool_005fc_005fwhen_0026_005ftest.get(org.apache.taglibs.standard.tag.rt.core.WhenTag.class);
+    _jspx_th_c_005fwhen_005f67.setPageContext(_jspx_page_context);
+    _jspx_th_c_005fwhen_005f67.setParent((javax.servlet.jsp.tagext.Tag) _jspx_th_c_005fchoose_005f3);
+    // /WEB-INF/portlets/select.jsp(19,1) name = test type = boolean reqTime = true required = true fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
+    _jspx_th_c_005fwhen_005f67.setTest(((java.lang.Boolean) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${stuff.stufftype =='salesyearinfo' }", java.lang.Boolean.class, (PageContext)_jspx_page_context, null, false)).booleanValue());
+    int _jspx_eval_c_005fwhen_005f67 = _jspx_th_c_005fwhen_005f67.doStartTag();
+    if (_jspx_eval_c_005fwhen_005f67 != javax.servlet.jsp.tagext.Tag.SKIP_BODY) {
       do {
         out.write("\r\n");
         out.write("\t\t<table class=\"tabsaleyearinfo\">\r\n");
@@ -3471,64 +3544,6 @@ String win_bar_1 = "resizable=\"false\"  closed=\"true\" modal=\"false\" collaps
         out.write("\t\t</tbody>\r\n");
         out.write("\t</table>\r\n");
         out.write("\t");
-        int evalDoAfterBody = _jspx_th_c_005fwhen_005f65.doAfterBody();
-        if (evalDoAfterBody != javax.servlet.jsp.tagext.BodyTag.EVAL_BODY_AGAIN)
-          break;
-      } while (true);
-    }
-    if (_jspx_th_c_005fwhen_005f65.doEndTag() == javax.servlet.jsp.tagext.Tag.SKIP_PAGE) {
-      _005fjspx_005ftagPool_005fc_005fwhen_0026_005ftest.reuse(_jspx_th_c_005fwhen_005f65);
-      return true;
-    }
-    _005fjspx_005ftagPool_005fc_005fwhen_0026_005ftest.reuse(_jspx_th_c_005fwhen_005f65);
-    return false;
-  }
-
-  private boolean _jspx_meth_c_005fwhen_005f66(javax.servlet.jsp.tagext.JspTag _jspx_th_c_005fchoose_005f3, PageContext _jspx_page_context, int[] _jspx_push_body_count_c_005fforEach_005f3)
-          throws Throwable {
-    PageContext pageContext = _jspx_page_context;
-    JspWriter out = _jspx_page_context.getOut();
-    //  c:when
-    org.apache.taglibs.standard.tag.rt.core.WhenTag _jspx_th_c_005fwhen_005f66 = (org.apache.taglibs.standard.tag.rt.core.WhenTag) _005fjspx_005ftagPool_005fc_005fwhen_0026_005ftest.get(org.apache.taglibs.standard.tag.rt.core.WhenTag.class);
-    _jspx_th_c_005fwhen_005f66.setPageContext(_jspx_page_context);
-    _jspx_th_c_005fwhen_005f66.setParent((javax.servlet.jsp.tagext.Tag) _jspx_th_c_005fchoose_005f3);
-    // /WEB-INF/portlets/select.jsp(46,1) name = test type = boolean reqTime = true required = true fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
-    _jspx_th_c_005fwhen_005f66.setTest(((java.lang.Boolean) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${stuff.stufftype == 'key_customview'}", java.lang.Boolean.class, (PageContext)_jspx_page_context, null, false)).booleanValue());
-    int _jspx_eval_c_005fwhen_005f66 = _jspx_th_c_005fwhen_005f66.doStartTag();
-    if (_jspx_eval_c_005fwhen_005f66 != javax.servlet.jsp.tagext.Tag.SKIP_BODY) {
-      do {
-        out.write("\r\n");
-        out.write("\t\t<table id=\"tab_keycustomview\"></table>\r\n");
-        out.write("\t");
-        int evalDoAfterBody = _jspx_th_c_005fwhen_005f66.doAfterBody();
-        if (evalDoAfterBody != javax.servlet.jsp.tagext.BodyTag.EVAL_BODY_AGAIN)
-          break;
-      } while (true);
-    }
-    if (_jspx_th_c_005fwhen_005f66.doEndTag() == javax.servlet.jsp.tagext.Tag.SKIP_PAGE) {
-      _005fjspx_005ftagPool_005fc_005fwhen_0026_005ftest.reuse(_jspx_th_c_005fwhen_005f66);
-      return true;
-    }
-    _005fjspx_005ftagPool_005fc_005fwhen_0026_005ftest.reuse(_jspx_th_c_005fwhen_005f66);
-    return false;
-  }
-
-  private boolean _jspx_meth_c_005fwhen_005f67(javax.servlet.jsp.tagext.JspTag _jspx_th_c_005fchoose_005f3, PageContext _jspx_page_context, int[] _jspx_push_body_count_c_005fforEach_005f3)
-          throws Throwable {
-    PageContext pageContext = _jspx_page_context;
-    JspWriter out = _jspx_page_context.getOut();
-    //  c:when
-    org.apache.taglibs.standard.tag.rt.core.WhenTag _jspx_th_c_005fwhen_005f67 = (org.apache.taglibs.standard.tag.rt.core.WhenTag) _005fjspx_005ftagPool_005fc_005fwhen_0026_005ftest.get(org.apache.taglibs.standard.tag.rt.core.WhenTag.class);
-    _jspx_th_c_005fwhen_005f67.setPageContext(_jspx_page_context);
-    _jspx_th_c_005fwhen_005f67.setParent((javax.servlet.jsp.tagext.Tag) _jspx_th_c_005fchoose_005f3);
-    // /WEB-INF/portlets/select.jsp(49,1) name = test type = boolean reqTime = true required = true fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
-    _jspx_th_c_005fwhen_005f67.setTest(((java.lang.Boolean) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${stuff.stufftype == 'salesyear'}", java.lang.Boolean.class, (PageContext)_jspx_page_context, null, false)).booleanValue());
-    int _jspx_eval_c_005fwhen_005f67 = _jspx_th_c_005fwhen_005f67.doStartTag();
-    if (_jspx_eval_c_005fwhen_005f67 != javax.servlet.jsp.tagext.Tag.SKIP_BODY) {
-      do {
-        out.write("\r\n");
-        out.write("\t\t<div id=\"chart_salesyear\" style=\"width:100%;height:252px;\"></div>\r\n");
-        out.write("\t");
         int evalDoAfterBody = _jspx_th_c_005fwhen_005f67.doAfterBody();
         if (evalDoAfterBody != javax.servlet.jsp.tagext.BodyTag.EVAL_BODY_AGAIN)
           break;
@@ -3550,13 +3565,13 @@ String win_bar_1 = "resizable=\"false\"  closed=\"true\" modal=\"false\" collaps
     org.apache.taglibs.standard.tag.rt.core.WhenTag _jspx_th_c_005fwhen_005f68 = (org.apache.taglibs.standard.tag.rt.core.WhenTag) _005fjspx_005ftagPool_005fc_005fwhen_0026_005ftest.get(org.apache.taglibs.standard.tag.rt.core.WhenTag.class);
     _jspx_th_c_005fwhen_005f68.setPageContext(_jspx_page_context);
     _jspx_th_c_005fwhen_005f68.setParent((javax.servlet.jsp.tagext.Tag) _jspx_th_c_005fchoose_005f3);
-    // /WEB-INF/portlets/select.jsp(52,1) name = test type = boolean reqTime = true required = true fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
-    _jspx_th_c_005fwhen_005f68.setTest(((java.lang.Boolean) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${stuff.stufftype == 'top_potential'}", java.lang.Boolean.class, (PageContext)_jspx_page_context, null, false)).booleanValue());
+    // /WEB-INF/portlets/select.jsp(46,1) name = test type = boolean reqTime = true required = true fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
+    _jspx_th_c_005fwhen_005f68.setTest(((java.lang.Boolean) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${stuff.stufftype == 'key_customview'}", java.lang.Boolean.class, (PageContext)_jspx_page_context, null, false)).booleanValue());
     int _jspx_eval_c_005fwhen_005f68 = _jspx_th_c_005fwhen_005f68.doStartTag();
     if (_jspx_eval_c_005fwhen_005f68 != javax.servlet.jsp.tagext.Tag.SKIP_BODY) {
       do {
         out.write("\r\n");
-        out.write("\t\t<table id=\"tab_toppotential\"></table>\r\n");
+        out.write("\t\t<table id=\"tab_keycustomview\"></table>\r\n");
         out.write("\t");
         int evalDoAfterBody = _jspx_th_c_005fwhen_005f68.doAfterBody();
         if (evalDoAfterBody != javax.servlet.jsp.tagext.BodyTag.EVAL_BODY_AGAIN)
@@ -3579,10 +3594,68 @@ String win_bar_1 = "resizable=\"false\"  closed=\"true\" modal=\"false\" collaps
     org.apache.taglibs.standard.tag.rt.core.WhenTag _jspx_th_c_005fwhen_005f69 = (org.apache.taglibs.standard.tag.rt.core.WhenTag) _005fjspx_005ftagPool_005fc_005fwhen_0026_005ftest.get(org.apache.taglibs.standard.tag.rt.core.WhenTag.class);
     _jspx_th_c_005fwhen_005f69.setPageContext(_jspx_page_context);
     _jspx_th_c_005fwhen_005f69.setParent((javax.servlet.jsp.tagext.Tag) _jspx_th_c_005fchoose_005f3);
-    // /WEB-INF/portlets/select.jsp(55,1) name = test type = boolean reqTime = true required = true fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
-    _jspx_th_c_005fwhen_005f69.setTest(((java.lang.Boolean) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${stuff.stufftype ==  'datelogs'}", java.lang.Boolean.class, (PageContext)_jspx_page_context, null, false)).booleanValue());
+    // /WEB-INF/portlets/select.jsp(49,1) name = test type = boolean reqTime = true required = true fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
+    _jspx_th_c_005fwhen_005f69.setTest(((java.lang.Boolean) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${stuff.stufftype == 'salesyear'}", java.lang.Boolean.class, (PageContext)_jspx_page_context, null, false)).booleanValue());
     int _jspx_eval_c_005fwhen_005f69 = _jspx_th_c_005fwhen_005f69.doStartTag();
     if (_jspx_eval_c_005fwhen_005f69 != javax.servlet.jsp.tagext.Tag.SKIP_BODY) {
+      do {
+        out.write("\r\n");
+        out.write("\t\t<div id=\"chart_salesyear\" style=\"width:100%;height:252px;\"></div>\r\n");
+        out.write("\t");
+        int evalDoAfterBody = _jspx_th_c_005fwhen_005f69.doAfterBody();
+        if (evalDoAfterBody != javax.servlet.jsp.tagext.BodyTag.EVAL_BODY_AGAIN)
+          break;
+      } while (true);
+    }
+    if (_jspx_th_c_005fwhen_005f69.doEndTag() == javax.servlet.jsp.tagext.Tag.SKIP_PAGE) {
+      _005fjspx_005ftagPool_005fc_005fwhen_0026_005ftest.reuse(_jspx_th_c_005fwhen_005f69);
+      return true;
+    }
+    _005fjspx_005ftagPool_005fc_005fwhen_0026_005ftest.reuse(_jspx_th_c_005fwhen_005f69);
+    return false;
+  }
+
+  private boolean _jspx_meth_c_005fwhen_005f70(javax.servlet.jsp.tagext.JspTag _jspx_th_c_005fchoose_005f3, PageContext _jspx_page_context, int[] _jspx_push_body_count_c_005fforEach_005f3)
+          throws Throwable {
+    PageContext pageContext = _jspx_page_context;
+    JspWriter out = _jspx_page_context.getOut();
+    //  c:when
+    org.apache.taglibs.standard.tag.rt.core.WhenTag _jspx_th_c_005fwhen_005f70 = (org.apache.taglibs.standard.tag.rt.core.WhenTag) _005fjspx_005ftagPool_005fc_005fwhen_0026_005ftest.get(org.apache.taglibs.standard.tag.rt.core.WhenTag.class);
+    _jspx_th_c_005fwhen_005f70.setPageContext(_jspx_page_context);
+    _jspx_th_c_005fwhen_005f70.setParent((javax.servlet.jsp.tagext.Tag) _jspx_th_c_005fchoose_005f3);
+    // /WEB-INF/portlets/select.jsp(52,1) name = test type = boolean reqTime = true required = true fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
+    _jspx_th_c_005fwhen_005f70.setTest(((java.lang.Boolean) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${stuff.stufftype == 'top_potential'}", java.lang.Boolean.class, (PageContext)_jspx_page_context, null, false)).booleanValue());
+    int _jspx_eval_c_005fwhen_005f70 = _jspx_th_c_005fwhen_005f70.doStartTag();
+    if (_jspx_eval_c_005fwhen_005f70 != javax.servlet.jsp.tagext.Tag.SKIP_BODY) {
+      do {
+        out.write("\r\n");
+        out.write("\t\t<table id=\"tab_toppotential\"></table>\r\n");
+        out.write("\t");
+        int evalDoAfterBody = _jspx_th_c_005fwhen_005f70.doAfterBody();
+        if (evalDoAfterBody != javax.servlet.jsp.tagext.BodyTag.EVAL_BODY_AGAIN)
+          break;
+      } while (true);
+    }
+    if (_jspx_th_c_005fwhen_005f70.doEndTag() == javax.servlet.jsp.tagext.Tag.SKIP_PAGE) {
+      _005fjspx_005ftagPool_005fc_005fwhen_0026_005ftest.reuse(_jspx_th_c_005fwhen_005f70);
+      return true;
+    }
+    _005fjspx_005ftagPool_005fc_005fwhen_0026_005ftest.reuse(_jspx_th_c_005fwhen_005f70);
+    return false;
+  }
+
+  private boolean _jspx_meth_c_005fwhen_005f71(javax.servlet.jsp.tagext.JspTag _jspx_th_c_005fchoose_005f3, PageContext _jspx_page_context, int[] _jspx_push_body_count_c_005fforEach_005f3)
+          throws Throwable {
+    PageContext pageContext = _jspx_page_context;
+    JspWriter out = _jspx_page_context.getOut();
+    //  c:when
+    org.apache.taglibs.standard.tag.rt.core.WhenTag _jspx_th_c_005fwhen_005f71 = (org.apache.taglibs.standard.tag.rt.core.WhenTag) _005fjspx_005ftagPool_005fc_005fwhen_0026_005ftest.get(org.apache.taglibs.standard.tag.rt.core.WhenTag.class);
+    _jspx_th_c_005fwhen_005f71.setPageContext(_jspx_page_context);
+    _jspx_th_c_005fwhen_005f71.setParent((javax.servlet.jsp.tagext.Tag) _jspx_th_c_005fchoose_005f3);
+    // /WEB-INF/portlets/select.jsp(55,1) name = test type = boolean reqTime = true required = true fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
+    _jspx_th_c_005fwhen_005f71.setTest(((java.lang.Boolean) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${stuff.stufftype ==  'datelogs'}", java.lang.Boolean.class, (PageContext)_jspx_page_context, null, false)).booleanValue());
+    int _jspx_eval_c_005fwhen_005f71 = _jspx_th_c_005fwhen_005f71.doStartTag();
+    if (_jspx_eval_c_005fwhen_005f71 != javax.servlet.jsp.tagext.Tag.SKIP_BODY) {
       do {
         out.write("\r\n");
         out.write("\t<table class=\"tabcalendar\">\r\n");
@@ -3622,64 +3695,6 @@ String win_bar_1 = "resizable=\"false\"  closed=\"true\" modal=\"false\" collaps
         out.write("\t\t</tbody>\r\n");
         out.write("\t</table>\r\n");
         out.write("\t");
-        int evalDoAfterBody = _jspx_th_c_005fwhen_005f69.doAfterBody();
-        if (evalDoAfterBody != javax.servlet.jsp.tagext.BodyTag.EVAL_BODY_AGAIN)
-          break;
-      } while (true);
-    }
-    if (_jspx_th_c_005fwhen_005f69.doEndTag() == javax.servlet.jsp.tagext.Tag.SKIP_PAGE) {
-      _005fjspx_005ftagPool_005fc_005fwhen_0026_005ftest.reuse(_jspx_th_c_005fwhen_005f69);
-      return true;
-    }
-    _005fjspx_005ftagPool_005fc_005fwhen_0026_005ftest.reuse(_jspx_th_c_005fwhen_005f69);
-    return false;
-  }
-
-  private boolean _jspx_meth_c_005fwhen_005f70(javax.servlet.jsp.tagext.JspTag _jspx_th_c_005fchoose_005f3, PageContext _jspx_page_context, int[] _jspx_push_body_count_c_005fforEach_005f3)
-          throws Throwable {
-    PageContext pageContext = _jspx_page_context;
-    JspWriter out = _jspx_page_context.getOut();
-    //  c:when
-    org.apache.taglibs.standard.tag.rt.core.WhenTag _jspx_th_c_005fwhen_005f70 = (org.apache.taglibs.standard.tag.rt.core.WhenTag) _005fjspx_005ftagPool_005fc_005fwhen_0026_005ftest.get(org.apache.taglibs.standard.tag.rt.core.WhenTag.class);
-    _jspx_th_c_005fwhen_005f70.setPageContext(_jspx_page_context);
-    _jspx_th_c_005fwhen_005f70.setParent((javax.servlet.jsp.tagext.Tag) _jspx_th_c_005fchoose_005f3);
-    // /WEB-INF/portlets/select.jsp(93,1) name = test type = boolean reqTime = true required = true fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
-    _jspx_th_c_005fwhen_005f70.setTest(((java.lang.Boolean) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${stuff.stufftype == 'salesfunnels'}", java.lang.Boolean.class, (PageContext)_jspx_page_context, null, false)).booleanValue());
-    int _jspx_eval_c_005fwhen_005f70 = _jspx_th_c_005fwhen_005f70.doStartTag();
-    if (_jspx_eval_c_005fwhen_005f70 != javax.servlet.jsp.tagext.Tag.SKIP_BODY) {
-      do {
-        out.write("\r\n");
-        out.write("\t\t<div id=\"portlets_salesfunnels\"></div>\r\n");
-        out.write("\t");
-        int evalDoAfterBody = _jspx_th_c_005fwhen_005f70.doAfterBody();
-        if (evalDoAfterBody != javax.servlet.jsp.tagext.BodyTag.EVAL_BODY_AGAIN)
-          break;
-      } while (true);
-    }
-    if (_jspx_th_c_005fwhen_005f70.doEndTag() == javax.servlet.jsp.tagext.Tag.SKIP_PAGE) {
-      _005fjspx_005ftagPool_005fc_005fwhen_0026_005ftest.reuse(_jspx_th_c_005fwhen_005f70);
-      return true;
-    }
-    _005fjspx_005ftagPool_005fc_005fwhen_0026_005ftest.reuse(_jspx_th_c_005fwhen_005f70);
-    return false;
-  }
-
-  private boolean _jspx_meth_c_005fwhen_005f71(javax.servlet.jsp.tagext.JspTag _jspx_th_c_005fchoose_005f3, PageContext _jspx_page_context, int[] _jspx_push_body_count_c_005fforEach_005f3)
-          throws Throwable {
-    PageContext pageContext = _jspx_page_context;
-    JspWriter out = _jspx_page_context.getOut();
-    //  c:when
-    org.apache.taglibs.standard.tag.rt.core.WhenTag _jspx_th_c_005fwhen_005f71 = (org.apache.taglibs.standard.tag.rt.core.WhenTag) _005fjspx_005ftagPool_005fc_005fwhen_0026_005ftest.get(org.apache.taglibs.standard.tag.rt.core.WhenTag.class);
-    _jspx_th_c_005fwhen_005f71.setPageContext(_jspx_page_context);
-    _jspx_th_c_005fwhen_005f71.setParent((javax.servlet.jsp.tagext.Tag) _jspx_th_c_005fchoose_005f3);
-    // /WEB-INF/portlets/select.jsp(96,1) name = test type = boolean reqTime = true required = true fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
-    _jspx_th_c_005fwhen_005f71.setTest(((java.lang.Boolean) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${stuff.stufftype == 'com_salesfinishedbymonth' }", java.lang.Boolean.class, (PageContext)_jspx_page_context, null, false)).booleanValue());
-    int _jspx_eval_c_005fwhen_005f71 = _jspx_th_c_005fwhen_005f71.doStartTag();
-    if (_jspx_eval_c_005fwhen_005f71 != javax.servlet.jsp.tagext.Tag.SKIP_BODY) {
-      do {
-        out.write("\r\n");
-        out.write("\t\t<div id=\"chart_salesfinishedbymonth\" style=\"width:100%;height:250px;\"></div>\r\n");
-        out.write("\t");
         int evalDoAfterBody = _jspx_th_c_005fwhen_005f71.doAfterBody();
         if (evalDoAfterBody != javax.servlet.jsp.tagext.BodyTag.EVAL_BODY_AGAIN)
           break;
@@ -3701,13 +3716,13 @@ String win_bar_1 = "resizable=\"false\"  closed=\"true\" modal=\"false\" collaps
     org.apache.taglibs.standard.tag.rt.core.WhenTag _jspx_th_c_005fwhen_005f72 = (org.apache.taglibs.standard.tag.rt.core.WhenTag) _005fjspx_005ftagPool_005fc_005fwhen_0026_005ftest.get(org.apache.taglibs.standard.tag.rt.core.WhenTag.class);
     _jspx_th_c_005fwhen_005f72.setPageContext(_jspx_page_context);
     _jspx_th_c_005fwhen_005f72.setParent((javax.servlet.jsp.tagext.Tag) _jspx_th_c_005fchoose_005f3);
-    // /WEB-INF/portlets/select.jsp(99,1) name = test type = boolean reqTime = true required = true fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
-    _jspx_th_c_005fwhen_005f72.setTest(((java.lang.Boolean) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${ stuff.stufftype == 'cangkuassets' }", java.lang.Boolean.class, (PageContext)_jspx_page_context, null, false)).booleanValue());
+    // /WEB-INF/portlets/select.jsp(93,1) name = test type = boolean reqTime = true required = true fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
+    _jspx_th_c_005fwhen_005f72.setTest(((java.lang.Boolean) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${stuff.stufftype == 'salesfunnels'}", java.lang.Boolean.class, (PageContext)_jspx_page_context, null, false)).booleanValue());
     int _jspx_eval_c_005fwhen_005f72 = _jspx_th_c_005fwhen_005f72.doStartTag();
     if (_jspx_eval_c_005fwhen_005f72 != javax.servlet.jsp.tagext.Tag.SKIP_BODY) {
       do {
         out.write("\r\n");
-        out.write("\t\t<table id=\"tab_cangkuassets\"></table>\r\n");
+        out.write("\t\t<div id=\"portlets_salesfunnels\"></div>\r\n");
         out.write("\t");
         int evalDoAfterBody = _jspx_th_c_005fwhen_005f72.doAfterBody();
         if (evalDoAfterBody != javax.servlet.jsp.tagext.BodyTag.EVAL_BODY_AGAIN)
@@ -3730,13 +3745,13 @@ String win_bar_1 = "resizable=\"false\"  closed=\"true\" modal=\"false\" collaps
     org.apache.taglibs.standard.tag.rt.core.WhenTag _jspx_th_c_005fwhen_005f73 = (org.apache.taglibs.standard.tag.rt.core.WhenTag) _005fjspx_005ftagPool_005fc_005fwhen_0026_005ftest.get(org.apache.taglibs.standard.tag.rt.core.WhenTag.class);
     _jspx_th_c_005fwhen_005f73.setPageContext(_jspx_page_context);
     _jspx_th_c_005fwhen_005f73.setParent((javax.servlet.jsp.tagext.Tag) _jspx_th_c_005fchoose_005f3);
-    // /WEB-INF/portlets/select.jsp(102,1) name = test type = boolean reqTime = true required = true fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
-    _jspx_th_c_005fwhen_005f73.setTest(((java.lang.Boolean) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${stuff.stufftype =='AccountMemdays' }", java.lang.Boolean.class, (PageContext)_jspx_page_context, null, false)).booleanValue());
+    // /WEB-INF/portlets/select.jsp(96,1) name = test type = boolean reqTime = true required = true fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
+    _jspx_th_c_005fwhen_005f73.setTest(((java.lang.Boolean) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${stuff.stufftype == 'com_salesfinishedbymonth' }", java.lang.Boolean.class, (PageContext)_jspx_page_context, null, false)).booleanValue());
     int _jspx_eval_c_005fwhen_005f73 = _jspx_th_c_005fwhen_005f73.doStartTag();
     if (_jspx_eval_c_005fwhen_005f73 != javax.servlet.jsp.tagext.Tag.SKIP_BODY) {
       do {
         out.write("\r\n");
-        out.write("\t\t<table id=\"tab_AccountMemdays\"></table>\r\n");
+        out.write("\t\t<div id=\"chart_salesfinishedbymonth\" style=\"width:100%;height:250px;\"></div>\r\n");
         out.write("\t");
         int evalDoAfterBody = _jspx_th_c_005fwhen_005f73.doAfterBody();
         if (evalDoAfterBody != javax.servlet.jsp.tagext.BodyTag.EVAL_BODY_AGAIN)
@@ -3759,14 +3774,13 @@ String win_bar_1 = "resizable=\"false\"  closed=\"true\" modal=\"false\" collaps
     org.apache.taglibs.standard.tag.rt.core.WhenTag _jspx_th_c_005fwhen_005f74 = (org.apache.taglibs.standard.tag.rt.core.WhenTag) _005fjspx_005ftagPool_005fc_005fwhen_0026_005ftest.get(org.apache.taglibs.standard.tag.rt.core.WhenTag.class);
     _jspx_th_c_005fwhen_005f74.setPageContext(_jspx_page_context);
     _jspx_th_c_005fwhen_005f74.setParent((javax.servlet.jsp.tagext.Tag) _jspx_th_c_005fchoose_005f3);
-    // /WEB-INF/portlets/select.jsp(105,1) name = test type = boolean reqTime = true required = true fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
-    _jspx_th_c_005fwhen_005f74.setTest(((java.lang.Boolean) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${stuff.stufftype=='announcements' }", java.lang.Boolean.class, (PageContext)_jspx_page_context, null, false)).booleanValue());
+    // /WEB-INF/portlets/select.jsp(99,1) name = test type = boolean reqTime = true required = true fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
+    _jspx_th_c_005fwhen_005f74.setTest(((java.lang.Boolean) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${ stuff.stufftype == 'cangkuassets' }", java.lang.Boolean.class, (PageContext)_jspx_page_context, null, false)).booleanValue());
     int _jspx_eval_c_005fwhen_005f74 = _jspx_th_c_005fwhen_005f74.doStartTag();
     if (_jspx_eval_c_005fwhen_005f74 != javax.servlet.jsp.tagext.Tag.SKIP_BODY) {
       do {
         out.write("\r\n");
-        out.write("\t\t<table class=\"tablist\" id=\"tab_announcements\">\r\n");
-        out.write("\t\t</table>\r\n");
+        out.write("\t\t<table id=\"tab_cangkuassets\"></table>\r\n");
         out.write("\t");
         int evalDoAfterBody = _jspx_th_c_005fwhen_005f74.doAfterBody();
         if (evalDoAfterBody != javax.servlet.jsp.tagext.BodyTag.EVAL_BODY_AGAIN)
@@ -3789,17 +3803,13 @@ String win_bar_1 = "resizable=\"false\"  closed=\"true\" modal=\"false\" collaps
     org.apache.taglibs.standard.tag.rt.core.WhenTag _jspx_th_c_005fwhen_005f75 = (org.apache.taglibs.standard.tag.rt.core.WhenTag) _005fjspx_005ftagPool_005fc_005fwhen_0026_005ftest.get(org.apache.taglibs.standard.tag.rt.core.WhenTag.class);
     _jspx_th_c_005fwhen_005f75.setPageContext(_jspx_page_context);
     _jspx_th_c_005fwhen_005f75.setParent((javax.servlet.jsp.tagext.Tag) _jspx_th_c_005fchoose_005f3);
-    // /WEB-INF/portlets/select.jsp(109,1) name = test type = boolean reqTime = true required = true fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
-    _jspx_th_c_005fwhen_005f75.setTest(((java.lang.Boolean) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${stuff.stufftype=='c3crm_news' }", java.lang.Boolean.class, (PageContext)_jspx_page_context, null, false)).booleanValue());
+    // /WEB-INF/portlets/select.jsp(102,1) name = test type = boolean reqTime = true required = true fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
+    _jspx_th_c_005fwhen_005f75.setTest(((java.lang.Boolean) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${stuff.stufftype =='AccountMemdays' }", java.lang.Boolean.class, (PageContext)_jspx_page_context, null, false)).booleanValue());
     int _jspx_eval_c_005fwhen_005f75 = _jspx_th_c_005fwhen_005f75.doStartTag();
     if (_jspx_eval_c_005fwhen_005f75 != javax.servlet.jsp.tagext.Tag.SKIP_BODY) {
       do {
         out.write("\r\n");
-        out.write("\t\t<table class=\"tablist\" id=\"tab_c3crm_news\">\r\n");
-        out.write("\t\t\t<tr>\r\n");
-        out.write("\t\t\t\t<td class=\"pl5\">暂不可用</td>\r\n");
-        out.write("\t\t\t</tr>\r\n");
-        out.write("\t\t</table>\r\n");
+        out.write("\t\t<table id=\"tab_AccountMemdays\"></table>\r\n");
         out.write("\t");
         int evalDoAfterBody = _jspx_th_c_005fwhen_005f75.doAfterBody();
         if (evalDoAfterBody != javax.servlet.jsp.tagext.BodyTag.EVAL_BODY_AGAIN)
@@ -3822,13 +3832,14 @@ String win_bar_1 = "resizable=\"false\"  closed=\"true\" modal=\"false\" collaps
     org.apache.taglibs.standard.tag.rt.core.WhenTag _jspx_th_c_005fwhen_005f76 = (org.apache.taglibs.standard.tag.rt.core.WhenTag) _005fjspx_005ftagPool_005fc_005fwhen_0026_005ftest.get(org.apache.taglibs.standard.tag.rt.core.WhenTag.class);
     _jspx_th_c_005fwhen_005f76.setPageContext(_jspx_page_context);
     _jspx_th_c_005fwhen_005f76.setParent((javax.servlet.jsp.tagext.Tag) _jspx_th_c_005fchoose_005f3);
-    // /WEB-INF/portlets/select.jsp(116,1) name = test type = boolean reqTime = true required = true fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
-    _jspx_th_c_005fwhen_005f76.setTest(((java.lang.Boolean) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${ stuff.stufftype =='expensesmonth' }", java.lang.Boolean.class, (PageContext)_jspx_page_context, null, false)).booleanValue());
+    // /WEB-INF/portlets/select.jsp(105,1) name = test type = boolean reqTime = true required = true fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
+    _jspx_th_c_005fwhen_005f76.setTest(((java.lang.Boolean) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${stuff.stufftype=='announcements' }", java.lang.Boolean.class, (PageContext)_jspx_page_context, null, false)).booleanValue());
     int _jspx_eval_c_005fwhen_005f76 = _jspx_th_c_005fwhen_005f76.doStartTag();
     if (_jspx_eval_c_005fwhen_005f76 != javax.servlet.jsp.tagext.Tag.SKIP_BODY) {
       do {
         out.write("\r\n");
-        out.write("\t\t<table id=\"tab_expensesmonth\"></table>\r\n");
+        out.write("\t\t<table class=\"tablist\" id=\"tab_announcements\">\r\n");
+        out.write("\t\t</table>\r\n");
         out.write("\t");
         int evalDoAfterBody = _jspx_th_c_005fwhen_005f76.doAfterBody();
         if (evalDoAfterBody != javax.servlet.jsp.tagext.BodyTag.EVAL_BODY_AGAIN)
@@ -3851,16 +3862,17 @@ String win_bar_1 = "resizable=\"false\"  closed=\"true\" modal=\"false\" collaps
     org.apache.taglibs.standard.tag.rt.core.WhenTag _jspx_th_c_005fwhen_005f77 = (org.apache.taglibs.standard.tag.rt.core.WhenTag) _005fjspx_005ftagPool_005fc_005fwhen_0026_005ftest.get(org.apache.taglibs.standard.tag.rt.core.WhenTag.class);
     _jspx_th_c_005fwhen_005f77.setPageContext(_jspx_page_context);
     _jspx_th_c_005fwhen_005f77.setParent((javax.servlet.jsp.tagext.Tag) _jspx_th_c_005fchoose_005f3);
-    // /WEB-INF/portlets/select.jsp(119,1) name = test type = boolean reqTime = true required = true fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
-    _jspx_th_c_005fwhen_005f77.setTest(((java.lang.Boolean) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${ stuff.stufftype =='free_tags' }", java.lang.Boolean.class, (PageContext)_jspx_page_context, null, false)).booleanValue());
+    // /WEB-INF/portlets/select.jsp(109,1) name = test type = boolean reqTime = true required = true fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
+    _jspx_th_c_005fwhen_005f77.setTest(((java.lang.Boolean) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${stuff.stufftype=='c3crm_news' }", java.lang.Boolean.class, (PageContext)_jspx_page_context, null, false)).booleanValue());
     int _jspx_eval_c_005fwhen_005f77 = _jspx_th_c_005fwhen_005f77.doStartTag();
     if (_jspx_eval_c_005fwhen_005f77 != javax.servlet.jsp.tagext.Tag.SKIP_BODY) {
       do {
         out.write("\r\n");
-        out.write("\t\t<div id=\"div_free_tags\" class=\"tag p10\">\r\n");
-        out.write("\t\t\t<ul>\r\n");
-        out.write("\t\t\t</ul>\r\n");
-        out.write("\t\t</div>\r\n");
+        out.write("\t\t<table class=\"tablist\" id=\"tab_c3crm_news\">\r\n");
+        out.write("\t\t\t<tr>\r\n");
+        out.write("\t\t\t\t<td class=\"pl5\">暂不可用</td>\r\n");
+        out.write("\t\t\t</tr>\r\n");
+        out.write("\t\t</table>\r\n");
         out.write("\t");
         int evalDoAfterBody = _jspx_th_c_005fwhen_005f77.doAfterBody();
         if (evalDoAfterBody != javax.servlet.jsp.tagext.BodyTag.EVAL_BODY_AGAIN)
@@ -3883,13 +3895,13 @@ String win_bar_1 = "resizable=\"false\"  closed=\"true\" modal=\"false\" collaps
     org.apache.taglibs.standard.tag.rt.core.WhenTag _jspx_th_c_005fwhen_005f78 = (org.apache.taglibs.standard.tag.rt.core.WhenTag) _005fjspx_005ftagPool_005fc_005fwhen_0026_005ftest.get(org.apache.taglibs.standard.tag.rt.core.WhenTag.class);
     _jspx_th_c_005fwhen_005f78.setPageContext(_jspx_page_context);
     _jspx_th_c_005fwhen_005f78.setParent((javax.servlet.jsp.tagext.Tag) _jspx_th_c_005fchoose_005f3);
-    // /WEB-INF/portlets/select.jsp(125,1) name = test type = boolean reqTime = true required = true fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
-    _jspx_th_c_005fwhen_005f78.setTest(((java.lang.Boolean) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${ stuff.stufftype =='note_pad' }", java.lang.Boolean.class, (PageContext)_jspx_page_context, null, false)).booleanValue());
+    // /WEB-INF/portlets/select.jsp(116,1) name = test type = boolean reqTime = true required = true fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
+    _jspx_th_c_005fwhen_005f78.setTest(((java.lang.Boolean) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${ stuff.stufftype =='expensesmonth' }", java.lang.Boolean.class, (PageContext)_jspx_page_context, null, false)).booleanValue());
     int _jspx_eval_c_005fwhen_005f78 = _jspx_th_c_005fwhen_005f78.doStartTag();
     if (_jspx_eval_c_005fwhen_005f78 != javax.servlet.jsp.tagext.Tag.SKIP_BODY) {
       do {
         out.write("\r\n");
-        out.write("\t\t<textarea name=\"content\" style=\"width:99%;height:250px;border:1px solid gray;\" id=\"content\" onblur=\"setNotepad()\" ></textarea>\r\n");
+        out.write("\t\t<table id=\"tab_expensesmonth\"></table>\r\n");
         out.write("\t");
         int evalDoAfterBody = _jspx_th_c_005fwhen_005f78.doAfterBody();
         if (evalDoAfterBody != javax.servlet.jsp.tagext.BodyTag.EVAL_BODY_AGAIN)
@@ -3912,13 +3924,16 @@ String win_bar_1 = "resizable=\"false\"  closed=\"true\" modal=\"false\" collaps
     org.apache.taglibs.standard.tag.rt.core.WhenTag _jspx_th_c_005fwhen_005f79 = (org.apache.taglibs.standard.tag.rt.core.WhenTag) _005fjspx_005ftagPool_005fc_005fwhen_0026_005ftest.get(org.apache.taglibs.standard.tag.rt.core.WhenTag.class);
     _jspx_th_c_005fwhen_005f79.setPageContext(_jspx_page_context);
     _jspx_th_c_005fwhen_005f79.setParent((javax.servlet.jsp.tagext.Tag) _jspx_th_c_005fchoose_005f3);
-    // /WEB-INF/portlets/select.jsp(128,1) name = test type = boolean reqTime = true required = true fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
-    _jspx_th_c_005fwhen_005f79.setTest(((java.lang.Boolean) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${stuff.stufftype=='notok_calendar' }", java.lang.Boolean.class, (PageContext)_jspx_page_context, null, false)).booleanValue());
+    // /WEB-INF/portlets/select.jsp(119,1) name = test type = boolean reqTime = true required = true fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
+    _jspx_th_c_005fwhen_005f79.setTest(((java.lang.Boolean) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${ stuff.stufftype =='free_tags' }", java.lang.Boolean.class, (PageContext)_jspx_page_context, null, false)).booleanValue());
     int _jspx_eval_c_005fwhen_005f79 = _jspx_th_c_005fwhen_005f79.doStartTag();
     if (_jspx_eval_c_005fwhen_005f79 != javax.servlet.jsp.tagext.Tag.SKIP_BODY) {
       do {
         out.write("\r\n");
-        out.write("\t\t<table id=\"tab_notok_calendar\"></table>\r\n");
+        out.write("\t\t<div id=\"div_free_tags\" class=\"tag p10\">\r\n");
+        out.write("\t\t\t<ul>\r\n");
+        out.write("\t\t\t</ul>\r\n");
+        out.write("\t\t</div>\r\n");
         out.write("\t");
         int evalDoAfterBody = _jspx_th_c_005fwhen_005f79.doAfterBody();
         if (evalDoAfterBody != javax.servlet.jsp.tagext.BodyTag.EVAL_BODY_AGAIN)
@@ -3941,13 +3956,13 @@ String win_bar_1 = "resizable=\"false\"  closed=\"true\" modal=\"false\" collaps
     org.apache.taglibs.standard.tag.rt.core.WhenTag _jspx_th_c_005fwhen_005f80 = (org.apache.taglibs.standard.tag.rt.core.WhenTag) _005fjspx_005ftagPool_005fc_005fwhen_0026_005ftest.get(org.apache.taglibs.standard.tag.rt.core.WhenTag.class);
     _jspx_th_c_005fwhen_005f80.setPageContext(_jspx_page_context);
     _jspx_th_c_005fwhen_005f80.setParent((javax.servlet.jsp.tagext.Tag) _jspx_th_c_005fchoose_005f3);
-    // /WEB-INF/portlets/select.jsp(131,1) name = test type = boolean reqTime = true required = true fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
-    _jspx_th_c_005fwhen_005f80.setTest(((java.lang.Boolean) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${stuff.stufftype=='online_users' }", java.lang.Boolean.class, (PageContext)_jspx_page_context, null, false)).booleanValue());
+    // /WEB-INF/portlets/select.jsp(125,1) name = test type = boolean reqTime = true required = true fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
+    _jspx_th_c_005fwhen_005f80.setTest(((java.lang.Boolean) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${ stuff.stufftype =='note_pad' }", java.lang.Boolean.class, (PageContext)_jspx_page_context, null, false)).booleanValue());
     int _jspx_eval_c_005fwhen_005f80 = _jspx_th_c_005fwhen_005f80.doStartTag();
     if (_jspx_eval_c_005fwhen_005f80 != javax.servlet.jsp.tagext.Tag.SKIP_BODY) {
       do {
         out.write("\r\n");
-        out.write("\t\t<table id=\"tab_online_users\"></table>\r\n");
+        out.write("\t\t<textarea name=\"content\" style=\"width:99%;height:250px;border:1px solid gray;\" id=\"content\" onblur=\"setNotepad()\" ></textarea>\r\n");
         out.write("\t");
         int evalDoAfterBody = _jspx_th_c_005fwhen_005f80.doAfterBody();
         if (evalDoAfterBody != javax.servlet.jsp.tagext.BodyTag.EVAL_BODY_AGAIN)
@@ -3970,28 +3985,13 @@ String win_bar_1 = "resizable=\"false\"  closed=\"true\" modal=\"false\" collaps
     org.apache.taglibs.standard.tag.rt.core.WhenTag _jspx_th_c_005fwhen_005f81 = (org.apache.taglibs.standard.tag.rt.core.WhenTag) _005fjspx_005ftagPool_005fc_005fwhen_0026_005ftest.get(org.apache.taglibs.standard.tag.rt.core.WhenTag.class);
     _jspx_th_c_005fwhen_005f81.setPageContext(_jspx_page_context);
     _jspx_th_c_005fwhen_005f81.setParent((javax.servlet.jsp.tagext.Tag) _jspx_th_c_005fchoose_005f3);
-    // /WEB-INF/portlets/select.jsp(134,1) name = test type = boolean reqTime = true required = true fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
-    _jspx_th_c_005fwhen_005f81.setTest(((java.lang.Boolean) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${stuff.stufftype=='short_cuts' }", java.lang.Boolean.class, (PageContext)_jspx_page_context, null, false)).booleanValue());
+    // /WEB-INF/portlets/select.jsp(128,1) name = test type = boolean reqTime = true required = true fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
+    _jspx_th_c_005fwhen_005f81.setTest(((java.lang.Boolean) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${stuff.stufftype=='notok_calendar' }", java.lang.Boolean.class, (PageContext)_jspx_page_context, null, false)).booleanValue());
     int _jspx_eval_c_005fwhen_005f81 = _jspx_th_c_005fwhen_005f81.doStartTag();
     if (_jspx_eval_c_005fwhen_005f81 != javax.servlet.jsp.tagext.Tag.SKIP_BODY) {
       do {
         out.write("\r\n");
-        out.write("\t\t<div class=\"p10\">\r\n");
-        out.write("\t\t<table class=\"tabview\">\r\n");
-        out.write("\t\t\t<tr>\r\n");
-        out.write("\t\t\t\t<td><a href=\"crm/module/accounts/showedit?recordid=0&ptb=-1&module=Accounts\">新增客户</a></td><td><a href=\"crm/module/contacts/showedit?recordid=0&ptb=-1&module=Contacts\">新增联系人</a></td>\r\n");
-        out.write("\t\t\t</tr>\r\n");
-        out.write("\t\t\t<tr>\r\n");
-        out.write("\t\t\t\t<td><a href=\"crm/module/notes/showedit?recordid=0&ptb=-1&module=Notes\">新增联系记录</a></td><td><a href=\"crm/module/potentials/showedit?recordid=0&ptb=-1&module=Potentials\">新增销售机会</a></td>\r\n");
-        out.write("\t\t\t</tr>\r\n");
-        out.write("\t\t\t<tr>\r\n");
-        out.write("\t\t\t\t<td><a href=\"crm/module/funnels/index?ptb=5\" >销售漏斗</a></td><td><a href=\"crm/module/quotes/showedit?recordid=0&ptb=-1&module=Quotes\">新增报价</a></td>\r\n");
-        out.write("\t\t\t</tr>\r\n");
-        out.write("\t\t\t<tr>\r\n");
-        out.write("\t\t\t\t<td><a href=\"crm/module/salesorder/showedit?recordid=0&ptb=-1&module=SalesOrder\" >新增合同订单</a></td><td><a href=\"crm/module/performances/index?ptb=-1\" >员工绩效</a></td>\r\n");
-        out.write("\t\t\t</tr>\r\n");
-        out.write("\t\t</table> \r\n");
-        out.write("\t\t</div>\r\n");
+        out.write("\t\t<table id=\"tab_notok_calendar\"></table>\r\n");
         out.write("\t");
         int evalDoAfterBody = _jspx_th_c_005fwhen_005f81.doAfterBody();
         if (evalDoAfterBody != javax.servlet.jsp.tagext.BodyTag.EVAL_BODY_AGAIN)
@@ -4014,13 +4014,13 @@ String win_bar_1 = "resizable=\"false\"  closed=\"true\" modal=\"false\" collaps
     org.apache.taglibs.standard.tag.rt.core.WhenTag _jspx_th_c_005fwhen_005f82 = (org.apache.taglibs.standard.tag.rt.core.WhenTag) _005fjspx_005ftagPool_005fc_005fwhen_0026_005ftest.get(org.apache.taglibs.standard.tag.rt.core.WhenTag.class);
     _jspx_th_c_005fwhen_005f82.setPageContext(_jspx_page_context);
     _jspx_th_c_005fwhen_005f82.setParent((javax.servlet.jsp.tagext.Tag) _jspx_th_c_005fchoose_005f3);
-    // /WEB-INF/portlets/select.jsp(152,1) name = test type = boolean reqTime = true required = true fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
-    _jspx_th_c_005fwhen_005f82.setTest(((java.lang.Boolean) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${stuff.stufftype == 'top_account' }", java.lang.Boolean.class, (PageContext)_jspx_page_context, null, false)).booleanValue());
+    // /WEB-INF/portlets/select.jsp(131,1) name = test type = boolean reqTime = true required = true fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
+    _jspx_th_c_005fwhen_005f82.setTest(((java.lang.Boolean) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${stuff.stufftype=='online_users' }", java.lang.Boolean.class, (PageContext)_jspx_page_context, null, false)).booleanValue());
     int _jspx_eval_c_005fwhen_005f82 = _jspx_th_c_005fwhen_005f82.doStartTag();
     if (_jspx_eval_c_005fwhen_005f82 != javax.servlet.jsp.tagext.Tag.SKIP_BODY) {
       do {
         out.write("\r\n");
-        out.write("\t\t<table id=\"tab_topaccount\"></table>\r\n");
+        out.write("\t\t<table id=\"tab_online_users\"></table>\r\n");
         out.write("\t");
         int evalDoAfterBody = _jspx_th_c_005fwhen_005f82.doAfterBody();
         if (evalDoAfterBody != javax.servlet.jsp.tagext.BodyTag.EVAL_BODY_AGAIN)
@@ -4043,13 +4043,28 @@ String win_bar_1 = "resizable=\"false\"  closed=\"true\" modal=\"false\" collaps
     org.apache.taglibs.standard.tag.rt.core.WhenTag _jspx_th_c_005fwhen_005f83 = (org.apache.taglibs.standard.tag.rt.core.WhenTag) _005fjspx_005ftagPool_005fc_005fwhen_0026_005ftest.get(org.apache.taglibs.standard.tag.rt.core.WhenTag.class);
     _jspx_th_c_005fwhen_005f83.setPageContext(_jspx_page_context);
     _jspx_th_c_005fwhen_005f83.setParent((javax.servlet.jsp.tagext.Tag) _jspx_th_c_005fchoose_005f3);
-    // /WEB-INF/portlets/select.jsp(155,1) name = test type = boolean reqTime = true required = true fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
-    _jspx_th_c_005fwhen_005f83.setTest(((java.lang.Boolean) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${ stuff.stufftype == 'today_account' }", java.lang.Boolean.class, (PageContext)_jspx_page_context, null, false)).booleanValue());
+    // /WEB-INF/portlets/select.jsp(134,1) name = test type = boolean reqTime = true required = true fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
+    _jspx_th_c_005fwhen_005f83.setTest(((java.lang.Boolean) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${stuff.stufftype=='short_cuts' }", java.lang.Boolean.class, (PageContext)_jspx_page_context, null, false)).booleanValue());
     int _jspx_eval_c_005fwhen_005f83 = _jspx_th_c_005fwhen_005f83.doStartTag();
     if (_jspx_eval_c_005fwhen_005f83 != javax.servlet.jsp.tagext.Tag.SKIP_BODY) {
       do {
         out.write("\r\n");
-        out.write("\t\t<table id=\"tab_todayaccount\"></table>\r\n");
+        out.write("\t\t<div class=\"p10\">\r\n");
+        out.write("\t\t<table class=\"tabview\">\r\n");
+        out.write("\t\t\t<tr>\r\n");
+        out.write("\t\t\t\t<td><a href=\"crm/module/accounts/showedit?recordid=0&ptb=-1&module=Accounts\">新增客户</a></td><td><a href=\"crm/module/contacts/showedit?recordid=0&ptb=-1&module=Contacts\">新增联系人</a></td>\r\n");
+        out.write("\t\t\t</tr>\r\n");
+        out.write("\t\t\t<tr>\r\n");
+        out.write("\t\t\t\t<td><a href=\"crm/module/notes/showedit?recordid=0&ptb=-1&module=Notes\">新增联系记录</a></td><td><a href=\"crm/module/potentials/showedit?recordid=0&ptb=-1&module=Potentials\">新增销售机会</a></td>\r\n");
+        out.write("\t\t\t</tr>\r\n");
+        out.write("\t\t\t<tr>\r\n");
+        out.write("\t\t\t\t<td><a href=\"crm/module/funnels/index?ptb=5\" >销售漏斗</a></td><td><a href=\"crm/module/quotes/showedit?recordid=0&ptb=-1&module=Quotes\">新增报价</a></td>\r\n");
+        out.write("\t\t\t</tr>\r\n");
+        out.write("\t\t\t<tr>\r\n");
+        out.write("\t\t\t\t<td><a href=\"crm/module/salesorder/showedit?recordid=0&ptb=-1&module=SalesOrder\" >新增合同订单</a></td><td><a href=\"crm/module/performances/index?ptb=-1\" >员工绩效</a></td>\r\n");
+        out.write("\t\t\t</tr>\r\n");
+        out.write("\t\t</table> \r\n");
+        out.write("\t\t</div>\r\n");
         out.write("\t");
         int evalDoAfterBody = _jspx_th_c_005fwhen_005f83.doAfterBody();
         if (evalDoAfterBody != javax.servlet.jsp.tagext.BodyTag.EVAL_BODY_AGAIN)
@@ -4072,13 +4087,13 @@ String win_bar_1 = "resizable=\"false\"  closed=\"true\" modal=\"false\" collaps
     org.apache.taglibs.standard.tag.rt.core.WhenTag _jspx_th_c_005fwhen_005f84 = (org.apache.taglibs.standard.tag.rt.core.WhenTag) _005fjspx_005ftagPool_005fc_005fwhen_0026_005ftest.get(org.apache.taglibs.standard.tag.rt.core.WhenTag.class);
     _jspx_th_c_005fwhen_005f84.setPageContext(_jspx_page_context);
     _jspx_th_c_005fwhen_005f84.setParent((javax.servlet.jsp.tagext.Tag) _jspx_th_c_005fchoose_005f3);
-    // /WEB-INF/portlets/select.jsp(158,1) name = test type = boolean reqTime = true required = true fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
-    _jspx_th_c_005fwhen_005f84.setTest(((java.lang.Boolean) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${stuff.stufftype == 'top_calendar'  }", java.lang.Boolean.class, (PageContext)_jspx_page_context, null, false)).booleanValue());
+    // /WEB-INF/portlets/select.jsp(152,1) name = test type = boolean reqTime = true required = true fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
+    _jspx_th_c_005fwhen_005f84.setTest(((java.lang.Boolean) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${stuff.stufftype == 'top_account' }", java.lang.Boolean.class, (PageContext)_jspx_page_context, null, false)).booleanValue());
     int _jspx_eval_c_005fwhen_005f84 = _jspx_th_c_005fwhen_005f84.doStartTag();
     if (_jspx_eval_c_005fwhen_005f84 != javax.servlet.jsp.tagext.Tag.SKIP_BODY) {
       do {
         out.write("\r\n");
-        out.write("\t\t<table id=\"tab_topcalendar\"></table>\r\n");
+        out.write("\t\t<table id=\"tab_topaccount\"></table>\r\n");
         out.write("\t");
         int evalDoAfterBody = _jspx_th_c_005fwhen_005f84.doAfterBody();
         if (evalDoAfterBody != javax.servlet.jsp.tagext.BodyTag.EVAL_BODY_AGAIN)
@@ -4101,13 +4116,13 @@ String win_bar_1 = "resizable=\"false\"  closed=\"true\" modal=\"false\" collaps
     org.apache.taglibs.standard.tag.rt.core.WhenTag _jspx_th_c_005fwhen_005f85 = (org.apache.taglibs.standard.tag.rt.core.WhenTag) _005fjspx_005ftagPool_005fc_005fwhen_0026_005ftest.get(org.apache.taglibs.standard.tag.rt.core.WhenTag.class);
     _jspx_th_c_005fwhen_005f85.setPageContext(_jspx_page_context);
     _jspx_th_c_005fwhen_005f85.setParent((javax.servlet.jsp.tagext.Tag) _jspx_th_c_005fchoose_005f3);
-    // /WEB-INF/portlets/select.jsp(161,1) name = test type = boolean reqTime = true required = true fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
-    _jspx_th_c_005fwhen_005f85.setTest(((java.lang.Boolean) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${stuff.stufftype =='top_gather' }", java.lang.Boolean.class, (PageContext)_jspx_page_context, null, false)).booleanValue());
+    // /WEB-INF/portlets/select.jsp(155,1) name = test type = boolean reqTime = true required = true fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
+    _jspx_th_c_005fwhen_005f85.setTest(((java.lang.Boolean) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${ stuff.stufftype == 'today_account' }", java.lang.Boolean.class, (PageContext)_jspx_page_context, null, false)).booleanValue());
     int _jspx_eval_c_005fwhen_005f85 = _jspx_th_c_005fwhen_005f85.doStartTag();
     if (_jspx_eval_c_005fwhen_005f85 != javax.servlet.jsp.tagext.Tag.SKIP_BODY) {
       do {
         out.write("\r\n");
-        out.write("\t\t<table id=\"tab_topgather\"></table>\r\n");
+        out.write("\t\t<table id=\"tab_todayaccount\"></table>\r\n");
         out.write("\t");
         int evalDoAfterBody = _jspx_th_c_005fwhen_005f85.doAfterBody();
         if (evalDoAfterBody != javax.servlet.jsp.tagext.BodyTag.EVAL_BODY_AGAIN)
@@ -4130,13 +4145,13 @@ String win_bar_1 = "resizable=\"false\"  closed=\"true\" modal=\"false\" collaps
     org.apache.taglibs.standard.tag.rt.core.WhenTag _jspx_th_c_005fwhen_005f86 = (org.apache.taglibs.standard.tag.rt.core.WhenTag) _005fjspx_005ftagPool_005fc_005fwhen_0026_005ftest.get(org.apache.taglibs.standard.tag.rt.core.WhenTag.class);
     _jspx_th_c_005fwhen_005f86.setPageContext(_jspx_page_context);
     _jspx_th_c_005fwhen_005f86.setParent((javax.servlet.jsp.tagext.Tag) _jspx_th_c_005fchoose_005f3);
-    // /WEB-INF/portlets/select.jsp(164,1) name = test type = boolean reqTime = true required = true fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
-    _jspx_th_c_005fwhen_005f86.setTest(((java.lang.Boolean) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${ stuff.stufftype =='top_notes' }", java.lang.Boolean.class, (PageContext)_jspx_page_context, null, false)).booleanValue());
+    // /WEB-INF/portlets/select.jsp(158,1) name = test type = boolean reqTime = true required = true fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
+    _jspx_th_c_005fwhen_005f86.setTest(((java.lang.Boolean) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${stuff.stufftype == 'top_calendar'  }", java.lang.Boolean.class, (PageContext)_jspx_page_context, null, false)).booleanValue());
     int _jspx_eval_c_005fwhen_005f86 = _jspx_th_c_005fwhen_005f86.doStartTag();
     if (_jspx_eval_c_005fwhen_005f86 != javax.servlet.jsp.tagext.Tag.SKIP_BODY) {
       do {
         out.write("\r\n");
-        out.write("\t\t<table id=\"tab_topnotes\"></table>\r\n");
+        out.write("\t\t<table id=\"tab_topcalendar\"></table>\r\n");
         out.write("\t");
         int evalDoAfterBody = _jspx_th_c_005fwhen_005f86.doAfterBody();
         if (evalDoAfterBody != javax.servlet.jsp.tagext.BodyTag.EVAL_BODY_AGAIN)
@@ -4159,13 +4174,13 @@ String win_bar_1 = "resizable=\"false\"  closed=\"true\" modal=\"false\" collaps
     org.apache.taglibs.standard.tag.rt.core.WhenTag _jspx_th_c_005fwhen_005f87 = (org.apache.taglibs.standard.tag.rt.core.WhenTag) _005fjspx_005ftagPool_005fc_005fwhen_0026_005ftest.get(org.apache.taglibs.standard.tag.rt.core.WhenTag.class);
     _jspx_th_c_005fwhen_005f87.setPageContext(_jspx_page_context);
     _jspx_th_c_005fwhen_005f87.setParent((javax.servlet.jsp.tagext.Tag) _jspx_th_c_005fchoose_005f3);
-    // /WEB-INF/portlets/select.jsp(167,1) name = test type = boolean reqTime = true required = true fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
-    _jspx_th_c_005fwhen_005f87.setTest(((java.lang.Boolean) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${stuff.stufftype == 'top_quote' }", java.lang.Boolean.class, (PageContext)_jspx_page_context, null, false)).booleanValue());
+    // /WEB-INF/portlets/select.jsp(161,1) name = test type = boolean reqTime = true required = true fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
+    _jspx_th_c_005fwhen_005f87.setTest(((java.lang.Boolean) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${stuff.stufftype =='top_gather' }", java.lang.Boolean.class, (PageContext)_jspx_page_context, null, false)).booleanValue());
     int _jspx_eval_c_005fwhen_005f87 = _jspx_th_c_005fwhen_005f87.doStartTag();
     if (_jspx_eval_c_005fwhen_005f87 != javax.servlet.jsp.tagext.Tag.SKIP_BODY) {
       do {
         out.write("\r\n");
-        out.write("\t\t<table id=\"tab_topquote\"></table>\r\n");
+        out.write("\t\t<table id=\"tab_topgather\"></table>\r\n");
         out.write("\t");
         int evalDoAfterBody = _jspx_th_c_005fwhen_005f87.doAfterBody();
         if (evalDoAfterBody != javax.servlet.jsp.tagext.BodyTag.EVAL_BODY_AGAIN)
@@ -4188,13 +4203,13 @@ String win_bar_1 = "resizable=\"false\"  closed=\"true\" modal=\"false\" collaps
     org.apache.taglibs.standard.tag.rt.core.WhenTag _jspx_th_c_005fwhen_005f88 = (org.apache.taglibs.standard.tag.rt.core.WhenTag) _005fjspx_005ftagPool_005fc_005fwhen_0026_005ftest.get(org.apache.taglibs.standard.tag.rt.core.WhenTag.class);
     _jspx_th_c_005fwhen_005f88.setPageContext(_jspx_page_context);
     _jspx_th_c_005fwhen_005f88.setParent((javax.servlet.jsp.tagext.Tag) _jspx_th_c_005fchoose_005f3);
-    // /WEB-INF/portlets/select.jsp(170,1) name = test type = boolean reqTime = true required = true fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
-    _jspx_th_c_005fwhen_005f88.setTest(((java.lang.Boolean) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${ stuff.stufftype =='top_salesorder' }", java.lang.Boolean.class, (PageContext)_jspx_page_context, null, false)).booleanValue());
+    // /WEB-INF/portlets/select.jsp(164,1) name = test type = boolean reqTime = true required = true fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
+    _jspx_th_c_005fwhen_005f88.setTest(((java.lang.Boolean) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${ stuff.stufftype =='top_notes' }", java.lang.Boolean.class, (PageContext)_jspx_page_context, null, false)).booleanValue());
     int _jspx_eval_c_005fwhen_005f88 = _jspx_th_c_005fwhen_005f88.doStartTag();
     if (_jspx_eval_c_005fwhen_005f88 != javax.servlet.jsp.tagext.Tag.SKIP_BODY) {
       do {
         out.write("\r\n");
-        out.write("\t\t<table id=\"tab_topsalesorder\"></table>\r\n");
+        out.write("\t\t<table id=\"tab_topnotes\"></table>\r\n");
         out.write("\t");
         int evalDoAfterBody = _jspx_th_c_005fwhen_005f88.doAfterBody();
         if (evalDoAfterBody != javax.servlet.jsp.tagext.BodyTag.EVAL_BODY_AGAIN)
@@ -4217,14 +4232,13 @@ String win_bar_1 = "resizable=\"false\"  closed=\"true\" modal=\"false\" collaps
     org.apache.taglibs.standard.tag.rt.core.WhenTag _jspx_th_c_005fwhen_005f89 = (org.apache.taglibs.standard.tag.rt.core.WhenTag) _005fjspx_005ftagPool_005fc_005fwhen_0026_005ftest.get(org.apache.taglibs.standard.tag.rt.core.WhenTag.class);
     _jspx_th_c_005fwhen_005f89.setPageContext(_jspx_page_context);
     _jspx_th_c_005fwhen_005f89.setParent((javax.servlet.jsp.tagext.Tag) _jspx_th_c_005fchoose_005f3);
-    // /WEB-INF/portlets/select.jsp(173,1) name = test type = boolean reqTime = true required = true fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
-    _jspx_th_c_005fwhen_005f89.setTest(((java.lang.Boolean) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${stuff.stufftype =='top_performance' }", java.lang.Boolean.class, (PageContext)_jspx_page_context, null, false)).booleanValue());
+    // /WEB-INF/portlets/select.jsp(167,1) name = test type = boolean reqTime = true required = true fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
+    _jspx_th_c_005fwhen_005f89.setTest(((java.lang.Boolean) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${stuff.stufftype == 'top_quote' }", java.lang.Boolean.class, (PageContext)_jspx_page_context, null, false)).booleanValue());
     int _jspx_eval_c_005fwhen_005f89 = _jspx_th_c_005fwhen_005f89.doStartTag();
     if (_jspx_eval_c_005fwhen_005f89 != javax.servlet.jsp.tagext.Tag.SKIP_BODY) {
       do {
         out.write("\r\n");
-        out.write("\t\t<table id=\"tab_topperformance\" class=\"tablist\"  >\r\n");
-        out.write("\t\t</table>\r\n");
+        out.write("\t\t<table id=\"tab_topquote\"></table>\r\n");
         out.write("\t");
         int evalDoAfterBody = _jspx_th_c_005fwhen_005f89.doAfterBody();
         if (evalDoAfterBody != javax.servlet.jsp.tagext.BodyTag.EVAL_BODY_AGAIN)
@@ -4247,13 +4261,13 @@ String win_bar_1 = "resizable=\"false\"  closed=\"true\" modal=\"false\" collaps
     org.apache.taglibs.standard.tag.rt.core.WhenTag _jspx_th_c_005fwhen_005f90 = (org.apache.taglibs.standard.tag.rt.core.WhenTag) _005fjspx_005ftagPool_005fc_005fwhen_0026_005ftest.get(org.apache.taglibs.standard.tag.rt.core.WhenTag.class);
     _jspx_th_c_005fwhen_005f90.setPageContext(_jspx_page_context);
     _jspx_th_c_005fwhen_005f90.setParent((javax.servlet.jsp.tagext.Tag) _jspx_th_c_005fchoose_005f3);
-    // /WEB-INF/portlets/select.jsp(177,1) name = test type = boolean reqTime = true required = true fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
-    _jspx_th_c_005fwhen_005f90.setTest(((java.lang.Boolean) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${stuff.stufftype == 'user_salesbymonth'}", java.lang.Boolean.class, (PageContext)_jspx_page_context, null, false)).booleanValue());
+    // /WEB-INF/portlets/select.jsp(170,1) name = test type = boolean reqTime = true required = true fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
+    _jspx_th_c_005fwhen_005f90.setTest(((java.lang.Boolean) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${ stuff.stufftype =='top_salesorder' }", java.lang.Boolean.class, (PageContext)_jspx_page_context, null, false)).booleanValue());
     int _jspx_eval_c_005fwhen_005f90 = _jspx_th_c_005fwhen_005f90.doStartTag();
     if (_jspx_eval_c_005fwhen_005f90 != javax.servlet.jsp.tagext.Tag.SKIP_BODY) {
       do {
         out.write("\r\n");
-        out.write("\t\t<div id=\"chart_user_salesbymonth\" style=\"width:100%;height:252px;\"></div>\r\n");
+        out.write("\t\t<table id=\"tab_topsalesorder\"></table>\r\n");
         out.write("\t");
         int evalDoAfterBody = _jspx_th_c_005fwhen_005f90.doAfterBody();
         if (evalDoAfterBody != javax.servlet.jsp.tagext.BodyTag.EVAL_BODY_AGAIN)
@@ -4265,6 +4279,94 @@ String win_bar_1 = "resizable=\"false\"  closed=\"true\" modal=\"false\" collaps
       return true;
     }
     _005fjspx_005ftagPool_005fc_005fwhen_0026_005ftest.reuse(_jspx_th_c_005fwhen_005f90);
+    return false;
+  }
+
+  private boolean _jspx_meth_c_005fwhen_005f91(javax.servlet.jsp.tagext.JspTag _jspx_th_c_005fchoose_005f3, PageContext _jspx_page_context, int[] _jspx_push_body_count_c_005fforEach_005f3)
+          throws Throwable {
+    PageContext pageContext = _jspx_page_context;
+    JspWriter out = _jspx_page_context.getOut();
+    //  c:when
+    org.apache.taglibs.standard.tag.rt.core.WhenTag _jspx_th_c_005fwhen_005f91 = (org.apache.taglibs.standard.tag.rt.core.WhenTag) _005fjspx_005ftagPool_005fc_005fwhen_0026_005ftest.get(org.apache.taglibs.standard.tag.rt.core.WhenTag.class);
+    _jspx_th_c_005fwhen_005f91.setPageContext(_jspx_page_context);
+    _jspx_th_c_005fwhen_005f91.setParent((javax.servlet.jsp.tagext.Tag) _jspx_th_c_005fchoose_005f3);
+    // /WEB-INF/portlets/select.jsp(173,1) name = test type = boolean reqTime = true required = true fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
+    _jspx_th_c_005fwhen_005f91.setTest(((java.lang.Boolean) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${stuff.stufftype =='top_performance' }", java.lang.Boolean.class, (PageContext)_jspx_page_context, null, false)).booleanValue());
+    int _jspx_eval_c_005fwhen_005f91 = _jspx_th_c_005fwhen_005f91.doStartTag();
+    if (_jspx_eval_c_005fwhen_005f91 != javax.servlet.jsp.tagext.Tag.SKIP_BODY) {
+      do {
+        out.write("\r\n");
+        out.write("\t\t<table id=\"tab_topperformance\" class=\"tablist\"  >\r\n");
+        out.write("\t\t</table>\r\n");
+        out.write("\t");
+        int evalDoAfterBody = _jspx_th_c_005fwhen_005f91.doAfterBody();
+        if (evalDoAfterBody != javax.servlet.jsp.tagext.BodyTag.EVAL_BODY_AGAIN)
+          break;
+      } while (true);
+    }
+    if (_jspx_th_c_005fwhen_005f91.doEndTag() == javax.servlet.jsp.tagext.Tag.SKIP_PAGE) {
+      _005fjspx_005ftagPool_005fc_005fwhen_0026_005ftest.reuse(_jspx_th_c_005fwhen_005f91);
+      return true;
+    }
+    _005fjspx_005ftagPool_005fc_005fwhen_0026_005ftest.reuse(_jspx_th_c_005fwhen_005f91);
+    return false;
+  }
+
+  private boolean _jspx_meth_c_005fwhen_005f92(javax.servlet.jsp.tagext.JspTag _jspx_th_c_005fchoose_005f3, PageContext _jspx_page_context, int[] _jspx_push_body_count_c_005fforEach_005f3)
+          throws Throwable {
+    PageContext pageContext = _jspx_page_context;
+    JspWriter out = _jspx_page_context.getOut();
+    //  c:when
+    org.apache.taglibs.standard.tag.rt.core.WhenTag _jspx_th_c_005fwhen_005f92 = (org.apache.taglibs.standard.tag.rt.core.WhenTag) _005fjspx_005ftagPool_005fc_005fwhen_0026_005ftest.get(org.apache.taglibs.standard.tag.rt.core.WhenTag.class);
+    _jspx_th_c_005fwhen_005f92.setPageContext(_jspx_page_context);
+    _jspx_th_c_005fwhen_005f92.setParent((javax.servlet.jsp.tagext.Tag) _jspx_th_c_005fchoose_005f3);
+    // /WEB-INF/portlets/select.jsp(177,1) name = test type = boolean reqTime = true required = true fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
+    _jspx_th_c_005fwhen_005f92.setTest(((java.lang.Boolean) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${stuff.stufftype == 'user_salesbymonth'}", java.lang.Boolean.class, (PageContext)_jspx_page_context, null, false)).booleanValue());
+    int _jspx_eval_c_005fwhen_005f92 = _jspx_th_c_005fwhen_005f92.doStartTag();
+    if (_jspx_eval_c_005fwhen_005f92 != javax.servlet.jsp.tagext.Tag.SKIP_BODY) {
+      do {
+        out.write("\r\n");
+        out.write("\t\t<div id=\"chart_user_salesbymonth\" style=\"width:100%;height:252px;\"></div>\r\n");
+        out.write("\t");
+        int evalDoAfterBody = _jspx_th_c_005fwhen_005f92.doAfterBody();
+        if (evalDoAfterBody != javax.servlet.jsp.tagext.BodyTag.EVAL_BODY_AGAIN)
+          break;
+      } while (true);
+    }
+    if (_jspx_th_c_005fwhen_005f92.doEndTag() == javax.servlet.jsp.tagext.Tag.SKIP_PAGE) {
+      _005fjspx_005ftagPool_005fc_005fwhen_0026_005ftest.reuse(_jspx_th_c_005fwhen_005f92);
+      return true;
+    }
+    _005fjspx_005ftagPool_005fc_005fwhen_0026_005ftest.reuse(_jspx_th_c_005fwhen_005f92);
+    return false;
+  }
+
+  private boolean _jspx_meth_c_005fwhen_005f93(javax.servlet.jsp.tagext.JspTag _jspx_th_c_005fchoose_005f3, PageContext _jspx_page_context, int[] _jspx_push_body_count_c_005fforEach_005f3)
+          throws Throwable {
+    PageContext pageContext = _jspx_page_context;
+    JspWriter out = _jspx_page_context.getOut();
+    //  c:when
+    org.apache.taglibs.standard.tag.rt.core.WhenTag _jspx_th_c_005fwhen_005f93 = (org.apache.taglibs.standard.tag.rt.core.WhenTag) _005fjspx_005ftagPool_005fc_005fwhen_0026_005ftest.get(org.apache.taglibs.standard.tag.rt.core.WhenTag.class);
+    _jspx_th_c_005fwhen_005f93.setPageContext(_jspx_page_context);
+    _jspx_th_c_005fwhen_005f93.setParent((javax.servlet.jsp.tagext.Tag) _jspx_th_c_005fchoose_005f3);
+    // /WEB-INF/portlets/select.jsp(180,1) name = test type = boolean reqTime = true required = true fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
+    _jspx_th_c_005fwhen_005f93.setTest(((java.lang.Boolean) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${ stuff.stufftype =='user_salesfinishedbymonth' }", java.lang.Boolean.class, (PageContext)_jspx_page_context, null, false)).booleanValue());
+    int _jspx_eval_c_005fwhen_005f93 = _jspx_th_c_005fwhen_005f93.doStartTag();
+    if (_jspx_eval_c_005fwhen_005f93 != javax.servlet.jsp.tagext.Tag.SKIP_BODY) {
+      do {
+        out.write("\r\n");
+        out.write("\t\t<div id=\"chart_user_salesfinishedbymonth\" style=\"width:100%;height:252px;\"></div>\r\n");
+        out.write("\t");
+        int evalDoAfterBody = _jspx_th_c_005fwhen_005f93.doAfterBody();
+        if (evalDoAfterBody != javax.servlet.jsp.tagext.BodyTag.EVAL_BODY_AGAIN)
+          break;
+      } while (true);
+    }
+    if (_jspx_th_c_005fwhen_005f93.doEndTag() == javax.servlet.jsp.tagext.Tag.SKIP_PAGE) {
+      _005fjspx_005ftagPool_005fc_005fwhen_0026_005ftest.reuse(_jspx_th_c_005fwhen_005f93);
+      return true;
+    }
+    _005fjspx_005ftagPool_005fc_005fwhen_0026_005ftest.reuse(_jspx_th_c_005fwhen_005f93);
     return false;
   }
 }
