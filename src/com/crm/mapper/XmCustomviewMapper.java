@@ -1,5 +1,9 @@
 package com.crm.mapper;
 
+import java.util.List;
+
+import org.apache.ibatis.annotations.Param;
+
 import com.crm.model.XmCustomview;
 
 public interface XmCustomviewMapper {
@@ -14,4 +18,6 @@ public interface XmCustomviewMapper {
     int updateByPrimaryKeySelective(XmCustomview record);
 
     int updateByPrimaryKey(XmCustomview record);
+    
+    List<XmCustomview> queryByEntityType(@Param("entitytype") String entitytype);
 }

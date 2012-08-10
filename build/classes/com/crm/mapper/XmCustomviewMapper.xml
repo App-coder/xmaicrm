@@ -19,6 +19,12 @@
     from xm_customview
     where cvid = #{cvid,jdbcType=INTEGER}
   </select>
+  <select id="queryByEntityType" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from xm_customview
+    where entitytype = #{entitytype,jdbcType=VARCHAR}
+  </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
     delete from xm_customview
     where cvid = #{cvid,jdbcType=INTEGER}
