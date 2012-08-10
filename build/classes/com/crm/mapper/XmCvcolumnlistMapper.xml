@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.crm.mapper.XmCvcolumnlistMapper" >
+  <resultMap id="BaseResultMap" type="com.crm.model.XmCvcolumnlist" >
+    <id column="columnindex" property="columnindex" jdbcType="INTEGER" />
+    <id column="cvid" property="cvid" jdbcType="INTEGER" />
+    <result column="columnname" property="columnname" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    columnindex, cvid, columnname
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="map" >
+    select 
+    <include refid="Base_Column_List" />
+    from xm_cvcolumnlist
+    where columnindex = #{columnindex,jdbcType=INTEGER}
+      and cvid = #{cvid,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="map" >
+    delete from xm_cvcolumnlist
+    where columnindex = #{columnindex,jdbcType=INTEGER}
+      and cvid = #{cvid,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.crm.model.XmCvcolumnlist" >
+    insert into xm_cvcolumnlist (columnindex, cvid, columnname
+      )
+    values (#{columnindex,jdbcType=INTEGER}, #{cvid,jdbcType=INTEGER}, #{columnname,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.crm.model.XmCvcolumnlist" >
+    insert into xm_cvcolumnlist
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="columnindex != null" >
+        columnindex,
+      </if>
+      <if test="cvid != null" >
+        cvid,
+      </if>
+      <if test="columnname != null" >
+        columnname,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="columnindex != null" >
+        #{columnindex,jdbcType=INTEGER},
+      </if>
+      <if test="cvid != null" >
+        #{cvid,jdbcType=INTEGER},
+      </if>
+      <if test="columnname != null" >
+        #{columnname,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.crm.model.XmCvcolumnlist" >
+    update xm_cvcolumnlist
+    <set >
+      <if test="columnname != null" >
+        columnname = #{columnname,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where columnindex = #{columnindex,jdbcType=INTEGER}
+      and cvid = #{cvid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.crm.model.XmCvcolumnlist" >
+    update xm_cvcolumnlist
+    set columnname = #{columnname,jdbcType=VARCHAR}
+    where columnindex = #{columnindex,jdbcType=INTEGER}
+      and cvid = #{cvid,jdbcType=INTEGER}
+  </update>
+  <select id="getXmCvcolumnlistByCvid" resultMap="BaseResultMap">
+  	select xm_cvcolumnlist.* from xm_cvcolumnlist inner join xm_customview on xm_customview.cvid = xm_cvcolumnlist.cvid where xm_customview.cvid =#{cvid} order by xm_cvcolumnlist.columnindex;
+  </select>
+</mapper>

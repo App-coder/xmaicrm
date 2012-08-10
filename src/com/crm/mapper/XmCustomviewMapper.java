@@ -20,4 +20,6 @@ public interface XmCustomviewMapper {
     int updateByPrimaryKey(XmCustomview record);
     
     List<XmCustomview> queryByEntityType(@Param("entitytype") String entitytype);
+
+	int getDefault(@Param("entitytype") String entitytype);
 }
