@@ -37,5 +37,9 @@ public interface XmUsersMapper {
 	List<XmUsers> getOptionsUser();
 
 	Integer existUserName(@Param("username") String username);
+
+	List<Object> getRelUser(@Param("start") int start,@Param("rows") int rows,@Param("roleid") String roleid);
+
+	int getTotalRelUser(@Param("roleid") String roleid);
 	
 }

@@ -1,45 +1,6 @@
-var editor;
 $(function() {
-    initForm();
-    initEdit();
     initPage();
 });
-function initForm(){
-    $('#form_emailemplates').form({
-	url : 'settings/users/userEdit',
-	onSubmit : function() {
-	    if ($('#form_emailemplates').form("validate")) {
-		$("#form_emailemplates").find("input[name=body]").val(editor.html());
-		return true;
-	    } else {
-		return false;
-	    }
-	},
-	success : function(res) {
-	   res = $.parseJSON(res);
-	   if(res.type == true){
-	       closeWin('emailtemplatesedit');
-	       $('#form_emailemplates').form("clear");
-	       $(".validatebox-tip").hide();
-	       $('#emailtemplates_list').datagrid("reload");
-	   }
-	}
-    });    
-}
-function initEdit(){
-    KindEditor.ready(function(K) {
-    	editor = K.create('textarea[name="bodyHtml"]', {
-    		resizeType : 1,
-    		allowPreviewEmoticons : true,
-    		allowImageUpload : true,
-    		allowFileManager : true,
-    		items:editoritem_more,
-    		uploadJson:'file/upload',
-    		fileManagerJson:'file/filemanager',
-    		fileloc:"attach/settings/other/emailtemplates/"
-    	});
-    });
-}
 function initPage() {
 
     var cols = [ {
@@ -53,7 +14,7 @@ function initPage() {
 
     $('#emailtemplates_list').datagrid(
 	    {
-		url : 'settings/emailtemplates/list',
+		url : 'crm/settings/emailtemplates/list',
 		collapsible : false,
 		idField : 'templateid',
 		singleSelect : true,
@@ -66,10 +27,7 @@ function initPage() {
 			    text : '添加',
 			    iconCls : 'icon-add',
 			    handler : function() {
-				$("#emailtemplatesedit").window({
-				    title : 'Email模版添加'
-				});
-				$("#emailtemplatesedit").window("open");
+				window.location.href="crm/settings/emailtemplates/showAdd";
 			    }
 			},
 			{
@@ -90,13 +48,21 @@ function initPage() {
 			    }
 			},
 			{
+			    text : '预览',
+			    iconCls : 'icon-view',
+			    handler : function() {
+				
+			    }
+			}
+			,
+			{
 			    text : '删除',
 			    iconCls : 'icon-remove',
 			    handler : function() {
 				var selected = $('#emailtemplates_list')
 					.datagrid("getSelected");
 				if (selected) {
-				    $.post('settings/emailtemplates/delete', {
+				    $.post('crm/settings/emailtemplates/delete', {
 					etid : selected.templateid
 				    }, function(res) {
 					if (res.type == true) {

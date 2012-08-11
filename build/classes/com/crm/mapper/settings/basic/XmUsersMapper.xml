@@ -795,4 +795,41 @@
   <select id="existUserName" resultType="Integer" >
   	select count(id) from xm_users where user_name = #{username}
   </select>
+  <select id="getTotalRelUser" resultType="Integer">
+  	SELECT
+		count(id)
+	FROM
+		xm_users
+	LEFT JOIN xm_user2role ON xm_user2role.userid = xm_users.id
+	LEFT JOIN xm_role ON xm_role.roleid = xm_user2role.roleid
+	LEFT JOIN xm_users2group ON xm_users2group.userid = xm_users.id
+	LEFT JOIN xm_groups ON xm_groups.groupid = xm_users2group.groupid
+	WHERE
+		deleted = 0 and xm_role.roleid=#{roleid} 
+  </select>
+  <select id="getRelUser" resultType="map">
+  	SELECT
+		id,
+		last_name,
+		user_name,
+		xm_role.roleid,
+		xm_role.rolename,
+		xm_groups.groupid,
+		xm_groups.groupname,
+		`status`,
+		is_admin,
+		email1,
+		phone_work
+	FROM
+		xm_users
+	LEFT JOIN xm_user2role ON xm_user2role.userid = xm_users.id
+	LEFT JOIN xm_role ON xm_role.roleid = xm_user2role.roleid
+	LEFT JOIN xm_users2group ON xm_users2group.userid = xm_users.id
+	LEFT JOIN xm_groups ON xm_groups.groupid = xm_users2group.groupid
+	WHERE
+		deleted = 0 and xm_role.roleid=#{roleid}
+	ORDER BY
+		last_name ASC 
+	limit #{start},#{rows}		
+  </select>
 </mapper>

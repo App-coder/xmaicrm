@@ -80,5 +80,9 @@ public class XmTabServiceImpl implements XmTabService {
 	public List<XmTab> getRelmodField() {
 		return this.xmTabMapper.getRelmodField();
 	}
+	@Override
+	public List<XmTab> getTabPermission() {
+		return this.xmTabMapper.getPermissionTab();
+	}
 
 }

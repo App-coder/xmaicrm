@@ -22,7 +22,7 @@ import com.crm.service.settings.other.XmOrganizationdetailsService;
  * Time: 上午10:54:14
  */
 @Controller
-@RequestMapping(value = "settings/organizationconfig")
+@RequestMapping(value = "crm/settings/organizationconfig")
 public class XmOrganizationConfigController extends BaseController {
 
 	XmOrganizationdetailsService xmOrganizationdetailsService;

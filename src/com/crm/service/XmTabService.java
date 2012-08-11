@@ -54,5 +54,8 @@ public interface XmTabService {
 	
 	List<XmTab> getRelmodField();
 
+	List<XmTab> getTabPermission();
+
+
 
 }

@@ -5,14 +5,14 @@ function initPage() {
     $('#rolelist')
 	    .treegrid(
 		    {
-			url : 'crm/settings/role/getRolesByParent',
+			url : 'crm/settings/role/getRoleTree',
 			title : '角色和继承关系',
 			fit : 'true',
 			nowrap : false,
 			striped : true,
 			rownumbers : true,
-			idField : 'roleid',
-			treeField : 'rolename',
+			idField : 'id',
+			treeField : 'text',
 			singleSelect : true,
 			method:'POST',
 			queryParams : {
@@ -26,7 +26,7 @@ function initPage() {
 			columns:[[
 					{
 			    title : '角色名称',
-			    field : 'rolename',
+			    field : 'text',
 			    width : 200
 			}
 			]],
@@ -35,13 +35,19 @@ function initPage() {
 			    text : '添加角色',
 			    iconCls : 'icon-add',
 			    handler : function() {
-
+				var selected = $('#rolelist').datagrid("getSelected");
+				if (selected) {
+				    //上级权限
+				    window.location.href="crm/settings/role/showAdd?parentroleid="+selected.id;
+				} else {
+				    message("请选择一行记录！");
+				}	
 			    }
 			} ,{
 			    text : '编辑信息',
 			    iconCls : 'icon-edit',
 			    handler : function() {
-
+				$("#roleinfo").window("open");
 			    }
 			} ,{
 			    text : '编辑权限',
@@ -49,10 +55,8 @@ function initPage() {
 			    handler : function() {
 				var selected = $('#rolelist').datagrid("getSelected");
 				if (selected) {
-				    if(selected.roleid!='H1'){
-					$("#roleedit").window({title:'编辑权限'});
-					$("#roleedit").window("open");
-					loadEditForm(selected.roleid);
+				    if(selected.id!='H1'){
+					window.location.href="crm/settings/role/showEdit?roleid="+selected.id;
 				    }else {
 					message("请选择总公司下的的角色！");
 				    }
@@ -61,16 +65,46 @@ function initPage() {
 				}				
 			    }
 			} ,{
-			    text : '查看用户',
-			    iconCls : 'icon-add',
+			    text : '查看关联用户',
+			    iconCls : 'icon-view',
 			    handler : function() {
-
+				var selected = $('#rolelist').datagrid("getSelected");
+				if (selected) {
+				    if(selected.id!='H1'){
+					$("#reluser").window({
+					    onOpen:function(){
+						viewRelUser(selected.id);
+					    }
+					});
+					$("#reluser").window("open");
+				    }else {
+					message("请选择总公司下的的角色！");
+				    }
+				} else {
+				    message("请选择一行记录！");
+				}				
 			    }
 			} ,{
 			    text : '删除角色',
 			    iconCls : 'icon-remove',
 			    handler : function() {
-
+				var selected = $('#rolelist').datagrid("getSelected");
+				if (selected) {
+				    if(selected.id!='H1'){
+					//角色删除
+					confirm('确认删除角色：'+selected.text,function(r){
+					    //删除
+					    if(r){
+						
+					    }
+					});
+					
+				    }else {
+					message("请选择总公司下的的角色！");
+				    }
+				} else {
+				    message("请选择一行记录！");
+				}
 			    }
 			} ],
 			onBeforeLoad : function(row, param) {
@@ -82,57 +116,53 @@ function initPage() {
 			}
 		    });
 }
-function loadEditForm(roleid){
-    
-    $.post('crm/settings/role/getRoleAuthority',{roleid:roleid},function(res){
-	var modPers = res.modulePermission.rows;
-	var trs = "";
-	for(var i=0;i<modPers.length;i++){
-	    trs += "<tr><td>"+modPers[i].tablabel+"</td><td>"+getCked(modPers[i].tabid,'create',modPers[i].create)+"</td><td>"+getCked(modPers[i].tabid,'edit',modPers[i].edit)+"</td><td>"+getCked(modPers[i].tabid,'view',modPers[i].view)+"</td><td>"+getCked(modPers[i].tabid,'del',modPers[i].del)+"</td><td><a href=\"javascript:changeFieldBlock('"+modPers[i].tabid+"_field')\">编辑</a></td></tr>";
-	    trs += getViewField(modPers[i].tabid,modPers[i].profile2fields);
-	}
-	$("#tabRoleAuth").find("tbody").append($(trs));
-    },'json');
-    
-}
-function getCked(tabid,type,value){
-    if(value == 1){
-	return "<input type=\"checkbox\" checked=\"checked\" value=\"1\" name=\""+tabid+"_"+type+"\" />";
-    }else{
-	return "<input type=\"checkbox\"  value=\"1\" name=\""+tabid+"_"+type+"\" />";
-    }
-}
-function getViewField(tabid,profile2fields){
-    //"+modPers[i].tabid+"_field
-    var viewstr = "<tr id=\""+tabid+"_field\" class=\"hidden\" style=\"display:none;\"><td colspan=\"6\">";
-    //为空
-    if(profile2fields.length!=0){
-	viewstr +="<table class=\"tab_form\">";
-	viewstr +="<tr><td>显示的字段</td><td>可写</td><td>显示的字段</td><td>可写</td></tr>";
-	for(var i=0;i<profile2fields.length;i++){
-	    viewstr +="<tr>";
-	    viewstr +="<td>"+profile2fields[i].fieldlabel+"<input type=\"checkbox\"/></td>";
-	    viewstr +="<td><input type=\"checkbox\"/></td>";
-	    if(i+1<profile2fields.length){
-		viewstr +="<td>"+profile2fields[i+1].fieldlabel+"<input type=\"checkbox\"/></td>";
-		viewstr +="<td><input type=\"checkbox\"/></td>";
-		viewstr +="</tr>";  
-	    }else{
-		 viewstr +="<td></td></tr>";  
-	    }
-	    i++;
-	}
-	viewstr +="</table>";
-    }
-    
-    viewstr += "</td></tr>";
-    return viewstr;
-}
-function changeFieldBlock(tabfield){
-    var display = $("#"+tabfield).css("display");
-    if(display == "none"){
-	$("#"+tabfield).show();
-    }else{
-	$("#"+tabfield).hide();
-    }
+function viewRelUser(roleid){
+    var cols = [ {
+	field : 'last_name',
+	title : '姓名'
+    }, {
+	field : 'user_name',
+	title : '用户名'
+    }, {
+	field : 'rolename',
+	title : '角色'
+    }, {
+	field : 'groupname',
+	title : '部门'
+    }, {
+	field : 'status',
+	title : '状态'
+    }, {
+	field : 'is_admin',
+	title : '管理员'
+    }, {
+	field : 'phone_work',
+	title : '电话',
+	formatter:showTip
+    }, {
+	field : 'email1',
+	title : 'Email',
+	formatter:showTip
+    } ];
+    cols = setDefWidth(cols, 80);
+
+    $('#tb_reluser').datagrid({
+	url : 'crm/settings/role/getRelUser',
+	collapsible : false,
+	idField : 'id',
+	singleSelect : true,
+	rownumbers : true,
+	pagination : true,
+	fitColumns : true,
+	queryParams : {
+	    roleid:roleid
+	},
+	pageSize:20,
+	fit:true,
+	frozenColumns : [ [ {
+	    field : 'ck',
+	    checkbox : true
+	} ] ],
+	columns : [ cols ],
+    });
 }

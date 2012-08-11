@@ -4,7 +4,7 @@
 *{font-size:12px;font-family: Tahoma,'微软雅黑', "Microsoft Yahei", "Simsun";}
 html, body, #wrap {height: 100%;}
 body > #wrap {height: auto; min-height: 100%;min-width:1024px;}
-body{margin:0px;padding:0px;}
+body{margin:0px;padding:0px;overflow-x:hidden;}
 body, input, button, select, textarea {
     font: 12px/1.5 Tahoma,'微软雅黑',"Microsoft Yahei", "Simsun";
 }
@@ -52,6 +52,7 @@ table .tb_list td.righttd{padding-left:10px;}
 .easyui-tree ul li a{text-decoration: none;color:#000;}
 .p20{padding: 20px;}
 .p10{padding:10px;}
+.pl10{padding-left:10px;}
 /*.bstyle{padding:10px; overflow: hidden;height: 98%;}*/
 .bstyle{padding:10px;overflow-y:auto;position:relative;overflow-x:hidden;}
 .pt_10{padding-bottom:10px;}
@@ -72,10 +73,12 @@ table .tb_list td.righttd{padding-left:10px;}
 .midtab{width:100%;font:12px/1.5 Tahoma,'Microsoft Yahei','Simsun';}
 .midtab tr td{height:25px;text-align: left;line-height:25px;padding-left:10px;}
 .tab_editlist{width:100%;font:12px/1.5 Tahoma,'Microsoft Yahei','Simsun';}
-.tab_editlist input.text,.tab_editlist select.text{width:250px;margin-right: 10px;border:1px solid #D2D2D2;height: 20px;}
-.tab_editlist .edittd{width:15%;padding-left:10px;}
+.tab_editlist input.text{width:250px;margin-right: 10px;border:1px solid #D2D2D2;height: 20px;}
+.tab_editlist select.text{width:258px;margin-right: 10px;border:1px solid #D2D2D2;height: 25px;}
+.tab_editlist .edittd{width:15%;}
 .text{width:180px;margin-right: 10px;border:1px solid #D2D2D2;height:18px;padding-left:3px;padding-right:3px;}
 
+.bbar{padding-top:5px;padding-bottom:5px;}
 .textborder{border:1px solid #D2D2D2;}
 
 .red{color: red;}
@@ -213,11 +216,30 @@ fieldset legend{color:#15428B;}
 
 .tabauth{width:100%;border-collapse: collapse;border:1px solid #AED0EA;}
 .tabauth thead{}
-.tabauth tr td{height: 26px;text-align: center;}
+.tabauth tr td{height: 26px;padding-left:10px;border: 1px dotted #AED0EA;}
+.tabauth .mod{text-align: left;padding-left:10px;}
 
 .must{color:red;margin-left:4px;}
 
 /*----页面布局-----*/
+.tab_field{width:100%;border-collapse: collapse;}
+.tab_field tr td,.tab_field thead tr td{text-align: left;padding-left:10px;border: 1px dotted #AED0EA;}
+
+/*系统设置的导航*/
+.navcontainer{border:1px solid #99BBE8;}
+.navcontainer .datagrid-toolbar{line-height:28px;padding-left:10px;}
+.navcontainer ul{list-style: none;padding:5px;margin:0px;}
+.navcontainer ul li{height:25px;line-height:25px;}
+.navcontainer ul li.active{background-color:#FBEC88;}
+.navcontainer ul li a{display: block;padding-left:10px;}
+.navcontainer ul li a:link,.navcontainer ul li a:visited{
+color:#000;
+text-decoration:none;
+}
+.navcontainer ul li a:hover,.navcontainer ul li a:active{
+color:#000;
+background-color: #D0E5F5;
+}
 
 .small {
     color: #000000;
@@ -264,4 +286,5 @@ fieldset legend{color:#15428B;}
     border-width: 1px 0 0 1px;
     font-weight: bold;
 }
+
 

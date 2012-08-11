@@ -28,6 +28,10 @@ public interface XmUsersService {
 
 	boolean existUserName(String username);
 
+	List<Object> getRelUser(int page, int rows, String roleid);
+
+	int getTotalRelUser(String roleid);
+
 
 	
 }

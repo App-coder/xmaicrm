@@ -30,6 +30,7 @@ import com.crm.service.settings.basic.XmProfile2standardpermissionsService;
 import com.crm.service.settings.basic.XmProfileService;
 import com.crm.service.settings.basic.XmRole2profileService;
 import com.crm.service.settings.basic.XmRoleService;
+import com.crm.service.settings.basic.XmUsersService;
 import com.crm.util.crm.PermissionUtil;
 
 /**
@@ -48,6 +49,12 @@ public class XmRoleController extends BaseController {
 	@Resource(name="xmRoleService")
 	public void setXmRoleService(XmRoleService xmRoleService) {
 		this.xmRoleService = xmRoleService;
+	}
+	
+	XmUsersService xmUsersService;
+	@Resource(name="xmUsersService")
+	public void setXmUsersService(XmUsersService xmUsersService) {
+		this.xmUsersService = xmUsersService;
 	}
 	
 	XmRole2profileService xmRole2profileService;
@@ -165,9 +172,9 @@ public class XmRoleController extends BaseController {
 		permission.setProfile2globalpermissions(globalpermissions);
 		
 		//模块的权限规则
-		List<XmTab> tabPermissions = this.xmTabService.getTabPermission(profileid);
+		List<XmTab> tabPermissions = this.xmTabService.getTabPermission();
 		List<XmProfile2standardpermissions> standardpermissions = this.xmProfile2standardpermissionsService.getStandardPermissionsByProfileId(profileid);
-		List<ModulePermission> modulePermission = PermissionUtil.GenerateModulePerssion(tabPermissions,standardpermissions,this.xmFieldService);
+		List<ModulePermission> modulePermission = PermissionUtil.GenerateModulePerssion(tabPermissions,standardpermissions,this.xmFieldService,profileid);
 		ListBean beanPermission = new ListBean();
 		beanPermission.setRows(modulePermission);
 		beanPermission.setTotal(modulePermission.size());
@@ -176,5 +183,67 @@ public class XmRoleController extends BaseController {
 		return JSON.toJSONString(permission);
 	}
 	
+	@RequestMapping(value = "/getRelUser", method = RequestMethod.POST)
+	@ResponseBody
+	public String getRelUser(@RequestParam("page") int page,@RequestParam("rows") int rows,@RequestParam("roleid") String roleid){
+		List<Object> users = this.xmUsersService.getRelUser(page,rows,roleid);
+		int total = this.xmUsersService.getTotalRelUser(roleid);
+
+		ListBean bean = new ListBean();
+		bean.setTotal(total);
+		bean.setRows(users);
+		
+		return JSON.toJSONString(bean);
+	}
+	
+	/**
+	 * 添加角色
+	 * 
+	 * @return
+	 */
+	@RequestMapping(value = "/showAdd", method = RequestMethod.GET)
+	public String showAdd(@RequestParam("parentroleid") String parentroleid,ModelMap modelMap){
+		
+		XmRole parentRole = this.xmRoleService.getRoleById(parentroleid);
+		modelMap.addAttribute("parentRole",parentRole);
+		
+		int profileid = this.xmRole2profileService.getProfileidByRoleId(parentroleid);
+		XmProfile profile = this.xmProfileService.getProfile(profileid);
+		
+		//全局权限 
+		List<XmProfile2globalpermissions>  globalpermissions = this.xmProfile2globalpermissionsService.getPermissionsByProfileid(profileid);
+		modelMap.addAttribute("globalpermissions",globalpermissions);
+		
+		//模块的信息
+		List<XmTab> tabPermissions = this.xmTabService.getTabPermission();
+		List<XmProfile2standardpermissions> standardpermissions = this.xmProfile2standardpermissionsService.getStandardPermissionsByProfileId(profileid);
+		List<ModulePermission> modulePermission = PermissionUtil.GenerateModulePerssion(tabPermissions,standardpermissions,this.xmFieldService,profileid);
+		modelMap.addAttribute("modulePermission",modulePermission);
+		
+		return "settings/basic/role/showAdd";
+	}
+	
+	@RequestMapping(value = "/showEdit", method = RequestMethod.GET)
+	public String showEdit(String roleid,ModelMap modelMap){
+		
+		XmRole role = this.xmRoleService.getRoleById(roleid);
+		modelMap.addAttribute("role",role);
+		
+		int profileid = this.xmRole2profileService.getProfileidByRoleId(roleid);
+		XmProfile profile = this.xmProfileService.getProfile(profileid);
+		modelMap.addAttribute("profile",profile);
+		
+		//全局权限 
+		List<XmProfile2globalpermissions>  globalpermissions = this.xmProfile2globalpermissionsService.getPermissionsByProfileid(profileid);
+		modelMap.addAttribute("globalpermissions",globalpermissions);
+		
+		//模块的信息
+		List<XmTab> tabPermissions = this.xmTabService.getTabPermission();
+		List<XmProfile2standardpermissions> standardpermissions = this.xmProfile2standardpermissionsService.getStandardPermissionsByProfileId(profileid);
+		List<ModulePermission> modulePermission = PermissionUtil.GenerateModulePerssion(tabPermissions,standardpermissions,this.xmFieldService,profileid);
+		modelMap.addAttribute("modulePermission",modulePermission);
+		
+		return "settings/basic/role/showEdit";
+	}
 	
 }

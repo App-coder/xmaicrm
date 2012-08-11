@@ -4,6 +4,7 @@
 <%@ include file="../../common/config.jsp"%>
 <script>
     var pathname = "系统用户";
+    var pathActive = "users";
 </script>
 <%@ include file="../../path.jsp"%>
 <script type="text/javascript"
@@ -62,7 +63,7 @@
 									<td width="32%"><input class="easyui-combobox"
 										name="groupid"
 										data-options="
-										url:'settings/group/getCombox',
+										url:'crm/settings/group/getCombox',
 										valueField:'id',
 										textField:'text',
 										panelHeight:'auto',
@@ -202,7 +203,15 @@
 			
 		</div>
 		<div class="path" id="navpath"></div>
-		<table id="user_list"></table>
+		<table style="width:100%;">
+			<tr>
+				<td width="160px" valign="top">
+					<%@ include file="../../nav_setting.jsp"%>
+				</td>
+				<td valign="top"><table id="user_list"></table></td>
+			</tr>
+		</table>
+		
 	</div>
 	<%@ include file="../../foot.jsp"%>
 </body>

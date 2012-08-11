@@ -24,7 +24,7 @@ import com.crm.service.settings.other.XmEmailtemplatesService;
  * Time: 上午10:54:14
  */
 @Controller
-@RequestMapping(value = "settings/emailtemplates")
+@RequestMapping(value = "crm/settings/emailtemplates")
 public class XmEmailtemplatesController extends BaseController {
 	
 	XmEmailtemplatesService xmEmailtemplatesService;
@@ -47,6 +47,11 @@ public class XmEmailtemplatesController extends BaseController {
 		bean.setTotal(list.size());
 		bean.setRows(list);
 		return JSON.toJSONString(bean);
+	}
+	
+	@RequestMapping(value = "/showAdd", method = RequestMethod.GET)
+	public String showAdd(){
+		return "settings/other/emailtemplates/showAdd";
 	}
 	
 }

@@ -103,6 +103,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
       out.write("\r\n");
       out.write("<!-- easyuipack.js 补充拓展 -->\r\n");
       out.write("<script type=\"text/javascript\" src=\"resources/easyui/easyuipack.js\"></script>\r\n");
+      out.write("<script type=\"text/javascript\" src=\"resources/easyui/extension/validatebox.js\"></script>\r\n");
       out.write("\r\n");
       out.write("<!-- loadmask -->\r\n");
       out.write("<link href=\"resources/plugins/loadmask/jquery.loadmask.css\" rel=\"stylesheet\" type=\"text/css\" />\r\n");
