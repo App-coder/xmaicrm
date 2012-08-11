@@ -121,6 +121,9 @@
     where cvid = #{cvid,jdbcType=INTEGER}
   </update>
   <select id="getDefault" resultType="INTEGER">
-  	select cvid from ec_customview where setdefault=1 and entitytype=#{entitytype} and 1=1 ;
+  	select cvid from xm_customview where setdefault=1 and entitytype=#{entitytype} and 1=1 ;
+  </select>
+  <select id="getDefaultCView" resultMap="BaseResultMap">
+  	select <include refid="Base_Column_List" /> from xm_customview where setdefault=1 and entitytype=#{entitytype} and 1=1 ;
   </select>
 </mapper>

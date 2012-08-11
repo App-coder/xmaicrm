@@ -85,11 +85,11 @@
 
 	<!-- DAO层由 MapperScannerConfigurer自动生成mapper bean -->
 	<bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
-		<property name="basePackage" value="com.crm.*.mapper" />
+		<property name="basePackage" value="com.crm.**.mapper" />
 	</bean>
 
 	<!-- Service层 -->
-	<context:component-scan base-package="com.crm.*.service.impl" />
+	<context:component-scan base-package="com.crm.*.service.impl,com.crm.mapper" />
 
 	<!-- 事务 -->
 	<tx:advice id="txAdvice" transaction-manager="transactionManager">

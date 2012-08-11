@@ -8,6 +8,9 @@ public interface XmCustomViewService {
 	List<XmCustomview> queryByEntityType(String entitytype);
 
 	int getDefault(String string);
+
+	XmCustomview selectByPrimaryKey(String entitytype, int viewid);
+
 	
 
 }

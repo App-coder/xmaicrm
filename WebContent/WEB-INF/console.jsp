@@ -30,7 +30,7 @@
 		</div>
 		<div id="sale_item" style="width: 120px;" class="navmenuitem"  >
 			<div>销售导航</div>
-			<div>销售机会</div>
+			<div><a href="javascript:tab('销售机会','potential/index')" >销售机会</a></div>
 			<div>销售漏斗</div>
 			<div>报价单</div>
 			<div>竞争对手</div>

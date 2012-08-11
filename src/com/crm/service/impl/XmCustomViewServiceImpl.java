@@ -27,4 +27,12 @@ public class XmCustomViewServiceImpl implements XmCustomViewService {
 	public int getDefault(String string) {
 		return this.xmCustomviewMapper.getDefault(string);
 	}
+
+	@Override
+	public XmCustomview selectByPrimaryKey(String entitytype, int viewid) {
+		if(viewid==-1){
+			return this.xmCustomviewMapper.getDefaultCView(entitytype);
+		}
+		return this.xmCustomviewMapper.selectByPrimaryKey(viewid);
+	}
 }

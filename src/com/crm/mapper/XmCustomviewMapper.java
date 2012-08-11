@@ -22,4 +22,6 @@ public interface XmCustomviewMapper {
     List<XmCustomview> queryByEntityType(@Param("entitytype") String entitytype);
 
 	int getDefault(@Param("entitytype") String entitytype);
+
+	XmCustomview getDefaultCView(@Param("entitytype") String entitytype);
 }

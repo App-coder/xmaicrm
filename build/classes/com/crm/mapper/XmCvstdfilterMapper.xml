@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.crm.mapper.XmCvstdfilterMapper" >
+  <resultMap id="BaseResultMap" type="com.crm.model.XmCvstdfilter" >
+    <id column="cvid" property="cvid" jdbcType="INTEGER" />
+    <result column="columnname" property="columnname" jdbcType="VARCHAR" />
+    <result column="stdfilter" property="stdfilter" jdbcType="VARCHAR" />
+    <result column="startdate" property="startdate" jdbcType="DATE" />
+    <result column="enddate" property="enddate" jdbcType="DATE" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    cvid, columnname, stdfilter, startdate, enddate
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from xm_cvstdfilter
+    where cvid = #{cvid,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from xm_cvstdfilter
+    where cvid = #{cvid,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.crm.model.XmCvstdfilter" >
+    insert into xm_cvstdfilter (cvid, columnname, stdfilter, 
+      startdate, enddate)
+    values (#{cvid,jdbcType=INTEGER}, #{columnname,jdbcType=VARCHAR}, #{stdfilter,jdbcType=VARCHAR}, 
+      #{startdate,jdbcType=DATE}, #{enddate,jdbcType=DATE})
+  </insert>
+  <insert id="insertSelective" parameterType="com.crm.model.XmCvstdfilter" >
+    insert into xm_cvstdfilter
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="cvid != null" >
+        cvid,
+      </if>
+      <if test="columnname != null" >
+        columnname,
+      </if>
+      <if test="stdfilter != null" >
+        stdfilter,
+      </if>
+      <if test="startdate != null" >
+        startdate,
+      </if>
+      <if test="enddate != null" >
+        enddate,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="cvid != null" >
+        #{cvid,jdbcType=INTEGER},
+      </if>
+      <if test="columnname != null" >
+        #{columnname,jdbcType=VARCHAR},
+      </if>
+      <if test="stdfilter != null" >
+        #{stdfilter,jdbcType=VARCHAR},
+      </if>
+      <if test="startdate != null" >
+        #{startdate,jdbcType=DATE},
+      </if>
+      <if test="enddate != null" >
+        #{enddate,jdbcType=DATE},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.crm.model.XmCvstdfilter" >
+    update xm_cvstdfilter
+    <set >
+      <if test="columnname != null" >
+        columnname = #{columnname,jdbcType=VARCHAR},
+      </if>
+      <if test="stdfilter != null" >
+        stdfilter = #{stdfilter,jdbcType=VARCHAR},
+      </if>
+      <if test="startdate != null" >
+        startdate = #{startdate,jdbcType=DATE},
+      </if>
+      <if test="enddate != null" >
+        enddate = #{enddate,jdbcType=DATE},
+      </if>
+    </set>
+    where cvid = #{cvid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.crm.model.XmCvstdfilter" >
+    update xm_cvstdfilter
+    set columnname = #{columnname,jdbcType=VARCHAR},
+      stdfilter = #{stdfilter,jdbcType=VARCHAR},
+      startdate = #{startdate,jdbcType=DATE},
+      enddate = #{enddate,jdbcType=DATE}
+    where cvid = #{cvid,jdbcType=INTEGER}
+  </update>
+  <select id="getStdfilter" resultMap="BaseResultMap" >
+  	select xm_cvstdfilter.* from xm_cvstdfilter inner join xm_customview on xm_customview.cvid = xm_cvstdfilter.cvid where xm_cvstdfilter.cvid=#{viewid}
+  </select>
+</mapper>

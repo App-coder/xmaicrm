@@ -4,7 +4,6 @@ public class Column {
 	
 	String title;
 	String field;
-	Integer width;
 	
 	public String getTitle() {
 		return title;
@@ -17,12 +16,6 @@ public class Column {
 	}
 	public void setField(String field) {
 		this.field = field;
-	}
-	public Integer getWidth() {
-		return width;
-	}
-	public void setWidth(Integer width) {
-		this.width = width;
 	}
 	
 	
