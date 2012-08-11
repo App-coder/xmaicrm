@@ -246,6 +246,19 @@ public class XmAccountController extends BaseController{
 		return "module/accounts/view";
 	}
 	
+	/**
+	 * 用户选择弹出窗
+	 * 
+	 * @param columnname
+	 * @return
+	 */
+	@RequestMapping(value = "/viewpop")
+	public String viewpop(String columnname,ModelMap modelmap){
+		ActionUtil.showList("Accounts", modelmap, moduleUtil);
+		modelmap.addAttribute("columnname",columnname);
+		return "module/accounts/viewpop";
+	}
+	
 	
 	
 }

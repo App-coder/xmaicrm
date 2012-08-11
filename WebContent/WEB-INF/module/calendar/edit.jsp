@@ -4,10 +4,10 @@
 <%@ include file="../../common/config.jsp"%>
 <script charset="utf-8" src="resources/plugins/kindeditor/kindeditor.js"></script>
 <script charset="utf-8" src="resources/plugins/kindeditor/lang/zh_CN.js"></script>
-<script type="text/javascript" src="resources/desktop/module/campaigns/edit.js"></script>
+<script type="text/javascript" src="resources/desktop/module/calendar/edit.js"></script>
 <script>
 var ptb = ${ptb.parenttabid};
-var recordid = ${recordid };
+var recordid = ${recordid};
 var kinds = [];
 </script>
 </head>

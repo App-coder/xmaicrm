@@ -22,7 +22,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	</c:otherwise>
 </c:choose>
 </title>
-<cache>
+ <cache:cache>
 <link rel="stylesheet" type="text/css" href="resources/easyui/themes/default/easyui.css">
 <link rel="stylesheet" type="text/css" href="resources/easyui/themes/icon.css">
 <link rel="stylesheet" type="text/css" href="resources/css.css">
@@ -52,4 +52,4 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 
 <!-- 文件上传 -->
 <script type="text/javascript" src="resources/plugins/ajaxfileupload.js"></script>
-</cache>
+</cache:cache>

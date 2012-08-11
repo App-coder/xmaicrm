@@ -15,7 +15,7 @@ function init(){
 		singleSelect:true,
 		queryParams:{entitytype:entitytype,viewid:tab_viewid},
 		columns : [tab_columns],
-		pageSize:20,
+		pageSize:10,
 		frozenColumns : [[{
 			field : 'ck',
 			checkbox : true
@@ -24,19 +24,7 @@ function init(){
 		    setParentVal(rowData);
 		}
 	  });
-	 initCatalog();
 }
-function initCatalog(){
-    $('#catalog').tree({
-	onClick: function(node){
-	    var catalogid = node.attributes.catalogid;
-	    $('#view_list').datagrid("options").queryParams.catalogid = catalogid;
-	    $('#view_list').datagrid("reload");
-	    
-	}
-    });
-}
-
 /*切换视图*/
 function reloadView(val){
     $('#view_list').datagrid("loadData",[]);
@@ -49,9 +37,10 @@ function reloadView(val){
 		rownumbers : true,
 		pagination:true,
 		singleSelect:true,
+		fit:true,
 		queryParams:{entitytype:entitytype,viewid:val},
 		columns : [res],
-		pageSize:10,
+		pageSize:20,
 		onDblClickRow:function(rowIndex, rowData){
 		    setParentVal(rowData);
 		}
@@ -59,8 +48,13 @@ function reloadView(val){
     },'json');
 }
 function setParentVal(rowdata){
-
-    parent.$("input[name='product_id_text']").val(rowdata.productname);
-    parent.$("input[name='product_id']").val(rowdata.productid);
+    //UI_TYPE 51,57
+    
+    parent.$("input[name='"+columnname+"_text']").val(rowdata.accountname);
+    parent.$("input[name='"+columnname+"']").val(rowdata.accountid);
     parent.$("#optionwindow").window("close");
+    
+    parent.rendRel(columnname,rowdata);
+    
+    
 }

@@ -36,10 +36,7 @@ var columnname = '${columnname}';
 	<c:forEach items="${views}" var="v">
 		<option value="${v.cvid }">${v.viewname}</option>
 	</c:forEach>
-</select> <a
-	href="crm/customview/index?entitytype=${entitytype}&ptb=${ptb.parenttabid }"
-	class="easyui-linkbutton"
-	data-options="plain:true,iconCls:'icon-view'">视图管理</a>
+</select>
 </div>
 </div>
 <div data-options="region:'west',border:false" style="width:150px;">

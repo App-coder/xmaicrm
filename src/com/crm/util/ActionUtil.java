@@ -43,6 +43,13 @@ public class ActionUtil {
 
 	}
 	
+	/**
+	 * 用于Pop弹出窗列表显示
+	 * 
+	 * @param entitytype
+	 * @param modelmap
+	 * @param moduleUtil
+	 */
 	public static void showList(String entitytype, ModelMap modelmap,
 			ModuleUtil moduleUtil) {
 

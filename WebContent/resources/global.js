@@ -238,7 +238,8 @@ function setDefWidth(cols,wid){
 //显示选项的optionwindow，用于选项的选择
 function showOptionPanel(modulename,columnname,fieldlabel){
     $("#optionwindow").window({
-	title:"选择"+fieldlabel
+	title:"选择"+fieldlabel,
+	border:false
     });
     $("#optionframe").attr("src","crm/customview/viewPop?modulename="+modulename+"&columnname="+columnname+"&_rd="+rdnum());
     $("#optionwindow").window("open");

@@ -29,6 +29,7 @@ static {
   private org.apache.jasper.runtime.TagHandlerPool _005fjspx_005ftagPool_005fc_005fchoose;
   private org.apache.jasper.runtime.TagHandlerPool _005fjspx_005ftagPool_005fc_005fwhen_0026_005ftest;
   private org.apache.jasper.runtime.TagHandlerPool _005fjspx_005ftagPool_005fc_005fotherwise;
+  private org.apache.jasper.runtime.TagHandlerPool _005fjspx_005ftagPool_005fcache_005fcache;
   private org.apache.jasper.runtime.TagHandlerPool _005fjspx_005ftagPool_005fc_005fforEach_0026_005fvarStatus_005fvar_005fitems;
 
   private javax.el.ExpressionFactory _el_expressionfactory;
@@ -42,6 +43,7 @@ static {
     _005fjspx_005ftagPool_005fc_005fchoose = org.apache.jasper.runtime.TagHandlerPool.getTagHandlerPool(getServletConfig());
     _005fjspx_005ftagPool_005fc_005fwhen_0026_005ftest = org.apache.jasper.runtime.TagHandlerPool.getTagHandlerPool(getServletConfig());
     _005fjspx_005ftagPool_005fc_005fotherwise = org.apache.jasper.runtime.TagHandlerPool.getTagHandlerPool(getServletConfig());
+    _005fjspx_005ftagPool_005fcache_005fcache = org.apache.jasper.runtime.TagHandlerPool.getTagHandlerPool(getServletConfig());
     _005fjspx_005ftagPool_005fc_005fforEach_0026_005fvarStatus_005fvar_005fitems = org.apache.jasper.runtime.TagHandlerPool.getTagHandlerPool(getServletConfig());
     _el_expressionfactory = _jspxFactory.getJspApplicationContext(getServletConfig().getServletContext()).getExpressionFactory();
     _jsp_annotationprocessor = (org.apache.AnnotationProcessor) getServletConfig().getServletContext().getAttribute(org.apache.AnnotationProcessor.class.getName());
@@ -51,6 +53,7 @@ static {
     _005fjspx_005ftagPool_005fc_005fchoose.release();
     _005fjspx_005ftagPool_005fc_005fwhen_0026_005ftest.release();
     _005fjspx_005ftagPool_005fc_005fotherwise.release();
+    _005fjspx_005ftagPool_005fcache_005fcache.release();
     _005fjspx_005ftagPool_005fc_005fforEach_0026_005fvarStatus_005fvar_005fitems.release();
   }
 
@@ -101,37 +104,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
         return;
       out.write("\r\n");
       out.write("</title>\r\n");
-      out.write("<cache>\r\n");
-      out.write("<link rel=\"stylesheet\" type=\"text/css\" href=\"resources/easyui/themes/default/easyui.css\">\r\n");
-      out.write("<link rel=\"stylesheet\" type=\"text/css\" href=\"resources/easyui/themes/icon.css\">\r\n");
-      out.write("<link rel=\"stylesheet\" type=\"text/css\" href=\"resources/css.css\">\r\n");
-      out.write("<link rel=\"stylesheet\" type=\"text/css\" href=\"resources/easyui_update.css\">\r\n");
-      out.write("<script type=\"text/javascript\" src=\"resources/easyui/jquery-1.7.2.min.js\"></script>\r\n");
-      out.write("<script type=\"text/javascript\" src=\"resources/easyui/jquery.easyui.min.js\"></script>\r\n");
-      out.write("<script type=\"text/javascript\" src=\"resources/easyui/locale/easyui-lang-zh_CN.js\"></script>\r\n");
-      out.write("\r\n");
-      out.write("<!-- JSON插件 -->\r\n");
-      out.write("<script type=\"text/javascript\" src=\"resources/lib/json2.js\"></script>\r\n");
-      out.write("\r\n");
-      out.write("<!-- easyuipack.js 补充拓展 -->\r\n");
-      out.write("<script type=\"text/javascript\" src=\"resources/easyui/easyuipack.js\"></script>\r\n");
-      out.write("<script type=\"text/javascript\" src=\"resources/easyui/extension/validatebox.js\"></script>\r\n");
-      out.write("\r\n");
-      out.write("<!-- loadmask -->\r\n");
-      out.write("<link href=\"resources/plugins/loadmask/jquery.loadmask.css\" rel=\"stylesheet\" type=\"text/css\" />\r\n");
-      out.write("<script type=\"text/javascript\" src=\"resources/plugins/loadmask/jquery.loadmask.min.js\"></script>\r\n");
-      out.write("<script type=\"text/javascript\" src=\"resources/global.js\"></script>    \r\n");
-      out.write("\r\n");
-      out.write("<!-- 菜单 -->\r\n");
-      out.write("<link rel=\"stylesheet\" type=\"text/css\" href=\"resources/prodrop/pro_drop.css\" />\r\n");
-      out.write("<script src=\"resources/prodrop/stuHover.js\" type=\"text/javascript\"></script>\r\n");
-      out.write("\r\n");
-      out.write("<!-- 表单验证 -->\r\n");
-      out.write("<script type=\"text/javascript\" src=\"resources/lib/checkvalidate.js\"></script>\r\n");
-      out.write("\r\n");
-      out.write("<!-- 文件上传 -->\r\n");
-      out.write("<script type=\"text/javascript\" src=\"resources/plugins/ajaxfileupload.js\"></script>\r\n");
-      out.write("</cache>");
+      out.write(" ");
+      if (_jspx_meth_cache_005fcache_005f0(_jspx_page_context))
+        return;
       out.write('\r');
       out.write('\n');
       out.write('\r');
@@ -144,13 +119,13 @@ String win_bar_1 = "resizable=\"false\"  closed=\"true\" modal=\"false\" collaps
       out.write("\r\n");
       out.write("<script charset=\"utf-8\" src=\"resources/plugins/kindeditor/kindeditor.js\"></script>\r\n");
       out.write("<script charset=\"utf-8\" src=\"resources/plugins/kindeditor/lang/zh_CN.js\"></script>\r\n");
-      out.write("<script type=\"text/javascript\" src=\"resources/desktop/module/campaigns/edit.js\"></script>\r\n");
+      out.write("<script type=\"text/javascript\" src=\"resources/desktop/module/calendar/edit.js\"></script>\r\n");
       out.write("<script>\r\n");
       out.write("var ptb = ");
       out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${ptb.parenttabid}", java.lang.String.class, (PageContext)_jspx_page_context, null, false));
       out.write(";\r\n");
       out.write("var recordid = ");
-      out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${recordid }", java.lang.String.class, (PageContext)_jspx_page_context, null, false));
+      out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${recordid}", java.lang.String.class, (PageContext)_jspx_page_context, null, false));
       out.write(";\r\n");
       out.write("var kinds = [];\r\n");
       out.write("</script>\r\n");
@@ -428,6 +403,78 @@ String win_bar_1 = "resizable=\"false\"  closed=\"true\" modal=\"false\" collaps
       return true;
     }
     _005fjspx_005ftagPool_005fc_005fotherwise.reuse(_jspx_th_c_005fotherwise_005f0);
+    return false;
+  }
+
+  private boolean _jspx_meth_cache_005fcache_005f0(PageContext _jspx_page_context)
+          throws Throwable {
+    PageContext pageContext = _jspx_page_context;
+    JspWriter out = _jspx_page_context.getOut();
+    //  cache:cache
+    com.opensymphony.oscache.web.tag.CacheTag _jspx_th_cache_005fcache_005f0 = (com.opensymphony.oscache.web.tag.CacheTag) _005fjspx_005ftagPool_005fcache_005fcache.get(com.opensymphony.oscache.web.tag.CacheTag.class);
+    _jspx_th_cache_005fcache_005f0.setPageContext(_jspx_page_context);
+    _jspx_th_cache_005fcache_005f0.setParent(null);
+    int[] _jspx_push_body_count_cache_005fcache_005f0 = new int[] { 0 };
+    try {
+      int _jspx_eval_cache_005fcache_005f0 = _jspx_th_cache_005fcache_005f0.doStartTag();
+      if (_jspx_eval_cache_005fcache_005f0 != javax.servlet.jsp.tagext.Tag.SKIP_BODY) {
+        if (_jspx_eval_cache_005fcache_005f0 != javax.servlet.jsp.tagext.Tag.EVAL_BODY_INCLUDE) {
+          out = _jspx_page_context.pushBody();
+          _jspx_push_body_count_cache_005fcache_005f0[0]++;
+          _jspx_th_cache_005fcache_005f0.setBodyContent((javax.servlet.jsp.tagext.BodyContent) out);
+          _jspx_th_cache_005fcache_005f0.doInitBody();
+        }
+        do {
+          out.write("\r\n");
+          out.write("<link rel=\"stylesheet\" type=\"text/css\" href=\"resources/easyui/themes/default/easyui.css\">\r\n");
+          out.write("<link rel=\"stylesheet\" type=\"text/css\" href=\"resources/easyui/themes/icon.css\">\r\n");
+          out.write("<link rel=\"stylesheet\" type=\"text/css\" href=\"resources/css.css\">\r\n");
+          out.write("<link rel=\"stylesheet\" type=\"text/css\" href=\"resources/easyui_update.css\">\r\n");
+          out.write("<script type=\"text/javascript\" src=\"resources/easyui/jquery-1.7.2.min.js\"></script>\r\n");
+          out.write("<script type=\"text/javascript\" src=\"resources/easyui/jquery.easyui.min.js\"></script>\r\n");
+          out.write("<script type=\"text/javascript\" src=\"resources/easyui/locale/easyui-lang-zh_CN.js\"></script>\r\n");
+          out.write("\r\n");
+          out.write("<!-- JSON插件 -->\r\n");
+          out.write("<script type=\"text/javascript\" src=\"resources/lib/json2.js\"></script>\r\n");
+          out.write("\r\n");
+          out.write("<!-- easyuipack.js 补充拓展 -->\r\n");
+          out.write("<script type=\"text/javascript\" src=\"resources/easyui/easyuipack.js\"></script>\r\n");
+          out.write("<script type=\"text/javascript\" src=\"resources/easyui/extension/validatebox.js\"></script>\r\n");
+          out.write("\r\n");
+          out.write("<!-- loadmask -->\r\n");
+          out.write("<link href=\"resources/plugins/loadmask/jquery.loadmask.css\" rel=\"stylesheet\" type=\"text/css\" />\r\n");
+          out.write("<script type=\"text/javascript\" src=\"resources/plugins/loadmask/jquery.loadmask.min.js\"></script>\r\n");
+          out.write("<script type=\"text/javascript\" src=\"resources/global.js\"></script>    \r\n");
+          out.write("\r\n");
+          out.write("<!-- 菜单 -->\r\n");
+          out.write("<link rel=\"stylesheet\" type=\"text/css\" href=\"resources/prodrop/pro_drop.css\" />\r\n");
+          out.write("<script src=\"resources/prodrop/stuHover.js\" type=\"text/javascript\"></script>\r\n");
+          out.write("\r\n");
+          out.write("<!-- 表单验证 -->\r\n");
+          out.write("<script type=\"text/javascript\" src=\"resources/lib/checkvalidate.js\"></script>\r\n");
+          out.write("\r\n");
+          out.write("<!-- 文件上传 -->\r\n");
+          out.write("<script type=\"text/javascript\" src=\"resources/plugins/ajaxfileupload.js\"></script>\r\n");
+          int evalDoAfterBody = _jspx_th_cache_005fcache_005f0.doAfterBody();
+          if (evalDoAfterBody != javax.servlet.jsp.tagext.BodyTag.EVAL_BODY_AGAIN)
+            break;
+        } while (true);
+        if (_jspx_eval_cache_005fcache_005f0 != javax.servlet.jsp.tagext.Tag.EVAL_BODY_INCLUDE) {
+          out = _jspx_page_context.popBody();
+          _jspx_push_body_count_cache_005fcache_005f0[0]--;
+        }
+      }
+      if (_jspx_th_cache_005fcache_005f0.doEndTag() == javax.servlet.jsp.tagext.Tag.SKIP_PAGE) {
+        return true;
+      }
+    } catch (Throwable _jspx_exception) {
+      while (_jspx_push_body_count_cache_005fcache_005f0[0]-- > 0)
+        out = _jspx_page_context.popBody();
+      _jspx_th_cache_005fcache_005f0.doCatch(_jspx_exception);
+    } finally {
+      _jspx_th_cache_005fcache_005f0.doFinally();
+      _005fjspx_005ftagPool_005fcache_005fcache.reuse(_jspx_th_cache_005fcache_005f0);
+    }
     return false;
   }
 

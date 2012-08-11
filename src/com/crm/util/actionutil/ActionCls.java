@@ -93,8 +93,8 @@ public class ActionCls {
 
 	public void showEdit(int ptb, String module, ModelMap modelmap, int recordid) {
 		Map obj = null;
+		modelmap.addAttribute("recordid",recordid);
 		if(recordid!=0){
-			modelmap.addAttribute("recordid",recordid);
 			obj = this.xmCustomViewService.getObject(recordid,module);
 			modelmap.addAttribute("record",obj);
 		}

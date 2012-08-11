@@ -8,9 +8,13 @@ body{margin:0px;padding:0px;overflow-x:hidden;}
 body, input, button, select, textarea {
     font: 12px/1.5 Tahoma,'微软雅黑',"Microsoft Yahei", "Simsun";
 }
+
+/**
 body, html {
-    min-height:101%;
+  min-height:101%;
 }
+**/
+
 textarea{ resize: none;}
 form{margin:0px;padding:0px;}
 red{color:red;}
@@ -63,6 +67,7 @@ table .tb_list td.righttd{padding-left:10px;}
 .mgl_10{margin-left: 10px;}
 .mgb_5{margin-bottom:5px;}
 .mg10{margin: 10px;}
+.vleftipt{margin-left: 2px;}
 
 .tab_form{width:100%;font:12px/1.5 Tahoma,'Microsoft Yahei','Simsun';}
 .tab_form .edittd{width:110px;text-align: right;padding-right:10px;}

@@ -208,7 +208,7 @@ public class HtmlUtil {
 				if(!xmField.getFieldname().equals("activityid")){
 					XmEntityname et = hm_noline.get(xmField.getFieldname().replace("_", ""));
 					fieldstr +="<input type=\"hidden\" name=\""+xmField.getColumnname()+"\" value=\""+getMapVal(obj,xmField.getColumnname())+"\" class=\"text2\"  />";
-					fieldstr +="<input type=\"text\" name=\""+xmField.getColumnname()+"_text\" class=\"text2\" value=\""+getText(getMapVal(obj,xmField.getColumnname()),et,xmCustomViewService)+"\" readonly=\"readonly\" />";
+					fieldstr +="<input type=\"text\" name=\""+xmField.getColumnname()+"_text\"  onfocus=\"rendRel(\'"+xmField.getColumnname()+"\',this)\"  class=\"text2\" value=\""+getText(getMapVal(obj,xmField.getColumnname()),et,xmCustomViewService)+"\" readonly=\"readonly\" />";
 					fieldstr +="<a class=\"easyui-linkbutton mgl_10\" title=\"查询\" data-options=\"iconCls:'icon-search'\" href=\"javascript:showOptionPanel('"+et.getModulename()+"','"+xmField.getColumnname()+"','"+xmField.getFieldlabel()+"')\" ></a>";
 					fieldstr +="<a class=\"easyui-linkbutton mgl_10\" title=\"清空\" data-options=\"iconCls:'icon-clear'\" ></a>";
 				}
