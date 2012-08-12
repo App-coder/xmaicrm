@@ -10,5 +10,7 @@ public interface XmUsersService {
 	List<Object> getSysUser(int page, int rows);
 
 	int getTotal();
+
+	List<XmUsers> getActiveUser();
 	
 }

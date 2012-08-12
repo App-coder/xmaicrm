@@ -6,6 +6,7 @@ import javax.annotation.Resource;
 
 import org.springframework.stereotype.Service;
 
+import com.crm.model.XmUsers;
 import com.crm.settings.basic.mapper.XmUsersMapper;
 import com.crm.settings.basic.service.XmUsersService;
 
@@ -27,6 +28,11 @@ public class XmUsersServiceImpl implements XmUsersService{
 	@Override
 	public int getTotal() {
 		return this.xmUsersMapper.getTotal();
+	}
+
+	@Override
+	public List<XmUsers> getActiveUser() {
+		return this.xmUsersMapper.getActiveUser();
 	}
 
 	

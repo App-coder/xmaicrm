@@ -12,7 +12,7 @@ var pathname = "系统用户";
 <%@ include file="../../nav.jsp"%>
 <div id="main">
 <div class="path" id="navpath"></div>
-<table id="user_list" data-options="fitColumns:true"></table>
+<table id="user_list" ></table>
 </div>
 <%@ include file="../../foot.jsp"%>
 </body>

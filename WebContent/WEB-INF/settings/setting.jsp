@@ -142,19 +142,17 @@
 											<tbody>
 												<tr>
 													<td valign="top"><a
-														href="javascript:tab('登录历史','settings/loginhistory/index')"><img
+														href="settings/loginhistory/index"><img
 															width="48" height="48" border="0" title="登录历史" alt="登录历史"
 															src="resources/images/settings/panel/set-IcoLoginHistory.gif"></a></td>
 												</tr>
 												<tr>
 													<td valign="top" class="big"><a
-														href="javascript:tab('登录历史','settings/loginhistory/index')">登录历史</a></td>
+														href="settings/loginhistory/index">登录历史</a></td>
 												</tr>
 											</tbody>
 										</table>
 									</td>
-									<td width="12.5%" valign="top"></td>
-									<td width="12.5%" valign="top"></td>
 									<td width="12.5%" valign="top"></td>
 									
 								</tr>
@@ -450,13 +448,13 @@
 											<tbody>
 												<tr>
 													<td valign="top"><a
-														href="javascript:tab('Email模版','settings/emailtemplates/index')"><img
+														href="settings/emailtemplates/index"><img
 															border="0" title="Email模版" alt="Email模版"
 															src="resources/images/settings/panel/ViewTemplate.gif"></a></td>
 												</tr>
 												<tr>
 													<td valign="top" class="big"><a
-														href="javascript:tab('Email模版','settings/emailtemplates/index')">Email模版</a></td>
+														href="settings/emailtemplates/index">Email模版</a></td>
 
 												</tr>
 
@@ -492,13 +490,13 @@
 											<tbody>
 												<tr>
 													<td valign="top"><a
-														href="javascript:tab('公司信息','settings/organizationconfig/index')"><img
+														href="settings/organizationconfig/index"><img
 															border="0" title="公司信息" alt="公司信息"
 															src="resources/images/settings/panel/company.gif"></a></td>
 												</tr>
 												<tr>
 													<td valign="top" class="big"><a
-														href="javascript:tab('公司信息','settings/organizationconfig/index')">公司信息</a></td>
+														href="settings/organizationconfig/index">公司信息</a></td>
 												</tr>
 
 											</tbody>
@@ -512,13 +510,13 @@
 											<tbody>
 												<tr>
 													<td valign="top"><a
-														href="javascript:tab('SMTP服务器','settings/emailconfig/index')"><img
+														href="settings/system/index"><img
 															border="0" title="SMTP服务器" alt="SMTP服务器"
 															src="resources/images/settings/panel/ogmailserver.gif"></a></td>
 												</tr>
 												<tr>
 													<td valign="top" class="big"><a
-														href="javascript:tab('SMTP服务器','settings/emailconfig/index')">SMTP服务器</a></td>
+														href="settings/system/index">SMTP服务器</a></td>
 												</tr>
 
 
@@ -554,13 +552,13 @@
 											<tbody>
 												<tr>
 													<td valign="top"><a
-														href="javascript:tab('货币币种','settings/messageconfig/index')"><img
+														href="settings/currencyInfo/index"><img
 															border="0" title="货币币种" alt="货币币种"
 															src="resources/images/settings/panel/currency.gif"></a></td>
 												</tr>
 												<tr>
 													<td valign="top" class="big"><a
-														href="javascript:tab('货币币种','settings/messageconfig/index')">货币币种</a></td>
+														href="settings/currencyInfo/index">货币币种</a></td>
 												</tr>
 
 
@@ -575,13 +573,13 @@
 											<tbody>
 												<tr>
 													<td valign="top"><a
-														href="javascript:tab('授权许可','settings/licenseconfig/index')"><img
+														href="settings/license/index"><img
 															border="0" title="授权许可" alt="授权许可"
 															src="resources/images/settings/panel/license.gif"></a></td>
 												</tr>
 												<tr>
 													<td valign="top" class="big"><a
-														href="javascript:tab('授权许可','settings/licenseconfig/index')">授权许可</a></td>
+														href="settings/license/index">授权许可</a></td>
 												</tr>
 
 

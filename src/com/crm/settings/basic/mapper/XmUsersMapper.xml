@@ -765,4 +765,7 @@
 	WHERE
 		deleted = 0
   </select>
+  <select id="getActiveUser" resultMap="BaseResultMap" >
+  	select * from xm_users where deleted=0 and status='Active' order by prefix;
+  </select>
 </mapper>

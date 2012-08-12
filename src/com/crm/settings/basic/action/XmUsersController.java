@@ -55,4 +55,5 @@ public class XmUsersController extends BaseController {
 		return JSON.toJSONString(bean);
 	}
 	
+	
 }

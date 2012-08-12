@@ -39,6 +39,7 @@ function initPage(){
 	rownumbers : true,
 	pagination:true,
 	fitColumns:true,
+	height:362,
 	toolbar : [ {
 	    text : '添加',
 	    iconCls:'icon-add',

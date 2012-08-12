@@ -56,6 +56,10 @@ table .tb_list td.righttd{padding-left:10px;}
 .tab_form input.text,.tab_form select.text{width:180px;margin-right: 10px;border:1px solid #D2D2D2;height: 20px;}
 .tab_form input.text2,.tab_form select.text2{width:250px;margin-right: 10px;border:1px solid #D2D2D2;height: 20px;}
 .tab_form textarea{width:90%;}
+.tab_editlist{width:100%;font:12px/1.5 Tahoma,'Microsoft Yahei','Simsun';}
+.tab_editlist input.text,.tab_editlist select.text{width:250px;margin-right: 10px;border:1px solid #D2D2D2;height: 20px;}
+.tab_editlist .edittd{width:15%;padding-left:10px;}
+
 .textborder{border:1px solid #D2D2D2;}
 
 .red{color: red;}

@@ -163,3 +163,12 @@
 .icon-tool{
 	background:url('icons/tool.png') no-repeat 3px 2px;
 }
+.icon-logstart{
+	background:url('icons/log_start.png') no-repeat 3px 2px;
+}
+.icon-logstop{
+	background:url('icons/log_stop.png') no-repeat 3px 2px;
+}
+.icon-download{
+	background:url('icons/download.png') no-repeat 3px 2px;
+}

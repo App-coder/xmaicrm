@@ -12,4 +12,6 @@ public interface XmUsersMapper {
 
 	int getTotal();
 
+	List<XmUsers> getActiveUser();
+
 }
