@@ -11,7 +11,7 @@ accounts.getViews=function(){
 };*/
 
 $(function(){
-	$.get("customize/queryByEntityType",{"entitytype":"Accounts"},function(result){
+	$.get("customize/queryByEntityType/Accounts",null,function(result){
 		
 	});
 	

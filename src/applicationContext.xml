@@ -111,7 +111,7 @@
 		</tx:attributes>
 	</tx:advice>
 	<aop:config>
-		<aop:advisor pointcut="execution(* com.crm.*.service.*Service.*(..))"
+		<aop:advisor pointcut="execution(* com.crm.**.service.*Service.*(..))"
 			advice-ref="txAdvice" />
 	</aop:config>
 

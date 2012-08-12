@@ -5,6 +5,7 @@ import java.util.List;
 import javax.annotation.Resource;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -22,8 +23,13 @@ public class CustomViewController extends BaseController {
 		this.xmCustomViewService = xmCustomViewService;
 	}
 
-	@RequestMapping(value = "/queryByEntityType", method = RequestMethod.GET)
-	public String getViewList(@RequestParam("entitytype") String entitytype){
+    /**
+     * 获取视图的公共方法
+     * @param entitytype
+     * @return
+     */
+	@RequestMapping(value = "/queryByEntityType/{entitytype}", method = RequestMethod.GET)
+	public String getViewList(@PathVariable String entitytype){
 		List<XmCustomview> list=this.xmCustomViewService.queryByEntityType(entitytype);
 		return this.arrayToJson(list);
 	}
