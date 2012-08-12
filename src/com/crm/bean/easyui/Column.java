@@ -4,7 +4,7 @@ public class Column {
 	
 	String title;
 	String field;
-	Integer width;
+	boolean resizable = false;
 	
 	public String getTitle() {
 		return title;
@@ -18,12 +18,13 @@ public class Column {
 	public void setField(String field) {
 		this.field = field;
 	}
-	public Integer getWidth() {
-		return width;
+	public boolean isResizable() {
+		return resizable;
 	}
-	public void setWidth(Integer width) {
-		this.width = width;
+	public void setResizable(boolean resizable) {
+		this.resizable = resizable;
 	}
+
 	
 	
 	

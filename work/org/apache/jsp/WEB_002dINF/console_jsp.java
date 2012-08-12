@@ -113,7 +113,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
       out.write("\t\t</div>\r\n");
       out.write("\t\t<div id=\"sale_item\" style=\"width: 120px;\" class=\"navmenuitem\"  >\r\n");
       out.write("\t\t\t<div>销售导航</div>\r\n");
-      out.write("\t\t\t<div>销售机会</div>\r\n");
+      out.write("\t\t\t<div><a href=\"javascript:tab('销售机会','potential/index')\" >销售机会</a></div>\r\n");
       out.write("\t\t\t<div>销售漏斗</div>\r\n");
       out.write("\t\t\t<div>报价单</div>\r\n");
       out.write("\t\t\t<div>竞争对手</div>\r\n");
@@ -172,7 +172,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
       out.write("\t\t\t<div>常见问答</div>\r\n");
       out.write("\t\t</div>\r\n");
       out.write("\t</div>\r\n");
-      out.write("\t<div region=\"north\" style=\"height: 62px; overflow: hidden;\"\r\n");
+      out.write("\t<div region=\"north\" style=\"height: 62px; \"\r\n");
       out.write("\t\tclass=\"headerNav\" border=\"false\">\r\n");
       out.write("\t\t<a class=\"logo\"></a>\r\n");
       out.write("\t\t<ul class=\"nav\">\r\n");

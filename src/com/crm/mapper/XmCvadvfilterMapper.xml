@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.crm.mapper.XmCvadvfilterMapper" >
+  <resultMap id="BaseResultMap" type="com.crm.model.XmCvadvfilter" >
+    <id column="columnindex" property="columnindex" jdbcType="INTEGER" />
+    <id column="cvid" property="cvid" jdbcType="INTEGER" />
+    <result column="columnname" property="columnname" jdbcType="VARCHAR" />
+    <result column="comparator" property="comparator" jdbcType="VARCHAR" />
+    <result column="value" property="value" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    columnindex, cvid, columnname, comparator, value
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="map" >
+    select 
+    <include refid="Base_Column_List" />
+    from xm_cvadvfilter
+    where columnindex = #{columnindex,jdbcType=INTEGER}
+      and cvid = #{cvid,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="map" >
+    delete from xm_cvadvfilter
+    where columnindex = #{columnindex,jdbcType=INTEGER}
+      and cvid = #{cvid,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.crm.model.XmCvadvfilter" >
+    insert into xm_cvadvfilter (columnindex, cvid, columnname, 
+      comparator, value)
+    values (#{columnindex,jdbcType=INTEGER}, #{cvid,jdbcType=INTEGER}, #{columnname,jdbcType=VARCHAR}, 
+      #{comparator,jdbcType=VARCHAR}, #{value,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.crm.model.XmCvadvfilter" >
+    insert into xm_cvadvfilter
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="columnindex != null" >
+        columnindex,
+      </if>
+      <if test="cvid != null" >
+        cvid,
+      </if>
+      <if test="columnname != null" >
+        columnname,
+      </if>
+      <if test="comparator != null" >
+        comparator,
+      </if>
+      <if test="value != null" >
+        value,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="columnindex != null" >
+        #{columnindex,jdbcType=INTEGER},
+      </if>
+      <if test="cvid != null" >
+        #{cvid,jdbcType=INTEGER},
+      </if>
+      <if test="columnname != null" >
+        #{columnname,jdbcType=VARCHAR},
+      </if>
+      <if test="comparator != null" >
+        #{comparator,jdbcType=VARCHAR},
+      </if>
+      <if test="value != null" >
+        #{value,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.crm.model.XmCvadvfilter" >
+    update xm_cvadvfilter
+    <set >
+      <if test="columnname != null" >
+        columnname = #{columnname,jdbcType=VARCHAR},
+      </if>
+      <if test="comparator != null" >
+        comparator = #{comparator,jdbcType=VARCHAR},
+      </if>
+      <if test="value != null" >
+        value = #{value,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where columnindex = #{columnindex,jdbcType=INTEGER}
+      and cvid = #{cvid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.crm.model.XmCvadvfilter" >
+    update xm_cvadvfilter
+    set columnname = #{columnname,jdbcType=VARCHAR},
+      comparator = #{comparator,jdbcType=VARCHAR},
+      value = #{value,jdbcType=VARCHAR}
+    where columnindex = #{columnindex,jdbcType=INTEGER}
+      and cvid = #{cvid,jdbcType=INTEGER}
+  </update>
+  <select id="getAdvFilters" resultMap="BaseResultMap" >
+  	select xm_cvadvfilter.* from xm_cvadvfilter inner join xm_customview on xm_cvadvfilter.cvid = xm_customview.cvid where xm_cvadvfilter.cvid=#{viewid}
+  </select>
+</mapper>

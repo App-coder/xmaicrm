@@ -78,3 +78,31 @@ a.cus_markhui:link {
     text-decoration: none;
 }
 /*-------------*/
+.d_view{
+    border-top:1px solid #CCCCCC;
+    border-left: 1px solid #CCCCCC;
+    border-right: 1px solid #CCCCCC;
+    border-bottom: none;
+    background-color:#EFEFEF;
+    height:30px;
+    line-height: 30px;
+    padding-left:10px;
+}
+.view_span{
+	padding-top:2px;
+	padding-bottom:2px;
+	padding-left:20px;
+}
+.d_report{
+	border-bottom:1px solid #CCCCCC;
+    border-left: 1px solid #CCCCCC;
+    border-right: 1px solid #CCCCCC;
+    border-top: none;
+    background-color:#EFEFEF;
+    height:30px;
+    line-height: 30px;
+    padding-left:10px;
+}
+.sel_120{
+	width: 120px;
+}

@@ -77,6 +77,11 @@ public class XmPotential {
     private Integer approvedby;
 
     private String description;
+    
+    /**
+     * 客户名称
+     */
+    private String accountname;
 
     public Integer getPotentialid() {
         return potentialid;
@@ -374,4 +379,14 @@ public class XmPotential {
     public void setDescription(String description) {
         this.description = description == null ? null : description.trim();
     }
+
+	public String getAccountname() {
+		return accountname;
+	}
+
+	public void setAccountname(String accountname) {
+		this.accountname = accountname;
+	}
+    
+    
 }
