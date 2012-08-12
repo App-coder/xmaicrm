@@ -14,6 +14,10 @@ public class XmCustomview {
     private String setpublic;
 
     private String collectcolumn;
+    //视图模块的描述（模块）
+    private String tablabel;
+    //视图记录的数量，用于关键视图的统计
+    private int countoflist;
 
     public Integer getCvid() {
         return cvid;
@@ -70,4 +74,21 @@ public class XmCustomview {
     public void setCollectcolumn(String collectcolumn) {
         this.collectcolumn = collectcolumn == null ? null : collectcolumn.trim();
     }
+
+	public String getTablabel() {
+		return tablabel;
+	}
+
+	public void setTablabel(String tablabel) {
+		this.tablabel = tablabel;
+	}
+
+	public int getCountoflist() {
+		return countoflist;
+	}
+
+	public void setCountoflist(int countoflist) {
+		this.countoflist = countoflist;
+	}
+    
 }

@@ -83,7 +83,11 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
       out.write("<script type=\"text/javascript\" src=\"resources/easyui/jquery.easyui.min.js\"></script>\r\n");
       out.write("<script type=\"text/javascript\" src=\"resources/easyui/locale/easyui-lang-zh_CN.js\"></script>\r\n");
       out.write("\r\n");
-      out.write("<script type=\"text/javascript\" src=\"resources/amcharts/amcharts.js\"></script>    ");
+      out.write("<script type=\"text/javascript\" src=\"resources/amcharts/amcharts.js\"></script>    \r\n");
+      out.write("\r\n");
+      out.write("<script type=\"text/javascript\" src=\"resources/fusionchart/FusionCharts.js\"></script>    \r\n");
+      out.write("\r\n");
+      out.write("<script type=\"text/javascript\" src=\"resources/global.js\"></script>");
       out.write("\r\n");
       out.write("</head>\r\n");
       out.write("<body>\r\n");

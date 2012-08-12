@@ -17,10 +17,13 @@ public class XmSalesorderServiceImpl implements XmSalesorderService {
 		this.xmSalesorderMapper = xmSalesorderMapper;
 	}
 	
-	CvFilter cvFilter;
-	@Resource(name="cvFilter")
-	public void setCvFilter(CvFilter cvFilter) {
-		this.cvFilter = cvFilter;
+	@Override
+	public String getSum(String year, String month) {
+		return this.xmSalesorderMapper.getSum(year,month);
+	}
+	@Override
+	public String getFinished(String firstDayOfMonth, String lastDayOfMonth) {
+		return this.xmSalesorderMapper.getFinished(firstDayOfMonth,lastDayOfMonth);
 	}
 
 

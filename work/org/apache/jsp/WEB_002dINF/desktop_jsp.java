@@ -553,7 +553,7 @@ String win_topbar = "resizable=\"false\"  closed=\"true\" modal=\"true\" collaps
         out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${stuff.stufftitle }", java.lang.String.class, (PageContext)_jspx_page_context, null, false));
         out.write('-');
         out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${stuff.stufftype }", java.lang.String.class, (PageContext)_jspx_page_context, null, false));
-        out.write("\" style=\"height:280px;padding:10px;\">\r\n");
+        out.write("\" style=\"height:280px;\">\r\n");
         out.write("\t\t\t\t\t<iframe frameborder=\"0\" width=\"100%\" height=\"100%\" src=\"crm/portlets/");
         out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${stuff.stufftype }", java.lang.String.class, (PageContext)_jspx_page_context, null, false));
         out.write("/index\"></iframe>\r\n");
@@ -634,7 +634,7 @@ String win_topbar = "resizable=\"false\"  closed=\"true\" modal=\"true\" collaps
         out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${stuff.stufftitle }", java.lang.String.class, (PageContext)_jspx_page_context, null, false));
         out.write('-');
         out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${stuff.stufftype }", java.lang.String.class, (PageContext)_jspx_page_context, null, false));
-        out.write("\" style=\"height:280px;padding:10px;\">\r\n");
+        out.write("\" style=\"height:280px;\">\r\n");
         out.write("\t\t\t\t\t<iframe frameborder=\"0\" width=\"100%\" height=\"100%\" src=\"crm/portlets/");
         out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${stuff.stufftype }", java.lang.String.class, (PageContext)_jspx_page_context, null, false));
         out.write("/index\"></iframe>\r\n");

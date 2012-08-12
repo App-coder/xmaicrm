@@ -44,5 +44,7 @@ public interface XmCustomviewMapper {
 	int getTotal(@Param("entitytype") String entitytype);
 
 	List<Object> getChartData(@Param("resultsql") String resultsql);
+
+	List<XmCustomview> getKeyCustomview();
 	
 }
