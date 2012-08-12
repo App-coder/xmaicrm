@@ -465,13 +465,13 @@
 											<tbody>
 												<tr>
 													<td valign="top"><a
-														href="javascript:tab('数据库备份','settings/dbbackup/index')"><img
+														href="crm/settings/dbbackup/index"><img
 															border="0" title="数据库备份" alt="数据库备份"
 															src="resources/images/settings/panel/dbbackup.gif"></a></td>
 												</tr>
 												<tr>
 													<td valign="top" class="big"><a
-														href="javascript:tab('数据库备份','settings/dbbackup/index')">数据库备份</a></td>
+														href="crm/settings/dbbackup/index">数据库备份</a></td>
 
 												</tr>
 
@@ -589,14 +589,14 @@
 											<tbody>
 												<tr>
 													<td valign="top"><a
-														href="javascript:tab('回收站','settings/recyclebin/index')"><img
+														href="crm/settings/recyclebin/index"><img
 															border="0" title="回收站" alt="回收站"
 															src="resources/images/settings/panel/settingsTrash.gif"></a></td>
 
 												</tr>
 												<tr>
 													<td valign="top" class="big"><a
-														href="javascript:tab('回收站','settings/recyclebin/index')">回收站</a></td>
+														href="crm/settings/recyclebin/index">回收站</a></td>
 
 												</tr>
 											</tbody>

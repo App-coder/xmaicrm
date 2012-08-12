@@ -143,6 +143,11 @@ String win_topbar = "resizable=\"false\"  closed=\"true\" modal=\"true\" collaps
       out.write("    $.post('crm/welcome/navbar',{pathname:pathname,url:_url,pArgs:typeof(pArgs)==\"undefined\"?\"\":pArgs},function(html){\r\n");
       out.write("\t\t$(\"#navpath\").html(html);\t\r\n");
       out.write("    },'html');\r\n");
+      out.write("    \r\n");
+      out.write("    if(typeof(pathActive) != \"undefined\"){\r\n");
+      out.write("\t\t$(\"#path_\"+pathActive).addClass(\"active\");\r\n");
+      out.write("    }\r\n");
+      out.write("   \r\n");
       out.write("});\r\n");
       out.write("</script>");
       out.write("\r\n");

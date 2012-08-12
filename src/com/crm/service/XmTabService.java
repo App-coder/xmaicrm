@@ -56,6 +56,8 @@ public interface XmTabService {
 
 	List<XmTab> getTabPermission();
 
+	List<XmTab> getRecyclebinModule(String skipstr);
+
 
 
 }

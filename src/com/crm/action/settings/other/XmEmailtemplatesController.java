@@ -15,6 +15,7 @@ import com.crm.action.BaseController;
 import com.crm.bean.easyui.ListBean;
 import com.crm.model.XmEmailtemplates;
 import com.crm.service.settings.other.XmEmailtemplatesService;
+import com.crm.util.HtmlEncoder;
 /**
  * 
  * 其他设置-Email模版 
@@ -49,9 +50,25 @@ public class XmEmailtemplatesController extends BaseController {
 		return JSON.toJSONString(bean);
 	}
 	
-	@RequestMapping(value = "/showAdd", method = RequestMethod.GET)
-	public String showAdd(){
-		return "settings/other/emailtemplates/showAdd";
+	@RequestMapping(value = "/showEdit", method = RequestMethod.GET)
+	public String showEdit(int templateid,ModelMap modelmap){
+		if(templateid!=-1){
+			modelmap.addAttribute("pathname","编辑Email模版");
+		}else{
+			modelmap.addAttribute("pathname","添加Email模版");
+		}
+		return "settings/other/emailtemplates/showEdit";
 	}
+	
+	@RequestMapping(value = "/show", method = RequestMethod.GET)
+	public String show(int templateid,ModelMap modelmap) throws Exception{
+		
+		XmEmailtemplates templates = this.xmEmailtemplatesService.getById(templateid);
+		templates.setBody(HtmlEncoder.toHtml(templates.getBody()));
+		modelmap.addAttribute("templates",templates);
+		
+		return "settings/other/emailtemplates/show";
+	}
+	
 	
 }

@@ -29,13 +29,13 @@
 	<div class="datagrid-toolbar">其他设置</div>
 	<ul>
 		<li id="path_emailtemplates" ><a href="crm/settings/emailtemplates/index">Email模版</a></li>
-		<li><a>数据库备份</a></li>
-		<li><a>公司信息</a></li>
-		<li><a>SMTP服务器</a></li>
-		<li><a>短信通道</a></li>
-		<li><a>货币币种</a></li>
-		<li><a>授权许可</a></li>
-		<li><a>回收站</a></li>
-		<li><a>多仓库管理</a></li>
+		<li id="path_dbbackup"><a href="crm/settings/dbbackup/index" >数据库备份</a></li>
+		<li id="path_organizationconfig"><a href="crm/settings/organizationconfig/index">公司信息</a></li>
+		<li id="path_system"><a href="crm/settings/system/index" >SMTP服务器</a></li>
+		<li id="path_messageaccount"><a href="crm/settings/messageaccount/index">短信通道</a></li>
+		<li id="path_currencyInfo"><a href="crm/settings/currencyInfo/index">货币币种</a></li>
+		<li id="path_license"><a href="crm/settings/license/index" >授权许可</a></li>
+		<li id="path_recyclebin"><a href="crm/settings/recyclebin/index" >回收站</a></li>
+		<li id="path_cangkus"><a href="crm/settings/cangkus/index" >多仓库管理</a></li>
 	</ul>
 </div>    

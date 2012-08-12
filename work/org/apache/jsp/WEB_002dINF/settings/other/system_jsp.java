@@ -4,7 +4,7 @@ import javax.servlet.*;
 import javax.servlet.http.*;
 import javax.servlet.jsp.*;
 
-public final class emailtemplates_jsp extends org.apache.jasper.runtime.HttpJspBase
+public final class system_jsp extends org.apache.jasper.runtime.HttpJspBase
     implements org.apache.jasper.runtime.JspSourceDependent {
 
   private static final JspFactory _jspxFactory = JspFactory.getDefaultFactory();
@@ -24,6 +24,7 @@ public final class emailtemplates_jsp extends org.apache.jasper.runtime.HttpJspB
   private org.apache.jasper.runtime.TagHandlerPool _005fjspx_005ftagPool_005fc_005fchoose;
   private org.apache.jasper.runtime.TagHandlerPool _005fjspx_005ftagPool_005fc_005fwhen_0026_005ftest;
   private org.apache.jasper.runtime.TagHandlerPool _005fjspx_005ftagPool_005fc_005fotherwise;
+  private org.apache.jasper.runtime.TagHandlerPool _005fjspx_005ftagPool_005fc_005fif_0026_005ftest;
 
   private javax.el.ExpressionFactory _el_expressionfactory;
   private org.apache.AnnotationProcessor _jsp_annotationprocessor;
@@ -36,6 +37,7 @@ public final class emailtemplates_jsp extends org.apache.jasper.runtime.HttpJspB
     _005fjspx_005ftagPool_005fc_005fchoose = org.apache.jasper.runtime.TagHandlerPool.getTagHandlerPool(getServletConfig());
     _005fjspx_005ftagPool_005fc_005fwhen_0026_005ftest = org.apache.jasper.runtime.TagHandlerPool.getTagHandlerPool(getServletConfig());
     _005fjspx_005ftagPool_005fc_005fotherwise = org.apache.jasper.runtime.TagHandlerPool.getTagHandlerPool(getServletConfig());
+    _005fjspx_005ftagPool_005fc_005fif_0026_005ftest = org.apache.jasper.runtime.TagHandlerPool.getTagHandlerPool(getServletConfig());
     _el_expressionfactory = _jspxFactory.getJspApplicationContext(getServletConfig().getServletContext()).getExpressionFactory();
     _jsp_annotationprocessor = (org.apache.AnnotationProcessor) getServletConfig().getServletContext().getAttribute(org.apache.AnnotationProcessor.class.getName());
   }
@@ -44,6 +46,7 @@ public final class emailtemplates_jsp extends org.apache.jasper.runtime.HttpJspB
     _005fjspx_005ftagPool_005fc_005fchoose.release();
     _005fjspx_005ftagPool_005fc_005fwhen_0026_005ftest.release();
     _005fjspx_005ftagPool_005fc_005fotherwise.release();
+    _005fjspx_005ftagPool_005fc_005fif_0026_005ftest.release();
   }
 
   public void _jspService(HttpServletRequest request, HttpServletResponse response)
@@ -131,9 +134,8 @@ String win_topbar = "resizable=\"false\"  closed=\"true\" modal=\"true\" collaps
       out.write("    ");
       out.write("\r\n");
       out.write("<script>\r\n");
-      out.write("    var pathname = \"Email模版\";\r\n");
-      out.write("    var pathActive = \"emailtemplates\";\r\n");
-      out.write("    \r\n");
+      out.write("var pathname = \"SMTP服务器 \";\r\n");
+      out.write("var pathActive = \"system\";\r\n");
       out.write("</script>\r\n");
       out.write("\r\n");
       out.write("<script>\r\n");
@@ -147,89 +149,24 @@ String win_topbar = "resizable=\"false\"  closed=\"true\" modal=\"true\" collaps
       out.write("\t\t$(\"#navpath\").html(html);\t\r\n");
       out.write("    },'html');\r\n");
       out.write("    \r\n");
-      out.write("    $(\"#path_\"+pathActive).addClass(\"active\"); \r\n");
+      out.write("    if(typeof(pathActive) != \"undefined\"){\r\n");
+      out.write("\t\t$(\"#path_\"+pathActive).addClass(\"active\");\r\n");
+      out.write("    }\r\n");
       out.write("   \r\n");
       out.write("});\r\n");
       out.write("</script>");
       out.write("\r\n");
-      out.write("<script type=\"text/javascript\" src=\"resources/desktop/settings/other/emailtemplates.js\"></script>\r\n");
+      out.write("<script type=\"text/javascript\" src=\"resources/desktop/settings/other/system.js\"></script>\r\n");
       out.write("</head>\r\n");
       out.write("<body id=\"wrap\">\r\n");
       out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${navbar }", java.lang.String.class, (PageContext)_jspx_page_context, null, false));
       out.write("\r\n");
-      out.write("\t<div id=\"main\">\r\n");
-      out.write("\t\t<div class=\"hidden\">\r\n");
-      out.write("\t\t\t<div id=\"emailtemplatesedit\" class=\"easyui-window\" ");
-      out.print(win_topbar);
-      out.write(" style=\"width: 700px; height: 432px;\" >\r\n");
-      out.write("\t\t\t\t<div class=\"easyui-layout\" data-options=\"fit:true,border:false\">\r\n");
-      out.write("\t\t\t\t\t<div data-options=\"region:'center',border:false\"\r\n");
-      out.write("\t\t\t\t\t\tstyle=\"padding: 10px;\">\r\n");
-      out.write("\t\t\t\t\t\t<form id=\"form_emailemplates\" method=\"post\">\r\n");
-      out.write("\t\t\t\t\t\t\t\t<input type=\"hidden\" name=\"body\" />\r\n");
-      out.write("\t\t\t\t\t\t\t\t<table class=\"tab_form\">\r\n");
-      out.write("\t\t\t\t\t\t\t\t\t<tr>\r\n");
-      out.write("\t\t\t\t\t\t\t\t\t\t<td colspan=\"4\">\r\n");
-      out.write("\t\t\t\t\t\t\t\t\t\t\t<fieldset>\r\n");
-      out.write("\t\t\t\t\t\t\t\t\t\t\t\t<legend>基本信息</legend>\r\n");
-      out.write("\t\t\t\t\t\t\t\t\t\t\t\t<table class=\"tab_form\">\r\n");
-      out.write("\t\t\t\t\t\t\t\t\t\t\t\t\t<tr>\r\n");
-      out.write("\t\t\t\t\t\t\t\t\t\t\t\t\t\t<td width=\"18%\" class=\"edittd3\">名称</td>\r\n");
-      out.write("\t\t\t\t\t\t\t\t\t\t\t\t\t\t<td width=\"32%\"><input type=\"text\" name=\"userName\" class=\"text3 easyui-validatebox\" required=\"true\" /></td>\r\n");
-      out.write("\t\t\t\t\t\t\t\t\t\t\t\t\t\t<td width=\"18%\" class=\"edittd3\">描述</td>\r\n");
-      out.write("\t\t\t\t\t\t\t\t\t\t\t\t\t\t<td width=\"32%\"><input type=\"text\" name=\"userName\" class=\"text3 easyui-validatebox\" required=\"true\" /></td>\r\n");
-      out.write("\t\t\t\t\t\t\t\t\t\t\t\t\t</tr>\r\n");
-      out.write("\t\t\t\t\t\t\t\t\t\t\t\t</table>\r\n");
-      out.write("\t\t\t\t\t\t\t\t\t\t\t</fieldset>\r\n");
-      out.write("\t\t\t\t\t\t\t\t\t\t</td>\r\n");
-      out.write("\t\t\t\t\t\t\t\t\t</tr>\r\n");
-      out.write("\t\t\t\t\t\t\t\t\t<tr>\r\n");
-      out.write("\t\t\t\t\t\t\t\t\t\t<td colspan=\"4\">\r\n");
-      out.write("\t\t\t\t\t\t\t\t\t\t\t<fieldset>\r\n");
-      out.write("\t\t\t\t\t\t\t\t\t\t\t\t<legend>Email模版</legend>\r\n");
-      out.write("\t\t\t\t\t\t\t\t\t\t\t\t<table class=\"tab_form\">\r\n");
-      out.write("\t\t\t\t\t\t\t\t\t\t\t\t\t<tr>\r\n");
-      out.write("\t\t\t\t\t\t\t\t\t\t\t\t\t\t<td width=\"33%\" >步骤 1. 选择字段类型</td>\r\n");
-      out.write("\t\t\t\t\t\t\t\t\t\t\t\t\t\t<td width=\"33%\" >步骤 2. 选择字段 </td>\r\n");
-      out.write("\t\t\t\t\t\t\t\t\t\t\t\t\t\t<td width=\"33%\" >步骤 3. 复制&粘贴 </td>\r\n");
-      out.write("\t\t\t\t\t\t\t\t\t\t\t\t\t</tr>\r\n");
-      out.write("\t\t\t\t\t\t\t\t\t\t\t\t\t<tr>\r\n");
-      out.write("\t\t\t\t\t\t\t\t\t\t\t\t\t\t<td><select class=\"text3\"></select></td>\r\n");
-      out.write("\t\t\t\t\t\t\t\t\t\t\t\t\t\t<td><select class=\"text3\"></select></td>\r\n");
-      out.write("\t\t\t\t\t\t\t\t\t\t\t\t\t\t<td><select class=\"text3\"></select></td>\r\n");
-      out.write("\t\t\t\t\t\t\t\t\t\t\t\t\t</tr>\r\n");
-      out.write("\t\t\t\t\t\t\t\t\t\t\t\t\t<tr>\r\n");
-      out.write("\t\t\t\t\t\t\t\t\t\t\t\t\t\t<td>主题</td>\r\n");
-      out.write("\t\t\t\t\t\t\t\t\t\t\t\t\t\t<td colspan=\"2\"></td>\r\n");
-      out.write("\t\t\t\t\t\t\t\t\t\t\t\t\t</tr>\r\n");
-      out.write("\t\t\t\t\t\t\t\t\t\t\t\t\t<tr>\r\n");
-      out.write("\t\t\t\t\t\t\t\t\t\t\t\t\t\t<td colspan=\"3\"><input type=\"text\" class=\"text3\"/></td>\r\n");
-      out.write("\t\t\t\t\t\t\t\t\t\t\t\t\t</tr>\r\n");
-      out.write("\t\t\t\t\t\t\t\t\t\t\t\t\t<tr>\r\n");
-      out.write("\t\t\t\t\t\t\t\t\t\t\t\t\t\t<td colspan=\"3\">\r\n");
-      out.write("\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<textarea name=\"bodyHtml\" style=\"width:100%;visibility:hidden;height:350px;\"></textarea>\r\n");
-      out.write("\t\t\t\t\t\t\t\t\t\t\t\t\t\t</td>\r\n");
-      out.write("\t\t\t\t\t\t\t\t\t\t\t\t\t</tr>\r\n");
-      out.write("\t\t\t\t\t\t\t\t\t\t\t\t</table>\r\n");
-      out.write("\t\t\t\t\t\t\t\t\t\t\t</fieldset>\r\n");
-      out.write("\t\t\t\t\t\t\t\t\t\t</td>\r\n");
-      out.write("\t\t\t\t\t\t\t\t\t</tr>\r\n");
-      out.write("\t\t\t\t\t\t\t\t</table>\r\n");
-      out.write("\t\t\t\t\t\t</form>\r\n");
-      out.write("\t\t\t\t\t\t</div>\r\n");
-      out.write("\t\t\t\t\t\t<div region=\"south\" class=\"btnbar\" border=\"false\">\r\n");
-      out.write("\t\t\t\t\t\t\t<a class=\"easyui-linkbutton\" iconCls=\"icon-ok\" onclick=\"formsubmit('form_emailemplates')\">编辑</a>\r\n");
-      out.write("\t\t\t\t\t\t\t<a class=\"easyui-linkbutton\" iconCls=\"icon-cancel\" onclick=\"closeWin('emailtemplatesedit')\">取消</a>\r\n");
-      out.write("\t\t\t\t\t\t</div>\r\n");
-      out.write("\t\t\t\t</div>\r\n");
-      out.write("\t\t\t</div>\r\n");
-      out.write("\t\t</div>\r\n");
-      out.write("\t\t<div class=\"path\" id=\"navpath\"></div>\r\n");
-      out.write("\t\t\r\n");
-      out.write("\t\t\t<table style=\"width:100%;\">\r\n");
-      out.write("\t\t\t<tr>\r\n");
-      out.write("\t\t\t\t<td width=\"160px\" valign=\"top\">\r\n");
-      out.write("\t\t\t\t\t");
+      out.write("<div id=\"main\">\r\n");
+      out.write("\r\n");
+      out.write("<table style=\"width:100%;\">\r\n");
+      out.write("<tr>\r\n");
+      out.write("\t<td width=\"160px\" valign=\"top\">\r\n");
+      out.write("\t\t");
       out.write("\r\n");
       out.write("<div class=\"navcontainer\">\r\n");
       out.write("\t<div class=\"datagrid-toolbar\">基本设置</div>\r\n");
@@ -260,9 +197,9 @@ String win_topbar = "resizable=\"false\"  closed=\"true\" modal=\"true\" collaps
       out.write("\t<div class=\"datagrid-toolbar\">其他设置</div>\r\n");
       out.write("\t<ul>\r\n");
       out.write("\t\t<li id=\"path_emailtemplates\" ><a href=\"crm/settings/emailtemplates/index\">Email模版</a></li>\r\n");
-      out.write("\t\t<li><a>数据库备份</a></li>\r\n");
-      out.write("\t\t<li><a>公司信息</a></li>\r\n");
-      out.write("\t\t<li><a>SMTP服务器</a></li>\r\n");
+      out.write("\t\t<li id=\"path_dbbackup\"><a href=\"crm/settings/dbbackup/index\" >数据库备份</a></li>\r\n");
+      out.write("\t\t<li id=\"path_organizationconfig\"><a href=\"crm/settings/organizationconfig/index\">公司信息</a></li>\r\n");
+      out.write("\t\t<li id=\"path_system\"><a href=\"crm/settings/system/index\" >SMTP服务器</a></li>\r\n");
       out.write("\t\t<li><a>短信通道</a></li>\r\n");
       out.write("\t\t<li><a>货币币种</a></li>\r\n");
       out.write("\t\t<li><a>授权许可</a></li>\r\n");
@@ -271,15 +208,77 @@ String win_topbar = "resizable=\"false\"  closed=\"true\" modal=\"true\" collaps
       out.write("\t</ul>\r\n");
       out.write("</div>    ");
       out.write("\r\n");
-      out.write("\t\t\t\t</td>\r\n");
-      out.write("\t\t\t\t<td valign=\"top\">\r\n");
-      out.write("\t\t\t\t<table id=\"emailtemplates_list\"></table>\r\n");
-      out.write("\t\t\t\t</td>\r\n");
-      out.write("\t\t\t</tr>\r\n");
-      out.write("\t\t\t</table>\r\n");
-      out.write("\t\t\r\n");
-      out.write("\t</div>\r\n");
-      out.write("\t");
+      out.write("\t</td>\r\n");
+      out.write("\t<td valign=\"top\">\r\n");
+      out.write("\t<div class=\"path\" id=\"navpath\"></div>\r\n");
+      out.write("\t<form id=\"form_email\" method=\"post\" >\r\n");
+      out.write("<input type=\"hidden\" name=\"id\" value=\"");
+      out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${smtp.id }", java.lang.String.class, (PageContext)_jspx_page_context, null, false));
+      out.write("\"/>\r\n");
+      out.write("<input type=\"hidden\" name=\"serverType\"  value=\"");
+      out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${smtp.serverType }", java.lang.String.class, (PageContext)_jspx_page_context, null, false));
+      out.write("\" />\r\n");
+      out.write("<table class=\"tab_editlist\">\r\n");
+      out.write("\t<tr>\r\n");
+      out.write("\t\t<td class=\"edittd\" >SMTP服务器</td>\r\n");
+      out.write("\t\t<td><input type=\"text\" class=\"text easyui-validatebox\" data-options=\"required:true\" name=\"server\" value=\"");
+      out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${smtp.server }", java.lang.String.class, (PageContext)_jspx_page_context, null, false));
+      out.write("\" /></td>\r\n");
+      out.write("\t</tr>\r\n");
+      out.write("\t<tr>\r\n");
+      out.write("\t\t<td class=\"edittd\" >SMTP端口</td>\r\n");
+      out.write("\t\t<td><input type=\"text\" class=\"text easyui-validatebox\" data-options=\"required:true\" name=\"serverPort\" value=\"");
+      out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${smtp.serverPort }", java.lang.String.class, (PageContext)_jspx_page_context, null, false));
+      out.write("\" /></td>\r\n");
+      out.write("\t</tr>\t\r\n");
+      out.write("\t<tr>\r\n");
+      out.write("\t\t<td class=\"edittd\" >Email</td>\r\n");
+      out.write("\t\t<td><input type=\"text\" class=\"text easyui-validatebox\" data-options=\"required:true\" name=\"serverUsername\" value=\"");
+      out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${smtp.serverUsername }", java.lang.String.class, (PageContext)_jspx_page_context, null, false));
+      out.write("\" /></td>\r\n");
+      out.write("\t</tr>\r\n");
+      out.write("\t<tr>\r\n");
+      out.write("\t\t<td class=\"edittd\" >密码</td>\r\n");
+      out.write("\t\t<td><input type=\"text\" class=\"text easyui-validatebox\" data-options=\"required:true\" name=\"serverPassword\" value=\"");
+      out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${smtp.serverPassword }", java.lang.String.class, (PageContext)_jspx_page_context, null, false));
+      out.write("\" /></td>\r\n");
+      out.write("\t</tr>\r\n");
+      out.write("\t<tr>\r\n");
+      out.write("\t\t<td class=\"edittd\" >需要验证？</td>\r\n");
+      out.write("\t\t<td>\r\n");
+      out.write("\t\t");
+      if (_jspx_meth_c_005fif_005f0(_jspx_page_context))
+        return;
+      out.write("\r\n");
+      out.write("\t\t");
+      if (_jspx_meth_c_005fif_005f1(_jspx_page_context))
+        return;
+      out.write("\r\n");
+      out.write("\t\t</td>\r\n");
+      out.write("\t</tr>\r\n");
+      out.write("\t<tr>\r\n");
+      out.write("\t\t<td class=\"edittd\" >发送人</td>\r\n");
+      out.write("\t\t<td><input type=\"text\" class=\"text easyui-validatebox\" data-options=\"required:true\" name=\"fromName\" value=\"");
+      out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${smtp.fromName }", java.lang.String.class, (PageContext)_jspx_page_context, null, false));
+      out.write("\" /></td>\r\n");
+      out.write("\t</tr>\t\r\n");
+      out.write("\t<tr>\r\n");
+      out.write("\t\t<td class=\"edittd\" >发送邮件</td>\r\n");
+      out.write("\t\t<td><input type=\"text\" class=\"text easyui-validatebox\" name=\"fromEmail\" value=\"");
+      out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${smtp.fromEmail }", java.lang.String.class, (PageContext)_jspx_page_context, null, false));
+      out.write("\" /></td>\r\n");
+      out.write("\t</tr>\t\r\n");
+      out.write("\t<tr>\r\n");
+      out.write("\t\t<td class=\"edittd\" ><a class=\"easyui-linkbutton\" data-options=\"iconCls:'icon-edit'\" href=\"javascript:formsubmit('form_email')\" >编辑</a></td>\r\n");
+      out.write("\t\t<td></td>\r\n");
+      out.write("\t</tr>\t\r\n");
+      out.write("</table>\r\n");
+      out.write("</form>\r\n");
+      out.write("\t</td>\r\n");
+      out.write("</tr>\r\n");
+      out.write("</table>\r\n");
+      out.write("\r\n");
+      out.write("</div>\r\n");
       out.write("\r\n");
       out.write("<div id=\"div_foot\" class=\"footercss\">\r\n");
       out.write("\t<table width=\"100%\" cellspacing=\"0\" cellpadding=\"5\" border=\"0\"\r\n");
@@ -503,6 +502,64 @@ String win_topbar = "resizable=\"false\"  closed=\"true\" modal=\"true\" collaps
       return true;
     }
     _005fjspx_005ftagPool_005fc_005fotherwise.reuse(_jspx_th_c_005fotherwise_005f0);
+    return false;
+  }
+
+  private boolean _jspx_meth_c_005fif_005f0(PageContext _jspx_page_context)
+          throws Throwable {
+    PageContext pageContext = _jspx_page_context;
+    JspWriter out = _jspx_page_context.getOut();
+    //  c:if
+    org.apache.taglibs.standard.tag.rt.core.IfTag _jspx_th_c_005fif_005f0 = (org.apache.taglibs.standard.tag.rt.core.IfTag) _005fjspx_005ftagPool_005fc_005fif_0026_005ftest.get(org.apache.taglibs.standard.tag.rt.core.IfTag.class);
+    _jspx_th_c_005fif_005f0.setPageContext(_jspx_page_context);
+    _jspx_th_c_005fif_005f0.setParent(null);
+    // /WEB-INF/settings/other/system.jsp(46,2) name = test type = boolean reqTime = true required = true fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
+    _jspx_th_c_005fif_005f0.setTest(((java.lang.Boolean) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${smtp.smtpAuth == true }", java.lang.Boolean.class, (PageContext)_jspx_page_context, null, false)).booleanValue());
+    int _jspx_eval_c_005fif_005f0 = _jspx_th_c_005fif_005f0.doStartTag();
+    if (_jspx_eval_c_005fif_005f0 != javax.servlet.jsp.tagext.Tag.SKIP_BODY) {
+      do {
+        out.write("\r\n");
+        out.write("\t\t\t<input type=\"checkbox\" name=\"smtpAuth\" checked=\"checked\" />是\r\n");
+        out.write("\t\t");
+        int evalDoAfterBody = _jspx_th_c_005fif_005f0.doAfterBody();
+        if (evalDoAfterBody != javax.servlet.jsp.tagext.BodyTag.EVAL_BODY_AGAIN)
+          break;
+      } while (true);
+    }
+    if (_jspx_th_c_005fif_005f0.doEndTag() == javax.servlet.jsp.tagext.Tag.SKIP_PAGE) {
+      _005fjspx_005ftagPool_005fc_005fif_0026_005ftest.reuse(_jspx_th_c_005fif_005f0);
+      return true;
+    }
+    _005fjspx_005ftagPool_005fc_005fif_0026_005ftest.reuse(_jspx_th_c_005fif_005f0);
+    return false;
+  }
+
+  private boolean _jspx_meth_c_005fif_005f1(PageContext _jspx_page_context)
+          throws Throwable {
+    PageContext pageContext = _jspx_page_context;
+    JspWriter out = _jspx_page_context.getOut();
+    //  c:if
+    org.apache.taglibs.standard.tag.rt.core.IfTag _jspx_th_c_005fif_005f1 = (org.apache.taglibs.standard.tag.rt.core.IfTag) _005fjspx_005ftagPool_005fc_005fif_0026_005ftest.get(org.apache.taglibs.standard.tag.rt.core.IfTag.class);
+    _jspx_th_c_005fif_005f1.setPageContext(_jspx_page_context);
+    _jspx_th_c_005fif_005f1.setParent(null);
+    // /WEB-INF/settings/other/system.jsp(49,2) name = test type = boolean reqTime = true required = true fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
+    _jspx_th_c_005fif_005f1.setTest(((java.lang.Boolean) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${smtp.smtpAuth == false }", java.lang.Boolean.class, (PageContext)_jspx_page_context, null, false)).booleanValue());
+    int _jspx_eval_c_005fif_005f1 = _jspx_th_c_005fif_005f1.doStartTag();
+    if (_jspx_eval_c_005fif_005f1 != javax.servlet.jsp.tagext.Tag.SKIP_BODY) {
+      do {
+        out.write("\r\n");
+        out.write("\t\t\t<input type=\"checkbox\" name=\"smtpAuth\" />是\r\n");
+        out.write("\t\t");
+        int evalDoAfterBody = _jspx_th_c_005fif_005f1.doAfterBody();
+        if (evalDoAfterBody != javax.servlet.jsp.tagext.BodyTag.EVAL_BODY_AGAIN)
+          break;
+      } while (true);
+    }
+    if (_jspx_th_c_005fif_005f1.doEndTag() == javax.servlet.jsp.tagext.Tag.SKIP_PAGE) {
+      _005fjspx_005ftagPool_005fc_005fif_0026_005ftest.reuse(_jspx_th_c_005fif_005f1);
+      return true;
+    }
+    _005fjspx_005ftagPool_005fc_005fif_0026_005ftest.reuse(_jspx_th_c_005fif_005f1);
     return false;
   }
 }

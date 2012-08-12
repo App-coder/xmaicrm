@@ -3,7 +3,7 @@
 <%@ include file="../../../head.jsp"%>
 <%@ include file="../../../common/config.jsp"%>
 <script>
-    var pathname = "Email模版";
+    var pathname = "${pathname}";
     var pathActive = "emailtemplates";
     
 </script>
@@ -11,7 +11,7 @@
 <script charset="utf-8" src="resources/plugins/kindeditor/kindeditor.js"></script>
 <script charset="utf-8" src="resources/plugins/kindeditor/lang/zh_CN.js"></script>
 <script type="text/javascript"
-	src="resources/desktop/settings/other/emailtemplates/showAdd.js"></script>
+	src="resources/desktop/settings/other/emailtemplates/showEdit.js"></script>
 </head>
 <body id="wrap">
 	${navbar }

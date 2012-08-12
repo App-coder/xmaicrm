@@ -4,6 +4,7 @@
 <%@ include file="../../common/config.jsp"%>
 <script>
 var pathname = "SMTP服务器 ";
+var pathActive = "system";
 </script>
 <%@ include file="../../path.jsp" %>
 <script type="text/javascript" src="resources/desktop/settings/other/system.js"></script>
@@ -11,8 +12,15 @@ var pathname = "SMTP服务器 ";
 <body id="wrap">
 ${navbar }
 <div id="main">
-<div class="path" id="navpath"></div>
-<form id="form_email" method="post" >
+
+<table style="width:100%;">
+<tr>
+	<td width="160px" valign="top">
+		<%@ include file="../../nav_setting.jsp"%>
+	</td>
+	<td valign="top">
+	<div class="path" id="navpath"></div>
+	<form id="form_email" method="post" >
 <input type="hidden" name="id" value="${smtp.id }"/>
 <input type="hidden" name="serverType"  value="${smtp.serverType }" />
 <table class="tab_editlist">
@@ -57,6 +65,10 @@ ${navbar }
 	</tr>	
 </table>
 </form>
+	</td>
+</tr>
+</table>
+
 </div>
 <%@ include file="../../foot.jsp"%>
 </body>

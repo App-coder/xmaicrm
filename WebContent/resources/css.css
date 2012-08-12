@@ -76,6 +76,10 @@ table .tb_list td.righttd{padding-left:10px;}
 .tab_editlist input.text{width:250px;margin-right: 10px;border:1px solid #D2D2D2;height: 20px;}
 .tab_editlist select.text{width:258px;margin-right: 10px;border:1px solid #D2D2D2;height: 25px;}
 .tab_editlist .edittd{width:15%;}
+.tab_view{width:100%;border-collapse: collapse;}
+.tab_view tr td{height:25px;line-height:25px;border:1px solid #99BBE8;}
+.tab_view .label{width:15%;background-color:#EFEFEF;}
+
 .text{width:180px;margin-right: 10px;border:1px solid #D2D2D2;height:18px;padding-left:3px;padding-right:3px;}
 
 .bbar{padding-top:5px;padding-bottom:5px;}
@@ -148,7 +152,7 @@ color:green;
 .red{
 color:red;
 }
-fieldset{border:1px solid #AED0EA;}
+fieldset{border:1px solid #AED0EA;padding: 10px;}
 fieldset legend{color:#15428B;}
 
 .p_tip{font:12px/1.5 Tahoma,'Microsoft Yahei','Simsun';}
@@ -226,7 +230,7 @@ fieldset legend{color:#15428B;}
 .tab_field tr td,.tab_field thead tr td{text-align: left;padding-left:10px;border: 1px dotted #AED0EA;}
 
 /*系统设置的导航*/
-.navcontainer{border:1px solid #99BBE8;}
+.navcontainer{border:1px solid #99BBE8;margin-right: 10px;}
 .navcontainer .datagrid-toolbar{line-height:28px;padding-left:10px;}
 .navcontainer ul{list-style: none;padding:5px;margin:0px;}
 .navcontainer ul li{height:25px;line-height:25px;}

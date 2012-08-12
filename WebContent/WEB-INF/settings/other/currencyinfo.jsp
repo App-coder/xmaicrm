@@ -4,6 +4,7 @@
 <%@ include file="../../common/config.jsp"%>
 <script>
     var pathname = "货币币种";
+    var pathActive = "currencyInfo";
 </script>
 <%@ include file="../../path.jsp"%>
 <script type="text/javascript"
@@ -54,8 +55,21 @@ ${navbar }
 				</div>
 			</div>
 		</div>
-		<div class="path" id="navpath"></div>
-		<table id="currencyinfo_list"></table>
+		
+		
+		<table style="width:100%;">
+			<tr>
+				<td width="160px" valign="top">
+					<%@ include file="../../nav_setting.jsp"%>
+				</td>
+				<td valign="top">
+				<div class="path" id="navpath"></div>
+				<table id="currencyinfo_list"></table>
+				</td>
+			</tr>
+			</table>
+		
+		
 	</div>
 	<%@ include file="../../foot.jsp"%>
 </body>

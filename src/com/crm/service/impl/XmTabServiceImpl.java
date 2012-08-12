@@ -84,5 +84,9 @@ public class XmTabServiceImpl implements XmTabService {
 	public List<XmTab> getTabPermission() {
 		return this.xmTabMapper.getPermissionTab();
 	}
+	@Override
+	public List<XmTab> getRecyclebinModule(String skipstr) {
+		return this.xmTabMapper.getRecyclebinModule(skipstr);
+	}
 
 }

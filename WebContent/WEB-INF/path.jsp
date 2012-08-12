@@ -9,7 +9,9 @@ $(function(){
 		$("#navpath").html(html);	
     },'html');
     
-    $("#path_"+pathActive).addClass("active"); 
+    if(typeof(pathActive) != "undefined"){
+		$("#path_"+pathActive).addClass("active");
+    }
    
 });
 </script>

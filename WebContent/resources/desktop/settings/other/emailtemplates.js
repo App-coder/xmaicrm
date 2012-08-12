@@ -27,7 +27,7 @@ function initPage() {
 			    text : '添加',
 			    iconCls : 'icon-add',
 			    handler : function() {
-				window.location.href="crm/settings/emailtemplates/showAdd";
+				window.location.href="crm/settings/emailtemplates/showEdit?templateid=-1";
 			    }
 			},
 			{
@@ -37,11 +37,7 @@ function initPage() {
 				var selected = $('#emailtemplates_list')
 					.datagrid("getSelected");
 				if (selected) {
-				    $("#emailtemplatesedit").window({
-					title : 'Email模版编辑'
-				    });
-				    loadForm(selected.id);
-				    $("#emailtemplatesedit").window("open");
+				    window.location.href="crm/settings/emailtemplates/showEdit?templateid="+selected.templateid;
 				} else {
 				    message('请选择一行记录！');
 				}
@@ -51,7 +47,12 @@ function initPage() {
 			    text : '预览',
 			    iconCls : 'icon-view',
 			    handler : function() {
-				
+				var selected = $('#emailtemplates_list').datagrid("getSelected");
+        			if (selected) {
+        			    window.location.href="crm/settings/emailtemplates/show?templateid="+selected.templateid;
+        			} else {
+        			    message('请选择一行记录！');
+        			}
 			    }
 			}
 			,
@@ -81,8 +82,4 @@ function initPage() {
 		} ] ],
 		columns : [ cols ]
 	    });
-}
-function loadForm(emailtemplateid){
-    
-    
 }

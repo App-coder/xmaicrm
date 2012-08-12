@@ -1,10 +1,10 @@
-package org.apache.jsp.WEB_002dINF.settings.other.emailtemplates;
+package org.apache.jsp.WEB_002dINF.settings.other;
 
 import javax.servlet.*;
 import javax.servlet.http.*;
 import javax.servlet.jsp.*;
 
-public final class showAdd_jsp extends org.apache.jasper.runtime.HttpJspBase
+public final class cangkus_jsp extends org.apache.jasper.runtime.HttpJspBase
     implements org.apache.jasper.runtime.JspSourceDependent {
 
   private static final JspFactory _jspxFactory = JspFactory.getDefaultFactory();
@@ -13,11 +13,11 @@ public final class showAdd_jsp extends org.apache.jasper.runtime.HttpJspBase
 
   static {
     _jspx_dependants = new java.util.ArrayList(6);
-    _jspx_dependants.add("/WEB-INF/settings/other/emailtemplates/../../../head.jsp");
-    _jspx_dependants.add("/WEB-INF/settings/other/emailtemplates/../../../common/config.jsp");
-    _jspx_dependants.add("/WEB-INF/settings/other/emailtemplates/../../../path.jsp");
-    _jspx_dependants.add("/WEB-INF/settings/other/emailtemplates/../../../nav_setting.jsp");
-    _jspx_dependants.add("/WEB-INF/settings/other/emailtemplates/../../../foot.jsp");
+    _jspx_dependants.add("/WEB-INF/settings/other/../../head.jsp");
+    _jspx_dependants.add("/WEB-INF/settings/other/../../common/config.jsp");
+    _jspx_dependants.add("/WEB-INF/settings/other/../../path.jsp");
+    _jspx_dependants.add("/WEB-INF/settings/other/../../nav_setting.jsp");
+    _jspx_dependants.add("/WEB-INF/settings/other/../../foot.jsp");
     _jspx_dependants.add("/WEB-INF/tld/jstl/fn.tld");
   }
 
@@ -131,9 +131,8 @@ String win_topbar = "resizable=\"false\"  closed=\"true\" modal=\"true\" collaps
       out.write("    ");
       out.write("\r\n");
       out.write("<script>\r\n");
-      out.write("    var pathname = \"Email模版\";\r\n");
-      out.write("    var pathActive = \"emailtemplates\";\r\n");
-      out.write("    \r\n");
+      out.write("    var pathname = \"多仓库管理\";\r\n");
+      out.write("    var pathActive = \"cangkus\";\r\n");
       out.write("</script>\r\n");
       out.write("\r\n");
       out.write("<script>\r\n");
@@ -147,24 +146,46 @@ String win_topbar = "resizable=\"false\"  closed=\"true\" modal=\"true\" collaps
       out.write("\t\t$(\"#navpath\").html(html);\t\r\n");
       out.write("    },'html');\r\n");
       out.write("    \r\n");
-      out.write("    $(\"#path_\"+pathActive).addClass(\"active\"); \r\n");
+      out.write("    if(typeof(pathActive) != \"undefined\"){\r\n");
+      out.write("\t\t$(\"#path_\"+pathActive).addClass(\"active\");\r\n");
+      out.write("    }\r\n");
       out.write("   \r\n");
       out.write("});\r\n");
       out.write("</script>");
       out.write("\r\n");
-      out.write("<script charset=\"utf-8\" src=\"resources/plugins/kindeditor/kindeditor.js\"></script>\r\n");
-      out.write("<script charset=\"utf-8\" src=\"resources/plugins/kindeditor/lang/zh_CN.js\"></script>\r\n");
       out.write("<script type=\"text/javascript\"\r\n");
-      out.write("\tsrc=\"resources/desktop/settings/other/emailtemplates/showAdd.js\"></script>\r\n");
+      out.write("\tsrc=\"resources/desktop/settings/other/cangkus.js\"></script>\r\n");
       out.write("</head>\r\n");
       out.write("<body id=\"wrap\">\r\n");
       out.write("\t");
       out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${navbar }", java.lang.String.class, (PageContext)_jspx_page_context, null, false));
       out.write("\r\n");
       out.write("\t<div id=\"main\">\r\n");
-      out.write("\t\t<table style=\"width: 100%;\">\r\n");
-      out.write("\t\t\t<tr>\r\n");
-      out.write("\t\t\t\t<td width=\"160px\" valign=\"top\">");
+      out.write("\t\t<div class=\"hidden\">\r\n");
+      out.write("\t\t\t<div id=\"cangkus\" class=\"easyui-window\" ");
+      out.print(win_topbar);
+      out.write("\r\n");
+      out.write("\t\t\t\tstyle=\"width: 700px; height: 432px;\">\r\n");
+      out.write("\t\t\t\t<div class=\"easyui-layout\" data-options=\"fit:true,border:false\">\r\n");
+      out.write("\t\t\t\t\t<div data-options=\"region:'center',border:false\"\r\n");
+      out.write("\t\t\t\t\t\tstyle=\"padding: 10px;\">\r\n");
+      out.write("\t\t\t\t\t\t<form id=\"form_cangkus\" name=\"form_cangkus\" method=\"post\" class=\"hidden\">\r\n");
+      out.write("\t\t\t\t\t\t\r\n");
+      out.write("\t\t\t\t\t\t\r\n");
+      out.write("\t\t\t\t\t\t</form>\r\n");
+      out.write("\t\t\t\t\t\t</div>\r\n");
+      out.write("\t\t\t\t</div>\r\n");
+      out.write("\t\t\t\t<div region=\"south\" class=\"btnbar\" border=\"false\">\r\n");
+      out.write("\t\t\t\t\t<a class=\"easyui-linkbutton\" iconCls=\"icon-ok\" onclick=\"formsubmit('form_cangkus')\">编辑</a>\r\n");
+      out.write("\t\t\t\t\t<a class=\"easyui-linkbutton\" iconCls=\"icon-cancel\" onclick=\"closeWin('cangkus')\">取消</a>\r\n");
+      out.write("\t\t\t\t</div>\r\n");
+      out.write("\t\t\t</div>\r\n");
+      out.write("\t\t</div>\r\n");
+      out.write("\t\t\r\n");
+      out.write("\t\t<table style=\"width:100%;\">\r\n");
+      out.write("\t\t<tr>\r\n");
+      out.write("\t\t\t<td width=\"160px\" valign=\"top\">\r\n");
+      out.write("\t\t\t\t");
       out.write("\r\n");
       out.write("<div class=\"navcontainer\">\r\n");
       out.write("\t<div class=\"datagrid-toolbar\">基本设置</div>\r\n");
@@ -195,62 +216,26 @@ String win_topbar = "resizable=\"false\"  closed=\"true\" modal=\"true\" collaps
       out.write("\t<div class=\"datagrid-toolbar\">其他设置</div>\r\n");
       out.write("\t<ul>\r\n");
       out.write("\t\t<li id=\"path_emailtemplates\" ><a href=\"crm/settings/emailtemplates/index\">Email模版</a></li>\r\n");
-      out.write("\t\t<li><a>数据库备份</a></li>\r\n");
-      out.write("\t\t<li><a>公司信息</a></li>\r\n");
-      out.write("\t\t<li><a>SMTP服务器</a></li>\r\n");
-      out.write("\t\t<li><a>短信通道</a></li>\r\n");
-      out.write("\t\t<li><a>货币币种</a></li>\r\n");
-      out.write("\t\t<li><a>授权许可</a></li>\r\n");
+      out.write("\t\t<li id=\"path_dbbackup\"><a href=\"crm/settings/dbbackup/index\" >数据库备份</a></li>\r\n");
+      out.write("\t\t<li id=\"path_organizationconfig\"><a href=\"crm/settings/organizationconfig/index\">公司信息</a></li>\r\n");
+      out.write("\t\t<li id=\"path_system\"><a href=\"crm/settings/system/index\" >SMTP服务器</a></li>\r\n");
+      out.write("\t\t<li id=\"path_messageaccount\"><a href=\"crm/settings/messageaccount/index\">短信通道</a></li>\r\n");
+      out.write("\t\t<li id=\"path_currencyInfo\"><a href=\"crm/settings/currencyInfo/index\">货币币种</a></li>\r\n");
+      out.write("\t\t<li id=\"path_license\"><a href=\"crm/settings/license/index\" >授权许可</a></li>\r\n");
       out.write("\t\t<li><a>回收站</a></li>\r\n");
-      out.write("\t\t<li><a>多仓库管理</a></li>\r\n");
+      out.write("\t\t<li id=\"path_cangkus\"><a href=\"crm/settings/cangkus/index\" >多仓库管理</a></li>\r\n");
       out.write("\t</ul>\r\n");
       out.write("</div>    ");
-      out.write("</td>\r\n");
-      out.write("\t\t\t\t<td valign=\"top\">\r\n");
-      out.write("\t\t\t\t\t<div class=\"path\" id=\"navpath\"></div>\r\n");
-      out.write("\t\t\t\t\t<form id=\"form_emailemplates\" method=\"post\">\r\n");
-      out.write("\t\t\t\t\t\t<input type=\"hidden\" name=\"body\" />\r\n");
-      out.write("\t\t\t\t\t\t<table class=\"tab_editlist\">\r\n");
-      out.write("\t\t\t\t\t\t\t<tr>\r\n");
-      out.write("\t\t\t\t\t\t\t\t<td class=\"edittd\">名称</td>\r\n");
-      out.write("\t\t\t\t\t\t\t\t<td><input type=\"text\" class=\"text easyui-validatebox\"\r\n");
-      out.write("\t\t\t\t\t\t\t\t\tdata-options=\"required:true\" name=\"organizationname\"/></td>\r\n");
-      out.write("\t\t\t\t\t\t\t\t\t<td class=\"edittd\">描述</td>\r\n");
-      out.write("\t\t\t\t\t\t\t\t<td><input type=\"text\" class=\"text easyui-validatebox\"\r\n");
-      out.write("\t\t\t\t\t\t\t\t\tdata-options=\"required:true\" name=\"organizationname\" /></td>\r\n");
-      out.write("\t\t\t\t\t\t\t</tr>\r\n");
-      out.write("\t\t\t\t\t\t\t<tr>\r\n");
-      out.write("\t\t\t\t\t\t\t\t<td colspan=\"4\" class=\"edittd\">\r\n");
-      out.write("\t\t\t\t\t\t\t\t<span class=\"red\">合并字段：使用您的个性化模版．您可以新增替换文字去合并任何字段。步骤 1. 选择字段类型，步骤 2. 选择字段 ，步骤 3. 复制&粘贴</span> \r\n");
-      out.write("\t\t\t\t\t\t\t\t</td>\r\n");
-      out.write("\t\t\t\t\t\t\t</tr>\r\n");
-      out.write("\t\t\t\t\t\t\t<tr>\r\n");
-      out.write("\t\t\t\t\t\t\t<td class=\"edittd\">步骤1</td>\r\n");
-      out.write("\t\t\t\t\t\t\t\t<td><select class=\"text\"><option></option></select></td>\r\n");
-      out.write("\t\t\t\t\t\t\t\t\t<td class=\"edittd\">步骤2</td>\r\n");
-      out.write("\t\t\t\t\t\t\t\t<td><select class=\"text\"><option></option></select></td>\r\n");
-      out.write("\t\t\t\t\t\t\t</tr>\r\n");
-      out.write("\t\t\t\t\t\t\t<tr>\r\n");
-      out.write("\t\t\t\t\t\t\t\t<td class=\"edittd\">步骤3</td>\r\n");
-      out.write("\t\t\t\t\t\t\t\t<td><input type=\"text\" class=\"text easyui-validatebox\"\r\n");
-      out.write("\t\t\t\t\t\t\t\t\tdata-options=\"required:true\" name=\"organizationname\"/></td>\r\n");
-      out.write("\t\t\t\t\t\t\t\t<td colspan=\"2\"></td>\r\n");
-      out.write("\t\t\t\t\t\t\t</tr>\r\n");
-      out.write("\t\t\t\t\t\t\t<tr>\r\n");
-      out.write("\t\t\t\t\t\t\t\t<td colspan=\"4\">\r\n");
-      out.write("\t\t\t\t\t\t\t\t\t<textarea name=\"bodyHtml\" style=\"width: 100%; visibility: hidden; height: 350px;\"></textarea>\r\n");
-      out.write("\t\t\t\t\t\t\t\t</td>\r\n");
-      out.write("\t\t\t\t\t\t\t</tr>\r\n");
-      out.write("\t\t\t\t\t\t</table>\r\n");
-      out.write("\t\t\t\t\t\t<div class=\"bbar \">\r\n");
-      out.write("\t\t\t\t\t\t\t<a class=\"easyui-linkbutton\" iconCls=\"icon-ok\"\r\n");
-      out.write("\t\t\t\t\t\t\t\tonclick=\"submitRole()\">添加</a> <a class=\"easyui-linkbutton\"\r\n");
-      out.write("\t\t\t\t\t\t\t\ticonCls=\"icon-cancel\" onclick=\"closeWin('roleadd')\">取消</a>\r\n");
-      out.write("\t\t\t\t\t\t</div>\r\n");
-      out.write("\t\t\t\t\t</form>\r\n");
-      out.write("\t\t\t\t</td>\r\n");
-      out.write("\t\t\t</tr>\r\n");
+      out.write("\r\n");
+      out.write("\t\t\t</td>\r\n");
+      out.write("\t\t\t<td valign=\"top\">\r\n");
+      out.write("\t\t\t<div class=\"path\" id=\"navpath\"></div>\r\n");
+      out.write("\t\t\t<table id=\"cangkus_list\"></table>\r\n");
+      out.write("\t\t\t</td>\r\n");
+      out.write("\t\t</tr>\r\n");
       out.write("\t\t</table>\r\n");
+      out.write("\t\t\r\n");
+      out.write("\t\t\r\n");
       out.write("\r\n");
       out.write("\t</div>\r\n");
       out.write("\t");
@@ -424,7 +409,7 @@ String win_topbar = "resizable=\"false\"  closed=\"true\" modal=\"true\" collaps
     org.apache.taglibs.standard.tag.rt.core.WhenTag _jspx_th_c_005fwhen_005f0 = (org.apache.taglibs.standard.tag.rt.core.WhenTag) _005fjspx_005ftagPool_005fc_005fwhen_0026_005ftest.get(org.apache.taglibs.standard.tag.rt.core.WhenTag.class);
     _jspx_th_c_005fwhen_005f0.setPageContext(_jspx_page_context);
     _jspx_th_c_005fwhen_005f0.setParent((javax.servlet.jsp.tagext.Tag) _jspx_th_c_005fchoose_005f0);
-    // /WEB-INF/settings/other/emailtemplates/../../../head.jsp(16,1) name = test type = boolean reqTime = true required = true fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
+    // /WEB-INF/settings/other/../../head.jsp(16,1) name = test type = boolean reqTime = true required = true fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
     _jspx_th_c_005fwhen_005f0.setTest(((java.lang.Boolean) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${ptb!=null&&tab!=null}", java.lang.Boolean.class, (PageContext)_jspx_page_context, null, false)).booleanValue());
     int _jspx_eval_c_005fwhen_005f0 = _jspx_th_c_005fwhen_005f0.doStartTag();
     if (_jspx_eval_c_005fwhen_005f0 != javax.servlet.jsp.tagext.Tag.SKIP_BODY) {

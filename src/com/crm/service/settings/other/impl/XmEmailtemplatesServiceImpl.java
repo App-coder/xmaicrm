@@ -26,4 +26,10 @@ public class XmEmailtemplatesServiceImpl implements XmEmailtemplatesService {
 		return this.xmEmailtemplatesMapper.getAll();
 	}
 
+
+	@Override
+	public XmEmailtemplates getById(int templateid) {
+		return this.xmEmailtemplatesMapper.selectByPrimaryKey(templateid);
+	}
+
 }

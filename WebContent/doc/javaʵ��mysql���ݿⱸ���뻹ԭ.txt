@@ -1,0 +1,103 @@
+做备份时一直让人很纠结,连着几天的日子都没睡过好觉。在不停的实践和查阅网上资料重要OK了。
+
+首先，要知道mysql备份的语句怎么写
+
+[sql] view plaincopy
+
+    备份MySQL数据库的命令     
+        
+    mysqldump -hhostname -uusername -ppassword databasename > backupfile.sql    
+        
+        
+    备份MySQL数据库为带删除表的格式     
+    备份MySQL数据库为带删除表的格式，能够让该备份覆盖已有数据库而不需要手动删除原有数据库。    
+        
+    mysqldump -–add-drop-table -uusername -ppassword databasename > backupfile.sql    
+        
+        
+    直接将MySQL数据库压缩备份     
+        
+    mysqldump -hhostname -uusername -ppassword databasename | gzip > backupfile.sql.gz    
+        
+        
+    备份MySQL数据库某个(些)表     
+        
+    mysqldump -hhostname -uusername -ppassword databasename specific_table1 specific_table2 > backupfile.sql    
+        
+        
+    同时备份多个MySQL数据库     
+        
+    mysqldump -hhostname -uusername -ppassword –databases databasename1 databasename2 databasename3 > multibackupfile.sql    
+        
+        
+    仅仅备份数据库结构     
+        
+    mysqldump –no-data –databases databasename1 databasename2 databasename3 > structurebackupfile.sql    
+        
+        
+    备份服务器上所有数据库     
+        
+    mysqldump –all-databases > allbackupfile.sql    
+        
+        
+    还原MySQL数据库的命令     
+        
+    mysql -hhostname -uusername -ppassword databasename < backupfile.sql    
+        
+        
+    还原压缩的MySQL数据库     
+        
+    gunzip < backupfile.sql.gz | mysql -uusername -ppassword databasename    
+        
+        
+    将数据库转移到新服务器     
+        
+    mysqldump -uusername -ppassword databasename | mysql –host=*.*.*.* -C databasename   
+
+
+然后,把需要的弄到cmd中运行一遍看是否自己的会生成正确;
+
+如果出现了“mysqldump 不是内部或外部命令”的话则需要配置我们的环境变量,配好后在cmd中输入path检查下是否正确;
+
+前面的工作做完后，我们就可以来用java完成前面的操作了
+
+[java] view plaincopy
+
+    try {  
+                Runtime rt = Runtime.getRuntime();  
+                            String cmd ="mysqldump -h localhost -uroot -p1234 test blog_user > e:/mysql.sql"; //一定要加 -h localhost(或是服务器IP地址)  
+                            rt.exec("cmd /c " + cmd);  
+                            System.out.println("备份成功!");  
+            } catch (IOException e) {  
+                System.out.println("备份失败!");  
+                e.printStackTrace();  
+            }  
+                  
+
+
+这样其实就可以了，但是有时候可能会出现cmd中的错误提示,我们就需要这样写的话就可以得到
+
+[java] view plaincopy
+
+    try {  
+                Runtime rt = Runtime.getRuntime();  
+                            String cmd ="mysqldump -h localhost -uroot -p1234 test blog_user > e:/mysql.sql"; //一定要加 -h localhost(或是服务器IP地址)  
+                Process process =rt.exec("cmd /c " + cmd);  
+                InputStreamReader isr = new InputStreamReader(process.getErrorStream());  
+                LineNumberReader input = new LineNumberReader(isr);  
+                String line;  
+                while((line = input.readLine())!= null){  
+                    System.out.println(line+"~~~~~~~~~~");  
+                }  
+                System.out.println("备份成功!");  
+            } catch (IOException e) {  
+                System.out.println("备份失败!");  
+                e.printStackTrace();  
+            }  
+          
+
+至于备份和还原就是字符串中的“>” 改变“<”
+
+OK了。
+
+
