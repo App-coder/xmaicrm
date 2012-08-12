@@ -104,7 +104,7 @@ String win_topbar = "closed=\"true\" modal=\"true\" collapsible=\"false\"  dragg
       out.write("\t\t</div>\r\n");
       out.write("\t\t<div data-options=\"region:'center',border:false\"\r\n");
       out.write("\t\t\tstyle=\"overflow: hidden\">\r\n");
-      out.write("\t\t\t<table id=\"potential_list\" data-options=\"fit:true,fitColumns:true\"></table>\r\n");
+      out.write("\t\t\t<table id=\"campaign_list\" data-options=\"fit:true,fitColumns:true\"></table>\r\n");
       out.write("\t\t</div>\r\n");
       out.write("\t\t");
       if (_jspx_meth_c_005fif_005f0(_jspx_page_context))

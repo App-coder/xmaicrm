@@ -34,7 +34,7 @@
 		</div>
 		<div data-options="region:'center',border:false"
 			style="overflow: hidden">
-			<table id="potential_list" data-options="fit:true,fitColumns:true"></table>
+			<table id="campaign_list" data-options="fit:true,fitColumns:true"></table>
 		</div>
 		<c:if test="${repfields!=null }">
 		<div data-options="region:'south',border:false">

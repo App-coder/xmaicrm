@@ -5,6 +5,8 @@ import java.util.List;
 
 import javax.annotation.Resource;
 
+import net.sf.json.JsonConfig;
+
 import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -34,6 +36,7 @@ import com.crm.service.XmSequenceService;
 import com.crm.service.XmTabService;
 import com.crm.util.DateUtil;
 import com.crm.util.HtmlUtil;
+import com.crm.util.JsonDateValueProcessor;
 
 @Controller
 @RequestMapping(value = "customview")
@@ -571,4 +574,50 @@ public class XmCustomViewController extends BaseController {
 		return objToJson(msg);
 	}
 
+	@RequestMapping(value = "/getView", method = RequestMethod.POST)
+	@ResponseBody
+	public String getView(int viewid){
+		XmCustomview customview = this.xmCustomViewService.getView(viewid);
+		return objToJson(customview);
+	}
+	
+	/**
+	 * 
+	 * 得到columns
+	 * 
+	 * @param viewid
+	 * @return
+	 */
+	@RequestMapping(value = "/getColumns", method = RequestMethod.POST)
+	@ResponseBody
+	public String getColumns(int viewid){
+		List<XmCvcolumnlist> columns = this.xmCvcolumnlistService.getXmCvcolumnlistByCvid(viewid);
+		return arrayToJson(columns);
+	}
+	
+	/**
+	 * 
+	 * 
+	 * @param viewid
+	 * @return
+	 */
+	@RequestMapping(value = "/getStdfilter", method = RequestMethod.POST)
+	@ResponseBody
+	public String getStdfilter(int viewid){
+		XmCvstdfilter stdfilter = this.xmCvstdfilterService.getStdfilterByCvid(viewid);
+		return objToJson(stdfilter); 
+	}
+	
+	/**
+	 * 
+	 * 高级查询信息
+	 * 
+	 * @param viewid
+	 * @return
+	 */
+	public String getAdvfilter(int viewid){
+		XmCvadvfilter advfilter = this.xmCvadvfilterService.getAdvfilter(viewid);
+		return arrayToJson(advfilter);
+	}
+	
 }

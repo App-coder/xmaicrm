@@ -1,5 +1,6 @@
 package com.crm.action.util;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.annotation.Resource;
@@ -55,13 +56,23 @@ public class ModuleUtil extends BaseController{
 		
 		try {
 			List<Column> cols = this.xmCvcolumnlistService.getViewColumn(customview);
-			modelMap.addAttribute("dview",arrayToJson(cols));
+			List<Column> reset = new ArrayList<Column>();
+			for(int i=0;i<cols.size();i++){
+				Column n = cols.get(i);
+				if(n.getField().indexOf("assigned_")!=-1){
+					n.setField(n.getField().replace("assigned_", "").replace("_id", "")+"_name");
+				}else if(n.getField().indexOf("_")!=-1){
+					n.setField(n.getField().replace("_id", "")+"name");
+				}
+				reset.add(n);
+			}
+			modelMap.addAttribute("dview",arrayToJson(reset));
 		} catch (net.sf.json.JSONException e) {
 			modelMap.addAttribute("dview",null);
 		}
 		modelMap.addAttribute("customview",customview);
 		
-		//配置customview
+		//配置customview,这个是视图的列表
 		List<XmCustomview> views = this.xmCustomViewService.queryByEntityType(tabname);
 		modelMap.addAttribute("views",views);
 		

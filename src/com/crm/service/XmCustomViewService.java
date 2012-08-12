@@ -23,6 +23,8 @@ public interface XmCustomViewService {
 
 	void update(XmCustomview cv);
 
+	XmCustomview getView(int viewid);
+
 	
 
 }

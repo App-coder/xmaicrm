@@ -420,7 +420,7 @@ String win_topbar = "closed=\"true\" modal=\"true\" collapsible=\"false\"  dragg
       out.write("\t\t\t\t\t\t\t<legend>基本信息</legend>\r\n");
       out.write("\t\t\t\t\t\t\t<table class=\"tab_form\">\r\n");
       out.write("\t\t\t\t\t\t\t\t<tr>\r\n");
-      out.write("\t\t\t\t\t\t\t\t\t<td width=\"33%\">视图名称&nbsp;&nbsp;<input name=\"viewname\" type=\"text\"\r\n");
+      out.write("\t\t\t\t\t\t\t\t\t<td width=\"33%\">视图名称&nbsp;&nbsp;<input name=\"viewname\" class=\"easyui-validatebox\" required=\"true\" type=\"text\"\r\n");
       out.write("\t\t\t\t\t\t\t\t\t\tclass=\"text\" /></td>\r\n");
       out.write("\t\t\t\t\t\t\t\t\t<td width=\"33%\">默认视图&nbsp;&nbsp;<input id=\"setdefault\" type=\"checkbox\" /></td>\r\n");
       out.write("\t\t\t\t\t\t\t\t\t<td width=\"33%\" rowspan=\"2\">角色&nbsp;&nbsp;<select\r\n");

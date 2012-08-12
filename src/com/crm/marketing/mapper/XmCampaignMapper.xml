@@ -427,9 +427,9 @@
     where campaignid = #{campaignid,jdbcType=INTEGER}
   </update>
   <select id="getTotal" resultType="INTEGER" >
-	SELECT count(1) AS count FROM xm_campaign LEFT JOIN xm_users ON xm_users.id = xm_campaign.smownerid  WHERE 1=1 ${filter}
+	${totalsql}
   </select>
   <select id="loadList" resultMap="BaseResultMap">
-    select xm_campaign.campaignname,xm_campaign.closingdate,xm_users.user_name ,xm_campaign.campaignid as crmid FROM xm_campaign LEFT JOIN xm_users ON xm_users.id = xm_campaign.smownerid WHERE 1=1 ${filter} limit #{start},#{rows}
+    ${listsql}
   </select>
 </mapper>

@@ -1,5 +1,7 @@
 package com.crm.service.impl;
 
+import java.util.List;
+
 import javax.annotation.Resource;
 
 import org.springframework.stereotype.Service;
@@ -27,6 +29,18 @@ public class XmCvadvfilterServiceImpl implements XmCvadvfilterService {
 	@Override
 	public void insert(XmCvadvfilter advfilter) {
 		this.xmCvadvfilterMapper.insert(advfilter);
+	}
+
+
+	@Override
+	public XmCvadvfilter getAdvfilter(int viewid) {
+		return this.xmCvadvfilterMapper.getAdvfilter(viewid);
+	}
+
+
+	@Override
+	public List<XmCvadvfilter> getAdvFilters(int viewid) {
+		return this.xmCvadvfilterMapper.getAdvFilters(viewid);
 	}
 
 }

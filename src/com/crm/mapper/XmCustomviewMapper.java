@@ -13,7 +13,7 @@ public interface XmCustomviewMapper {
 
     int insertSelective(XmCustomview record);
 
-    XmCustomview selectByPrimaryKey(Integer cvid);
+    XmCustomview selectByPrimaryKey(@Param("cvid")  Integer cvid);
 
     int updateByPrimaryKeySelective(XmCustomview record);
 

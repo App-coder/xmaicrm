@@ -96,4 +96,10 @@
   <delete id="deleteCv">
   	delete from xm_cvstdfilter where cvid = #{cvid}
   </delete>
+  <select id="getStdfilterByCvid" resultMap="BaseResultMap" >
+  	 select 
+    <include refid="Base_Column_List" />
+    from xm_cvstdfilter
+    where cvid = #{cvid,jdbcType=INTEGER}
+  </select>
 </mapper>

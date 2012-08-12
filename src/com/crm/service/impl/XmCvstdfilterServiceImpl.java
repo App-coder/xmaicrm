@@ -30,4 +30,10 @@ public class XmCvstdfilterServiceImpl implements XmCvstdfilterService{
 	}
 
 
+	@Override
+	public XmCvstdfilter getStdfilterByCvid(int viewid) {
+		return this.xmCvstdfilterMapper.getStdfilterByCvid(viewid);
+	}
+
+
 }

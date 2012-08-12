@@ -11,9 +11,10 @@ $(function() {
 });
 function initBind() {
     
-    $('#form_customview').form({  
+    $('#form_customview').form({ 
         url:'customview/editView',  
         onSubmit: function(){
+            $.messager.progress();	
             //设置ckbox值
             if($('#form_customview').find("input[id=setdefault]").attr("checked") == "checked"){
         	$('#form_customview').find("input[name=setdefault]").val(1);
@@ -39,13 +40,20 @@ function initBind() {
             }
             
             //验证
-            if($('#form_customview').form("validate")){
-        	return true;
+            if(!$('#form_customview').form("validate")){
+        	$.messager.progress('close');
+        	return false;
             }
-            return false;
+            return true;
         },  
         success:function(data){
-            
+            $.messager.progress('close');
+            var msg = $.parseJSON(data);
+            if(msg.type==true){
+        	//关闭wind,datagrid刷新
+        	closeWin("customview_edit");
+        	$('#customview_list').datagrid("reload");
+            }
         }  
     });  
     
@@ -86,6 +94,7 @@ function initGrid() {
 	singleSelect : true,
 	rownumbers : true,
 	pagination : true,
+	fitColumns:true,
 	queryParams : {
 	    'entitytype' : entitytype
 	},
@@ -105,7 +114,12 @@ function initGrid() {
 		var selected = $('#customview_list').datagrid('getSelected');
 		$("#form_customview").find("input[name=action]").val("update");
 		if (selected) {
-		    $("#form_customview").find("input[name=id]").val(selected.id);
+		    $("#form_customview").find("input[name=id]").val(selected.cvid);
+		    $("#customview_edit").window("open");
+		    
+		    //初始化页面数据
+		    initview(selected.cvid);
+		    
 		} else {
 		    message('请选择一行！');
 		}
@@ -120,7 +134,6 @@ function initGrid() {
 			cvid : selected.cvid
 		    }, function(msg) {
 			if (msg.type == true) {
-			    message(msg.message);
 			    $('#customview_list').datagrid("reload");
 			} else {
 			    error(msg.message);
@@ -176,4 +189,25 @@ function initGrid() {
 	}, ] ]
     });
 }
-
+function initview(vid){
+    //视图基本信息
+    $.post('customview/getView',{viewid:vid},function(data){
+	
+    },'json');
+    
+    //九个列的信息
+    $.post('customview/getColumns',{viewid:vid},function(data){
+	
+    },'json');
+    
+    //标准查询信息
+    $.post('customview/getStdfilter',{viewid:vid},function(data){
+	
+    },'json');
+    
+    //高级查询信息
+    $.post('customview/getAdvfilter',{viewid:vid},function(data){
+	
+    },'json');
+    
+}

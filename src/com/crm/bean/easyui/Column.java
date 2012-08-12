@@ -4,6 +4,8 @@ public class Column {
 	
 	String title;
 	String field;
+	String table;
+	String column;
 	boolean resizable = false;
 	
 	public String getTitle() {
@@ -23,6 +25,18 @@ public class Column {
 	}
 	public void setResizable(boolean resizable) {
 		this.resizable = resizable;
+	}
+	public String getTable() {
+		return table;
+	}
+	public void setTable(String table) {
+		this.table = table;
+	}
+	public String getColumn() {
+		return column;
+	}
+	public void setColumn(String column) {
+		this.column = column;
 	}
 
 	

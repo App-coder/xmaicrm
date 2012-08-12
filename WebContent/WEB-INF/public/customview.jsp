@@ -179,7 +179,7 @@
 							<legend>基本信息</legend>
 							<table class="tab_form">
 								<tr>
-									<td width="33%">视图名称&nbsp;&nbsp;<input name="viewname" type="text"
+									<td width="33%">视图名称&nbsp;&nbsp;<input name="viewname" class="easyui-validatebox" required="true" type="text"
 										class="text" /></td>
 									<td width="33%">默认视图&nbsp;&nbsp;<input id="setdefault" type="checkbox" /></td>
 									<td width="33%" rowspan="2">角色&nbsp;&nbsp;<select
