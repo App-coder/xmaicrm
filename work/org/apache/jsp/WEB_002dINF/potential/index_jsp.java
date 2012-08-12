@@ -64,9 +64,41 @@ String win_topbar = "closed=\"true\" modal=\"true\" collapsible=\"false\"  dragg
 
       out.write("    ");
       out.write("\r\n");
-      out.write("<script type=\"text/javascript\" src=\"resources/desktop/potential/index.js\"></script>\r\n");
+      out.write("<script>\r\n");
+      out.write("    var potential_columns = ");
+      out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${dview}", java.lang.String.class, (PageContext)_jspx_page_context, null, false));
+      out.write(";\r\n");
+      out.write("</script>\r\n");
+      out.write("<script type=\"text/javascript\"\r\n");
+      out.write("\tsrc=\"resources/desktop/potential/index.js\"></script>\r\n");
       out.write("<div class=\"container\">\r\n");
-      out.write("<table id=\"potential_list\" title=\"销售机会\" fit=\"true\"></table>\r\n");
+      out.write("\t<div class=\"hidden\">\r\n");
+      out.write("\t\t<div id=\"potential_m1\" style=\"width:100px;\">\r\n");
+      out.write("\t\t\t<div data-options=\"iconCls:'icon-add'\" >创建视图</div>\r\n");
+      out.write("\t\t\t<div data-options=\"iconCls:'icon-edit'\" >编辑</div>\r\n");
+      out.write("\t\t\t<div data-options=\"iconCls:'icon-remove'\" >删除</div>\r\n");
+      out.write("\t\t</div>\r\n");
+      out.write("\t</div>\r\n");
+      out.write("\t<div class=\"easyui-layout\" fit=\"true\">\r\n");
+      out.write("\t\t<div data-options=\"region:'north',border:false\">\r\n");
+      out.write("\t\t\t<div class=\"d_view \">\r\n");
+      out.write("\t\t\t\t<span class=\"icon-filter view_span\" >视图：</span>\r\n");
+      out.write("\t\t\t\t<select class=\"sel_120\"><option>所有</option><option>初期沟通</option></select>\r\n");
+      out.write("\t\t\t\t<a href=\"javascript:void(0)\" class=\"easyui-menubutton\" data-options=\"menu:'#potential_m1',iconCls:'icon-edit'\">管理</a>\r\n");
+      out.write("\t\t\t</div>\r\n");
+      out.write("\t\t</div>\r\n");
+      out.write("\t\t<div data-options=\"region:'center',border:false\"\r\n");
+      out.write("\t\t\tstyle=\"overflow: hidden\">\r\n");
+      out.write("\t\t\t<table id=\"potential_list\" data-options=\"fit:true,fitColumns:true\"></table>\r\n");
+      out.write("\t\t</div>\r\n");
+      out.write("\t\t<div data-options=\"region:'south',border:false\">\r\n");
+      out.write("\t\t\t<div class=\"d_report \">\r\n");
+      out.write("\t\t\t\t<span class=\"icon-report view_span\" >报表：</span>\r\n");
+      out.write("\t\t\t\t<select class=\"sel_120\"><option>所有</option><option>初期沟通</option></select>\r\n");
+      out.write("\t\t\t\t<a href=\"#\" class=\"easyui-linkbutton\" data-options=\"plain:true,iconCls:'icon-view'\">预览</a>\r\n");
+      out.write("\t\t\t</div>\r\n");
+      out.write("\t\t</div>\r\n");
+      out.write("\t</div>\r\n");
       out.write("</div>");
     } catch (Throwable t) {
       if (!(t instanceof SkipPageException)){

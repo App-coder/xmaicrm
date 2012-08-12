@@ -516,9 +516,9 @@
     where potentialid = #{potentialid,jdbcType=INTEGER}
   </update>
   <select id="getTotal" resultType="INTEGER" >
-	SELECT count(1) AS count FROM xm_potential WHERE 1=1 ${filter}
+	SELECT count(1) AS count FROM xm_potential LEFT JOIN xm_account ON xm_potential.accountid = xm_account.accountid LEFT JOIN xm_users ON xm_users.id = xm_potential.smownerid WHERE 1=1 ${filter}
   </select>
   <select id="loadList" resultMap="BaseResultMap">
-   SELECT xm_potential.* FROM xm_potential WHERE 1=1 ${filter} limit #{start},#{rows}
+   SELECT xm_potential.*,xm_account.accountname FROM xm_potential LEFT JOIN xm_account ON xm_potential.accountid = xm_account.accountid LEFT JOIN xm_users ON xm_users.id = xm_potential.smownerid WHERE 1=1 ${filter} limit #{start},#{rows}
   </select>
 </mapper>

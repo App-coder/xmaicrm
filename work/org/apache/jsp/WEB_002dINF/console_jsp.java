@@ -172,7 +172,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
       out.write("\t\t\t<div>常见问答</div>\r\n");
       out.write("\t\t</div>\r\n");
       out.write("\t</div>\r\n");
-      out.write("\t<div region=\"north\" style=\"height: 62px; overflow: hidden;\"\r\n");
+      out.write("\t<div region=\"north\" style=\"height: 62px; \"\r\n");
       out.write("\t\tclass=\"headerNav\" border=\"false\">\r\n");
       out.write("\t\t<a class=\"logo\"></a>\r\n");
       out.write("\t\t<ul class=\"nav\">\r\n");

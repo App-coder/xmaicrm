@@ -54,29 +54,8 @@ public class XmCustomViewController extends BaseController {
 	@ResponseBody
 	public String getViewColumn(String entitytype,int viewid){
 		
-		List<Column> cols = new ArrayList<Column>();
-		
 		XmCustomview customview = this.xmCustomViewService.selectByPrimaryKey(entitytype,viewid);
-		
-		List<XmCvcolumnlist> columns = this.xmCvcolumnlistService.getXmCvcolumnlistByCvid(customview.getCvid());
-		if(columns.size()>=1){
-			for(XmCvcolumnlist column : columns){
-				cols.add((Column)JsonUtil.getObject4JsonString(column.getColumnname(), Column.class));
-			}
-		}
-		
-		if(customview.getCollectcolumn()!=null){
-			Column collect = (Column)JsonUtil.getObject4JsonString(customview.getCollectcolumn(), Column.class);
-			boolean exist = false;
-			for(Column co :cols){
-				if(co.getField().equals(collect.getField())){
-					exist = true;
-				}
-			}
-			if(!exist){
-				cols.add(collect);
-			}
-		}
+		List<Column> cols = this.xmCvcolumnlistService.getViewColumn(customview);
 		
 		return arrayToJson(cols);
 	}

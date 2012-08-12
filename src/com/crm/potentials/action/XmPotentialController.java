@@ -11,12 +11,14 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.crm.action.BaseController;
+import com.crm.bean.easyui.Column;
 import com.crm.bean.easyui.ListBean;
 import com.crm.model.XmCustomview;
 import com.crm.model.XmPotential;
 import com.crm.potentials.service.XmPotentialService;
 import com.crm.service.XmCustomViewService;
 import com.crm.service.XmCvadvfilterService;
+import com.crm.service.XmCvcolumnlistService;
 import com.crm.service.XmCvstdfilterService;
 
 @Controller
@@ -29,6 +31,12 @@ public class XmPotentialController extends BaseController {
 		this.xmCustomViewService = xmCustomViewService;
 	}
 	
+	XmCvcolumnlistService xmCvcolumnlistService;
+	@Resource(name="xmCvcolumnlistService")
+	public void setXmCvcolumnlistService(XmCvcolumnlistService xmCvcolumnlistService) {
+		this.xmCvcolumnlistService = xmCvcolumnlistService;
+	}
+	
 	XmPotentialService xmPotentialService;
 	@Resource(name="xmPotentialService")
 	public void setXmPotentialService(XmPotentialService xmPotentialService) {
@@ -38,6 +46,12 @@ public class XmPotentialController extends BaseController {
 
 	@RequestMapping(value = "/index", method = RequestMethod.GET)
 	public String index(ModelMap modelMap){
+		
+		//得到默认的view
+		XmCustomview customview = this.xmCustomViewService.selectByPrimaryKey("Potentials",-1);
+		List<Column> cols = this.xmCvcolumnlistService.getViewColumn(customview);
+		modelMap.addAttribute("dview",arrayToJson(cols));
+		
 		return "potential/index";
 	}
 	

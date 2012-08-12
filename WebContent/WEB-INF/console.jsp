@@ -89,7 +89,7 @@
 			<div>常见问答</div>
 		</div>
 	</div>
-	<div region="north" style="height: 62px; overflow: hidden;"
+	<div region="north" style="height: 62px; "
 		class="headerNav" border="false">
 		<a class="logo"></a>
 		<ul class="nav">

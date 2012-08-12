@@ -1,7 +1,37 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"
 	pageEncoding="utf-8"%>
-<%@ include file="../common/config.jsp" %>
-<script type="text/javascript" src="resources/desktop/potential/index.js"></script>
+<%@ include file="../common/config.jsp"%>
+<script>
+    var potential_columns = ${dview};
+</script>
+<script type="text/javascript"
+	src="resources/desktop/potential/index.js"></script>
 <div class="container">
-<table id="potential_list" title="销售机会" fit="true"></table>
+	<div class="hidden">
+		<div id="potential_m1" style="width:100px;">
+			<div data-options="iconCls:'icon-add'" >创建视图</div>
+			<div data-options="iconCls:'icon-edit'" >编辑</div>
+			<div data-options="iconCls:'icon-remove'" >删除</div>
+		</div>
+	</div>
+	<div class="easyui-layout" fit="true">
+		<div data-options="region:'north',border:false">
+			<div class="d_view ">
+				<span class="icon-filter view_span" >视图：</span>
+				<select class="sel_120"><option>所有</option><option>初期沟通</option></select>
+				<a href="javascript:void(0)" class="easyui-menubutton" data-options="menu:'#potential_m1',iconCls:'icon-edit'">管理</a>
+			</div>
+		</div>
+		<div data-options="region:'center',border:false"
+			style="overflow: hidden">
+			<table id="potential_list" data-options="fit:true,fitColumns:true"></table>
+		</div>
+		<div data-options="region:'south',border:false">
+			<div class="d_report ">
+				<span class="icon-report view_span" >报表：</span>
+				<select class="sel_120"><option>所有</option><option>初期沟通</option></select>
+				<a href="#" class="easyui-linkbutton" data-options="plain:true,iconCls:'icon-view'">预览</a>
+			</div>
+		</div>
+	</div>
 </div>

@@ -70,3 +70,12 @@
 .tree-file {
 	background:url('icons/tree_file.gif') no-repeat;
 }
+.icon-view{
+	background:url('icons/view.png') no-repeat;
+}
+.icon-filter{
+	background:url('icons/filter.png') no-repeat;
+}
+.icon-report{
+	background:url('icons/report.png') no-repeat;
+}
