@@ -48,5 +48,7 @@ public interface XmFieldMapper {
 
 	List<Object> getDefOrgFields(@Param("tabid") int tabid);
 	
+	List<Object> getLayoutField(@Param("tabid") Integer tabid,@Param("blockid") Integer blockid);
+	
 	
 }

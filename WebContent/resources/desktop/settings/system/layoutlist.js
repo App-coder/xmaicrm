@@ -1,49 +1,23 @@
-$(function() {
-    initPage();
-    initForm();
-});
-
 var tabid=null;
+var block_options="";
 var cols = [{
 	field:'fieldlabel',
-	title:'下拉框字段名称'
+	title:'字段名称'
 }];
 cols = setDefWidth(cols,80);
-
 var colname="";
+
+$(function() {
+    initForm();
+});
 
 //初始化
 function initForm() {
 	$(".importBox").change(function(){
     	tabid=$(".importBox").val();
-    	$('#blocklist').datagrid('load',{  
-            tabid: tabid  
-        });  
+    	initTable(tabid);
     });
-
-    /*$('#form_picklist').form({
-		url : 'crm/settings/picklist/submit',
-		onSubmit : function() {
-		    if ($('#form_picklist').form("validate")) {
-			     return true;
-		    } else {
-			     return false;
-		    }
-	    },
-		success : function(res) {
-		    res = $.parseJSON(res);
-		    if(res.type == true){
-		       closeWin('picklist');
-//		       $('#form_block').form("clear");
-		       $('#blocklist').datagrid("reload",{  
-		            tabid: $(".importBox").val() 
-		       });
-		    }
-		}
-    });*/
-}
-
-function initPage(){
+	//初始化下拉框
 	$.get("crm/settings/customblock/getBlockList",null,function(result){
 		var options="";
 		$.each(result,function(i,block){
@@ -52,72 +26,96 @@ function initPage(){
 		$(".importBox").append(options);
 		$(".importBox").get(0).selectedIndex=0;
 		tabid=$(".importBox").get(0).options[0].value;
-		//initGrid();
+		initTable(tabid);
+	},"json");
+	
+    $('#form_layout').form({
+		url : 'crm/settings/layoutlist/submit',
+		onSubmit : function() {
+		    if ($('#form_layout').form("validate")) {
+			     return true;
+		    } else {
+			     return false;
+		    }
+	    },
+		success : function(res) {
+		    res = $.parseJSON(res);
+		    if(res.type == true){
+		       closeWin('layoutlist');
+		       $('#form_layout').form("clear");
+		    }
+		}
+    });
+}
+
+function initTable(tabid){
+	$.post("crm/settings/customblock/getFieldBlocksByTabId",{tabid:tabid,page:1,rows:50},function(result){
+		var results=result;
+		var arr=new Array();
+		
+		$.each(result,function(i,rs){
+			arr.push(rs.blockid);
+			block_options+="<option value='"+rs.blockid+"'>"+rs.blocklabel+"</option>";
+		});
+		var blockids=arr.join(",");
+		general(blockids,results);
 	},"json");
 }
 
-function initGrid(){
-	$('#picklist_datagrid').datagrid({
-		url : 'crm/settings/picklist/getPickListName',
-		queryParams:{
-			tabid:tabid,
-		},
-		doSize:true,
-		height : 362,
-		collapsible : false,
-		singleSelect : true,
-		rownumbers : true,
-		fitColumns:true,
-		toolbar : [ {
-		    text : '编辑',
-		    iconCls:'icon-edit',
-		    handler : function() {
-		    	var selected = $('#picklist_datagrid').datagrid("getSelected");
-				if (selected) {
-//				    $("#form_block").find("input[name=blockid]").val(selected.blockid);
-				    // 赋值操作
-				    loadForm(selected);
-				} else {
-				    message("请选择一行记录！");
+function general(blockids,results){
+	$.get("crm/settings/layoutlist/getLayoutField",{tabid:tabid,blockids:blockids},function(result){
+		var table="";
+		$("#cfList").empty();
+		$.each(results,function(i,rs){
+			var blockid=rs.blockid;
+			var childresult=result[blockid];
+			table+="<table class='small' width='100%' cellspacing='0' cellpadding='0' border='0'>" +
+					     "<tr><td width='50%'></td><td width='50%'> </td></tr>" +
+					     "<tr><td class='dvInnerHeader' colspan='2'><b>"+rs.blocklabel+"</b></td></tr>";
+			$.each(childresult,function(i,r){
+				if(i%2==0){
+					table+="<tr style='height:25px'>";
 				}
-		    }
-		}],
-		frozenColumns : [[{
-			field : 'ck',
-			checkbox : true
-		}]],
-		columns : [ cols ]
-	});
+				table+="<td class='dvtCellLabel' align='left'>#"+r.sequence+r.fieldlabel+
+							   "<img border='0' title='编辑' alt='编辑' onclick=\"loadForm("+r.fieldid+",'"+r.fieldlabel+"',"+r.block+","+r.sequence+",'"+r.typeofdata+"')\" style='cursor:pointer;' src='resources/images/settings/editfield.gif'>"+
+					    "</td>";
+				if(i%2==1)
+					table+="</tr>";
+			});
+			table+="</table><br>";
+		});
+		$("#cfList").append(table);
+	},"json");
 }
 
 //编辑窗口的初始化
-/*function loadForm(row) {
-	$("#picklist").window({
-	    title:'编辑下拉框选项'+"--"+row.fieldlabel,
+function loadForm(fieldid,fieldlabel,block,sequence,typeofdata) {
+	
+	$('#form_layout').form('load',{
+		fieldlabel:fieldlabel,
+		sequence:sequence,
+		fieldid:fieldid
+	});
+	$("#layoutlist").window({
+	    title:'编辑页面布局',
 	    onOpen:function(){
-	    	colname=row.fieldname;
-	    	$.get("crm/settings/picklist/getPickListValue",{colname:colname},function(picks){
-	    		 var picksValue="";
-	    		 $.each(picks,function(i,pick){
-	    			 picksValue+=pick.colvalue+'\n';
-	    		 });
-	    		 picksValue=picksValue.substring(0, picksValue.length-1);
-	    		 $("textarea[name=fldPickList]").html(picksValue);
-	    	},"json");
+	    	$("#block").empty();
+	    	$("#block").append(block_options);
+	    	$("#block").get(0).value = block;
+	    	var ischeck=typeofdata.substr(2,1);
+	    	if(ischeck=='O')
+	    		$("input[name='typeofdata']").attr("checked",false);
+	    	else
+	    		$("input[name='typeofdata']").attr("checked",true);
 	    },
 	    onClose:function(){
-	    	$(".validatebox-tip").hide();
+	    	$('#form_layout').form("clear");
 	    }
 	});
-	$("#picklist").window("open",false);
+	$("#layoutlist").window("open",false);
 }
 
-function submitPicklist(){
-	var fieldpicklist=$("textarea[name=fldPickList]").val();
-	var arrpick = fieldpicklist.split('\n').join(",");
-	$.post("crm/settings/picklist/submit",{colname:colname,arrpick:arrpick},function(result){
-		if(result.type)
-			closeWin('picklist');
-	},"json");
-}*/
+function submitLayoutlist(){
+	formsubmit("form_layout");
+}
 

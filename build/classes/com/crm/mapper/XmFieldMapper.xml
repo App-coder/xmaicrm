@@ -336,6 +336,38 @@
 		ORDER BY
 		block,
 		sequence;
+<<<<<<< HEAD
+  </select>
+  <select id="getFieldsByTabid" resultMap="BaseResultMap" >
+  	select fieldid,columnname,fieldlabel,uitype,displaytype,tablename,typeofdata from xm_field where tabid=#{tabid} and  generatedtype=2 and uitype not in('1021','1022','1023') order by sequence limit #{start},#{rows}
+  </select>
+  
+  <select id="getTableNameByTabid" resultType="String">
+     select tablename from xm_entityname where tabid=#{tabid}
+  </select>
+  
+  <select id="getMaxSequence" resultType="Integer">
+     select max(sequence) sequence from xm_field  WHERE tabid =#{tabid}  AND generatedtype = 2 AND uitype NOT IN('1021', '1022', '1023')
+  </select>
+  
+  <select id="getTotal" resultType="Integer">
+    SELECT	count(*) total FROM xm_field WHERE 	tabid = #{tabid}  AND generatedtype = 2 AND uitype NOT IN('1021', '1022', '1023') ORDER BY 	sequence
+  </select>
+  
+  
+  <select id="getLayoutField" resultType="map">
+    select xm_field.fieldid,xm_field.fieldlabel,xm_field.block,xm_field.sequence,xm_field.typeofdata from xm_field inner join xm_def_org_field 
+      on xm_def_org_field.fieldid=xm_field.fieldid where xm_def_org_field.visible=0 and xm_field.tabid=#{tabid} and displaytype in(1,2,4) and xm_field.block=#{blockid} order by xm_field.block,xm_field.sequence
+  </select>
+  
+  <update id="addColumn">
+     alter table ${tablename} ${cfField};
+  </update>
+  
+  <update id="deleteColumn">
+     alter table ${tablename} ${cfField};
+  </update>
+=======
 	</select>
 	<select id="getFieldsByTabid" resultMap="BaseResultMap">
 		select fieldid,columnname,fieldlabel,uitype,displaytype,tablename,typeofdata
@@ -362,4 +394,5 @@
 	<select id="getDefOrgFields" resultMap="BaseResultMap" >
 		select xm_def_org_field.visible,xm_field.* from xm_def_org_field inner join xm_field on xm_field.fieldid=xm_def_org_field.fieldid where xm_def_org_field.tabid=#{tabid}
 	</select>
+>>>>>>> git-crm/zhujun
 </mapper>

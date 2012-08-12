@@ -39,6 +39,12 @@ public interface XmFieldService {
 	 * @return
 	 */
 	public List<XmField> getEditFields(Integer tabid, String blockstr);
+<<<<<<< HEAD
+	
+	public List<Object> getLayoutField(Integer tabid,Integer blockid);
+	
+	int updateByPrimaryKeySelective(XmField xmField);
+=======
 
 	/**
 	 * 
@@ -48,4 +54,5 @@ public interface XmFieldService {
 	 * @return
 	 */
 	public List<Object> getDefOrgFields(int tabid);
+>>>>>>> git-crm/zhujun
 }

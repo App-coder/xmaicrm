@@ -65,6 +65,16 @@ public class XmFieldServiceImpl implements XmFieldService{
 	public List<XmField> getEditFields(Integer tabid, String blockstr) {
 		return this.xmFieldMapper.getEditFields(tabid,blockstr);
 	}
+	
+	@Override
+	public List<Object> getLayoutField(Integer tabid, Integer blockid) {
+		return this.xmFieldMapper.getLayoutField(tabid, blockid);
+	}
+	
+	@Override
+	public int updateByPrimaryKeySelective(XmField xmField) {
+		return this.xmFieldMapper.updateByPrimaryKeySelective(xmField);
+	}
 
 	@Override
 	public List<Object> getDefOrgFields(int tabid) {
