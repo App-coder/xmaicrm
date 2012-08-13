@@ -32,7 +32,7 @@
 			<div>销售导航</div>
 			<div><a href="javascript:tab('销售机会','potential/index')" >销售机会</a></div>
 			<div>销售漏斗</div>
-			<div>报价单</div>
+			<div><a href="javascript:tab('报价单','quotes/index')" >报价单</a></div>
 			<div>竞争对手</div>
 			<div>合同订单</div>
 			<div>发货单</div>

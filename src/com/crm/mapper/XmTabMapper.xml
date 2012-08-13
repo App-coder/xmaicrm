@@ -139,4 +139,10 @@
       reportable = #{reportable,jdbcType=INTEGER}
     where tabid = #{tabid,jdbcType=INTEGER}
   </update>
+  <select id="getTabByName" resultMap="BaseResultMap" >
+   select 
+    <include refid="Base_Column_List" />
+    from xm_tab
+    where name = #{tabname,jdbcType=VARCHAR}
+  </select>
 </mapper>

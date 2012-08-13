@@ -115,7 +115,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
       out.write("\t\t\t<div>销售导航</div>\r\n");
       out.write("\t\t\t<div><a href=\"javascript:tab('销售机会','potential/index')\" >销售机会</a></div>\r\n");
       out.write("\t\t\t<div>销售漏斗</div>\r\n");
-      out.write("\t\t\t<div>报价单</div>\r\n");
+      out.write("\t\t\t<div><a href=\"javascript:tab('报价单','quotes/index')\" >报价单</a></div>\r\n");
       out.write("\t\t\t<div>竞争对手</div>\r\n");
       out.write("\t\t\t<div>合同订单</div>\r\n");
       out.write("\t\t\t<div>发货单</div>\r\n");

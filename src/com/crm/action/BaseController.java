@@ -4,6 +4,12 @@ import net.sf.json.JSONArray;
 import net.sf.json.JSONObject;
 import net.sf.json.JsonConfig;
 
+/**
+ * 基本的CONTROLLER
+ * User: zhujun
+ * Date: 2012-8-13
+ * Time: 下午3:30:12
+ */
 public class BaseController {
 	
 	public String getTitle(String name,String title){

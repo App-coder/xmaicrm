@@ -1,5 +1,4 @@
 //定义页面变量，需要前缀，防止多页面变量重复
-var potential_viewid = -1;
 var potential_entitytype = 'Potentials';
 var potential_id = 'potentialid';
 
