@@ -11,8 +11,12 @@ import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import com.alibaba.fastjson.JSON;
 import com.crm.action.BaseController;
+import com.crm.bean.easyui.Column;
+import com.crm.model.XmField;
 import com.crm.model.XmTab;
+import com.crm.service.XmFieldService;
 import com.crm.service.XmTabService;
 import com.crm.util.ArrayUtil;
 import com.crm.util.CacheManager;
@@ -36,6 +40,12 @@ public class XmRecyclebinController extends BaseController {
 		this.xmTabService = xmTabService;
 	}
 
+	XmFieldService xmFieldService;
+	@Resource(name="xmFieldService")
+	public void setXmFieldService(XmFieldService xmFieldService) {
+		this.xmFieldService = xmFieldService;
+	}
+
 
 	@RequestMapping(value = "/index", method = RequestMethod.GET)
 	public String index(ModelMap modelMap){
@@ -57,6 +67,17 @@ public class XmRecyclebinController extends BaseController {
 		
 		//默认的第一个columns的集合
 		String[] columns = RecyclebinUtil.getListColumn(recyclemodules.get(0).getName());
+		
+		List<XmField> fields = this.xmFieldService.getRecycleBinFields(recyclemodules.get(0).getTabid(),columns);
+		
+		List<Column> cols = new ArrayList<Column>();
+		for(int i=0;i<fields.size();i++){
+			Column col = new Column();
+			col.setField(fields.get(i).getColumnname());
+			col.setTitle(fields.get(i).getFieldlabel());
+			cols.add(col);
+		}
+		modelMap.addAttribute("cols",JSON.toJSON(cols));
 		
 		return "settings/other/recyclebin";
 	}

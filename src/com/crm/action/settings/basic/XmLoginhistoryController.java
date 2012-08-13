@@ -28,7 +28,7 @@ import com.crm.util.DateUtil;
  * Time: 上午10:21:44
  */
 @Controller
-@RequestMapping(value = "settings/loginhistory")
+@RequestMapping(value = "crm/settings/loginhistory")
 public class XmLoginhistoryController extends BaseController {
 
 	XmUsersService xmUsersService;

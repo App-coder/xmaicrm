@@ -360,7 +360,7 @@ String win_topbar = "resizable=\"false\"  closed=\"true\" modal=\"true\" collaps
       out.write("\t\t\t\r\n");
       out.write("\t\t\t\r\n");
       out.write("\t\t</div>\r\n");
-      out.write("\t\t<div class=\"path\" id=\"navpath\"></div>\r\n");
+      out.write("\t\t\r\n");
       out.write("\t\t<table style=\"width:100%;\">\r\n");
       out.write("\t\t\t<tr>\r\n");
       out.write("\t\t\t\t<td width=\"160px\" valign=\"top\">\r\n");
@@ -371,11 +371,11 @@ String win_topbar = "resizable=\"false\"  closed=\"true\" modal=\"true\" collaps
       out.write("\t<ul>\r\n");
       out.write("\t\t<li id=\"path_users\"><a href=\"crm/settings/users/index\" >系统用户</a></li>\r\n");
       out.write("\t\t<li id=\"path_role\"><a href=\"crm/settings/role/index\">角色权限</a></li>\r\n");
-      out.write("\t\t<li><a>部门机构</a></li>\r\n");
-      out.write("\t\t<li><a>全局共享规则</a></li>\r\n");
-      out.write("\t\t<li><a>自定义共享规则</a></li>\r\n");
-      out.write("\t\t<li><a>系统日志</a></li>\r\n");
-      out.write("\t\t<li><a>登录历史</a></li>\r\n");
+      out.write("\t\t<li id=\"group\"><a href=\"crm/settings/group/index\">部门机构</a></li>\r\n");
+      out.write("\t\t<li id=\"deforgshare\" ><a href=\"crm/settings/deforgshare/index\" >全局共享规则</a></li>\r\n");
+      out.write("\t\t<li id=\"customsharings\" ><a href=\"crm/settings/customsharings/index\">自定义共享规则</a></li>\r\n");
+      out.write("\t\t<li id=\"systemlog\" ><a href=\"crm/settings/systemlog/index\" >系统日志</a></li>\r\n");
+      out.write("\t\t<li id=\"loginhistory\" ><a href=\"crm/settings/loginhistory/index\">登录历史</a></li>\r\n");
       out.write("\t</ul>\r\n");
       out.write("\t<div class=\"datagrid-toolbar\">系统定制</div>\r\n");
       out.write("\t<ul>\r\n");
@@ -407,7 +407,9 @@ String win_topbar = "resizable=\"false\"  closed=\"true\" modal=\"true\" collaps
       out.write("</div>    ");
       out.write("\r\n");
       out.write("\t\t\t\t</td>\r\n");
-      out.write("\t\t\t\t<td valign=\"top\"><table id=\"user_list\"></table></td>\r\n");
+      out.write("\t\t\t\t<td valign=\"top\">\r\n");
+      out.write("\t\t\t\t<div class=\"path\" id=\"navpath\"></div>\r\n");
+      out.write("\t\t\t\t<table id=\"user_list\"></table></td>\r\n");
       out.write("\t\t\t</tr>\r\n");
       out.write("\t\t</table>\r\n");
       out.write("\t\t\r\n");

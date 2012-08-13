@@ -67,14 +67,16 @@
 			
 			
 		</div>
-		<div class="path" id="navpath"></div>
+		
 		
 		<table style="width:100%;">
 			<tr>
 				<td width="160px" valign="top">
 					<%@ include file="../../nav_setting.jsp"%>
 				</td>
-				<td valign="top"><table id="rolelist"></table></td>
+				<td valign="top">
+				<div class="path" id="navpath"></div>
+				<table id="rolelist"></table></td>
 			</tr>
 		</table>
 		
