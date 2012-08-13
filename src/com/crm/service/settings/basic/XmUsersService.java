@@ -32,6 +32,8 @@ public interface XmUsersService {
 
 	int getTotalRelUser(String roleid);
 
+	XmUsers getById(Integer id);
+
 
 	
 }

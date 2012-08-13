@@ -6,14 +6,17 @@ import javax.annotation.Resource;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.SessionAttributes;
 
 import com.alibaba.fastjson.JSON;
 import com.crm.action.BaseController;
 import com.crm.bean.crm.Message;
+import com.crm.bean.crm.UserPermission;
 import com.crm.bean.easyui.ListBean;
 import com.crm.model.XmUser2role;
 import com.crm.model.XmUsers;
@@ -21,6 +24,7 @@ import com.crm.model.XmUsers2group;
 import com.crm.service.settings.basic.XmUser2roleService;
 import com.crm.service.settings.basic.XmUsers2groupService;
 import com.crm.service.settings.basic.XmUsersService;
+import com.crm.util.Constant;
 import com.crm.util.HtmlUtil;
 import com.crm.util.StringUtil;
 
@@ -33,6 +37,7 @@ import com.crm.util.StringUtil;
  * Time: 上午10:09:13
  */
 @Controller
+@SessionAttributes({Constant.USERPERMISSION})
 @RequestMapping(value = "crm/settings/users")
 public class XmUsersController extends BaseController {
 	
@@ -160,5 +165,15 @@ public class XmUsersController extends BaseController {
 		}
 		return JSON.toJSONString(msg);
 	}
+	
+	@RequestMapping(value = "/detail", method = RequestMethod.GET)
+	public String detail(@ModelAttribute(Constant.USERPERMISSION) UserPermission userPermission,ModelMap modelmap){
+		Object login = this.xmUsersService.getUserById(userPermission.getUser().getId());
+		modelmap.addAttribute("login",JSON.toJSON(login));
+		modelmap.addAttribute("userstatus",HtmlUtil.getUserStatus());
+		return "settings/basic/users/detail";
+	}
+	
+	
 	
 }

@@ -113,7 +113,7 @@
 									<td width="32%"><input class="easyui-combobox"
 										name="groupid"
 										data-options="
-										url:'settings/group/getCombox',
+										url:'crm/settings/group/getCombox',
 										valueField:'id',
 										textField:'text',
 										panelHeight:'auto',

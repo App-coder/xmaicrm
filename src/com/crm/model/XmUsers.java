@@ -110,6 +110,10 @@ public class XmUsers {
     private String userPreferences;
 
     private String buddylist;
+    
+    private String groupname;
+    
+    private String rolename;
 
     public Integer getId() {
         return id;
@@ -542,4 +546,23 @@ public class XmUsers {
     public void setBuddylist(String buddylist) {
         this.buddylist = buddylist == null ? null : buddylist.trim();
     }
+
+	public String getGroupname() {
+		return groupname;
+	}
+
+	public void setGroupname(String groupname) {
+		this.groupname = groupname;
+	}
+
+	public String getRolename() {
+		return rolename;
+	}
+
+	public void setRolename(String rolename) {
+		this.rolename = rolename;
+	}
+    
+    
+    
 }

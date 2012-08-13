@@ -100,6 +100,11 @@ public class XmUsersServiceImpl implements XmUsersService{
 		return this.xmUsersMapper.getTotalRelUser(roleid);
 	}
 
+	@Override
+	public XmUsers getById(Integer id) {
+		return this.xmUsersMapper.selectByPrimaryKey(id);
+	}
+
 
 
 	

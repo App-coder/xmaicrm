@@ -170,11 +170,11 @@ String win_topbar = "resizable=\"false\"  closed=\"true\" modal=\"true\" collaps
       out.write("\t<ul>\r\n");
       out.write("\t\t<li id=\"path_users\"><a href=\"crm/settings/users/index\" >系统用户</a></li>\r\n");
       out.write("\t\t<li id=\"path_role\"><a href=\"crm/settings/role/index\">角色权限</a></li>\r\n");
-      out.write("\t\t<li id=\"group\"><a href=\"crm/settings/group/index\">部门机构</a></li>\r\n");
-      out.write("\t\t<li id=\"deforgshare\" ><a href=\"crm/settings/deforgshare/index\" >全局共享规则</a></li>\r\n");
-      out.write("\t\t<li id=\"customsharings\" ><a href=\"crm/settings/customsharings/index\">自定义共享规则</a></li>\r\n");
-      out.write("\t\t<li id=\"systemlog\" ><a href=\"crm/settings/systemlog/index\" >系统日志</a></li>\r\n");
-      out.write("\t\t<li id=\"loginhistory\" ><a href=\"crm/settings/loginhistory/index\">登录历史</a></li>\r\n");
+      out.write("\t\t<li id=\"path_group\"><a href=\"crm/settings/group/index\">部门机构</a></li>\r\n");
+      out.write("\t\t<li id=\"path_deforgshare\" ><a href=\"crm/settings/deforgshare/index\" >全局共享规则</a></li>\r\n");
+      out.write("\t\t<li id=\"path_customsharings\" ><a href=\"crm/settings/customsharings/index\">自定义共享规则</a></li>\r\n");
+      out.write("\t\t<li id=\"path_systemlog\" ><a href=\"crm/settings/systemlog/index\" >系统日志</a></li>\r\n");
+      out.write("\t\t<li id=\"path_loginhistory\" ><a href=\"crm/settings/loginhistory/index\">登录历史</a></li>\r\n");
       out.write("\t</ul>\r\n");
       out.write("\t<div class=\"datagrid-toolbar\">系统定制</div>\r\n");
       out.write("\t<ul>\r\n");

@@ -76,9 +76,11 @@ table .tb_list td.righttd{padding-left:10px;}
 .tab_editlist input.text{width:250px;margin-right: 10px;border:1px solid #D2D2D2;height: 20px;}
 .tab_editlist select.text{width:258px;margin-right: 10px;border:1px solid #D2D2D2;height: 25px;}
 .tab_editlist .edittd{width:15%;}
+.tab_editlist tr td{padding-left:10px;padding-right:10px;}
 .tab_view{width:100%;border-collapse: collapse;}
-.tab_view tr td{height:25px;line-height:25px;border:1px solid #99BBE8;}
+.tab_view tr td{height:25px;line-height:25px;border:1px solid #99BBE8;padding-left:10px;padding-right:10px;}
 .tab_view .label{width:15%;background-color:#EFEFEF;}
+.tab_view .info{width:30%;}
 
 .text{width:180px;margin-right: 10px;border:1px solid #D2D2D2;height:18px;padding-left:3px;padding-right:3px;}
 
