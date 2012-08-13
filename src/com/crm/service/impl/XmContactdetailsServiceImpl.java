@@ -31,4 +31,9 @@ public class XmContactdetailsServiceImpl implements XmContactdetailsService {
 		return this.xmContactdetailsMapper.getContactdetails(start,rows,campaignid);
 	}
 
+	@Override
+	public List<XmContactdetails> getContactdetailsByAccountid(String accountid) {
+		return this.xmContactdetailsMapper.getContactdetailsByAccountid(accountid);
+	}
+
 }

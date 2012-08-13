@@ -33,7 +33,82 @@ var ptb = ${ptb.parenttabid };
 </head>
 <body id="wrap">
 	${navbar }
-	<div class="hidden"></div>
+	<div class="hidden">
+	
+		<div id="wind_batchUpdate" iconCls="icon-edit"
+			style="width: 500px; height: 309px;" class="easyui-window p10"
+			<%=win_topbar%> title="批量修改 " >
+				<div class="easyui-layout" data-options="fit:true,border:false">
+					<div data-options="region:'center',border:false" style="padding:10px;">
+						<table class="tab_editlist">
+							<tr>
+								<td>选择字段</td>
+							</tr>
+							<tr>
+								<td><select class="text" ></select></td>
+							</tr>
+						</table>
+					</div>
+					<div region="south" class="btnbar" border="false">
+						<a class="easyui-linkbutton" iconCls="icon-ok"
+						href="javascript:void(0)" onclick="formsubmit('form_customview')">编辑</a> <a
+						class="easyui-linkbutton" iconCls="icon-cancel"
+						href="javascript:void(0)" onclick="closeWin('wind_batchUpdate')">取消</a>
+					</div>
+				</div>
+		</div>
+		
+		<div id="wind_smowerUpdate" iconCls="icon-edit"
+			style="width: 500px; height: 309px;" class="easyui-window p10"
+			<%=win_topbar%> title="修改负责人 " >
+				<div class="easyui-layout" data-options="fit:true,border:false">
+					<div data-options="region:'center',border:false" style="padding:10px;">
+						<table class="tab_editlist">
+							<tr>
+								<td>选择负责人</td>
+							</tr>
+							<tr>
+								<td>
+									<select class="easyui-combotree" style="width:200px;" data-options="url:'crm/relation/users/getSmowners'" ></select>
+								</td>
+							</tr>
+						</table>
+					</div>
+					<div region="south" class="btnbar" border="false">
+						<a class="easyui-linkbutton" iconCls="icon-ok"
+						href="javascript:void(0)" onclick="formsubmit('form_customview')">编辑</a> <a
+						class="easyui-linkbutton" iconCls="icon-cancel"
+						href="javascript:void(0)" onclick="closeWin('wind_batchUpdate')">取消</a>
+					</div>
+				</div>
+		</div>
+		
+		<div id="wind_share" iconCls="icon-edit"
+			style="width: 500px; height: 309px;" class="easyui-window p10"
+			<%=win_topbar%> title="共享" >
+				<div class="easyui-layout" data-options="fit:true,border:false">
+					<div data-options="region:'center',border:false" style="padding:10px;">
+						<table class="tab_editlist">
+							<tr>
+								<td>选择共享用户</td>
+							</tr>
+							<tr>
+								<td>
+									<select class="easyui-combotree" style="width:200px;" data-options="url:'crm/relation/users/getCkSmowners',checkbox:true,multiple:true"  ></select>
+								</td>
+							</tr>
+						</table>
+					</div>
+					<div region="south" class="btnbar" border="false">
+						<a class="easyui-linkbutton" iconCls="icon-ok"
+						href="javascript:void(0)" onclick="formsubmit('form_customview')">编辑</a> <a
+						class="easyui-linkbutton" iconCls="icon-cancel"
+						href="javascript:void(0)" onclick="closeWin('wind_share')">取消</a>
+					</div>
+				</div>
+		</div>
+	
+	</div>
 	<div id="main">
 		<div id="navpath" class="path">
 			${ptb.parenttabLabel }&gt;<a
@@ -60,11 +135,11 @@ var ptb = ${ptb.parenttabid };
 				<div id="tabbar" class="gtb" style="display: block;" >  
 			查看范围：<select class="easyui-combotree" style="width:200px;" data-options="url:'crm/module/calendar/getCondition'"></select>
 						<a class="easyui-linkbutton" data-options="plain:true" iconCls="icon-add" onclick="insert()" >添加</a>
-						<a class="easyui-linkbutton" data-options="plain:true" iconCls="icon-edit" >修改</a>
-						<a class="easyui-linkbutton" data-options="plain:true" iconCls="icon-edit" >批量修改</a>
+						<a class="easyui-linkbutton" data-options="plain:true" iconCls="icon-edit" onclick="edit()" >修改</a>
+						<a class="easyui-linkbutton" data-options="plain:true" iconCls="icon-edit" onclick="batchUpdate()" >批量修改</a>
 						<a class="easyui-linkbutton" data-options="plain:true" iconCls="icon-view" onclick="view()" >预览</a>
-						<a class="easyui-linkbutton" data-options="plain:true" iconCls="icon-edit" >修改负责人</a>
-						<a class="easyui-linkbutton" data-options="plain:true" iconCls="icon-share" >共享</a>
+						<a class="easyui-linkbutton" data-options="plain:true" iconCls="icon-edit" onclick="smowerUpdate()" >修改负责人</a>
+						<a class="easyui-linkbutton" data-options="plain:true" iconCls="icon-share" onclick="shareUpdate()" >共享</a>
 						<a class="easyui-linkbutton" data-options="plain:true" iconCls="icon-remove" >删除</a>
 				</div>
 				<table id="view_list"

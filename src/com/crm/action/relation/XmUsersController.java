@@ -63,4 +63,33 @@ public class XmUsersController {
 		return JSON.toJSONString(cbos);
 	}
 	
+	@RequestMapping(value = "/getCkSmowners")
+	@ResponseBody
+	public String getCkSmowners(){
+		List<ComboTree> cbos = new ArrayList<ComboTree>();
+		List<XmGroups> groups = this.xmGroupsService.loadAll();
+		List<XmUsers> users = this.xmUsersService.loadAll();
+		
+		for(int i=0;i<groups.size();i++){
+			ComboTree group = new ComboTree();
+			group.setId(groups.get(i).getGroupid()+"");
+			group.setText(groups.get(i).getGroupname());
+			group.setIconCls("icon-group");
+			List<ComboTree> childs = new ArrayList();
+			for(int j=0;j<users.size();j++){
+				if(users.get(j).getGroupid().equals(group.getId())){
+					ComboTree u = new ComboTree();
+					u.setId(users.get(j).getId()+"");
+					u.setText(users.get(j).getLastName());
+					u.setIconCls("icon-user");
+					childs.add(u);
+				}
+			}
+			group.setChildren(childs);
+			cbos.add(group);
+		}
+		
+		return JSON.toJSONString(cbos);
+	}
+	
 }

@@ -676,4 +676,9 @@
 	ORDER BY modifiedtime desc 
 	limit #{start},#{rows}
   </select>
+  <select id="getContactdetailsByAccountid" resultMap="BaseResultMap" >
+  	select xm_contactdetails.contactid,xm_contactdetails.ismain,
+				xm_contactdetails.lastname from xm_contactdetails 
+			where xm_contactdetails.deleted=0 and xm_contactdetails.accountid= #{accountid}
+  </select>
 </mapper>

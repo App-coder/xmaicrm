@@ -10,4 +10,6 @@ public interface XmContactdetailsService {
 
 	List<XmContactdetails> getContactdetails(int page, int rows, int campaignid);
 
+	List<XmContactdetails> getContactdetailsByAccountid(String accountid);
+
 }

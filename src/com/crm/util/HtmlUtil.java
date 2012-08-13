@@ -213,7 +213,7 @@ public class HtmlUtil {
 					fieldstr +="<a class=\"easyui-linkbutton mgl_10\" title=\"清空\" data-options=\"iconCls:'icon-clear'\" ></a>";
 				}
 			}else if(xmField.getUitype().equals("57")){
-				fieldstr +="<select name=\""+xmField.getColumnname()+"\"  ><option></option></select>";
+				fieldstr +="<select class=\"text2\"  name=\""+xmField.getColumnname()+"\"  ><option></option></select>";
 			}else{
 				//两个条件的情况
 				if(tds.length==2){
@@ -284,13 +284,48 @@ public class HtmlUtil {
 			}
 		}else if(tds[0].equals("I")){
 			if(xmField.getUitype().equals("51")){
-				HashMap<String, XmEntityname> hm_noline = (HashMap<String, XmEntityname>)CacheUtil.getFromCache(Constant.ENTITYNAME_NOLINE);
-				if(!xmField.getFieldname().equals("activityid")){
-					XmEntityname et = hm_noline.get(xmField.getFieldname().replace("_", ""));
-					fieldstr +="<input type=\"hidden\" name=\""+xmField.getColumnname()+"\" value=\""+getMapVal(obj,xmField.getColumnname())+"\" class=\"text2\"  />";
-					fieldstr +="<input type=\"text\" name=\""+xmField.getColumnname()+"_text\" class=\"text2\" value=\""+getText(getMapVal(obj,xmField.getColumnname()),et,xmCustomViewService)+"\" readonly=\"readonly\" />";
-					fieldstr +="<a class=\"easyui-linkbutton mgl_10\" title=\"查询\" data-options=\"iconCls:'icon-search'\" href=\"javascript:showOptionPanel('"+et.getModulename()+"','"+xmField.getColumnname()+"','"+xmField.getFieldlabel()+"')\" ></a>";
-					fieldstr +="<a class=\"easyui-linkbutton mgl_10\" title=\"清空\" data-options=\"iconCls:'icon-clear'\" ></a>";
+				
+				if(tds[1].equals("M")){
+					HashMap<String, XmEntityname> hm_noline = (HashMap<String, XmEntityname>)CacheUtil.getFromCache(Constant.ENTITYNAME_NOLINE);
+					if(!xmField.getFieldname().equals("activityid")){
+						XmEntityname et = hm_noline.get(xmField.getFieldname().replace("_", ""));
+						fieldstr +="<input type=\"hidden\" name=\""+xmField.getColumnname()+"\" value=\""+getMapVal(obj,xmField.getColumnname())+"\" class=\"text2\"  />";
+						fieldstr +="<input type=\"text\" name=\""+xmField.getColumnname()+"_text\" class=\"text2 easyui-validatebox\" data-options=\"required:true\" value=\""+getText(getMapVal(obj,xmField.getColumnname()),et,xmCustomViewService)+"\" readonly=\"readonly\" />";
+						fieldstr +="<a class=\"easyui-linkbutton mgl_10\" title=\"查询\" data-options=\"iconCls:'icon-search'\" href=\"javascript:showOptionPanel('"+et.getModulename()+"','"+xmField.getColumnname()+"','"+xmField.getFieldlabel()+"')\" ></a>";
+						fieldstr +="<a class=\"easyui-linkbutton mgl_10\" title=\"清空\" data-options=\"iconCls:'icon-clear'\" ></a><span class=\"must\">*</span>";
+					}
+				}else{
+					HashMap<String, XmEntityname> hm_noline = (HashMap<String, XmEntityname>)CacheUtil.getFromCache(Constant.ENTITYNAME_NOLINE);
+					if(!xmField.getFieldname().equals("activityid")){
+						XmEntityname et = hm_noline.get(xmField.getFieldname().replace("_", ""));
+						fieldstr +="<input type=\"hidden\" name=\""+xmField.getColumnname()+"\" value=\""+getMapVal(obj,xmField.getColumnname())+"\" class=\"text2\"  />";
+						fieldstr +="<input type=\"text\" name=\""+xmField.getColumnname()+"_text\" class=\"text2\" value=\""+getText(getMapVal(obj,xmField.getColumnname()),et,xmCustomViewService)+"\" readonly=\"readonly\" />";
+						fieldstr +="<a class=\"easyui-linkbutton mgl_10\" title=\"查询\" data-options=\"iconCls:'icon-search'\" href=\"javascript:showOptionPanel('"+et.getModulename()+"','"+xmField.getColumnname()+"','"+xmField.getFieldlabel()+"')\" ></a>";
+						fieldstr +="<a class=\"easyui-linkbutton mgl_10\" title=\"清空\" data-options=\"iconCls:'icon-clear'\" ></a>";
+					}
+				}
+				
+			}else if(xmField.getUitype().equals("57")){
+				fieldstr +="<select class=\"text2\"  name=\""+xmField.getColumnname()+"\"  ><option></option></select>";
+			}else if(xmField.getUitype().equals("76")){
+				if(tds[1].equals("M")){
+					HashMap<String, XmEntityname> hm_noline = (HashMap<String, XmEntityname>)CacheUtil.getFromCache(Constant.ENTITYNAME_NOLINE);
+					if(!xmField.getFieldname().equals("activityid")){
+						XmEntityname et = hm_noline.get(xmField.getFieldname().replace("_", ""));
+						fieldstr +="<input type=\"hidden\" name=\""+xmField.getColumnname()+"\" value=\""+getMapVal(obj,xmField.getColumnname())+"\" class=\"text2\"  />";
+						fieldstr +="<input type=\"text\" name=\""+xmField.getColumnname()+"_text\" class=\"text2 easyui-validatebox\" data-options=\"required:true\" value=\""+getText(getMapVal(obj,xmField.getColumnname()),et,xmCustomViewService)+"\" readonly=\"readonly\" />";
+						fieldstr +="<a class=\"easyui-linkbutton mgl_10\" title=\"查询\" data-options=\"iconCls:'icon-search'\" href=\"javascript:showOptionPanel('"+et.getModulename()+"','"+xmField.getColumnname()+"','"+xmField.getFieldlabel()+"')\" ></a>";
+						fieldstr +="<a class=\"easyui-linkbutton mgl_10\" title=\"清空\" data-options=\"iconCls:'icon-clear'\" ></a><span class=\"must\">*</span>";
+					}
+				}else{
+					HashMap<String, XmEntityname> hm_noline = (HashMap<String, XmEntityname>)CacheUtil.getFromCache(Constant.ENTITYNAME_NOLINE);
+					if(!xmField.getFieldname().equals("activityid")){
+						XmEntityname et = hm_noline.get(xmField.getFieldname().replace("_", ""));
+						fieldstr +="<input type=\"hidden\" name=\""+xmField.getColumnname()+"\" value=\""+getMapVal(obj,xmField.getColumnname())+"\" class=\"text2\"  />";
+						fieldstr +="<input type=\"text\" name=\""+xmField.getColumnname()+"_text\" class=\"text2\" value=\""+getText(getMapVal(obj,xmField.getColumnname()),et,xmCustomViewService)+"\" readonly=\"readonly\" />";
+						fieldstr +="<a class=\"easyui-linkbutton mgl_10\" title=\"查询\" data-options=\"iconCls:'icon-search'\" href=\"javascript:showOptionPanel('"+et.getModulename()+"','"+xmField.getColumnname()+"','"+xmField.getFieldlabel()+"')\" ></a>";
+						fieldstr +="<a class=\"easyui-linkbutton mgl_10\" title=\"清空\" data-options=\"iconCls:'icon-clear'\" ></a>";
+					}
 				}
 			}else{
 				//还需要根据字段是否是REL字段进行区分操作

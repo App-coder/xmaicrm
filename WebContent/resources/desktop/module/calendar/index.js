@@ -58,3 +58,20 @@ function reloadView(val){
 function insert(){
     window.location.href="crm/module/calendar/showedit?recordid=0&ptb="+ptb+"&module="+entitytype;
 }
+function edit(){
+    var selected = $('#view_list').datagrid("getSelected");
+    if(selected){
+	window.location.href="crm/module/calendar/showedit?recordid="+selected.activityid+"&ptb="+ptb+"&module="+entitytype;
+    }else{
+	message("请选择记录！");
+    }
+}
+function batchUpdate(){
+    $("#wind_batchUpdate").window("open");
+}
+function smowerUpdate(){
+    $("#wind_smowerUpdate").window("open");
+}
+function shareUpdate(){
+    $("#wind_share").window("open");
+}

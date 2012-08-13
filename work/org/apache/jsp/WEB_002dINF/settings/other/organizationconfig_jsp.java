@@ -1,27 +1,23 @@
-package org.apache.jsp.WEB_002dINF.module.calendar;
+package org.apache.jsp.WEB_002dINF.settings.other;
 
 import javax.servlet.*;
 import javax.servlet.http.*;
 import javax.servlet.jsp.*;
 
-public final class index_jsp extends org.apache.jasper.runtime.HttpJspBase
+public final class organizationconfig_jsp extends org.apache.jasper.runtime.HttpJspBase
     implements org.apache.jasper.runtime.JspSourceDependent {
-
-static private org.apache.jasper.runtime.ProtectedFunctionMapper _jspx_fnmap_0;
-
-static {
-  _jspx_fnmap_0= org.apache.jasper.runtime.ProtectedFunctionMapper.getMapForFunction("fn:toLowerCase", org.apache.taglibs.standard.functions.Functions.class, "toLowerCase", new Class[] {java.lang.String.class});
-}
 
   private static final JspFactory _jspxFactory = JspFactory.getDefaultFactory();
 
   private static java.util.List _jspx_dependants;
 
   static {
-    _jspx_dependants = new java.util.ArrayList(5);
-    _jspx_dependants.add("/WEB-INF/module/calendar/../../head.jsp");
-    _jspx_dependants.add("/WEB-INF/module/calendar/../../common/config.jsp");
-    _jspx_dependants.add("/WEB-INF/module/calendar/../../foot.jsp");
+    _jspx_dependants = new java.util.ArrayList(7);
+    _jspx_dependants.add("/WEB-INF/settings/other/../../head.jsp");
+    _jspx_dependants.add("/WEB-INF/settings/other/../../common/config.jsp");
+    _jspx_dependants.add("/WEB-INF/settings/other/../../path.jsp");
+    _jspx_dependants.add("/WEB-INF/settings/other/../../nav_setting.jsp");
+    _jspx_dependants.add("/WEB-INF/settings/other/../../foot.jsp");
     _jspx_dependants.add("/WEB-INF/tld/jstl/fn.tld");
     _jspx_dependants.add("/WEB-INF/tld/oscache/oscache.tld");
   }
@@ -30,7 +26,6 @@ static {
   private org.apache.jasper.runtime.TagHandlerPool _005fjspx_005ftagPool_005fc_005fwhen_0026_005ftest;
   private org.apache.jasper.runtime.TagHandlerPool _005fjspx_005ftagPool_005fc_005fotherwise;
   private org.apache.jasper.runtime.TagHandlerPool _005fjspx_005ftagPool_005fcache_005fcache;
-  private org.apache.jasper.runtime.TagHandlerPool _005fjspx_005ftagPool_005fc_005fforEach_0026_005fvar_005fitems;
 
   private javax.el.ExpressionFactory _el_expressionfactory;
   private org.apache.AnnotationProcessor _jsp_annotationprocessor;
@@ -44,7 +39,6 @@ static {
     _005fjspx_005ftagPool_005fc_005fwhen_0026_005ftest = org.apache.jasper.runtime.TagHandlerPool.getTagHandlerPool(getServletConfig());
     _005fjspx_005ftagPool_005fc_005fotherwise = org.apache.jasper.runtime.TagHandlerPool.getTagHandlerPool(getServletConfig());
     _005fjspx_005ftagPool_005fcache_005fcache = org.apache.jasper.runtime.TagHandlerPool.getTagHandlerPool(getServletConfig());
-    _005fjspx_005ftagPool_005fc_005fforEach_0026_005fvar_005fitems = org.apache.jasper.runtime.TagHandlerPool.getTagHandlerPool(getServletConfig());
     _el_expressionfactory = _jspxFactory.getJspApplicationContext(getServletConfig().getServletContext()).getExpressionFactory();
     _jsp_annotationprocessor = (org.apache.AnnotationProcessor) getServletConfig().getServletContext().getAttribute(org.apache.AnnotationProcessor.class.getName());
   }
@@ -54,7 +48,6 @@ static {
     _005fjspx_005ftagPool_005fc_005fwhen_0026_005ftest.release();
     _005fjspx_005ftagPool_005fc_005fotherwise.release();
     _005fjspx_005ftagPool_005fcache_005fcache.release();
-    _005fjspx_005ftagPool_005fc_005fforEach_0026_005fvar_005fitems.release();
   }
 
   public void _jspService(HttpServletRequest request, HttpServletResponse response)
@@ -117,177 +110,196 @@ String win_bar_1 = "resizable=\"false\"  closed=\"true\" modal=\"false\" collaps
 
       out.write("    ");
       out.write("\r\n");
-      out.write("\r\n");
-      if (_jspx_meth_c_005fchoose_005f1(_jspx_page_context))
-        return;
-      out.write("\r\n");
       out.write("<script>\r\n");
-      out.write("//定义页面变量，需要前缀，防止多页面变量重复\r\n");
-      out.write("var entitytype = '");
-      out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${entitytype}", java.lang.String.class, (PageContext)_jspx_page_context, null, false));
-      out.write("';\r\n");
-      out.write("var viewtab = entitytype.toLowerCase();\r\n");
-      out.write("var viewid = '");
-      out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${viewid}", java.lang.String.class, (PageContext)_jspx_page_context, null, false));
-      out.write("';\r\n");
-      out.write("var tabid = ");
-      out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${tab.tabid}", java.lang.String.class, (PageContext)_jspx_page_context, null, false));
-      out.write(";\r\n");
-      out.write("var tablabel = '");
-      out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${tab.tablabel}", java.lang.String.class, (PageContext)_jspx_page_context, null, false));
-      out.write("';\r\n");
-      out.write("var ptb = ");
-      out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${ptb.parenttabid }", java.lang.String.class, (PageContext)_jspx_page_context, null, false));
-      out.write(";\r\n");
+      out.write("var pathname = \"公司信息管理 \";\r\n");
+      out.write("var pathActive =  \"organizationconfig\";\r\n");
       out.write("</script>\r\n");
       out.write("\r\n");
-      out.write("<script type=\"text/javascript\" src=\"resources/desktop/module/calendar/index.js\"></script>\r\n");
-      out.write("\t\r\n");
+      out.write("<script>\r\n");
+      out.write("$(function(){\r\n");
+      out.write("    var _spath = '");
+      out.print(request.getContextPath());
+      out.write("';\r\n");
+      out.write("    var _loc = window.location.href;\r\n");
+      out.write("    var _url = _loc.substring(_loc.indexOf(_spath)+_spath.length+1);\r\n");
+      out.write("    $.post('crm/welcome/navbar',{pathname:pathname,url:_url,pArgs:typeof(pArgs)==\"undefined\"?\"\":pArgs},function(html){\r\n");
+      out.write("\t\t$(\"#navpath\").html(html);\t\r\n");
+      out.write("    },'html');\r\n");
+      out.write("    \r\n");
+      out.write("    if(typeof(pathActive) != \"undefined\"){\r\n");
+      out.write("\t\t$(\"#path_\"+pathActive).addClass(\"active\");\r\n");
+      out.write("    }\r\n");
+      out.write("   \r\n");
+      out.write("});\r\n");
+      out.write("</script>");
+      out.write("\r\n");
+      out.write("<script type=\"text/javascript\" src=\"resources/desktop/settings/other/organizationconfig.js\"></script>\r\n");
       out.write("</head>\r\n");
       out.write("<body id=\"wrap\">\r\n");
-      out.write("\t");
       out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${navbar }", java.lang.String.class, (PageContext)_jspx_page_context, null, false));
       out.write("\r\n");
-      out.write("\t<div class=\"hidden\">\r\n");
-      out.write("\t\r\n");
-      out.write("\t\t<div id=\"wind_batchUpdate\" iconCls=\"icon-edit\"\r\n");
-      out.write("\t\t\tstyle=\"width: 500px; height: 309px;\" class=\"easyui-window p10\"\r\n");
-      out.write("\t\t\t");
-      out.print(win_topbar);
-      out.write(" title=\"批量修改 \" >\r\n");
-      out.write("\t\t\t\t<div class=\"easyui-layout\" data-options=\"fit:true,border:false\">\r\n");
-      out.write("\t\t\t\t\t<div data-options=\"region:'center',border:false\" style=\"padding:10px;\">\r\n");
-      out.write("\t\t\t\t\t\t<table class=\"tab_editlist\">\r\n");
-      out.write("\t\t\t\t\t\t\t<tr>\r\n");
-      out.write("\t\t\t\t\t\t\t\t<td>选择字段</td>\r\n");
-      out.write("\t\t\t\t\t\t\t</tr>\r\n");
-      out.write("\t\t\t\t\t\t\t<tr>\r\n");
-      out.write("\t\t\t\t\t\t\t\t<td><select class=\"text\" ></select></td>\r\n");
-      out.write("\t\t\t\t\t\t\t</tr>\r\n");
-      out.write("\t\t\t\t\t\t</table>\r\n");
-      out.write("\t\t\t\t\t</div>\r\n");
-      out.write("\t\t\t\t\t<div region=\"south\" class=\"btnbar\" border=\"false\">\r\n");
-      out.write("\t\t\t\t\t\t<a class=\"easyui-linkbutton\" iconCls=\"icon-ok\"\r\n");
-      out.write("\t\t\t\t\t\thref=\"javascript:void(0)\" onclick=\"formsubmit('form_customview')\">编辑</a> <a\r\n");
-      out.write("\t\t\t\t\t\tclass=\"easyui-linkbutton\" iconCls=\"icon-cancel\"\r\n");
-      out.write("\t\t\t\t\t\thref=\"javascript:void(0)\" onclick=\"closeWin('wind_batchUpdate')\">取消</a>\r\n");
-      out.write("\t\t\t\t\t</div>\r\n");
-      out.write("\t\t\t\t</div>\r\n");
-      out.write("\t\t</div>\r\n");
-      out.write("\t\t\r\n");
-      out.write("\t\t<div id=\"wind_smowerUpdate\" iconCls=\"icon-edit\"\r\n");
-      out.write("\t\t\tstyle=\"width: 500px; height: 309px;\" class=\"easyui-window p10\"\r\n");
-      out.write("\t\t\t");
-      out.print(win_topbar);
-      out.write(" title=\"修改负责人 \" >\r\n");
-      out.write("\t\t\t\t<div class=\"easyui-layout\" data-options=\"fit:true,border:false\">\r\n");
-      out.write("\t\t\t\t\t<div data-options=\"region:'center',border:false\" style=\"padding:10px;\">\r\n");
-      out.write("\t\t\t\t\t\t<table class=\"tab_editlist\">\r\n");
-      out.write("\t\t\t\t\t\t\t<tr>\r\n");
-      out.write("\t\t\t\t\t\t\t\t<td>选择负责人</td>\r\n");
-      out.write("\t\t\t\t\t\t\t</tr>\r\n");
-      out.write("\t\t\t\t\t\t\t<tr>\r\n");
-      out.write("\t\t\t\t\t\t\t\t<td>\r\n");
-      out.write("\t\t\t\t\t\t\t\t\t<select class=\"easyui-combotree\" style=\"width:200px;\" data-options=\"url:'crm/relation/users/getSmowners'\" ></select>\r\n");
-      out.write("\t\t\t\t\t\t\t\t</td>\r\n");
-      out.write("\t\t\t\t\t\t\t</tr>\r\n");
-      out.write("\t\t\t\t\t\t</table>\r\n");
-      out.write("\t\t\t\t\t</div>\r\n");
-      out.write("\t\t\t\t\t<div region=\"south\" class=\"btnbar\" border=\"false\">\r\n");
-      out.write("\t\t\t\t\t\t<a class=\"easyui-linkbutton\" iconCls=\"icon-ok\"\r\n");
-      out.write("\t\t\t\t\t\thref=\"javascript:void(0)\" onclick=\"formsubmit('form_customview')\">编辑</a> <a\r\n");
-      out.write("\t\t\t\t\t\tclass=\"easyui-linkbutton\" iconCls=\"icon-cancel\"\r\n");
-      out.write("\t\t\t\t\t\thref=\"javascript:void(0)\" onclick=\"closeWin('wind_batchUpdate')\">取消</a>\r\n");
-      out.write("\t\t\t\t\t</div>\r\n");
-      out.write("\t\t\t\t</div>\r\n");
-      out.write("\t\t</div>\r\n");
-      out.write("\t\t\r\n");
-      out.write("\t\t<div id=\"wind_share\" iconCls=\"icon-edit\"\r\n");
-      out.write("\t\t\tstyle=\"width: 500px; height: 309px;\" class=\"easyui-window p10\"\r\n");
-      out.write("\t\t\t");
-      out.print(win_topbar);
-      out.write(" title=\"共享\" >\r\n");
-      out.write("\t\t\t\t<div class=\"easyui-layout\" data-options=\"fit:true,border:false\">\r\n");
-      out.write("\t\t\t\t\t<div data-options=\"region:'center',border:false\" style=\"padding:10px;\">\r\n");
-      out.write("\t\t\t\t\t\t<table class=\"tab_editlist\">\r\n");
-      out.write("\t\t\t\t\t\t\t<tr>\r\n");
-      out.write("\t\t\t\t\t\t\t\t<td>选择共享用户</td>\r\n");
-      out.write("\t\t\t\t\t\t\t</tr>\r\n");
-      out.write("\t\t\t\t\t\t\t<tr>\r\n");
-      out.write("\t\t\t\t\t\t\t\t<td>\r\n");
-      out.write("\t\t\t\t\t\t\t\t\t<select class=\"easyui-combotree\" style=\"width:200px;\" data-options=\"url:'crm/relation/users/getCkSmowners',checkbox:true,multiple:true\"  ></select>\r\n");
-      out.write("\t\t\t\t\t\t\t\t</td>\r\n");
-      out.write("\t\t\t\t\t\t\t</tr>\r\n");
-      out.write("\t\t\t\t\t\t</table>\r\n");
-      out.write("\t\t\t\t\t</div>\r\n");
-      out.write("\t\t\t\t\t<div region=\"south\" class=\"btnbar\" border=\"false\">\r\n");
-      out.write("\t\t\t\t\t\t<a class=\"easyui-linkbutton\" iconCls=\"icon-ok\"\r\n");
-      out.write("\t\t\t\t\t\thref=\"javascript:void(0)\" onclick=\"formsubmit('form_customview')\">编辑</a> <a\r\n");
-      out.write("\t\t\t\t\t\tclass=\"easyui-linkbutton\" iconCls=\"icon-cancel\"\r\n");
-      out.write("\t\t\t\t\t\thref=\"javascript:void(0)\" onclick=\"closeWin('wind_share')\">取消</a>\r\n");
-      out.write("\t\t\t\t\t</div>\r\n");
-      out.write("\t\t\t\t</div>\r\n");
-      out.write("\t\t</div>\r\n");
-      out.write("\t\r\n");
-      out.write("\t</div>\r\n");
-      out.write("\t<div id=\"main\">\r\n");
-      out.write("\t\t<div id=\"navpath\" class=\"path\">\r\n");
-      out.write("\t\t\t");
-      out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${ptb.parenttabLabel }", java.lang.String.class, (PageContext)_jspx_page_context, null, false));
-      out.write("&gt;<a\r\n");
-      out.write("\t\t\t\thref=\"crm/module/");
-      out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${fn:toLowerCase(entityname.modulename) }", java.lang.String.class, (PageContext)_jspx_page_context, _jspx_fnmap_0, false));
-      out.write("/index?ptb=");
-      out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${ptb.parenttabid }", java.lang.String.class, (PageContext)_jspx_page_context, null, false));
-      out.write('"');
-      out.write('>');
-      out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${tab.tablabel}", java.lang.String.class, (PageContext)_jspx_page_context, null, false));
-      out.write("</a>\r\n");
-      out.write("\t\t</div>\r\n");
-      out.write("\t\t\r\n");
-      out.write("\t\t<div class=\"easyui-tabs\"   >  \r\n");
-      out.write("\t        <div title=\"日程安排\" style=\"overflow:hidden;\"  >  \r\n");
-      out.write("\t        \t<iframe width=\"100%\" height=\"650px\"  frameborder=\"0\" src=\"crm/module/calendar/view?_rd=");
-      out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${rd }", java.lang.String.class, (PageContext)_jspx_page_context, null, false));
-      out.write("\" ></iframe>\r\n");
-      out.write("\t        </div>  \r\n");
-      out.write("\t        <div title=\"列表视图\" class=\"p10\" >\r\n");
-      out.write("\t        \t \r\n");
-      out.write("        \t \t<div class=\"d_view \">\r\n");
-      out.write("\t\t\t\t\t<span class=\"icon-filter \">视图：</span> <select\r\n");
-      out.write("\t\t\t\t\t\tclass=\"sel_120\" onchange=\"reloadView(this.value)\" >\r\n");
-      out.write("\t\t\t\t\t\t");
-      if (_jspx_meth_c_005fforEach_005f0(_jspx_page_context))
-        return;
+      out.write("<div id=\"main\">\r\n");
+      out.write("<table style=\"width:100%;\">\r\n");
+      out.write("<tr>\r\n");
+      out.write("\t<td width=\"160px\" valign=\"top\">\r\n");
+      out.write("\t\t");
       out.write("\r\n");
-      out.write("\t\t\t\t\t</select> <a\r\n");
-      out.write("\t\t\t\t\t\thref=\"crm/customview/index?entitytype=");
-      out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${entitytype}", java.lang.String.class, (PageContext)_jspx_page_context, null, false));
-      out.write("&ptb=");
-      out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${ptb.parenttabid }", java.lang.String.class, (PageContext)_jspx_page_context, null, false));
-      out.write("\"\r\n");
-      out.write("\t\t\t\t\t\tclass=\"easyui-linkbutton\"\r\n");
-      out.write("\t\t\t\t\t\tdata-options=\"plain:true,iconCls:'icon-view'\">视图管理</a>\r\n");
-      out.write("\t\t\t\t</div>\r\n");
-      out.write("\t\t\t\t<div id=\"tabbar\" class=\"gtb\" style=\"display: block;\" >  \r\n");
-      out.write("\t\t\t查看范围：<select class=\"easyui-combotree\" style=\"width:200px;\" data-options=\"url:'crm/module/calendar/getCondition'\"></select>\r\n");
-      out.write("\t\t\t\t\t\t<a class=\"easyui-linkbutton\" data-options=\"plain:true\" iconCls=\"icon-add\" onclick=\"insert()\" >添加</a>\r\n");
-      out.write("\t\t\t\t\t\t<a class=\"easyui-linkbutton\" data-options=\"plain:true\" iconCls=\"icon-edit\" onclick=\"edit()\" >修改</a>\r\n");
-      out.write("\t\t\t\t\t\t<a class=\"easyui-linkbutton\" data-options=\"plain:true\" iconCls=\"icon-edit\" onclick=\"batchUpdate()\" >批量修改</a>\r\n");
-      out.write("\t\t\t\t\t\t<a class=\"easyui-linkbutton\" data-options=\"plain:true\" iconCls=\"icon-view\" onclick=\"view()\" >预览</a>\r\n");
-      out.write("\t\t\t\t\t\t<a class=\"easyui-linkbutton\" data-options=\"plain:true\" iconCls=\"icon-edit\" onclick=\"smowerUpdate()\" >修改负责人</a>\r\n");
-      out.write("\t\t\t\t\t\t<a class=\"easyui-linkbutton\" data-options=\"plain:true\" iconCls=\"icon-share\" onclick=\"shareUpdate()\" >共享</a>\r\n");
-      out.write("\t\t\t\t\t\t<a class=\"easyui-linkbutton\" data-options=\"plain:true\" iconCls=\"icon-remove\" >删除</a>\r\n");
-      out.write("\t\t\t\t</div>\r\n");
-      out.write("\t\t\t\t<table id=\"view_list\"\r\n");
-      out.write("\t\t\t\t\tdata-options=\"fitColumns:true\" toolbar=\"#tabbar\"   ></table>\r\n");
-      out.write("\t\t\t\t\t<div class=\"stat_div hidden\"></div>\r\n");
-      out.write("\t        \t \r\n");
-      out.write("\t        </div>\t        \r\n");
-      out.write("\t    </div>  \r\n");
-      out.write("\t\t\r\n");
-      out.write("\t</div>\r\n");
-      out.write("\t");
+      out.write("<div class=\"navcontainer\">\r\n");
+      out.write("\t<div class=\"datagrid-toolbar\">基本设置</div>\r\n");
+      out.write("\t<ul>\r\n");
+      out.write("\t\t<li id=\"path_users\"><a href=\"crm/settings/users/index\" >系统用户</a></li>\r\n");
+      out.write("\t\t<li id=\"path_role\"><a href=\"crm/settings/role/index\">角色权限</a></li>\r\n");
+      out.write("\t\t<li id=\"path_group\"><a href=\"crm/settings/group/index\">部门机构</a></li>\r\n");
+      out.write("\t\t<li id=\"path_deforgshare\" ><a href=\"crm/settings/deforgshare/index\" >全局共享规则</a></li>\r\n");
+      out.write("\t\t<li id=\"path_customsharings\" ><a href=\"crm/settings/customsharings/index\">自定义共享规则</a></li>\r\n");
+      out.write("\t\t<li id=\"path_systemlog\" ><a href=\"crm/settings/systemlog/index\" >系统日志</a></li>\r\n");
+      out.write("\t\t<li id=\"path_loginhistory\" ><a href=\"crm/settings/loginhistory/index\">登录历史</a></li>\r\n");
+      out.write("\t</ul>\r\n");
+      out.write("\t<div class=\"datagrid-toolbar\">系统定制</div>\r\n");
+      out.write("\t<ul>\r\n");
+      out.write("\t\t<li><a>显示区域</a></li>\r\n");
+      out.write("\t\t<li><a>自定义字段</a></li>\r\n");
+      out.write("\t\t<li><a>下拉框选项</a></li>\r\n");
+      out.write("\t\t<li><a>页面布局</a></li>\r\n");
+      out.write("\t\t<li><a>主菜单</a></li>\r\n");
+      out.write("\t\t<li><a>全局字段</a></li>\r\n");
+      out.write("\t\t<li><a>相关信息</a></li>\r\n");
+      out.write("\t\t<li><a>打印模板</a></li>\r\n");
+      out.write("\t\t<li><a>关联产品字段</a></li>\r\n");
+      out.write("\t\t<li id=\"path_multiapprove\"><a href=\"crm/settings/multiapprove/index\">审批流程</a></li>\r\n");
+      out.write("\t\t<li><a>级联字段</a></li>\r\n");
+      out.write("\t\t<li><a>相关信息模块字段</a></li>\r\n");
+      out.write("\t</ul>\r\n");
+      out.write("\t<div class=\"datagrid-toolbar\">其他设置</div>\r\n");
+      out.write("\t<ul>\r\n");
+      out.write("\t\t<li id=\"path_emailtemplates\" ><a href=\"crm/settings/emailtemplates/index\">Email模版</a></li>\r\n");
+      out.write("\t\t<li id=\"path_dbbackup\"><a href=\"crm/settings/dbbackup/index\" >数据库备份</a></li>\r\n");
+      out.write("\t\t<li id=\"path_organizationconfig\"><a href=\"crm/settings/organizationconfig/index\">公司信息</a></li>\r\n");
+      out.write("\t\t<li id=\"path_system\"><a href=\"crm/settings/system/index\" >SMTP服务器</a></li>\r\n");
+      out.write("\t\t<li id=\"path_messageaccount\"><a href=\"crm/settings/messageaccount/index\">短信通道</a></li>\r\n");
+      out.write("\t\t<li id=\"path_currencyInfo\"><a href=\"crm/settings/currencyInfo/index\">货币币种</a></li>\r\n");
+      out.write("\t\t<li id=\"path_license\"><a href=\"crm/settings/license/index\" >授权许可</a></li>\r\n");
+      out.write("\t\t<li id=\"path_recyclebin\"><a href=\"crm/settings/recyclebin/index\" >回收站</a></li>\r\n");
+      out.write("\t\t<li id=\"path_cangkus\"><a href=\"crm/settings/cangkus/index\" >多仓库管理</a></li>\r\n");
+      out.write("\t</ul>\r\n");
+      out.write("</div>    ");
+      out.write("\r\n");
+      out.write("\t</td>\r\n");
+      out.write("\t<td valign=\"top\">\r\n");
+      out.write("\t<div class=\"path\" id=\"navpath\"></div>\r\n");
+      out.write("\t\r\n");
+      out.write("\t<form id=\"form_organization\" name=\"form_organization\" method=\"post\" >\r\n");
+      out.write("\t<input type=\"hidden\" name=\"logo\" value=\"");
+      out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${details.logo }", java.lang.String.class, (PageContext)_jspx_page_context, null, false));
+      out.write("\" />\r\n");
+      out.write("\t<table class=\"tab_editlist\">\r\n");
+      out.write("\t\t<tr>\r\n");
+      out.write("\t\t\t<td class=\"edittd\" >公司名称</td>\r\n");
+      out.write("\t\t\t<td><input type=\"text\" class=\"text easyui-validatebox\" data-options=\"required:true\" name=\"organizationname\" value=\"");
+      out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${details.organizationname }", java.lang.String.class, (PageContext)_jspx_page_context, null, false));
+      out.write("\" /></td>\r\n");
+      out.write("\t\t</tr>\r\n");
+      out.write("\t\t<tr>\r\n");
+      out.write("\t\t\t<td class=\"edittd\" >LOGO名称</td>\r\n");
+      out.write("\t\t\t<td><input type=\"text\" class=\"text easyui-validatebox\" data-options=\"required:true\" name=\"logoname\"  value=\"");
+      out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${details.logoname }", java.lang.String.class, (PageContext)_jspx_page_context, null, false));
+      out.write("\" /></td>\r\n");
+      out.write("\t\t</tr>\r\n");
+      out.write("\t\t<tr>\r\n");
+      out.write("\t\t\t<td class=\"edittd\" >LOGO</td>\r\n");
+      out.write("\t\t\t<td><input type=\"file\" id=\"imgFile\" name=\"imgFile\" class=\"text\"  size=\"30\" /></td>\r\n");
+      out.write("\t\t</tr>\r\n");
+      out.write("\t\t<tr>\r\n");
+      out.write("\t\t\t<td></td>\r\n");
+      out.write("\t\t\t<td>\r\n");
+      out.write("\t\t\t\t<img class=\"grayborder\" id=\"imgLogo\" width=\"150\" height=\"29\" src=\"");
+      out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${details.logo }", java.lang.String.class, (PageContext)_jspx_page_context, null, false));
+      out.write("\">\r\n");
+      out.write("\t\t\t</td>\r\n");
+      out.write("\t\t</tr>\t\r\n");
+      out.write("\t\t<tr>\r\n");
+      out.write("\t\t\t<td class=\"edittd\" >地址</td>\r\n");
+      out.write("\t\t\t<td><input type=\"text\" class=\"text easyui-validatebox\" data-options=\"required:true\" name=\"address\" value=\"");
+      out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${details.address }", java.lang.String.class, (PageContext)_jspx_page_context, null, false));
+      out.write("\" /></td>\r\n");
+      out.write("\t\t</tr>\r\n");
+      out.write("\t\t<tr>\r\n");
+      out.write("\t\t\t<td class=\"edittd\" >城市</td>\r\n");
+      out.write("\t\t\t<td><input type=\"text\" class=\"text easyui-validatebox\" data-options=\"required:true\" name=\"city\" value=\"");
+      out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${details.city }", java.lang.String.class, (PageContext)_jspx_page_context, null, false));
+      out.write("\" /></td>\r\n");
+      out.write("\t\t</tr>\t\r\n");
+      out.write("\t\t<tr>\r\n");
+      out.write("\t\t\t<td class=\"edittd\" >省份</td>\r\n");
+      out.write("\t\t\t<td><input type=\"text\" class=\"text easyui-validatebox\" data-options=\"required:true\" name=\"state\" value=\"");
+      out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${details.state }", java.lang.String.class, (PageContext)_jspx_page_context, null, false));
+      out.write("\"/></td>\r\n");
+      out.write("\t\t</tr>\t\r\n");
+      out.write("\t\t<tr>\r\n");
+      out.write("\t\t\t<td class=\"edittd\" >邮编</td>\r\n");
+      out.write("\t\t\t<td><input type=\"text\" class=\"text easyui-validatebox\" data-options=\"required:true\" name=\"code\" value=\"");
+      out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${details.code }", java.lang.String.class, (PageContext)_jspx_page_context, null, false));
+      out.write("\" /></td>\r\n");
+      out.write("\t\t</tr>\t\r\n");
+      out.write("\t\t<tr>\r\n");
+      out.write("\t\t\t<td class=\"edittd\" >国家</td>\r\n");
+      out.write("\t\t\t<td><input type=\"text\" class=\"text easyui-validatebox\" data-options=\"required:true\" name=\"country\" value=\"");
+      out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${details.country }", java.lang.String.class, (PageContext)_jspx_page_context, null, false));
+      out.write("\" /></td>\r\n");
+      out.write("\t\t</tr>\t\t\r\n");
+      out.write("\t\t<tr>\r\n");
+      out.write("\t\t\t<td class=\"edittd\" >电话</td>\r\n");
+      out.write("\t\t\t<td><input type=\"text\" class=\"text easyui-validatebox\" data-options=\"required:true\" name=\"phone\" value=\"");
+      out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${details.phone }", java.lang.String.class, (PageContext)_jspx_page_context, null, false));
+      out.write("\" /></td>\r\n");
+      out.write("\t\t</tr>\t\r\n");
+      out.write("\t\t<tr>\r\n");
+      out.write("\t\t\t<td class=\"edittd\" >传真</td>\r\n");
+      out.write("\t\t\t<td><input type=\"text\" class=\"text easyui-validatebox\" data-options=\"required:true\" name=\"fax\" value=\"");
+      out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${details.fax }", java.lang.String.class, (PageContext)_jspx_page_context, null, false));
+      out.write("\"  /></td>\r\n");
+      out.write("\t\t</tr>\t\r\n");
+      out.write("\t\t<tr>\r\n");
+      out.write("\t\t\t<td class=\"edittd\" >网站</td>\r\n");
+      out.write("\t\t\t<td><input type=\"text\" class=\"text easyui-validatebox\" data-options=\"required:true\" name=\"website\" value=\"");
+      out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${details.website }", java.lang.String.class, (PageContext)_jspx_page_context, null, false));
+      out.write("\" /></td>\r\n");
+      out.write("\t\t</tr>\t\r\n");
+      out.write("\t\t<tr>\r\n");
+      out.write("\t\t\t<td class=\"edittd\" >法定代表人</td>\r\n");
+      out.write("\t\t\t<td><input type=\"text\" class=\"text easyui-validatebox\" data-options=\"required:true\" name=\"person\" value=\"");
+      out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${details.person }", java.lang.String.class, (PageContext)_jspx_page_context, null, false));
+      out.write("\" /></td>\r\n");
+      out.write("\t\t</tr>\t\r\n");
+      out.write("\t\t<tr>\r\n");
+      out.write("\t\t\t<td class=\"edittd\" >开户银行</td>\r\n");
+      out.write("\t\t\t<td><input type=\"text\" class=\"text easyui-validatebox\" data-options=\"required:true\" name=\"bankname\" value=\"");
+      out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${details.bankname }", java.lang.String.class, (PageContext)_jspx_page_context, null, false));
+      out.write("\" /></td>\r\n");
+      out.write("\t\t</tr>\t\r\n");
+      out.write("\t\t<tr>\r\n");
+      out.write("\t\t\t<td class=\"edittd\" >银行帐号</td>\r\n");
+      out.write("\t\t\t<td><input type=\"text\" class=\"text easyui-validatebox\" data-options=\"required:true\" name=\"bankaccount\" value=\"");
+      out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${details.bankaccount }", java.lang.String.class, (PageContext)_jspx_page_context, null, false));
+      out.write("\"/></td>\r\n");
+      out.write("\t\t</tr>\t\r\n");
+      out.write("\t\t<tr>\r\n");
+      out.write("\t\t\t<td class=\"edittd\" >税号</td>\r\n");
+      out.write("\t\t\t<td><input type=\"text\" class=\"text easyui-validatebox\" data-options=\"required:true\" name=\"taxno\" value=\"");
+      out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${details.taxno }", java.lang.String.class, (PageContext)_jspx_page_context, null, false));
+      out.write("\"/></td>\r\n");
+      out.write("\t\t</tr>\t\r\n");
+      out.write("\t\t<tr>\r\n");
+      out.write("\t\t\t<td class=\"edittd\" ><a class=\"easyui-linkbutton\" data-options=\"iconCls:'icon-edit'\" onclick=\"organizationSubmit()\" >编辑</a></td>\r\n");
+      out.write("\t\t\t<td></td>\r\n");
+      out.write("\t\t</tr>\r\n");
+      out.write("\t</table>\r\n");
+      out.write("\t</form>\r\n");
+      out.write("\t\r\n");
+      out.write("\t</td>\r\n");
+      out.write("</tr>\r\n");
+      out.write("</table>\r\n");
+      out.write("</div>\r\n");
       out.write("\r\n");
       out.write("<div id=\"div_foot\" class=\"footercss\">\r\n");
       out.write("\t<table width=\"100%\" cellspacing=\"0\" cellpadding=\"5\" border=\"0\"\r\n");
@@ -458,7 +470,7 @@ String win_bar_1 = "resizable=\"false\"  closed=\"true\" modal=\"false\" collaps
     org.apache.taglibs.standard.tag.rt.core.WhenTag _jspx_th_c_005fwhen_005f0 = (org.apache.taglibs.standard.tag.rt.core.WhenTag) _005fjspx_005ftagPool_005fc_005fwhen_0026_005ftest.get(org.apache.taglibs.standard.tag.rt.core.WhenTag.class);
     _jspx_th_c_005fwhen_005f0.setPageContext(_jspx_page_context);
     _jspx_th_c_005fwhen_005f0.setParent((javax.servlet.jsp.tagext.Tag) _jspx_th_c_005fchoose_005f0);
-    // /WEB-INF/module/calendar/../../head.jsp(17,1) name = test type = boolean reqTime = true required = true fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
+    // /WEB-INF/settings/other/../../head.jsp(17,1) name = test type = boolean reqTime = true required = true fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
     _jspx_th_c_005fwhen_005f0.setTest(((java.lang.Boolean) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${ptb!=null&&tab!=null}", java.lang.Boolean.class, (PageContext)_jspx_page_context, null, false)).booleanValue());
     int _jspx_eval_c_005fwhen_005f0 = _jspx_th_c_005fwhen_005f0.doStartTag();
     if (_jspx_eval_c_005fwhen_005f0 != javax.servlet.jsp.tagext.Tag.SKIP_BODY) {
@@ -582,153 +594,6 @@ String win_bar_1 = "resizable=\"false\"  closed=\"true\" modal=\"false\" collaps
     } finally {
       _jspx_th_cache_005fcache_005f0.doFinally();
       _005fjspx_005ftagPool_005fcache_005fcache.reuse(_jspx_th_cache_005fcache_005f0);
-    }
-    return false;
-  }
-
-  private boolean _jspx_meth_c_005fchoose_005f1(PageContext _jspx_page_context)
-          throws Throwable {
-    PageContext pageContext = _jspx_page_context;
-    JspWriter out = _jspx_page_context.getOut();
-    //  c:choose
-    org.apache.taglibs.standard.tag.common.core.ChooseTag _jspx_th_c_005fchoose_005f1 = (org.apache.taglibs.standard.tag.common.core.ChooseTag) _005fjspx_005ftagPool_005fc_005fchoose.get(org.apache.taglibs.standard.tag.common.core.ChooseTag.class);
-    _jspx_th_c_005fchoose_005f1.setPageContext(_jspx_page_context);
-    _jspx_th_c_005fchoose_005f1.setParent(null);
-    int _jspx_eval_c_005fchoose_005f1 = _jspx_th_c_005fchoose_005f1.doStartTag();
-    if (_jspx_eval_c_005fchoose_005f1 != javax.servlet.jsp.tagext.Tag.SKIP_BODY) {
-      do {
-        out.write('\r');
-        out.write('\n');
-        out.write('	');
-        if (_jspx_meth_c_005fwhen_005f1(_jspx_th_c_005fchoose_005f1, _jspx_page_context))
-          return true;
-        out.write('\r');
-        out.write('\n');
-        out.write('	');
-        if (_jspx_meth_c_005fotherwise_005f1(_jspx_th_c_005fchoose_005f1, _jspx_page_context))
-          return true;
-        out.write('\r');
-        out.write('\n');
-        int evalDoAfterBody = _jspx_th_c_005fchoose_005f1.doAfterBody();
-        if (evalDoAfterBody != javax.servlet.jsp.tagext.BodyTag.EVAL_BODY_AGAIN)
-          break;
-      } while (true);
-    }
-    if (_jspx_th_c_005fchoose_005f1.doEndTag() == javax.servlet.jsp.tagext.Tag.SKIP_PAGE) {
-      _005fjspx_005ftagPool_005fc_005fchoose.reuse(_jspx_th_c_005fchoose_005f1);
-      return true;
-    }
-    _005fjspx_005ftagPool_005fc_005fchoose.reuse(_jspx_th_c_005fchoose_005f1);
-    return false;
-  }
-
-  private boolean _jspx_meth_c_005fwhen_005f1(javax.servlet.jsp.tagext.JspTag _jspx_th_c_005fchoose_005f1, PageContext _jspx_page_context)
-          throws Throwable {
-    PageContext pageContext = _jspx_page_context;
-    JspWriter out = _jspx_page_context.getOut();
-    //  c:when
-    org.apache.taglibs.standard.tag.rt.core.WhenTag _jspx_th_c_005fwhen_005f1 = (org.apache.taglibs.standard.tag.rt.core.WhenTag) _005fjspx_005ftagPool_005fc_005fwhen_0026_005ftest.get(org.apache.taglibs.standard.tag.rt.core.WhenTag.class);
-    _jspx_th_c_005fwhen_005f1.setPageContext(_jspx_page_context);
-    _jspx_th_c_005fwhen_005f1.setParent((javax.servlet.jsp.tagext.Tag) _jspx_th_c_005fchoose_005f1);
-    // /WEB-INF/module/calendar/index.jsp(7,1) name = test type = boolean reqTime = true required = true fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
-    _jspx_th_c_005fwhen_005f1.setTest(((java.lang.Boolean) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${customview.cvid!=null && dview!=null}", java.lang.Boolean.class, (PageContext)_jspx_page_context, null, false)).booleanValue());
-    int _jspx_eval_c_005fwhen_005f1 = _jspx_th_c_005fwhen_005f1.doStartTag();
-    if (_jspx_eval_c_005fwhen_005f1 != javax.servlet.jsp.tagext.Tag.SKIP_BODY) {
-      do {
-        out.write("\r\n");
-        out.write("\t\t<script>\r\n");
-        out.write("\t\t\tvar tab_columns = ");
-        out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${dview}", java.lang.String.class, (PageContext)_jspx_page_context, null, false));
-        out.write(";\r\n");
-        out.write("\t\t\ttab_columns = setDefWidth(tab_columns,80);\r\n");
-        out.write("\t\t\tvar tab_viewid = ");
-        out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${customview.cvid}", java.lang.String.class, (PageContext)_jspx_page_context, null, false));
-        out.write(";\r\n");
-        out.write("\t\t</script>\r\n");
-        out.write("\t");
-        int evalDoAfterBody = _jspx_th_c_005fwhen_005f1.doAfterBody();
-        if (evalDoAfterBody != javax.servlet.jsp.tagext.BodyTag.EVAL_BODY_AGAIN)
-          break;
-      } while (true);
-    }
-    if (_jspx_th_c_005fwhen_005f1.doEndTag() == javax.servlet.jsp.tagext.Tag.SKIP_PAGE) {
-      _005fjspx_005ftagPool_005fc_005fwhen_0026_005ftest.reuse(_jspx_th_c_005fwhen_005f1);
-      return true;
-    }
-    _005fjspx_005ftagPool_005fc_005fwhen_0026_005ftest.reuse(_jspx_th_c_005fwhen_005f1);
-    return false;
-  }
-
-  private boolean _jspx_meth_c_005fotherwise_005f1(javax.servlet.jsp.tagext.JspTag _jspx_th_c_005fchoose_005f1, PageContext _jspx_page_context)
-          throws Throwable {
-    PageContext pageContext = _jspx_page_context;
-    JspWriter out = _jspx_page_context.getOut();
-    //  c:otherwise
-    org.apache.taglibs.standard.tag.common.core.OtherwiseTag _jspx_th_c_005fotherwise_005f1 = (org.apache.taglibs.standard.tag.common.core.OtherwiseTag) _005fjspx_005ftagPool_005fc_005fotherwise.get(org.apache.taglibs.standard.tag.common.core.OtherwiseTag.class);
-    _jspx_th_c_005fotherwise_005f1.setPageContext(_jspx_page_context);
-    _jspx_th_c_005fotherwise_005f1.setParent((javax.servlet.jsp.tagext.Tag) _jspx_th_c_005fchoose_005f1);
-    int _jspx_eval_c_005fotherwise_005f1 = _jspx_th_c_005fotherwise_005f1.doStartTag();
-    if (_jspx_eval_c_005fotherwise_005f1 != javax.servlet.jsp.tagext.Tag.SKIP_BODY) {
-      do {
-        out.write("\r\n");
-        out.write("\t\t<script>\r\n");
-        out.write("\t\t\tvar tab_columns = \"\";\r\n");
-        out.write("\t\t\tvar tab_viewid = -1;\r\n");
-        out.write("\t\t</script>\r\n");
-        out.write("\t");
-        int evalDoAfterBody = _jspx_th_c_005fotherwise_005f1.doAfterBody();
-        if (evalDoAfterBody != javax.servlet.jsp.tagext.BodyTag.EVAL_BODY_AGAIN)
-          break;
-      } while (true);
-    }
-    if (_jspx_th_c_005fotherwise_005f1.doEndTag() == javax.servlet.jsp.tagext.Tag.SKIP_PAGE) {
-      _005fjspx_005ftagPool_005fc_005fotherwise.reuse(_jspx_th_c_005fotherwise_005f1);
-      return true;
-    }
-    _005fjspx_005ftagPool_005fc_005fotherwise.reuse(_jspx_th_c_005fotherwise_005f1);
-    return false;
-  }
-
-  private boolean _jspx_meth_c_005fforEach_005f0(PageContext _jspx_page_context)
-          throws Throwable {
-    PageContext pageContext = _jspx_page_context;
-    JspWriter out = _jspx_page_context.getOut();
-    //  c:forEach
-    org.apache.taglibs.standard.tag.rt.core.ForEachTag _jspx_th_c_005fforEach_005f0 = (org.apache.taglibs.standard.tag.rt.core.ForEachTag) _005fjspx_005ftagPool_005fc_005fforEach_0026_005fvar_005fitems.get(org.apache.taglibs.standard.tag.rt.core.ForEachTag.class);
-    _jspx_th_c_005fforEach_005f0.setPageContext(_jspx_page_context);
-    _jspx_th_c_005fforEach_005f0.setParent(null);
-    // /WEB-INF/module/calendar/index.jsp(127,6) name = items type = java.lang.Object reqTime = true required = false fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
-    _jspx_th_c_005fforEach_005f0.setItems((java.lang.Object) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${views}", java.lang.Object.class, (PageContext)_jspx_page_context, null, false));
-    // /WEB-INF/module/calendar/index.jsp(127,6) name = var type = java.lang.String reqTime = false required = false fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
-    _jspx_th_c_005fforEach_005f0.setVar("v");
-    int[] _jspx_push_body_count_c_005fforEach_005f0 = new int[] { 0 };
-    try {
-      int _jspx_eval_c_005fforEach_005f0 = _jspx_th_c_005fforEach_005f0.doStartTag();
-      if (_jspx_eval_c_005fforEach_005f0 != javax.servlet.jsp.tagext.Tag.SKIP_BODY) {
-        do {
-          out.write("\r\n");
-          out.write("\t\t\t\t\t\t\t<option value=\"");
-          out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${v.cvid }", java.lang.String.class, (PageContext)_jspx_page_context, null, false));
-          out.write('"');
-          out.write('>');
-          out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${v.viewname}", java.lang.String.class, (PageContext)_jspx_page_context, null, false));
-          out.write("</option>\r\n");
-          out.write("\t\t\t\t\t\t");
-          int evalDoAfterBody = _jspx_th_c_005fforEach_005f0.doAfterBody();
-          if (evalDoAfterBody != javax.servlet.jsp.tagext.BodyTag.EVAL_BODY_AGAIN)
-            break;
-        } while (true);
-      }
-      if (_jspx_th_c_005fforEach_005f0.doEndTag() == javax.servlet.jsp.tagext.Tag.SKIP_PAGE) {
-        return true;
-      }
-    } catch (Throwable _jspx_exception) {
-      while (_jspx_push_body_count_c_005fforEach_005f0[0]-- > 0)
-        out = _jspx_page_context.popBody();
-      _jspx_th_c_005fforEach_005f0.doCatch(_jspx_exception);
-    } finally {
-      _jspx_th_c_005fforEach_005f0.doFinally();
-      _005fjspx_005ftagPool_005fc_005fforEach_0026_005fvar_005fitems.reuse(_jspx_th_c_005fforEach_005f0);
     }
     return false;
   }

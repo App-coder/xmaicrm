@@ -25,6 +25,16 @@ function initPage() {
 	}
     });
 }
-function rendRel(columnname,data){
-    debugger;
+function rendRel(columnname,data,win){
+    if(columnname == "accountid"){
+	$.get('crm/contactdetails/getContactsByAccountid',{accountid:data.accountid},function(res){
+	    if(res.length>0){
+		var opstr = "";
+		for(var i=0;i<res.length;i++){
+		    opstr +="<option value='"+res[i].contactid+"'>"+res[i].lastname+"</option>";
+		}
+		$("select[name=contact_id]").html(opstr);
+	    }
+	},'json');
+    }
 }

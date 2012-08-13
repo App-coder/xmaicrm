@@ -50,8 +50,8 @@ function reloadView(val){
 function setParentVal(rowdata){
     //UI_TYPE 51,57
     
-    parent.$("input[name='"+columnname+"_text']").val(rowdata.accountname);
-    parent.$("input[name='"+columnname+"']").val(rowdata.accountid);
+    parent.$("input[name='"+columnname+"_text']").val(rowdata.potentialname);
+    parent.$("input[name='"+columnname+"']").val(rowdata.potentialid);
     parent.rendRel(columnname,rowdata);
     parent.$("#optionwindow").window("close");
 }

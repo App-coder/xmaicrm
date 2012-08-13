@@ -26,7 +26,7 @@ var viewid = '${viewid}';
 var tabid = ${tab.tabid};
 var columnname = '${columnname}';
 </script>
-<script type="text/javascript" src="resources/desktop/module/accounts/viewpop.js"></script>
+<script type="text/javascript" src="resources/desktop/module/potentials/viewpop.js"></script>
 </head>
 <body >
 <table id="view_list" toolbar="#tabbar"   data-options="fitColumns:true,fit:true,border:false"  ></table>

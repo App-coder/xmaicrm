@@ -81,6 +81,50 @@ ${ptb.parenttabLabel }&gt;<a href="crm/module/${fn:toLowerCase(entity.modulename
 	</table>
 </fieldset>
 </c:forEach>
+
+  <div class="easyui-tabs mb_10" style="height:200px;"  >  
+      <div title="相关信息" class="p10" >  
+          <table class="tab_editlist">
+          	<tr>
+          		<td class="edittd" >相关信息：</td>
+          		<td><input type="text"  class="text">&nbsp;&nbsp;
+          		<a class="easyui-linkbutton" iconCls="icon-search" onclick="formsubmit('form_campaign')">选择</a>
+          		</td>
+          	</tr>
+          </table>
+      </div>  
+      <div title="邀请同事" class="p10" >  
+          <table class="tab_editlist">
+          	<tr>
+          		<td class="edittd" >选择用户：</td>
+          		<td>
+          			<select class="easyui-combotree" style="width:200px;" data-options="url:'crm/relation/users/getSmowners'"></select>
+          		</td>
+          	</tr>
+          </table>  
+      </div>  
+      <div title="设置提醒" class="p10" >  
+            <table class="tab_editlist">
+          	<tr>
+          		<td class="edittd" >设置提醒：</td>
+          		<td>
+          			<input type="radio" />是&nbsp;&nbsp;<input type="radio" />否
+          		</td>
+          	</tr>
+          </table>
+      </div>
+      <div title="重复日程" class="p10" >  
+          <table class="tab_editlist">
+          	<tr>
+          		<td class="edittd" >重复日程：</td>
+          		<td>
+          			<input type="checkbox" />
+          		</td>
+          	</tr>
+          </table>  
+      </div>  
+  </div>  
+
 </form>
 
 <div class="tac" >

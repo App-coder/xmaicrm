@@ -53,7 +53,20 @@ public class XmContactdetailsController {
 		return JSON.toJSONString(bean);
 	}
 	
-	
+	/**
+	 * 
+	 * 根据客户ID获取联系人
+	 * 
+	 * @param accountid 客户ID
+	 * @return
+	 */
+	@RequestMapping(value = "/getContactsByAccountid", method = RequestMethod.GET)
+	@ResponseBody
+	public String getContactsByAccountid(String accountid){
+		List<XmContactdetails> list = this.xmContactdetailsService.getContactdetailsByAccountid(accountid);
+		
+		return JSON.toJSONString(list);
+	}
 	
 	
 }

@@ -133,4 +133,17 @@ public class XmPotentialController extends BaseController  {
 		return "module/potentials/edit";
 	}
 	
+	/**
+	 * 用户选择弹出窗
+	 * 
+	 * @param columnname
+	 * @return
+	 */
+	@RequestMapping(value = "/viewpop")
+	public String viewpop(String columnname,ModelMap modelmap){
+		ActionUtil.showList("Potentials", modelmap, moduleUtil);
+		modelmap.addAttribute("columnname",columnname);
+		return "module/potentials/viewpop";
+	}
+	
 }

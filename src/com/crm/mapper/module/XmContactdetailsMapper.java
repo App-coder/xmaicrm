@@ -25,4 +25,6 @@ public interface XmContactdetailsMapper extends ModuleMapper<XmContactdetails>{
 	int getTotalForGetContacts(@Param("campaignid") int campaignid);
 
 	List<XmContactdetails> getContactdetails(@Param("start") int start,@Param("rows") int rows,@Param("campaignid") int campaignid);
+
+	List<XmContactdetails> getContactdetailsByAccountid(@Param("accountid") String accountid);
 }
