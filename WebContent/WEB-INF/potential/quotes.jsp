@@ -2,11 +2,11 @@
 	pageEncoding="utf-8"%>
 <%@ include file="../common/config.jsp"%>
 <script>
-    var potential_columns = ${dview};
-    var potential_viewid = ${customview.cvid}
+    var quotes_columns = ${dview};
+    var quotes_viewid = ${customview.cvid}
 </script>
 <script type="text/javascript"
-	src="resources/desktop/potential/index.js"></script>
+	src="resources/desktop/potential/quotes.js"></script>
 <div class="container">
 	<div class="hidden">
 		<div id="potential_m1" style="width:100px;">
@@ -29,7 +29,7 @@
 		</div>
 		<div data-options="region:'center',border:false"
 			style="overflow: hidden">
-			<table id="potential_list" data-options="fit:true,fitColumns:true"></table>
+			<table id="quotes_list" data-options="fit:true,fitColumns:true"></table>
 		</div>
 		<c:if test="${repfields!=null }">
 		<div data-options="region:'south',border:false">

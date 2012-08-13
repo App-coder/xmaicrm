@@ -13,8 +13,9 @@ public class TestColumn {
 	
 	public void GetJson(){
 		Column c = new Column();
-		c.setTitle("客户名称 ");
-		c.setField("accountname");
+		c.setTitle("报价单阶段 ");
+		c.setField("quotestage");
+		c.setResizable(false);
 		System.out.println(JsonUtil.getJsonString4JavaPOJO(c));;
 		
 	}
