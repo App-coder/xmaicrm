@@ -1,5 +1,10 @@
 package com.crm.mapper;
 
+import java.util.List;
+
+import org.apache.ibatis.annotations.Param;
+
+import com.crm.model.XmField;
 import com.crm.model.XmTab;
 
 public interface XmTabMapper {
@@ -14,4 +19,7 @@ public interface XmTabMapper {
     int updateByPrimaryKeySelective(XmTab record);
 
     int updateByPrimaryKey(XmTab record);
+
+	XmTab getTabByName(@Param("tabname") String tabname);
+
 }

@@ -14,12 +14,14 @@ import com.crm.action.BaseController;
 import com.crm.bean.easyui.Column;
 import com.crm.bean.easyui.ListBean;
 import com.crm.model.XmCustomview;
+import com.crm.model.XmField;
 import com.crm.model.XmPotential;
 import com.crm.potentials.service.XmPotentialService;
 import com.crm.service.XmCustomViewService;
 import com.crm.service.XmCvadvfilterService;
 import com.crm.service.XmCvcolumnlistService;
 import com.crm.service.XmCvstdfilterService;
+import com.crm.service.XmFieldService;
 
 @Controller
 @RequestMapping(value = "potential")
@@ -42,6 +44,12 @@ public class XmPotentialController extends BaseController {
 	public void setXmPotentialService(XmPotentialService xmPotentialService) {
 		this.xmPotentialService = xmPotentialService;
 	}
+	
+	XmFieldService xmFieldService;
+	@Resource(name="xmFieldService")
+	public void setXmFieldService(XmFieldService xmFieldService) {
+		this.xmFieldService = xmFieldService;
+	}
 
 
 	@RequestMapping(value = "/index", method = RequestMethod.GET)
@@ -51,6 +59,13 @@ public class XmPotentialController extends BaseController {
 		XmCustomview customview = this.xmCustomViewService.selectByPrimaryKey("Potentials",-1);
 		List<Column> cols = this.xmCvcolumnlistService.getViewColumn(customview);
 		modelMap.addAttribute("dview",arrayToJson(cols));
+		modelMap.addAttribute("customview",customview);
+		
+		List<XmCustomview> views = this.xmCustomViewService.queryByEntityType("Potentials");
+		modelMap.addAttribute("views",views);
+		
+		List<XmField> repfields = this.xmFieldService.getReportField("Potentials");
+		modelMap.addAttribute("repfields",repfields);
 		
 		return "potential/index";
 	}
