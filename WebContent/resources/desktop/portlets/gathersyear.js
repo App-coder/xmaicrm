@@ -18,20 +18,20 @@ function initPage(){
 
         var graph1 = new AmCharts.AmGraph();
         graph1.type = "column";
-        graph1.title = "目标";
-        graph1.valueField = "sum";
+        graph1.title = "去年";
+        graph1.valueField = "lastYearGather";
         graph1.colorField = "colorOfSum";
-        graph1.balloonText = "目标: [[value]]";
+        graph1.balloonText = "[[category]]: [[value]]";
         graph1.lineAlpha = 0;
         graph1.fillAlphas = 1;
         chart.addGraph(graph1);
 				
 	var graph2 = new AmCharts.AmGraph();
         graph2.type = "column";
-        graph2.title = "已完成";
-        graph2.valueField = "finished"; 
+        graph2.title = "今年";
+        graph2.valueField = "yearGather"; 
         graph2.colorField = "colorOfFinished";
-        graph2.balloonText = "已完成: [[value]]";
+        graph2.balloonText = "[[category]]: [[value]]";
         graph2.lineAlpha = 0;
         graph2.fillAlphas = 1;
         chart.addGraph(graph2);
