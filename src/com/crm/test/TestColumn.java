@@ -13,8 +13,8 @@ public class TestColumn {
 	
 	public void GetJson(){
 		Column c = new Column();
-		c.setTitle("报价单阶段 ");
-		c.setField("quotestage");
+		c.setTitle("状态 ");
+		c.setField("sostatus");
 		c.setResizable(false);
 		System.out.println(JsonUtil.getJsonString4JavaPOJO(c));;
 		

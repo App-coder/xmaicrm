@@ -24,10 +24,7 @@ $(function() {
 		frozenColumns : [[{
 			field : 'ck',
 			checkbox : true
-		}]],
-		onLoadSuccess:function(data){
-		    $('#potential_list').datagrid('fixColumnSize'); 
-		}
+		}]]
 	    });
     
 });

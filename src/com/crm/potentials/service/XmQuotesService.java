@@ -1,8 +1,7 @@
 package com.crm.potentials.service;
 
-import java.util.List;
 
-import com.crm.model.XmQuotes;
+import com.crm.service.ModuleService;
 
 /**
  * 报价单的接口
@@ -11,10 +10,7 @@ import com.crm.model.XmQuotes;
  * Date: 2012-8-13
  * Time: 下午3:31:56
  */
-public interface XmQuotesService {
+public interface XmQuotesService  extends  ModuleService{
 
-	int getTotal(int viewid);
-
-	List<XmQuotes> loadList(int page, int rows, int viewid);
 
 }
