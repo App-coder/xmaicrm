@@ -3,7 +3,7 @@ $(function(){
 });
 function initPage(){
     
-    $.post('crm/portlets/com_salesfinishedbymonth/getInfo',null,function(res){
+    $.get('crm/portlets/gathersyear/getJson',null,function(res){
 	
 	var chart = new AmCharts.AmSerialChart();
         chart.dataProvider = res;
@@ -20,8 +20,8 @@ function initPage(){
         graph1.type = "column";
         graph1.title = "去年";
         graph1.valueField = "lastYearGather";
-        graph1.colorField = "colorOfSum";
-        graph1.balloonText = "[[category]]: [[value]]";
+        graph1.colorField = "colorOfLastYear";
+        graph1.balloonText = "去年[[month]]月份:[[value]]";
         graph1.lineAlpha = 0;
         graph1.fillAlphas = 1;
         chart.addGraph(graph1);
@@ -30,8 +30,8 @@ function initPage(){
         graph2.type = "column";
         graph2.title = "今年";
         graph2.valueField = "yearGather"; 
-        graph2.colorField = "colorOfFinished";
-        graph2.balloonText = "[[category]]: [[value]]";
+        graph2.colorField = "colorOfYear";
+        graph2.balloonText = "今年[[month]]月份:[[value]]";
         graph2.lineAlpha = 0;
         graph2.fillAlphas = 1;
         chart.addGraph(graph2);

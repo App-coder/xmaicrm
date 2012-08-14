@@ -28,7 +28,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <!-- loadmask -->
 <link href="resources/plugins/loadmask/jquery.loadmask.css" rel="stylesheet" type="text/css" />
 <script type="text/javascript" src="resources/plugins/loadmask/jquery.loadmask.min.js"></script>
-<script type="text/javascript" src="resources/global.js"></script>    
 
-<script type="text/javascript" src="resources/global.js"></script>
-<script type="text/javascript" src="resources/resources/desktop/portlets.js"></script>
+<script type="text/javascript" src="resources/global.js"></script>    
+<script type="text/javascript" src="resources/portlets.js"></script>

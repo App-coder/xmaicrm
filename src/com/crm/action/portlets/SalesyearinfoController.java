@@ -1,6 +1,7 @@
 package com.crm.action.portlets;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 /**
@@ -14,4 +15,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @RequestMapping(value = "crm/portlets/salesyearinfo")
 public class SalesyearinfoController {
 
+	@RequestMapping(value = "/index")
+	public String index() {
+		return "portlets/salesyearinfo";
+	}
+	
 }

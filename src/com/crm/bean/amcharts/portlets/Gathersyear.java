@@ -1,9 +1,11 @@
 package com.crm.bean.amcharts.portlets;
 
+import java.math.BigDecimal;
+
 public class Gathersyear {
 	private String month;
-	private String lastYearGather;
-	private String yearGather;
+	private BigDecimal lastYearGather;
+	private BigDecimal yearGather;
 	private String colorOfLastYear;
 	private String colorOfYear;
 	
@@ -12,18 +14,6 @@ public class Gathersyear {
 	}
 	public void setMonth(String month) {
 		this.month = month;
-	}
-	public String getLastYearGather() {
-		return lastYearGather;
-	}
-	public void setLastYearGather(String lastYearGather) {
-		this.lastYearGather = lastYearGather;
-	}
-	public String getYearGather() {
-		return yearGather;
-	}
-	public void setYearGather(String yearGather) {
-		this.yearGather = yearGather;
 	}
 	public String getColorOfLastYear() {
 		return colorOfLastYear;
@@ -37,7 +27,16 @@ public class Gathersyear {
 	public void setColorOfYear(String colorOfYear) {
 		this.colorOfYear = colorOfYear;
 	}
-	
-	
-	
+	public BigDecimal getLastYearGather() {
+		return lastYearGather;
+	}
+	public void setLastYearGather(BigDecimal lastYearGather) {
+		this.lastYearGather = lastYearGather;
+	}
+	public BigDecimal getYearGather() {
+		return yearGather;
+	}
+	public void setYearGather(BigDecimal yearGather) {
+		this.yearGather = yearGather;
+	}
 }
