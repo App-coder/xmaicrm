@@ -1,11 +1,14 @@
 <%@ page language="java" contentType="text/html; charset=utf-8" pageEncoding="utf-8"%>
 <%@ include file="../common/config.jsp" %>
-<script type="text/javascript" src="resources/desktop/customer/account.js"></script>
 
+	
 <script>
     var account_columns = ${dview};
     var account_viewid = ${customview.cvid}
 </script>
+<script type="text/javascript" 	src="resources/desktop/customer/account.js"></script>
+
+
 <div class="container">
 	<div class="hidden">
 		<div id="account_m1" style="width:100px;">
