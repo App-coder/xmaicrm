@@ -1,17 +1,16 @@
 var msg_ex = "系统出现异常，请联系管理员！";
 
 $(function() {
-
-	/*
-	 * $("body").ajaxStart(function(){ mask(); });
-	 * 
-	 * $("body").ajaxStop(function(){ unmask(); });
-	 * 
-	 *     $(window).resize(function () {
+	
+	 $("body").ajaxStart(function(){ mask(); });
+	  
+	 $("body").ajaxStop(function(){ unmask(); });
+	  
+	 $(window).resize(function () {
             	 $('#tabs').tabs('resize');
-               }); 
-	 * 
-	 */
+         }); 
+	  
+	
 	tabClose();
 	tabCloseEven();
 

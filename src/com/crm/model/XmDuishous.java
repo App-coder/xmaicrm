@@ -38,6 +38,8 @@ public class XmDuishous {
     private String duishou537;
 
     private String duishou539;
+    
+    private String userName;
 
     public Integer getDuishousid() {
         return duishousid;
@@ -182,4 +184,15 @@ public class XmDuishous {
     public void setDuishou539(String duishou539) {
         this.duishou539 = duishou539 == null ? null : duishou539.trim();
     }
+
+	public String getUserName() {
+		return userName;
+	}
+
+	public void setUserName(String userName) {
+		this.userName = userName;
+	}
+    
+    
+    
 }

@@ -81,6 +81,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
       out.write("<script type=\"text/javascript\" src=\"resources/easyui/jquery.easyui.min.js\"></script>\r\n");
       out.write("<script type=\"text/javascript\" src=\"resources/easyui/locale/easyui-lang-zh_CN.js\"></script>\r\n");
       out.write("\r\n");
+      out.write("<!-- loadmask -->\r\n");
+      out.write("<link href=\"resources/plugins/loadmask/jquery.loadmask.css\" rel=\"stylesheet\" type=\"text/css\" />\r\n");
+      out.write("<script type=\"text/javascript\" src=\"resources/plugins/loadmask/jquery.loadmask.min.js\"></script>\r\n");
       out.write("\r\n");
       out.write("<script type=\"text/javascript\" src=\"resources/global.js\"></script>\r\n");
       out.write("\r\n");
@@ -116,8 +119,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
       out.write("\t\t\t<div><a href=\"javascript:tab('销售机会','potential/index')\" >销售机会</a></div>\r\n");
       out.write("\t\t\t<div>销售漏斗</div>\r\n");
       out.write("\t\t\t<div><a href=\"javascript:tab('报价单','quotes/index')\" >报价单</a></div>\r\n");
-      out.write("\t\t\t<div>竞争对手</div>\r\n");
-      out.write("\t\t\t<div>合同订单</div>\r\n");
+      out.write("\t\t\t<div><a href=\"javascript:tab('竞争对手','duishous/index')\" >竞争对手</a></div>\r\n");
+      out.write("\t\t\t<div><a href=\"javascript:tab('合同订单','salesorder/index')\" >合同订单</a></div>\r\n");
       out.write("\t\t\t<div>发货单</div>\r\n");
       out.write("\t\t\t<div>销售退货单</div>\r\n");
       out.write("\t\t\t<div>员工绩效</div>\r\n");
@@ -172,7 +175,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
       out.write("\t\t\t<div>常见问答</div>\r\n");
       out.write("\t\t</div>\r\n");
       out.write("\t</div>\r\n");
-      out.write("\t<div region=\"north\" style=\"height: 62px; \"\r\n");
+      out.write("\t<div region=\"north\" style=\"height: 62px;overflow: hidden; \"\r\n");
       out.write("\t\tclass=\"headerNav\" border=\"false\">\r\n");
       out.write("\t\t<a class=\"logo\"></a>\r\n");
       out.write("\t\t<ul class=\"nav\">\r\n");

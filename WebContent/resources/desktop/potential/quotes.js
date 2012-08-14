@@ -24,10 +24,7 @@ $(function() {
 		frozenColumns : [[{
 			field : 'ck',
 			checkbox : true
-		}]],
-		onLoadSuccess:function(data){
-		    $('#quotes_list').datagrid('fixColumnSize'); 
-		}
+		}]]
 	    });
     
 });

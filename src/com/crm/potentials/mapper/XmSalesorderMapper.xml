@@ -1,0 +1,548 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.crm.potentials.mapper.XmSalesorderMapper" >
+  <resultMap id="BaseResultMap" type="com.crm.model.XmSalesorder" >
+    <id column="salesorderid" property="salesorderid" jdbcType="INTEGER" />
+    <result column="subject" property="subject" jdbcType="VARCHAR" />
+    <result column="potentialid" property="potentialid" jdbcType="INTEGER" />
+    <result column="quoteid" property="quoteid" jdbcType="INTEGER" />
+    <result column="vendorterms" property="vendorterms" jdbcType="VARCHAR" />
+    <result column="contactid" property="contactid" jdbcType="INTEGER" />
+    <result column="vendorid" property="vendorid" jdbcType="INTEGER" />
+    <result column="duedate" property="duedate" jdbcType="DATE" />
+    <result column="carrier" property="carrier" jdbcType="VARCHAR" />
+    <result column="type" property="type" jdbcType="VARCHAR" />
+    <result column="salestax" property="salestax" jdbcType="DECIMAL" />
+    <result column="adjustment" property="adjustment" jdbcType="DECIMAL" />
+    <result column="salescommission" property="salescommission" jdbcType="DECIMAL" />
+    <result column="exciseduty" property="exciseduty" jdbcType="DECIMAL" />
+    <result column="currency" property="currency" jdbcType="VARCHAR" />
+    <result column="currency_rate" property="currencyRate" jdbcType="DECIMAL" />
+    <result column="total" property="total" jdbcType="DECIMAL" />
+    <result column="subtotal" property="subtotal" jdbcType="DECIMAL" />
+    <result column="taxtype" property="taxtype" jdbcType="VARCHAR" />
+    <result column="discount_percent" property="discountPercent" jdbcType="DECIMAL" />
+    <result column="discount_amount" property="discountAmount" jdbcType="DECIMAL" />
+    <result column="s_h_amount" property="sHAmount" jdbcType="DECIMAL" />
+    <result column="accountid" property="accountid" jdbcType="INTEGER" />
+    <result column="sostatus" property="sostatus" jdbcType="VARCHAR" />
+    <result column="projectsid" property="projectsid" jdbcType="INTEGER" />
+    <result column="smcreatorid" property="smcreatorid" jdbcType="INTEGER" />
+    <result column="smownerid" property="smownerid" jdbcType="INTEGER" />
+    <result column="modifiedby" property="modifiedby" jdbcType="INTEGER" />
+    <result column="groupid" property="groupid" jdbcType="INTEGER" />
+    <result column="createdtime" property="createdtime" jdbcType="TIMESTAMP" />
+    <result column="modifiedtime" property="modifiedtime" jdbcType="TIMESTAMP" />
+    <result column="deleted" property="deleted" jdbcType="INTEGER" />
+    <result column="approved" property="approved" jdbcType="INTEGER" />
+    <result column="approvedby" property="approvedby" jdbcType="INTEGER" />
+    <result column="delitype" property="delitype" jdbcType="VARCHAR" />
+    <result column="profit" property="profit" jdbcType="DECIMAL" />
+    <result column="gatherstatus" property="gatherstatus" jdbcType="VARCHAR" />
+  </resultMap>
+  <resultMap id="ResultMapWithBLOBs" type="com.crm.model.XmSalesorder" extends="BaseResultMap" >
+    <result column="terms_conditions" property="termsConditions" jdbcType="LONGVARCHAR" />
+    <result column="description" property="description" jdbcType="LONGVARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    salesorderid, subject, potentialid, quoteid, vendorterms, contactid, vendorid, duedate, 
+    carrier, type, salestax, adjustment, salescommission, exciseduty, currency, currency_rate, 
+    total, subtotal, taxtype, discount_percent, discount_amount, s_h_amount, accountid, 
+    sostatus, projectsid, smcreatorid, smownerid, modifiedby, groupid, createdtime, modifiedtime, 
+    deleted, approved, approvedby, delitype, profit, gatherstatus
+  </sql>
+  <sql id="Blob_Column_List" >
+    terms_conditions, description
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="ResultMapWithBLOBs" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from xm_salesorder
+    where salesorderid = #{salesorderid,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from xm_salesorder
+    where salesorderid = #{salesorderid,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.crm.model.XmSalesorder" >
+    insert into xm_salesorder (salesorderid, subject, potentialid, 
+      quoteid, vendorterms, contactid, 
+      vendorid, duedate, carrier, 
+      type, salestax, adjustment, 
+      salescommission, exciseduty, currency, 
+      currency_rate, total, subtotal, 
+      taxtype, discount_percent, discount_amount, 
+      s_h_amount, accountid, sostatus, 
+      projectsid, smcreatorid, smownerid, 
+      modifiedby, groupid, createdtime, 
+      modifiedtime, deleted, approved, 
+      approvedby, delitype, profit, 
+      gatherstatus, terms_conditions, description
+      )
+    values (#{salesorderid,jdbcType=INTEGER}, #{subject,jdbcType=VARCHAR}, #{potentialid,jdbcType=INTEGER}, 
+      #{quoteid,jdbcType=INTEGER}, #{vendorterms,jdbcType=VARCHAR}, #{contactid,jdbcType=INTEGER}, 
+      #{vendorid,jdbcType=INTEGER}, #{duedate,jdbcType=DATE}, #{carrier,jdbcType=VARCHAR}, 
+      #{type,jdbcType=VARCHAR}, #{salestax,jdbcType=DECIMAL}, #{adjustment,jdbcType=DECIMAL}, 
+      #{salescommission,jdbcType=DECIMAL}, #{exciseduty,jdbcType=DECIMAL}, #{currency,jdbcType=VARCHAR}, 
+      #{currencyRate,jdbcType=DECIMAL}, #{total,jdbcType=DECIMAL}, #{subtotal,jdbcType=DECIMAL}, 
+      #{taxtype,jdbcType=VARCHAR}, #{discountPercent,jdbcType=DECIMAL}, #{discountAmount,jdbcType=DECIMAL}, 
+      #{sHAmount,jdbcType=DECIMAL}, #{accountid,jdbcType=INTEGER}, #{sostatus,jdbcType=VARCHAR}, 
+      #{projectsid,jdbcType=INTEGER}, #{smcreatorid,jdbcType=INTEGER}, #{smownerid,jdbcType=INTEGER}, 
+      #{modifiedby,jdbcType=INTEGER}, #{groupid,jdbcType=INTEGER}, #{createdtime,jdbcType=TIMESTAMP}, 
+      #{modifiedtime,jdbcType=TIMESTAMP}, #{deleted,jdbcType=INTEGER}, #{approved,jdbcType=INTEGER}, 
+      #{approvedby,jdbcType=INTEGER}, #{delitype,jdbcType=VARCHAR}, #{profit,jdbcType=DECIMAL}, 
+      #{gatherstatus,jdbcType=VARCHAR}, #{termsConditions,jdbcType=LONGVARCHAR}, #{description,jdbcType=LONGVARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.crm.model.XmSalesorder" >
+    insert into xm_salesorder
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="salesorderid != null" >
+        salesorderid,
+      </if>
+      <if test="subject != null" >
+        subject,
+      </if>
+      <if test="potentialid != null" >
+        potentialid,
+      </if>
+      <if test="quoteid != null" >
+        quoteid,
+      </if>
+      <if test="vendorterms != null" >
+        vendorterms,
+      </if>
+      <if test="contactid != null" >
+        contactid,
+      </if>
+      <if test="vendorid != null" >
+        vendorid,
+      </if>
+      <if test="duedate != null" >
+        duedate,
+      </if>
+      <if test="carrier != null" >
+        carrier,
+      </if>
+      <if test="type != null" >
+        type,
+      </if>
+      <if test="salestax != null" >
+        salestax,
+      </if>
+      <if test="adjustment != null" >
+        adjustment,
+      </if>
+      <if test="salescommission != null" >
+        salescommission,
+      </if>
+      <if test="exciseduty != null" >
+        exciseduty,
+      </if>
+      <if test="currency != null" >
+        currency,
+      </if>
+      <if test="currencyRate != null" >
+        currency_rate,
+      </if>
+      <if test="total != null" >
+        total,
+      </if>
+      <if test="subtotal != null" >
+        subtotal,
+      </if>
+      <if test="taxtype != null" >
+        taxtype,
+      </if>
+      <if test="discountPercent != null" >
+        discount_percent,
+      </if>
+      <if test="discountAmount != null" >
+        discount_amount,
+      </if>
+      <if test="sHAmount != null" >
+        s_h_amount,
+      </if>
+      <if test="accountid != null" >
+        accountid,
+      </if>
+      <if test="sostatus != null" >
+        sostatus,
+      </if>
+      <if test="projectsid != null" >
+        projectsid,
+      </if>
+      <if test="smcreatorid != null" >
+        smcreatorid,
+      </if>
+      <if test="smownerid != null" >
+        smownerid,
+      </if>
+      <if test="modifiedby != null" >
+        modifiedby,
+      </if>
+      <if test="groupid != null" >
+        groupid,
+      </if>
+      <if test="createdtime != null" >
+        createdtime,
+      </if>
+      <if test="modifiedtime != null" >
+        modifiedtime,
+      </if>
+      <if test="deleted != null" >
+        deleted,
+      </if>
+      <if test="approved != null" >
+        approved,
+      </if>
+      <if test="approvedby != null" >
+        approvedby,
+      </if>
+      <if test="delitype != null" >
+        delitype,
+      </if>
+      <if test="profit != null" >
+        profit,
+      </if>
+      <if test="gatherstatus != null" >
+        gatherstatus,
+      </if>
+      <if test="termsConditions != null" >
+        terms_conditions,
+      </if>
+      <if test="description != null" >
+        description,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="salesorderid != null" >
+        #{salesorderid,jdbcType=INTEGER},
+      </if>
+      <if test="subject != null" >
+        #{subject,jdbcType=VARCHAR},
+      </if>
+      <if test="potentialid != null" >
+        #{potentialid,jdbcType=INTEGER},
+      </if>
+      <if test="quoteid != null" >
+        #{quoteid,jdbcType=INTEGER},
+      </if>
+      <if test="vendorterms != null" >
+        #{vendorterms,jdbcType=VARCHAR},
+      </if>
+      <if test="contactid != null" >
+        #{contactid,jdbcType=INTEGER},
+      </if>
+      <if test="vendorid != null" >
+        #{vendorid,jdbcType=INTEGER},
+      </if>
+      <if test="duedate != null" >
+        #{duedate,jdbcType=DATE},
+      </if>
+      <if test="carrier != null" >
+        #{carrier,jdbcType=VARCHAR},
+      </if>
+      <if test="type != null" >
+        #{type,jdbcType=VARCHAR},
+      </if>
+      <if test="salestax != null" >
+        #{salestax,jdbcType=DECIMAL},
+      </if>
+      <if test="adjustment != null" >
+        #{adjustment,jdbcType=DECIMAL},
+      </if>
+      <if test="salescommission != null" >
+        #{salescommission,jdbcType=DECIMAL},
+      </if>
+      <if test="exciseduty != null" >
+        #{exciseduty,jdbcType=DECIMAL},
+      </if>
+      <if test="currency != null" >
+        #{currency,jdbcType=VARCHAR},
+      </if>
+      <if test="currencyRate != null" >
+        #{currencyRate,jdbcType=DECIMAL},
+      </if>
+      <if test="total != null" >
+        #{total,jdbcType=DECIMAL},
+      </if>
+      <if test="subtotal != null" >
+        #{subtotal,jdbcType=DECIMAL},
+      </if>
+      <if test="taxtype != null" >
+        #{taxtype,jdbcType=VARCHAR},
+      </if>
+      <if test="discountPercent != null" >
+        #{discountPercent,jdbcType=DECIMAL},
+      </if>
+      <if test="discountAmount != null" >
+        #{discountAmount,jdbcType=DECIMAL},
+      </if>
+      <if test="sHAmount != null" >
+        #{sHAmount,jdbcType=DECIMAL},
+      </if>
+      <if test="accountid != null" >
+        #{accountid,jdbcType=INTEGER},
+      </if>
+      <if test="sostatus != null" >
+        #{sostatus,jdbcType=VARCHAR},
+      </if>
+      <if test="projectsid != null" >
+        #{projectsid,jdbcType=INTEGER},
+      </if>
+      <if test="smcreatorid != null" >
+        #{smcreatorid,jdbcType=INTEGER},
+      </if>
+      <if test="smownerid != null" >
+        #{smownerid,jdbcType=INTEGER},
+      </if>
+      <if test="modifiedby != null" >
+        #{modifiedby,jdbcType=INTEGER},
+      </if>
+      <if test="groupid != null" >
+        #{groupid,jdbcType=INTEGER},
+      </if>
+      <if test="createdtime != null" >
+        #{createdtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="modifiedtime != null" >
+        #{modifiedtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="deleted != null" >
+        #{deleted,jdbcType=INTEGER},
+      </if>
+      <if test="approved != null" >
+        #{approved,jdbcType=INTEGER},
+      </if>
+      <if test="approvedby != null" >
+        #{approvedby,jdbcType=INTEGER},
+      </if>
+      <if test="delitype != null" >
+        #{delitype,jdbcType=VARCHAR},
+      </if>
+      <if test="profit != null" >
+        #{profit,jdbcType=DECIMAL},
+      </if>
+      <if test="gatherstatus != null" >
+        #{gatherstatus,jdbcType=VARCHAR},
+      </if>
+      <if test="termsConditions != null" >
+        #{termsConditions,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="description != null" >
+        #{description,jdbcType=LONGVARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.crm.model.XmSalesorder" >
+    update xm_salesorder
+    <set >
+      <if test="subject != null" >
+        subject = #{subject,jdbcType=VARCHAR},
+      </if>
+      <if test="potentialid != null" >
+        potentialid = #{potentialid,jdbcType=INTEGER},
+      </if>
+      <if test="quoteid != null" >
+        quoteid = #{quoteid,jdbcType=INTEGER},
+      </if>
+      <if test="vendorterms != null" >
+        vendorterms = #{vendorterms,jdbcType=VARCHAR},
+      </if>
+      <if test="contactid != null" >
+        contactid = #{contactid,jdbcType=INTEGER},
+      </if>
+      <if test="vendorid != null" >
+        vendorid = #{vendorid,jdbcType=INTEGER},
+      </if>
+      <if test="duedate != null" >
+        duedate = #{duedate,jdbcType=DATE},
+      </if>
+      <if test="carrier != null" >
+        carrier = #{carrier,jdbcType=VARCHAR},
+      </if>
+      <if test="type != null" >
+        type = #{type,jdbcType=VARCHAR},
+      </if>
+      <if test="salestax != null" >
+        salestax = #{salestax,jdbcType=DECIMAL},
+      </if>
+      <if test="adjustment != null" >
+        adjustment = #{adjustment,jdbcType=DECIMAL},
+      </if>
+      <if test="salescommission != null" >
+        salescommission = #{salescommission,jdbcType=DECIMAL},
+      </if>
+      <if test="exciseduty != null" >
+        exciseduty = #{exciseduty,jdbcType=DECIMAL},
+      </if>
+      <if test="currency != null" >
+        currency = #{currency,jdbcType=VARCHAR},
+      </if>
+      <if test="currencyRate != null" >
+        currency_rate = #{currencyRate,jdbcType=DECIMAL},
+      </if>
+      <if test="total != null" >
+        total = #{total,jdbcType=DECIMAL},
+      </if>
+      <if test="subtotal != null" >
+        subtotal = #{subtotal,jdbcType=DECIMAL},
+      </if>
+      <if test="taxtype != null" >
+        taxtype = #{taxtype,jdbcType=VARCHAR},
+      </if>
+      <if test="discountPercent != null" >
+        discount_percent = #{discountPercent,jdbcType=DECIMAL},
+      </if>
+      <if test="discountAmount != null" >
+        discount_amount = #{discountAmount,jdbcType=DECIMAL},
+      </if>
+      <if test="sHAmount != null" >
+        s_h_amount = #{sHAmount,jdbcType=DECIMAL},
+      </if>
+      <if test="accountid != null" >
+        accountid = #{accountid,jdbcType=INTEGER},
+      </if>
+      <if test="sostatus != null" >
+        sostatus = #{sostatus,jdbcType=VARCHAR},
+      </if>
+      <if test="projectsid != null" >
+        projectsid = #{projectsid,jdbcType=INTEGER},
+      </if>
+      <if test="smcreatorid != null" >
+        smcreatorid = #{smcreatorid,jdbcType=INTEGER},
+      </if>
+      <if test="smownerid != null" >
+        smownerid = #{smownerid,jdbcType=INTEGER},
+      </if>
+      <if test="modifiedby != null" >
+        modifiedby = #{modifiedby,jdbcType=INTEGER},
+      </if>
+      <if test="groupid != null" >
+        groupid = #{groupid,jdbcType=INTEGER},
+      </if>
+      <if test="createdtime != null" >
+        createdtime = #{createdtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="modifiedtime != null" >
+        modifiedtime = #{modifiedtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="deleted != null" >
+        deleted = #{deleted,jdbcType=INTEGER},
+      </if>
+      <if test="approved != null" >
+        approved = #{approved,jdbcType=INTEGER},
+      </if>
+      <if test="approvedby != null" >
+        approvedby = #{approvedby,jdbcType=INTEGER},
+      </if>
+      <if test="delitype != null" >
+        delitype = #{delitype,jdbcType=VARCHAR},
+      </if>
+      <if test="profit != null" >
+        profit = #{profit,jdbcType=DECIMAL},
+      </if>
+      <if test="gatherstatus != null" >
+        gatherstatus = #{gatherstatus,jdbcType=VARCHAR},
+      </if>
+      <if test="termsConditions != null" >
+        terms_conditions = #{termsConditions,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="description != null" >
+        description = #{description,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    where salesorderid = #{salesorderid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.crm.model.XmSalesorder" >
+    update xm_salesorder
+    set subject = #{subject,jdbcType=VARCHAR},
+      potentialid = #{potentialid,jdbcType=INTEGER},
+      quoteid = #{quoteid,jdbcType=INTEGER},
+      vendorterms = #{vendorterms,jdbcType=VARCHAR},
+      contactid = #{contactid,jdbcType=INTEGER},
+      vendorid = #{vendorid,jdbcType=INTEGER},
+      duedate = #{duedate,jdbcType=DATE},
+      carrier = #{carrier,jdbcType=VARCHAR},
+      type = #{type,jdbcType=VARCHAR},
+      salestax = #{salestax,jdbcType=DECIMAL},
+      adjustment = #{adjustment,jdbcType=DECIMAL},
+      salescommission = #{salescommission,jdbcType=DECIMAL},
+      exciseduty = #{exciseduty,jdbcType=DECIMAL},
+      currency = #{currency,jdbcType=VARCHAR},
+      currency_rate = #{currencyRate,jdbcType=DECIMAL},
+      total = #{total,jdbcType=DECIMAL},
+      subtotal = #{subtotal,jdbcType=DECIMAL},
+      taxtype = #{taxtype,jdbcType=VARCHAR},
+      discount_percent = #{discountPercent,jdbcType=DECIMAL},
+      discount_amount = #{discountAmount,jdbcType=DECIMAL},
+      s_h_amount = #{sHAmount,jdbcType=DECIMAL},
+      accountid = #{accountid,jdbcType=INTEGER},
+      sostatus = #{sostatus,jdbcType=VARCHAR},
+      projectsid = #{projectsid,jdbcType=INTEGER},
+      smcreatorid = #{smcreatorid,jdbcType=INTEGER},
+      smownerid = #{smownerid,jdbcType=INTEGER},
+      modifiedby = #{modifiedby,jdbcType=INTEGER},
+      groupid = #{groupid,jdbcType=INTEGER},
+      createdtime = #{createdtime,jdbcType=TIMESTAMP},
+      modifiedtime = #{modifiedtime,jdbcType=TIMESTAMP},
+      deleted = #{deleted,jdbcType=INTEGER},
+      approved = #{approved,jdbcType=INTEGER},
+      approvedby = #{approvedby,jdbcType=INTEGER},
+      delitype = #{delitype,jdbcType=VARCHAR},
+      profit = #{profit,jdbcType=DECIMAL},
+      gatherstatus = #{gatherstatus,jdbcType=VARCHAR},
+      terms_conditions = #{termsConditions,jdbcType=LONGVARCHAR},
+      description = #{description,jdbcType=LONGVARCHAR}
+    where salesorderid = #{salesorderid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.crm.model.XmSalesorder" >
+    update xm_salesorder
+    set subject = #{subject,jdbcType=VARCHAR},
+      potentialid = #{potentialid,jdbcType=INTEGER},
+      quoteid = #{quoteid,jdbcType=INTEGER},
+      vendorterms = #{vendorterms,jdbcType=VARCHAR},
+      contactid = #{contactid,jdbcType=INTEGER},
+      vendorid = #{vendorid,jdbcType=INTEGER},
+      duedate = #{duedate,jdbcType=DATE},
+      carrier = #{carrier,jdbcType=VARCHAR},
+      type = #{type,jdbcType=VARCHAR},
+      salestax = #{salestax,jdbcType=DECIMAL},
+      adjustment = #{adjustment,jdbcType=DECIMAL},
+      salescommission = #{salescommission,jdbcType=DECIMAL},
+      exciseduty = #{exciseduty,jdbcType=DECIMAL},
+      currency = #{currency,jdbcType=VARCHAR},
+      currency_rate = #{currencyRate,jdbcType=DECIMAL},
+      total = #{total,jdbcType=DECIMAL},
+      subtotal = #{subtotal,jdbcType=DECIMAL},
+      taxtype = #{taxtype,jdbcType=VARCHAR},
+      discount_percent = #{discountPercent,jdbcType=DECIMAL},
+      discount_amount = #{discountAmount,jdbcType=DECIMAL},
+      s_h_amount = #{sHAmount,jdbcType=DECIMAL},
+      accountid = #{accountid,jdbcType=INTEGER},
+      sostatus = #{sostatus,jdbcType=VARCHAR},
+      projectsid = #{projectsid,jdbcType=INTEGER},
+      smcreatorid = #{smcreatorid,jdbcType=INTEGER},
+      smownerid = #{smownerid,jdbcType=INTEGER},
+      modifiedby = #{modifiedby,jdbcType=INTEGER},
+      groupid = #{groupid,jdbcType=INTEGER},
+      createdtime = #{createdtime,jdbcType=TIMESTAMP},
+      modifiedtime = #{modifiedtime,jdbcType=TIMESTAMP},
+      deleted = #{deleted,jdbcType=INTEGER},
+      approved = #{approved,jdbcType=INTEGER},
+      approvedby = #{approvedby,jdbcType=INTEGER},
+      delitype = #{delitype,jdbcType=VARCHAR},
+      profit = #{profit,jdbcType=DECIMAL},
+      gatherstatus = #{gatherstatus,jdbcType=VARCHAR}
+    where salesorderid = #{salesorderid,jdbcType=INTEGER}
+  </update>
+   <select id="getTotal" resultType="INTEGER" >
+	SELECT count(1) AS count FROM xm_salesorder LEFT OUTER JOIN xm_account ON xm_account.accountid = xm_salesorder.accountid LEFT OUTER JOIN xm_contactdetails ON xm_contactdetails.contactid = xm_salesorder.contactid LEFT OUTER JOIN xm_quotes ON xm_quotes.quoteid = xm_salesorder.quoteid LEFT JOIN xm_users ON xm_users.id = xm_salesorder.smownerid WHERE 1=1 ${filter}
+   </select>
+   <select id="loadList" resultMap="BaseResultMap" >
+  	select xm_salesorder.* FROM xm_salesorder LEFT OUTER JOIN xm_account ON xm_account.accountid = xm_salesorder.accountid LEFT OUTER JOIN xm_contactdetails ON xm_contactdetails.contactid = xm_salesorder.contactid LEFT OUTER JOIN xm_quotes ON xm_quotes.quoteid = xm_salesorder.quoteid LEFT JOIN xm_users ON xm_users.id = xm_salesorder.smownerid  WHERE 1=1 ${filter} limit #{start},#{rows}
+   </select>
+</mapper>

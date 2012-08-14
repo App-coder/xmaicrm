@@ -33,8 +33,8 @@
 			<div><a href="javascript:tab('销售机会','potential/index')" >销售机会</a></div>
 			<div>销售漏斗</div>
 			<div><a href="javascript:tab('报价单','quotes/index')" >报价单</a></div>
-			<div>竞争对手</div>
-			<div>合同订单</div>
+			<div><a href="javascript:tab('竞争对手','duishous/index')" >竞争对手</a></div>
+			<div><a href="javascript:tab('合同订单','salesorder/index')" >合同订单</a></div>
 			<div>发货单</div>
 			<div>销售退货单</div>
 			<div>员工绩效</div>
@@ -89,7 +89,7 @@
 			<div>常见问答</div>
 		</div>
 	</div>
-	<div region="north" style="height: 62px; "
+	<div region="north" style="height: 62px;overflow: hidden; "
 		class="headerNav" border="false">
 		<a class="logo"></a>
 		<ul class="nav">
