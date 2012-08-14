@@ -255,7 +255,7 @@ String win_bar_1 = "resizable=\"false\"  closed=\"true\" modal=\"false\" collaps
       out.write("\t        \t \r\n");
       out.write("        \t \t<div class=\"d_view \">\r\n");
       out.write("\t\t\t\t\t<span class=\"icon-filter \">视图：</span> <select\r\n");
-      out.write("\t\t\t\t\t\tclass=\"sel_120\" onchange=\"reloadView(this.value)\" >\r\n");
+      out.write("\t\t\t\t\t\tclass=\"text\" onchange=\"reloadView(this.value)\" >\r\n");
       out.write("\t\t\t\t\t\t");
       if (_jspx_meth_c_005fforEach_005f0(_jspx_page_context))
         return;
@@ -267,7 +267,18 @@ String win_bar_1 = "resizable=\"false\"  closed=\"true\" modal=\"false\" collaps
       out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${ptb.parenttabid }", java.lang.String.class, (PageContext)_jspx_page_context, null, false));
       out.write("\"\r\n");
       out.write("\t\t\t\t\t\tclass=\"easyui-linkbutton\"\r\n");
-      out.write("\t\t\t\t\t\tdata-options=\"plain:true,iconCls:'icon-view'\">视图管理</a>\r\n");
+      out.write("\t\t\t\t\t\tdata-options=\"plain:true,iconCls:'icon-view'\">视图管理</a>&nbsp;&nbsp;\r\n");
+      out.write("\t\t\t\t\t\t查找：\r\n");
+      out.write("\t\t\t\t\t\t<select class=\"text\" ></select>\r\n");
+      out.write("\t\t\t\t\t\t<input type=\"text\" class=\"text\" />\r\n");
+      out.write("\t\t\t\t\t\t<a\r\n");
+      out.write("\t\t\t\t\t\thref=\"crm/customview/index?entitytype=");
+      out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${entitytype}", java.lang.String.class, (PageContext)_jspx_page_context, null, false));
+      out.write("&ptb=");
+      out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${ptb.parenttabid }", java.lang.String.class, (PageContext)_jspx_page_context, null, false));
+      out.write("\"\r\n");
+      out.write("\t\t\t\t\t\tclass=\"easyui-linkbutton\"\r\n");
+      out.write("\t\t\t\t\t\tdata-options=\"plain:true,iconCls:'icon-search'\">查找</a>\r\n");
       out.write("\t\t\t\t</div>\r\n");
       out.write("\t\t\t\t<div id=\"tabbar\" class=\"gtb\" style=\"display: block;\" >  \r\n");
       out.write("\t\t\t查看范围：<select class=\"easyui-combotree\" style=\"width:200px;\" data-options=\"url:'crm/module/calendar/getCondition'\"></select>\r\n");
@@ -277,7 +288,7 @@ String win_bar_1 = "resizable=\"false\"  closed=\"true\" modal=\"false\" collaps
       out.write("\t\t\t\t\t\t<a class=\"easyui-linkbutton\" data-options=\"plain:true\" iconCls=\"icon-view\" onclick=\"view()\" >预览</a>\r\n");
       out.write("\t\t\t\t\t\t<a class=\"easyui-linkbutton\" data-options=\"plain:true\" iconCls=\"icon-edit\" onclick=\"smowerUpdate()\" >修改负责人</a>\r\n");
       out.write("\t\t\t\t\t\t<a class=\"easyui-linkbutton\" data-options=\"plain:true\" iconCls=\"icon-share\" onclick=\"shareUpdate()\" >共享</a>\r\n");
-      out.write("\t\t\t\t\t\t<a class=\"easyui-linkbutton\" data-options=\"plain:true\" iconCls=\"icon-remove\" >删除</a>\r\n");
+      out.write("\t\t\t\t\t\t<a class=\"easyui-linkbutton\" data-options=\"plain:true\" iconCls=\"icon-remove\" onclick=\"deleteRecord()\" >删除</a>\r\n");
       out.write("\t\t\t\t</div>\r\n");
       out.write("\t\t\t\t<table id=\"view_list\"\r\n");
       out.write("\t\t\t\t\tdata-options=\"fitColumns:true\" toolbar=\"#tabbar\"   ></table>\r\n");

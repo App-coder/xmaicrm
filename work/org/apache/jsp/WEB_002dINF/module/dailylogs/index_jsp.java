@@ -1,4 +1,4 @@
-package org.apache.jsp.WEB_002dINF.module.products;
+package org.apache.jsp.WEB_002dINF.module.dailylogs;
 
 import javax.servlet.*;
 import javax.servlet.http.*;
@@ -19,9 +19,9 @@ static {
 
   static {
     _jspx_dependants = new java.util.ArrayList(5);
-    _jspx_dependants.add("/WEB-INF/module/products/../../head.jsp");
-    _jspx_dependants.add("/WEB-INF/module/products/../../common/config.jsp");
-    _jspx_dependants.add("/WEB-INF/module/products/../../foot.jsp");
+    _jspx_dependants.add("/WEB-INF/module/dailylogs/../../head.jsp");
+    _jspx_dependants.add("/WEB-INF/module/dailylogs/../../common/config.jsp");
+    _jspx_dependants.add("/WEB-INF/module/dailylogs/../../foot.jsp");
     _jspx_dependants.add("/WEB-INF/tld/jstl/fn.tld");
     _jspx_dependants.add("/WEB-INF/tld/oscache/oscache.tld");
   }
@@ -30,7 +30,6 @@ static {
   private org.apache.jasper.runtime.TagHandlerPool _005fjspx_005ftagPool_005fc_005fwhen_0026_005ftest;
   private org.apache.jasper.runtime.TagHandlerPool _005fjspx_005ftagPool_005fc_005fotherwise;
   private org.apache.jasper.runtime.TagHandlerPool _005fjspx_005ftagPool_005fcache_005fcache;
-  private org.apache.jasper.runtime.TagHandlerPool _005fjspx_005ftagPool_005fc_005fforEach_0026_005fvar_005fitems;
 
   private javax.el.ExpressionFactory _el_expressionfactory;
   private org.apache.AnnotationProcessor _jsp_annotationprocessor;
@@ -44,7 +43,6 @@ static {
     _005fjspx_005ftagPool_005fc_005fwhen_0026_005ftest = org.apache.jasper.runtime.TagHandlerPool.getTagHandlerPool(getServletConfig());
     _005fjspx_005ftagPool_005fc_005fotherwise = org.apache.jasper.runtime.TagHandlerPool.getTagHandlerPool(getServletConfig());
     _005fjspx_005ftagPool_005fcache_005fcache = org.apache.jasper.runtime.TagHandlerPool.getTagHandlerPool(getServletConfig());
-    _005fjspx_005ftagPool_005fc_005fforEach_0026_005fvar_005fitems = org.apache.jasper.runtime.TagHandlerPool.getTagHandlerPool(getServletConfig());
     _el_expressionfactory = _jspxFactory.getJspApplicationContext(getServletConfig().getServletContext()).getExpressionFactory();
     _jsp_annotationprocessor = (org.apache.AnnotationProcessor) getServletConfig().getServletContext().getAttribute(org.apache.AnnotationProcessor.class.getName());
   }
@@ -54,7 +52,6 @@ static {
     _005fjspx_005ftagPool_005fc_005fwhen_0026_005ftest.release();
     _005fjspx_005ftagPool_005fc_005fotherwise.release();
     _005fjspx_005ftagPool_005fcache_005fcache.release();
-    _005fjspx_005ftagPool_005fc_005fforEach_0026_005fvar_005fitems.release();
   }
 
   public void _jspService(HttpServletRequest request, HttpServletResponse response)
@@ -116,45 +113,21 @@ String win_topbar = "resizable=\"false\"  closed=\"true\" modal=\"true\" collaps
 String win_bar_1 = "resizable=\"false\"  closed=\"true\" modal=\"false\" collapsible=\"false\"  draggable=\"true\" minimizable=\"false\" maximizable=\"false\" inline=\"false\"";
 
       out.write("    ");
-      out.write('\r');
-      out.write('\n');
-      if (_jspx_meth_c_005fchoose_005f1(_jspx_page_context))
-        return;
       out.write("\r\n");
-      out.write("<script>\r\n");
-      out.write("//定义页面变量，需要前缀，防止多页面变量重复\r\n");
-      out.write("var entitytype = '");
-      out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${entitytype}", java.lang.String.class, (PageContext)_jspx_page_context, null, false));
-      out.write("';\r\n");
-      out.write("var viewtab = entitytype.toLowerCase();\r\n");
-      out.write("var viewid = '");
-      out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${viewid}", java.lang.String.class, (PageContext)_jspx_page_context, null, false));
-      out.write("';\r\n");
-      out.write("var tabid = ");
-      out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${tab.tabid}", java.lang.String.class, (PageContext)_jspx_page_context, null, false));
-      out.write(";\r\n");
-      out.write("var tablabel = '");
-      out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${tab.tablabel}", java.lang.String.class, (PageContext)_jspx_page_context, null, false));
-      out.write("';\r\n");
-      out.write("var ptb = ");
-      out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${ptb.parenttabid }", java.lang.String.class, (PageContext)_jspx_page_context, null, false));
-      out.write(";\r\n");
-      out.write("</script>\r\n");
-      out.write("<script type=\"text/javascript\" src=\"resources/desktop/module/products/index.js\"></script>\r\n");
+      out.write("<script type=\"text/javascript\"\r\n");
+      out.write("\tsrc=\"resources/desktop/module/dailylogs/index.js\"></script>\r\n");
       out.write("</head>\r\n");
       out.write("<body id=\"wrap\">\r\n");
+      out.write("\t");
       out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${navbar }", java.lang.String.class, (PageContext)_jspx_page_context, null, false));
       out.write("\r\n");
-      out.write("<div class=\"hidden\">\r\n");
-      out.write("\r\n");
-      out.write("<!-- 合并记录的demo的html -->\t\r\n");
-      out.write("<div class=\"div_stat div_statdemo\"> <span class=\"stat_name\"></span>：<span class=\"stat_num\"></span></div>\r\n");
-      out.write("\t\r\n");
-      out.write("</div>\r\n");
-      out.write("<div id=\"main\">\r\n");
-      out.write("<div id=\"navpath\" class=\"path\">\r\n");
+      out.write("\t<div class=\"hidden\"></div>\r\n");
+      out.write("\t<div id=\"main\">\r\n");
+      out.write("\t\t<div id=\"navpath\" class=\"path\">\r\n");
+      out.write("\t\t\t");
       out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${ptb.parenttabLabel }", java.lang.String.class, (PageContext)_jspx_page_context, null, false));
-      out.write("&gt;<a href=\"crm/module/");
+      out.write("&gt;<a\r\n");
+      out.write("\t\t\t\thref=\"crm/module/");
       out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${fn:toLowerCase(entityname.modulename) }", java.lang.String.class, (PageContext)_jspx_page_context, _jspx_fnmap_0, false));
       out.write("/index?ptb=");
       out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${ptb.parenttabid }", java.lang.String.class, (PageContext)_jspx_page_context, null, false));
@@ -162,37 +135,56 @@ String win_bar_1 = "resizable=\"false\"  closed=\"true\" modal=\"false\" collaps
       out.write('>');
       out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${tab.tablabel}", java.lang.String.class, (PageContext)_jspx_page_context, null, false));
       out.write("</a>\r\n");
-      out.write("</div>\r\n");
-      out.write("\r\n");
-      out.write("<div class=\"d_view \">\r\n");
-      out.write("<span class=\"icon-filter \">视图：</span> <select\r\n");
-      out.write("\tclass=\"sel_120\" onchange=\"reloadView(this.value)\" >\r\n");
+      out.write("\t\t</div>\r\n");
+      out.write("\t\t\r\n");
+      out.write("\t\t<div class=\"def_div bggray plr_5 mgb_10\" style=\"height:22px;line-height:22px;\" >\r\n");
+      out.write("\t\t<span class=\"fl\">2012-08-26(星期日) 管理员  过去5天： 2012-08-22 写 2012-08-23 写 2012-08-24 写 2012-08-25 写 2012-08-26 看</span>\r\n");
+      out.write("\t\t<span class=\"fr\">日报日期：<input type=\"text\" id=\"startdate\"  class=\"text easyui-datebox\" />&nbsp;\r\n");
+      out.write("\t\t负责人：<select class=\"easyui-combotree\" style=\"width:160px;\" data-options=\"url:'crm/module/dailylogs/getCondition'\"></select>\r\n");
+      out.write("\t\t<a class=\"easyui-linkbutton\" data-options=\"iconCls:'icon-search'\">搜索</a>\r\n");
+      out.write("\t\t</span>\r\n");
+      out.write("\t\t</div>\r\n");
+      out.write("\t\t\r\n");
+      out.write("\t\t<fieldset class=\"mgb_10\" >\r\n");
+      out.write("\t\t\t<legend>1.当日数据参考</legend>\r\n");
+      out.write("\t\t</fieldset>\r\n");
+      out.write("\t\t\r\n");
+      out.write("\t\t<fieldset class=\"mgb_10\" >\r\n");
+      out.write("\t\t\t<legend>2.查看计划，撰写今日工作总结</legend>\r\n");
+      out.write("\t\t\t<table class=\"tab_form\">\r\n");
+      out.write("\t\t\t\t<tr>\r\n");
+      out.write("\t\t\t\t\t<td width=\"10%\" valign=\"top\" class=\"edittd3\">今日总结</td><td width=\"40%\">\r\n");
+      out.write("\t\t\t\t\t<textarea ></textarea>\r\n");
+      out.write("\t\t\t\t\t</td><td width=\"10%\" valign=\"top\" class=\"edittd3\">今日计划<br>（昨日填写）</td><td width=\"40%\" ></td>\r\n");
+      out.write("\t\t\t\t</tr>\r\n");
+      out.write("\t\t\t</table>\r\n");
+      out.write("\t\t</fieldset>\r\n");
+      out.write("\t\t\r\n");
+      out.write("\t\t<fieldset class=\"mgb_10\" >\r\n");
+      out.write("\t\t\t<legend>3.撰写明日计划</legend>\r\n");
+      out.write("\t\t\t<table class=\"tab_form\">\r\n");
+      out.write("\t\t\t\t<tr>\r\n");
+      out.write("\t\t\t\t\t<td width=\"10%\" valign=\"top\" class=\"edittd3\">明日计划</td><td width=\"40%\">\r\n");
+      out.write("\t\t\t\t\t<textarea ></textarea>\r\n");
+      out.write("\t\t\t\t\t</td><td colspan=\"2\" valign=\"bottom\">\r\n");
+      out.write("\t\t\t\t\t调入说明：明日日程：开始日期<=明天<=结束日期；\r\n");
+      out.write("\t\t\t\t\t</td>\r\n");
+      out.write("\t\t\t\t</tr>\r\n");
+      out.write("\t\t\t\t<tr>\r\n");
+      out.write("\t\t\t\t\t<td></td>\r\n");
+      out.write("\t\t\t\t\t<td><a class=\"easyui-linkbutton\" data-options=\"iconCls:'icon-search'\">搜索</a></td>\r\n");
+      out.write("\t\t\t\t\t<td colspan=\"2\"></td>\r\n");
+      out.write("\t\t\t\t</tr>\r\n");
+      out.write("\t\t\t</table>\r\n");
+      out.write("\t\t</fieldset>\r\n");
+      out.write("\t\t\r\n");
+      out.write("\t\t<div class=\"def_div tac\" >\r\n");
+      out.write("\t\t\t<a class=\"easyui-linkbutton\" data-options=\"iconCls:'icon-save'\">暂存</a>&nbsp;<a class=\"easyui-linkbutton\" data-options=\"iconCls:'icon-submit'\">交周报</a>\r\n");
+      out.write("\t\t</div>\r\n");
+      out.write("\t\t\r\n");
+      out.write("\t\t\r\n");
+      out.write("\t</div>\r\n");
       out.write("\t");
-      if (_jspx_meth_c_005fforEach_005f0(_jspx_page_context))
-        return;
-      out.write("\r\n");
-      out.write("</select> <a\r\n");
-      out.write("\thref=\"crm/customview/index?entitytype=");
-      out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${entitytype}", java.lang.String.class, (PageContext)_jspx_page_context, null, false));
-      out.write("&ptb=");
-      out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${ptb.parenttabid }", java.lang.String.class, (PageContext)_jspx_page_context, null, false));
-      out.write("\"\r\n");
-      out.write("\tclass=\"easyui-linkbutton\"\r\n");
-      out.write("\tdata-options=\"plain:true,iconCls:'icon-view'\">视图管理</a>\r\n");
-      out.write("</div>\r\n");
-      out.write("\r\n");
-      out.write("<table style=\"width:100%;\">\r\n");
-      out.write("\t<tr>\r\n");
-      out.write("\t\t<td style=\"width:200px;vertical-align: top;padding:10px;\" valign=\"top\"><ul id=\"catalog\" class=\"easyui-tree\" url=\"crm/module/catalogs/getCatalogAll\" method=\"get\" lines=\"true\" ></ul></td>\r\n");
-      out.write("\t\t<td valign=\"top\">\r\n");
-      out.write("\t\t\t<table id=\"view_list\" data-options=\"fitColumns:true\"  ></table>\r\n");
-      out.write("\t\t\t<div class=\"stat_div hidden\"></div>\r\n");
-      out.write("\t\t</td>\r\n");
-      out.write("\t</tr>\r\n");
-      out.write("</table>\r\n");
-      out.write("\r\n");
-      out.write("</div>\r\n");
-      out.write("\r\n");
       out.write("\r\n");
       out.write("<div id=\"div_foot\" class=\"footercss\">\r\n");
       out.write("\t<table width=\"100%\" cellspacing=\"0\" cellpadding=\"5\" border=\"0\"\r\n");
@@ -363,7 +355,7 @@ String win_bar_1 = "resizable=\"false\"  closed=\"true\" modal=\"false\" collaps
     org.apache.taglibs.standard.tag.rt.core.WhenTag _jspx_th_c_005fwhen_005f0 = (org.apache.taglibs.standard.tag.rt.core.WhenTag) _005fjspx_005ftagPool_005fc_005fwhen_0026_005ftest.get(org.apache.taglibs.standard.tag.rt.core.WhenTag.class);
     _jspx_th_c_005fwhen_005f0.setPageContext(_jspx_page_context);
     _jspx_th_c_005fwhen_005f0.setParent((javax.servlet.jsp.tagext.Tag) _jspx_th_c_005fchoose_005f0);
-    // /WEB-INF/module/products/../../head.jsp(17,1) name = test type = boolean reqTime = true required = true fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
+    // /WEB-INF/module/dailylogs/../../head.jsp(17,1) name = test type = boolean reqTime = true required = true fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
     _jspx_th_c_005fwhen_005f0.setTest(((java.lang.Boolean) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${ptb!=null&&tab!=null}", java.lang.Boolean.class, (PageContext)_jspx_page_context, null, false)).booleanValue());
     int _jspx_eval_c_005fwhen_005f0 = _jspx_th_c_005fwhen_005f0.doStartTag();
     if (_jspx_eval_c_005fwhen_005f0 != javax.servlet.jsp.tagext.Tag.SKIP_BODY) {
@@ -487,153 +479,6 @@ String win_bar_1 = "resizable=\"false\"  closed=\"true\" modal=\"false\" collaps
     } finally {
       _jspx_th_cache_005fcache_005f0.doFinally();
       _005fjspx_005ftagPool_005fcache_005fcache.reuse(_jspx_th_cache_005fcache_005f0);
-    }
-    return false;
-  }
-
-  private boolean _jspx_meth_c_005fchoose_005f1(PageContext _jspx_page_context)
-          throws Throwable {
-    PageContext pageContext = _jspx_page_context;
-    JspWriter out = _jspx_page_context.getOut();
-    //  c:choose
-    org.apache.taglibs.standard.tag.common.core.ChooseTag _jspx_th_c_005fchoose_005f1 = (org.apache.taglibs.standard.tag.common.core.ChooseTag) _005fjspx_005ftagPool_005fc_005fchoose.get(org.apache.taglibs.standard.tag.common.core.ChooseTag.class);
-    _jspx_th_c_005fchoose_005f1.setPageContext(_jspx_page_context);
-    _jspx_th_c_005fchoose_005f1.setParent(null);
-    int _jspx_eval_c_005fchoose_005f1 = _jspx_th_c_005fchoose_005f1.doStartTag();
-    if (_jspx_eval_c_005fchoose_005f1 != javax.servlet.jsp.tagext.Tag.SKIP_BODY) {
-      do {
-        out.write('\r');
-        out.write('\n');
-        out.write('	');
-        if (_jspx_meth_c_005fwhen_005f1(_jspx_th_c_005fchoose_005f1, _jspx_page_context))
-          return true;
-        out.write('\r');
-        out.write('\n');
-        out.write('	');
-        if (_jspx_meth_c_005fotherwise_005f1(_jspx_th_c_005fchoose_005f1, _jspx_page_context))
-          return true;
-        out.write('\r');
-        out.write('\n');
-        int evalDoAfterBody = _jspx_th_c_005fchoose_005f1.doAfterBody();
-        if (evalDoAfterBody != javax.servlet.jsp.tagext.BodyTag.EVAL_BODY_AGAIN)
-          break;
-      } while (true);
-    }
-    if (_jspx_th_c_005fchoose_005f1.doEndTag() == javax.servlet.jsp.tagext.Tag.SKIP_PAGE) {
-      _005fjspx_005ftagPool_005fc_005fchoose.reuse(_jspx_th_c_005fchoose_005f1);
-      return true;
-    }
-    _005fjspx_005ftagPool_005fc_005fchoose.reuse(_jspx_th_c_005fchoose_005f1);
-    return false;
-  }
-
-  private boolean _jspx_meth_c_005fwhen_005f1(javax.servlet.jsp.tagext.JspTag _jspx_th_c_005fchoose_005f1, PageContext _jspx_page_context)
-          throws Throwable {
-    PageContext pageContext = _jspx_page_context;
-    JspWriter out = _jspx_page_context.getOut();
-    //  c:when
-    org.apache.taglibs.standard.tag.rt.core.WhenTag _jspx_th_c_005fwhen_005f1 = (org.apache.taglibs.standard.tag.rt.core.WhenTag) _005fjspx_005ftagPool_005fc_005fwhen_0026_005ftest.get(org.apache.taglibs.standard.tag.rt.core.WhenTag.class);
-    _jspx_th_c_005fwhen_005f1.setPageContext(_jspx_page_context);
-    _jspx_th_c_005fwhen_005f1.setParent((javax.servlet.jsp.tagext.Tag) _jspx_th_c_005fchoose_005f1);
-    // /WEB-INF/module/products/index.jsp(6,1) name = test type = boolean reqTime = true required = true fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
-    _jspx_th_c_005fwhen_005f1.setTest(((java.lang.Boolean) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${customview.cvid!=null && dview!=null}", java.lang.Boolean.class, (PageContext)_jspx_page_context, null, false)).booleanValue());
-    int _jspx_eval_c_005fwhen_005f1 = _jspx_th_c_005fwhen_005f1.doStartTag();
-    if (_jspx_eval_c_005fwhen_005f1 != javax.servlet.jsp.tagext.Tag.SKIP_BODY) {
-      do {
-        out.write("\r\n");
-        out.write("\t\t<script>\r\n");
-        out.write("\t\t\tvar tab_columns = ");
-        out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${dview}", java.lang.String.class, (PageContext)_jspx_page_context, null, false));
-        out.write(";\r\n");
-        out.write("\t\t\ttab_columns = setDefWidth(tab_columns,80);\r\n");
-        out.write("\t\t\tvar tab_viewid = ");
-        out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${customview.cvid}", java.lang.String.class, (PageContext)_jspx_page_context, null, false));
-        out.write(";\r\n");
-        out.write("\t\t</script>\r\n");
-        out.write("\t");
-        int evalDoAfterBody = _jspx_th_c_005fwhen_005f1.doAfterBody();
-        if (evalDoAfterBody != javax.servlet.jsp.tagext.BodyTag.EVAL_BODY_AGAIN)
-          break;
-      } while (true);
-    }
-    if (_jspx_th_c_005fwhen_005f1.doEndTag() == javax.servlet.jsp.tagext.Tag.SKIP_PAGE) {
-      _005fjspx_005ftagPool_005fc_005fwhen_0026_005ftest.reuse(_jspx_th_c_005fwhen_005f1);
-      return true;
-    }
-    _005fjspx_005ftagPool_005fc_005fwhen_0026_005ftest.reuse(_jspx_th_c_005fwhen_005f1);
-    return false;
-  }
-
-  private boolean _jspx_meth_c_005fotherwise_005f1(javax.servlet.jsp.tagext.JspTag _jspx_th_c_005fchoose_005f1, PageContext _jspx_page_context)
-          throws Throwable {
-    PageContext pageContext = _jspx_page_context;
-    JspWriter out = _jspx_page_context.getOut();
-    //  c:otherwise
-    org.apache.taglibs.standard.tag.common.core.OtherwiseTag _jspx_th_c_005fotherwise_005f1 = (org.apache.taglibs.standard.tag.common.core.OtherwiseTag) _005fjspx_005ftagPool_005fc_005fotherwise.get(org.apache.taglibs.standard.tag.common.core.OtherwiseTag.class);
-    _jspx_th_c_005fotherwise_005f1.setPageContext(_jspx_page_context);
-    _jspx_th_c_005fotherwise_005f1.setParent((javax.servlet.jsp.tagext.Tag) _jspx_th_c_005fchoose_005f1);
-    int _jspx_eval_c_005fotherwise_005f1 = _jspx_th_c_005fotherwise_005f1.doStartTag();
-    if (_jspx_eval_c_005fotherwise_005f1 != javax.servlet.jsp.tagext.Tag.SKIP_BODY) {
-      do {
-        out.write("\r\n");
-        out.write("\t\t<script>\r\n");
-        out.write("\t\t\tvar tab_columns = \"\";\r\n");
-        out.write("\t\t\tvar tab_viewid = -1;\r\n");
-        out.write("\t\t</script>\r\n");
-        out.write("\t");
-        int evalDoAfterBody = _jspx_th_c_005fotherwise_005f1.doAfterBody();
-        if (evalDoAfterBody != javax.servlet.jsp.tagext.BodyTag.EVAL_BODY_AGAIN)
-          break;
-      } while (true);
-    }
-    if (_jspx_th_c_005fotherwise_005f1.doEndTag() == javax.servlet.jsp.tagext.Tag.SKIP_PAGE) {
-      _005fjspx_005ftagPool_005fc_005fotherwise.reuse(_jspx_th_c_005fotherwise_005f1);
-      return true;
-    }
-    _005fjspx_005ftagPool_005fc_005fotherwise.reuse(_jspx_th_c_005fotherwise_005f1);
-    return false;
-  }
-
-  private boolean _jspx_meth_c_005fforEach_005f0(PageContext _jspx_page_context)
-          throws Throwable {
-    PageContext pageContext = _jspx_page_context;
-    JspWriter out = _jspx_page_context.getOut();
-    //  c:forEach
-    org.apache.taglibs.standard.tag.rt.core.ForEachTag _jspx_th_c_005fforEach_005f0 = (org.apache.taglibs.standard.tag.rt.core.ForEachTag) _005fjspx_005ftagPool_005fc_005fforEach_0026_005fvar_005fitems.get(org.apache.taglibs.standard.tag.rt.core.ForEachTag.class);
-    _jspx_th_c_005fforEach_005f0.setPageContext(_jspx_page_context);
-    _jspx_th_c_005fforEach_005f0.setParent(null);
-    // /WEB-INF/module/products/index.jsp(47,1) name = items type = java.lang.Object reqTime = true required = false fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
-    _jspx_th_c_005fforEach_005f0.setItems((java.lang.Object) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${views}", java.lang.Object.class, (PageContext)_jspx_page_context, null, false));
-    // /WEB-INF/module/products/index.jsp(47,1) name = var type = java.lang.String reqTime = false required = false fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
-    _jspx_th_c_005fforEach_005f0.setVar("v");
-    int[] _jspx_push_body_count_c_005fforEach_005f0 = new int[] { 0 };
-    try {
-      int _jspx_eval_c_005fforEach_005f0 = _jspx_th_c_005fforEach_005f0.doStartTag();
-      if (_jspx_eval_c_005fforEach_005f0 != javax.servlet.jsp.tagext.Tag.SKIP_BODY) {
-        do {
-          out.write("\r\n");
-          out.write("\t\t<option value=\"");
-          out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${v.cvid }", java.lang.String.class, (PageContext)_jspx_page_context, null, false));
-          out.write('"');
-          out.write('>');
-          out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${v.viewname}", java.lang.String.class, (PageContext)_jspx_page_context, null, false));
-          out.write("</option>\r\n");
-          out.write("\t");
-          int evalDoAfterBody = _jspx_th_c_005fforEach_005f0.doAfterBody();
-          if (evalDoAfterBody != javax.servlet.jsp.tagext.BodyTag.EVAL_BODY_AGAIN)
-            break;
-        } while (true);
-      }
-      if (_jspx_th_c_005fforEach_005f0.doEndTag() == javax.servlet.jsp.tagext.Tag.SKIP_PAGE) {
-        return true;
-      }
-    } catch (Throwable _jspx_exception) {
-      while (_jspx_push_body_count_c_005fforEach_005f0[0]-- > 0)
-        out = _jspx_page_context.popBody();
-      _jspx_th_c_005fforEach_005f0.doCatch(_jspx_exception);
-    } finally {
-      _jspx_th_c_005fforEach_005f0.doFinally();
-      _005fjspx_005ftagPool_005fc_005fforEach_0026_005fvar_005fitems.reuse(_jspx_th_c_005fforEach_005f0);
     }
     return false;
   }

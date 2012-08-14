@@ -75,3 +75,11 @@ function smowerUpdate(){
 function shareUpdate(){
     $("#wind_share").window("open");
 }
+function deleteRecord(){
+    var selected = $('#view_list').datagrid("getSelections");
+    if(selected.length>0){
+	
+    }else{
+	message("请选择记录！");
+    }
+}
