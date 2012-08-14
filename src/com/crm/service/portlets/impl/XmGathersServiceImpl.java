@@ -10,6 +10,7 @@ import javax.annotation.Resource;
 
 import org.springframework.stereotype.Component;
 
+import com.crm.bean.amcharts.portlets.salesyearinfo.GatherStat;
 import com.crm.bean.crm.portlets.GatherYear;
 import com.crm.mapper.module.XmGathersMapper;
 import com.crm.model.XmGathers;
@@ -66,6 +67,11 @@ public class XmGathersServiceImpl implements XmGathersService {
 	@Override
 	public String getFinished(String firstDayOfMonth, String lastDayOfMonth) {
 		return this.xmGathersMapper.getFinished(firstDayOfMonth,lastDayOfMonth);
+	}
+
+	@Override
+	public GatherStat getGatherStat(String year) {
+		return this.xmGathersMapper.getGatherStat(year);
 	}
 
 

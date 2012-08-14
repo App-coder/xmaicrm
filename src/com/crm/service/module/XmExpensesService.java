@@ -1,8 +1,9 @@
 package com.crm.service.module;
 
-import com.crm.model.XmExpenses;
-import com.crm.service.ModuleService;
+import com.crm.bean.amcharts.portlets.salesyearinfo.ExpensesStat;
 
-public interface XmExpensesService extends ModuleService<XmExpenses>{
+public interface XmExpensesService{
+
+	ExpensesStat getExpensesStat(String string);
 
 }

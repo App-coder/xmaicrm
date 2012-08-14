@@ -1,8 +1,11 @@
 package com.crm.service.module;
 
-import com.crm.model.XmPurchaseorder;
-import com.crm.service.ModuleService;
+import java.util.List;
 
-public interface XmPurchaseorderService extends ModuleService<XmPurchaseorder>{
+import com.crm.model.XmPurchaseorder;
+
+
+public interface XmPurchaseorderService{
+
 
 }

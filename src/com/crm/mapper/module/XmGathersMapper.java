@@ -1,10 +1,10 @@
 package com.crm.mapper.module;
 
 import java.util.List;
-import java.util.Map;
 
 import org.apache.ibatis.annotations.Param;
 
+import com.crm.bean.amcharts.portlets.salesyearinfo.GatherStat;
 import com.crm.bean.crm.portlets.GatherYear;
 import com.crm.model.XmGathers;
 
@@ -34,5 +34,7 @@ public interface XmGathersMapper {
 	String getSum(@Param("year") String year,@Param("month") String month);
 
 	String getFinished(@Param("firstDayOfMonth") String firstDayOfMonth,@Param("lastDayOfMonth") String lastDayOfMonth);
+
+	GatherStat getGatherStat(@Param("year") String year);
 
 }

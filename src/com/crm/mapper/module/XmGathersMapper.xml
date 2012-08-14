@@ -400,4 +400,7 @@
    <select id="getFinished" resultType="String">
    	select sum((case when xm_gathers.currency_rate > 0 then xm_gathers.currency_rate else 1 end)*xm_gathers.actualamount) as total from xm_gathers WHERE deleted =0 and gatherstatus='已收' and actualdate between #{firstDayOfMonth} and #{lastDayOfMonth};
    </select>
+   <select id="getGatherStat" resultType="com.crm.bean.amcharts.portlets.salesyearinfo.GatherStat">
+   	select count(*) as gathersacc, sum(IFNULL(xm_gathers.planamount,0.00)*(case when xm_gathers.currency_rate > 0 then xm_gathers.currency_rate else 1 end)) as sumgathersplan, sum(IFNULL((case when xm_gathers.currency_rate > 0 then xm_gathers.currency_rate else 1 end)*actualamount,0.00)) as sumgathersactual from xm_gathers where xm_gathers.deleted = 0 and xm_gathers.gatherstatus = '已收' and xm_gathers.actualdate between '${year}-01-01 00:00:00' and '${year}-12-31 23:59:00';
+   </select>
 </mapper>

@@ -3,6 +3,7 @@ package com.crm.service.portlets;
 import java.util.List;
 import java.util.Map;
 
+import com.crm.bean.amcharts.portlets.salesyearinfo.GatherStat;
 import com.crm.bean.crm.portlets.GatherYear;
 import com.crm.model.XmGathers;
 
@@ -19,6 +20,8 @@ public interface XmGathersService {
 	String getSum(String year, String month);
 
 	String getFinished(String firstDayOfMonth, String lastDayOfMonth);
+
+	GatherStat getGatherStat(String year);
 
 
 }
