@@ -4,9 +4,11 @@ import java.util.List;
 
 import org.apache.ibatis.annotations.Param;
 
+import com.crm.mapper.ModuleMapper;
 import com.crm.model.XmQuotes;
+import com.crm.model.XmTuihuos;
 
-public interface XmQuotesMapper {
+public interface XmQuotesMapper extends ModuleMapper<XmQuotes>{
 	
     int deleteByPrimaryKey(Integer quoteid);
 

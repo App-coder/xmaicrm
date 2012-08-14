@@ -47,6 +47,8 @@ public class XmTuihuos {
     private BigDecimal currencyRate;
 
     private String description;
+    
+    private String userName;
 
     public Integer getTuihuosid() {
         return tuihuosid;
@@ -223,4 +225,13 @@ public class XmTuihuos {
     public void setDescription(String description) {
         this.description = description == null ? null : description.trim();
     }
+
+	public String getUserName() {
+		return userName;
+	}
+
+	public void setUserName(String userName) {
+		this.userName = userName;
+	}
+    
 }

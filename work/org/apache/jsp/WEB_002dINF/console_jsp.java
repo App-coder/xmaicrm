@@ -103,7 +103,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
       out.write("\t\t\t<div>群发邮件</div>\r\n");
       out.write("\t\t</div>\r\n");
       out.write("\t\t<div id=\"customer_item\"  style=\"width: 120px;\" class=\"navmenuitem\"  >\r\n");
-      out.write("\t\t\t<div><a href=\"javascript:tab('客户','customer/accounts')\">客户</a></div>\r\n");
+      out.write("\t\t\t<div><a href=\"javascript:tab('客户','customer/index')\">客户</a></div>\r\n");
       out.write("\t\t\t<div>联系人</div>\r\n");
       out.write("\t\t\t<div>客户关怀</div>\r\n");
       out.write("\t\t\t<div>联系记录</div>\r\n");
@@ -121,8 +121,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
       out.write("\t\t\t<div><a href=\"javascript:tab('报价单','quotes/index')\" >报价单</a></div>\r\n");
       out.write("\t\t\t<div><a href=\"javascript:tab('竞争对手','duishous/index')\" >竞争对手</a></div>\r\n");
       out.write("\t\t\t<div><a href=\"javascript:tab('合同订单','salesorder/index')\" >合同订单</a></div>\r\n");
-      out.write("\t\t\t<div>发货单</div>\r\n");
-      out.write("\t\t\t<div>销售退货单</div>\r\n");
+      out.write("\t\t\t<div><a href=\"javascript:tab('发货单','invoice/index')\" >发货单</a></div>\r\n");
+      out.write("\t\t\t<div><a href=\"javascript:tab('销售退货单','tuihuos/index')\" >销售退货单</a></div>\r\n");
       out.write("\t\t\t<div>员工绩效</div>\r\n");
       out.write("\t\t\t<div>销售目标</div>\r\n");
       out.write("\t\t</div>\r\n");
