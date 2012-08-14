@@ -1,4 +1,4 @@
-package com.crm.potentials.action;
+package com.crm.customer.action;
 
 import java.util.List;
 
@@ -12,22 +12,15 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.crm.action.BaseController;
 import com.crm.action.util.ModuleUtil;
-import com.crm.bean.easyui.Column;
 import com.crm.bean.easyui.ListBean;
+import com.crm.customer.service.XmAccountService;
 import com.crm.model.XmCustomview;
-import com.crm.model.XmField;
 import com.crm.model.XmPotential;
-import com.crm.potentials.service.XmPotentialService;
 import com.crm.service.XmCustomViewService;
-import com.crm.service.XmCvadvfilterService;
-import com.crm.service.XmCvcolumnlistService;
-import com.crm.service.XmCvstdfilterService;
-import com.crm.service.XmFieldService;
 
 @Controller
-@RequestMapping(value = "potential")
-public class XmPotentialController extends BaseController  {
-	
+@RequestMapping(value = "customer")
+public class XmAccountController extends BaseController{
 	ModuleUtil moduleUtil;
 	@Resource(name="moduleUtil")
 	public void setModuleUtil(ModuleUtil moduleUtil) {
@@ -40,19 +33,20 @@ public class XmPotentialController extends BaseController  {
 		this.xmCustomViewService = xmCustomViewService;
 	}
 	
-	XmPotentialService xmPotentialService;
-	@Resource(name="xmPotentialService")
-	public void setXmPotentialService(XmPotentialService xmPotentialService) {
-		this.xmPotentialService = xmPotentialService;
+	XmAccountService xmAccountService;
+	@Resource(name="xmAccountService")
+	public void setXmAccountService(XmAccountService xmAccountService) {
+		this.xmAccountService = xmAccountService;
 	}
-
+	
 	@RequestMapping(value = "/index", method = RequestMethod.GET)
 	public String index(ModelMap modelMap){
-		this.moduleUtil.setViewProp(modelMap,"Potentials");
-		return "potential/potential";
+		this.moduleUtil.setViewProp(modelMap,"Accounts");
+		return "customer/account";
 	}
 	
 	
+
 	/**
 	 * 根据视图ID返回对应的JSON
 	 * 
@@ -66,8 +60,8 @@ public class XmPotentialController extends BaseController  {
 	public String renderView(int page,int rows,String entitytype,int viewid){
 		XmCustomview customview = this.xmCustomViewService.selectByPrimaryKey(entitytype,viewid);
 		
-		int total = this.xmPotentialService.getTotal(viewid);
-		List<XmPotential> ls = this.xmPotentialService.loadList(page,rows,viewid);
+		int total = this.xmAccountService.getTotal(viewid);
+		List<XmPotential> ls = this.xmAccountService.loadList(page,rows,viewid);
 		ListBean list = new ListBean();
 		list.setRows(ls);
 		list.setTotal(total);

@@ -21,7 +21,7 @@
 				<span class="icon-filter view_span" >视图：</span>
 				<select class="sel_120">
 				<c:forEach items="${views}" var="v" >
-					<option value="${v.cvid }">${v.viewname }</option>
+					<option value="${v.cvid }">${v.viewname}</option>
 				</c:forEach>
 				</select>
 				<a href="javascript:void(0)" class="easyui-menubutton" data-options="menu:'#potential_m1',iconCls:'icon-tool'">管理</a>
@@ -36,8 +36,8 @@
 			<div class="d_report ">
 				<span class="icon-report view_span" >报表：</span>
 				<select class="sel_120">
-					<c:forEach items="${repfields }" var="f">
-						<option>${f.columnname }</option>
+					<c:forEach items="${repfields}" var="f">
+						<option>${f.columnname}</option>
 					</c:forEach>
 				</select>
 				<a href="#" class="easyui-linkbutton" data-options="plain:true,iconCls:'icon-view'">预览</a>
