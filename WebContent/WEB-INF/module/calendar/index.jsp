@@ -138,7 +138,7 @@ var ptb = ${ptb.parenttabid };
 						data-options="plain:true,iconCls:'icon-search'">查找</a>
 				</div>
 				<div id="tabbar" class="gtb" style="display: block;" >  
-			查看范围：<select class="easyui-combotree" style="width:200px;" data-options="url:'crm/module/calendar/getCondition'"></select>
+			查看范围：<select class="easyui-combotree" style="width:160px;" data-options="url:'crm/module/calendar/getCondition'"></select>
 						<a class="easyui-linkbutton" data-options="plain:true" iconCls="icon-add" onclick="insert()" >添加</a>
 						<a class="easyui-linkbutton" data-options="plain:true" iconCls="icon-edit" onclick="edit()" >修改</a>
 						<a class="easyui-linkbutton" data-options="plain:true" iconCls="icon-edit" onclick="batchUpdate()" >批量修改</a>

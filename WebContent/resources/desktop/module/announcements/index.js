@@ -83,6 +83,51 @@ function reloadView(val){
 		pageSize:20
 	});
     },'json');
-    
-    
+}
+function insert(){
+    window.location.href="crm/module/announcements/showedit?recordid=0&ptb="+ptb+"&module="+entitytype;
+}
+function edit(){
+    var selected = $('#view_list').datagrid("getSelected");
+    if(selected){
+	window.location.href="crm/module/announcements/showedit?recordid="+selected.announcementsid+"&ptb="+ptb+"&module="+entitytype;
+    }else{
+	message("请选择记录！");
+    }
+}
+function view(){
+    var selected = $('#view_list').datagrid("getSelected");
+    if(selected){
+	window.location.href="crm/module/announcements/view?recordid="+selected.announcementsid+"&ptb="+ptb+"&module="+entitytype;
+    }else{
+	message("请选择记录！");
+    }    
+}
+function deleteRecord() {
+    // 删除多条记录，注意
+    var selected = $('#view_list').datagrid("getSelections");
+    if (selected.length != 0) {
+	confirm('确定删除文档？', function(r) {
+	    if (r) {
+		var recordids = ""
+		for ( var i = 0; i < selected.length; i++) {
+		    if (i == 0) {
+			recordids += selected[i].announcementsid;
+		    } else {
+			recordids += "," + selected[i].announcementsid;
+		    }
+		}
+		$.post('crm/module/announcements/deleteRecords', {
+		    recordids : recordids
+		}, function(res) {
+		    if (res.type == true) {
+			$('#view_list').datagrid("reload");
+			$('#view_list').datagrid("unselectAll");
+		    }
+		}, 'json');
+	    }
+	});
+    } else {
+	message("请选择记录！");
+    }
 }

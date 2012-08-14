@@ -18,13 +18,18 @@ import com.crm.action.BaseController;
 import com.crm.action.util.ModuleUtil;
 import com.crm.bean.crm.Message;
 import com.crm.bean.crm.UserPermission;
+import com.crm.bean.easyui.ComboTree;
 import com.crm.model.XmFreetags;
+import com.crm.model.XmGroups;
 import com.crm.model.XmRelatedlists;
 import com.crm.model.XmTab;
+import com.crm.model.XmUsers;
 import com.crm.service.XmCustomViewService;
 import com.crm.service.XmFreetagsService;
 import com.crm.service.module.XmCampaignService;
 import com.crm.service.module.XmRelatedlistsServie;
+import com.crm.service.settings.basic.XmGroupsService;
+import com.crm.service.settings.basic.XmUsersService;
 import com.crm.util.ActionUtil;
 import com.crm.util.Constant;
 import com.crm.util.actionutil.ActionCls;
@@ -44,6 +49,18 @@ import java.util.*;
 @RequestMapping(value = "crm/module/campaigns")
 @SessionAttributes({Constant.USERPERMISSION})
 public class XmCampaignController extends BaseController {
+	
+	XmGroupsService xmGroupsService;
+	@Resource(name="xmGroupsService")
+	public void setXmGroupsService(XmGroupsService xmGroupsService) {
+		this.xmGroupsService = xmGroupsService;
+	}
+	
+	XmUsersService xmUsersService;
+	@Resource(name="xmUsersService")
+	public void setXmUsersService(XmUsersService xmUsersService) {
+		this.xmUsersService = xmUsersService;
+	}
 	
 	ModuleUtil moduleUtil;
 	@Resource(name = "moduleUtil")
@@ -150,5 +167,55 @@ public class XmCampaignController extends BaseController {
 		return JSON.toJSONString(msg);
 	}
 	
+	@RequestMapping(value = "/getCondition")
+	@ResponseBody
+	public String getCondition(){
+		
+		List<ComboTree> cbos = new ArrayList<ComboTree>();
+		
+		ComboTree all = new ComboTree();
+		all.setId("0");
+		all.setText("所有营销活动");
+		cbos.add(all);
+		
+		ComboTree  myaccount = new ComboTree();
+		myaccount.setId("-1");
+		myaccount.setText("我的营销活动");
+		cbos.add(myaccount);
+		
+		ComboTree  mycreate = new ComboTree();
+		mycreate.setId("-2");
+		mycreate.setText("我创建的营销活动");
+		cbos.add(mycreate);
+		
+		ComboTree  mybranch = new ComboTree();
+		mybranch.setId("-3");
+		mybranch.setText("下属的营销活动");
+		cbos.add(mybranch);
+		
+		List<XmGroups> groups = this.xmGroupsService.loadAll();
+		List<XmUsers> users = this.xmUsersService.loadAll();
+		
+		for(int i=0;i<groups.size();i++){
+			ComboTree group = new ComboTree();
+			group.setId(groups.get(i).getGroupid()+"");
+			group.setText(groups.get(i).getGroupname());
+			group.setIconCls("icon-group");
+			List<ComboTree> childs = new ArrayList();
+			for(int j=0;j<users.size();j++){
+				if(users.get(j).getGroupid().equals(group.getId())){
+					ComboTree u = new ComboTree();
+					u.setId(users.get(j).getId()+"");
+					u.setText(users.get(j).getLastName());
+					u.setIconCls("icon-user");
+					childs.add(u);
+				}
+			}
+			group.setChildren(childs);
+			cbos.add(group);
+		}
+		
+		return JSON.toJSONString(cbos);
+	}
 	
 }

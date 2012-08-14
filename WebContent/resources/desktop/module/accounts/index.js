@@ -69,7 +69,7 @@ function viewReport(){
     //使用IFRAME进行报表展现
     $("#reportframe").attr("src","crm/customview/createChart?graphtype="+graphtype+"&grouptype="+grouptype+"&cvid="+tab_viewid+"&pickfieldtable="+reportselect.fieldtable+"&pickfieldname="+reportselect.fieldname+"&pickfieldcolname="+reportselect.fieldcolname+"&title="+title+"&grouptitle="+grouptitle+"&reporttext="+reporttext+"&_rd="+rdnum());
 }
-function add(){
+function insert(){
     window.location.href="crm/module/accounts/showedit?recordid=0&ptb="+ptb+"&module="+entitytype;
 }
 function edit(){
@@ -80,7 +80,7 @@ function edit(){
 	message("请选择记录！");
     }
 }
-function batchEdit(){
+function batchUpdate(){
     var selections = $('#view_list').datagrid("getSelections");
     //空的记录
     if(selections.length==0){
@@ -97,7 +97,7 @@ function view(){
 	message("请选择记录！");
     }    
 }
-function editLeading(){
+function smowerUpdate(){
     var selections = $('#view_list').datagrid("getSelections");
     //空的记录
     if(selections.length==0){
@@ -106,7 +106,7 @@ function editLeading(){
 	$("#win_editLeading").window("open");
     }
 }
-function del(){
+function deleteRecord(){
     var selections = $('#view_list').datagrid("getSelections");
     //空的记录
     if(selections.length==0){
@@ -119,7 +119,7 @@ function del(){
 	});
     }
 }
-function share(){
+function shareUpdate(){
     var selections = $('#view_list').datagrid("getSelections");
     //空的记录
     if(selections.length==0){

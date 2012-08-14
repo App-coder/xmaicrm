@@ -60,17 +60,29 @@ ${ptb.parenttabLabel }&gt;<a href="crm/module/${fn:toLowerCase(entityname.module
 </div>
 	<div class="d_view ">
 				<span class="icon-filter ">视图：</span> <select
-					class="sel_120" onchange="reloadView(this.value)" >
+					class="text" onchange="reloadView(this.value)" >
 					<c:forEach items="${views}" var="v">
 						<option value="${v.cvid }">${v.viewname}</option>
 					</c:forEach>
 				</select> <a
 					href="crm/customview/index?entitytype=${entitytype}&ptb=${ptb.parenttabid }"
 					class="easyui-linkbutton"
-					data-options="plain:true,iconCls:'icon-view'">视图管理</a>
+					data-options="plain:true,iconCls:'icon-view'">视图管理</a>&nbsp;&nbsp;
+					查找：
+					<select class="text" ></select>
+					<input type="text" class="text" />
+					<a class="easyui-linkbutton" 
+					data-options="plain:true,iconCls:'icon-search'">查找</a>
+			</div>
+			<div id="tabbar" class="gtb" style="display: block;" >  
+			查看范围：<select class="easyui-combotree" style="width:200px;" data-options="url:'crm/module/documents/getCondition'"></select>
+					<a class="easyui-linkbutton" data-options="plain:true" iconCls="icon-add" onclick="insert()" >添加</a>
+					<a class="easyui-linkbutton" data-options="plain:true" iconCls="icon-edit" onclick="edit()" >修改</a>
+					<a class="easyui-linkbutton" data-options="plain:true" iconCls="icon-view" onclick="view()" >预览</a>
+					<a class="easyui-linkbutton" data-options="plain:true" iconCls="icon-remove" onclick="deleteRecord()" >删除</a>
 			</div>
 			<table id="view_list"
-				data-options="fitColumns:true" ></table>
+				data-options="fitColumns:true"  toolbar="#tabbar" ></table>
 				<div class="stat_div hidden"></div>
 	<c:if test="${repfields!=null }">
 			<div data-options="region:'south',border:false">

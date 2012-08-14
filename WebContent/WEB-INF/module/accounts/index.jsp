@@ -118,29 +118,32 @@ ${ptb.parenttabLabel }&gt;<a href="crm/module/${fn:toLowerCase(entityname.module
 </div>
 	<div class="d_view ">
 				<span class="icon-filter ">视图：</span> <select
-					class="sel_120" >
+					class="text" >
 					<c:forEach items="${views}" var="v">
 						<option value="${v.cvid }">${v.viewname}</option>
 					</c:forEach>
 				</select> <a
 					href="crm/customview/index?entitytype=${entitytype}&ptb=${ptb.parenttabid }"
 					class="easyui-linkbutton"
-					data-options="plain:true,iconCls:'icon-view'">视图管理</a>
+					data-options="plain:true,iconCls:'icon-view'">视图管理</a>&nbsp;&nbsp;
+						查找：
+						<select class="text" ></select>
+						<input type="text" class="text" />
+						<a class="easyui-linkbutton" 
+						data-options="plain:true,iconCls:'icon-search'">查找</a><a class="easyui-linkbutton" data-options="plain:true" iconCls="icon-undo" onclick="cacelSearch()" >取消查找</a>		
 			</div>
 			
 			<div id="tabbar" class="gtb" style="display: block;" >  
-			查看范围：<select class="easyui-combotree" style="width:200px;" data-options="url:'crm/module/accounts/getCondition'"></select>
-			<a class="easyui-linkbutton" data-options="plain:true" iconCls="icon-add" onclick="add()" >添加</a>
-			<a class="easyui-linkbutton" data-options="plain:true" iconCls="icon-edit" onclick="edit()" >修改</a>
-			<a class="easyui-linkbutton" data-options="plain:true" iconCls="icon-edit" onclick="batchEdit()" >批量修改</a>
-			<a class="easyui-linkbutton" data-options="plain:true" iconCls="icon-view" onclick="view()" >预览</a>
-			<a class="easyui-linkbutton" data-options="plain:true" iconCls="icon-edit" onclick="editLeading()">修改负责人</a>
-			<a class="easyui-linkbutton" data-options="plain:true" iconCls="icon-share" onclick="share()" >共享</a>
-			<a class="easyui-linkbutton" data-options="plain:true" iconCls="icon-remove" onclick="del()" >删除</a>
-			<a class="easyui-linkbutton" data-options="plain:true" iconCls="icon-import" onclick="import()" >导入</a>	
-			<a class="easyui-linkbutton" data-options="plain:true" iconCls="icon-excel" onclick="excel()" >导出</a>	
-			<a class="easyui-linkbutton" data-options="plain:true" iconCls="icon-search" onclick="showSearch()" >查找</a>
-			<a class="easyui-linkbutton" data-options="plain:true" iconCls="icon-undo" onclick="cacelSearch()" >取消查找</a>		  
+			查看范围：<select class="easyui-combotree " style="width:160px;"  data-options="url:'crm/module/accounts/getCondition'"></select>
+						<a class="easyui-linkbutton" data-options="plain:true" iconCls="icon-add" onclick="insert()" >添加</a>
+						<a class="easyui-linkbutton" data-options="plain:true" iconCls="icon-edit" onclick="edit()" >修改</a>
+						<a class="easyui-linkbutton" data-options="plain:true" iconCls="icon-edit" onclick="batchUpdate()" >批量修改</a>
+						<a class="easyui-linkbutton" data-options="plain:true" iconCls="icon-view" onclick="view()" >预览</a>
+						<a class="easyui-linkbutton" data-options="plain:true" iconCls="icon-edit" onclick="smowerUpdate()" >修改负责人</a>
+						<a class="easyui-linkbutton" data-options="plain:true" iconCls="icon-share" onclick="shareUpdate()" >共享</a>
+						<a class="easyui-linkbutton" data-options="plain:true" iconCls="icon-remove" onclick="deleteRecord()" >删除</a>
+						<a class="easyui-linkbutton" data-options="plain:true" iconCls="icon-import" onclick="import()" >导入</a>	
+						<a class="easyui-linkbutton" data-options="plain:true" iconCls="icon-excel" onclick="excel()" >导出</a>	
 			</div>
 			<table id="view_list"
 				data-options="fitColumns:true" toolbar="#tabbar"  ></table>
