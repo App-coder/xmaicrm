@@ -41,7 +41,7 @@ public class XmCvcolumnlistServiceImpl implements XmCvcolumnlistService {
 			}
 		}
 		
-		if(customview.getCollectcolumn()!=null){
+		if(customview.getCollectcolumn()!=null && !customview.getCollectcolumn().equals("")){
 			Column collect = (Column)JsonUtil.getObject4JsonString(customview.getCollectcolumn(), Column.class);
 			collect.setResizable(false);
 			boolean exist = false;

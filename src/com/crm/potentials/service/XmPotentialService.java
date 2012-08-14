@@ -8,6 +8,4 @@ import com.crm.service.ModuleService;
 
 public interface XmPotentialService extends  ModuleService{
 
-	
-
 }

@@ -106,3 +106,8 @@ select ec_customview.* from ec_customview where ec_customview.cvid=14;
 
 select ec_customview.* from ec_customview where ec_customview.cvid=14;
 
+
+select ec_cvstdfilter.* from ec_cvstdfilter inner join ec_customview on ec_customview.cvid = ec_cvstdfilter.cvid where ec_cvstdfilter.cvid=105;
+
+select ec_cvadvfilter.* from ec_cvadvfilter inner join ec_customview on ec_cvadvfilter.cvid = ec_customview.cvid where ec_cvadvfilter.cvid=105;
+

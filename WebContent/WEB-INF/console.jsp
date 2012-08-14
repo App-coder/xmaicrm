@@ -17,7 +17,7 @@
 			<div>群发邮件</div>
 		</div>
 		<div id="customer_item"  style="width: 120px;" class="navmenuitem"  >
-			<div><a href="javascript:tab('客户','customer/accounts')">客户</a></div>
+			<div><a href="javascript:tab('客户','customer/index')">客户</a></div>
 			<div>联系人</div>
 			<div>客户关怀</div>
 			<div>联系记录</div>
