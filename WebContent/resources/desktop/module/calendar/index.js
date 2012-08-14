@@ -83,3 +83,14 @@ function deleteRecord(){
 	message("请选择记录！");
     }
 }
+function view(){
+    
+    var selected = $('#view_list').datagrid("getSelected");
+    if (selected) {
+	window.location.href = "crm/module/calendar/view?recordid="
+		+ selected.activityid + "&ptb=" + ptb + "&module=" + entitytype;
+    } else {
+	message("请选择记录！");
+    }
+    
+}

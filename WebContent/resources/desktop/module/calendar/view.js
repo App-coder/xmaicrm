@@ -1,37 +1,65 @@
-var oldevts = [];
 $(function() {
-    $('#calendar').fullCalendar({
-	defaultView:'agendaDay',
-	monthNames:['一月','二月', '三月', '四月', '五月', '六月', '七月','八月', '九月', '十月', '十一月', '十二月'],
-	monthNamesShort:['一','二', '三', '四', '五', '六', '七', '八', '九', '十', '十一', '十二'],	
-	dayNames:['星期日', '星期一', '星期二', '星期三','星期四', '星期五', '星期六'],
-	dayNamesShort:['日', '一', '二', '三','四', '五', '六'],
-	theme : true,
-	allDaySlot:false,
-	header : {
-	    left : 'prev,next today',
-	    center : 'title',
-	    right : 'month,agendaWeek,agendaDay'
-	},
-	editable : false,
-	buttonText:{
-	    prev:     '昨天',
-	    next:     '明天',
-	    prevYear: '去年',
-	    nextYear: '明年',
-	    today:    '今天',
-	    month:    '月',
-	    week:     '周',
-	    day:      '日'
-	},
-	viewDisplay : function(view) {
-	    $.post('crm/module/calendar/getEvent',{start:view.start.toString('yyyy-MM-d'),end:view.end.toString('yyyy-MM-d')},function(evts){
-		if(oldevts.length>0){
-		    $('#calendar').fullCalendar('removeEventSource',oldevts);
+    initPage();
+});
+function initPage() {
+    bindTag();
+}
+function bindTag(){
+    $(".tag").find("ul li").hover(function() {
+	$(this).find(".mini_delete").show();
+    }, function() {
+	$(this).find(".mini_delete").hide();
+    });
+}
+function deleteRecord(url) {
+    confirm('确定删除营销活动？', function(r) {
+	if (r) {
+	    window.location.href = url;
+	}
+    });
+}
+function pasteTag(){
+    
+    //验证成功
+    if($("#tag").validatebox("isValid")){
+	var param = {
+		tag:$("#tag").val(),
+		module:module,
+		objectid:crmid
+	};
+	$.post('crm/freetags/add',param,function(res){
+	    if(res.type == true){
+		reloadTags();
+	    }
+	},'json');
+    }
+}
+function reloadTags(){
+    var param = {
+	    recordid:crmid,
+	    module:module
+    };
+    $.get('crm/freetags/loadlist',param,function(res){
+	
+	$("#tagdiv").find("ul").empty();
+	
+	for(var i=0;i<res.length;i++){
+	    var str = '<li>'+res[i].tag+'<span class="icon-mini-delete mini_delete" style="height:5px;" title="删除" onclick="deleteTag('+res[i].id+')" ></span></li>';
+	    $("#tagdiv").find("ul").append($(str));
+	}
+	
+	bindTag();
+	
+    },'json');
+}
+function deleteTag(tid){
+    confirm('确定删除该标签？',function(r){
+	if(r){
+	    $.get('crm/freetags/delete',{id:tid},function(res){
+		if(res.type == true){
+		    reloadTags();
 		}
-		oldevts = evts; 
-		$('#calendar').fullCalendar('addEventSource', evts);
 	    },'json');
 	}
     });
-});
+}

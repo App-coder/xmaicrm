@@ -59,5 +59,7 @@ public interface XmCustomviewMapper {
 	int update(@Param("sql") String sql);
 
 	String getModuleVal(@Param("sql") String sql);
+
+	String getAccountByContactid(@Param("contactid") String contactid);
 	
 }

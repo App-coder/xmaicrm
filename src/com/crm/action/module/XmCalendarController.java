@@ -5,27 +5,37 @@ import java.util.ArrayList;
 import java.util.List;
 
 import javax.annotation.Resource;
+import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.SessionAttributes;
 
 import com.alibaba.fastjson.JSON;
 import com.crm.action.util.ModuleUtil;
+import com.crm.bean.crm.Message;
+import com.crm.bean.crm.UserPermission;
 import com.crm.bean.crm.module.calendar.Event;
 import com.crm.bean.easyui.ComboTree;
 import com.crm.model.XmActivity;
+import com.crm.model.XmFreetags;
 import com.crm.model.XmGroups;
+import com.crm.model.XmTab;
 import com.crm.model.XmUsers;
+import com.crm.service.XmFreetagsService;
 import com.crm.service.module.XmActivityService;
 import com.crm.service.settings.basic.XmGroupsService;
 import com.crm.service.settings.basic.XmUsersService;
 import com.crm.util.ActionUtil;
+import com.crm.util.Constant;
 import com.crm.util.DateUtil;
 import com.crm.util.MathUtil;
 import com.crm.util.actionutil.ActionCls;
 import com.crm.util.crm.CalendarUtil;
+import com.crm.util.crm.CustomViewUtil;
 
 /**
  * 
@@ -37,7 +47,14 @@ import com.crm.util.crm.CalendarUtil;
  */
 @Controller
 @RequestMapping(value = "crm/module/calendar")
+@SessionAttributes(Constant.USERPERMISSION)
 public class XmCalendarController {
+	
+	XmFreetagsService xmFreetagsService;
+	@Resource(name="xmFreetagsService")
+	public void setXmFreetagsService(XmFreetagsService xmFreetagsService) {
+		this.xmFreetagsService = xmFreetagsService;
+	}
 	
 	XmActivityService xmActivityService;
 	@Resource(name="xmActivityService")
@@ -85,8 +102,8 @@ public class XmCalendarController {
 		return "module/calendar/edit";
 	}
 	
-	@RequestMapping(value = "/view")
-	public String view(ModelMap modelmap){
+	@RequestMapping(value = "/viewcalendar")
+	public String viewcalendar(ModelMap modelmap){
 		
 //		List<Event> events = new ArrayList<Event>();
 //		//默认视图是天，得到当天的事件
@@ -106,7 +123,43 @@ public class XmCalendarController {
 //		}
 //		modelmap.addAttribute("events",JSON.toJSONStringWithDateFormat(events, DateUtil.C_TIME_PATTON_DEFAULT));
 		
+		return "module/calendar/viewcalendar";
+	}
+	
+	@RequestMapping(value = "/view")
+	public String view(int recordid,String module,int ptb,ModelMap modelmap){
+		
+		XmTab tab = CustomViewUtil.getTabByName(module);
+		this.actionCls.showView(ptb, module, modelmap,recordid,tab);
+		
 		return "module/calendar/view";
+	}
+	
+	
+	@RequestMapping(value = "/edit")
+	@ResponseBody
+	public String edit(HttpServletRequest request,@ModelAttribute(Constant.USERPERMISSION) UserPermission userPermission){
+		Message msg = new Message();
+		Boolean res = false;
+		
+		int crmid = 0;
+		//修改
+		if(!request.getParameter("recordid").equals("0")&&request.getParameter("recordid")!=""){
+			crmid = Integer.parseInt(request.getParameter("recordid"));
+			res = this.actionCls.update(request,crmid);
+		}else{
+			crmid = this.xmActivityService.getMaxId()+1;
+			res = this.actionCls.add(request,crmid,userPermission.getUser().getId());
+		}
+		
+		if(res){
+			msg.setMessage(crmid+"");
+			msg.setType(true);
+		}else{
+			msg.setMessage(crmid+"");
+			msg.setType(false);
+		}
+		return JSON.toJSONString(msg);
 	}
 	
 	/**

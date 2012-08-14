@@ -216,18 +216,20 @@ public class XmRoleController extends BaseController {
 		modelMap.addAttribute("parentRole",parentRole);
 		modelMap.addAttribute("depth",parentRole.getDepth()+1);
 		
-		int profileid = this.xmRole2profileService.getProfileidByRoleId(parentroleid);
-		XmProfile profile = this.xmProfileService.getProfile(profileid);
-		
-		//全局权限 
-		List<XmProfile2globalpermissions>  globalpermissions = this.xmProfile2globalpermissionsService.getPermissionsByProfileid(profileid);
-		modelMap.addAttribute("globalpermissions",globalpermissions);
-		
-		//模块的信息
-		List<XmTab> tabPermissions = this.xmTabService.getTabPermission(profileid);
-		List<XmProfile2standardpermissions> standardpermissions = this.xmProfile2standardpermissionsService.getStandardPermissionsByProfileId(profileid);
-		List<ModulePermission> modulePermission = PermissionUtil.GenerateModulePerssion(tabPermissions,standardpermissions,this.xmFieldService,profileid,xmDefOrgFieldService);
-		modelMap.addAttribute("modulePermission",modulePermission);
+		if(!parentroleid.equals("H1")){
+			int profileid = this.xmRole2profileService.getProfileidByRoleId(parentroleid);
+			XmProfile profile = this.xmProfileService.getProfile(profileid);
+			
+			//全局权限 
+			List<XmProfile2globalpermissions>  globalpermissions = this.xmProfile2globalpermissionsService.getPermissionsByProfileid(profileid);
+			modelMap.addAttribute("globalpermissions",globalpermissions);
+			
+			//模块的信息
+			List<XmTab> tabPermissions = this.xmTabService.getTabPermission(profileid);
+			List<XmProfile2standardpermissions> standardpermissions = this.xmProfile2standardpermissionsService.getStandardPermissionsByProfileId(profileid);
+			List<ModulePermission> modulePermission = PermissionUtil.GenerateModulePerssion(tabPermissions,standardpermissions,this.xmFieldService,profileid,xmDefOrgFieldService);
+			modelMap.addAttribute("modulePermission",modulePermission);
+		}
 		
 		return "settings/basic/role/showAdd";
 	}

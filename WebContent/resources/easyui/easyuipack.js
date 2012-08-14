@@ -14,12 +14,15 @@ function datetimeboxFormatter(){
     return y+"-"+m+"-"+d+" "+h+":"+mi+":"+se;
 }
 //cbotree设置目录不可选
-function bind_cbo_onBeforeSelect(cboid){
+function bind_cbo_onBeforeSelect(cboid,val){
     $('#'+cboid).combotree({
 	onBeforeSelect:function(node){
 	    if(node.iconCls == 'icon-group'){
 		return false;
 	    }
+	},
+	onLoadSuccess:function(node,data){
+	    $('#'+cboid).combotree('setValue',val);
 	}
     });
 }

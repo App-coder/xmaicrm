@@ -22,6 +22,7 @@ public class DateUtil {
 	public static final String C_DATA_PATTON_YYYYMM = "yyyyMM";
 	public static final String C_DATA_PATTON_DD = "yyyyMMdd";
 	public static final String C_TIME_PATTON_HHMMSS = "HH:mm:ss";
+	public static final String C_TIME_PATTON_HHMM = "HH:mm";
 
 	public static final int C_ONE_SECOND = 1000;
 	public static final int C_ONE_MINUTE = 60 * C_ONE_SECOND;

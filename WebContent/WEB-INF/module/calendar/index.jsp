@@ -117,7 +117,7 @@ var ptb = ${ptb.parenttabid };
 		
 		<div class="easyui-tabs"   >  
 	        <div title="日程安排" style="overflow:hidden;"  >  
-	        	<iframe width="100%" height="650px"  frameborder="0" src="crm/module/calendar/view?_rd=${rd }" ></iframe>
+	        	<iframe width="100%" height="650px"  frameborder="0" src="crm/module/calendar/viewcalendar?_rd=${rd }" ></iframe>
 	        </div>  
 	        <div title="列表视图" class="p10" >
 	        	 
@@ -153,7 +153,6 @@ var ptb = ${ptb.parenttabid };
 	        	 
 	        </div>	        
 	    </div>  
-		
 	</div>
 	<%@ include file="../../foot.jsp"%>
 </body>

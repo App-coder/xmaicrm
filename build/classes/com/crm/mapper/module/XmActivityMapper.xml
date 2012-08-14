@@ -603,4 +603,7 @@
 		xm_activity.date_start,
 		xm_activity.time_start;
   </select>
+  <select id="getMaxId"  resultType="String" >
+  	select max(activityid) from xm_activity
+  </select>
 </mapper>

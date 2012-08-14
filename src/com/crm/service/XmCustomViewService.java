@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Map;
 
 import com.crm.bean.easyui.expand.CVColumn;
+import com.crm.model.XmContactdetails;
 import com.crm.model.XmCustomview;
 import com.crm.model.XmCvadvfilter;
 import com.crm.model.XmCvstdfilter;
@@ -65,6 +66,25 @@ public interface XmCustomViewService {
 	 * @return
 	 */
 	String getModuleVal(String module, String val,String column);
+
+	/**
+	 * 
+	 * 通过联系人ID，获取客户
+	 * 
+	 * @param contactid
+	 * @return
+	 */
+	int getAccountByContactid(String contactid);
+
+	/**
+	 * 
+	 * 通过客户ID，获取联系人
+	 * 
+	 * @param accountid 客户id 
+	 * @return
+	 */
+	List<XmContactdetails> getContactdetailsByAccountid(int accountid);
+
 
 	
 

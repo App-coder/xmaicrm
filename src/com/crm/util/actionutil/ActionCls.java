@@ -181,12 +181,12 @@ public class ActionCls {
 		
 		for(int i=0;i<fields.size();i++){
 			
-			if(request.getParameter(fields.get(i).getFieldname())!=null&&request.getParameter(fields.get(i).getFieldname())!=""){
-				colobjs.add(fields.get(i).getFieldname());
+			if(request.getParameter(fields.get(i).getColumnname())!=null&&request.getParameter(fields.get(i).getColumnname())!=""){
+				colobjs.add(fields.get(i).getColumnname());
 				if(!valobjs.toString().isEmpty()){
 					valobjs.append(",");
 				}
-				valobjs.append(CustomViewUtil.getColumnVal(fields.get(i).getTypeofdata(),request.getParameter(fields.get(i).getFieldname())));
+				valobjs.append(CustomViewUtil.getColumnVal(fields.get(i).getTypeofdata(),request.getParameter(fields.get(i).getColumnname())));
 			}
 			
 		}
@@ -204,7 +204,20 @@ public class ActionCls {
 			sb.append("createdtime");
 			sb.append(",");
 			sb.append("modifiedtime");
+		}else if(module.equals("Events")){
+			sb.append(",");
+			sb.append("time_start");
+			sb.append(",");
+			sb.append("time_end");
+			sb.append(",");
+			sb.append("smcreatorid");
+			sb.append(",");
+			sb.append("createdtime");
+			sb.append(",");
+			sb.append("modifiedtime");
 		}
+		
+		
 		sb.append(")");
 		sb.append(" values ");
 		sb.append("(");
@@ -213,6 +226,23 @@ public class ActionCls {
 		sb.append(insertid);
 		//附加的数据录入
 		if(module.equals("Campaigns")){
+			sb.append(",");
+			sb.append(smownerid);
+			sb.append(",");
+			sb.append("\'"+DateUtil.format(new Date(), DateUtil.C_TIME_PATTON_DEFAULT)+"\'");
+			sb.append(",");
+			sb.append("\'"+DateUtil.format(new Date(), DateUtil.C_TIME_PATTON_DEFAULT)+"\'");
+		}else if(module.equals("Events")){
+			
+			Date start = DateUtil.parseDateTime(request.getParameter("date_start"));
+			Date end = DateUtil.parseDateTime(request.getParameter("due_date"));
+			String timestart = DateUtil.format(start, DateUtil.C_TIME_PATTON_HHMM);
+			String timeend = DateUtil.format(end, DateUtil.C_TIME_PATTON_HHMM);
+			
+			sb.append(",");
+			sb.append("'"+timestart+"'");
+			sb.append(",");
+			sb.append("'"+timeend+"'");
 			sb.append(",");
 			sb.append(smownerid);
 			sb.append(",");

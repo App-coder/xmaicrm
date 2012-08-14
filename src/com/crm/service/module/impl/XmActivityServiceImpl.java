@@ -52,4 +52,14 @@ public class XmActivityServiceImpl implements XmActivityService {
 		return this.xmActivityMapper.getActivitiesInInterval(begin,finish);
 	}
 
+
+	@Override
+	public int getMaxId() {
+		String maxid = this.xmActivityMapper.getMaxId();
+		if(maxid!=null&&maxid!=""){
+			return Integer.parseInt(maxid); 
+		}
+		return 0;
+	}
+
 }

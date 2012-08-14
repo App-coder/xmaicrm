@@ -24,7 +24,7 @@ ${navbar }
 <div id="navpath" class="path">
 ${ptb.parenttabLabel }&gt;<a href="crm/module/${fn:toLowerCase(entity.modulename) }/index?ptb=${ptb.parenttabid }">${tab.tablabel}</a>&gt;
 <c:choose>
-	<c:when test="${recordid!=null }">
+	<c:when test="${recordid!=0 }">
 		编辑${tab.tablabel}
 	</c:when>
 	<c:otherwise>
@@ -33,7 +33,7 @@ ${ptb.parenttabLabel }&gt;<a href="crm/module/${fn:toLowerCase(entity.modulename
 </c:choose>
 </div>
 
-<form name="form_campaign" id="form_campaign" method="post" >
+<form name="form_calendar" id="form_calendar" method="post" >
 <input type="hidden" name="edit_tabid" value="${tab.tabid}" />
 <input type="hidden" name="edit_module" value="${entity.modulename }"/>
 <input type="hidden" name="recordid" value="${recordid }"/>
@@ -129,9 +129,9 @@ ${ptb.parenttabLabel }&gt;<a href="crm/module/${fn:toLowerCase(entity.modulename
 
 <div class="tac" >
 	<a class="easyui-linkbutton" iconCls="icon-ok"
-						href="javascript:void(0)" onclick="formsubmit('form_campaign')">编辑</a> <a
+						href="javascript:void(0)" onclick="formsubmit('form_calendar')">编辑</a> <a
 						class="easyui-linkbutton" iconCls="icon-cancel"
-						href="javascript:void(0)" onclick="clearform('form_campaign')">取消</a>
+						href="javascript:void(0)" onclick="clearform('form_calendar')">取消</a>
 </div>
 </div>
 <%@ include file="../../foot.jsp"%>

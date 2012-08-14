@@ -11,10 +11,12 @@ import com.crm.bean.amcharts.ReportData;
 import com.crm.bean.easyui.expand.CVColumn;
 import com.crm.mapper.XmCustomviewMapper;
 import com.crm.mapper.util.CvFilter;
+import com.crm.model.XmContactdetails;
 import com.crm.model.XmCustomview;
 import com.crm.model.XmCvadvfilter;
 import com.crm.model.XmCvstdfilter;
 import com.crm.model.XmEntityname;
+import com.crm.service.XmContactdetailsService;
 import com.crm.service.XmCustomViewService;
 import com.crm.util.JsonUtil;
 
@@ -27,7 +29,14 @@ public class XmCustomViewServiceImpl implements XmCustomViewService {
 		this.cvFilter = cvFilter;
 	}
 	
-    XmCustomviewMapper xmCustomviewMapper;
+	XmContactdetailsService xmContactdetailsService;
+	@Resource(name="xmContactdetailsService")
+    public void setXmContactdetailsService(
+			XmContactdetailsService xmContactdetailsService) {
+		this.xmContactdetailsService = xmContactdetailsService;
+	}
+
+	XmCustomviewMapper xmCustomviewMapper;
     @Resource(name="xmCustomviewMapper")
 	public void setXmCustomviewMapper(XmCustomviewMapper xmCustomviewMapper) {
 		this.xmCustomviewMapper = xmCustomviewMapper;
@@ -211,6 +220,17 @@ public class XmCustomViewServiceImpl implements XmCustomViewService {
 			}
 		}
 		return val;
+	}
+
+	@Override
+	public int getAccountByContactid(String mv) {
+		String id = this.xmCustomviewMapper.getAccountByContactid(mv);
+		return id==null?0:Integer.parseInt(id);
+	}
+
+	@Override
+	public List<XmContactdetails> getContactdetailsByAccountid(int accountid) {
+		return this.xmContactdetailsService.getContactdetailsByAccountid(accountid+"");
 	}
 
 }

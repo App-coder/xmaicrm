@@ -49,4 +49,6 @@ public interface XmActivityMapper {
 	 * @return
 	 */
 	List<XmActivity> getActivitiesInInterval(@Param("begin") String begin,@Param("finish") String finish);
+
+	String getMaxId();
 }

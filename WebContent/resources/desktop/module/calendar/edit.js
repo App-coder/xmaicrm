@@ -4,9 +4,9 @@ $(function() {
 function initPage() {
 
     $("#form_calendar").form({
-	url : "crm/module/campaigns/edit",
+	url : "crm/module/calendar/edit",
 	onSubmit : function() {
-            if(!$('#form_campaign').form("validate")){
+            if(!$('#form_calendar').form("validate")){
         	return false;
             }
             if(kinds.length>0){
@@ -20,7 +20,7 @@ function initPage() {
 	    var data = $.parseJSON(data);
 	    if(data.type == true){
 		//转向到详细页面
-		window.location.href = "crm/module/campaigns/view?recordid="+data.message+"&ptb="+ptb+"&module=Campaigns";
+		window.location.href = "crm/module/calendar/index?ptb="+ptb;
 	    }
 	}
     });

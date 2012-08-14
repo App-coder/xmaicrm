@@ -22,6 +22,8 @@ public interface XmActivityService {
 	 * @param end
 	 * @return
 	 */
-	List<XmActivity> getActivity(String start, String end); 
+	List<XmActivity> getActivity(String start, String end);
+
+	int getMaxId(); 
 
 }

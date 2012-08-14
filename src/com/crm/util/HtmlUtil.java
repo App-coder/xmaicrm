@@ -4,7 +4,9 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import com.crm.model.XmAccount;
 import com.crm.model.XmBlocks;
+import com.crm.model.XmContactdetails;
 import com.crm.model.XmEntityname;
 import com.crm.model.XmField;
 import com.crm.model.XmPicklist;
@@ -184,7 +186,7 @@ public class HtmlUtil {
 			
 			if(xmField.getUitype().equals("53")){
 				fieldstr += "<select class=\"easyui-combotree text2 \" id=\"cbo_"+xmField.getColumnname()+"\" name=\""+xmField.getColumnname()+"\" style=\"width:250px;\" data-options=\"url:'crm/relation/users/getSmowners'\"  ></select>";
-				fieldstr +="<script>bind_cbo_onBeforeSelect('cbo_"+xmField.getColumnname()+"')</script>";
+				fieldstr +="<script>bind_cbo_onBeforeSelect('cbo_"+xmField.getColumnname()+"',"+getMapVal(obj,xmField.getColumnname())+")</script>";
 			}else if(xmField.getUitype().equals("19")){
 				fieldstr +="<textarea class=\"fullarea\" name=\""+xmField.getColumnname()+"\" >"+getMapVal(obj,xmField.getColumnname())+"</textarea>";
 			}else if(xmField.getUitype().equals("15")||xmField.getUitype().equals("16")||xmField.getUitype().equals("111")||xmField.getUitype().equals("33")){
@@ -213,7 +215,31 @@ public class HtmlUtil {
 					fieldstr +="<a class=\"easyui-linkbutton mgl_10\" title=\"清空\" data-options=\"iconCls:'icon-clear'\" ></a>";
 				}
 			}else if(xmField.getUitype().equals("57")){
-				fieldstr +="<select class=\"text2\"  name=\""+xmField.getColumnname()+"\"  ><option></option></select>";
+				//设置Option,设置选中的值
+				HashMap<String, XmEntityname> hm_noline = (HashMap<String, XmEntityname>)CacheUtil.getFromCache(Constant.ENTITYNAME_NOLINE);
+				XmEntityname et = hm_noline.get(xmField.getFieldname().replace("_", ""));
+				
+				String mv = getMapVal(obj,xmField.getColumnname());
+				if(mv !=""){
+					int accountid = xmCustomViewService.getAccountByContactid(mv);
+					List<XmContactdetails> details = xmCustomViewService.getContactdetailsByAccountid(accountid);
+					
+					StringBuffer opstr = new StringBuffer();  
+					if(details.size()>0){
+						for(int i=0;i<details.size();i++){
+							if(mv.equals(details.get(i).getContactid())){
+								opstr.append("<option value='"+details.get(i).getContactid()+"' selected='selected' >"+details.get(i).getLastname()+"</option>");
+							}else{
+								opstr.append("<option value='"+details.get(i).getContactid()+"'>"+details.get(i).getLastname()+"</option>");
+							}
+						}
+					}
+					
+					fieldstr +="<select class=\"text2\"  name=\""+xmField.getColumnname()+"\"  >"+opstr.toString()+"</select>";
+				}else{
+					fieldstr +="<select class=\"text2\"  name=\""+xmField.getColumnname()+"\"  ></select>";
+				}
+				
 			}else{
 				//两个条件的情况
 				if(tds.length==2){
@@ -243,9 +269,9 @@ public class HtmlUtil {
 			}
 		}else if(tds[0].equals("DT")){
 			if(tds[1].equals("M")){
-				fieldstr += "<input type=\"text\" name=\""+xmField.getColumnname()+"\" value=\""+getMapVal(obj,xmField.getColumnname())+"\" class=\"easyui-datetimebox\"  style=\"width:250px\" formatter=\"datetimeboxFormatter\" data-options=\"required:true\" /><span class=\"must\">*</span>";	
+				fieldstr += "<input type=\"text\" readonly=\"readonly\" name=\""+xmField.getColumnname()+"\" value=\""+getMapVal(obj,xmField.getColumnname())+"\" class=\"easyui-datetimebox\"  style=\"width:250px\" formatter=\"datetimeboxFormatter\" data-options=\"required:true\" /><span class=\"must\">*</span>";	
 			}else{
-				fieldstr += "<input type=\"text\" name=\""+xmField.getColumnname()+"\" value=\""+getMapVal(obj,xmField.getColumnname())+"\" class=\"easyui-datetimebox\"  style=\"width:250px\" formatter=\"datetimeboxFormatter\" />";
+				fieldstr += "<input type=\"text\" readonly=\"readonly\" name=\""+xmField.getColumnname()+"\" value=\""+getMapVal(obj,xmField.getColumnname())+"\" class=\"easyui-datetimebox\"  style=\"width:250px\" formatter=\"datetimeboxFormatter\" />";
 			}
 		}else if(tds[0].equals("N")){
 			if(tds.length==2){
@@ -306,7 +332,9 @@ public class HtmlUtil {
 				}
 				
 			}else if(xmField.getUitype().equals("57")){
-				fieldstr +="<select class=\"text2\"  name=\""+xmField.getColumnname()+"\"  ><option></option></select>";
+				HashMap<String, XmEntityname> hm_noline = (HashMap<String, XmEntityname>)CacheUtil.getFromCache(Constant.ENTITYNAME_NOLINE);
+				XmEntityname et = hm_noline.get(xmField.getFieldname().replace("_", ""));
+				fieldstr +="<select class=\"text2\"  name=\""+xmField.getColumnname()+"\"  ><option value=\""+getMapVal(obj,xmField.getColumnname())+"\">"+getText(getMapVal(obj,xmField.getColumnname()),et,xmCustomViewService)+"</option></select>";
 			}else if(xmField.getUitype().equals("76")){
 				if(tds[1].equals("M")){
 					HashMap<String, XmEntityname> hm_noline = (HashMap<String, XmEntityname>)CacheUtil.getFromCache(Constant.ENTITYNAME_NOLINE);
