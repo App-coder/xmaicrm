@@ -1,6 +1,7 @@
 package com.crm.action.module;
 
 import java.io.UnsupportedEncodingException;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.annotation.Resource;
@@ -14,7 +15,11 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.alibaba.fastjson.JSON;
 import com.crm.action.util.ModuleUtil;
+import com.crm.bean.easyui.ComboTree;
+import com.crm.bean.easyui.TreeGrid1;
+import com.crm.model.XmCatalog;
 import com.crm.model.XmFaqcategory;
 import com.crm.service.module.XmFaqcategorysService;
 import com.crm.util.ActionUtil;
@@ -54,7 +59,7 @@ public class XmFaqcategorysController {
 	
 	@RequestMapping(value = "/getFaqCategoryByParentid", method = RequestMethod.POST)
 	@ResponseBody
-	public String getFaqCategoryByParentid(@RequestParam("pid") int pid){
+	public String getFaqCategoryByParentid(@RequestParam("pid") String pid){
 		List<XmFaqcategory> faqCategory=this.xmFaqcategorysService.getFaqCategoryByParentid(pid);
 		return JSONArray.fromObject(faqCategory).toString();
 	}
@@ -63,6 +68,61 @@ public class XmFaqcategorysController {
 	@ResponseBody
 	public String getTreeNode(){
 		return this.xmFaqcategorysService.getFaqCategory();
+	}
+	
+	
+	@RequestMapping(value = "/getCatalogAll", method = RequestMethod.GET)
+	@ResponseBody
+	public String getCatalogAll(){
+		List<XmFaqcategory> catalogs = this.xmFaqcategorysService.getCatalogAll(); 
+		List<TreeGrid1> tree = new ArrayList<TreeGrid1>();
+		for(int i=0;i<catalogs.size();i++){
+			if(catalogs.get(i).getFaqcategoryid().equals("H1")){
+				TreeGrid1 root = new TreeGrid1();
+				root.setId(catalogs.get(i).getFaqcategoryid());
+				root.setText(catalogs.get(i).getFaqcategoryname());
+				root.setAttributes(catalogs.get(i));
+				
+				root.setChildren(getCataLogs("H1", catalogs));
+				root.setState("open");
+				
+				tree.add(root);
+				
+				break;
+			}
+		}
+		return JSON.toJSONString(tree);
+	}
+	
+	public List<TreeGrid1> getCataLogs(String parentid,List<XmFaqcategory> catalogs){
+		List<TreeGrid1> childrens = new ArrayList<TreeGrid1>();
+		for(int i=0;i<catalogs.size();i++){
+			if(catalogs.get(i).getParentfaqcategoryid().equals(parentid)){
+				TreeGrid1 tg = new TreeGrid1();
+				tg.setId(catalogs.get(i).getFaqcategoryid());
+				tg.setText(catalogs.get(i).getFaqcategoryname());
+				tg.setAttributes(catalogs.get(i));
+				tg.setChildren(getChildren(catalogs.get(i).getFaqcategoryid(), catalogs));
+				childrens.add(tg);
+			}
+		}
+		return childrens;
+	}
+	
+	//目录，添加
+	public List<ComboTree> getChildren(String parentid,List<XmFaqcategory> catalogs){
+		List<ComboTree> childrens = new ArrayList<ComboTree>();
+		for(int i=0;i<catalogs.size();i++){
+			if(catalogs.get(i).getParentfaqcategoryid().equals(parentid)){
+				ComboTree cbo = new ComboTree();
+				cbo.setId(catalogs.get(i).getFaqcategoryid());
+				cbo.setText(catalogs.get(i).getFaqcategoryname());
+				cbo.setAttributes(catalogs.get(i));
+				cbo.setChildren(getChildren(catalogs.get(i).getFaqcategoryid(), catalogs));
+				childrens.add(cbo);
+			}
+		}
+		return childrens;
 	}
 
 }

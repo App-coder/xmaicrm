@@ -1,6 +1,7 @@
 package com.crm.action.module;
 
 import java.io.UnsupportedEncodingException;
+import java.util.List;
 
 import javax.annotation.Resource;
 
@@ -9,6 +10,8 @@ import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.crm.action.util.ModuleUtil;
+import com.crm.model.XmCangkus;
+import com.crm.service.settings.other.XmCangkusService;
 import com.crm.util.ActionUtil;
 
 /**
@@ -23,6 +26,11 @@ import com.crm.util.ActionUtil;
 @RequestMapping(value = "crm/module/checks")
 public class XmChecksController {
 
+	XmCangkusService xmCangkusService;
+	@Resource(name="xmCangkusService")
+	public void setXmCangkusService(XmCangkusService xmCangkusService) {
+		this.xmCangkusService = xmCangkusService;
+	}
 
 	ModuleUtil moduleUtil;
 	@Resource(name = "moduleUtil")
@@ -34,7 +42,10 @@ public class XmChecksController {
 	public String index(int ptb, ModelMap modelMap)
 			throws UnsupportedEncodingException {
 
-		ActionUtil.setTitle2("Checks", ptb, modelMap, this.moduleUtil);
+		List<XmCangkus> cangkus = this.xmCangkusService.getCangkus();
+		modelMap.addAttribute("cangkus",cangkus);
+		
+		ActionUtil.setTitle("Checks", ptb, modelMap, this.moduleUtil);
 
 		return "module/checks/index";
 	}

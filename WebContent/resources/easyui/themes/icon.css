@@ -64,6 +64,9 @@
 .icon-cancel{
 	background:url('icons/cancel.png') no-repeat;
 }
+.icon-lock{
+	background:url('icons/lock.png') no-repeat;
+}
 .icon-reload{
 	background:url('icons/reload.png') no-repeat;
 }

@@ -24,14 +24,14 @@ public class XmFaqcategorysServiceImpl implements XmFaqcategorysService {
 	}
 	
 	@Override
-	public List<XmFaqcategory> getFaqCategoryByParentid(int parentfaqcategoryid) {
+	public List<XmFaqcategory> getFaqCategoryByParentid(String parentfaqcategoryid) {
 		return this.xmFaqcategoryMapper.getFaqCategoryByParentid(parentfaqcategoryid);
 	}
 	
 	@Override
 	public String getFaqCategory() {
 		List<XmFaqcategory> list=this.xmFaqcategoryMapper.getFaqCategory();
-		List<XmFaqcategory> root=this.xmFaqcategoryMapper.getFaqCategoryByParentid(0);
+		List<XmFaqcategory> root=this.xmFaqcategoryMapper.getFaqCategoryByParentid("");
 		JSONArray ja=recursionTree(list,root.get(0)); 
 		JSONObject jo = new JSONObject();
 		jo.put("id", 0);
@@ -64,12 +64,17 @@ public class XmFaqcategorysServiceImpl implements XmFaqcategorysService {
         Iterator<XmFaqcategory> it = list.iterator();     
         while(it.hasNext()){     
         	XmFaqcategory n = (XmFaqcategory)it.next();     
-            if(n.getParentfaqcategoryid()==node.getFaqcategoryid()){     
+            if(n.getParentfaqcategoryid().equals(node.getFaqcategoryid())){     
                 li.add(n);     
             }     
         }     
         return li;     
-    }   
+    }
+
+	@Override
+	public List<XmFaqcategory> getCatalogAll() {
+		return this.xmFaqcategoryMapper.getCatalogAll();
+	}   
 	
 	
 

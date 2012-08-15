@@ -91,7 +91,9 @@ public class WelcomeController implements ServletContextAware {
 	
 	@RequestMapping(value = "/loginout", method = RequestMethod.GET)
 	public String loginout(HttpSession session){
-		session.removeAttribute(Constant.USERPERMISSION);
+//		session.removeAttribute(Constant.USERPERMISSION);
+//		session.removeAttribute("navbar");
+		session.invalidate();
 		return "welcome";
 	}
 

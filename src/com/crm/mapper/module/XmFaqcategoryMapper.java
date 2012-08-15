@@ -17,7 +17,9 @@ public interface XmFaqcategoryMapper {
 
     int updateByPrimaryKey(XmFaqcategory record);
     
-    List<XmFaqcategory> getFaqCategoryByParentid(@Param("parentfaqcategoryid") int parentfaqcategoryid);
+    List<XmFaqcategory> getFaqCategoryByParentid(@Param("parentfaqcategoryid") String parentfaqcategoryid);
     
     List<XmFaqcategory> getFaqCategory();
+
+	List<XmFaqcategory> getCatalogAll();
 }

@@ -880,6 +880,11 @@ public class XmCustomViewController extends BaseController {
 			if(catalogid!=null && !catalogid.equals("H1")){
 				sb.append(" and xm_products.catalogid = '"+catalogid+"'");
 			}
+		}else if(entitytype.equals("Checks")){
+			int cangku = Integer.parseInt(request.getParameter("cangku"));
+			if(cangku!=1){
+				sb.append(" and xm_checks.cangkusid = "+cangku);
+			}
 		}
 		return sb.toString();
 	}

@@ -2,7 +2,7 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.crm.mapper.module.XmFaqcategoryMapper" >
   <resultMap id="BaseResultMap" type="com.crm.model.XmFaqcategory" >
-    <id column="faqcategoryid" property="faqcategoryid" jdbcType="INTEGER" />
+    <id column="faqcategoryid" property="faqcategoryid" jdbcType="VARCHAR" />
     <result column="faqcategoryname" property="faqcategoryname" jdbcType="VARCHAR" />
     <result column="parentfaqcategory" property="parentfaqcategory" jdbcType="VARCHAR" />
     <result column="depth" property="depth" jdbcType="INTEGER" />
@@ -116,5 +116,7 @@
 	 <include refid="Base_Column_List" />
 	 from xm_faqcategory
   </select>
-  
+  <select id="getCatalogAll" resultMap="BaseResultMap" >
+  	select * from xm_faqcategory order by sortorder asc
+  </select>
 </mapper>

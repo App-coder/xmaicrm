@@ -13,7 +13,7 @@
 			${ptb.parenttabLabel }&gt;<a
 				href="crm/module/${fn:toLowerCase(entityname.modulename) }/index?ptb=${ptb.parenttabid }">${tab.tablabel}</a>
 		</div>
-		<table id="view_list" data-options="fitColumns:true"></table>
+		<table id="tab_list" data-options="fitColumns:true"></table>
 	</div>
 	<%@ include file="../../foot.jsp"%>
 </body>
