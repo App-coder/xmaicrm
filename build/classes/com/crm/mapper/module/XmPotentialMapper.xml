@@ -521,4 +521,10 @@
   <select id="loadList" resultMap="BaseResultMap">
    SELECT xm_potential.*,xm_account.accountname FROM xm_potential LEFT JOIN xm_account ON xm_potential.accountid = xm_account.accountid LEFT JOIN xm_users ON xm_users.id = xm_potential.smownerid WHERE 1=1 ${filter} limit #{start},#{rows}
   </select>
+  <select id="getTopPotential" resultMap="BaseResultMap" >
+  	SELECT xm_potential.* FROM xm_potential LEFT JOIN xm_account ON xm_potential.accountid = xm_account.accountid LEFT JOIN xm_users ON xm_users.id = xm_potential.smownerid WHERE xm_potential.deleted = 0 AND xm_potential.sales_stage <![CDATA[<>]]> '谈成结束' AND xm_potential.sales_stage <![CDATA[<>]]> '未成结束' AND xm_potential.smownerid='1' ORDER BY amount DESC LIMIT 0,10
+  </select>
+  <select id="getSalesCountByPick" resultType="String" >
+  	SELECT count(*) FROM xm_potential INNER JOIN xm_account ON xm_potential.accountid = xm_account.accountid LEFT JOIN xm_users ON xm_users.id = xm_potential.smownerid where xm_potential.deleted=0 and xm_potential.smownerid in (${range}) and xm_potential.closingdate <![CDATA[>=]]> '${firstday}' and xm_potential.closingdate <![CDATA[<=]]> '${lastday}' and xm_potential.sales_stage = #{colvalue}
+  </select>
 </mapper>

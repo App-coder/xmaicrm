@@ -30,4 +30,4 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <script type="text/javascript" src="resources/plugins/loadmask/jquery.loadmask.min.js"></script>
 
 <script type="text/javascript" src="resources/global.js"></script>    
-<script type="text/javascript" src="resources/portlets.js"></script>
+<script type="text/javascript" src="resources/desktop/portlets.js"></script>

@@ -4,6 +4,7 @@ import java.util.List;
 
 import com.crm.bean.amcharts.portlets.Salesbymonth;
 import com.crm.bean.amcharts.portlets.Salesyear;
+import com.crm.bean.portlets.salesyearinfo.SalesorderStat;
 
 
 public interface XmSalesorderService {
@@ -15,5 +16,7 @@ public interface XmSalesorderService {
 	List<Salesbymonth> getTopSalesByMonth(String prev, String today);
 
 	List<Salesyear> getSalesOfYear(String year);
+
+	SalesorderStat getSalesorderStat(String year);
 
 }

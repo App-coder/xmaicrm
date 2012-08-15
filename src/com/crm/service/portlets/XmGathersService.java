@@ -1,10 +1,9 @@
 package com.crm.service.portlets;
 
 import java.util.List;
-import java.util.Map;
 
-import com.crm.bean.amcharts.portlets.salesyearinfo.GatherStat;
 import com.crm.bean.crm.portlets.GatherYear;
+import com.crm.bean.portlets.salesyearinfo.GatherStat;
 import com.crm.model.XmGathers;
 
 public interface XmGathersService {

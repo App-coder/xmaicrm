@@ -867,4 +867,7 @@
   <select id="loadList" resultMap="BaseResultMap">
     select xm_contactdetails.*,xm_users.user_name ,xm_contactdetails.contactid as crmid FROM xm_contactdetails LEFT JOIN xm_account ON xm_account.accountid = xm_contactdetails.accountid LEFT JOIN xm_users ON xm_users.id = xm_contactdetails.smownerid WHERE xm_contactdetails.deleted = 0  and 1=1 ${filter} limit #{start},#{rows}
   </select>
+  <select id="getNewAccounts" resultType="String" >
+  select count(accountid) as acccount from xm_account where xm_account.deleted = 0 and xm_account.createdtime between '${year}-01-01 00:00:00' and '${year}-12-31 23:59:00';
+  </select>
 </mapper>

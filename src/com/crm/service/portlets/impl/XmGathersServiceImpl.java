@@ -2,16 +2,14 @@ package com.crm.service.portlets.impl;
 
 import java.util.ArrayList;
 import java.util.Calendar;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 import javax.annotation.Resource;
 
 import org.springframework.stereotype.Component;
 
-import com.crm.bean.amcharts.portlets.salesyearinfo.GatherStat;
 import com.crm.bean.crm.portlets.GatherYear;
+import com.crm.bean.portlets.salesyearinfo.GatherStat;
 import com.crm.mapper.module.XmGathersMapper;
 import com.crm.model.XmGathers;
 import com.crm.service.portlets.XmGathersService;

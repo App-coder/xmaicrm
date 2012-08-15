@@ -92,7 +92,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
       out.write("<script type=\"text/javascript\" src=\"resources/plugins/loadmask/jquery.loadmask.min.js\"></script>\r\n");
       out.write("\r\n");
       out.write("<script type=\"text/javascript\" src=\"resources/global.js\"></script>    \r\n");
-      out.write("<script type=\"text/javascript\" src=\"resources/portlets.js\"></script>");
+      out.write("<script type=\"text/javascript\" src=\"resources/desktop/portlets.js\"></script>");
       out.write("\r\n");
       out.write("<script type=\"text/javascript\" src=\"resources/desktop/portlets/gathersyear.js\"></script>\r\n");
       out.write("</head>\r\n");

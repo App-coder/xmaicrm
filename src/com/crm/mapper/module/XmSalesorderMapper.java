@@ -6,6 +6,7 @@ import org.apache.ibatis.annotations.Param;
 
 import com.crm.bean.amcharts.portlets.Salesbymonth;
 import com.crm.bean.amcharts.portlets.Salesyear;
+import com.crm.bean.portlets.salesyearinfo.SalesorderStat;
 import com.crm.mapper.ModuleMapper;
 import com.crm.model.XmSalesorder;
 
@@ -31,4 +32,6 @@ public interface XmSalesorderMapper extends ModuleMapper<XmSalesorder> {
 	List<Salesbymonth> getTopSalesByMonth(@Param("prev") String prev,@Param("today") String today);
 
 	List<Salesyear> getSalesOfYear(@Param("year") String year);
+
+	SalesorderStat getSalesorderStat(@Param("year") String year);
 }

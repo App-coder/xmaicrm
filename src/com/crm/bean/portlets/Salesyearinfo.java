@@ -1,4 +1,4 @@
-package com.crm.bean.amcharts.portlets;
+package com.crm.bean.portlets;
 
 public class Salesyearinfo {
 	

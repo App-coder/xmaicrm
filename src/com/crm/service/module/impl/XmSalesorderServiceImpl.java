@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 
 import com.crm.bean.amcharts.portlets.Salesbymonth;
 import com.crm.bean.amcharts.portlets.Salesyear;
+import com.crm.bean.portlets.salesyearinfo.SalesorderStat;
 import com.crm.mapper.module.XmSalesorderMapper;
 import com.crm.mapper.util.CvFilter;
 import com.crm.service.module.XmSalesorderService;
@@ -38,6 +39,11 @@ public class XmSalesorderServiceImpl implements XmSalesorderService {
 	@Override
 	public List<Salesyear> getSalesOfYear(String year) {
 		return this.xmSalesorderMapper.getSalesOfYear(year);
+	}
+
+	@Override
+	public SalesorderStat getSalesorderStat(String year) {
+		return this.xmSalesorderMapper.getSalesorderStat(year);
 	}
 
 

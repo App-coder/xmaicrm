@@ -1,4 +1,4 @@
-package com.crm.bean.amcharts.portlets.salesyearinfo;
+package com.crm.bean.portlets.salesyearinfo;
 
 public class GatherStat {
 	private String gathersacc;

@@ -4,8 +4,8 @@ import java.util.List;
 
 import org.apache.ibatis.annotations.Param;
 
-import com.crm.bean.amcharts.portlets.salesyearinfo.GatherStat;
 import com.crm.bean.crm.portlets.GatherYear;
+import com.crm.bean.portlets.salesyearinfo.GatherStat;
 import com.crm.model.XmGathers;
 
 public interface XmGathersMapper {
