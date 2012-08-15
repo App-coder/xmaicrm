@@ -1,5 +1,6 @@
 package com.crm.action.settings.system;
 
+import java.util.Date;
 import java.util.List;
 
 import javax.annotation.Resource;
@@ -12,11 +13,14 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.alibaba.fastjson.JSON;
 import com.crm.action.BaseController;
+import com.crm.bean.crm.Message;
 import com.crm.bean.easyui.ListBean;
 import com.crm.model.XmApprove;
 import com.crm.model.XmTab;
 import com.crm.service.XmTabService;
 import com.crm.service.settings.system.XmApproveService;
+import com.crm.util.DateUtil;
+import com.crm.util.JsonUtil;
 /**
  * 
  * 系统设置-审批流程
@@ -67,6 +71,72 @@ public class XmMultiApproveController extends BaseController {
 		
 		return JSON.toJSONString(approves);
 	}
+	
+	@RequestMapping(value = "/getApproveRole", method = RequestMethod.GET)
+	@ResponseBody
+	public String getApproveRole(int approveid){
+		return JSON.toJSONString(this.xmApproveService.getApproveRole(approveid));
+	}
+	
+	/*
+	 * @RequestMapping(value="/submit",method=RequestMethod.POST)
+	@ResponseBody
+	public String execute(ModelMap modelMap,XmBlocks xmBlocks,String action,int blockid){
+		int affectrows  = 0;
+		if(action.equals("add"))
+			affectrows=this.xmCustomBlockService.insert(xmBlocks);
+		else if(action.equals("update"))
+			affectrows=this.xmCustomBlockService.updateByPrimaryKey(xmBlocks);
+		else 
+			affectrows=this.xmCustomBlockService.deleteByPrimaryKey(blockid);
+		
+		Message msg = new Message();
+		if(affectrows>=1){
+			msg.setMessage("编辑成功！");
+			msg.setType(true);
+		}else{
+			msg.setMessage("编辑时发生异常！");
+			msg.setType(false);
+		}
+		return objToJson(msg);
+	}
+	 */
+	
+	
+	@RequestMapping(value="/doMultiApprove",method=RequestMethod.POST)
+	@ResponseBody
+	public String doMultiApprove(String xmApprove,int approveid,String userArr,String action){
+		XmApprove approve=(XmApprove)JsonUtil.getObject4JsonString(xmApprove,XmApprove.class);
+		int affectrows  = 0;
+		if(action.equals("update"))
+			affectrows=this.xmApproveService.updateMultiApprove(approve, approveid, userArr);
+		Message msg = new Message();
+		if(affectrows>=1){
+			msg.setMessage("编辑成功！");
+			msg.setType(true);
+		}else{
+			msg.setMessage("编辑时发生异常！");
+			msg.setType(false);
+		}
+		return objToJson(msg);
+	}
+	
+	@RequestMapping(value="/isApproveUsed",method=RequestMethod.GET)
+	@ResponseBody
+	public String isApproveUsed(int approveid){
+		int affectrows  = 0;
+		affectrows=this.xmApproveService.getApproveUsed(approveid);
+		Message msg = new Message();
+		if(affectrows>=1){
+			msg.setMessage("该流程正在使用！");
+			msg.setType(true);
+		}else{
+			msg.setMessage("该流程不再使用！");
+			msg.setType(false);
+		}
+		return objToJson(msg);
+	}
+	
 	
 	
 	

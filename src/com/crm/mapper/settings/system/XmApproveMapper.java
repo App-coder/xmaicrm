@@ -22,4 +22,8 @@ public interface XmApproveMapper {
     int updateByPrimaryKey(XmApprove record);
 
 	List<XmApprove> getApproveList(@Param("tabid") int tabid);
+	
+	List<Object> getApproveRole(@Param("approveid") int approveid);
+	
+	String getApproveRelatedModule(@Param("approveid") int approveid);
 }

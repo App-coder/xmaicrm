@@ -37,7 +37,7 @@ ${navbar }
 					</div>
 				</div>
 			</div>
-		</div>
+	</div>
 
     <div class="path" id="navpath"></div>
     <div class="d_view" id="tb">

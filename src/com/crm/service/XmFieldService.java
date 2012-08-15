@@ -2,6 +2,8 @@ package com.crm.service;
 
 import java.util.*;
 
+import org.apache.ibatis.annotations.Param;
+
 import com.crm.model.XmField;
 import com.crm.model.XmProfile2field;
 
@@ -59,6 +61,7 @@ public interface XmFieldService {
 	
 	List<Object> getRelmodField(String module,int tabid);
 
+	List<Object> getMultiLevel2(Integer tabid,String typeofdata);
 	/**
 	 * @param tabid 模块的ID
 	 * @param columns 回收站显示字段

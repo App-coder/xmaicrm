@@ -57,6 +57,7 @@ public interface XmFieldMapper {
 	List<Object> getRelmodField(@Param("module") String module,@Param("tabid") int tabid);
 	
 	String getProductOfFieldname(@Param("module") String module,@Param("fieldid") Integer fieldid);
-
-	List<XmField> getRecycleBinFields(@Param("tabid") int tabid,@Param("fieldsStr") String fieldsStr);
+    List<XmField> getRecycleBinFields(@Param("tabid") int tabid,@Param("fieldsStr") String fieldsStr);
+    List<Object> getMultiLevel2(@Param("tabid") Integer tabid,@Param("typeofdata") String typeofdata);
 }
+	

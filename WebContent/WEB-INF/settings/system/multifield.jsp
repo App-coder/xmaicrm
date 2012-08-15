@@ -13,10 +13,15 @@ var pathname = "级联字段";
 	${navbar }
 		<div id="main">
 		    <div class="hidden">
-				<div id="block" class="easyui-window" <%=win_topbar%> style="width: 500px; height: 232px;">
+				<div id="multifield_window" class="easyui-window" <%=win_topbar%> style="width: 500px; height: 238px;">
 					<div class="easyui-layout" data-options="fit:true,border:false">
 						<div data-options="region:'center',border:false" style="padding: 10px; background: #fff;">
-							<table id="multifield_grid"></table>
+							<table id="multifield_grid" toolbar="#multifield_grid_tb"></table>
+							<div id="multifield_grid_tb" class="gtb" style="display: block;">
+								<span>编辑级联字段：</span>
+								<input type="text" id="multifieldname"  name="multifieldname"/>
+								</select>
+							</div>
 						</div>
 						<div region="south" class="btnbar" border="false">
 							<a class="easyui-linkbutton" iconCls="icon-ok" onclick="submitBlock()">确定</a>
@@ -36,10 +41,9 @@ var pathname = "级联字段";
 				</c:forEach>
 			</select><a href="customview/index?entitytype=${entitytype}"
 				class="easyui-linkbutton"
-				data-options="plain:true,iconCls:'icon-add'">添加</a><a
-				href="customview/index?entitytype=${entitytype}"
+				data-options="plain:true,iconCls:'icon-add'">添加</a><a				
 				class="easyui-linkbutton"
-				data-options="plain:true,iconCls:'icon-edit'">修改</a><a
+				data-options="plain:true,iconCls:'icon-edit'" onclick="gotoEditCustomField()">修改</a><a
 				href="customview/index?entitytype=${entitytype}"
 				class="easyui-linkbutton"
 				data-options="plain:true,iconCls:'icon-remove'">删除</a>
