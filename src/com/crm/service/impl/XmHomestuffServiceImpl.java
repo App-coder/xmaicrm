@@ -31,8 +31,11 @@ public class XmHomestuffServiceImpl implements XmHomestuffService {
 
 	@Override
 	public List<XmHomestuff> getStuffByRole(String role) {
-		
-		int hometemplatesid = this.xmHometemplatesMapper.getStuffId(role);
+		String templatesid = this.xmHometemplatesMapper.getStuffId(role);
+		int hometemplatesid = 0;
+		if(templatesid!=null&&templatesid!=""){
+			hometemplatesid = Integer.parseInt(templatesid);
+		}
 		List<XmHomestuff> stuffs = null;
 		
 		if(hometemplatesid!=0){
@@ -41,7 +44,6 @@ public class XmHomestuffServiceImpl implements XmHomestuffService {
 			//默认的视图模版
 			stuffs = this.xmHomestuffMapper.getDefaultStuff();
 		}
-		
 		return stuffs;
 	}
 

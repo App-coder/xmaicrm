@@ -17,5 +17,5 @@ public interface XmHometemplatesMapper {
 
     int updateByPrimaryKey(XmHometemplates record);
 
-	int getStuffId(@Param("role") String role);
+	String getStuffId(@Param("role") String role);
 }
