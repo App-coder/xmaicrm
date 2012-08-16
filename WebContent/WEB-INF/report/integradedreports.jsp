@@ -42,10 +42,10 @@ a {
 <div id="main">
 <div class="path"><a href="/">报表</a>&gt;<a href="/sc/">综合报表</a></div>
 
-<div class="container">
-	<div class="easyui-layout">
-		<div data-options="region:'north',border:false">
-			<div class="d_view ">
+<div>
+	<div fit="true">
+		<div data-options="border:false">
+			<div class="d_view">
 				<span class="icon-filter view_span" >年度选择：</span>
 				<select class="selyear">
 				    <option value=""></option>
@@ -55,9 +55,9 @@ a {
 				</select>
 			</div>
 		</div>
-		<div data-options="region:'center',border:false" style="overflow: hidden;">
-			<div class="easyui-panel"  
-			     collapsible="true"  style="padding:5px;">
+		<div data-options="border:false" style="overflow: hidden;">
+			<div class="d_center"  
+			     collapsible="true" data-options="fit:true" style="padding:5px;">
 				<table class="report_panel">
 				   <tr>
 				   <td class="report_details">
@@ -131,6 +131,6 @@ a {
 		</div>
 	</div>
 </div>
-</div>
 <%@ include file="../foot.jsp"%>
+</div>
 </body>

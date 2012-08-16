@@ -100,6 +100,11 @@ a.cus_markhui:link {
     line-height: 30px;
     padding-left:10px;
 }
+
+.d_center{
+	border:1px solid #CCCCCC;
+}
+
 .view_span{
 	padding-top:2px;
 	padding-bottom:2px;
