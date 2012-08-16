@@ -1,5 +1,7 @@
 package com.crm.action;
 
+import java.io.UnsupportedEncodingException;
+import java.lang.reflect.Field;
 import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -19,6 +21,9 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.alibaba.fastjson.JSON;
 import com.crm.action.util.ModuleUtil;
+import com.crm.bean.amcharts.ChartAssemble;
+import com.crm.bean.amcharts.ChartData;
+import com.crm.bean.amcharts.chartdata.ChartObject;
 import com.crm.bean.crm.Message;
 import com.crm.bean.easyui.ListBean;
 import com.crm.bean.easyui.expand.CVColumn;
@@ -37,6 +42,7 @@ import com.crm.service.XmCvadvfilterService;
 import com.crm.service.XmCvcolumnlistService;
 import com.crm.service.XmCvstdfilterService;
 import com.crm.service.XmFieldService;
+import com.crm.service.XmPicklistService;
 import com.crm.service.XmSequenceService;
 import com.crm.service.XmTabService;
 import com.crm.util.DateUtil;
@@ -47,9 +53,9 @@ import com.crm.util.crm.CustomViewUtil;
 @Controller
 @RequestMapping(value = "customview")
 public class XmCustomViewController extends BaseController {
-	
+
 	ModuleUtil moduleUtil;
-	@Resource(name="moduleUtil")
+	@Resource(name = "moduleUtil")
 	public void setModuleUtil(ModuleUtil moduleUtil) {
 		this.moduleUtil = moduleUtil;
 	}
@@ -98,11 +104,17 @@ public class XmCustomViewController extends BaseController {
 	public void setXmFieldService(XmFieldService xmFieldService) {
 		this.xmFieldService = xmFieldService;
 	}
-	
+
 	XmSequenceService xmSequenceService;
-	@Resource(name="xmSequenceService")
+	@Resource(name = "xmSequenceService")
 	public void setXmSequenceService(XmSequenceService xmSequenceService) {
 		this.xmSequenceService = xmSequenceService;
+	}
+
+	XmPicklistService xmPicklistService;
+	@Resource(name = "xmPicklistService")
+	public void setXmPicklistService(XmPicklistService xmPicklistService) {
+		this.xmPicklistService = xmPicklistService;
 	}
 
 	@RequestMapping(value = "/queryByEntityType", method = RequestMethod.GET)
@@ -139,7 +151,7 @@ public class XmCustomViewController extends BaseController {
 			ModelMap modelmap) {
 
 		XmTab tab = this.xmTabService.getTabByName(entitytype);
-		modelmap.addAttribute("tab",tab);
+		modelmap.addAttribute("tab", tab);
 		List<XmBlocks> blocks = this.xmBlocksService.getBlocksByTabId(tab
 				.getTabid());
 		List<List<XmField>> fieldsList = new ArrayList<List<XmField>>();
@@ -151,9 +163,9 @@ public class XmCustomViewController extends BaseController {
 		}
 
 		modelmap.addAttribute("optionstr",
-				HtmlUtil.getMultSelect(blocks, fieldsList,entitytype));
+				HtmlUtil.getMultSelect(blocks, fieldsList, entitytype));
 		modelmap.addAttribute("colloptionstr",
-				HtmlUtil.getCollectSelect(blocks, fieldsList,entitytype));
+				HtmlUtil.getCollectSelect(blocks, fieldsList, entitytype));
 		modelmap.addAttribute("filter", HtmlUtil.getFilter());
 		modelmap.addAttribute("entitytype", entitytype);
 
@@ -183,8 +195,10 @@ public class XmCustomViewController extends BaseController {
 
 	@RequestMapping(value = "/load", method = RequestMethod.POST)
 	@ResponseBody
-	public String load(@Param("entitytype") String entitytype,int page,int rows) {
-		List<XmCustomview> list = this.xmCustomViewService.loadList(entitytype,page,rows);
+	public String load(@Param("entitytype") String entitytype, int page,
+			int rows) {
+		List<XmCustomview> list = this.xmCustomViewService.loadList(entitytype,
+				page, rows);
 		int total = this.xmCustomViewService.getTotal(entitytype);
 		ListBean bean = new ListBean();
 		bean.setRows(list);
@@ -226,7 +240,6 @@ public class XmCustomViewController extends BaseController {
 		}
 		return objToJson(msg);
 	}
-	
 
 	@RequestMapping(value = "/editView", method = RequestMethod.POST)
 	@ResponseBody
@@ -239,14 +252,15 @@ public class XmCustomViewController extends BaseController {
 			String comparator_1, String comparator_2, String comparator_3,
 			String comparator_4, String comparator_5, String enddate,
 			String fv_1, String fv_2, String fv_3, String fv_4, String fv_5,
-			Integer id, String startdate, String stddatefilter, String viewname,
-			String entitytype,Integer setdefault,Integer setmetrics,String setpublic,String ispublic) {
-		
-		if(action.equals("update")){
-			//编辑
+			Integer id, String startdate, String stddatefilter,
+			String viewname, String entitytype, Integer setdefault,
+			Integer setmetrics, String setpublic, String ispublic) {
+
+		if (action.equals("update")) {
+			// 编辑
 			XmCustomview cv = new XmCustomview();
-			
-			//设置view
+
+			// 设置view
 			cv.setCvid(id);
 			cv.setViewname(viewname);
 			cv.setCollectcolumn(column_collect);
@@ -254,78 +268,78 @@ public class XmCustomViewController extends BaseController {
 			cv.setSetdefault(setdefault);
 			cv.setSetmetrics(setmetrics);
 			cv.setSetpublic(setpublic);
-			
+
 			this.xmCustomViewService.update(cv);
-			
-			//删除column
+
+			// 删除column
 			this.xmCvcolumnlistService.deleteCvColumnlistByCvid(id);
-			
-			//1.设置column 2.标准条件 ，3.高级条件
-			if(!"".equals(column_1)){
+
+			// 1.设置column 2.标准条件 ，3.高级条件
+			if (!"".equals(column_1)) {
 				XmCvcolumnlist col = new XmCvcolumnlist();
 				col.setCvid(id);
 				col.setColumnindex(0);
 				col.setColumnname(column_1);
 				this.xmCvcolumnlistService.insert(col);
 			}
-			
-			if(!"".equals(column_2)){
+
+			if (!"".equals(column_2)) {
 				XmCvcolumnlist col = new XmCvcolumnlist();
 				col.setCvid(id);
 				col.setColumnindex(1);
 				col.setColumnname(column_2);
 				this.xmCvcolumnlistService.insert(col);
 			}
-			
-			if(!"".equals(column_3)){
+
+			if (!"".equals(column_3)) {
 				XmCvcolumnlist col = new XmCvcolumnlist();
 				col.setCvid(id);
 				col.setColumnindex(2);
 				col.setColumnname(column_3);
 				this.xmCvcolumnlistService.insert(col);
 			}
-			
-			if(!"".equals(column_4)){
+
+			if (!"".equals(column_4)) {
 				XmCvcolumnlist col = new XmCvcolumnlist();
 				col.setCvid(id);
 				col.setColumnindex(3);
 				col.setColumnname(column_4);
 				this.xmCvcolumnlistService.insert(col);
 			}
-			
-			if(!"".equals(column_5)){
+
+			if (!"".equals(column_5)) {
 				XmCvcolumnlist col = new XmCvcolumnlist();
 				col.setCvid(id);
 				col.setColumnindex(4);
 				col.setColumnname(column_5);
 				this.xmCvcolumnlistService.insert(col);
 			}
-			
-			if(!"".equals(column_6)){
+
+			if (!"".equals(column_6)) {
 				XmCvcolumnlist col = new XmCvcolumnlist();
 				col.setCvid(id);
 				col.setColumnindex(5);
 				col.setColumnname(column_6);
 				this.xmCvcolumnlistService.insert(col);
 			}
-			
-			if(!"".equals(column_7)){
+
+			if (!"".equals(column_7)) {
 				XmCvcolumnlist col = new XmCvcolumnlist();
 				col.setCvid(id);
 				col.setColumnindex(6);
 				col.setColumnname(column_7);
 				this.xmCvcolumnlistService.insert(col);
 			}
-			
-			if(!"".equals(column_8)){
+
+			if (!"".equals(column_8)) {
 				XmCvcolumnlist col = new XmCvcolumnlist();
 				col.setCvid(id);
 				col.setColumnindex(7);
 				col.setColumnname(column_8);
 				this.xmCvcolumnlistService.insert(col);
 			}
-			
-			if(!"".equals(column_9)){
+
+			if (!"".equals(column_9)) {
 				XmCvcolumnlist col = new XmCvcolumnlist();
 				col.setCvid(id);
 				col.setColumnindex(8);
@@ -333,9 +347,8 @@ public class XmCustomViewController extends BaseController {
 				this.xmCvcolumnlistService.insert(col);
 			}
 
-			
 			this.xmCvstdfilterService.deleteCv(id);
-			//标准条件
+			// 标准条件
 			XmCvstdfilter stdfilter = new XmCvstdfilter();
 			stdfilter.setCvid(id);
 			stdfilter.setColumnname(column_stdfilter);
@@ -343,11 +356,11 @@ public class XmCustomViewController extends BaseController {
 			stdfilter.setStartdate(DateUtil.parseDate(startdate));
 			stdfilter.setStdfilter(stddatefilter);
 			this.xmCvstdfilterService.insert(stdfilter);
-			
-			
+
 			this.xmCvadvfilterService.deleteCv(id);
-			//高级条件
-			if(!"".equals(advfiltercol_1)&&!"".equals(comparator_1)&&!"".equals(fv_1)){
+			// 高级条件
+			if (!"".equals(advfiltercol_1) && !"".equals(comparator_1)
+					&& !"".equals(fv_1)) {
 				XmCvadvfilter advfilter = new XmCvadvfilter();
 				advfilter.setColumnindex(0);
 				advfilter.setColumnname(advfiltercol_1);
@@ -355,14 +368,15 @@ public class XmCustomViewController extends BaseController {
 				advfilter.setCvid(id);
 				advfilter.setValue(fv_1);
 				this.xmCvadvfilterService.insert(advfilter);
-			}else{
+			} else {
 				XmCvadvfilter advfilter = new XmCvadvfilter();
 				advfilter.setColumnindex(0);
 				advfilter.setCvid(id);
 				this.xmCvadvfilterService.insert(advfilter);
 			}
-			
-			if(!"".equals(advfiltercol_2)&&!"".equals(comparator_2)&&!"".equals(fv_2)){
+
+			if (!"".equals(advfiltercol_2) && !"".equals(comparator_2)
+					&& !"".equals(fv_2)) {
 				XmCvadvfilter advfilter = new XmCvadvfilter();
 				advfilter.setColumnindex(1);
 				advfilter.setColumnname(advfiltercol_2);
@@ -370,14 +384,15 @@ public class XmCustomViewController extends BaseController {
 				advfilter.setCvid(id);
 				advfilter.setValue(fv_2);
 				this.xmCvadvfilterService.insert(advfilter);
-			}else{
+			} else {
 				XmCvadvfilter advfilter = new XmCvadvfilter();
 				advfilter.setColumnindex(1);
 				advfilter.setCvid(id);
 				this.xmCvadvfilterService.insert(advfilter);
 			}
-			
-			if(!"".equals(advfiltercol_3)&&!"".equals(comparator_3)&&!"".equals(fv_3)){
+
+			if (!"".equals(advfiltercol_3) && !"".equals(comparator_3)
+					&& !"".equals(fv_3)) {
 				XmCvadvfilter advfilter = new XmCvadvfilter();
 				advfilter.setColumnindex(2);
 				advfilter.setColumnname(advfiltercol_3);
@@ -385,14 +400,15 @@ public class XmCustomViewController extends BaseController {
 				advfilter.setCvid(id);
 				advfilter.setValue(fv_3);
 				this.xmCvadvfilterService.insert(advfilter);
-			}else{
+			} else {
 				XmCvadvfilter advfilter = new XmCvadvfilter();
 				advfilter.setColumnindex(2);
 				advfilter.setCvid(id);
 				this.xmCvadvfilterService.insert(advfilter);
 			}
-			
-			if(!"".equals(advfiltercol_4)&&!"".equals(comparator_4)&&!"".equals(fv_4)){
+
+			if (!"".equals(advfiltercol_4) && !"".equals(comparator_4)
+					&& !"".equals(fv_4)) {
 				XmCvadvfilter advfilter = new XmCvadvfilter();
 				advfilter.setColumnindex(3);
 				advfilter.setColumnname(advfiltercol_4);
@@ -400,14 +416,15 @@ public class XmCustomViewController extends BaseController {
 				advfilter.setCvid(id);
 				advfilter.setValue(fv_4);
 				this.xmCvadvfilterService.insert(advfilter);
-			}else{
+			} else {
 				XmCvadvfilter advfilter = new XmCvadvfilter();
 				advfilter.setColumnindex(3);
 				advfilter.setCvid(id);
 				this.xmCvadvfilterService.insert(advfilter);
 			}
-			
-			if(!"".equals(advfiltercol_5)&&!"".equals(comparator_5)&&!"".equals(fv_5)){
+
+			if (!"".equals(advfiltercol_5) && !"".equals(comparator_5)
+					&& !"".equals(fv_5)) {
 				XmCvadvfilter advfilter = new XmCvadvfilter();
 				advfilter.setColumnindex(4);
 				advfilter.setColumnname(advfiltercol_5);
@@ -415,101 +432,101 @@ public class XmCustomViewController extends BaseController {
 				advfilter.setCvid(id);
 				advfilter.setValue(fv_5);
 				this.xmCvadvfilterService.insert(advfilter);
-			}else{
+			} else {
 				XmCvadvfilter advfilter = new XmCvadvfilter();
 				advfilter.setColumnindex(4);
 				advfilter.setCvid(id);
 				this.xmCvadvfilterService.insert(advfilter);
 			}
-			
-			if(setdefault == 1){
+
+			if (setdefault == 1) {
 				this.xmCustomViewService.setDef(id, entitytype);
 			}
-			
-		}else{
-			//添加
+
+		} else {
+			// 添加
 			Integer keyid = this.xmSequenceService.getSequenceId("customview");
-			
+
 			XmCustomview cv = new XmCustomview();
-			
-			//设置view
+
+			// 设置view
 			cv.setViewname(viewname);
 			cv.setCollectcolumn(column_collect);
 			cv.setEntitytype(entitytype);
 			cv.setSetdefault(setdefault);
 			cv.setSetmetrics(setmetrics);
-			//角色，或，0
+			// 角色，或，0
 			cv.setSetpublic(setpublic);
 			cv.setCvid(keyid);
-			
+
 			this.xmCustomViewService.insert(cv);
-			
-			//1.设置column 2.标准条件 ，3.高级条件
-			if(!"".equals(column_1)){
+
+			// 1.设置column 2.标准条件 ，3.高级条件
+			if (!"".equals(column_1)) {
 				XmCvcolumnlist col = new XmCvcolumnlist();
 				col.setCvid(keyid);
 				col.setColumnindex(0);
 				col.setColumnname(column_1);
 				this.xmCvcolumnlistService.insert(col);
 			}
-			
-			if(!"".equals(column_2)){
+
+			if (!"".equals(column_2)) {
 				XmCvcolumnlist col = new XmCvcolumnlist();
 				col.setCvid(keyid);
 				col.setColumnindex(1);
 				col.setColumnname(column_2);
 				this.xmCvcolumnlistService.insert(col);
 			}
-			
-			if(!"".equals(column_3)){
+
+			if (!"".equals(column_3)) {
 				XmCvcolumnlist col = new XmCvcolumnlist();
 				col.setCvid(keyid);
 				col.setColumnindex(2);
 				col.setColumnname(column_3);
 				this.xmCvcolumnlistService.insert(col);
 			}
-			
-			if(!"".equals(column_4)){
+
+			if (!"".equals(column_4)) {
 				XmCvcolumnlist col = new XmCvcolumnlist();
 				col.setCvid(keyid);
 				col.setColumnindex(3);
 				col.setColumnname(column_4);
 				this.xmCvcolumnlistService.insert(col);
 			}
-			
-			if(!"".equals(column_5)){
+
+			if (!"".equals(column_5)) {
 				XmCvcolumnlist col = new XmCvcolumnlist();
 				col.setCvid(keyid);
 				col.setColumnindex(4);
 				col.setColumnname(column_5);
 				this.xmCvcolumnlistService.insert(col);
 			}
-			
-			if(!"".equals(column_6)){
+
+			if (!"".equals(column_6)) {
 				XmCvcolumnlist col = new XmCvcolumnlist();
 				col.setCvid(keyid);
 				col.setColumnindex(5);
 				col.setColumnname(column_6);
 				this.xmCvcolumnlistService.insert(col);
 			}
-			
-			if(!"".equals(column_7)){
+
+			if (!"".equals(column_7)) {
 				XmCvcolumnlist col = new XmCvcolumnlist();
 				col.setCvid(keyid);
 				col.setColumnindex(6);
 				col.setColumnname(column_7);
 				this.xmCvcolumnlistService.insert(col);
 			}
-			
-			if(!"".equals(column_8)){
+
+			if (!"".equals(column_8)) {
 				XmCvcolumnlist col = new XmCvcolumnlist();
 				col.setCvid(keyid);
 				col.setColumnindex(7);
 				col.setColumnname(column_8);
 				this.xmCvcolumnlistService.insert(col);
 			}
-			
-			if(!"".equals(column_9)){
+
+			if (!"".equals(column_9)) {
 				XmCvcolumnlist col = new XmCvcolumnlist();
 				col.setCvid(keyid);
 				col.setColumnindex(8);
@@ -517,7 +534,7 @@ public class XmCustomViewController extends BaseController {
 				this.xmCvcolumnlistService.insert(col);
 			}
 
-			//标准条件
+			// 标准条件
 			XmCvstdfilter stdfilter = new XmCvstdfilter();
 			stdfilter.setCvid(keyid);
 			stdfilter.setColumnname(column_stdfilter);
@@ -525,9 +542,10 @@ public class XmCustomViewController extends BaseController {
 			stdfilter.setStartdate(DateUtil.parseDate(startdate));
 			stdfilter.setStdfilter(stddatefilter);
 			this.xmCvstdfilterService.insert(stdfilter);
-			
-			//高级条件
-			if(!"".equals(advfiltercol_1)&&!"".equals(comparator_1)&&!"".equals(fv_1)){
+
+			// 高级条件
+			if (!"".equals(advfiltercol_1) && !"".equals(comparator_1)
+					&& !"".equals(fv_1)) {
 				XmCvadvfilter advfilter = new XmCvadvfilter();
 				advfilter.setColumnindex(0);
 				advfilter.setColumnname(advfiltercol_1);
@@ -535,14 +553,15 @@ public class XmCustomViewController extends BaseController {
 				advfilter.setCvid(keyid);
 				advfilter.setValue(fv_1);
 				this.xmCvadvfilterService.insert(advfilter);
-			}else{
+			} else {
 				XmCvadvfilter advfilter = new XmCvadvfilter();
 				advfilter.setColumnindex(0);
 				advfilter.setCvid(keyid);
 				this.xmCvadvfilterService.insert(advfilter);
 			}
-			
-			if(!"".equals(advfiltercol_2)&&!"".equals(comparator_2)&&!"".equals(fv_2)){
+
+			if (!"".equals(advfiltercol_2) && !"".equals(comparator_2)
+					&& !"".equals(fv_2)) {
 				XmCvadvfilter advfilter = new XmCvadvfilter();
 				advfilter.setColumnindex(1);
 				advfilter.setColumnname(advfiltercol_2);
@@ -550,14 +569,15 @@ public class XmCustomViewController extends BaseController {
 				advfilter.setCvid(keyid);
 				advfilter.setValue(fv_2);
 				this.xmCvadvfilterService.insert(advfilter);
-			}else{
+			} else {
 				XmCvadvfilter advfilter = new XmCvadvfilter();
 				advfilter.setColumnindex(1);
 				advfilter.setCvid(keyid);
 				this.xmCvadvfilterService.insert(advfilter);
 			}
-			
-			if(!"".equals(advfiltercol_3)&&!"".equals(comparator_3)&&!"".equals(fv_3)){
+
+			if (!"".equals(advfiltercol_3) && !"".equals(comparator_3)
+					&& !"".equals(fv_3)) {
 				XmCvadvfilter advfilter = new XmCvadvfilter();
 				advfilter.setColumnindex(2);
 				advfilter.setColumnname(advfiltercol_3);
@@ -565,14 +585,15 @@ public class XmCustomViewController extends BaseController {
 				advfilter.setCvid(keyid);
 				advfilter.setValue(fv_3);
 				this.xmCvadvfilterService.insert(advfilter);
-			}else{
+			} else {
 				XmCvadvfilter advfilter = new XmCvadvfilter();
 				advfilter.setColumnindex(2);
 				advfilter.setCvid(keyid);
 				this.xmCvadvfilterService.insert(advfilter);
 			}
-			
-			if(!"".equals(advfiltercol_4)&&!"".equals(comparator_4)&&!"".equals(fv_4)){
+
+			if (!"".equals(advfiltercol_4) && !"".equals(comparator_4)
+					&& !"".equals(fv_4)) {
 				XmCvadvfilter advfilter = new XmCvadvfilter();
 				advfilter.setColumnindex(3);
 				advfilter.setColumnname(advfiltercol_4);
@@ -580,14 +601,15 @@ public class XmCustomViewController extends BaseController {
 				advfilter.setCvid(keyid);
 				advfilter.setValue(fv_4);
 				this.xmCvadvfilterService.insert(advfilter);
-			}else{
+			} else {
 				XmCvadvfilter advfilter = new XmCvadvfilter();
 				advfilter.setColumnindex(3);
 				advfilter.setCvid(keyid);
 				this.xmCvadvfilterService.insert(advfilter);
 			}
-			
-			if(!"".equals(advfiltercol_5)&&!"".equals(comparator_5)&&!"".equals(fv_5)){
+
+			if (!"".equals(advfiltercol_5) && !"".equals(comparator_5)
+					&& !"".equals(fv_5)) {
 				XmCvadvfilter advfilter = new XmCvadvfilter();
 				advfilter.setColumnindex(4);
 				advfilter.setColumnname(advfiltercol_5);
@@ -595,19 +617,19 @@ public class XmCustomViewController extends BaseController {
 				advfilter.setCvid(keyid);
 				advfilter.setValue(fv_5);
 				this.xmCvadvfilterService.insert(advfilter);
-			}else{
+			} else {
 				XmCvadvfilter advfilter = new XmCvadvfilter();
 				advfilter.setColumnindex(4);
 				advfilter.setCvid(keyid);
 				this.xmCvadvfilterService.insert(advfilter);
 			}
-			
-			if(setdefault == 1){
+
+			if (setdefault == 1) {
 				this.xmCustomViewService.setDef(keyid, entitytype);
 			}
-			
+
 		}
-		
+
 		Message msg = new Message();
 		msg.setMessage("视图编辑成功！");
 		msg.setType(true);
@@ -616,11 +638,11 @@ public class XmCustomViewController extends BaseController {
 
 	@RequestMapping(value = "/getView", method = RequestMethod.POST)
 	@ResponseBody
-	public String getView(int viewid){
+	public String getView(int viewid) {
 		XmCustomview customview = this.xmCustomViewService.getView(viewid);
 		return objToJson(customview);
 	}
-	
+
 	/**
 	 * 
 	 * 得到columns
@@ -630,11 +652,12 @@ public class XmCustomViewController extends BaseController {
 	 */
 	@RequestMapping(value = "/getColumns", method = RequestMethod.POST)
 	@ResponseBody
-	public String getColumns(int viewid){
-		List<XmCvcolumnlist> columns = this.xmCvcolumnlistService.getXmCvcolumnlistByCvid(viewid);
+	public String getColumns(int viewid) {
+		List<XmCvcolumnlist> columns = this.xmCvcolumnlistService
+				.getXmCvcolumnlistByCvid(viewid);
 		return arrayToJson(columns);
 	}
-	
+
 	/**
 	 * 
 	 * 
@@ -643,11 +666,12 @@ public class XmCustomViewController extends BaseController {
 	 */
 	@RequestMapping(value = "/getStdfilter", method = RequestMethod.POST)
 	@ResponseBody
-	public String getStdfilter(int viewid){
-		XmCvstdfilter stdfilter = this.xmCvstdfilterService.getStdfilterByCvid(viewid);
+	public String getStdfilter(int viewid) {
+		XmCvstdfilter stdfilter = this.xmCvstdfilterService
+				.getStdfilterByCvid(viewid);
 		return JSON.toJSONStringWithDateFormat(stdfilter, "yyyy-MM-dd");
 	}
-	
+
 	/**
 	 * 
 	 * 高级查询信息
@@ -657,90 +681,219 @@ public class XmCustomViewController extends BaseController {
 	 */
 	@RequestMapping(value = "/getAdvfilter", method = RequestMethod.POST)
 	@ResponseBody
-	public String getAdvfilter(int viewid){
-		List<XmCvadvfilter> advfilters = this.xmCvadvfilterService.getAdvFilters(viewid);
+	public String getAdvfilter(int viewid) {
+		List<XmCvadvfilter> advfilters = this.xmCvadvfilterService
+				.getAdvFilters(viewid);
 		return JSON.toJSONStringWithDateFormat(advfilters, "yyyy-MM-dd");
 	}
-	
-	
+
 	/**
 	 * 公共视图载入
+	 * 
 	 * @param modelMap
 	 * @return
 	 */
 	@RequestMapping(value = "/viewIndex", method = RequestMethod.GET)
-	public String viewIndex(String entitytype,ModelMap modelMap){
+	public String viewIndex(String entitytype, ModelMap modelMap) {
 		XmTab tab = CustomViewUtil.getTabByName(entitytype);
-		this.moduleUtil.setViewProp(modelMap,entitytype,tab);
+		this.moduleUtil.setViewProp(modelMap, entitytype, tab);
 		XmEntityname entityname = CustomViewUtil.getEntitynameByET(entitytype);
-		modelMap.addAttribute("tab",tab);
-		modelMap.addAttribute("viewid",entityname.getEntityidfield());
-		modelMap.addAttribute("entitytype",entitytype);
-		modelMap.addAttribute("entityname",entityname);
+		modelMap.addAttribute("tab", tab);
+		modelMap.addAttribute("viewid", entityname.getEntityidfield());
+		modelMap.addAttribute("entitytype", entitytype);
+		modelMap.addAttribute("entityname", entityname);
 		return "public/viewcv";
 	}
-	
+
 	/**
 	 * 根据视图ID返回对应的JSON
 	 * 
-	 * @param page 页数
-	 * @param rows 行数
-	 * @param viewid 视图ID
+	 * @param page
+	 *            页数
+	 * @param rows
+	 *            行数
+	 * @param viewid
+	 *            视图ID
 	 * @return
 	 */
 	@RequestMapping(value = "/renderView", method = RequestMethod.POST)
 	@ResponseBody
-	public String renderView(int page,int rows,String entitytype,int viewid){
-		XmCustomview customview = this.xmCustomViewService.selectByPrimaryKey(entitytype,viewid);
-		List<CVColumn> cols = this.xmCvcolumnlistService.getViewColumn(customview);
-		XmCvstdfilter stdfilter = xmCvstdfilterService.getStdfilterByCvid(viewid);
-		List<XmCvadvfilter> advfilter = xmCvadvfilterService.getAdvFilters(viewid);
-		
-		int total = this.xmCustomViewService.getTotal(viewid,customview,stdfilter,advfilter,cols);
-		List<Object> ls = this.xmCustomViewService.loadList(page,rows,viewid,customview,stdfilter,advfilter,cols);
-		
+	public String renderView(int page, int rows, String entitytype, int viewid) {
+		XmCustomview customview = this.xmCustomViewService.selectByPrimaryKey(
+				entitytype, viewid);
+		List<CVColumn> cols = this.xmCvcolumnlistService
+				.getViewColumn(customview);
+		XmCvstdfilter stdfilter = xmCvstdfilterService
+				.getStdfilterByCvid(viewid);
+		List<XmCvadvfilter> advfilter = xmCvadvfilterService
+				.getAdvFilters(viewid);
+
+		int total = this.xmCustomViewService.getTotal(viewid, customview,
+				stdfilter, advfilter, cols);
+		List<Object> ls = this.xmCustomViewService.loadList(page, rows, viewid,
+				customview, stdfilter, advfilter, cols);
+
 		ListBean list = new ListBean();
 		list.setRows(ls);
 		list.setTotal(total);
-		
-		try{
+
+		try {
 			List<HashMap<String, String>> listfooter = new ArrayList<HashMap<String, String>>();
-			if(customview.getCollectcolumn()!=null){
+			if (customview.getCollectcolumn() != null) {
 				HashMap hs_collect = new HashMap();
-				CVColumn collect = (CVColumn)JsonUtil.getObject4JsonString(customview.getCollectcolumn(), CVColumn.class);
-				
+				CVColumn collect = (CVColumn) JsonUtil.getObject4JsonString(
+						customview.getCollectcolumn(), CVColumn.class);
+
 				BigDecimal collectall = new BigDecimal(0);
-				if(ls.size()>=1){
-					for(int i=0;i<ls.size();i++){
-						HashMap<String,String> h = (HashMap<String,String>)ls.get(i);
+				if (ls.size() >= 1) {
+					for (int i = 0; i < ls.size(); i++) {
+						HashMap<String, String> h = (HashMap<String, String>) ls
+								.get(i);
 						Iterator iter = h.entrySet().iterator();
 						while (iter.hasNext()) {
-						    Map.Entry entry = (Map.Entry) iter.next();
-						    if(entry.getKey().equals(collect.getFieldname())){
-						    	collectall = collectall.add(new BigDecimal(entry.getValue()+""));
-						    }
-						} 
+							Map.Entry entry = (Map.Entry) iter.next();
+							if (entry.getKey().equals(collect.getFieldname())) {
+								collectall = collectall.add(new BigDecimal(
+										entry.getValue() + ""));
+							}
+						}
 					}
 				}
-				hs_collect.put("statname",collect.getFieldlabel()+"合计");
-				hs_collect.put("statnum",collectall.doubleValue());
+				hs_collect.put("statname", collect.getFieldlabel() + "合计");
+				hs_collect.put("statnum", collectall.doubleValue());
 				listfooter.add(hs_collect);
 				list.setFooter(listfooter);
 			}
-		}catch(Exception e){
-			
+		} catch (Exception e) {
+
 		}
-		
-//		list.setFooter(footer);
-//		JsonConfig jsonConfig = new JsonConfig();
-//		jsonConfig.registerJsonValueProcessor(java.sql.Date.class, new JsonDateValueProcessor("yyyy-MM-dd"));
-		
 		return JSON.toJSONStringWithDateFormat(list, "yyyy-MM-dd");
 	}
-	
-	@RequestMapping(value = "/report", method = RequestMethod.GET)
-	public String report(){
+
+	/**
+	 * @return 得到报表数据
+	 */
+	@RequestMapping(value = "/getChartData", method = RequestMethod.POST)
+	@ResponseBody
+	private String getChartData(String graphtype, String grouptype, int cvid,
+			String pickfieldtable, String pickfieldname, String pickfieldcolname) {
+		ChartAssemble assemble = new ChartAssemble();
+		ChartData chartdata = new ChartData();
+		XmCustomview customview = new XmCustomview();
+		customview.setCvid(cvid);
+		List<CVColumn> cols = this.xmCvcolumnlistService
+				.getViewColumn(customview);
+
+		// 设置数据
+		List<Object> datalist = this.xmCustomViewService.getChartData(
+				grouptype, cols, pickfieldtable, pickfieldname,
+				pickfieldcolname);
+		List<ChartObject> chartobjs = new ArrayList<ChartObject>();
+
+		if (datalist.size() > 0) {
+			for (int i = 0; i < datalist.size(); i++) {
+				Iterator iter = ((HashMap) datalist.get(i)).entrySet()
+						.iterator();
+				int j = 0;
+				ChartObject co = new ChartObject();
+				while (iter.hasNext()) {
+					Map.Entry entry = (Map.Entry) iter.next();
+					Object key = entry.getValue();
+					if (j == 0) {
+						co.setCategoryField(key.toString());
+					} else {
+						// 设置颜色
+						co.setValueField(key.toString());
+						if (graphtype.equals("vertical3D")) {
+							co.setColorField(HtmlUtil.setColor(i, 17));
+						}
+						chartobjs.add(co);
+					}
+					j++;
+				}
+			}
+		}
+
+		chartdata.setData(chartobjs);
+
+		// Picklist
+		List<Object> picklist = this.xmPicklistService
+				.getPickList(pickfieldcolname);
+
+		assemble.setData(chartdata);
+		assemble.setPicklist(picklist);
+
+		return JSON.toJSONString(assemble);
+	}
+
+	/**
+	 * @return 得到报表数据
+	 * @throws UnsupportedEncodingException
+	 */
+	@RequestMapping(value = "/createChart", method = RequestMethod.GET)
+	public String createChart(String graphtype, String grouptype, int cvid,
+			String pickfieldtable, String pickfieldname,
+			String pickfieldcolname, String title, String grouptitle,
+			String reporttext, ModelMap modelmap)
+			throws UnsupportedEncodingException {
+
+		modelmap.addAttribute("grouptitle", new String(grouptitle.getBytes("ISO-8859-1"),"utf-8"));
+		modelmap.addAttribute("graphtype", new String(graphtype.getBytes("ISO-8859-1"),"utf-8"));
+		modelmap.addAttribute("reporttext", new String(reporttext.getBytes("ISO-8859-1"),"utf-8"));
+		// 设置一下转码
+		modelmap.addAttribute("title", new String(title.getBytes("ISO-8859-1"),
+				"utf-8"));
+
+		ChartAssemble assemble = new ChartAssemble();
+		ChartData chartdata = new ChartData();
+		XmCustomview customview = new XmCustomview();
+		customview.setCvid(cvid);
+		List<CVColumn> cols = this.xmCvcolumnlistService
+				.getViewColumn(customview);
+
+		// 设置数据
+		List<Object> datalist = this.xmCustomViewService.getChartData(
+				grouptype, cols, pickfieldtable, pickfieldname,
+				pickfieldcolname);
+		List<ChartObject> chartobjs = new ArrayList<ChartObject>();
+
+		if (datalist.size() > 0) {
+			for (int i = 0; i < datalist.size(); i++) {
+				Iterator iter = ((HashMap) datalist.get(i)).entrySet()
+						.iterator();
+				int j = 0;
+				ChartObject co = new ChartObject();
+				while (iter.hasNext()) {
+					Map.Entry entry = (Map.Entry) iter.next();
+					Object key = entry.getValue();
+					if (j == 0) {
+						co.setCategoryField(key.toString());
+					} else {
+						// 设置颜色
+						co.setValueField(key.toString());
+						if (graphtype.equals("vertical3D")) {
+							co.setColorField(HtmlUtil.setColor(i, 17));
+						}
+						chartobjs.add(co);
+					}
+					j++;
+				}
+			}
+		}
+
+		chartdata.setData(chartobjs);
+
+		// Picklist
+		List<Object> picklist = this.xmPicklistService
+				.getPickList(pickfieldcolname);
+
+		assemble.setData(chartdata);
+		assemble.setPicklist(picklist);
+
+		modelmap.addAttribute("assembleobj", assemble);
+		modelmap.addAttribute("assemble", JSON.toJSONString(assemble));
+
 		return "public/report/index";
 	}
-	
+
 }

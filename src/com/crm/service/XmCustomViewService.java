@@ -39,6 +39,10 @@ public interface XmCustomViewService {
 
 	int getTotal(String entitytype);
 
+
+	List<Object> getChartData(String grouptype, List<CVColumn> cols,
+			String pickfieldtable, String pickfieldname, String pickfieldcolname);
+
 	
 
 }

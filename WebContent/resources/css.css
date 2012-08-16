@@ -151,3 +151,5 @@ fieldset legend{color:#15428B;}
     padding-left: 30px;
     padding-top: 2px;
 }
+.reporttab{width:100%;border-collapse: collapse;}
+.reporttab td,.reporttab th{border:1px solid #8DB2E3;height:25px;line-height:25px;text-align: center;}

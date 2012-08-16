@@ -1,3 +1,5 @@
+
+
 $(function() {
     if(tab_viewid != -1){
 	init();
@@ -54,19 +56,35 @@ function init(){
 	    });
 }
 function viewSearchReport(){
-    var reportcolumn= $("#reportselect").find("option:selected").attr("value");
+    //var reportcolumn= $("#reportselect").find("option:selected").attr("value");
     var reporttext = $("#reportselect").find("option:selected").text();
-    var objparam = $.parseJSON(reportcolumn);
-    //${tab.tablabel }-分布统计
-    $("#winreport").window({
-	title:tablabel+"-"+reporttext+"-分布统计",
-	onOpen:function(){
-	    //将选项设置为第一个
-	    $("select[name=graphtype]").find("option:first").attr("selected","selected");
-	    $("select[name=grouptype]").find("option:first").attr("selected","selected");
-	    
-	}
-    });
-    $("#winreport").window("open");
+    //var objparam = $.parseJSON(reportcolumn);
     
+    //${tab.tablabel }-分布统计
+    $("#winreport").window({title:tablabel+"-"+reporttext+"-分布统计"});
+    $("#winreport").window("open");
+    viewReport();
+}
+function viewReport(){
+    //统计方式
+    var grouptype = $("select[name=grouptype]").find("option:selected").attr("value");
+    var reporttext = $("#reportselect").find("option:selected").text();
+    
+    var grouptitle;
+    if(grouptype == "count"){
+	grouptitle = "记录数";
+    }else{
+	var grouptypeobj = $.parseJSON(grouptype);
+	grouptitle = grouptypeobj.fieldlabel;
+    }
+    var title = grouptitle+"-分布统计";
+    //根据选项显示不同的报表视图
+    //报表显示方式
+    var graphtype =  $("select[name=graphtype]").find("option:selected").attr("value");
+    
+    var reportselect = $("#reportselect").val();
+    reportselect = $.parseJSON(reportselect);
+    
+    //使用IFRAME进行报表展现
+    $("#reportframe").attr("src","customview/createChart?graphtype="+graphtype+"&grouptype="+grouptype+"&cvid="+tab_viewid+"&pickfieldtable="+reportselect.fieldtable+"&pickfieldname="+reportselect.fieldname+"&pickfieldcolname="+reportselect.fieldcolname+"&title="+title+"&grouptitle="+grouptitle+"&reporttext="+reporttext+"&_rd="+rdnum());
 }

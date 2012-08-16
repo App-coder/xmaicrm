@@ -42,5 +42,7 @@ public interface XmCustomviewMapper {
 	List<XmCustomview> loadListByPage(@Param("entitytype") String entitytype,@Param("start") int start,@Param("rows") int rows);
 
 	int getTotal(@Param("entitytype") String entitytype);
+
+	List<Object> getChartData(@Param("resultsql") String resultsql);
 	
 }

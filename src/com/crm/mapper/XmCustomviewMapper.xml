@@ -150,4 +150,7 @@
   <select id="getTotal" resultType="INTEGER" >
   	select count(*) from xm_customview where entitytype=#{entitytype}
   </select>
+  <select id="getChartData" resultType="map">
+  	${resultsql}
+  </select>
 </mapper>

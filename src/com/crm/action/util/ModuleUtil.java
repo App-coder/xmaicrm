@@ -114,7 +114,7 @@ public class ModuleUtil extends BaseController{
 				if(!fieldtype.equals("V") && !isid &&!(fieldtype.equals("D"))){
 					if ( !(fieldtype.equals("N")) || !( fieldtype.equals("NN") ) ){
 						String item = "{\"fieldlabel\":\""+reportitems.get(i).getFieldlabel()+"\",\"fieldname\":\""+reportitems.get(i).getFieldname()+"\",\"fieldtablename\":\""+reportitems.get(i).getTablename()+"\",\"fieldcolname\":\""+reportitems.get(i).getColumnname()+"\"}";
-						sb.append("<option value=\""+item+"\" >"+reportitems.get(i).getFieldlabel()+"</option>");
+						sb.append("<option value=\'"+item+"\' >"+reportitems.get(i).getFieldlabel()+"</option>");
 					}
 				}
 			}
