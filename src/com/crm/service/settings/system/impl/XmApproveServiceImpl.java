@@ -301,36 +301,36 @@ public class XmApproveServiceImpl implements XmApproveService {
 	@Override
 	public int insertApproveStep(int stepid, String step, String step2users,
 			String step2fields, String step2advoption) {
-		int id=this.xmSequenceService.getSequenceId("approvestep");
-		int sequnce=this.getApproveStepSequnce(stepid);
-		JSONObject stepjson=JSONObject.fromObject(step);
-		XmApprovestep xmApprovestep=new XmApprovestep();
-		xmApprovestep.setId(id);
-		xmApprovestep.setApproveid(stepid);
-		xmApprovestep.setName(stepjson.getString("name"));
-		xmApprovestep.setMemo(stepjson.getString("memo"));
-		xmApprovestep.setEnded(stepjson.getInt("ended"));
-		xmApprovestep.setIsfirststep(0);
-		xmApprovestep.setSequnce(sequnce);
-		xmApprovestep.setNextstep(stepjson.getInt("nextstep"));
-		xmApprovestep.setCreatedAt(DateUtil.parseDate(DateUtil.C_TIME_PATTON_DEFAULT, stepjson.getString("updated_at")));
-		xmApprovestep.setUpdatedAt(DateUtil.parseDate(DateUtil.C_TIME_PATTON_DEFAULT, stepjson.getString("updated_at")));
-		xmApprovestep.setAlterapproveowner(stepjson.getInt("alterapproveowner"));
-		this.xmApprovestepMapper.insertSelective(xmApprovestep);
-		
-		this.doStep2Users(id, step2users);
-		
-		String[] array=this.xmFieldMapper.getApproveStepFilterOfFieldid(stepjson.getInt("tabid")).split(",");
-		XmStep2fields xmStep2fields=new XmStep2fields();
-		xmStep2fields.setStepid(id);
-		xmStep2fields.setReadonly(0);
-		for(String fieldid:array){
-			xmStep2fields.setFieldid(Integer.parseInt(fieldid));
-			this.xmStep2fieldsMapper.insert(xmStep2fields);
-		}
-		
-		this.updateStep2Fields(id, step2fields,0);
-		this.doStepAdvFilters(id, step2advoption);
+//		int id=this.xmSequenceService.getSequenceId("approvestep");
+//		int sequnce=this.getApproveStepSequnce(stepid);
+//		JSONObject stepjson=JSONObject.fromObject(step);
+//		XmApprovestep xmApprovestep=new XmApprovestep();
+//		xmApprovestep.setId(id);
+//		xmApprovestep.setApproveid(stepid);
+//		xmApprovestep.setName(stepjson.getString("name"));
+//		xmApprovestep.setMemo(stepjson.getString("memo"));
+//		xmApprovestep.setEnded(stepjson.getInt("ended"));
+//		xmApprovestep.setIsfirststep(0);
+//		xmApprovestep.setSequnce(sequnce);
+//		xmApprovestep.setNextstep(stepjson.getInt("nextstep"));
+//		xmApprovestep.setCreatedAt(DateUtil.parseDate(DateUtil.C_TIME_PATTON_DEFAULT, stepjson.getString("updated_at")));
+//		xmApprovestep.setUpdatedAt(DateUtil.parseDate(DateUtil.C_TIME_PATTON_DEFAULT, stepjson.getString("updated_at")));
+//		xmApprovestep.setAlterapproveowner(stepjson.getInt("alterapproveowner"));
+//		this.xmApprovestepMapper.insertSelective(xmApprovestep);
+//		
+//		this.doStep2Users(id, step2users);
+//		
+//		String[] array=this.xmFieldMapper.getApproveStepFilterOfFieldid(stepjson.getInt("tabid")).split(",");
+//		XmStep2fields xmStep2fields=new XmStep2fields();
+//		xmStep2fields.setStepid(id);
+//		xmStep2fields.setReadonly(0);
+//		for(String fieldid:array){
+//			xmStep2fields.setFieldid(Integer.parseInt(fieldid));
+//			this.xmStep2fieldsMapper.insert(xmStep2fields);
+//		}
+//		
+//		this.updateStep2Fields(id, step2fields,0);
+//		this.doStepAdvFilters(id, step2advoption);
 		return 1;
 	}
 	
