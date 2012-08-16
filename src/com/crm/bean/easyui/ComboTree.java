@@ -1,15 +1,17 @@
 package com.crm.bean.easyui;
 import java.util.*;
 
-public class ComboTree<T> {
-	private int id;
+public class ComboTree {
+	private String id;
 	private String text;
-	private List<T> children;
+	private String checked;
+	private Object attributes;
+	private List children;
 	
-	public int getId() {
+	public String getId() {
 		return id;
 	}
-	public void setId(int id) {
+	public void setId(String id) {
 		this.id = id;
 	}
 	public String getText() {
@@ -18,12 +20,22 @@ public class ComboTree<T> {
 	public void setText(String text) {
 		this.text = text;
 	}
-	public List<T> getChildren() {
+	public List getChildren() {
 		return children;
 	}
-	public void setChildren(List<T> children) {
+	public void setChildren(List children) {
 		this.children = children;
 	}
-	
-	
+	public Object getAttributes() {
+		return attributes;
+	}
+	public void setAttributes(Object attributes) {
+		this.attributes = attributes;
+	}
+	public String getChecked() {
+		return checked;
+	}
+	public void setChecked(String checked) {
+		this.checked = checked;
+	}
 }

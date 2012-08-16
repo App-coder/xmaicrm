@@ -48,7 +48,6 @@ public class XmRoleController extends BaseController {
 		return arrayToJson(cbos);
 	}
 	
-
 	
 	
 	

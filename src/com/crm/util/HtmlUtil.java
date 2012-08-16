@@ -139,5 +139,15 @@ public class HtmlUtil {
 		int color_index = colors.length + index;
 		return colors[color_index % mo];
 	}
+	
+	/**
+	 * @return 用户编辑->用户状态的options
+	 */
+	public static String getUserStatus(){
+		StringBuffer stringBuffer = new StringBuffer();
+		stringBuffer.append("<option value=\"Active\">Active</option>");
+		stringBuffer.append("<option value=\"Inactive\">Inactive</option>");
+		return stringBuffer.toString();
+	}
 
 }

@@ -12,5 +12,14 @@ public interface XmUsersService {
 	int getTotal();
 
 	List<XmUsers> getActiveUser();
+
+	Object getUserById(int id);
+
+	int add(XmUsers user);
+
+	void update(XmUsers user);
+
+	int delete(int id);
+
 	
 }

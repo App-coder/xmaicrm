@@ -23,4 +23,6 @@ public interface XmRoleMapper {
 	
 	List<Object> getRolesByParent(@Param("parentrole") String parentrole,@Param("depth") int depth);
 
+	List<XmRole> getAll();
+
 }

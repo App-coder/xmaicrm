@@ -7,6 +7,7 @@ import javax.annotation.Resource;
 import org.springframework.stereotype.Service;
 
 import com.crm.model.XmUsers;
+import com.crm.service.XmSequenceService;
 import com.crm.settings.basic.mapper.XmUsersMapper;
 import com.crm.settings.basic.service.XmUsersService;
 
@@ -17,6 +18,12 @@ public class XmUsersServiceImpl implements XmUsersService{
 	@Resource(name="xmUsersMapper")
 	public void setXmUsersMapper(XmUsersMapper xmUsersMapper) {
 		this.xmUsersMapper = xmUsersMapper;
+	}
+	
+	XmSequenceService xmSequenceService;
+	@Resource(name="xmSequenceService")
+	public void setXmSequenceService(XmSequenceService xmSequenceService) {
+		this.xmSequenceService = xmSequenceService;
 	}
 
 	@Override
@@ -34,6 +41,32 @@ public class XmUsersServiceImpl implements XmUsersService{
 	public List<XmUsers> getActiveUser() {
 		return this.xmUsersMapper.getActiveUser();
 	}
+
+	@Override
+	public Object getUserById(int id) {
+		return this.xmUsersMapper.getUserById(id);
+	}
+
+	@Override
+	public int add(XmUsers user) {
+		Integer keyid = this.xmSequenceService.getSequenceId("users");
+		user.setId(keyid);
+		this.xmUsersMapper.insertSelective(user);
+		return keyid;
+	}
+
+	@Override
+	public void update(XmUsers user) {
+		this.xmUsersMapper.updateByPrimaryKeySelective(user);
+	}
+
+	@Override
+	public int delete(int id) {
+		int affectrows = this.xmUsersMapper.deleteByPrimaryKey(id);
+		return affectrows;
+	}
+
+
 
 	
 

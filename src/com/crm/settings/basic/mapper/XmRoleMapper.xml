@@ -112,4 +112,7 @@
 		</otherwise>
 	</choose>
   </select>
+  <select id="getAll" resultMap="BaseResultMap" >
+  	select * from xm_role
+  </select>
 </mapper>
