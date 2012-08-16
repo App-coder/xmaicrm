@@ -77,7 +77,7 @@ function initPage() {
     $('#user_list').datagrid({
 	url : 'settings/users/list',
 	collapsible : false,
-	idField : '',
+	idField : 'id',
 	singleSelect : true,
 	rownumbers : true,
 	pagination : true,

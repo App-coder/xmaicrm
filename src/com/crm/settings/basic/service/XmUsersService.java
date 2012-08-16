@@ -21,5 +21,8 @@ public interface XmUsersService {
 
 	int delete(int id);
 
+	int setDeleteStatus(int id, int delete);
+
+
 	
 }

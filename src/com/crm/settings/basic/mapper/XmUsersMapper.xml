@@ -783,4 +783,7 @@
 	LEFT JOIN xm_groups ON xm_groups.groupid = xm_users2group.groupid 
 		where xm_users.id = #{id}
   </select>
+  <update id="setDeleteStatus" >
+  	update xm_users set deleted = #{delete} where id = #{id}
+  </update>
 </mapper>

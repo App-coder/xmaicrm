@@ -29,5 +29,7 @@ public interface XmUsersMapper {
     int updateByPrimaryKey(XmUsers record);
 
 	Object getUserById(@Param("id") int id);
+
+	int setDeleteStatus(@Param("id") int id,@Param("delete") int delete);
 	
 }

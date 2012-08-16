@@ -120,7 +120,7 @@ public class XmUsersController extends BaseController {
 	@RequestMapping(value = "/delete", method = RequestMethod.POST)
 	@ResponseBody
 	public String delete(int id){
-		int affectrow = this.xmUsersService.delete(id);
+		int affectrow = this.xmUsersService.setDeleteStatus(id,1);
 		Message msg = new Message();
 		if(affectrow == 1){
 			msg.setType(true);

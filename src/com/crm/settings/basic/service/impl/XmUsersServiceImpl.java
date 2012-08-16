@@ -66,6 +66,11 @@ public class XmUsersServiceImpl implements XmUsersService{
 		return affectrows;
 	}
 
+	@Override
+	public int setDeleteStatus(int id, int delete) {
+		return this.xmUsersMapper.setDeleteStatus(id,delete);
+	}
+
 
 
 	
