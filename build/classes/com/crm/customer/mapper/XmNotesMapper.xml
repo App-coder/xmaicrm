@@ -1,0 +1,363 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.crm.customer.mapper.XmNotesMapper" >
+  <resultMap id="BaseResultMap" type="com.crm.model.XmNotes" >
+    <id column="notesid" property="notesid" jdbcType="INTEGER" />
+    <result column="contact_id" property="contactId" jdbcType="INTEGER" />
+    <result column="accountid" property="accountid" jdbcType="INTEGER" />
+    <result column="potentialid" property="potentialid" jdbcType="INTEGER" />
+    <result column="title" property="title" jdbcType="VARCHAR" />
+    <result column="notetype" property="notetype" jdbcType="VARCHAR" />
+    <result column="contact_date" property="contactDate" jdbcType="DATE" />
+    <result column="filename" property="filename" jdbcType="VARCHAR" />
+    <result column="projectsid" property="projectsid" jdbcType="INTEGER" />
+    <result column="smcreatorid" property="smcreatorid" jdbcType="INTEGER" />
+    <result column="smownerid" property="smownerid" jdbcType="INTEGER" />
+    <result column="modifiedby" property="modifiedby" jdbcType="INTEGER" />
+    <result column="groupid" property="groupid" jdbcType="INTEGER" />
+    <result column="createdtime" property="createdtime" jdbcType="TIMESTAMP" />
+    <result column="modifiedtime" property="modifiedtime" jdbcType="TIMESTAMP" />
+    <result column="deleted" property="deleted" jdbcType="INTEGER" />
+    <result column="approved" property="approved" jdbcType="INTEGER" />
+    <result column="approvedby" property="approvedby" jdbcType="INTEGER" />
+    <result column="next_contact_date" property="nextContactDate" jdbcType="DATE" />
+    <result column="rating" property="rating" jdbcType="VARCHAR" />
+    <result column="sales_stage" property="salesStage" jdbcType="VARCHAR" />
+    <result column="latest_comments_time" property="latestCommentsTime" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <resultMap id="ResultMapWithBLOBs" type="com.crm.model.XmNotes" extends="BaseResultMap" >
+    <result column="notecontent" property="notecontent" jdbcType="LONGVARCHAR" />
+    <result column="description" property="description" jdbcType="LONGVARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    notesid, contact_id, accountid, potentialid, title, notetype, contact_date, filename, 
+    projectsid, smcreatorid, smownerid, modifiedby, groupid, createdtime, modifiedtime, 
+    deleted, approved, approvedby, next_contact_date, rating, sales_stage, latest_comments_time
+  </sql>
+  <sql id="Blob_Column_List" >
+    notecontent, description
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="ResultMapWithBLOBs" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from xm_notes
+    where notesid = #{notesid,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from xm_notes
+    where notesid = #{notesid,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.crm.model.XmNotes" >
+    insert into xm_notes (notesid, contact_id, accountid, 
+      potentialid, title, notetype, 
+      contact_date, filename, projectsid, 
+      smcreatorid, smownerid, modifiedby, 
+      groupid, createdtime, modifiedtime, 
+      deleted, approved, approvedby, 
+      next_contact_date, rating, sales_stage, 
+      latest_comments_time, notecontent, 
+      description)
+    values (#{notesid,jdbcType=INTEGER}, #{contactId,jdbcType=INTEGER}, #{accountid,jdbcType=INTEGER}, 
+      #{potentialid,jdbcType=INTEGER}, #{title,jdbcType=VARCHAR}, #{notetype,jdbcType=VARCHAR}, 
+      #{contactDate,jdbcType=DATE}, #{filename,jdbcType=VARCHAR}, #{projectsid,jdbcType=INTEGER}, 
+      #{smcreatorid,jdbcType=INTEGER}, #{smownerid,jdbcType=INTEGER}, #{modifiedby,jdbcType=INTEGER}, 
+      #{groupid,jdbcType=INTEGER}, #{createdtime,jdbcType=TIMESTAMP}, #{modifiedtime,jdbcType=TIMESTAMP}, 
+      #{deleted,jdbcType=INTEGER}, #{approved,jdbcType=INTEGER}, #{approvedby,jdbcType=INTEGER}, 
+      #{nextContactDate,jdbcType=DATE}, #{rating,jdbcType=VARCHAR}, #{salesStage,jdbcType=VARCHAR}, 
+      #{latestCommentsTime,jdbcType=TIMESTAMP}, #{notecontent,jdbcType=LONGVARCHAR}, 
+      #{description,jdbcType=LONGVARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.crm.model.XmNotes" >
+    insert into xm_notes
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="notesid != null" >
+        notesid,
+      </if>
+      <if test="contactId != null" >
+        contact_id,
+      </if>
+      <if test="accountid != null" >
+        accountid,
+      </if>
+      <if test="potentialid != null" >
+        potentialid,
+      </if>
+      <if test="title != null" >
+        title,
+      </if>
+      <if test="notetype != null" >
+        notetype,
+      </if>
+      <if test="contactDate != null" >
+        contact_date,
+      </if>
+      <if test="filename != null" >
+        filename,
+      </if>
+      <if test="projectsid != null" >
+        projectsid,
+      </if>
+      <if test="smcreatorid != null" >
+        smcreatorid,
+      </if>
+      <if test="smownerid != null" >
+        smownerid,
+      </if>
+      <if test="modifiedby != null" >
+        modifiedby,
+      </if>
+      <if test="groupid != null" >
+        groupid,
+      </if>
+      <if test="createdtime != null" >
+        createdtime,
+      </if>
+      <if test="modifiedtime != null" >
+        modifiedtime,
+      </if>
+      <if test="deleted != null" >
+        deleted,
+      </if>
+      <if test="approved != null" >
+        approved,
+      </if>
+      <if test="approvedby != null" >
+        approvedby,
+      </if>
+      <if test="nextContactDate != null" >
+        next_contact_date,
+      </if>
+      <if test="rating != null" >
+        rating,
+      </if>
+      <if test="salesStage != null" >
+        sales_stage,
+      </if>
+      <if test="latestCommentsTime != null" >
+        latest_comments_time,
+      </if>
+      <if test="notecontent != null" >
+        notecontent,
+      </if>
+      <if test="description != null" >
+        description,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="notesid != null" >
+        #{notesid,jdbcType=INTEGER},
+      </if>
+      <if test="contactId != null" >
+        #{contactId,jdbcType=INTEGER},
+      </if>
+      <if test="accountid != null" >
+        #{accountid,jdbcType=INTEGER},
+      </if>
+      <if test="potentialid != null" >
+        #{potentialid,jdbcType=INTEGER},
+      </if>
+      <if test="title != null" >
+        #{title,jdbcType=VARCHAR},
+      </if>
+      <if test="notetype != null" >
+        #{notetype,jdbcType=VARCHAR},
+      </if>
+      <if test="contactDate != null" >
+        #{contactDate,jdbcType=DATE},
+      </if>
+      <if test="filename != null" >
+        #{filename,jdbcType=VARCHAR},
+      </if>
+      <if test="projectsid != null" >
+        #{projectsid,jdbcType=INTEGER},
+      </if>
+      <if test="smcreatorid != null" >
+        #{smcreatorid,jdbcType=INTEGER},
+      </if>
+      <if test="smownerid != null" >
+        #{smownerid,jdbcType=INTEGER},
+      </if>
+      <if test="modifiedby != null" >
+        #{modifiedby,jdbcType=INTEGER},
+      </if>
+      <if test="groupid != null" >
+        #{groupid,jdbcType=INTEGER},
+      </if>
+      <if test="createdtime != null" >
+        #{createdtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="modifiedtime != null" >
+        #{modifiedtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="deleted != null" >
+        #{deleted,jdbcType=INTEGER},
+      </if>
+      <if test="approved != null" >
+        #{approved,jdbcType=INTEGER},
+      </if>
+      <if test="approvedby != null" >
+        #{approvedby,jdbcType=INTEGER},
+      </if>
+      <if test="nextContactDate != null" >
+        #{nextContactDate,jdbcType=DATE},
+      </if>
+      <if test="rating != null" >
+        #{rating,jdbcType=VARCHAR},
+      </if>
+      <if test="salesStage != null" >
+        #{salesStage,jdbcType=VARCHAR},
+      </if>
+      <if test="latestCommentsTime != null" >
+        #{latestCommentsTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="notecontent != null" >
+        #{notecontent,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="description != null" >
+        #{description,jdbcType=LONGVARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.crm.model.XmNotes" >
+    update xm_notes
+    <set >
+      <if test="contactId != null" >
+        contact_id = #{contactId,jdbcType=INTEGER},
+      </if>
+      <if test="accountid != null" >
+        accountid = #{accountid,jdbcType=INTEGER},
+      </if>
+      <if test="potentialid != null" >
+        potentialid = #{potentialid,jdbcType=INTEGER},
+      </if>
+      <if test="title != null" >
+        title = #{title,jdbcType=VARCHAR},
+      </if>
+      <if test="notetype != null" >
+        notetype = #{notetype,jdbcType=VARCHAR},
+      </if>
+      <if test="contactDate != null" >
+        contact_date = #{contactDate,jdbcType=DATE},
+      </if>
+      <if test="filename != null" >
+        filename = #{filename,jdbcType=VARCHAR},
+      </if>
+      <if test="projectsid != null" >
+        projectsid = #{projectsid,jdbcType=INTEGER},
+      </if>
+      <if test="smcreatorid != null" >
+        smcreatorid = #{smcreatorid,jdbcType=INTEGER},
+      </if>
+      <if test="smownerid != null" >
+        smownerid = #{smownerid,jdbcType=INTEGER},
+      </if>
+      <if test="modifiedby != null" >
+        modifiedby = #{modifiedby,jdbcType=INTEGER},
+      </if>
+      <if test="groupid != null" >
+        groupid = #{groupid,jdbcType=INTEGER},
+      </if>
+      <if test="createdtime != null" >
+        createdtime = #{createdtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="modifiedtime != null" >
+        modifiedtime = #{modifiedtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="deleted != null" >
+        deleted = #{deleted,jdbcType=INTEGER},
+      </if>
+      <if test="approved != null" >
+        approved = #{approved,jdbcType=INTEGER},
+      </if>
+      <if test="approvedby != null" >
+        approvedby = #{approvedby,jdbcType=INTEGER},
+      </if>
+      <if test="nextContactDate != null" >
+        next_contact_date = #{nextContactDate,jdbcType=DATE},
+      </if>
+      <if test="rating != null" >
+        rating = #{rating,jdbcType=VARCHAR},
+      </if>
+      <if test="salesStage != null" >
+        sales_stage = #{salesStage,jdbcType=VARCHAR},
+      </if>
+      <if test="latestCommentsTime != null" >
+        latest_comments_time = #{latestCommentsTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="notecontent != null" >
+        notecontent = #{notecontent,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="description != null" >
+        description = #{description,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    where notesid = #{notesid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.crm.model.XmNotes" >
+    update xm_notes
+    set contact_id = #{contactId,jdbcType=INTEGER},
+      accountid = #{accountid,jdbcType=INTEGER},
+      potentialid = #{potentialid,jdbcType=INTEGER},
+      title = #{title,jdbcType=VARCHAR},
+      notetype = #{notetype,jdbcType=VARCHAR},
+      contact_date = #{contactDate,jdbcType=DATE},
+      filename = #{filename,jdbcType=VARCHAR},
+      projectsid = #{projectsid,jdbcType=INTEGER},
+      smcreatorid = #{smcreatorid,jdbcType=INTEGER},
+      smownerid = #{smownerid,jdbcType=INTEGER},
+      modifiedby = #{modifiedby,jdbcType=INTEGER},
+      groupid = #{groupid,jdbcType=INTEGER},
+      createdtime = #{createdtime,jdbcType=TIMESTAMP},
+      modifiedtime = #{modifiedtime,jdbcType=TIMESTAMP},
+      deleted = #{deleted,jdbcType=INTEGER},
+      approved = #{approved,jdbcType=INTEGER},
+      approvedby = #{approvedby,jdbcType=INTEGER},
+      next_contact_date = #{nextContactDate,jdbcType=DATE},
+      rating = #{rating,jdbcType=VARCHAR},
+      sales_stage = #{salesStage,jdbcType=VARCHAR},
+      latest_comments_time = #{latestCommentsTime,jdbcType=TIMESTAMP},
+      notecontent = #{notecontent,jdbcType=LONGVARCHAR},
+      description = #{description,jdbcType=LONGVARCHAR}
+    where notesid = #{notesid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.crm.model.XmNotes" >
+    update xm_notes
+    set contact_id = #{contactId,jdbcType=INTEGER},
+      accountid = #{accountid,jdbcType=INTEGER},
+      potentialid = #{potentialid,jdbcType=INTEGER},
+      title = #{title,jdbcType=VARCHAR},
+      notetype = #{notetype,jdbcType=VARCHAR},
+      contact_date = #{contactDate,jdbcType=DATE},
+      filename = #{filename,jdbcType=VARCHAR},
+      projectsid = #{projectsid,jdbcType=INTEGER},
+      smcreatorid = #{smcreatorid,jdbcType=INTEGER},
+      smownerid = #{smownerid,jdbcType=INTEGER},
+      modifiedby = #{modifiedby,jdbcType=INTEGER},
+      groupid = #{groupid,jdbcType=INTEGER},
+      createdtime = #{createdtime,jdbcType=TIMESTAMP},
+      modifiedtime = #{modifiedtime,jdbcType=TIMESTAMP},
+      deleted = #{deleted,jdbcType=INTEGER},
+      approved = #{approved,jdbcType=INTEGER},
+      approvedby = #{approvedby,jdbcType=INTEGER},
+      next_contact_date = #{nextContactDate,jdbcType=DATE},
+      rating = #{rating,jdbcType=VARCHAR},
+      sales_stage = #{salesStage,jdbcType=VARCHAR},
+      latest_comments_time = #{latestCommentsTime,jdbcType=TIMESTAMP}
+    where notesid = #{notesid,jdbcType=INTEGER}
+  </update>
+  <select id="getTotal" resultType="INTEGER" >
+	SELECT count(1) AS count FROM xm_notes 
+	LEFT JOIN xm_account ON xm_account.accountid = xm_notes.accountid 
+	LEFT JOIN xm_contactdetails ON xm_contactdetails.contactid = xm_notes.contact_id 
+	LEFT OUTER JOIN xm_potential ON xm_potential.potentialid = xm_notes.potentialid LEFT JOIN xm_users ON xm_users.id = xm_notes.smownerid WHERE xm_notes.deleted = 0  and 1=1 ${filter}
+  </select>
+  <select id="loadList" resultMap="BaseResultMap">
+    select xm_notes.title,xm_users.user_name FROM xm_notes 
+    LEFT JOIN xm_account ON xm_account.accountid = xm_notes.accountid 
+    LEFT JOIN xm_contactdetails ON xm_contactdetails.contactid = xm_notes.contact_id 
+    LEFT OUTER JOIN xm_potential ON xm_potential.potentialid = xm_notes.potentialid 
+    LEFT JOIN xm_users ON xm_users.id = xm_notes.smownerid WHERE xm_notes.deleted = 0 and 1=1 ${filter} limit #{start},#{rows}
+  </select>
+</mapper>

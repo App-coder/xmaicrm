@@ -1,19 +1,19 @@
 //定义页面变量，需要前缀，防止多页面变量重复
-var account_entitytype = 'Accounts';
-var account_id = 'accountid';
+var care_entitytype = 'Cares';
+var care_id = 'careid';
 
 $(function() {
   //设置视图
-	$('#account_list').datagrid({
-		url : 'account/renderView',
+	$('#care_list').datagrid({
+		url : 'care/renderView',
 		doSize:true,
 		collapsible : false,
-		idField : account_id,
+		idField : care_id,
 		singleSelect : true,
 		rownumbers : true,
 		pagination:true,
-		queryParams:{entitytype:account_entitytype,viewid:account_viewid},
-		columns : [account_columns],
+		queryParams:{entitytype:care_entitytype,viewid:care_viewid},
+		columns : [care_columns],
 		toolbar : [ {
 		    text : '编辑',
 		    iconCls:'icon-view',
@@ -26,7 +26,7 @@ $(function() {
 			checkbox : true
 		}]],
 		onLoadSuccess:function(data){
-		    $('#account_list').datagrid('fixColumnSize'); 
+		    $('#care_list').datagrid('fixColumnSize'); 
 		}
 	    });
     

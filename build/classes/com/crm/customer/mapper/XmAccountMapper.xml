@@ -865,6 +865,6 @@
 	SELECT count(1) AS count FROM xm_account LEFT JOIN xm_users ON xm_users.id = xm_account.smownerid WHERE 1=1 ${filter}
   </select>
   <select id="loadList" resultMap="BaseResultMap">
-    SELECT xm_account.*,xm_account.accountname FROM xm_account LEFT JOIN xm_users ON xm_users.id = xm_account.smownerid WHERE 1=1 ${filter} limit #{start},#{rows}
+    select xm_contactdetails.*,xm_users.user_name ,xm_contactdetails.contactid as crmid FROM xm_contactdetails LEFT JOIN xm_account ON xm_account.accountid = xm_contactdetails.accountid LEFT JOIN xm_users ON xm_users.id = xm_contactdetails.smownerid WHERE xm_contactdetails.deleted = 0  and 1=1 ${filter} limit #{start},#{rows}
   </select>
 </mapper>

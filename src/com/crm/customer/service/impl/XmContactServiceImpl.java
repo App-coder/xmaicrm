@@ -5,18 +5,17 @@ import java.util.List;
 import javax.annotation.Resource;
 
 import org.springframework.stereotype.Service;
-
-import com.crm.customer.mapper.XmAccountMapper;
-import com.crm.customer.service.XmAccountService;
+import com.crm.customer.service.XmContactService;
+import com.crm.customer.mapper.XmContactdetailsMapper;
 import com.crm.mapper.util.CvFilter;
 
-@Service("xmAccountService")
-public class XmAccountServiceImpl implements XmAccountService {
+@Service("xmContactService")
+public class XmContactServiceImpl implements XmContactService {
 	
-	XmAccountMapper xmAccountMapper;
-	@Resource(name="xmAccountMapper")
-	public void setXmAccountMapper(XmAccountMapper xmAccountMapper) {
-		this.xmAccountMapper = xmAccountMapper;
+	XmContactdetailsMapper xmContactdetailsMapper;
+    @Resource(name="xmContactdetailsMapper")
+	public void setXmContactdetailsMapper(XmContactdetailsMapper xmContactdetailsMapper) {
+    	this.xmContactdetailsMapper = xmContactdetailsMapper;
 	}
     
     CvFilter cvFilter;
@@ -29,7 +28,7 @@ public class XmAccountServiceImpl implements XmAccountService {
 	@Override
 	public int getTotal(int viewid) {
 		String filter = this.cvFilter.getFilter(viewid);
-		return this.xmAccountMapper.getTotal(filter);
+		return this.xmContactdetailsMapper.getTotal(filter);
 	}
 
 
@@ -37,7 +36,7 @@ public class XmAccountServiceImpl implements XmAccountService {
 	public List loadList(int page, int rows, int viewid) {
 		String filter = this.cvFilter.getFilter(viewid);
 		int start = (page-1)*rows;
-		return this.xmAccountMapper.loadList(start,rows,filter);
+		return this.xmContactdetailsMapper.loadList(start,rows,filter);
 	}
 
 }
