@@ -81,6 +81,8 @@ public class XmInvoice {
     private String termsConditions;
 
     private String description;
+    
+    private String accountname;
 
     public Integer getInvoiceid() {
         return invoiceid;
@@ -393,4 +395,13 @@ public class XmInvoice {
     public void setDescription(String description) {
         this.description = description == null ? null : description.trim();
     }
+
+	public String getAccountname() {
+		return accountname;
+	}
+
+	public void setAccountname(String accountname) {
+		this.accountname = accountname;
+	}
+    
 }

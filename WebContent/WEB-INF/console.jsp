@@ -35,8 +35,8 @@
 			<div><a href="javascript:tab('报价单','quotes/index')" >报价单</a></div>
 			<div><a href="javascript:tab('竞争对手','duishous/index')" >竞争对手</a></div>
 			<div><a href="javascript:tab('合同订单','salesorder/index')" >合同订单</a></div>
-			<div>发货单</div>
-			<div>销售退货单</div>
+			<div><a href="javascript:tab('发货单','invoice/index')" >发货单</a></div>
+			<div><a href="javascript:tab('销售退货单','tuihuos/index')" >销售退货单</a></div>
 			<div>员工绩效</div>
 			<div>销售目标</div>
 		</div>
