@@ -45,8 +45,11 @@ function initRecurring(){
 	    for(var i=1;i<wklist.length;i++){
 		$("input[name=recurring_week][value="+wkens[wklist[i]]+"]").attr("checked",true);
 	    }
-	}else if( recurringtype == ''){
-	    
+	    $("#tr_re_week").show();
+	}else if( recurringtype == 'Monthly'){
+	    var mnlist = recurringinfo.split("::");
+	    $('#month_day').numberbox('setValue', mnlist[2]);
+	    $("#tr_re_month").show();
 	}
 	
     }

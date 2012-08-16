@@ -300,8 +300,6 @@ public class XmCalendarController {
 						
 					}else if(recType.equals("Weekly")){
 						
-						
-						
 						String date_start = request.getParameter("date_start");
 						String due_date = request.getParameter("due_date");
 						
@@ -351,6 +349,43 @@ public class XmCalendarController {
 						
 					}else if(recType.equals("Monthly")){
 						
+						String date_start = request.getParameter("date_start");
+						String due_date = request.getParameter("due_date");
+						
+						Date dt_start = DateUtil.parseDate(date_start);
+						Calendar cal_dt = Calendar.getInstance();
+						cal_dt.setTime(dt_start);
+						
+						Date du_date = DateUtil.parseDate(due_date);
+						Calendar cal_du = Calendar.getInstance();
+						cal_du.setTime(du_date);
+						cal_du.add(Calendar.DAY_OF_YEAR, 1);
+						
+						String recurringmonth = request.getParameter("month_day");
+						List monthdays = generateMonthdays(cal_dt,cal_du,recurringmonth);
+						
+						if(monthdays.size()>0){
+							for(int i=0;i<monthdays.size();i++){
+								//添加
+								XmRecurringevents rec = new XmRecurringevents();
+								rec.setActivityid(activityid);
+								rec.setRecurringdate(DateUtil.parseDate(monthdays.get(i).toString()));
+								rec.setRecurringfreq(1);
+								rec.setRecurringinfo("Monthly::date::"+recurringmonth);
+								rec.setRecurringtype("Monthly");
+								
+								int recid = this.xmRecurringeventsService.insert(rec);
+								
+								XmActivityReminder ar = new XmActivityReminder();
+								ar.setActivityId(activityid);
+								ar.setRecurringid(recid);
+								ar.setReminderSent(0);
+								ar.setReminderTime(remindtime);
+								
+								this.xmActivityReminderService.insert(ar);
+							}
+						}
+						
 					}
 					
 				}else{
@@ -384,6 +419,28 @@ public class XmCalendarController {
 		return JSON.toJSONString(msg);
 	}
 	
+	private List generateMonthdays(Calendar cal_dt, Calendar cal_du,
+			String recurringmonth) {
+		List monthdays = new ArrayList();
+		
+		Calendar recday = Calendar.getInstance();
+		recday.setTime(cal_dt.getTime());
+		recday.set(Calendar.DATE,Integer.parseInt(recurringmonth));
+		
+		if(recday.before(cal_du)){
+			recday.add(Calendar.MONTH, 1);
+			recday.set(Calendar.DATE,Integer.parseInt(recurringmonth));
+			
+			while(recday.after(cal_dt)&&recday.before(cal_du)){
+				monthdays.add(DateUtil.format(recday.getTime(),DateUtil.C_DATE_PATTON_DEFAULT));
+				recday.add(Calendar.MONTH, 1);
+				recday.set(Calendar.DATE,Integer.parseInt(recurringmonth));
+			}
+		}
+		
+		return monthdays;
+	}
+
 	public HashMap generateWeekMap(String[] wklist){
 		
 		HashMap wkmap = new HashMap();

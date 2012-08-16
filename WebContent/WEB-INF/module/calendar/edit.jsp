@@ -196,11 +196,14 @@ ${ptb.parenttabLabel }&gt;<a href="crm/module/${fn:toLowerCase(entity.modulename
 								type="checkbox" name="recurring_week" value="wednesday" />周三&nbsp;&nbsp;<input type="checkbox" name="recurring_week" value="thursday" />周四&nbsp;&nbsp;<input
 								type="checkbox" name="recurring_week" value="friday" />周五&nbsp;&nbsp;<input type="checkbox" name="recurring_week" value="saturday" />周六</td>
 						</tr>
-			<tr class="isrecurring hidden" id="tr_re_month" >
-				<td></td>
-				<td><input type="radio" checked="checked" />&nbsp;&nbsp;第&nbsp;<input  class="easyui-numberbox"  data-options="min:1,precision:0,max:31" type="text" name="month_day" class="text" style="width:20px;margin: 0px;" />&nbsp;天</td>
-			</tr>						
-          </table>  
+						<tr class="isrecurring hidden" id="tr_re_month">
+							<td></td>
+							<td><input type="radio" checked="checked" />&nbsp;&nbsp;第&nbsp;<input
+								class="easyui-numberbox text" id="month_day"
+								data-options="min:1,precision:0,max:31" type="text"
+								name="month_day" style="width: 20px; margin: 0px;" />&nbsp;天</td>
+						</tr>
+					</table>  
       </div>  
   </div>  
 
