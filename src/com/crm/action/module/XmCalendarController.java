@@ -226,64 +226,115 @@ public class XmCalendarController {
 			activityid = Integer.parseInt(request.getParameter("recordid"));
 			res = this.actionCls.update(request,activityid);
 			
-			//相关信息的设置
+		}else{
+			activityid = this.xmActivityService.getMaxId()+1;
+			res = this.actionCls.add(request,activityid,userPermission.getUser().getId());
+		}
+		
+		//关联客户
+		String relAccount = request.getParameter("rel_accountid");
+		if(!"".equals(relAccount)&&relAccount!=null){
+			this.xmSeactivityrelService.deleteRel(activityid);
+			this.xmSeactivityrelService.insert(activityid,relAccount);
+		}else{
+			this.xmSeactivityrelService.deleteRel(activityid);
+		}
+		
+		//关联同事
+		String rel_invitees = request.getParameter("rel_invitees");
+		if(!"".equals(rel_invitees)&&rel_invitees!=null){
+			this.xmInviteesService.clearInvitees(activityid);
+			this.xmInviteesService.insertList(activityid,rel_invitees);
+		}else{
+			this.xmInviteesService.clearInvitees(activityid);
+		}
+		
+		//设置提醒
+		String cfgreminders = request.getParameter("cfgreminders");
+		if("1".equals(cfgreminders)){
 			
-			//关联客户
-			String relAccount = request.getParameter("rel_accountid");
-			if(!"".equals(relAccount)&&relAccount!=null){
-				this.xmSeactivityrelService.deleteRel(activityid);
-				this.xmSeactivityrelService.insert(activityid,relAccount);
-			}else{
-				this.xmSeactivityrelService.deleteRel(activityid);
-			}
+			this.xmActivityReminderService.clearReminder(activityid);
 			
-			//关联同事
-			String rel_invitees = request.getParameter("rel_invitees");
-			if(!"".equals(rel_invitees)&&rel_invitees!=null){
-				this.xmInviteesService.clearInvitees(activityid);
-				this.xmInviteesService.insertList(activityid,rel_invitees);
-			}else{
-				this.xmInviteesService.clearInvitees(activityid);
-			}
+			int re_day = Integer.parseInt(request.getParameter("re_day"));
+			int re_hour = Integer.parseInt(request.getParameter("re_hour"));
+			int re_min = Integer.parseInt(request.getParameter("re_min"));
+			int remindtime = re_day*3600+re_hour*60+re_min;
 			
-			//设置提醒
-			String cfgreminders = request.getParameter("cfgreminders");
-			if("1".equals(cfgreminders)){
-				
-				this.xmActivityReminderService.clearReminder(activityid);
-				
-				int re_day = Integer.parseInt(request.getParameter("re_day"));
-				int re_hour = Integer.parseInt(request.getParameter("re_hour"));
-				int re_min = Integer.parseInt(request.getParameter("re_min"));
-				int remindtime = re_day*3600+re_hour*60+re_min;
-				
-				String recurring = request.getParameter("recurring");
-				if("1".equals(recurring)){
-					//设置重复
-					String recType = request.getParameter("recType");
-					if(recType.equals("Daily")){
+			String recurring = request.getParameter("recurring");
+			if("1".equals(recurring)){
+				//设置重复
+				String recType = request.getParameter("recType");
+				if(recType.equals("Daily")){
+					
+					String date_start = request.getParameter("date_start");
+					String due_date = request.getParameter("due_date");
+					
+					Date dt_start = DateUtil.parseDate(date_start);
+					Calendar cal_dt = Calendar.getInstance();
+					cal_dt.setTime(dt_start);
+					
+					Date du_date = DateUtil.parseDate(due_date);
+					Calendar cal_du = Calendar.getInstance();
+					cal_du.setTime(du_date);
+					cal_du.add(Calendar.DAY_OF_YEAR, 1);
+					
+					while(!DateUtil.format(cal_dt.getTime(), DateUtil.C_DATE_PATTON_DEFAULT).equals(DateUtil.format(cal_du.getTime(), DateUtil.C_DATE_PATTON_DEFAULT))){
 						
-						String date_start = request.getParameter("date_start");
-						String due_date = request.getParameter("due_date");
+						//添加
+						XmRecurringevents rec = new XmRecurringevents();
+						rec.setActivityid(activityid);
+						rec.setRecurringdate(cal_dt.getTime());
+						rec.setRecurringfreq(1);
+						rec.setRecurringinfo("Daily");
+						rec.setRecurringtype("Daily");
 						
-						Date dt_start = DateUtil.parseDate(date_start);
-						Calendar cal_dt = Calendar.getInstance();
-						cal_dt.setTime(dt_start);
+						int recid = this.xmRecurringeventsService.insert(rec);
 						
-						Date du_date = DateUtil.parseDate(due_date);
-						Calendar cal_du = Calendar.getInstance();
-						cal_du.setTime(du_date);
-						cal_du.add(Calendar.DAY_OF_YEAR, 1);
+						XmActivityReminder ar = new XmActivityReminder();
+						ar.setActivityId(activityid);
+						ar.setRecurringid(recid);
+						ar.setReminderSent(0);
+						ar.setReminderTime(remindtime);
 						
-						while(!DateUtil.format(cal_dt.getTime(), DateUtil.C_DATE_PATTON_DEFAULT).equals(DateUtil.format(cal_du.getTime(), DateUtil.C_DATE_PATTON_DEFAULT))){
-							
+						this.xmActivityReminderService.insert(ar);
+						
+						cal_dt.add(Calendar.DAY_OF_YEAR, 1);
+					}
+					
+				}else if(recType.equals("Weekly")){
+					
+					String date_start = request.getParameter("date_start");
+					String due_date = request.getParameter("due_date");
+					
+					Date dt_start = DateUtil.parseDate(date_start);
+					Calendar cal_dt = Calendar.getInstance();
+					cal_dt.setTime(dt_start);
+					
+					Date du_date = DateUtil.parseDate(due_date);
+					Calendar cal_du = Calendar.getInstance();
+					cal_du.setTime(du_date);
+					cal_du.add(Calendar.DAY_OF_YEAR, 1);						
+
+					String[] recurringweeks = request.getParameterValues("recurring_week");
+					HashMap wkmap = generateWeekMap(recurringweeks);
+					StringBuffer recurringtypeinfo = new StringBuffer();
+					recurringtypeinfo.append("Weekly");
+					Iterator its = wkmap.keySet().iterator();
+					while(its.hasNext()){
+						recurringtypeinfo.append("::"+(Integer.parseInt(its.next().toString())-1));
+					}
+					
+					
+					while(!DateUtil.format(cal_dt.getTime(), DateUtil.C_DATE_PATTON_DEFAULT).equals(DateUtil.format(cal_du.getTime(), DateUtil.C_DATE_PATTON_DEFAULT))){
+						
+						if(wkmap.containsKey(cal_dt.get(Calendar.DAY_OF_WEEK))){
 							//添加
 							XmRecurringevents rec = new XmRecurringevents();
 							rec.setActivityid(activityid);
 							rec.setRecurringdate(cal_dt.getTime());
 							rec.setRecurringfreq(1);
-							rec.setRecurringinfo("Daily");
-							rec.setRecurringtype("Daily");
+							rec.setRecurringinfo(recurringtypeinfo.toString());
+							rec.setRecurringtype("Weekly");
 							
 							int recid = this.xmRecurringeventsService.insert(rec);
 							
@@ -294,119 +345,65 @@ public class XmCalendarController {
 							ar.setReminderTime(remindtime);
 							
 							this.xmActivityReminderService.insert(ar);
-							
-							cal_dt.add(Calendar.DAY_OF_YEAR, 1);
 						}
 						
-					}else if(recType.equals("Weekly")){
-						
-						String date_start = request.getParameter("date_start");
-						String due_date = request.getParameter("due_date");
-						
-						Date dt_start = DateUtil.parseDate(date_start);
-						Calendar cal_dt = Calendar.getInstance();
-						cal_dt.setTime(dt_start);
-						
-						Date du_date = DateUtil.parseDate(due_date);
-						Calendar cal_du = Calendar.getInstance();
-						cal_du.setTime(du_date);
-						cal_du.add(Calendar.DAY_OF_YEAR, 1);						
-
-						String[] recurringweeks = request.getParameterValues("recurring_week");
-						HashMap wkmap = generateWeekMap(recurringweeks);
-						StringBuffer recurringtypeinfo = new StringBuffer();
-						recurringtypeinfo.append("Weekly");
-						Iterator its = wkmap.keySet().iterator();
-						while(its.hasNext()){
-							recurringtypeinfo.append("::"+(Integer.parseInt(its.next().toString())-1));
-						}
-						
-						
-						while(!DateUtil.format(cal_dt.getTime(), DateUtil.C_DATE_PATTON_DEFAULT).equals(DateUtil.format(cal_du.getTime(), DateUtil.C_DATE_PATTON_DEFAULT))){
-							
-							if(wkmap.containsKey(cal_dt.get(Calendar.DAY_OF_WEEK))){
-								//添加
-								XmRecurringevents rec = new XmRecurringevents();
-								rec.setActivityid(activityid);
-								rec.setRecurringdate(cal_dt.getTime());
-								rec.setRecurringfreq(1);
-								rec.setRecurringinfo(recurringtypeinfo.toString());
-								rec.setRecurringtype("Weekly");
-								
-								int recid = this.xmRecurringeventsService.insert(rec);
-								
-								XmActivityReminder ar = new XmActivityReminder();
-								ar.setActivityId(activityid);
-								ar.setRecurringid(recid);
-								ar.setReminderSent(0);
-								ar.setReminderTime(remindtime);
-								
-								this.xmActivityReminderService.insert(ar);
-							}
-							
-							cal_dt.add(Calendar.DAY_OF_YEAR, 1);
-						}
-						
-					}else if(recType.equals("Monthly")){
-						
-						String date_start = request.getParameter("date_start");
-						String due_date = request.getParameter("due_date");
-						
-						Date dt_start = DateUtil.parseDate(date_start);
-						Calendar cal_dt = Calendar.getInstance();
-						cal_dt.setTime(dt_start);
-						
-						Date du_date = DateUtil.parseDate(due_date);
-						Calendar cal_du = Calendar.getInstance();
-						cal_du.setTime(du_date);
-						cal_du.add(Calendar.DAY_OF_YEAR, 1);
-						
-						String recurringmonth = request.getParameter("month_day");
-						List monthdays = generateMonthdays(cal_dt,cal_du,recurringmonth);
-						
-						if(monthdays.size()>0){
-							for(int i=0;i<monthdays.size();i++){
-								//添加
-								XmRecurringevents rec = new XmRecurringevents();
-								rec.setActivityid(activityid);
-								rec.setRecurringdate(DateUtil.parseDate(monthdays.get(i).toString()));
-								rec.setRecurringfreq(1);
-								rec.setRecurringinfo("Monthly::date::"+recurringmonth);
-								rec.setRecurringtype("Monthly");
-								
-								int recid = this.xmRecurringeventsService.insert(rec);
-								
-								XmActivityReminder ar = new XmActivityReminder();
-								ar.setActivityId(activityid);
-								ar.setRecurringid(recid);
-								ar.setReminderSent(0);
-								ar.setReminderTime(remindtime);
-								
-								this.xmActivityReminderService.insert(ar);
-							}
-						}
-						
+						cal_dt.add(Calendar.DAY_OF_YEAR, 1);
 					}
 					
-				}else{
-					//不设置重复
-					XmActivityReminder ar = new XmActivityReminder();
-					ar.setActivityId(activityid);
-					ar.setRecurringid(0);
-					ar.setReminderSent(0);
-					ar.setReminderTime(remindtime);
+				}else if(recType.equals("Monthly")){
 					
-					this.xmActivityReminderService.insert(ar);
-				
+					String date_start = request.getParameter("date_start");
+					String due_date = request.getParameter("due_date");
+					
+					Date dt_start = DateUtil.parseDate(date_start);
+					Calendar cal_dt = Calendar.getInstance();
+					cal_dt.setTime(dt_start);
+					
+					Date du_date = DateUtil.parseDate(due_date);
+					Calendar cal_du = Calendar.getInstance();
+					cal_du.setTime(du_date);
+					cal_du.add(Calendar.DAY_OF_YEAR, 1);
+					
+					String recurringmonth = request.getParameter("month_day");
+					List monthdays = generateMonthdays(cal_dt,cal_du,recurringmonth);
+					
+					if(monthdays.size()>0){
+						for(int i=0;i<monthdays.size();i++){
+							//添加
+							XmRecurringevents rec = new XmRecurringevents();
+							rec.setActivityid(activityid);
+							rec.setRecurringdate(DateUtil.parseDate(monthdays.get(i).toString()));
+							rec.setRecurringfreq(1);
+							rec.setRecurringinfo("Monthly::date::"+recurringmonth);
+							rec.setRecurringtype("Monthly");
+							
+							int recid = this.xmRecurringeventsService.insert(rec);
+							
+							XmActivityReminder ar = new XmActivityReminder();
+							ar.setActivityId(activityid);
+							ar.setRecurringid(recid);
+							ar.setReminderSent(0);
+							ar.setReminderTime(remindtime);
+							
+							this.xmActivityReminderService.insert(ar);
+						}
+					}
+					
 				}
+				
 			}else{
-				this.xmActivityReminderService.clearReminder(activityid);
+				//不设置重复
+				XmActivityReminder ar = new XmActivityReminder();
+				ar.setActivityId(activityid);
+				ar.setRecurringid(0);
+				ar.setReminderSent(0);
+				ar.setReminderTime(remindtime);
+				
+				this.xmActivityReminderService.insert(ar);
+			
 			}
-			
-			
 		}else{
-			activityid = this.xmActivityService.getMaxId()+1;
-			res = this.actionCls.add(request,activityid,userPermission.getUser().getId());
+			this.xmActivityReminderService.clearReminder(activityid);
 		}
 		
 		if(res){

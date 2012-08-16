@@ -54,4 +54,5 @@ function setParentVal(rowdata){
     parent.$("input[name='"+columnname+"']").val(rowdata.potentialid);
     parent.rendRel(columnname,rowdata);
     parent.$("#optionwindow").window("close");
+    $("body").remove();
 }

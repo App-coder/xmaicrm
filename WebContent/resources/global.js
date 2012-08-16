@@ -239,7 +239,10 @@ function setDefWidth(cols,wid){
 function showOptionPanel(modulename,columnname,fieldlabel){
     $("#optionwindow").window({
 	title:"选择"+fieldlabel,
-	border:false
+	border:false,
+	onClose:function(){
+	    $("#optionframe").attr("src","");
+	}
     });
     $("#optionframe").attr("src","crm/customview/viewPop?modulename="+modulename+"&columnname="+columnname+"&_rd="+rdnum());
     $("#optionwindow").window("open");
