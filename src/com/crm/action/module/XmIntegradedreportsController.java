@@ -29,7 +29,7 @@ import com.crm.util.JsonUtil;
  * Time: 上午9:57:15
  */
 @Controller
-@RequestMapping(value = "integradedreports")
+@RequestMapping(value = "crm/module/integradedreports")
 public class XmIntegradedreportsController extends BaseController {
 	
 	private static final String[] CANGKU_EXCLUDES = new String[] { "cangkusid"};

@@ -71,7 +71,7 @@ public interface XmFieldService {
 	
 	List<Object> getApproveStepFieldTab(Integer tabid);
 	
-	List<Object> getApproveStepFieldTabDetail(Integer tabid);
+	List<Object> getApproveStepFieldTabDetail(Integer stepid,Integer tabid);
 	
 	List<XmField> getApproveStepFilters(Integer tabid);
 

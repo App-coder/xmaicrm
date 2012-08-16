@@ -96,4 +96,8 @@
   <select id="getEntityByModule" resultMap="BaseResultMap">
   	select * from xm_entityname where modulename = #{module}
   </select>
+  
+  <select id="getEntityApprovelogName" resultType="String">
+    select ${fieldsname} as entityname from ${tablename} where ${entityidfield}=#{crmid} 
+  </select>
 </mapper>

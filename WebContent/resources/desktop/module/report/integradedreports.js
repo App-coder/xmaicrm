@@ -54,7 +54,7 @@ function integradedreports(i,j){
 	tbname=reports[i-4].tbname;
 	params="{'duedate':\""+duedate+"\",'id':"+reports[i-4].id+"}";
 	
-	tburl="integradedreports/modelreports/index/"+params+"";
+	tburl="crm/integradedreports/modelreports/index/"+params+"";
 	window.open (tburl);
 }
 
@@ -66,6 +66,6 @@ $(function(){
 	$('.selyear').change(function(){
 		var year=$('.selyear').val();
 		var pp = $('#tabs').tabs("getTab", '综合报表');   
-		$('#tabs').tabs("update",{tab:pp,options:{href:"integradedreports/index/"+year+""}});
+		$('#tabs').tabs("update",{tab:pp,options:{href:"crm/integradedreports/index/"+year+""}});
 	});
 });

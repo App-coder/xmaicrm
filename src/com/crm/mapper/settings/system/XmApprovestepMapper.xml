@@ -215,4 +215,23 @@
 	left join xm_role on xm_user2role.roleid=xm_role.roleid
 	order by xm_groups.groupid,xm_role.rolename
   </select>
+  
+  <select id="getApproveStepSequnce" resultType="Integer">
+    select max(sequnce) sequnce from xm_approvestep where approveid=#{approveid}
+  </select>
+  
+  <update id="upPreStepSequnce">
+    update xm_approvestep set sequnce=sequnce+1 where approveid=#{approveid} and sequnce=#{sequnce}
+  </update>
+  <update id="upStepSequnce">
+    update xm_approvestep set sequnce=sequnce-1 where id=#{stepid}
+  </update>
+  
+  <update id="downPreStepSequnce">
+    update xm_approvestep set sequnce=sequnce-1 where approveid=#{approveid} and sequnce=#{sequnce}
+  </update>
+  <update id="downStepSequnce">
+    update xm_approvestep set sequnce=sequnce+1 where id=#{stepid}
+  </update>
+  
 </mapper>

@@ -15,8 +15,8 @@
     </c:otherwise>
  </c:choose>
    
-<script type="text/javascript" src="resources/desktop/report/reports.js"></script>
-<script type="text/javascript" src="resources/desktop/report/integradedreports.js"></script>
+<script type="text/javascript" src="resources/desktop/module/report/reports.js"></script>
+<script type="text/javascript" src="resources/desktop/module/report/integradedreports.js"></script>
 
 <style>
 .report_panel{

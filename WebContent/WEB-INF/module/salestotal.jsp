@@ -4,7 +4,7 @@
 <%@ include file="../common/config.jsp"%>
 
 	
-<script type="text/javascript" 	src="resources/desktop/report/salestotal.js"></script>
+<script type="text/javascript" 	src="resources/desktop/module/report/salestotal.js"></script>
 
 <body id="wrap">
 <div id="main">

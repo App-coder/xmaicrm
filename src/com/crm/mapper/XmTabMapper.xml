@@ -234,4 +234,7 @@
 	AND tabid != '9'
 	AND tabid NOT IN(${skipstr})
   </select>
+  <select id="getModuleNameByType" resultMap="BaseResultMap">
+    select xm_tab.* from xm_modulelist inner join xm_tab on xm_tab.tabid=xm_modulelist.tabid where xm_modulelist.type=#{type} order by xm_tab.tabid
+  </select>
 </mapper>

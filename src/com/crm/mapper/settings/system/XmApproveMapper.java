@@ -7,7 +7,7 @@ import org.apache.ibatis.annotations.Param;
 import com.crm.model.XmApprove;
 
 public interface XmApproveMapper {
-    int deleteByPrimaryKey(Integer id);
+    int deleteByPrimaryKey(@Param("id") Integer id);
 
     int insert(XmApprove record);
 

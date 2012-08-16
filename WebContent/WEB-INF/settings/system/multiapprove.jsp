@@ -3,6 +3,9 @@
 <%@ include file="../../head.jsp"%>
 <%@ include file="../../common/config.jsp"%>
 <script>
+var user={
+		id:${user.id}
+}
 var pathname = "审批流程";
 var pathActive = "multiapprove";
 </script>
@@ -116,16 +119,16 @@ var pathActive = "multiapprove";
 				</c:forEach>
 			</select><a onclick="javascript:doMultiApproveStep()"
 				class="easyui-linkbutton"
-				data-options="plain:true,iconCls:'icon-add'">编辑审批步骤</a>
-				<a onclick="javascript:editRelmodField()"
+				data-options="plain:true,iconCls:'icon-search'">查看审批步骤</a>
+				<a onclick="javascript:addMultiApprove()"
 				class="easyui-linkbutton"
-				data-options="plain:true,iconCls:'icon-add'">添加</a><a
+				data-options="plain:true,iconCls:'icon-add'">添加审批流程</a><a
 			    onclick="javascript:editMultiApprove()"
 				class="easyui-linkbutton"
-				data-options="plain:true,iconCls:'icon-edit'">修改</a><a
-				href="customview/index?entitytype=${entitytype}"
+				data-options="plain:true,iconCls:'icon-edit'">修改审批流程</a><a
+				onclick="javascript:deleteMultiApprove()"
 				class="easyui-linkbutton"
-				data-options="plain:true,iconCls:'icon-remove'">删除</a>
+				data-options="plain:true,iconCls:'icon-remove'">删除审批流程</a>
 		</div>
 		
 	</div>
