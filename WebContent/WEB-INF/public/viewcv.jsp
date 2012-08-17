@@ -59,7 +59,7 @@ var tablabel = '${tab.tablabel}';
 <div id="main">
 <div class="path" id="navpath"></div>
 	<div class="d_view ">
-				<span class="icon-filter view_span">视图：</span> <select
+				<span class="icon-filter ">视图：</span> <select
 					class="sel_120">
 					<c:forEach items="${views}" var="v">
 						<option value="${v.cvid }">${v.viewname}</option>

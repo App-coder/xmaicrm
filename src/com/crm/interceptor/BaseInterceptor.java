@@ -18,6 +18,7 @@ import com.crm.service.XmEntitynameService;
 import com.crm.service.XmTabService;
 import com.crm.util.CacheManager;
 import com.crm.util.Constant;
+import com.crm.util.LogUtil;
 
 public class BaseInterceptor implements HandlerInterceptor {
 	
@@ -59,6 +60,7 @@ public class BaseInterceptor implements HandlerInterceptor {
 			CacheManager.putInCache(Constant.TAB, hmentityname);
 			CacheManager.putInCache(Constant.TABBYLAB, hmlabtabs);
 		}
+		LogUtil.logger.info("23");
 		return true;
 	}
 	

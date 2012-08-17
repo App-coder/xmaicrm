@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.alibaba.fastjson.JSON;
 import com.crm.action.BaseController;
+import com.crm.bean.crm.Message;
 import com.crm.bean.easyui.Combobox;
 import com.crm.bean.easyui.ListBean;
 import com.crm.model.XmGroups;
@@ -64,5 +65,34 @@ public class XmGroupsController extends BaseController {
 		return JSON.toJSONString(boxs);
 	}
 	
+	@RequestMapping(value = "/getGroupById", method = RequestMethod.POST)
+	@ResponseBody
+	public String getGroupById(int groupid){
+		XmGroups group = this.xmGroupsService.getGroupById(groupid);
+		return JSON.toJSONString(group);
+	}
+	
+	@RequestMapping(value = "/groupEdit", method = RequestMethod.POST)
+	@ResponseBody
+	public String groupEdit(XmGroups groups,String action){
+		Message msg = new Message();
+		if(action.equals("add")){
+			this.xmGroupsService.add(groups);
+		}else{
+			this.xmGroupsService.update(groups);
+		}
+		msg.setType(true);
+		return JSON.toJSONString(msg);
+	}
+	
+	@RequestMapping(value = "/delete", method = RequestMethod.POST)
+	@ResponseBody
+	public String delete(int groupid){
+		Message msg = new Message();
+		msg.setType(true);
+		msg.setMessage("部门删除成功！");
+		this.xmGroupsService.deleteById(groupid);
+		return JSON.toJSONString(msg);
+	}
 	
 }
