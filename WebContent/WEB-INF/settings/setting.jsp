@@ -181,15 +181,14 @@
 											cellpadding="5" border="0">
 											<tbody>
 												<tr>
-
 													<td valign="top"><a
-														href="javascript:tab('显示区域','settings/picklist/index')"><img
+														href="settings/customblock/index"><img
 															border="0" title="显示区域" alt="显示区域"
 															src="resources/images/settings/panel/blocklist.gif"></a></td>
 												</tr>
 												<tr>
 													<td valign="top" class="big"><a
-														href="javascript:tab('显示区域','settings/picklist/index')">显示区域</a></td>
+														href="settings/customblock/index">显示区域</a></td>
 												</tr>
 
 											</tbody>

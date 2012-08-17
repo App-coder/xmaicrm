@@ -171,3 +171,13 @@ fieldset legend{color:#15428B;}
   font-family: 黑体; 
   color: #999999
 }
+
+
+/*----显示区域---*/
+
+.importBox {
+    border: 1px solid #666666;
+    font-family: Arial,Helvetica,sans-serif;
+    font-size: 12px;
+    width: 125px;
+}
