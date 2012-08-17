@@ -238,8 +238,7 @@ class PearDatabase
 				}
 
 				public function print_sql($sql){
-						//echo $sql;
-						//echo ';<br><br>';
+						//echo $sql.';<br><br>';
 				}
 
 				public function convert2Sql( $ps, $vals )
