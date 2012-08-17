@@ -32,6 +32,19 @@ public class ArrayUtil {
 		return sb.toString();
 	}
 	
+	public static String arrayToColumns(List<Object> objs){
+		StringBuffer sb = new StringBuffer();
+		for(int i=0;i<objs.size();i++){
+			if(i==0){
+				sb.append(objs.get(i).toString());	
+			}else{
+				sb.append(",");	
+				sb.append(objs.get(i).toString());	
+			}
+		}	
+		return sb.toString();
+	}
+	
 	public static  String arrayToJoinStr(String[] objs){
 		
 		StringBuffer sb = new StringBuffer();

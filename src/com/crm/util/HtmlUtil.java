@@ -2,12 +2,14 @@ package com.crm.util;
 
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import com.crm.model.XmBlocks;
 import com.crm.model.XmEntityname;
 import com.crm.model.XmField;
 import com.crm.model.XmPicklist;
 import com.crm.model.XmUsers;
+import com.crm.service.XmCustomViewService;
 import com.crm.service.XmPicklistService;
 import com.crm.service.settings.basic.XmUsersService;
 
@@ -216,27 +218,27 @@ public class HtmlUtil {
 		return htmlstr;
 	}
 
-	public static String getFieldHtml(XmField xmField,XmPicklistService xmPicklistService,XmUsersService xmUsersService) {
+	public static String getFieldHtml(XmField xmField,XmPicklistService xmPicklistService,XmUsersService xmUsersService, Map obj, XmCustomViewService xmCustomViewService) {
 		String fieldstr = "";
 		String uitype = xmField.getUitype();
 		String[] tds = xmField.getTypeofdata().split("~");
 		
 		if(uitype.equals("1")){
-			fieldstr += "<input type=\"text\" name=\""+xmField.getColumnname()+"\" class=\"text2 easyui-validatebox\" />";
+			fieldstr += "<input type=\"text\" name=\""+xmField.getColumnname()+"\" value=\""+getMapVal(obj,xmField.getColumnname())+"\" class=\"text2 easyui-validatebox\" />";
 		}else if(uitype.equals("2")){
 			if(tds[1].equals("M")){
-				fieldstr += "<input type=\"text\" name=\""+xmField.getColumnname()+"\" class=\"easyui-validatebox text2\" data-options=\"required:true\" /><span class=\"must\">*</span>";
+				fieldstr += "<input type=\"text\" name=\""+xmField.getColumnname()+"\" value=\""+getMapVal(obj,xmField.getColumnname())+"\" class=\"easyui-validatebox text2\" data-options=\"required:true\" /><span class=\"must\">*</span>";
 			}else{
-				fieldstr += "<input type=\"text\" name=\""+xmField.getColumnname()+"\" class=\"easyui-validatebox text2\"  />";
+				fieldstr += "<input type=\"text\" name=\""+xmField.getColumnname()+"\" value=\""+getMapVal(obj,xmField.getColumnname())+"\" class=\"easyui-validatebox text2\"  />";
 			}
 		}else if(uitype.equals("15")){
 			List<XmPicklist> picks = xmPicklistService.getPicks(xmField.getFieldname());
 			fieldstr +=getSelectHtml(xmField,picks,tds);
 		}else if(uitype.equals("5")){
 			if(tds[1].equals("M")){
-				fieldstr += "<input type=\"text\" name=\""+xmField.getColumnname()+"\" class=\"easyui-datebox text2\" class=\"easyui-validatebox text2\" data-options=\"required:true\" /><span class=\"must\">*</span>";	
+				fieldstr += "<input type=\"text\" name=\""+xmField.getColumnname()+"\" value=\""+getMapVal(obj,xmField.getColumnname())+"\" class=\"easyui-datebox text2\" class=\"easyui-validatebox text2\" data-options=\"required:true\" /><span class=\"must\">*</span>";	
 			}else{
-				fieldstr += "<input type=\"text\" name=\""+xmField.getColumnname()+"\" class=\"easyui-datebox text2\" />";
+				fieldstr += "<input type=\"text\" name=\""+xmField.getColumnname()+"\" value=\""+getMapVal(obj,xmField.getColumnname())+"\" class=\"easyui-datebox text2\" />";
 			}
 			
 		}else if(uitype.equals("53")){
@@ -246,17 +248,33 @@ public class HtmlUtil {
 			HashMap<String, XmEntityname> hm_noline = (HashMap<String, XmEntityname>)CacheManager.getFromCache(Constant.ENTITYNAME_NOLINE);
 			XmEntityname et = hm_noline.get(xmField.getFieldname().replace("_", ""));
 			//关联可选的字段
-			fieldstr +="<input type=\"hidden\" name=\""+xmField.getColumnname()+"\" class=\"text2\"  />";
-			fieldstr +="<input type=\"text\" name=\""+xmField.getColumnname()+"_text\" class=\"text2\" readonly=\"readonly\" />";
+			fieldstr +="<input type=\"hidden\" name=\""+xmField.getColumnname()+"\" value=\""+getMapVal(obj,xmField.getColumnname())+"\" class=\"text2\"  />";
+			fieldstr +="<input type=\"text\" name=\""+xmField.getColumnname()+"_text\" class=\"text2\" value=\""+getText(getMapVal(obj,xmField.getColumnname()),et,xmCustomViewService)+"\" readonly=\"readonly\" />";
 			fieldstr +="<a class=\"easyui-linkbutton mgl_10\" title=\"查询\" data-options=\"iconCls:'icon-search'\" href=\"javascript:showOptionPanel('"+et.getModulename()+"','"+xmField.getColumnname()+"','"+xmField.getFieldlabel()+"')\" ></a>";
 			fieldstr +="<a class=\"easyui-linkbutton mgl_10\" title=\"清空\" data-options=\"iconCls:'icon-clear'\" ></a>";
 		}else if(uitype.equals("9")){
-			fieldstr +="<input type=\"text\" name=\""+xmField.getColumnname()+"\" class=\"text2 easyui-numberbox\" data-options=\"min:0,precision:2\" />";
+			fieldstr +="<input type=\"text\" name=\""+xmField.getColumnname()+"\" value=\""+getMapVal(obj,xmField.getColumnname())+"\" class=\"text2 easyui-numberbox\" data-options=\"min:0,precision:2\" />";
 		}else if(uitype.equals("19")){
-			fieldstr +="<textarea name=\""+xmField.getColumnname()+"\" ></textarea>";
+			fieldstr +="<textarea name=\""+xmField.getColumnname()+"\" >"+getMapVal(obj,xmField.getColumnname())+"</textarea>";
 		}
 		
 		return fieldstr;
+	}
+	
+	private static String getText(String mapVal, XmEntityname et,XmCustomViewService xmCustomViewService) {
+		if(mapVal!=""){
+			return xmCustomViewService.getFieldValue(et,mapVal);
+		}
+		return "";
+	}
+
+	public static String getMapVal(Map map,String key){
+		if(map!=null){
+			if(map.get(key)!=null){
+				return map.get(key).toString();
+			}
+		}
+		return "";
 	}
 	
 	/**

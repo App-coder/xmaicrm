@@ -27,7 +27,7 @@ function init(){
 		    handler : function() {
 			var selected = $('#view_list').datagrid("getSelected");
 			if(selected){
-			    
+			    window.location.href="crm/module/campaigns/showedit?recordid="+selected.campaignid+"&ptb="+ptb+"&module="+entitytype;
 			}else{
 			    message("请选择记录！");
 			}

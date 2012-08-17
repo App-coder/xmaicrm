@@ -15,7 +15,7 @@ function initPage() {
 	    var data = $.parseJSON(data);
 	    if(data.type == true){
 		//转向到详细页面
-		
+		window.location.href = "crm/module/campaigns/index?ptb="+ptb;
 	    }
 	}
     });

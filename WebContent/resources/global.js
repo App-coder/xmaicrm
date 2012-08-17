@@ -265,7 +265,7 @@ function showOptionPanel(modulename,columnname,fieldlabel){
     $("#optionwindow").window({
 	title:"选择"+fieldlabel
     });
-    $("#optionframe").attr("src","crm/customview/viewPop?modulename="+modulename+"&columnname="+columnname);
+    $("#optionframe").attr("src","crm/customview/viewPop?modulename="+modulename+"&columnname="+columnname+"&_rd="+rdnum());
     $("#optionwindow").window("open");
 }
 function showTip(value,row,index){

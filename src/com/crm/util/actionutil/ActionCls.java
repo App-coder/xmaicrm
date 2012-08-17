@@ -5,6 +5,7 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
+import java.util.Map;
 import java.util.Set;
 
 import javax.annotation.Resource;
@@ -77,7 +78,13 @@ public class ActionCls {
 		this.xmSequenceService = xmSequenceService;
 	}
 
-	public void showEdit(int ptb, String module, ModelMap modelmap) {
+	public void showEdit(int ptb, String module, ModelMap modelmap, int recordid) {
+		Map obj = null;
+		if(recordid!=0){
+			modelmap.addAttribute("recordid",recordid);
+			obj = this.xmCustomViewService.getObject(recordid,module);
+			modelmap.addAttribute("record",obj);
+		}
 		
 		XmTab tab = CustomViewUtil.getTabByName(module);
 		modelmap.addAttribute("tab",tab );
@@ -109,7 +116,7 @@ public class ActionCls {
 			for (int i = 0; i < fields.size(); i++) {
 				fields.get(i).setFieldHtml(
 						HtmlUtil.getFieldHtml(fields.get(i),
-								this.xmPicklistService, this.xmUsersService));
+								this.xmPicklistService, this.xmUsersService,obj,this.xmCustomViewService));
 				setblock.add(fields.get(i).getBlock());
 			}
 		}
@@ -164,7 +171,7 @@ public class ActionCls {
 		colobjs.add(entity.getEntityidfield());
 		
 		sb.append("(");
-		sb.append(ArrayUtil.arrayToJoinStr(colobjs, ",", false));
+		sb.append(ArrayUtil.arrayToColumns(colobjs));
 		//附加的数据录入
 		//营销活动
 		if(module.equals("Campaigns")){
@@ -200,8 +207,55 @@ public class ActionCls {
 		return false;
 	}
 
-	private boolean isInt(String typeofdata) {
+
+	//编辑操作
+	public Boolean update(HttpServletRequest request, int recordid) {
+		String module = request.getParameter("edit_module");
+		XmEntityname entity = this.xmEntitynameService.getEntityByModule(module);
+		int tabid  = Integer.parseInt(request.getParameter("edit_tabid"));
 		
+		List<XmBlocks> blocks = this.xmBlocksService.getFieldBlocksByTabId(tabid);
+
+		List<Object> blockArray = new ArrayList<Object>();
+		for (int i = 0; i < blocks.size(); i++) {
+			blockArray.add(blocks.get(i).getBlockid());
+		}
+		String blockstr = ArrayUtil.arrayToJoinStr(blockArray, ",", true);
+
+		List<XmField> fields = this.xmFieldService.getEditFields(tabid, blockstr);
+		
+		StringBuffer sb = new StringBuffer();
+		sb.append("update ");
+		sb.append(entity.getTablename());
+		sb.append(" set ");
+		
+		StringBuffer cols = new StringBuffer();
+		for(int i=0;i<fields.size();i++){
+			if(request.getParameter(fields.get(i).getFieldname())!=null&&request.getParameter(fields.get(i).getFieldname())!=""){
+				
+				if(!cols.toString().isEmpty()){
+					cols.append(",");
+				}
+				cols.append(fields.get(i).getFieldname());
+				cols.append(" = ");
+				cols.append(CustomViewUtil.getColumnVal(fields.get(i).getTypeofdata(),request.getParameter(fields.get(i).getFieldname())));
+				cols.append(" ");
+				
+			}
+			
+		}
+		
+		sb.append(cols.toString());
+		sb.append(" where ");
+		sb.append(entity.getEntityidfield());
+		sb.append(" = ");
+		sb.append(recordid);
+		
+		int affectrows = this.xmCustomViewService.update(sb.toString());
+		
+		if(affectrows == 1){
+			return true;
+		}
 		return false;
 	}
 

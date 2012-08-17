@@ -14,6 +14,7 @@ import com.crm.mapper.util.CvFilter;
 import com.crm.model.XmCustomview;
 import com.crm.model.XmCvadvfilter;
 import com.crm.model.XmCvstdfilter;
+import com.crm.model.XmEntityname;
 import com.crm.service.XmCustomViewService;
 import com.crm.util.JsonUtil;
 
@@ -161,6 +162,31 @@ public class XmCustomViewServiceImpl implements XmCustomViewService {
 	@Override
 	public int insert(String sql) {
 		return this.xmCustomviewMapper.insertsql(sql);
+	}
+
+	@Override
+	public Map getObject(int recordid, String entitytype) {
+		String sql = this.cvFilter.getObjectSql(recordid,entitytype);
+		return this.xmCustomviewMapper.getObject(sql);
+	}
+
+	@Override
+	public String getFieldValue(XmEntityname et, String mapVal) {
+		StringBuffer sb = new StringBuffer();
+		sb.append("select ");
+		sb.append(et.getFieldname());
+		sb.append(" from ");
+		sb.append(et.getTablename());
+		sb.append(" where ");
+		sb.append(et.getEntityidfield());
+		sb.append(" = ");
+		sb.append(mapVal);
+		return this.xmCustomviewMapper.getFieldValue(sb.toString());
+	}
+
+	@Override
+	public int update(String sql) {
+		return this.xmCustomviewMapper.update(sql);
 	}
 
 }

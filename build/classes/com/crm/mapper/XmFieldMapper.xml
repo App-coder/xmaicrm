@@ -447,8 +447,9 @@
 			ORDER BY
 				sequence
 	</select>
-<<<<<<< HEAD
-	
+	<select id="getRecycleBinFields" resultMap="BaseResultMap" >
+		select xm_field.* from xm_field where tabid = #{tabid} and columnname in (${fieldsStr})
+	</select>
 	<select id="getMultiLevel2" resultType="map">
 	   SELECT
 			fieldid,
@@ -465,9 +466,4 @@
 		AND typeofdata LIKE #{typeofdata}
 	</select>
 	
-=======
-	<select id="getRecycleBinFields" resultMap="BaseResultMap" >
-		select xm_field.* from xm_field where tabid = #{tabid} and columnname in (${fieldsStr})
-	</select>
->>>>>>> git-crm/zhujun
 </mapper>

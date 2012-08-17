@@ -1,6 +1,7 @@
 package com.crm.action.module;
 
 import java.io.UnsupportedEncodingException;
+import java.util.Map;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
@@ -17,6 +18,7 @@ import com.crm.action.BaseController;
 import com.crm.action.util.ModuleUtil;
 import com.crm.bean.crm.Message;
 import com.crm.bean.crm.UserPermission;
+import com.crm.service.XmCustomViewService;
 import com.crm.service.module.XmCampaignService;
 import com.crm.util.ActionUtil;
 import com.crm.util.Constant;
@@ -47,6 +49,12 @@ public class XmCampaignController extends BaseController {
 		this.xmCampaignService = xmCampaignService;
 	}
 	
+	XmCustomViewService xmCustomViewService;
+	@Resource(name = "xmCustomViewService")
+	public void setXmCustomViewService(XmCustomViewService xmCustomViewService) {
+		this.xmCustomViewService = xmCustomViewService;
+	}
+	
 	ActionCls actionCls;
 	@Resource(name="actionCls")
 	public void setActionCls(ActionCls actionCls) {
@@ -64,11 +72,7 @@ public class XmCampaignController extends BaseController {
 	@RequestMapping(value = "/showedit")
 	public String showedit(int recordid,String module,int ptb,ModelMap modelmap){
 		
-		if(recordid!=0){
-			modelmap.addAttribute("recordid",recordid);
-		}
-		
-		this.actionCls.showEdit(ptb, module, modelmap);
+		this.actionCls.showEdit(ptb, module, modelmap,recordid);
 		
 		return "module/campaigns/edit";
 	}
@@ -77,8 +81,15 @@ public class XmCampaignController extends BaseController {
 	@ResponseBody
 	public String edit(HttpServletRequest request,@ModelAttribute(Constant.USERPERMISSION) UserPermission userPermission){
 		Message msg = new Message();
-		int insertid = this.xmCampaignService.getMaxId()+1;
-		Boolean res = this.actionCls.add(request,insertid,userPermission.getUser().getId());
+		Boolean res = false;
+		
+		//修改
+		if(request.getParameter("recordid")!=null){
+			res = this.actionCls.update(request,Integer.parseInt(request.getParameter("recordid")));
+		}else{
+			int insertid = this.xmCampaignService.getMaxId()+1;
+			res = this.actionCls.add(request,insertid,userPermission.getUser().getId());
+		}
 		
 		if(res){
 			msg.setMessage("编辑成功！");

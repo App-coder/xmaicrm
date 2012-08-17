@@ -169,6 +169,7 @@ public class CvFilter {
 
 	public String getListFilter(int viewid, XmCustomview customview,
 			XmCvstdfilter stdfilter, List<XmCvadvfilter> advfilters,List<CVColumn> cols,String customfiter) {
+		String order = "";
 		String selectall = "";
 		String columnstr = "";
 		String joinstr = "";
@@ -195,19 +196,6 @@ public class CvFilter {
 						
 						eref = CustomViewUtil.getEntitynameByEID(n.getFieldname().replace("_", ""));
 						columnstr +=Join(columnstr)+"( select "+eref.getFieldname()+" from "+eref.getTablename()+" as tmp where tmp."+eref.getEntityidfield()+" = "+ey.getTablename()+"."+n.getFieldcolname()+" )  as "+n.getFieldcolname();
-						/*
-						XmEntityname eref = null;
-						if(n.getFieldname().split("_")[1].equals("id")){
-							eref = CustomViewUtil.getEntitynameByEID(n.getFieldname().replace("_", ""));
-						}else{
-							eref = CustomViewUtil.getEntitynameByET(n.getEntitytype());
-						}
-						
-						if(n.getFieldname().split("_")[1].equals("id")){
-							columnstr +=Join(columnstr)+"( select "+eref.getFieldname()+" from "+eref.getTablename()+" as tmp where tmp."+eref.getEntityidfield()+" = "+ey.getTablename()+"."+n.getFieldcolname()+" )  as "+n.getFieldcolname();
-						}else{
-							columnstr +=Join(columnstr)+n.getFieldname().split("_")[1]+" as "+n.getFieldcolname();
-						}*/
 						
 					}else{
 						
@@ -223,11 +211,13 @@ public class CvFilter {
 		}else{
 			selectall +="SELECT "+en.getTablename()+".* FROM "+en.getTablename()+" " ;
 		}
-		return selectall+" where 1=1  and "+en.getTablename()+".deleted = 0 "+getFilter(customview, stdfilter, advfilters) + customfiter;
+		
+		order +="order by "+en.getTablename()+"." + en.getEntityidfield()+" desc";
+		
+		return selectall+" where 1=1 and "+en.getTablename()+".deleted = 0 "+getFilter(customview, stdfilter, advfilters) + customfiter +order;
 	}
 	
 	private String CustomJoin(String columnstr, CVColumn n) {
-		//if(n.getEntitytype().equals("Noteplans")&&n.getFieldcolname().equals("executor")){
 		columnstr +=Join(columnstr)+n.getFieldtabname()+"."+n.getFieldcolname()+" ";
 		return columnstr;
 	}
@@ -237,6 +227,16 @@ public class CvFilter {
 			return ",";
 		}
 		return "";
+	}
+
+	public String getObjectSql(int recordid, String entitytype) {
+		StringBuffer sb = new StringBuffer();
+		XmEntityname en = CustomViewUtil.getEntitynameByET(entitytype);
+		sb.append("SELECT "+en.getTablename()+".* FROM "+en.getTablename()+" ");
+		sb.append("where "+en.getTablename()+"."+en.getEntityidfield());
+		sb.append(" = ");
+		sb.append(recordid);
+		return sb.toString();
 	}
 	
 }

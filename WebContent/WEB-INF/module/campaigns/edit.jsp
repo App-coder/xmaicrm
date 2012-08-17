@@ -3,6 +3,9 @@
 <%@ include file="../../head.jsp"%>
 <%@ include file="../../common/config.jsp"%>
 <script type="text/javascript" src="resources/desktop/module/campaigns/edit.js"></script>
+<script>
+var ptb = ${ptb.parenttabid};
+</script>
 </head>
 <body id="wrap">
 ${navbar }
@@ -29,6 +32,7 @@ ${ptb.parenttabLabel }&gt;<a href="crm/module/${fn:toLowerCase(entity.modulename
 <form name="form_campaign" id="form_campaign" method="post" >
 <input type="hidden" name="edit_tabid" value="${tab.tabid}" />
 <input type="hidden" name="edit_module" value="${entity.modulename }"/>
+<input type="hidden" name="recordid" value="${recordid }"/>
 <c:forEach items="${blocks }" var="b">
 <fieldset class="mb_10">
 	<legend>${b.blocklabel }</legend>

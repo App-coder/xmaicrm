@@ -7,6 +7,7 @@ import com.crm.bean.easyui.expand.CVColumn;
 import com.crm.model.XmCustomview;
 import com.crm.model.XmCvadvfilter;
 import com.crm.model.XmCvstdfilter;
+import com.crm.model.XmEntityname;
 
 public interface XmCustomViewService {
 	List<XmCustomview> queryByEntityType(String entitytype);
@@ -47,6 +48,12 @@ public interface XmCustomViewService {
 	XmCustomview selectByPrimaryKey(int cvid);
 
 	int insert(String string);
+
+	Map getObject(int recordid, String module);
+
+	String getFieldValue(XmEntityname et, String mapVal);
+
+	int update(String sql);
 
 	
 

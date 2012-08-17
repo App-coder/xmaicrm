@@ -758,15 +758,7 @@ public class XmCustomViewController extends BaseController {
 	 */
 	@RequestMapping(value = "/viewPop", method = RequestMethod.GET)
 	public String viewPop(String modulename,String columnname, ModelMap modelMap){
-		XmTab tab = CustomViewUtil.getTabByName(modulename);
-		this.moduleUtil.setViewProp(modelMap, modulename, tab);
-		XmEntityname entityname = CustomViewUtil.getEntitynameByET(modulename);
-		modelMap.addAttribute("tab", tab);
-		modelMap.addAttribute("viewid", entityname.getEntityidfield());
-		modelMap.addAttribute("entitytype", modulename);
-		modelMap.addAttribute("entityname", entityname);
-		modelMap.addAttribute("columnname",columnname);
-		return "module/"+modulename.toLowerCase()+"/viewpop";
+		return "forward:/crm/module/"+modulename.toLowerCase()+"/viewpop";
 	}
 
 	/**
@@ -1015,77 +1007,6 @@ public class XmCustomViewController extends BaseController {
 		return "public/report/index";
 	}
 	
-	/**
-	 * 显示编辑窗口
-	 * 
-	 * @param recordid 记录ID
-	 * @param module 模块
-	 * @param modelmap
-	 * @return
-	 * @throws UnsupportedEncodingException 
-	 */
-	@RequestMapping(value = "/showEdit", method = RequestMethod.GET)
-	public String showEdit(int recordid,String module,String ptb,ModelMap modelmap) throws UnsupportedEncodingException{
-		
-		
-		XmTab tab = CustomViewUtil.getTabByName(module);
-		modelmap.addAttribute("tab",tab );
-		
-		modelmap.addAttribute("ptb",new String(ptb.getBytes("ISO-8859-1"),
-				"utf-8"));
-		
-		//加载对应的数据
-		if(recordid!=0){
-			modelmap.addAttribute("recordid",recordid);
-		}
-		
-		//初始化编辑窗口
-		XmEntityname entity = xmEntitynameService.getEntityByModule(module);
-		modelmap.addAttribute("entity",entity);
-		
-		/*
-		 * 得到所有的字段，根据tableid
-		List<XmField> fields = xmFieldService.getFieldsByTabid(entity.getTabid());
-		if(fields.size()>0){
-			for(int i=0;i<fields.size();i++){
-				fields.get(i).setFieldHtml(HtmlUtil.getFieldHtml(fields.get(i).getColumnname(),fields.get(i).getTypeofdata()));
-			}
-		}
-		modelmap.addAttribute("fields",fields);
-		*/
-		
-		
-		//得到block，
-		List<XmBlocks> blocks = xmBlocksService.getFieldBlocksByTabId(entity.getTabid());
-		
-		List<Object> blockArray = new ArrayList<Object>();
-		for(int i=0;i<blocks.size();i++){
-			blockArray.add(blocks.get(i).getBlockid());
-		}
-		String blockstr = ArrayUtil.arrayToJoinStr(blockArray,",",true);
-		
-		List<XmField> fields = this.xmFieldService.getEditFields(entity.getTabid(),blockstr);
-		Set setblock = new HashSet();
-		
-		if(fields.size()>0){
-			for(int i=0;i<fields.size();i++){
-				fields.get(i).setFieldHtml(HtmlUtil.getFieldHtml(fields.get(i),this.xmPicklistService,this.xmUsersService));
-				setblock.add(fields.get(i).getBlock());
-			}
-		}
-		modelmap.addAttribute("fields",fields);
-		
-		//整理后的block modelmap.addAttribute("blocks",blocks);
-		List<XmBlocks> arrangeBlock = new ArrayList<XmBlocks>();
-		for(int i=0;i<blocks.size();i++){
-			if(setblock.contains(blocks.get(i).getBlockid())){
-				arrangeBlock.add(blocks.get(i));
-			}
-		}
-		modelmap.addAttribute("blocks",arrangeBlock);
-		
-		return "public/showedit";
-	}
 	
 	/**
 	 * 根据视图ID，获取视图的column
