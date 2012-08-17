@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.crm.mapper.XmActivityReminderMapper" >
+  <resultMap id="BaseResultMap" type="com.crm.model.XmActivityReminder" >
+    <id column="activity_id" property="activityId" jdbcType="INTEGER" />
+    <id column="recurringid" property="recurringid" jdbcType="INTEGER" />
+    <result column="reminder_time" property="reminderTime" jdbcType="INTEGER" />
+    <result column="reminder_sent" property="reminderSent" jdbcType="INTEGER" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    activity_id, recurringid, reminder_time, reminder_sent
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="map" >
+    select 
+    <include refid="Base_Column_List" />
+    from xm_activity_reminder
+    where activity_id = #{activityId,jdbcType=INTEGER}
+      and recurringid = #{recurringid,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="map" >
+    delete from xm_activity_reminder
+    where activity_id = #{activityId,jdbcType=INTEGER}
+      and recurringid = #{recurringid,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.crm.model.XmActivityReminder" >
+    insert into xm_activity_reminder (activity_id, recurringid, reminder_time, 
+      reminder_sent)
+    values (#{activityId,jdbcType=INTEGER}, #{recurringid,jdbcType=INTEGER}, #{reminderTime,jdbcType=INTEGER}, 
+      #{reminderSent,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" parameterType="com.crm.model.XmActivityReminder" >
+    insert into xm_activity_reminder
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="activityId != null" >
+        activity_id,
+      </if>
+      <if test="recurringid != null" >
+        recurringid,
+      </if>
+      <if test="reminderTime != null" >
+        reminder_time,
+      </if>
+      <if test="reminderSent != null" >
+        reminder_sent,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="activityId != null" >
+        #{activityId,jdbcType=INTEGER},
+      </if>
+      <if test="recurringid != null" >
+        #{recurringid,jdbcType=INTEGER},
+      </if>
+      <if test="reminderTime != null" >
+        #{reminderTime,jdbcType=INTEGER},
+      </if>
+      <if test="reminderSent != null" >
+        #{reminderSent,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.crm.model.XmActivityReminder" >
+    update xm_activity_reminder
+    <set >
+      <if test="reminderTime != null" >
+        reminder_time = #{reminderTime,jdbcType=INTEGER},
+      </if>
+      <if test="reminderSent != null" >
+        reminder_sent = #{reminderSent,jdbcType=INTEGER},
+      </if>
+    </set>
+    where activity_id = #{activityId,jdbcType=INTEGER}
+      and recurringid = #{recurringid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.crm.model.XmActivityReminder" >
+    update xm_activity_reminder
+    set reminder_time = #{reminderTime,jdbcType=INTEGER},
+      reminder_sent = #{reminderSent,jdbcType=INTEGER}
+    where activity_id = #{activityId,jdbcType=INTEGER}
+      and recurringid = #{recurringid,jdbcType=INTEGER}
+  </update>
+  <select id="getActivityReminder" resultMap="BaseResultMap" >
+  	select * from xm_activity_reminder where activity_id= #{activityId}
+  </select>
+  <delete id="clearActivityReminder">
+  	    delete from xm_activity_reminder
+    where activity_id = #{activityid,jdbcType=INTEGER}
+  </delete>
+</mapper>

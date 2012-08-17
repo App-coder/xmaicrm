@@ -2,7 +2,12 @@ package com.crm.action.module;
 
 import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
+import java.util.HashMap;
+import java.util.Iterator;
 import java.util.List;
+import java.util.Map;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
@@ -21,12 +26,19 @@ import com.crm.bean.crm.UserPermission;
 import com.crm.bean.crm.module.calendar.Event;
 import com.crm.bean.easyui.ComboTree;
 import com.crm.model.XmActivity;
-import com.crm.model.XmFreetags;
+import com.crm.model.XmActivityReminder;
 import com.crm.model.XmGroups;
+import com.crm.model.XmInvitees;
+import com.crm.model.XmRecurringevents;
+import com.crm.model.XmSeactivityrel;
 import com.crm.model.XmTab;
 import com.crm.model.XmUsers;
+import com.crm.service.XmActivityReminderService;
 import com.crm.service.XmFreetagsService;
+import com.crm.service.XmInviteesService;
+import com.crm.service.XmSeactivityrelService;
 import com.crm.service.module.XmActivityService;
+import com.crm.service.module.XmRecurringeventsService;
 import com.crm.service.settings.basic.XmGroupsService;
 import com.crm.service.settings.basic.XmUsersService;
 import com.crm.util.ActionUtil;
@@ -61,6 +73,7 @@ public class XmCalendarController {
 	public void setXmActivityService(XmActivityService xmActivityService) {
 		this.xmActivityService = xmActivityService;
 	}
+	
 
 	ActionCls actionCls;
 	@Resource(name="actionCls")
@@ -86,7 +99,26 @@ public class XmCalendarController {
 		this.moduleUtil = moduleUtil;
 	}
 	
+	XmInviteesService xmInviteesService;
+	@Resource(name="xmInviteesService")
+	public void setXmInviteesService(XmInviteesService xmInviteesService) {
+		this.xmInviteesService = xmInviteesService;
+	}
 	
+	XmActivityReminderService xmActivityReminderService;
+	@Resource(name="xmActivityReminderService")
+	public void setXmActivityReminderService(
+			XmActivityReminderService xmActivityReminderService) {
+		this.xmActivityReminderService = xmActivityReminderService;
+	}
+	
+	XmRecurringeventsService xmRecurringeventsService;
+	@Resource(name="com.crm.service.module.impl.xmRecurringeventsService")
+	public void setXmRecurringeventsService(
+			XmRecurringeventsService xmRecurringeventsService) {
+		this.xmRecurringeventsService = xmRecurringeventsService;
+	}
+
 	@RequestMapping(value = "/index")
 	public String index(int ptb,ModelMap modelMap) throws UnsupportedEncodingException{
 		ActionUtil.setTitle("Events", ptb, modelMap, this.moduleUtil);
@@ -94,35 +126,81 @@ public class XmCalendarController {
 		return "module/calendar/index";
 	}
 	
+	/**
+	 * @param recordid
+	 * @param module
+	 * @param ptb
+	 * @param modelmap
+	 * @return
+	 */
 	@RequestMapping(value = "/showedit")
 	public String showedit(int recordid,String module,int ptb,ModelMap modelmap){
 		
 		this.actionCls.showEdit(ptb, module, modelmap,recordid);
 		
+		//相关信息
+		if(recordid!=0){
+			
+			XmSeactivityrel seactivityrel = this.xmSeactivityrelService.getRelAccount(recordid);
+			modelmap.addAttribute("seactivityrel",seactivityrel);
+			
+			List<XmInvitees> invitees = this.xmInviteesService.getInvitees(recordid);
+			List vitees = new ArrayList();
+			for(int i=0;i<invitees.size();i++){
+				vitees.add(invitees.get(i).getInviteeid());
+			}
+			modelmap.addAttribute("invitees",vitees);
+			
+
+			//相关信息 - 提醒
+			List<XmActivityReminder> reminders = this.xmActivityReminderService.getActivityReminder(recordid);
+			modelmap.addAttribute("reminders",reminders);
+			
+			if(reminders.size()>0){
+				//提醒时间
+				int reminderTime = reminders.get(0).getReminderTime();
+				int recurringid = reminders.get(0).getRecurringid();
+				
+				modelmap.addAttribute("remindersTime",reminderTime);
+				modelmap.addAttribute("recurring",recurringid==0?false:true);
+				
+				int re_day = reminderTime/3600;
+				modelmap.addAttribute("re_day",re_day);
+				int re_hour = (reminderTime-(re_day*3600))/60;
+				modelmap.addAttribute("re_hour",re_hour);
+				int re_min = reminderTime%60;
+				modelmap.addAttribute("re_min",re_min);
+				
+				if(recurringid!=0){
+					//存在重复日程
+					XmRecurringevents rec = this.xmRecurringeventsService.getById(recurringid);
+					modelmap.addAttribute("recurringtype",rec.getRecurringtype());
+					modelmap.addAttribute("recurringinfo",rec.getRecurringinfo());
+					
+				}
+				
+			}
+			
+			
+			
+		}else{
+			modelmap.addAttribute("invitees","[]");
+		}
+		
+		
 		return "module/calendar/edit";
 	}
 	
+	XmSeactivityrelService xmSeactivityrelService;
+	@Resource(name="xmSeactivityrelService")
+	public void setXmSeactivityrelService(
+			XmSeactivityrelService xmSeactivityrelService) {
+		this.xmSeactivityrelService = xmSeactivityrelService;
+	}
+
+
 	@RequestMapping(value = "/viewcalendar")
 	public String viewcalendar(ModelMap modelmap){
-		
-//		List<Event> events = new ArrayList<Event>();
-//		//默认视图是天，得到当天的事件
-//		List<XmActivity> activitys = this.xmActivityService.getDayActivity();
-//		if(activitys.size()>0){
-//			for(int i=0;i<activitys.size();i++){
-//				Event e = new Event();
-//				e.setId(activitys.get(i).getAccountid()+"");
-//				e.setTitle(activitys.get(i).getSubject());
-//				e.setStart( DateUtil.getDateFromDayAndTime(DateUtil.format(activitys.get(i).getDateStart(),DateUtil.C_DATE_PATTON_DEFAULT), activitys.get(i).getTimeStart()));
-//				e.setEnd(DateUtil.getDateFromDayAndTime(DateUtil.format(activitys.get(i).getDueDate(),DateUtil.C_DATE_PATTON_DEFAULT), activitys.get(i).getTimeEnd()));
-//				if(activitys.get(i).getStatus() == ""){
-//					CalendarUtil.setStyle(e, activitys.get(i));
-//				}
-//				events.add(e);
-//			}
-//		}
-//		modelmap.addAttribute("events",JSON.toJSONStringWithDateFormat(events, DateUtil.C_TIME_PATTON_DEFAULT));
-		
 		return "module/calendar/viewcalendar";
 	}
 	
@@ -142,26 +220,189 @@ public class XmCalendarController {
 		Message msg = new Message();
 		Boolean res = false;
 		
-		int crmid = 0;
+		int activityid = 0;
 		//修改
 		if(!request.getParameter("recordid").equals("0")&&request.getParameter("recordid")!=""){
-			crmid = Integer.parseInt(request.getParameter("recordid"));
-			res = this.actionCls.update(request,crmid);
+			activityid = Integer.parseInt(request.getParameter("recordid"));
+			res = this.actionCls.update(request,activityid);
+			
+			//相关信息的设置
+			
+			//关联客户
+			String relAccount = request.getParameter("rel_accountid");
+			if(!"".equals(relAccount)&&relAccount!=null){
+				this.xmSeactivityrelService.deleteRel(activityid);
+				this.xmSeactivityrelService.insert(activityid,relAccount);
+			}else{
+				this.xmSeactivityrelService.deleteRel(activityid);
+			}
+			
+			//关联同事
+			String rel_invitees = request.getParameter("rel_invitees");
+			if(!"".equals(rel_invitees)&&rel_invitees!=null){
+				this.xmInviteesService.clearInvitees(activityid);
+				this.xmInviteesService.insertList(activityid,rel_invitees);
+			}else{
+				this.xmInviteesService.clearInvitees(activityid);
+			}
+			
+			//设置提醒
+			String cfgreminders = request.getParameter("cfgreminders");
+			if("1".equals(cfgreminders)){
+				
+				this.xmActivityReminderService.clearReminder(activityid);
+				
+				int re_day = Integer.parseInt(request.getParameter("re_day"));
+				int re_hour = Integer.parseInt(request.getParameter("re_hour"));
+				int re_min = Integer.parseInt(request.getParameter("re_min"));
+				int remindtime = re_day*3600+re_hour*60+re_min;
+				
+				String recurring = request.getParameter("recurring");
+				if("1".equals(recurring)){
+					//设置重复
+					String recType = request.getParameter("recType");
+					if(recType.equals("Daily")){
+						
+						String date_start = request.getParameter("date_start");
+						String due_date = request.getParameter("due_date");
+						
+						Date dt_start = DateUtil.parseDate(date_start);
+						Calendar cal_dt = Calendar.getInstance();
+						cal_dt.setTime(dt_start);
+						
+						Date du_date = DateUtil.parseDate(due_date);
+						Calendar cal_du = Calendar.getInstance();
+						cal_du.setTime(du_date);
+						cal_du.add(Calendar.DAY_OF_YEAR, 1);
+						
+						while(!DateUtil.format(cal_dt.getTime(), DateUtil.C_DATE_PATTON_DEFAULT).equals(DateUtil.format(cal_du.getTime(), DateUtil.C_DATE_PATTON_DEFAULT))){
+							
+							//添加
+							XmRecurringevents rec = new XmRecurringevents();
+							rec.setActivityid(activityid);
+							rec.setRecurringdate(cal_dt.getTime());
+							rec.setRecurringfreq(1);
+							rec.setRecurringinfo("Daily");
+							rec.setRecurringtype("Daily");
+							
+							int recid = this.xmRecurringeventsService.insert(rec);
+							
+							XmActivityReminder ar = new XmActivityReminder();
+							ar.setActivityId(activityid);
+							ar.setRecurringid(recid);
+							ar.setReminderSent(0);
+							ar.setReminderTime(remindtime);
+							
+							this.xmActivityReminderService.insert(ar);
+							
+							cal_dt.add(Calendar.DAY_OF_YEAR, 1);
+						}
+						
+					}else if(recType.equals("Weekly")){
+						
+						
+						
+						String date_start = request.getParameter("date_start");
+						String due_date = request.getParameter("due_date");
+						
+						Date dt_start = DateUtil.parseDate(date_start);
+						Calendar cal_dt = Calendar.getInstance();
+						cal_dt.setTime(dt_start);
+						
+						Date du_date = DateUtil.parseDate(due_date);
+						Calendar cal_du = Calendar.getInstance();
+						cal_du.setTime(du_date);
+						cal_du.add(Calendar.DAY_OF_YEAR, 1);						
+
+						String[] recurringweeks = request.getParameterValues("recurring_week");
+						HashMap wkmap = generateWeekMap(recurringweeks);
+						StringBuffer recurringtypeinfo = new StringBuffer();
+						recurringtypeinfo.append("Weekly");
+						Iterator its = wkmap.keySet().iterator();
+						while(its.hasNext()){
+							recurringtypeinfo.append("::"+(Integer.parseInt(its.next().toString())-1));
+						}
+						
+						
+						while(!DateUtil.format(cal_dt.getTime(), DateUtil.C_DATE_PATTON_DEFAULT).equals(DateUtil.format(cal_du.getTime(), DateUtil.C_DATE_PATTON_DEFAULT))){
+							
+							if(wkmap.containsKey(cal_dt.get(Calendar.DAY_OF_WEEK))){
+								//添加
+								XmRecurringevents rec = new XmRecurringevents();
+								rec.setActivityid(activityid);
+								rec.setRecurringdate(cal_dt.getTime());
+								rec.setRecurringfreq(1);
+								rec.setRecurringinfo(recurringtypeinfo.toString());
+								rec.setRecurringtype("Weekly");
+								
+								int recid = this.xmRecurringeventsService.insert(rec);
+								
+								XmActivityReminder ar = new XmActivityReminder();
+								ar.setActivityId(activityid);
+								ar.setRecurringid(recid);
+								ar.setReminderSent(0);
+								ar.setReminderTime(remindtime);
+								
+								this.xmActivityReminderService.insert(ar);
+							}
+							
+							cal_dt.add(Calendar.DAY_OF_YEAR, 1);
+						}
+						
+					}else if(recType.equals("Monthly")){
+						
+					}
+					
+				}else{
+					//不设置重复
+					XmActivityReminder ar = new XmActivityReminder();
+					ar.setActivityId(activityid);
+					ar.setRecurringid(0);
+					ar.setReminderSent(0);
+					ar.setReminderTime(remindtime);
+					
+					this.xmActivityReminderService.insert(ar);
+				
+				}
+			}else{
+				this.xmActivityReminderService.clearReminder(activityid);
+			}
+			
+			
 		}else{
-			crmid = this.xmActivityService.getMaxId()+1;
-			res = this.actionCls.add(request,crmid,userPermission.getUser().getId());
+			activityid = this.xmActivityService.getMaxId()+1;
+			res = this.actionCls.add(request,activityid,userPermission.getUser().getId());
 		}
 		
 		if(res){
-			msg.setMessage(crmid+"");
+			msg.setMessage(activityid+"");
 			msg.setType(true);
 		}else{
-			msg.setMessage(crmid+"");
+			msg.setMessage(activityid+"");
 			msg.setType(false);
 		}
 		return JSON.toJSONString(msg);
 	}
 	
+	public HashMap generateWeekMap(String[] wklist){
+		
+		HashMap wkmap = new HashMap();
+		
+		HashMap wkhm = new HashMap();
+		wkhm.put("sunday",1);
+		wkhm.put("monday",2);
+		wkhm.put("tuesday",3);
+		wkhm.put("wednesday",4);
+		wkhm.put("thursday",5);
+		wkhm.put("friday",6);
+		wkhm.put("saturday",7);
+		
+		for(int i=0;i<wklist.length;i++){
+			wkmap.put(wkhm.get(wklist[i]), wklist[i]);
+		}
+		return wkmap;
+	}
+	 
 	/**
 	 * 
 	 * 根据开始时间和结束时间取得事件

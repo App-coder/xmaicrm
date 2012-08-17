@@ -8,9 +8,11 @@ public final class edit_jsp extends org.apache.jasper.runtime.HttpJspBase
     implements org.apache.jasper.runtime.JspSourceDependent {
 
 static private org.apache.jasper.runtime.ProtectedFunctionMapper _jspx_fnmap_0;
+static private org.apache.jasper.runtime.ProtectedFunctionMapper _jspx_fnmap_1;
 
 static {
   _jspx_fnmap_0= org.apache.jasper.runtime.ProtectedFunctionMapper.getMapForFunction("fn:toLowerCase", org.apache.taglibs.standard.functions.Functions.class, "toLowerCase", new Class[] {java.lang.String.class});
+  _jspx_fnmap_1= org.apache.jasper.runtime.ProtectedFunctionMapper.getMapForFunction("fn:length", org.apache.taglibs.standard.functions.Functions.class, "length", new Class[] {java.lang.Object.class});
 }
 
   private static final JspFactory _jspxFactory = JspFactory.getDefaultFactory();
@@ -31,6 +33,7 @@ static {
   private org.apache.jasper.runtime.TagHandlerPool _005fjspx_005ftagPool_005fc_005fotherwise;
   private org.apache.jasper.runtime.TagHandlerPool _005fjspx_005ftagPool_005fcache_005fcache;
   private org.apache.jasper.runtime.TagHandlerPool _005fjspx_005ftagPool_005fc_005fforEach_0026_005fvarStatus_005fvar_005fitems;
+  private org.apache.jasper.runtime.TagHandlerPool _005fjspx_005ftagPool_005fc_005fforEach_0026_005fvar_005fstep_005fend_005fbegin;
 
   private javax.el.ExpressionFactory _el_expressionfactory;
   private org.apache.AnnotationProcessor _jsp_annotationprocessor;
@@ -45,6 +48,7 @@ static {
     _005fjspx_005ftagPool_005fc_005fotherwise = org.apache.jasper.runtime.TagHandlerPool.getTagHandlerPool(getServletConfig());
     _005fjspx_005ftagPool_005fcache_005fcache = org.apache.jasper.runtime.TagHandlerPool.getTagHandlerPool(getServletConfig());
     _005fjspx_005ftagPool_005fc_005fforEach_0026_005fvarStatus_005fvar_005fitems = org.apache.jasper.runtime.TagHandlerPool.getTagHandlerPool(getServletConfig());
+    _005fjspx_005ftagPool_005fc_005fforEach_0026_005fvar_005fstep_005fend_005fbegin = org.apache.jasper.runtime.TagHandlerPool.getTagHandlerPool(getServletConfig());
     _el_expressionfactory = _jspxFactory.getJspApplicationContext(getServletConfig().getServletContext()).getExpressionFactory();
     _jsp_annotationprocessor = (org.apache.AnnotationProcessor) getServletConfig().getServletContext().getAttribute(org.apache.AnnotationProcessor.class.getName());
   }
@@ -55,6 +59,7 @@ static {
     _005fjspx_005ftagPool_005fc_005fotherwise.release();
     _005fjspx_005ftagPool_005fcache_005fcache.release();
     _005fjspx_005ftagPool_005fc_005fforEach_0026_005fvarStatus_005fvar_005fitems.release();
+    _005fjspx_005ftagPool_005fc_005fforEach_0026_005fvar_005fstep_005fend_005fbegin.release();
   }
 
   public void _jspService(HttpServletRequest request, HttpServletResponse response)
@@ -128,6 +133,15 @@ String win_bar_1 = "resizable=\"false\"  closed=\"true\" modal=\"false\" collaps
       out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${recordid}", java.lang.String.class, (PageContext)_jspx_page_context, null, false));
       out.write(";\r\n");
       out.write("var kinds = [];\r\n");
+      out.write("var invitees = ");
+      out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${invitees}", java.lang.String.class, (PageContext)_jspx_page_context, null, false));
+      out.write(";\r\n");
+      out.write("var recurringtype = '");
+      out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${recurringtype}", java.lang.String.class, (PageContext)_jspx_page_context, null, false));
+      out.write("';\r\n");
+      out.write("var recurringinfo = '");
+      out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${recurringinfo}", java.lang.String.class, (PageContext)_jspx_page_context, null, false));
+      out.write("';\r\n");
       out.write("</script>\r\n");
       out.write("</head>\r\n");
       out.write("<body id=\"wrap\">\r\n");
@@ -168,6 +182,7 @@ String win_bar_1 = "resizable=\"false\"  closed=\"true\" modal=\"false\" collaps
       out.write("<input type=\"hidden\" name=\"recordid\" value=\"");
       out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${recordid }", java.lang.String.class, (PageContext)_jspx_page_context, null, false));
       out.write("\"/>\r\n");
+      out.write("<input type=\"hidden\" name=\"rel_invitees\" />\r\n");
       if (_jspx_meth_c_005fforEach_005f0(_jspx_page_context))
         return;
       out.write("\r\n");
@@ -177,8 +192,12 @@ String win_bar_1 = "resizable=\"false\"  closed=\"true\" modal=\"false\" collaps
       out.write("          <table class=\"tab_editlist\">\r\n");
       out.write("          \t<tr>\r\n");
       out.write("          \t\t<td class=\"edittd\" >相关信息：</td>\r\n");
-      out.write("          \t\t<td><input type=\"text\"  class=\"text\">&nbsp;&nbsp;\r\n");
-      out.write("          \t\t<a class=\"easyui-linkbutton\" iconCls=\"icon-search\" onclick=\"formsubmit('form_campaign')\">选择</a>\r\n");
+      out.write("          \t\t<td><input type=hidden value=\"");
+      out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${seactivityrel.accountid}", java.lang.String.class, (PageContext)_jspx_page_context, null, false));
+      out.write("\" name=\"rel_accountid\" /><input type=\"text\" name=\"rel_accountid_text\"  readonly=\"readonly\" value=\"");
+      out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${seactivityrel.accountname }", java.lang.String.class, (PageContext)_jspx_page_context, null, false));
+      out.write("\" class=\"text\" >&nbsp;&nbsp;\r\n");
+      out.write("          \t\t<a class=\"easyui-linkbutton\" iconCls=\"icon-search\" onclick=\"relAccount()\">选择</a>\r\n");
       out.write("          \t\t</td>\r\n");
       out.write("          \t</tr>\r\n");
       out.write("          </table>\r\n");
@@ -188,7 +207,15 @@ String win_bar_1 = "resizable=\"false\"  closed=\"true\" modal=\"false\" collaps
       out.write("          \t<tr>\r\n");
       out.write("          \t\t<td class=\"edittd\" >选择用户：</td>\r\n");
       out.write("          \t\t<td>\r\n");
-      out.write("          \t\t\t<select class=\"easyui-combotree\" style=\"width:200px;\" data-options=\"url:'crm/relation/users/getSmowners'\"></select>\r\n");
+      out.write("          \t\t\t<select id=\"rel_invite\" style=\"width:200px;\" ></select>\r\n");
+      out.write("          \t\t</td>\r\n");
+      out.write("          \t</tr>\r\n");
+      out.write("          \t<tr>\r\n");
+      out.write("          \t\t<td colspan=\"2\" >\r\n");
+      out.write("          \t\t\t<fieldset>\r\n");
+      out.write("          \t\t\t\t<legend>提示</legend>\r\n");
+      out.write("          \t\t\t\t已选用户将接收有关该日程安排的Email\r\n");
+      out.write("          \t\t\t</fieldset>\r\n");
       out.write("          \t\t</td>\r\n");
       out.write("          \t</tr>\r\n");
       out.write("          </table>  \r\n");
@@ -198,7 +225,52 @@ String win_bar_1 = "resizable=\"false\"  closed=\"true\" modal=\"false\" collaps
       out.write("          \t<tr>\r\n");
       out.write("          \t\t<td class=\"edittd\" >设置提醒：</td>\r\n");
       out.write("          \t\t<td>\r\n");
-      out.write("          \t\t\t<input type=\"radio\" />是&nbsp;&nbsp;<input type=\"radio\" />否\r\n");
+      out.write("          \t\t\t");
+      if (_jspx_meth_c_005fchoose_005f4(_jspx_page_context))
+        return;
+      out.write("\r\n");
+      out.write("          \t\t</td>\r\n");
+      out.write("          \t</tr>\r\n");
+      out.write("          \t<tr id=\"cfg_remindertime\">\r\n");
+      out.write("          \t\t<td></td>\r\n");
+      out.write("          \t\t<td>提前：\r\n");
+      out.write("          \t\t<select name=\"re_day\">\r\n");
+      out.write("          \t\t");
+      if (_jspx_meth_c_005fforEach_005f2(_jspx_page_context))
+        return;
+      out.write("\r\n");
+      out.write("          \t\t</select>\r\n");
+      out.write("          \t\t<script>\r\n");
+      out.write("          \t\t$(function(){$(\"select[name=re_day]\").val(");
+      out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${re_day}", java.lang.String.class, (PageContext)_jspx_page_context, null, false));
+      out.write(")});\r\n");
+      out.write("          \t\t</script>\r\n");
+      out.write("          \t\t天&nbsp;\r\n");
+      out.write("          \t\t<select name=\"re_hour\">\r\n");
+      out.write("          \t\t");
+      if (_jspx_meth_c_005fforEach_005f3(_jspx_page_context))
+        return;
+      out.write("\r\n");
+      out.write("          \t\t</select>\r\n");
+      out.write("          \t\t<script>\r\n");
+      out.write("          \t\t$(function(){$(\"select[name=re_hour]\").val(");
+      out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${re_hour}", java.lang.String.class, (PageContext)_jspx_page_context, null, false));
+      out.write(")});\r\n");
+      out.write("          \t\t</script>\r\n");
+      out.write("          \t\t小时&nbsp;\r\n");
+      out.write("          \t\t<select name=\"re_min\" >\r\n");
+      out.write("          \t\t");
+      if (_jspx_meth_c_005fforEach_005f4(_jspx_page_context))
+        return;
+      out.write("\r\n");
+      out.write("          \t\t</select>\r\n");
+      out.write("          \t\t<script>\r\n");
+      out.write("          \t\t$(function(){$(\"select[name=re_min]\").val(");
+      out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${re_min}", java.lang.String.class, (PageContext)_jspx_page_context, null, false));
+      out.write(")});\r\n");
+      out.write("          \t\t</script>\r\n");
+      out.write("          \t\t分&nbsp;\r\n");
+      out.write("          \t\t通过PM提醒我\r\n");
       out.write("          \t\t</td>\r\n");
       out.write("          \t</tr>\r\n");
       out.write("          </table>\r\n");
@@ -208,9 +280,29 @@ String win_bar_1 = "resizable=\"false\"  closed=\"true\" modal=\"false\" collaps
       out.write("          \t<tr>\r\n");
       out.write("          \t\t<td class=\"edittd\" >重复日程：</td>\r\n");
       out.write("          \t\t<td>\r\n");
-      out.write("          \t\t\t<input type=\"checkbox\" />\r\n");
+      out.write("          \t\t\t");
+      if (_jspx_meth_c_005fchoose_005f5(_jspx_page_context))
+        return;
+      out.write("\r\n");
       out.write("          \t\t</td>\r\n");
-      out.write("          \t</tr>\r\n");
+      out.write("       \t</tr>\r\n");
+      out.write("\t\t\t<tr id=\"tr_recurring\" class=\"isrecurring hidden\">\r\n");
+      out.write("\t\t\t\t<td></td>\r\n");
+      out.write("\t\t\t\t<td>重复发生在：<select id=\"recType\" name=\"recType\" onchange=\"showRecOption(this.value)\"><option value=\"Daily\">天</option>\r\n");
+      out.write("\t\t\t\t\t\t<option value=\"Weekly\">周</option>\r\n");
+      out.write("\t\t\t\t\t\t<option value=\"Monthly\">月</option></select></td>\r\n");
+      out.write("\t\t\t</tr>\r\n");
+      out.write("\t\t\t<tr class=\"isrecurring hidden\" id=\"tr_re_week\" >\r\n");
+      out.write("          \t\t<td ></td>\r\n");
+      out.write("\t\t\t\t\t\t\t<td class=\"weekcfg\" ><input type=\"checkbox\" name=\"recurring_week\" value=\"sunday\" />周日&nbsp;&nbsp;<input\r\n");
+      out.write("\t\t\t\t\t\t\t\ttype=\"checkbox\" name=\"recurring_week\" value=\"monday\" />周一&nbsp;&nbsp;<input type=\"checkbox\" name=\"recurring_week\" value=\"tuesday\"  />周二&nbsp;&nbsp;<input\r\n");
+      out.write("\t\t\t\t\t\t\t\ttype=\"checkbox\" name=\"recurring_week\" value=\"wednesday\" />周三&nbsp;&nbsp;<input type=\"checkbox\" name=\"recurring_week\" value=\"thursday\" />周四&nbsp;&nbsp;<input\r\n");
+      out.write("\t\t\t\t\t\t\t\ttype=\"checkbox\" name=\"recurring_week\" value=\"friday\" />周五&nbsp;&nbsp;<input type=\"checkbox\" name=\"recurring_week\" value=\"saturday\" />周六</td>\r\n");
+      out.write("\t\t\t\t\t\t</tr>\r\n");
+      out.write("\t\t\t<tr class=\"isrecurring hidden\" id=\"tr_re_month\" >\r\n");
+      out.write("\t\t\t\t<td></td>\r\n");
+      out.write("\t\t\t\t<td><input type=\"radio\" checked=\"checked\" />&nbsp;&nbsp;第&nbsp;<input  class=\"easyui-numberbox\"  data-options=\"min:1,precision:0,max:31\" type=\"text\" name=\"month_day\" class=\"text\" style=\"width:20px;margin: 0px;\" />&nbsp;天</td>\r\n");
+      out.write("\t\t\t</tr>\t\t\t\t\t\t\r\n");
       out.write("          </table>  \r\n");
       out.write("      </div>  \r\n");
       out.write("  </div>  \r\n");
@@ -566,7 +658,7 @@ String win_bar_1 = "resizable=\"false\"  closed=\"true\" modal=\"false\" collaps
     org.apache.taglibs.standard.tag.rt.core.WhenTag _jspx_th_c_005fwhen_005f1 = (org.apache.taglibs.standard.tag.rt.core.WhenTag) _005fjspx_005ftagPool_005fc_005fwhen_0026_005ftest.get(org.apache.taglibs.standard.tag.rt.core.WhenTag.class);
     _jspx_th_c_005fwhen_005f1.setPageContext(_jspx_page_context);
     _jspx_th_c_005fwhen_005f1.setParent((javax.servlet.jsp.tagext.Tag) _jspx_th_c_005fchoose_005f1);
-    // /WEB-INF/module/calendar/edit.jsp(27,1) name = test type = boolean reqTime = true required = true fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
+    // /WEB-INF/module/calendar/edit.jsp(30,1) name = test type = boolean reqTime = true required = true fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
     _jspx_th_c_005fwhen_005f1.setTest(((java.lang.Boolean) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${recordid!=0 }", java.lang.Boolean.class, (PageContext)_jspx_page_context, null, false)).booleanValue());
     int _jspx_eval_c_005fwhen_005f1 = _jspx_th_c_005fwhen_005f1.doStartTag();
     if (_jspx_eval_c_005fwhen_005f1 != javax.servlet.jsp.tagext.Tag.SKIP_BODY) {
@@ -628,11 +720,11 @@ String win_bar_1 = "resizable=\"false\"  closed=\"true\" modal=\"false\" collaps
     org.apache.taglibs.standard.tag.rt.core.ForEachTag _jspx_th_c_005fforEach_005f0 = (org.apache.taglibs.standard.tag.rt.core.ForEachTag) _005fjspx_005ftagPool_005fc_005fforEach_0026_005fvarStatus_005fvar_005fitems.get(org.apache.taglibs.standard.tag.rt.core.ForEachTag.class);
     _jspx_th_c_005fforEach_005f0.setPageContext(_jspx_page_context);
     _jspx_th_c_005fforEach_005f0.setParent(null);
-    // /WEB-INF/module/calendar/edit.jsp(40,0) name = items type = java.lang.Object reqTime = true required = false fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
+    // /WEB-INF/module/calendar/edit.jsp(44,0) name = items type = java.lang.Object reqTime = true required = false fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
     _jspx_th_c_005fforEach_005f0.setItems((java.lang.Object) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${blocks }", java.lang.Object.class, (PageContext)_jspx_page_context, null, false));
-    // /WEB-INF/module/calendar/edit.jsp(40,0) name = var type = java.lang.String reqTime = false required = false fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
+    // /WEB-INF/module/calendar/edit.jsp(44,0) name = var type = java.lang.String reqTime = false required = false fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
     _jspx_th_c_005fforEach_005f0.setVar("b");
-    // /WEB-INF/module/calendar/edit.jsp(40,0) name = varStatus type = java.lang.String reqTime = false required = false fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
+    // /WEB-INF/module/calendar/edit.jsp(44,0) name = varStatus type = java.lang.String reqTime = false required = false fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
     _jspx_th_c_005fforEach_005f0.setVarStatus("vb");
     int[] _jspx_push_body_count_c_005fforEach_005f0 = new int[] { 0 };
     try {
@@ -681,11 +773,11 @@ String win_bar_1 = "resizable=\"false\"  closed=\"true\" modal=\"false\" collaps
     org.apache.taglibs.standard.tag.rt.core.ForEachTag _jspx_th_c_005fforEach_005f1 = (org.apache.taglibs.standard.tag.rt.core.ForEachTag) _005fjspx_005ftagPool_005fc_005fforEach_0026_005fvarStatus_005fvar_005fitems.get(org.apache.taglibs.standard.tag.rt.core.ForEachTag.class);
     _jspx_th_c_005fforEach_005f1.setPageContext(_jspx_page_context);
     _jspx_th_c_005fforEach_005f1.setParent((javax.servlet.jsp.tagext.Tag) _jspx_th_c_005fforEach_005f0);
-    // /WEB-INF/module/calendar/edit.jsp(46,3) name = items type = java.lang.Object reqTime = true required = false fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
+    // /WEB-INF/module/calendar/edit.jsp(50,3) name = items type = java.lang.Object reqTime = true required = false fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
     _jspx_th_c_005fforEach_005f1.setItems((java.lang.Object) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${b.fields }", java.lang.Object.class, (PageContext)_jspx_page_context, null, false));
-    // /WEB-INF/module/calendar/edit.jsp(46,3) name = var type = java.lang.String reqTime = false required = false fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
+    // /WEB-INF/module/calendar/edit.jsp(50,3) name = var type = java.lang.String reqTime = false required = false fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
     _jspx_th_c_005fforEach_005f1.setVar("f");
-    // /WEB-INF/module/calendar/edit.jsp(46,3) name = varStatus type = java.lang.String reqTime = false required = false fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
+    // /WEB-INF/module/calendar/edit.jsp(50,3) name = varStatus type = java.lang.String reqTime = false required = false fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
     _jspx_th_c_005fforEach_005f1.setVarStatus("vs");
     int[] _jspx_push_body_count_c_005fforEach_005f1 = new int[] { 0 };
     try {
@@ -759,13 +851,13 @@ String win_bar_1 = "resizable=\"false\"  closed=\"true\" modal=\"false\" collaps
     org.apache.taglibs.standard.tag.rt.core.WhenTag _jspx_th_c_005fwhen_005f2 = (org.apache.taglibs.standard.tag.rt.core.WhenTag) _005fjspx_005ftagPool_005fc_005fwhen_0026_005ftest.get(org.apache.taglibs.standard.tag.rt.core.WhenTag.class);
     _jspx_th_c_005fwhen_005f2.setPageContext(_jspx_page_context);
     _jspx_th_c_005fwhen_005f2.setParent((javax.servlet.jsp.tagext.Tag) _jspx_th_c_005fchoose_005f2);
-    // /WEB-INF/module/calendar/edit.jsp(48,6) name = test type = boolean reqTime = true required = true fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
+    // /WEB-INF/module/calendar/edit.jsp(52,6) name = test type = boolean reqTime = true required = true fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
     _jspx_th_c_005fwhen_005f2.setTest(((java.lang.Boolean) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${f.uitype == 19 }", java.lang.Boolean.class, (PageContext)_jspx_page_context, null, false)).booleanValue());
     int _jspx_eval_c_005fwhen_005f2 = _jspx_th_c_005fwhen_005f2.doStartTag();
     if (_jspx_eval_c_005fwhen_005f2 != javax.servlet.jsp.tagext.Tag.SKIP_BODY) {
       do {
         out.write("\r\n");
-        out.write("\t\t\t\t\t\t\t<td colspan=\"4\">\r\n");
+        out.write("\t\t\t\t\t\t\t<td colspan=\"4\" >\r\n");
         out.write("\t\t\t\t\t\t\t");
         out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${f.fieldHtml }", java.lang.String.class, (PageContext)_jspx_page_context, null, false));
         out.write("\r\n");
@@ -776,7 +868,7 @@ String win_bar_1 = "resizable=\"false\"  closed=\"true\" modal=\"false\" collaps
         out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${f.columnname}", java.lang.String.class, (PageContext)_jspx_page_context, null, false));
         out.write("','campaigns/");
         out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${USERPERMISSION.user.userName}", java.lang.String.class, (PageContext)_jspx_page_context, null, false));
-        out.write("');\r\n");
+        out.write("',1);\r\n");
         out.write("\t\t\t\t\t\t\tkinds.push(kind_");
         out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${f.columnname}", java.lang.String.class, (PageContext)_jspx_page_context, null, false));
         out.write(");\r\n");
@@ -883,7 +975,7 @@ String win_bar_1 = "resizable=\"false\"  closed=\"true\" modal=\"false\" collaps
     org.apache.taglibs.standard.tag.rt.core.WhenTag _jspx_th_c_005fwhen_005f3 = (org.apache.taglibs.standard.tag.rt.core.WhenTag) _005fjspx_005ftagPool_005fc_005fwhen_0026_005ftest.get(org.apache.taglibs.standard.tag.rt.core.WhenTag.class);
     _jspx_th_c_005fwhen_005f3.setPageContext(_jspx_page_context);
     _jspx_th_c_005fwhen_005f3.setParent((javax.servlet.jsp.tagext.Tag) _jspx_th_c_005fchoose_005f3);
-    // /WEB-INF/module/calendar/edit.jsp(66,8) name = test type = boolean reqTime = true required = true fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
+    // /WEB-INF/module/calendar/edit.jsp(70,8) name = test type = boolean reqTime = true required = true fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
     _jspx_th_c_005fwhen_005f3.setTest(((java.lang.Boolean) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${vs.count%2!=0 &&vs.last == true }", java.lang.Boolean.class, (PageContext)_jspx_page_context, null, false)).booleanValue());
     int _jspx_eval_c_005fwhen_005f3 = _jspx_th_c_005fwhen_005f3.doStartTag();
     if (_jspx_eval_c_005fwhen_005f3 != javax.servlet.jsp.tagext.Tag.SKIP_BODY) {
@@ -912,7 +1004,7 @@ String win_bar_1 = "resizable=\"false\"  closed=\"true\" modal=\"false\" collaps
     org.apache.taglibs.standard.tag.rt.core.WhenTag _jspx_th_c_005fwhen_005f4 = (org.apache.taglibs.standard.tag.rt.core.WhenTag) _005fjspx_005ftagPool_005fc_005fwhen_0026_005ftest.get(org.apache.taglibs.standard.tag.rt.core.WhenTag.class);
     _jspx_th_c_005fwhen_005f4.setPageContext(_jspx_page_context);
     _jspx_th_c_005fwhen_005f4.setParent((javax.servlet.jsp.tagext.Tag) _jspx_th_c_005fchoose_005f3);
-    // /WEB-INF/module/calendar/edit.jsp(69,8) name = test type = boolean reqTime = true required = true fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
+    // /WEB-INF/module/calendar/edit.jsp(73,8) name = test type = boolean reqTime = true required = true fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
     _jspx_th_c_005fwhen_005f4.setTest(((java.lang.Boolean) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${vs.count%2==0 &&vs.last == true }", java.lang.Boolean.class, (PageContext)_jspx_page_context, null, false)).booleanValue());
     int _jspx_eval_c_005fwhen_005f4 = _jspx_th_c_005fwhen_005f4.doStartTag();
     if (_jspx_eval_c_005fwhen_005f4 != javax.servlet.jsp.tagext.Tag.SKIP_BODY) {
@@ -941,7 +1033,7 @@ String win_bar_1 = "resizable=\"false\"  closed=\"true\" modal=\"false\" collaps
     org.apache.taglibs.standard.tag.rt.core.WhenTag _jspx_th_c_005fwhen_005f5 = (org.apache.taglibs.standard.tag.rt.core.WhenTag) _005fjspx_005ftagPool_005fc_005fwhen_0026_005ftest.get(org.apache.taglibs.standard.tag.rt.core.WhenTag.class);
     _jspx_th_c_005fwhen_005f5.setPageContext(_jspx_page_context);
     _jspx_th_c_005fwhen_005f5.setParent((javax.servlet.jsp.tagext.Tag) _jspx_th_c_005fchoose_005f3);
-    // /WEB-INF/module/calendar/edit.jsp(72,8) name = test type = boolean reqTime = true required = true fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
+    // /WEB-INF/module/calendar/edit.jsp(76,8) name = test type = boolean reqTime = true required = true fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
     _jspx_th_c_005fwhen_005f5.setTest(((java.lang.Boolean) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${vs.count%2==0 &&vs.last == false }", java.lang.Boolean.class, (PageContext)_jspx_page_context, null, false)).booleanValue());
     int _jspx_eval_c_005fwhen_005f5 = _jspx_th_c_005fwhen_005f5.doStartTag();
     if (_jspx_eval_c_005fwhen_005f5 != javax.servlet.jsp.tagext.Tag.SKIP_BODY) {
@@ -960,6 +1052,324 @@ String win_bar_1 = "resizable=\"false\"  closed=\"true\" modal=\"false\" collaps
       return true;
     }
     _005fjspx_005ftagPool_005fc_005fwhen_0026_005ftest.reuse(_jspx_th_c_005fwhen_005f5);
+    return false;
+  }
+
+  private boolean _jspx_meth_c_005fchoose_005f4(PageContext _jspx_page_context)
+          throws Throwable {
+    PageContext pageContext = _jspx_page_context;
+    JspWriter out = _jspx_page_context.getOut();
+    //  c:choose
+    org.apache.taglibs.standard.tag.common.core.ChooseTag _jspx_th_c_005fchoose_005f4 = (org.apache.taglibs.standard.tag.common.core.ChooseTag) _005fjspx_005ftagPool_005fc_005fchoose.get(org.apache.taglibs.standard.tag.common.core.ChooseTag.class);
+    _jspx_th_c_005fchoose_005f4.setPageContext(_jspx_page_context);
+    _jspx_th_c_005fchoose_005f4.setParent(null);
+    int _jspx_eval_c_005fchoose_005f4 = _jspx_th_c_005fchoose_005f4.doStartTag();
+    if (_jspx_eval_c_005fchoose_005f4 != javax.servlet.jsp.tagext.Tag.SKIP_BODY) {
+      do {
+        out.write("\r\n");
+        out.write("          \t\t\t\t");
+        if (_jspx_meth_c_005fwhen_005f6(_jspx_th_c_005fchoose_005f4, _jspx_page_context))
+          return true;
+        out.write("\r\n");
+        out.write("          \t\t\t\t");
+        if (_jspx_meth_c_005fotherwise_005f3(_jspx_th_c_005fchoose_005f4, _jspx_page_context))
+          return true;
+        out.write("\r\n");
+        out.write("          \t\t\t");
+        int evalDoAfterBody = _jspx_th_c_005fchoose_005f4.doAfterBody();
+        if (evalDoAfterBody != javax.servlet.jsp.tagext.BodyTag.EVAL_BODY_AGAIN)
+          break;
+      } while (true);
+    }
+    if (_jspx_th_c_005fchoose_005f4.doEndTag() == javax.servlet.jsp.tagext.Tag.SKIP_PAGE) {
+      _005fjspx_005ftagPool_005fc_005fchoose.reuse(_jspx_th_c_005fchoose_005f4);
+      return true;
+    }
+    _005fjspx_005ftagPool_005fc_005fchoose.reuse(_jspx_th_c_005fchoose_005f4);
+    return false;
+  }
+
+  private boolean _jspx_meth_c_005fwhen_005f6(javax.servlet.jsp.tagext.JspTag _jspx_th_c_005fchoose_005f4, PageContext _jspx_page_context)
+          throws Throwable {
+    PageContext pageContext = _jspx_page_context;
+    JspWriter out = _jspx_page_context.getOut();
+    //  c:when
+    org.apache.taglibs.standard.tag.rt.core.WhenTag _jspx_th_c_005fwhen_005f6 = (org.apache.taglibs.standard.tag.rt.core.WhenTag) _005fjspx_005ftagPool_005fc_005fwhen_0026_005ftest.get(org.apache.taglibs.standard.tag.rt.core.WhenTag.class);
+    _jspx_th_c_005fwhen_005f6.setPageContext(_jspx_page_context);
+    _jspx_th_c_005fwhen_005f6.setParent((javax.servlet.jsp.tagext.Tag) _jspx_th_c_005fchoose_005f4);
+    // /WEB-INF/module/calendar/edit.jsp(124,14) name = test type = boolean reqTime = true required = true fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
+    _jspx_th_c_005fwhen_005f6.setTest(((java.lang.Boolean) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${fn:length(reminders)>0}", java.lang.Boolean.class, (PageContext)_jspx_page_context, _jspx_fnmap_1, false)).booleanValue());
+    int _jspx_eval_c_005fwhen_005f6 = _jspx_th_c_005fwhen_005f6.doStartTag();
+    if (_jspx_eval_c_005fwhen_005f6 != javax.servlet.jsp.tagext.Tag.SKIP_BODY) {
+      do {
+        out.write("\r\n");
+        out.write("          \t\t\t\t\t<input type=\"radio\" checked=\"checked\" name=\"cfgreminders\" onclick=\"showCfgRemindertime()\" value=\"1\"  />是&nbsp;&nbsp;<input type=\"radio\" name=\"cfgreminders\" onclick=\"hideCfgRemindertime()\"  />否\r\n");
+        out.write("          \t\t\t\t");
+        int evalDoAfterBody = _jspx_th_c_005fwhen_005f6.doAfterBody();
+        if (evalDoAfterBody != javax.servlet.jsp.tagext.BodyTag.EVAL_BODY_AGAIN)
+          break;
+      } while (true);
+    }
+    if (_jspx_th_c_005fwhen_005f6.doEndTag() == javax.servlet.jsp.tagext.Tag.SKIP_PAGE) {
+      _005fjspx_005ftagPool_005fc_005fwhen_0026_005ftest.reuse(_jspx_th_c_005fwhen_005f6);
+      return true;
+    }
+    _005fjspx_005ftagPool_005fc_005fwhen_0026_005ftest.reuse(_jspx_th_c_005fwhen_005f6);
+    return false;
+  }
+
+  private boolean _jspx_meth_c_005fotherwise_005f3(javax.servlet.jsp.tagext.JspTag _jspx_th_c_005fchoose_005f4, PageContext _jspx_page_context)
+          throws Throwable {
+    PageContext pageContext = _jspx_page_context;
+    JspWriter out = _jspx_page_context.getOut();
+    //  c:otherwise
+    org.apache.taglibs.standard.tag.common.core.OtherwiseTag _jspx_th_c_005fotherwise_005f3 = (org.apache.taglibs.standard.tag.common.core.OtherwiseTag) _005fjspx_005ftagPool_005fc_005fotherwise.get(org.apache.taglibs.standard.tag.common.core.OtherwiseTag.class);
+    _jspx_th_c_005fotherwise_005f3.setPageContext(_jspx_page_context);
+    _jspx_th_c_005fotherwise_005f3.setParent((javax.servlet.jsp.tagext.Tag) _jspx_th_c_005fchoose_005f4);
+    int _jspx_eval_c_005fotherwise_005f3 = _jspx_th_c_005fotherwise_005f3.doStartTag();
+    if (_jspx_eval_c_005fotherwise_005f3 != javax.servlet.jsp.tagext.Tag.SKIP_BODY) {
+      do {
+        out.write("\r\n");
+        out.write("          \t\t\t\t\t<input type=\"radio\" name=\"cfgreminders\" onclick=\"showCfgRemindertime()\" value=\"1\"  />是&nbsp;&nbsp;<input type=\"radio\" checked=\"checked\" name=\"cfgreminders\" onclick=\"hideCfgRemindertime()\"  />否\r\n");
+        out.write("          \t\t\t\t\t<script>\r\n");
+        out.write("          \t\t\t\t\t\t$(function(){$(\"#cfg_remindertime\").hide();});\r\n");
+        out.write("          \t\t\t\t\t</script>\r\n");
+        out.write("          \t\t\t\t");
+        int evalDoAfterBody = _jspx_th_c_005fotherwise_005f3.doAfterBody();
+        if (evalDoAfterBody != javax.servlet.jsp.tagext.BodyTag.EVAL_BODY_AGAIN)
+          break;
+      } while (true);
+    }
+    if (_jspx_th_c_005fotherwise_005f3.doEndTag() == javax.servlet.jsp.tagext.Tag.SKIP_PAGE) {
+      _005fjspx_005ftagPool_005fc_005fotherwise.reuse(_jspx_th_c_005fotherwise_005f3);
+      return true;
+    }
+    _005fjspx_005ftagPool_005fc_005fotherwise.reuse(_jspx_th_c_005fotherwise_005f3);
+    return false;
+  }
+
+  private boolean _jspx_meth_c_005fforEach_005f2(PageContext _jspx_page_context)
+          throws Throwable {
+    PageContext pageContext = _jspx_page_context;
+    JspWriter out = _jspx_page_context.getOut();
+    //  c:forEach
+    org.apache.taglibs.standard.tag.rt.core.ForEachTag _jspx_th_c_005fforEach_005f2 = (org.apache.taglibs.standard.tag.rt.core.ForEachTag) _005fjspx_005ftagPool_005fc_005fforEach_0026_005fvar_005fstep_005fend_005fbegin.get(org.apache.taglibs.standard.tag.rt.core.ForEachTag.class);
+    _jspx_th_c_005fforEach_005f2.setPageContext(_jspx_page_context);
+    _jspx_th_c_005fforEach_005f2.setParent(null);
+    // /WEB-INF/module/calendar/edit.jsp(140,12) name = var type = java.lang.String reqTime = false required = false fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
+    _jspx_th_c_005fforEach_005f2.setVar("x");
+    // /WEB-INF/module/calendar/edit.jsp(140,12) name = begin type = int reqTime = true required = false fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
+    _jspx_th_c_005fforEach_005f2.setBegin(0);
+    // /WEB-INF/module/calendar/edit.jsp(140,12) name = end type = int reqTime = true required = false fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
+    _jspx_th_c_005fforEach_005f2.setEnd(29);
+    // /WEB-INF/module/calendar/edit.jsp(140,12) name = step type = int reqTime = true required = false fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
+    _jspx_th_c_005fforEach_005f2.setStep(1);
+    int[] _jspx_push_body_count_c_005fforEach_005f2 = new int[] { 0 };
+    try {
+      int _jspx_eval_c_005fforEach_005f2 = _jspx_th_c_005fforEach_005f2.doStartTag();
+      if (_jspx_eval_c_005fforEach_005f2 != javax.servlet.jsp.tagext.Tag.SKIP_BODY) {
+        do {
+          out.write("\r\n");
+          out.write("          \t\t\t<option>");
+          out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${x}", java.lang.String.class, (PageContext)_jspx_page_context, null, false));
+          out.write("</option>\r\n");
+          out.write("\t\t\t\t");
+          int evalDoAfterBody = _jspx_th_c_005fforEach_005f2.doAfterBody();
+          if (evalDoAfterBody != javax.servlet.jsp.tagext.BodyTag.EVAL_BODY_AGAIN)
+            break;
+        } while (true);
+      }
+      if (_jspx_th_c_005fforEach_005f2.doEndTag() == javax.servlet.jsp.tagext.Tag.SKIP_PAGE) {
+        return true;
+      }
+    } catch (Throwable _jspx_exception) {
+      while (_jspx_push_body_count_c_005fforEach_005f2[0]-- > 0)
+        out = _jspx_page_context.popBody();
+      _jspx_th_c_005fforEach_005f2.doCatch(_jspx_exception);
+    } finally {
+      _jspx_th_c_005fforEach_005f2.doFinally();
+      _005fjspx_005ftagPool_005fc_005fforEach_0026_005fvar_005fstep_005fend_005fbegin.reuse(_jspx_th_c_005fforEach_005f2);
+    }
+    return false;
+  }
+
+  private boolean _jspx_meth_c_005fforEach_005f3(PageContext _jspx_page_context)
+          throws Throwable {
+    PageContext pageContext = _jspx_page_context;
+    JspWriter out = _jspx_page_context.getOut();
+    //  c:forEach
+    org.apache.taglibs.standard.tag.rt.core.ForEachTag _jspx_th_c_005fforEach_005f3 = (org.apache.taglibs.standard.tag.rt.core.ForEachTag) _005fjspx_005ftagPool_005fc_005fforEach_0026_005fvar_005fstep_005fend_005fbegin.get(org.apache.taglibs.standard.tag.rt.core.ForEachTag.class);
+    _jspx_th_c_005fforEach_005f3.setPageContext(_jspx_page_context);
+    _jspx_th_c_005fforEach_005f3.setParent(null);
+    // /WEB-INF/module/calendar/edit.jsp(149,12) name = var type = java.lang.String reqTime = false required = false fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
+    _jspx_th_c_005fforEach_005f3.setVar("x");
+    // /WEB-INF/module/calendar/edit.jsp(149,12) name = begin type = int reqTime = true required = false fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
+    _jspx_th_c_005fforEach_005f3.setBegin(0);
+    // /WEB-INF/module/calendar/edit.jsp(149,12) name = end type = int reqTime = true required = false fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
+    _jspx_th_c_005fforEach_005f3.setEnd(22);
+    // /WEB-INF/module/calendar/edit.jsp(149,12) name = step type = int reqTime = true required = false fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
+    _jspx_th_c_005fforEach_005f3.setStep(1);
+    int[] _jspx_push_body_count_c_005fforEach_005f3 = new int[] { 0 };
+    try {
+      int _jspx_eval_c_005fforEach_005f3 = _jspx_th_c_005fforEach_005f3.doStartTag();
+      if (_jspx_eval_c_005fforEach_005f3 != javax.servlet.jsp.tagext.Tag.SKIP_BODY) {
+        do {
+          out.write("\r\n");
+          out.write("          \t\t\t<option>");
+          out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${x}", java.lang.String.class, (PageContext)_jspx_page_context, null, false));
+          out.write("</option>\r\n");
+          out.write("\t\t\t\t");
+          int evalDoAfterBody = _jspx_th_c_005fforEach_005f3.doAfterBody();
+          if (evalDoAfterBody != javax.servlet.jsp.tagext.BodyTag.EVAL_BODY_AGAIN)
+            break;
+        } while (true);
+      }
+      if (_jspx_th_c_005fforEach_005f3.doEndTag() == javax.servlet.jsp.tagext.Tag.SKIP_PAGE) {
+        return true;
+      }
+    } catch (Throwable _jspx_exception) {
+      while (_jspx_push_body_count_c_005fforEach_005f3[0]-- > 0)
+        out = _jspx_page_context.popBody();
+      _jspx_th_c_005fforEach_005f3.doCatch(_jspx_exception);
+    } finally {
+      _jspx_th_c_005fforEach_005f3.doFinally();
+      _005fjspx_005ftagPool_005fc_005fforEach_0026_005fvar_005fstep_005fend_005fbegin.reuse(_jspx_th_c_005fforEach_005f3);
+    }
+    return false;
+  }
+
+  private boolean _jspx_meth_c_005fforEach_005f4(PageContext _jspx_page_context)
+          throws Throwable {
+    PageContext pageContext = _jspx_page_context;
+    JspWriter out = _jspx_page_context.getOut();
+    //  c:forEach
+    org.apache.taglibs.standard.tag.rt.core.ForEachTag _jspx_th_c_005fforEach_005f4 = (org.apache.taglibs.standard.tag.rt.core.ForEachTag) _005fjspx_005ftagPool_005fc_005fforEach_0026_005fvar_005fstep_005fend_005fbegin.get(org.apache.taglibs.standard.tag.rt.core.ForEachTag.class);
+    _jspx_th_c_005fforEach_005f4.setPageContext(_jspx_page_context);
+    _jspx_th_c_005fforEach_005f4.setParent(null);
+    // /WEB-INF/module/calendar/edit.jsp(158,12) name = var type = java.lang.String reqTime = false required = false fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
+    _jspx_th_c_005fforEach_005f4.setVar("x");
+    // /WEB-INF/module/calendar/edit.jsp(158,12) name = begin type = int reqTime = true required = false fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
+    _jspx_th_c_005fforEach_005f4.setBegin(0);
+    // /WEB-INF/module/calendar/edit.jsp(158,12) name = end type = int reqTime = true required = false fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
+    _jspx_th_c_005fforEach_005f4.setEnd(22);
+    // /WEB-INF/module/calendar/edit.jsp(158,12) name = step type = int reqTime = true required = false fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
+    _jspx_th_c_005fforEach_005f4.setStep(1);
+    int[] _jspx_push_body_count_c_005fforEach_005f4 = new int[] { 0 };
+    try {
+      int _jspx_eval_c_005fforEach_005f4 = _jspx_th_c_005fforEach_005f4.doStartTag();
+      if (_jspx_eval_c_005fforEach_005f4 != javax.servlet.jsp.tagext.Tag.SKIP_BODY) {
+        do {
+          out.write("\r\n");
+          out.write("          \t\t\t<option>");
+          out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${x}", java.lang.String.class, (PageContext)_jspx_page_context, null, false));
+          out.write("</option>\r\n");
+          out.write("\t\t\t\t");
+          int evalDoAfterBody = _jspx_th_c_005fforEach_005f4.doAfterBody();
+          if (evalDoAfterBody != javax.servlet.jsp.tagext.BodyTag.EVAL_BODY_AGAIN)
+            break;
+        } while (true);
+      }
+      if (_jspx_th_c_005fforEach_005f4.doEndTag() == javax.servlet.jsp.tagext.Tag.SKIP_PAGE) {
+        return true;
+      }
+    } catch (Throwable _jspx_exception) {
+      while (_jspx_push_body_count_c_005fforEach_005f4[0]-- > 0)
+        out = _jspx_page_context.popBody();
+      _jspx_th_c_005fforEach_005f4.doCatch(_jspx_exception);
+    } finally {
+      _jspx_th_c_005fforEach_005f4.doFinally();
+      _005fjspx_005ftagPool_005fc_005fforEach_0026_005fvar_005fstep_005fend_005fbegin.reuse(_jspx_th_c_005fforEach_005f4);
+    }
+    return false;
+  }
+
+  private boolean _jspx_meth_c_005fchoose_005f5(PageContext _jspx_page_context)
+          throws Throwable {
+    PageContext pageContext = _jspx_page_context;
+    JspWriter out = _jspx_page_context.getOut();
+    //  c:choose
+    org.apache.taglibs.standard.tag.common.core.ChooseTag _jspx_th_c_005fchoose_005f5 = (org.apache.taglibs.standard.tag.common.core.ChooseTag) _005fjspx_005ftagPool_005fc_005fchoose.get(org.apache.taglibs.standard.tag.common.core.ChooseTag.class);
+    _jspx_th_c_005fchoose_005f5.setPageContext(_jspx_page_context);
+    _jspx_th_c_005fchoose_005f5.setParent(null);
+    int _jspx_eval_c_005fchoose_005f5 = _jspx_th_c_005fchoose_005f5.doStartTag();
+    if (_jspx_eval_c_005fchoose_005f5 != javax.servlet.jsp.tagext.Tag.SKIP_BODY) {
+      do {
+        out.write("\r\n");
+        out.write("          \t\t\t\t");
+        if (_jspx_meth_c_005fwhen_005f7(_jspx_th_c_005fchoose_005f5, _jspx_page_context))
+          return true;
+        out.write("\r\n");
+        out.write("          \t\t\t\t");
+        if (_jspx_meth_c_005fotherwise_005f4(_jspx_th_c_005fchoose_005f5, _jspx_page_context))
+          return true;
+        out.write("\r\n");
+        out.write("          \t\t\t");
+        int evalDoAfterBody = _jspx_th_c_005fchoose_005f5.doAfterBody();
+        if (evalDoAfterBody != javax.servlet.jsp.tagext.BodyTag.EVAL_BODY_AGAIN)
+          break;
+      } while (true);
+    }
+    if (_jspx_th_c_005fchoose_005f5.doEndTag() == javax.servlet.jsp.tagext.Tag.SKIP_PAGE) {
+      _005fjspx_005ftagPool_005fc_005fchoose.reuse(_jspx_th_c_005fchoose_005f5);
+      return true;
+    }
+    _005fjspx_005ftagPool_005fc_005fchoose.reuse(_jspx_th_c_005fchoose_005f5);
+    return false;
+  }
+
+  private boolean _jspx_meth_c_005fwhen_005f7(javax.servlet.jsp.tagext.JspTag _jspx_th_c_005fchoose_005f5, PageContext _jspx_page_context)
+          throws Throwable {
+    PageContext pageContext = _jspx_page_context;
+    JspWriter out = _jspx_page_context.getOut();
+    //  c:when
+    org.apache.taglibs.standard.tag.rt.core.WhenTag _jspx_th_c_005fwhen_005f7 = (org.apache.taglibs.standard.tag.rt.core.WhenTag) _005fjspx_005ftagPool_005fc_005fwhen_0026_005ftest.get(org.apache.taglibs.standard.tag.rt.core.WhenTag.class);
+    _jspx_th_c_005fwhen_005f7.setPageContext(_jspx_page_context);
+    _jspx_th_c_005fwhen_005f7.setParent((javax.servlet.jsp.tagext.Tag) _jspx_th_c_005fchoose_005f5);
+    // /WEB-INF/module/calendar/edit.jsp(177,14) name = test type = boolean reqTime = true required = true fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
+    _jspx_th_c_005fwhen_005f7.setTest(((java.lang.Boolean) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${recurring == true }", java.lang.Boolean.class, (PageContext)_jspx_page_context, null, false)).booleanValue());
+    int _jspx_eval_c_005fwhen_005f7 = _jspx_th_c_005fwhen_005f7.doStartTag();
+    if (_jspx_eval_c_005fwhen_005f7 != javax.servlet.jsp.tagext.Tag.SKIP_BODY) {
+      do {
+        out.write("\r\n");
+        out.write("          \t\t\t\t\t<input type=\"checkbox\" onclick=\"showCfgOption()\" checked=\"checked\" name=\"recurring\" value=\"1\" />\r\n");
+        out.write("          \t\t\t\t");
+        int evalDoAfterBody = _jspx_th_c_005fwhen_005f7.doAfterBody();
+        if (evalDoAfterBody != javax.servlet.jsp.tagext.BodyTag.EVAL_BODY_AGAIN)
+          break;
+      } while (true);
+    }
+    if (_jspx_th_c_005fwhen_005f7.doEndTag() == javax.servlet.jsp.tagext.Tag.SKIP_PAGE) {
+      _005fjspx_005ftagPool_005fc_005fwhen_0026_005ftest.reuse(_jspx_th_c_005fwhen_005f7);
+      return true;
+    }
+    _005fjspx_005ftagPool_005fc_005fwhen_0026_005ftest.reuse(_jspx_th_c_005fwhen_005f7);
+    return false;
+  }
+
+  private boolean _jspx_meth_c_005fotherwise_005f4(javax.servlet.jsp.tagext.JspTag _jspx_th_c_005fchoose_005f5, PageContext _jspx_page_context)
+          throws Throwable {
+    PageContext pageContext = _jspx_page_context;
+    JspWriter out = _jspx_page_context.getOut();
+    //  c:otherwise
+    org.apache.taglibs.standard.tag.common.core.OtherwiseTag _jspx_th_c_005fotherwise_005f4 = (org.apache.taglibs.standard.tag.common.core.OtherwiseTag) _005fjspx_005ftagPool_005fc_005fotherwise.get(org.apache.taglibs.standard.tag.common.core.OtherwiseTag.class);
+    _jspx_th_c_005fotherwise_005f4.setPageContext(_jspx_page_context);
+    _jspx_th_c_005fotherwise_005f4.setParent((javax.servlet.jsp.tagext.Tag) _jspx_th_c_005fchoose_005f5);
+    int _jspx_eval_c_005fotherwise_005f4 = _jspx_th_c_005fotherwise_005f4.doStartTag();
+    if (_jspx_eval_c_005fotherwise_005f4 != javax.servlet.jsp.tagext.Tag.SKIP_BODY) {
+      do {
+        out.write("\r\n");
+        out.write("          \t\t\t\t\t<input type=\"checkbox\" onclick=\"showCfgOption()\" name=\"recurring\" value=\"1\"  />\r\n");
+        out.write("          \t\t\t\t");
+        int evalDoAfterBody = _jspx_th_c_005fotherwise_005f4.doAfterBody();
+        if (evalDoAfterBody != javax.servlet.jsp.tagext.BodyTag.EVAL_BODY_AGAIN)
+          break;
+      } while (true);
+    }
+    if (_jspx_th_c_005fotherwise_005f4.doEndTag() == javax.servlet.jsp.tagext.Tag.SKIP_PAGE) {
+      _005fjspx_005ftagPool_005fc_005fotherwise.reuse(_jspx_th_c_005fotherwise_005f4);
+      return true;
+    }
+    _005fjspx_005ftagPool_005fc_005fotherwise.reuse(_jspx_th_c_005fotherwise_005f4);
     return false;
   }
 }

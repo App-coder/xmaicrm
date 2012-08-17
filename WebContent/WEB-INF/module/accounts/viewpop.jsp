@@ -25,6 +25,8 @@ var viewtab = entitytype.toLowerCase();
 var viewid = '${viewid}';
 var tabid = ${tab.tabid};
 var columnname = '${columnname}';
+var field = '${field}';
+var action = '${action}';
 </script>
 <script type="text/javascript" src="resources/desktop/module/accounts/viewpop.js"></script>
 </head>

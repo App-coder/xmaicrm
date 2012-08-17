@@ -72,16 +72,18 @@ public class XmUsersController {
 		
 		for(int i=0;i<groups.size();i++){
 			ComboTree group = new ComboTree();
-			group.setId(groups.get(i).getGroupid()+"");
+			group.setId("group_"+groups.get(i).getGroupid());
 			group.setText(groups.get(i).getGroupname());
 			group.setIconCls("icon-group");
+			group.setAttributes(groups.get(i));
 			List<ComboTree> childs = new ArrayList();
 			for(int j=0;j<users.size();j++){
-				if(users.get(j).getGroupid().equals(group.getId())){
+				if(users.get(j).getGroupid().equals(groups.get(i).getGroupid()+"")){
 					ComboTree u = new ComboTree();
 					u.setId(users.get(j).getId()+"");
 					u.setText(users.get(j).getLastName());
 					u.setIconCls("icon-user");
+					u.setAttributes(users.get(j));
 					childs.add(u);
 				}
 			}

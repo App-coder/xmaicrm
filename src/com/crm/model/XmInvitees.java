@@ -4,6 +4,8 @@ public class XmInvitees {
     private Integer activityid;
 
     private Integer inviteeid;
+    
+    private String username;
 
     public Integer getActivityid() {
         return activityid;
@@ -20,4 +22,15 @@ public class XmInvitees {
     public void setInviteeid(Integer inviteeid) {
         this.inviteeid = inviteeid;
     }
+
+	public String getUsername() {
+		return username;
+	}
+
+	public void setUsername(String username) {
+		this.username = username;
+	}
+    
+    
+    
 }

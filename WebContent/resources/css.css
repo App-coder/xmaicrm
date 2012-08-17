@@ -80,7 +80,7 @@ table .tb_list td.righttd{padding-left:10px;}
 .tab_form select.text2{height: 25px;}
 .tab_form input.text3,.tab_form select.text3{width:90%;margin-right: 10px;border:1px solid #D2D2D2;height: 20px;}
 .tab_form  textarea{width:90%;border:1px solid #D2D2D2;}
-.tab_form .fullarea{width:100%;border:1px solid #D2D2D2;height:200px;}
+.tab_form .fullarea{border:1px solid #D2D2D2;height:200px;width:99%;}
 .midtab{width:100%;font:12px/1.5 Tahoma,'Microsoft Yahei','Simsun';}
 .midtab tr td{height:25px;text-align: left;line-height:25px;padding-left:10px;}
 

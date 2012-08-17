@@ -21,7 +21,7 @@ function initViewPop(){
 			checkbox : true
 		}]],
 		onDblClickRow:function(rowIndex, rowData){
-		    setParentVal(rowData);
+		    doubleClick(rowData);
 		}
 	  });
 }
@@ -42,10 +42,18 @@ function reloadView(val){
 		columns : [res],
 		pageSize:20,
 		onDblClickRow:function(rowIndex, rowData){
-		    setParentVal(rowData);
+		    doubleClick(rowData);
 		}
 	});
     },'json');
+}
+function doubleClick(rowData){
+    if(action == 'calendar_relAccount'){
+	//相关信息 ->关联用户
+	calendarRelAccount(rowData);
+    }else{
+	setParentVal(rowData);
+    }
 }
 function setParentVal(rowdata){
     //UI_TYPE 51,57
@@ -54,4 +62,11 @@ function setParentVal(rowdata){
     parent.$("input[name='"+columnname+"']").val(rowdata.accountid);
     parent.rendRel(columnname,rowdata);
     parent.$("#optionwindow").window("close");
+    $("body").remove();
+}
+function calendarRelAccount(rowdata){
+    parent.$("input[name='"+field+"_text']").val(rowdata.accountname);
+    parent.$("input[name='"+field+"']").val(rowdata.accountid);
+    parent.$("#optionwindow").window("close");
+    $("body").remove();
 }

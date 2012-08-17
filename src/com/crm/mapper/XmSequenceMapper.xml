@@ -8,7 +8,7 @@
 		INSERT INTO xm_${table}_seq (`id`) VALUES ('${seq}')
 	</update>
 	<select id="getMax" resultType="Integer">
-		select max(${key}) from ${tablename}
+		select coalesce(max(${key}),0) from ${tablename}
 	</select>
 	<select id="clearSeq">
 		delete from xm_${tablename}_seq

@@ -757,7 +757,20 @@ public class XmCustomViewController extends BaseController {
 	 * @return
 	 */
 	@RequestMapping(value = "/viewPop", method = RequestMethod.GET)
-	public String viewPop(String modulename,String columnname, ModelMap modelMap){
+	public String viewPop(String modulename, ModelMap modelMap,HttpServletRequest request){
+		
+		modelMap.addAttribute("columnname",request.getParameter("columnname"));
+		
+		String action = request.getParameter("action");
+		if(action!=null){
+			if(action.equals("calendar_relAccount")){
+				modelMap.addAttribute("field",request.getParameter("field"));
+			}
+		}else{
+			action = "";
+		}
+		modelMap.addAttribute("action",action);
+		
 		return "forward:/crm/module/"+modulename.toLowerCase()+"/viewpop";
 	}
 

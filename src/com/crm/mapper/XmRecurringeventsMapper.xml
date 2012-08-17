@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.crm.mapper.XmRecurringeventsMapper" >
+  <resultMap id="BaseResultMap" type="com.crm.model.XmRecurringevents" >
+    <id column="recurringid" property="recurringid" jdbcType="INTEGER" />
+    <result column="activityid" property="activityid" jdbcType="INTEGER" />
+    <result column="recurringdate" property="recurringdate" jdbcType="DATE" />
+    <result column="recurringtype" property="recurringtype" jdbcType="VARCHAR" />
+    <result column="recurringfreq" property="recurringfreq" jdbcType="INTEGER" />
+    <result column="recurringinfo" property="recurringinfo" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    recurringid, activityid, recurringdate, recurringtype, recurringfreq, recurringinfo
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from xm_recurringevents
+    where recurringid = #{recurringid,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from xm_recurringevents
+    where recurringid = #{recurringid,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.crm.model.XmRecurringevents" >
+    insert into xm_recurringevents (recurringid, activityid, recurringdate, 
+      recurringtype, recurringfreq, recurringinfo
+      )
+    values (#{recurringid,jdbcType=INTEGER}, #{activityid,jdbcType=INTEGER}, #{recurringdate,jdbcType=DATE}, 
+      #{recurringtype,jdbcType=VARCHAR}, #{recurringfreq,jdbcType=INTEGER}, #{recurringinfo,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.crm.model.XmRecurringevents" >
+    insert into xm_recurringevents
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="recurringid != null" >
+        recurringid,
+      </if>
+      <if test="activityid != null" >
+        activityid,
+      </if>
+      <if test="recurringdate != null" >
+        recurringdate,
+      </if>
+      <if test="recurringtype != null" >
+        recurringtype,
+      </if>
+      <if test="recurringfreq != null" >
+        recurringfreq,
+      </if>
+      <if test="recurringinfo != null" >
+        recurringinfo,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="recurringid != null" >
+        #{recurringid,jdbcType=INTEGER},
+      </if>
+      <if test="activityid != null" >
+        #{activityid,jdbcType=INTEGER},
+      </if>
+      <if test="recurringdate != null" >
+        #{recurringdate,jdbcType=DATE},
+      </if>
+      <if test="recurringtype != null" >
+        #{recurringtype,jdbcType=VARCHAR},
+      </if>
+      <if test="recurringfreq != null" >
+        #{recurringfreq,jdbcType=INTEGER},
+      </if>
+      <if test="recurringinfo != null" >
+        #{recurringinfo,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.crm.model.XmRecurringevents" >
+    update xm_recurringevents
+    <set >
+      <if test="activityid != null" >
+        activityid = #{activityid,jdbcType=INTEGER},
+      </if>
+      <if test="recurringdate != null" >
+        recurringdate = #{recurringdate,jdbcType=DATE},
+      </if>
+      <if test="recurringtype != null" >
+        recurringtype = #{recurringtype,jdbcType=VARCHAR},
+      </if>
+      <if test="recurringfreq != null" >
+        recurringfreq = #{recurringfreq,jdbcType=INTEGER},
+      </if>
+      <if test="recurringinfo != null" >
+        recurringinfo = #{recurringinfo,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where recurringid = #{recurringid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.crm.model.XmRecurringevents" >
+    update xm_recurringevents
+    set activityid = #{activityid,jdbcType=INTEGER},
+      recurringdate = #{recurringdate,jdbcType=DATE},
+      recurringtype = #{recurringtype,jdbcType=VARCHAR},
+      recurringfreq = #{recurringfreq,jdbcType=INTEGER},
+      recurringinfo = #{recurringinfo,jdbcType=VARCHAR}
+    where recurringid = #{recurringid,jdbcType=INTEGER}
+  </update>
+  <delete id="clearRecurringevents">
+  	delete from xm_recurringevents where activityid = #{activityid,jdbcType=INTEGER}
+  </delete>
+</mapper>

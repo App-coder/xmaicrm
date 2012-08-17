@@ -220,7 +220,7 @@ public class HtmlUtil {
 				XmEntityname et = hm_noline.get(xmField.getFieldname().replace("_", ""));
 				
 				String mv = getMapVal(obj,xmField.getColumnname());
-				if(mv !=""){
+				if(mv !="" && !mv.equals("0") ){
 					int accountid = xmCustomViewService.getAccountByContactid(mv);
 					List<XmContactdetails> details = xmCustomViewService.getContactdetailsByAccountid(accountid);
 					
@@ -375,8 +375,11 @@ public class HtmlUtil {
 	}
 	
 	private static String getText(String mapVal, XmEntityname et,XmCustomViewService xmCustomViewService) {
-		if(mapVal!=""){
-			return xmCustomViewService.getFieldValue(et,mapVal);
+		if(mapVal!=""&&!mapVal.equals("0")){
+			String text = xmCustomViewService.getFieldValue(et,mapVal);
+			if(text!=null){
+				return text;
+			}
 		}
 		return "";
 	}
