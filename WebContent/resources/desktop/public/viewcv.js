@@ -22,19 +22,29 @@ function init(){
 		    text : '添加',
 		    iconCls:'icon-add',
 		    handler : function() {
-
+			window.location.href="customview/showEdit?recordid=0&module="+entitytype;
 		    }
 		}, {
 		    text : '编辑',
 		    iconCls:'icon-view',
 		    handler : function() {
-
+			var selected = $('#view_list').datagrid("getSelected");
+			if(selected){
+			    
+			}else{
+			    message("请选择记录！");
+			}
 		    }
 		},{
 		    text : '删除',
 		    iconCls:'icon-remove',
 		    handler : function() {
-
+			var selected = $('#view_list').datagrid("getSelected");
+			if(selected){
+			    
+			}else{
+			    message("请选择记录！");
+			}			
 		    }
 		}],
 		frozenColumns : [[{

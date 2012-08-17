@@ -2,6 +2,8 @@ package com.crm.mapper;
 
 import java.util.List;
 
+import org.apache.ibatis.annotations.Param;
+
 import com.crm.model.XmEntityname;
 
 public interface XmEntitynameMapper {
@@ -18,4 +20,6 @@ public interface XmEntitynameMapper {
     int updateByPrimaryKey(XmEntityname record);
 
 	List<XmEntityname> getEntityname();
+
+	XmEntityname getEntityByModule(@Param("module") String module);
 }

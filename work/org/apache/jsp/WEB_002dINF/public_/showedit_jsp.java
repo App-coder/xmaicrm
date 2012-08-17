@@ -1,10 +1,10 @@
-package org.apache.jsp.WEB_002dINF;
+package org.apache.jsp.WEB_002dINF.public_;
 
 import javax.servlet.*;
 import javax.servlet.http.*;
 import javax.servlet.jsp.*;
 
-public final class desktop_jsp extends org.apache.jasper.runtime.HttpJspBase
+public final class showedit_jsp extends org.apache.jasper.runtime.HttpJspBase
     implements org.apache.jasper.runtime.JspSourceDependent {
 
   private static final JspFactory _jspxFactory = JspFactory.getDefaultFactory();
@@ -12,11 +12,15 @@ public final class desktop_jsp extends org.apache.jasper.runtime.HttpJspBase
   private static java.util.List _jspx_dependants;
 
   static {
-    _jspx_dependants = new java.util.ArrayList(3);
-    _jspx_dependants.add("/WEB-INF/head.jsp");
-    _jspx_dependants.add("/WEB-INF/nav.jsp");
-    _jspx_dependants.add("/WEB-INF/foot.jsp");
+    _jspx_dependants = new java.util.ArrayList(5);
+    _jspx_dependants.add("/WEB-INF/public/../head.jsp");
+    _jspx_dependants.add("/WEB-INF/public/../common/config.jsp");
+    _jspx_dependants.add("/WEB-INF/public/../nav.jsp");
+    _jspx_dependants.add("/WEB-INF/public/../foot.jsp");
+    _jspx_dependants.add("/WEB-INF/tld/jstl/fn.tld");
   }
+
+  private org.apache.jasper.runtime.TagHandlerPool _005fjspx_005ftagPool_005fc_005fforEach_0026_005fvar_005fitems;
 
   private javax.el.ExpressionFactory _el_expressionfactory;
   private org.apache.AnnotationProcessor _jsp_annotationprocessor;
@@ -26,11 +30,13 @@ public final class desktop_jsp extends org.apache.jasper.runtime.HttpJspBase
   }
 
   public void _jspInit() {
+    _005fjspx_005ftagPool_005fc_005fforEach_0026_005fvar_005fitems = org.apache.jasper.runtime.TagHandlerPool.getTagHandlerPool(getServletConfig());
     _el_expressionfactory = _jspxFactory.getJspApplicationContext(getServletConfig().getServletContext()).getExpressionFactory();
     _jsp_annotationprocessor = (org.apache.AnnotationProcessor) getServletConfig().getServletContext().getAttribute(org.apache.AnnotationProcessor.class.getName());
   }
 
   public void _jspDestroy() {
+    _005fjspx_005ftagPool_005fc_005fforEach_0026_005fvar_005fitems.release();
   }
 
   public void _jspService(HttpServletRequest request, HttpServletResponse response)
@@ -90,10 +96,18 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
       out.write("<!-- 菜单 -->\r\n");
       out.write("<link rel=\"stylesheet\" type=\"text/css\" href=\"resources/prodrop/pro_drop.css\" />\r\n");
       out.write("<script src=\"resources/prodrop/stuHover.js\" type=\"text/javascript\"></script>");
+      out.write('\r');
+      out.write('\n');
+      out.write("\r\n");
+      out.write("\r\n");
+      out.write("\r\n");
+
+String win_topbar = "closed=\"true\" modal=\"true\" collapsible=\"false\"  draggable=\"false\" minimizable=\"false\" maximizable=\"false\" inline=\"false\"";
+
+      out.write("    ");
       out.write("\r\n");
       out.write("</head>\r\n");
       out.write("<body id=\"wrap\">\r\n");
-      out.write("\t");
       out.write("\r\n");
       out.write("<div class=\"headerNav\"  >\r\n");
       out.write("\t\t<a class=\"logo\"></a>\r\n");
@@ -226,13 +240,13 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
       out.write("\t</ul>\r\n");
       out.write("</div>");
       out.write("\r\n");
-      out.write("\t<div id=\"main\">\r\n");
-      out.write("\t\t<div class=\"path\">\r\n");
-      out.write("\t\t\t<a href=\"/\">首页</a>&gt;<a href=\"/sc/\">素材</a>&gt;<a href=\"/js/\">js特效</a>&gt;<a\r\n");
-      out.write("\t\t\t\thref=\"/js/5/\">导航菜单</a>\r\n");
-      out.write("\t\t</div>\r\n");
-      out.write("\t</div>\r\n");
-      out.write("\t");
+      out.write("<div id=\"main\">\r\n");
+      out.write("\r\n");
+      if (_jspx_meth_c_005fforEach_005f0(_jspx_page_context))
+        return;
+      out.write("\r\n");
+      out.write("\r\n");
+      out.write("</div>\r\n");
       out.write("\r\n");
       out.write("<div id=\"div_foot\" class=\"footercss\" >\r\n");
       out.write("<table width=\"100%\" cellspacing=\"0\" cellpadding=\"5\" border=\"0\" style=\"padding: 8px 20px;display:table;height:40px;\">\r\n");
@@ -259,5 +273,52 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     } finally {
       _jspxFactory.releasePageContext(_jspx_page_context);
     }
+  }
+
+  private boolean _jspx_meth_c_005fforEach_005f0(PageContext _jspx_page_context)
+          throws Throwable {
+    PageContext pageContext = _jspx_page_context;
+    JspWriter out = _jspx_page_context.getOut();
+    //  c:forEach
+    org.apache.taglibs.standard.tag.rt.core.ForEachTag _jspx_th_c_005fforEach_005f0 = (org.apache.taglibs.standard.tag.rt.core.ForEachTag) _005fjspx_005ftagPool_005fc_005fforEach_0026_005fvar_005fitems.get(org.apache.taglibs.standard.tag.rt.core.ForEachTag.class);
+    _jspx_th_c_005fforEach_005f0.setPageContext(_jspx_page_context);
+    _jspx_th_c_005fforEach_005f0.setParent(null);
+    // /WEB-INF/public/showedit.jsp(10,0) name = items type = java.lang.Object reqTime = true required = false fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
+    _jspx_th_c_005fforEach_005f0.setItems((java.lang.Object) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${blocks }", java.lang.Object.class, (PageContext)_jspx_page_context, null, false));
+    // /WEB-INF/public/showedit.jsp(10,0) name = var type = java.lang.String reqTime = false required = false fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
+    _jspx_th_c_005fforEach_005f0.setVar("b");
+    int[] _jspx_push_body_count_c_005fforEach_005f0 = new int[] { 0 };
+    try {
+      int _jspx_eval_c_005fforEach_005f0 = _jspx_th_c_005fforEach_005f0.doStartTag();
+      if (_jspx_eval_c_005fforEach_005f0 != javax.servlet.jsp.tagext.Tag.SKIP_BODY) {
+        do {
+          out.write("\r\n");
+          out.write("<fieldset>\r\n");
+          out.write("\t<legend>");
+          out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${b.blocklabel }", java.lang.String.class, (PageContext)_jspx_page_context, null, false));
+          out.write("</legend>\r\n");
+          out.write("\t<table class=\"tab_form\" >\r\n");
+          out.write("\t<tr>\r\n");
+          out.write("\t\t<td>sdf</td><td>sdf</td>\r\n");
+          out.write("\t</tr>\r\n");
+          out.write("</table>\r\n");
+          out.write("</fieldset>\r\n");
+          int evalDoAfterBody = _jspx_th_c_005fforEach_005f0.doAfterBody();
+          if (evalDoAfterBody != javax.servlet.jsp.tagext.BodyTag.EVAL_BODY_AGAIN)
+            break;
+        } while (true);
+      }
+      if (_jspx_th_c_005fforEach_005f0.doEndTag() == javax.servlet.jsp.tagext.Tag.SKIP_PAGE) {
+        return true;
+      }
+    } catch (Throwable _jspx_exception) {
+      while (_jspx_push_body_count_c_005fforEach_005f0[0]-- > 0)
+        out = _jspx_page_context.popBody();
+      _jspx_th_c_005fforEach_005f0.doCatch(_jspx_exception);
+    } finally {
+      _jspx_th_c_005fforEach_005f0.doFinally();
+      _005fjspx_005ftagPool_005fc_005fforEach_0026_005fvar_005fitems.reuse(_jspx_th_c_005fforEach_005f0);
+    }
+    return false;
   }
 }

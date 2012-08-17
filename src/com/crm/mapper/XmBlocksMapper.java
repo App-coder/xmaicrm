@@ -10,4 +10,6 @@ public interface XmBlocksMapper {
 
 	List<XmBlocks> getBlocksByTabId(@Param("tabid") int tabid);
 
+	List<XmBlocks> getFieldBlocksByTabId(@Param("tabid") Integer tabid);
+
 }

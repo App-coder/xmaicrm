@@ -28,4 +28,6 @@ public interface XmFieldMapper {
 
 	List<XmField> getReportItems(@Param("tabid") int tabid);
 
+	List<XmField> getFieldsByTabid(@Param("tabid") Integer tabid);
+
 }

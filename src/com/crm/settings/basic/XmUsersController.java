@@ -4,8 +4,16 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.alibaba.fastjson.JSON;
 import com.crm.action.BaseController;
+import com.crm.model.XmUsers;
+import com.crm.settings.basic.service.XmUsersService;
+
+import java.util.*;
+
+import javax.annotation.Resource;
 
 /**
  * 
@@ -19,9 +27,24 @@ import com.crm.action.BaseController;
 @RequestMapping(value = "settings/users")
 public class XmUsersController extends BaseController {
 	
+	XmUsersService xmUsersService;
+	@Resource(name="xmUsersService")
+	public void setXmUsersService(XmUsersService xmUsersService) {
+		this.xmUsersService = xmUsersService;
+	}
+
 	@RequestMapping(value = "/index", method = RequestMethod.GET)
 	public String index(ModelMap modelMap){
 		return "settings/basic/users";
+	}
+	
+	@RequestMapping(value = "/list", method = RequestMethod.GET)
+	@ResponseBody
+	public String list(int page, int rows){
+		
+//		List<XmUsers> users = 
+		
+		return "";
 	}
 	
 }

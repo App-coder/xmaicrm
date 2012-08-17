@@ -41,6 +41,7 @@ import com.crm.service.XmCustomViewService;
 import com.crm.service.XmCvadvfilterService;
 import com.crm.service.XmCvcolumnlistService;
 import com.crm.service.XmCvstdfilterService;
+import com.crm.service.XmEntitynameService;
 import com.crm.service.XmFieldService;
 import com.crm.service.XmPicklistService;
 import com.crm.service.XmSequenceService;
@@ -115,6 +116,12 @@ public class XmCustomViewController extends BaseController {
 	@Resource(name = "xmPicklistService")
 	public void setXmPicklistService(XmPicklistService xmPicklistService) {
 		this.xmPicklistService = xmPicklistService;
+	}
+	
+	XmEntitynameService xmEntitynameService;
+	@Resource(name="xmEntitynameService")
+	public void setXmEntitynameService(XmEntitynameService xmEntitynameService) {
+		this.xmEntitynameService = xmEntitynameService;
 	}
 
 	@RequestMapping(value = "/queryByEntityType", method = RequestMethod.GET)
@@ -894,6 +901,36 @@ public class XmCustomViewController extends BaseController {
 		modelmap.addAttribute("assemble", JSON.toJSONString(assemble));
 
 		return "public/report/index";
+	}
+	
+	/**
+	 * 显示编辑窗口
+	 * 
+	 * @param recordid 记录ID
+	 * @param module 模块
+	 * @param modelmap
+	 * @return
+	 */
+	@RequestMapping(value = "/showEdit", method = RequestMethod.GET)
+	public String showEdit(int recordid,String module,ModelMap modelmap){
+		//加载对应的数据
+		if(recordid!=0){
+			
+		}
+		
+		//初始化编辑窗口
+		XmEntityname entity = xmEntitynameService.getEntityByModule(module);
+		modelmap.addAttribute("entity",entity);
+		
+		//得到所有的字段，根据tableid
+		List<XmField> fields = xmFieldService.getFieldsByTabid(entity.getTabid());
+		modelmap.addAttribute("fields",fields);
+		
+		//得到block，
+		List<XmBlocks> blocks = xmBlocksService.getFieldBlocksByTabId(entity.getTabid());
+		modelmap.addAttribute("blocks",blocks);
+		
+		return "public/showedit";
 	}
 
 }

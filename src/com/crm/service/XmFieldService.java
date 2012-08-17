@@ -19,4 +19,11 @@ public interface XmFieldService {
 	public List<XmField> getSearchFields(Integer tabid);
 
 	public List<XmField> getReportItems(int tabid);
+
+	/**
+	 * 根据表的ID获取，字段信息
+	 * @param tabid
+	 * @return
+	 */
+	public List<XmField> getFieldsByTabid(Integer tabid);
 }

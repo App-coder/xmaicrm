@@ -93,4 +93,7 @@
   <select id="getEntityname" resultMap="BaseResultMap" >
   	select * from xm_entityname
   </select>
+  <select id="getEntityByModule" resultMap="BaseResultMap">
+  	select * from xm_entityname where modulename = #{module}
+  </select>
 </mapper>

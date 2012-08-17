@@ -289,4 +289,7 @@
 		ORDER BY  
 			sequence 
   </select>
+  <select id="getFieldsByTabid" resultMap="BaseResultMap" >
+  	select * from xm_field where tabid=#{tabid}
+  </select>
 </mapper>

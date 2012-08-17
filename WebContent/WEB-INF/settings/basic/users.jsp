@@ -1,8 +1,14 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"
-	pageEncoding="utf-8"%>
-<!-- 系统用户-->	
+    pageEncoding="utf-8"%>
+<%@ include file="../../head.jsp"%>
 <%@ include file="../../common/config.jsp"%>
 <script type="text/javascript" src="resources/desktop/settings/basic/users.js"></script>
-<div class="container">
-系统用户
+</head>
+<body id="wrap">
+<%@ include file="../../nav.jsp"%>
+<div id="main">
+<table id="user_list" data-options="fitColumns:true"></table>
 </div>
+<%@ include file="../../foot.jsp"%>
+</body>
+</html>

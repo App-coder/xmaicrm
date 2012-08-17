@@ -130,7 +130,6 @@ function initGrid() {
 	queryParams : {
 	    'entitytype' : entitytype
 	},
-	fitColumns : true,
 	toolbar : [ {
 	    text : '添加',
 	    iconCls : 'icon-add',

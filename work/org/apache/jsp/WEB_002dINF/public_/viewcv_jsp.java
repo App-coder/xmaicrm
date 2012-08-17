@@ -267,8 +267,8 @@ String win_topbar = "closed=\"true\" modal=\"true\" collapsible=\"false\"  dragg
       out.write("\t\t<li class=\"top\"><a href=\"#nogo57\" class=\"top_link\"><span\r\n");
       out.write("\t\t\t\tclass=\"down\">控制面板</span></a>\r\n");
       out.write("\t\t\t<ul class=\"sub\">\r\n");
-      out.write("\t\t\t\t<li><a href=\"javascript:tab('控制面板','setting/index')\">控制面板</a></li>\r\n");
-      out.write("\t\t\t\t<li><a href=\"javascript:tab('业务规则','workflow/index')\">业务规则</a></li>\r\n");
+      out.write("\t\t\t\t<li><a href=\"setting/index\" >控制面板</a></li>\r\n");
+      out.write("\t\t\t\t<li><a href=\"workflow/index\" >业务规则</a></li>\r\n");
       out.write("\t\t\t</ul></li>\r\n");
       out.write("\t</ul>\r\n");
       out.write("</div>");

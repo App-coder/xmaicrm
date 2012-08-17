@@ -125,8 +125,8 @@
 		<li class="top"><a href="#nogo57" class="top_link"><span
 				class="down">控制面板</span></a>
 			<ul class="sub">
-				<li><a href="javascript:tab('控制面板','setting/index')">控制面板</a></li>
-				<li><a href="javascript:tab('业务规则','workflow/index')">业务规则</a></li>
+				<li><a href="setting/index" >控制面板</a></li>
+				<li><a href="workflow/index" >业务规则</a></li>
 			</ul></li>
 	</ul>
 </div>

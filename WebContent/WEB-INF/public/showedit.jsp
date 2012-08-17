@@ -6,7 +6,18 @@
 <body id="wrap">
 <%@ include file="../nav.jsp"%>
 <div id="main">
-sdfsd
+
+<c:forEach items="${blocks }" var="b">
+<fieldset>
+	<legend>${b.blocklabel }</legend>
+	<table class="tab_form" >
+	<tr>
+		<td>sdf</td><td>sdf</td>
+	</tr>
+</table>
+</fieldset>
+</c:forEach>
+
 </div>
 <%@ include file="../foot.jsp"%>
 </body>
