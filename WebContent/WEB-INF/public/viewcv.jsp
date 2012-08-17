@@ -18,41 +18,49 @@
 <script>
 //定义页面变量，需要前缀，防止多页面变量重复
 var entitytype = '${entitytype}';
+var viewtab = entitytype.toLowerCase();
 var viewid = '${viewid}';
 </script>
-
-
-<script type="text/javascript"
-	src="resources/desktop/public/viewcv.js"></script>
+<script type="text/javascript" src="resources/desktop/public/viewcv.js"></script>
 <div class="container">
+	<div class="hidden">
+		<div id="${fn:toLowerCase(entitytype)}_winreport"
+			title="${tab.tablabel }-分布统计" class="easyui-window" <%=win_topbar %>
+			style="width:700px; height: 500px;">
+			<iframe style="width:100%;height:100%;" frameborder="0" id="reportframe" ></iframe>
+		</div>
+	</div>
 	<div class="easyui-layout" fit="true">
 		<div data-options="region:'north',border:false">
 			<div class="d_view ">
-				<span class="icon-filter view_span" >视图：</span>
-				<select class="sel_120">
-				<c:forEach items="${views}" var="v" >
-					<option value="${v.cvid }">${v.viewname}</option>
-				</c:forEach>
-				</select>
-				<a href="javascript:tab('${tab.tablabel } - 视图管理','customview/index?entitytype=${entitytype}')" class="easyui-linkbutton" data-options="plain:true,iconCls:'icon-view'">视图管理</a>
+				<span class="icon-filter view_span">视图：</span> <select
+					class="sel_120">
+					<c:forEach items="${views}" var="v">
+						<option value="${v.cvid }">${v.viewname}</option>
+					</c:forEach>
+				</select> <a
+					href="javascript:tab('${tab.tablabel } - 视图管理','customview/index?entitytype=${entitytype}')"
+					class="easyui-linkbutton"
+					data-options="plain:true,iconCls:'icon-view'">视图管理</a>
 			</div>
 		</div>
 		<div data-options="region:'center',border:false"
 			style="overflow: hidden">
-			<table id="view_list" data-options="fit:true,fitColumns:true"></table>
+			<table id="${fn:toLowerCase(entitytype)}_list"
+				data-options="fit:true,fitColumns:true"></table>
 		</div>
 		<c:if test="${repfields!=null }">
-		<div data-options="region:'south',border:false">
-			<div class="d_report ">
-				<span class="icon-report view_span" >报表：</span>
-				<select class="sel_120">
-					<c:forEach items="${repfields}" var="f">
-						<option>${f.columnname}</option>
-					</c:forEach>
-				</select>
-				<a href="#" class="easyui-linkbutton" data-options="plain:true,iconCls:'icon-view'">预览</a>
+			<div data-options="region:'south',border:false">
+				<div class="d_report ">
+					<span class="icon-report view_span">报表：</span> <select
+						class="sel_120">
+						<c:forEach items="${repfields}" var="f">
+							<option>${f.fieldlabel}</option>
+						</c:forEach>
+					</select> <a href="javascript:viewSearchReport()" class="easyui-linkbutton"
+						data-options="plain:true,iconCls:'icon-view'">预览</a>
+				</div>
 			</div>
-		</div>
 		</c:if>
 	</div>
 </div>

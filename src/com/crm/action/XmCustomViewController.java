@@ -680,4 +680,9 @@ public class XmCustomViewController extends BaseController {
 		return objToJson(list,jsonConfig);
 	}
 	
+	@RequestMapping(value = "/report", method = RequestMethod.GET)
+	public String report(){
+		return "public/report/index";
+	}
+	
 }

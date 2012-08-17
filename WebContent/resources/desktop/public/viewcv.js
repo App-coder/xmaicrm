@@ -6,7 +6,7 @@ $(function() {
 function init(){
 
   //设置视图
-	$('#view_list').datagrid({
+	$('#'+viewtab+'_list').datagrid({
 		url : 'customview/renderView',
 		doSize:true,
 		collapsible : false,
@@ -28,4 +28,11 @@ function init(){
 			checkbox : true
 		}]]
 	    });
+}
+function viewSearchReport(){
+    //customview/report
+    $("#reportframe").attr("src","customview/report?_rd="+rdbytime);
+    
+    $("#"+viewtab+"_winreport").window("open");
+    
 }

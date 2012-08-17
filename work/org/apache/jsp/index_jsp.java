@@ -1,21 +1,15 @@
-package org.apache.jsp.WEB_002dINF;
+package org.apache.jsp;
 
 import javax.servlet.*;
 import javax.servlet.http.*;
 import javax.servlet.jsp.*;
 
-public final class homepage_jsp extends org.apache.jasper.runtime.HttpJspBase
+public final class index_jsp extends org.apache.jasper.runtime.HttpJspBase
     implements org.apache.jasper.runtime.JspSourceDependent {
 
   private static final JspFactory _jspxFactory = JspFactory.getDefaultFactory();
 
   private static java.util.List _jspx_dependants;
-
-  static {
-    _jspx_dependants = new java.util.ArrayList(2);
-    _jspx_dependants.add("/WEB-INF/common/config.jsp");
-    _jspx_dependants.add("/WEB-INF/tld/jstl/fn.tld");
-  }
 
   private javax.el.ExpressionFactory _el_expressionfactory;
   private org.apache.AnnotationProcessor _jsp_annotationprocessor;
@@ -58,20 +52,10 @@ public final class homepage_jsp extends org.apache.jasper.runtime.HttpJspBase
 
       out.write('\r');
       out.write('\n');
-      out.write("\r\n");
-      out.write("\r\n");
-      out.write("\r\n");
-
-String win_topbar = "closed=\"true\" modal=\"true\" collapsible=\"false\"  draggable=\"false\" minimizable=\"false\" maximizable=\"false\" inline=\"false\" resizable=\"false\"";
-
-      out.write("    ");
-      out.write("\r\n");
-      out.write("<script type=\"text/javascript\" src=\"resources/homepage.js\"></script>\r\n");
-      out.write("<div class=\"container\">\r\n");
-      out.write("\r\n");
-      out.write("\r\n");
-      out.write("\r\n");
-      out.write("</div>");
+      if (true) {
+        _jspx_page_context.forward("welcome/index");
+        return;
+      }
     } catch (Throwable t) {
       if (!(t instanceof SkipPageException)){
         out = _jspx_out;
