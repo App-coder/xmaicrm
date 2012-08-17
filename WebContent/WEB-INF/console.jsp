@@ -17,11 +17,11 @@
 			<div>群发邮件</div>
 		</div>
 		<div id="customer_item"  style="width: 120px;" class="navmenuitem"  >
-			<div><a href="javascript:tab('客户','customer/index')">客户</a></div>
-			<div>联系人</div>
-			<div>客户关怀</div>
-			<div>联系记录</div>
-			<div>纪念日</div>
+			<div><a href="javascript:tab('客户','account/index')">客户</a></div>
+			<div><a href="javascript:tab('联系人','contact/index')">联系人</a></div>
+			<div><a href="javascript:tab('客户关怀','care/index')">客户关怀</a></div>
+			<div><a href="javascript:tab('联系记录','note/index')">联系记录</a></div>
+			<div><a href="javascript:tab('纪念日','note/index')">纪念日</a></div>
 		</div>
 		<div id="product_item"  style="width: 120px;" class="navmenuitem"  >
 			<div><a href="javascript:tab('产品列表','product/index')" >产品列表</a></div>

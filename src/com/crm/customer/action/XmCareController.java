@@ -13,14 +13,14 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.crm.action.BaseController;
 import com.crm.action.util.ModuleUtil;
 import com.crm.bean.easyui.ListBean;
-import com.crm.customer.service.XmAccountService;
 import com.crm.model.XmCustomview;
 import com.crm.model.XmPotential;
 import com.crm.service.XmCustomViewService;
+import com.crm.customer.service.XmCareService;
 
 @Controller
-@RequestMapping(value = "account")
-public class XmAccountController extends BaseController{
+@RequestMapping(value = "care")
+public class XmCareController extends BaseController{
 	ModuleUtil moduleUtil;
 	@Resource(name="moduleUtil")
 	public void setModuleUtil(ModuleUtil moduleUtil) {
@@ -33,16 +33,16 @@ public class XmAccountController extends BaseController{
 		this.xmCustomViewService = xmCustomViewService;
 	}
 	
-	XmAccountService xmAccountService;
-	@Resource(name="xmAccountService")
-	public void setXmAccountService(XmAccountService xmAccountService) {
-		this.xmAccountService = xmAccountService;
+	XmCareService xmCareService;
+	@Resource(name="xmCareService")
+	public void setXmCareService(XmCareService xmCareService) {
+		this.xmCareService = xmCareService;
 	}
 	
 	@RequestMapping(value = "/index", method = RequestMethod.GET)
 	public String index(ModelMap modelMap){
-		this.moduleUtil.setViewProp(modelMap,"Accounts");
-		return "customer/account";
+		this.moduleUtil.setViewProp(modelMap,"Cares");
+		return "customer/care";
 	}
 	
 	
@@ -60,12 +60,11 @@ public class XmAccountController extends BaseController{
 	public String renderView(int page,int rows,String entitytype,int viewid){
 		XmCustomview customview = this.xmCustomViewService.selectByPrimaryKey(entitytype,viewid);
 		
-		int total = this.xmAccountService.getTotal(viewid);
-		List<XmPotential> ls = this.xmAccountService.loadList(page,rows,viewid);
+		int total = this.xmCareService.getTotal(viewid);
+		List<XmPotential> ls = this.xmCareService.loadList(page,rows,viewid);
 		ListBean list = new ListBean();
 		list.setRows(ls);
 		list.setTotal(total);
 		return objToJson(list);
 	}
-	
 }

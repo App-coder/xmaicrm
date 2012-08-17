@@ -34,16 +34,16 @@ public class CvFilter {
 		
 		String filter = "";
 		if(stdfilter!=null){
-			if(stdfilter.getColumnname()!=null){
-				SearchField std = (SearchField)JsonUtil.getObject4JsonString(stdfilter.getColumnname(), SearchField.class);
-				filter +=" and "+ std.getField() +">'"+stdfilter.getStartdate()+"' and "+stdfilter.getColumnname()+"<'"+stdfilter.getEnddate()+"'";
+			if(stdfilter.getColumnname()!=null && stdfilter.getStartdate()!=null){
+					SearchField std = (SearchField)JsonUtil.getObject4JsonString(stdfilter.getColumnname(), SearchField.class);
+					filter +=" and "+ std.getField() +">'"+stdfilter.getStartdate()+"' and "+stdfilter.getColumnname()+"<'"+stdfilter.getEnddate()+"'";
 			}
 		}
 		
 		if(advfilters!=null){
 			for(XmCvadvfilter advfilter:advfilters){
 				SearchField adv = null;
-				if(advfilter.getColumnname()!=null){
+				if(advfilter.getColumnname()!=null && !advfilter.getColumnname().equals("")){
 					adv = (SearchField)JsonUtil.getObject4JsonString(advfilter.getColumnname(), SearchField.class);
 					filter +=" and "+adv.getField()+advfilter.getComparator()+this.getColumnVal(adv,advfilter);
 				}
