@@ -2,15 +2,15 @@
 <%@ include file="../common/config.jsp" %>
 
 <script>
-    var note_columns = ${dview};
-    var note_viewid = ${customview.cvid}
+    var noteplans_columns = ${dview};
+    var noteplans_viewid = ${customview.cvid}
 </script>
-<script type="text/javascript" 	src="resources/desktop/customer/note.js"></script>
+<script type="text/javascript" 	src="resources/desktop/customer/noteplans.js"></script>
 
 
 <div class="container">
 	<div class="hidden">
-		<div id="note_m1" style="width:100px;">
+		<div id="noteplans_m1" style="width:100px;">
 			<div data-options="iconCls:'icon-add'" >创建视图</div>
 			<div data-options="iconCls:'icon-edit'" >编辑</div>
 			<div data-options="iconCls:'icon-remove'" >删除</div>
@@ -25,12 +25,12 @@
 					<option value="${v.cvid }">${v.viewname}</option>
 				</c:forEach>
 				</select>
-				<a href="javascript:void(0)" class="easyui-menubutton" data-options="menu:'#note_m1',iconCls:'icon-tool'">管理</a>
+				<a href="javascript:void(0)" class="easyui-menubutton" data-options="menu:'#noteplans_m1',iconCls:'icon-tool'">管理</a>
 			</div>
 		</div>
 		<div data-options="region:'center',border:false"
 			style="overflow: hidden">
-			<table id="note_list" data-options="fit:true,fitColumns:true"></table>
+			<table id="noteplans_list" data-options="fit:true,fitColumns:true"></table>
 		</div>
 		<c:if test="${repfields!=null }">
 			<div data-options="region:'south',border:false">

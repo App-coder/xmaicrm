@@ -1,7 +1,6 @@
 package com.crm.customer.mapper;
 
 import com.crm.mapper.ModuleMapper;
-import com.crm.model.XmAccount;
 import com.crm.model.XmContactdetails;
 
 public interface XmContactdetailsMapper extends ModuleMapper<XmContactdetails>{
