@@ -6,8 +6,11 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.alibaba.fastjson.JSON;
 import com.crm.action.BaseController;
+import com.crm.bean.crm.Message;
 import com.crm.model.XmOrganizationdetails;
 import com.crm.settings.other.service.XmOrganizationdetailsService;
 /**
@@ -40,8 +43,13 @@ public class XmOrganizationConfigController extends BaseController {
 	}
 	
 	@RequestMapping(value = "/edit", method = RequestMethod.POST)
+	@ResponseBody
 	public String edit(XmOrganizationdetails details){
-		return "";
+		this.xmOrganizationdetailsService.update(details);
+		Message msg = new Message();
+		msg.setType(true);
+		msg.setMessage("公司信息编辑成功！");
+		return JSON.toJSONString(msg);
 	}
 	
 	

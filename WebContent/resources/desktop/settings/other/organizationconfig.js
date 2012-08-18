@@ -3,7 +3,7 @@ $(function() {
 });
 function initForm() {
     $('#form_organization').form({
-	url : 'settings/users/userEdit',
+	url : 'settings/organizationconfig/edit',
 	onSubmit : function() {
 
 	    //检查LOGO是否存在
@@ -28,20 +28,21 @@ function initForm() {
     });
 }
 function organizationSubmit() {
-    var logo = $("#logo").val();
+    var logo = $("#imgFile").val();
     if(!isempty(logo)){
 	if(isImg(logo)){
 	  //确定LOGO是否需要上传，进行处理！
 	    $.ajaxFileUpload({
 		url : "file/upload",
 		secureuri : false,
-		fileElementId : 'logo',
+		fileElementId : 'imgFile',
 		dataType : 'json',
-		data:{savepath:'attach/settings/other/organizationconfig'},
+		data:{fileloc:'attach/settings/other/organizationconfig/',dir:'image'},
 		success : function(data, status) {
-		    if(data.type == true){
-			var fileloc = data.message;
+		    if(data.error === 0 ){
+			var fileloc = data.fileurl;
 			$('#form_organization').find("input[name=logo]").val(fileloc)
+			$("#imgLogo").attr("src",data.url);
 			formsubmit('form_organization');
 		    }
 		},

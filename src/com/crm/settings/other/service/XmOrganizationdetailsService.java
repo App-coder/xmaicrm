@@ -6,4 +6,6 @@ public interface XmOrganizationdetailsService {
 
 	XmOrganizationdetails getDetails();
 
+	void update(XmOrganizationdetails details);
+
 }

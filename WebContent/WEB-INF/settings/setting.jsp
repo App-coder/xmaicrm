@@ -614,16 +614,14 @@
 											<tbody>
 												<tr>
 													<td valign="top"><a
-														href="javascript:tab('多仓库管理','settings/multiwarehouse/index')"><img
+														href="settings/cangkus/index"><img
 															border="0" title="多仓库管理" alt="多仓库管理"
 															src="resources/images/settings/panel/cangku.gif"></a></td>
 												</tr>
 												<tr>
 													<td valign="top" class="big"><a
-														href="javascript:tab('多仓库管理','settings/multiwarehouse/index')">多仓库管理</a></td>
-
+														href="settings/cangkus/index">多仓库管理</a></td>
 												</tr>
-
 											</tbody>
 										</table>
 									</td>

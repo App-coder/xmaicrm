@@ -145,6 +145,16 @@ public class HtmlUtil {
 	 */
 	public static String getUserStatus(){
 		StringBuffer stringBuffer = new StringBuffer();
+		stringBuffer.append("<option value=\"Active\">激活</option>");
+		stringBuffer.append("<option value=\"Inactive\">禁止</option>");
+		return stringBuffer.toString();
+	}
+	
+	/**
+	 * @return 状态->激活，禁止
+	 */
+	public static String getActiveStatus(){
+		StringBuffer stringBuffer = new StringBuffer();
 		stringBuffer.append("<option value=\"Active\">Active</option>");
 		stringBuffer.append("<option value=\"Inactive\">Inactive</option>");
 		return stringBuffer.toString();

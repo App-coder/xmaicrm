@@ -18,4 +18,6 @@ public interface XmOrganizationdetailsMapper {
     int updateByPrimaryKey(XmOrganizationdetails record);
 
 	XmOrganizationdetails getDetails();
+
+	void update(XmOrganizationdetails details);
 }

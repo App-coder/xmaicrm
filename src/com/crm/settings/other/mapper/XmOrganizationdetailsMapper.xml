@@ -240,4 +240,54 @@
     <include refid="Blob_Column_List" />
     from xm_organizationdetails
   </select>
+  <update id="update" parameterType="com.crm.model.XmOrganizationdetails" >
+  update xm_organizationdetails
+    <set >
+      <if test="address != null" >
+        address = #{address,jdbcType=VARCHAR},
+      </if>
+      <if test="city != null" >
+        city = #{city,jdbcType=VARCHAR},
+      </if>
+      <if test="state != null" >
+        state = #{state,jdbcType=VARCHAR},
+      </if>
+      <if test="country != null" >
+        country = #{country,jdbcType=VARCHAR},
+      </if>
+      <if test="code != null" >
+        code = #{code,jdbcType=VARCHAR},
+      </if>
+      <if test="phone != null" >
+        phone = #{phone,jdbcType=VARCHAR},
+      </if>
+      <if test="fax != null" >
+        fax = #{fax,jdbcType=VARCHAR},
+      </if>
+      <if test="website != null" >
+        website = #{website,jdbcType=VARCHAR},
+      </if>
+      <if test="logoname != null" >
+        logoname = #{logoname,jdbcType=VARCHAR},
+      </if>
+      <if test="person != null" >
+        person = #{person,jdbcType=VARCHAR},
+      </if>
+      <if test="bankname != null" >
+        bankname = #{bankname,jdbcType=VARCHAR},
+      </if>
+      <if test="bankaccount != null" >
+        bankaccount = #{bankaccount,jdbcType=VARCHAR},
+      </if>
+      <if test="taxno != null" >
+        taxno = #{taxno,jdbcType=VARCHAR},
+      </if>
+      <if test="logo != null" >
+        logo = #{logo,jdbcType=LONGVARCHAR},
+      </if>
+       <if test="organizationname != null" >
+        organizationname = #{organizationname,jdbcType=VARCHAR}
+      </if>
+    </set>
+  </update>
 </mapper>

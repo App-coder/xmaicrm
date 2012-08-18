@@ -213,6 +213,7 @@ public class FileController implements
 			try {
 				imgFile.getFileItem().write(file); // 将上传的文件写入新建的文件中
 				message.put("url",this.servletContext.getContextPath()+"/"+rootUrl);
+				message.put("fileurl", rootUrl);
 				message.put("error", 0);
 			} catch (Exception e) {
 				e.printStackTrace();

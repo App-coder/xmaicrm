@@ -25,4 +25,10 @@ public class XmOrganizationdetailsServiceImpl
 		return this.xmOrganizationdetailsMapper.getDetails();
 	}
 
+
+	@Override
+	public void update(XmOrganizationdetails details) {
+		this.xmOrganizationdetailsMapper.update(details);
+	}
+
 }

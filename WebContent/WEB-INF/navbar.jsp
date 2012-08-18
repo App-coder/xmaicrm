@@ -53,6 +53,9 @@
 	<c:when test="${pathname=='授权许可' }">
 		${syssetting }&gt;<a href="${url }">授权许可</a>
 	</c:when>	
+	<c:when test="${pathname=='多仓库管理' }">
+		${syssetting }&gt;<a href="${url }">多仓库管理</a>
+	</c:when>
 	<c:otherwise>
 		导航设置不正确！
 	</c:otherwise>
