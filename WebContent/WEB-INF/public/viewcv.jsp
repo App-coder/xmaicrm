@@ -2,10 +2,12 @@
     pageEncoding="utf-8"%>
 <%@ include file="../head.jsp"%>
 <%@ include file="../common/config.jsp"%>
+<%@ include file="../path.jsp" %>
 <c:choose>
 	<c:when test="${customview.cvid!=null && dview!=null}">
 		<script>
 			var tab_columns = ${dview};
+			tab_columns = setDefWidth(tab_columns,80);
 			var tab_viewid = ${customview.cvid};
 		</script>
 	</c:when>
@@ -52,7 +54,7 @@ var tablabel = '${tab.tablabel}';
 	
 </div>
 <div id="main">
-<div class="path"><a href="/">市场管理</a>&gt;<a href="/sc/">营销活动</a></div>
+<div class="path" id="navpath"></div>
 	<div class="d_view ">
 				<span class="icon-filter view_span">视图：</span> <select
 					class="sel_120">

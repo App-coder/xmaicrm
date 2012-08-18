@@ -69,11 +69,14 @@ public class ModuleUtil extends BaseController{
 						if(n.getFieldname()!=null){
 							if(n.getFieldname().indexOf("assigned_")!=-1){
 								ne.setField("user_name");
-							}else if(n.getFieldname().indexOf("_")!=-1){
-								XmTab tab = CustomViewUtil.getTabByLab(n.getFieldlabel());
-								XmEntityname et = CustomViewUtil.getEntitynameByET(tab.getName());
+							}
+							/*
+							else if(n.getFieldname().indexOf("_")!=-1){
+								XmEntityname et = CustomViewUtil.getEntitynameByET(n.getEntitytype());
 								ne.setField(et.getFieldname());
-							}else{
+							}
+							*/
+							else{
 								ne.setField(n.getFieldcolname());
 							}
 							ne.setTitle(n.getTitle());
@@ -95,13 +98,15 @@ public class ModuleUtil extends BaseController{
 		
 		//底部报表
 		List<XmField> repfields = this.xmFieldService.getReportField(tabname);
-		if(!customview.getEntitytype().equals("Products")&&!customview.getEntitytype().equals("Faq")&&!customview.getEntitytype().equals("PriceBooks")){
-			XmField uf = new XmField();
-			uf.setFieldname("assign_user_id");
-			uf.setTablename("xm_users");
-			uf.setColumnname("user_name");
-			uf.setFieldlabel("负责人");
-			repfields.add(uf);
+		if(customview!=null){
+			if(!customview.getEntitytype().equals("Products")&&!customview.getEntitytype().equals("Faq")&&!customview.getEntitytype().equals("PriceBooks")){
+				XmField uf = new XmField();
+				uf.setFieldname("assign_user_id");
+				uf.setTablename("xm_users");
+				uf.setColumnname("user_name");
+				uf.setFieldlabel("负责人");
+				repfields.add(uf);
+			}
 		}
 		
 		if(repfields.size()>=1){

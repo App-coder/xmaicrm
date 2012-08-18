@@ -4,12 +4,15 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.alibaba.fastjson.JSON;
 import com.crm.action.BaseController;
+import com.crm.bean.easyui.ListBean;
 import com.crm.model.XmUsers;
 import com.crm.settings.basic.service.XmUsersService;
+import com.crm.util.JsonUtil;
 
 import java.util.*;
 
@@ -38,13 +41,18 @@ public class XmUsersController extends BaseController {
 		return "settings/basic/users";
 	}
 	
-	@RequestMapping(value = "/list", method = RequestMethod.GET)
+	@RequestMapping(value = "/list", method = RequestMethod.POST)
 	@ResponseBody
-	public String list(int page, int rows){
+	public String list(@RequestParam("page") int page,@RequestParam("rows") int rows){
 		
-//		List<XmUsers> users = 
+		List<Object> users = this.xmUsersService.getSysUser(page,rows);
+		int total = this.xmUsersService.getTotal();
+
+		ListBean bean = new ListBean();
+		bean.setTotal(total);
+		bean.setRows(users);
 		
-		return "";
+		return JSON.toJSONString(bean);
 	}
 	
 }

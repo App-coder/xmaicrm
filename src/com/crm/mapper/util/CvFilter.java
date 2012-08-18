@@ -150,13 +150,6 @@ public class CvFilter {
 					if(n.getFieldname().indexOf("assigned_")!=-1){
 						totalfilter +=" INNER JOIN xm_users on "+n.getFieldtabname()+"."+n.getFieldcolname()+"=xm_users.id";
 					}
-					/*
-					else if(n.getFieldname().indexOf("_")!=-1){
-						XmTab tab = CustomViewUtil.getTabByLab(n.getFieldlabel());
-						XmEntityname et = CustomViewUtil.getEntitynameByET(tab.getName());
-						totalfilter += " INNER JOIN "+et.getTablename() +" on "+n.getFieldtabname()+"."+n.getFieldcolname()+"="+cd.getTablename()+"."+cd.getEntityidfield();
-					}
-					*/
 				}
 			}
 		}else{
@@ -186,30 +179,16 @@ public class CvFilter {
 
 						joinstr +=" INNER JOIN xm_users on "+n.getFieldtabname()+"."+n.getFieldcolname()+"=xm_users.id";
 						
-					}
-					/*
-					else if(n.getFieldname().indexOf("_")!=-1){
-						XmTab tab = CustomViewUtil.getTabByLab(n.getFieldlabel());
-						XmEntityname et = CustomViewUtil.getEntitynameByET(tab.getName());
-						if(columnstr!=""){
-							columnstr +=","+et.getTablename()+"."+et.getFieldname();
-						}else{
-							columnstr +=et.getTablename()+"."+et.getFieldname();
-						}
-
-						joinstr += " INNER JOIN "+et.getTablename() +" on "+n.getFieldtabname()+"."+n.getFieldcolname()+"="+et.getTablename()+"."+et.getEntityidfield();
+					}else if(n.getFieldname().indexOf("_")!=-1){ 
 						
-					}
-					*/
-					else if(n.getFieldname().indexOf("_")!=-1){
-						XmTab tab = CustomViewUtil.getTabByLab(n.getFieldlabel());
-						XmEntityname et = CustomViewUtil.getEntitynameByET(tab.getName());
+						XmEntityname et  =  CustomViewUtil.getEntitynameByET(n.getEntitytype());
+						XmEntityname eref = CustomViewUtil.getEntitynameByEID(n.getFieldname().replace("_", ""));
+							
 						if(columnstr!=""){
-							columnstr +=",( select "+et.getFieldname()+" from "+et.getTablename()+" where "+et.getEntityidfield()+" = "+ey.getTablename()+"."+n.getFieldname()+"  )  as "+et.getFieldname();
+							columnstr +=",( select "+eref.getFieldname()+" from "+eref.getTablename()+" as tmp where tmp."+eref.getEntityidfield()+" = "+ey.getTablename()+"."+n.getFieldcolname()+" )  as "+n.getFieldcolname();
 						}else{
-							columnstr +="( select "+et.getFieldname()+" from "+et.getTablename()+" where "+et.getEntityidfield()+" = "+ey.getTablename()+"."+n.getFieldname()+" )  as  "+et.getFieldname();
+							columnstr +="( select "+eref.getFieldname()+" from "+eref.getTablename()+" as tmp where tmp."+eref.getEntityidfield()+" = "+ey.getTablename()+"."+n.getFieldcolname()+" )  as  "+n.getFieldcolname();
 						}
-
 						
 					}else{
 						if(columnstr!=""){

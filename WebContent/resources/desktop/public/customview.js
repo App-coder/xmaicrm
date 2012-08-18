@@ -25,7 +25,7 @@ function initBind() {
             var cols = [];
             for(var i=1;i<=9;i++){
         	var selval = $('#form_customview').find("select[name=column_"+i+"]").find("option[selected=selected]").attr("fid");
-        	if(selval!=""&&selval!="undefined"){
+        	if(selval!=""&&selval!="undefined"&&selval!=undefined){
         	    cols.push(selval);
         	}
             }

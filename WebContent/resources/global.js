@@ -241,3 +241,11 @@ function mm(arr) {
 	}
 	return false;
 }
+function setDefWidth(cols,wid){
+    for(var i=0;i<cols.length;i++){
+	if(cols[i].width!="undefined"){
+	    cols[i].width = wid;
+	}
+    }
+    return cols;
+}

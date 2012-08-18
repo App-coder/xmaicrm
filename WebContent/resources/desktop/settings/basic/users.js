@@ -4,6 +4,33 @@ $(function(){
 //初始化
 function initPage(){
     
+    var cols = [ {
+	    field : 'last_name',
+	    title : '姓名'
+	},{
+	    field : 'user_name',
+	    title : '用户名'
+	},{
+	    field : 'rolename',
+	    title : '角色'
+	},{
+	    field : 'groupname',
+	    title : '部门'
+	},{
+	    field : 'status',
+	    title : '状态'
+	},{
+	    field : 'is_admin',
+	    title : '管理员'
+	},{
+	    field : 'phone_work',
+	    title : '电话'
+	},{
+	    field : 'email1',
+	    title : 'Email'
+    }];
+    cols = setDefWidth(cols,80);
+    
     $('#user_list').datagrid({
 	url : 'settings/users/list',
 	collapsible : false,
@@ -11,6 +38,7 @@ function initPage(){
 	singleSelect : true,
 	rownumbers : true,
 	pagination:true,
+	fitColumns:true,
 	toolbar : [ {
 	    text : '添加',
 	    iconCls:'icon-add',
@@ -34,31 +62,7 @@ function initPage(){
 		field : 'ck',
 		checkbox : true
 	}]],
-	columns : [ [ {
-	    field : 'name',
-	    title : '姓名',
-	},{
-	    field : 'name',
-	    title : '用户名',
-	},{
-	    field : 'name',
-	    title : '角色',
-	},{
-	    field : 'name',
-	    title : '部门',
-	},{
-	    field : 'name',
-	    title : '状态',
-	},{
-	    field : 'name',
-	    title : '管理员',
-	},{
-	    field : 'name',
-	    title : '电话',
-	},{
-	    field : 'name',
-	    title : 'Email',
-	}] ],
+	columns : [ cols ],
     });
     
 }

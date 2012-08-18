@@ -52,7 +52,7 @@ function init(){
 			checkbox : true
 		}]],
 		onLoadSuccess:function(data){
-		    if(data.footer!="undefined"){
+		    if(data.footer!=undefined){
 			$(".stat_div").empty();
 			for(var i=0;i<data.footer.length;i++){
 			    var stat = $(".div_statdemo").clone();

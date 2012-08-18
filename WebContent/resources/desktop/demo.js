@@ -1,4 +1,14 @@
 $(function() {
+    
+    /**
+     * 	collapsible : false,
+	idField : '',
+	singleSelect : true,
+	rownumbers : true,
+	pagination:true,
+     * 
+     */
+    
     $('#demo_list').datagrid({
 	url : 'admin/emailregistry/list',
 	fit : 'true',

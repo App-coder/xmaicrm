@@ -7,6 +7,7 @@
 <body id="wrap">
 <%@ include file="../../nav.jsp"%>
 <div id="main">
+<div class="path"><a href="/">市场管理</a>&gt;<a href="/sc/">营销活动</a></div>
 <table id="user_list" data-options="fitColumns:true"></table>
 </div>
 <%@ include file="../../foot.jsp"%>
