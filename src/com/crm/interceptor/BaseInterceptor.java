@@ -60,7 +60,6 @@ public class BaseInterceptor implements HandlerInterceptor {
 			CacheManager.putInCache(Constant.TAB, hmentityname);
 			CacheManager.putInCache(Constant.TABBYLAB, hmlabtabs);
 		}
-		LogUtil.logger.info("23");
 		return true;
 	}
 	

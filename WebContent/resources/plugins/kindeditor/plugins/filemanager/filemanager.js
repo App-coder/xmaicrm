@@ -70,7 +70,7 @@ KindEditor.plugin('filemanager', function(K) {
 		viewTypeBox = K('[name="viewType"]', div),
 		orderTypeBox = K('[name="orderType"]', div);
 		function reloadPage(path, order, func) {
-			var param = 'path=' + path + '&order=' + order + '&dir=' + dirName+'&imgLocation='+self.options.imgLocation;;
+			var param = 'path=' + path + '&order=' + order + '&dir=' + dirName+'&fileloc='+self.options.fileloc;;
 			dialog.showLoading(self.lang('ajaxLoading'));
 			K.ajax(K.addParam(fileManagerJson, param + '&' + new Date().getTime()), function(data) {
 				dialog.hideLoading();

@@ -16,7 +16,7 @@
 			<div id="useredit" class="easyui-window" <%=win_topbar%> style="width: 700px; height: 432px;">
 				<div class="easyui-layout" data-options="fit:true,border:false">
 					<div data-options="region:'center',border:false"
-						style="padding: 10px; background: #fff;">
+						style="padding: 10px;">
 						<input type="hidden" value="" name="todo"/>
 						<form id="form_add" name="form_add" method="post" class="hidden">
 							<input type="hidden" name="action" value="add"/>

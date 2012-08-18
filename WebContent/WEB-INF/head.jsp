@@ -8,7 +8,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-<base href="http://localhost:8080/xmaicrm/"/>
+<base href="/xmaicrm/"/>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>${webtitle}</title>
 <link rel="stylesheet" type="text/css" href="resources/easyui/themes/default/easyui.css">
@@ -30,3 +30,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <!-- 菜单 -->
 <link rel="stylesheet" type="text/css" href="resources/prodrop/pro_drop.css" />
 <script src="resources/prodrop/stuHover.js" type="text/javascript"></script>
+
+<!-- 表单验证 -->
+<script type="text/javascript" src="resources/lib/checkvalidate.js"></script>
+
+<!-- 文件上传 -->
+<script type="text/javascript" src="resources/plugins/ajaxfileupload.js"></script>

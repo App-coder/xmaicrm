@@ -101,7 +101,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
       out.write("\r\n");
       out.write("\r\n");
 
-String win_topbar = "closed=\"true\" modal=\"true\" collapsible=\"false\"  draggable=\"false\" minimizable=\"false\" maximizable=\"false\" inline=\"false\"";
+String win_topbar = "resizable=\"false\"  closed=\"true\" modal=\"true\" collapsible=\"false\"  draggable=\"false\" minimizable=\"false\" maximizable=\"false\" inline=\"false\"";
 
       out.write("    ");
       out.write("\r\n");
@@ -415,15 +415,14 @@ String win_topbar = "closed=\"true\" modal=\"true\" collapsible=\"false\"  dragg
       out.write("\t\t\t\t\t\t\t\t\t\t\tcellpadding=\"5\" border=\"0\">\r\n");
       out.write("\t\t\t\t\t\t\t\t\t\t\t<tbody>\r\n");
       out.write("\t\t\t\t\t\t\t\t\t\t\t\t<tr>\r\n");
-      out.write("\r\n");
       out.write("\t\t\t\t\t\t\t\t\t\t\t\t\t<td valign=\"top\"><a\r\n");
-      out.write("\t\t\t\t\t\t\t\t\t\t\t\t\t\thref=\"javascript:tab('显示区域','settings/picklist/index')\"><img\r\n");
+      out.write("\t\t\t\t\t\t\t\t\t\t\t\t\t\thref=\"settings/customblock/index\"><img\r\n");
       out.write("\t\t\t\t\t\t\t\t\t\t\t\t\t\t\tborder=\"0\" title=\"显示区域\" alt=\"显示区域\"\r\n");
       out.write("\t\t\t\t\t\t\t\t\t\t\t\t\t\t\tsrc=\"resources/images/settings/panel/blocklist.gif\"></a></td>\r\n");
       out.write("\t\t\t\t\t\t\t\t\t\t\t\t</tr>\r\n");
       out.write("\t\t\t\t\t\t\t\t\t\t\t\t<tr>\r\n");
       out.write("\t\t\t\t\t\t\t\t\t\t\t\t\t<td valign=\"top\" class=\"big\"><a\r\n");
-      out.write("\t\t\t\t\t\t\t\t\t\t\t\t\t\thref=\"javascript:tab('显示区域','settings/picklist/index')\">显示区域</a></td>\r\n");
+      out.write("\t\t\t\t\t\t\t\t\t\t\t\t\t\thref=\"settings/customblock/index\">显示区域</a></td>\r\n");
       out.write("\t\t\t\t\t\t\t\t\t\t\t\t</tr>\r\n");
       out.write("\r\n");
       out.write("\t\t\t\t\t\t\t\t\t\t\t</tbody>\r\n");

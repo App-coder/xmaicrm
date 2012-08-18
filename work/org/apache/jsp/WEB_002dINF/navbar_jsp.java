@@ -238,13 +238,13 @@ public final class navbar_jsp extends org.apache.jasper.runtime.HttpJspBase
         out.write('	');
         if (_jspx_meth_c_005fwhen_005f8(_jspx_th_c_005fchoose_005f0, _jspx_page_context))
           return true;
-        out.write("\t\r\n");
-        out.write("\t");
-        if (_jspx_meth_c_005fwhen_005f9(_jspx_th_c_005fchoose_005f0, _jspx_page_context))
-          return true;
         out.write('\r');
         out.write('\n');
         out.write('	');
+        if (_jspx_meth_c_005fwhen_005f9(_jspx_th_c_005fchoose_005f0, _jspx_page_context))
+          return true;
+        out.write("\t\r\n");
+        out.write("\t");
         if (_jspx_meth_c_005fwhen_005f10(_jspx_th_c_005fchoose_005f0, _jspx_page_context))
           return true;
         out.write('\r');
@@ -261,6 +261,11 @@ public final class navbar_jsp extends org.apache.jasper.runtime.HttpJspBase
         out.write('\n');
         out.write('	');
         if (_jspx_meth_c_005fwhen_005f13(_jspx_th_c_005fchoose_005f0, _jspx_page_context))
+          return true;
+        out.write('\r');
+        out.write('\n');
+        out.write('	');
+        if (_jspx_meth_c_005fwhen_005f14(_jspx_th_c_005fchoose_005f0, _jspx_page_context))
           return true;
         out.write("\t\r\n");
         out.write("\t");
@@ -521,7 +526,7 @@ public final class navbar_jsp extends org.apache.jasper.runtime.HttpJspBase
     _jspx_th_c_005fwhen_005f7.setPageContext(_jspx_page_context);
     _jspx_th_c_005fwhen_005f7.setParent((javax.servlet.jsp.tagext.Tag) _jspx_th_c_005fchoose_005f0);
     // /WEB-INF/navbar.jsp(32,1) name = test type = boolean reqTime = true required = true fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
-    _jspx_th_c_005fwhen_005f7.setTest(((java.lang.Boolean) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${pathname=='系统日志' }", java.lang.Boolean.class, (PageContext)_jspx_page_context, null, false)).booleanValue());
+    _jspx_th_c_005fwhen_005f7.setTest(((java.lang.Boolean) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${pathname=='显示区域' }", java.lang.Boolean.class, (PageContext)_jspx_page_context, null, false)).booleanValue());
     int _jspx_eval_c_005fwhen_005f7 = _jspx_th_c_005fwhen_005f7.doStartTag();
     if (_jspx_eval_c_005fwhen_005f7 != javax.servlet.jsp.tagext.Tag.SKIP_BODY) {
       do {
@@ -530,7 +535,7 @@ public final class navbar_jsp extends org.apache.jasper.runtime.HttpJspBase
         out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${syssetting }", java.lang.String.class, (PageContext)_jspx_page_context, null, false));
         out.write("&gt;<a href=\"");
         out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${url }", java.lang.String.class, (PageContext)_jspx_page_context, null, false));
-        out.write("\">系统日志</a>\r\n");
+        out.write("\">显示区域</a>\r\n");
         out.write("\t");
         int evalDoAfterBody = _jspx_th_c_005fwhen_005f7.doAfterBody();
         if (evalDoAfterBody != javax.servlet.jsp.tagext.BodyTag.EVAL_BODY_AGAIN)
@@ -554,7 +559,7 @@ public final class navbar_jsp extends org.apache.jasper.runtime.HttpJspBase
     _jspx_th_c_005fwhen_005f8.setPageContext(_jspx_page_context);
     _jspx_th_c_005fwhen_005f8.setParent((javax.servlet.jsp.tagext.Tag) _jspx_th_c_005fchoose_005f0);
     // /WEB-INF/navbar.jsp(35,1) name = test type = boolean reqTime = true required = true fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
-    _jspx_th_c_005fwhen_005f8.setTest(((java.lang.Boolean) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${pathname=='登入历史' }", java.lang.Boolean.class, (PageContext)_jspx_page_context, null, false)).booleanValue());
+    _jspx_th_c_005fwhen_005f8.setTest(((java.lang.Boolean) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${pathname=='系统日志' }", java.lang.Boolean.class, (PageContext)_jspx_page_context, null, false)).booleanValue());
     int _jspx_eval_c_005fwhen_005f8 = _jspx_th_c_005fwhen_005f8.doStartTag();
     if (_jspx_eval_c_005fwhen_005f8 != javax.servlet.jsp.tagext.Tag.SKIP_BODY) {
       do {
@@ -563,7 +568,7 @@ public final class navbar_jsp extends org.apache.jasper.runtime.HttpJspBase
         out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${syssetting }", java.lang.String.class, (PageContext)_jspx_page_context, null, false));
         out.write("&gt;<a href=\"");
         out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${url }", java.lang.String.class, (PageContext)_jspx_page_context, null, false));
-        out.write("\">登入历史</a>\r\n");
+        out.write("\">系统日志</a>\r\n");
         out.write("\t");
         int evalDoAfterBody = _jspx_th_c_005fwhen_005f8.doAfterBody();
         if (evalDoAfterBody != javax.servlet.jsp.tagext.BodyTag.EVAL_BODY_AGAIN)
@@ -587,7 +592,7 @@ public final class navbar_jsp extends org.apache.jasper.runtime.HttpJspBase
     _jspx_th_c_005fwhen_005f9.setPageContext(_jspx_page_context);
     _jspx_th_c_005fwhen_005f9.setParent((javax.servlet.jsp.tagext.Tag) _jspx_th_c_005fchoose_005f0);
     // /WEB-INF/navbar.jsp(38,1) name = test type = boolean reqTime = true required = true fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
-    _jspx_th_c_005fwhen_005f9.setTest(((java.lang.Boolean) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${pathname=='Email模版' }", java.lang.Boolean.class, (PageContext)_jspx_page_context, null, false)).booleanValue());
+    _jspx_th_c_005fwhen_005f9.setTest(((java.lang.Boolean) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${pathname=='登入历史' }", java.lang.Boolean.class, (PageContext)_jspx_page_context, null, false)).booleanValue());
     int _jspx_eval_c_005fwhen_005f9 = _jspx_th_c_005fwhen_005f9.doStartTag();
     if (_jspx_eval_c_005fwhen_005f9 != javax.servlet.jsp.tagext.Tag.SKIP_BODY) {
       do {
@@ -596,7 +601,7 @@ public final class navbar_jsp extends org.apache.jasper.runtime.HttpJspBase
         out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${syssetting }", java.lang.String.class, (PageContext)_jspx_page_context, null, false));
         out.write("&gt;<a href=\"");
         out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${url }", java.lang.String.class, (PageContext)_jspx_page_context, null, false));
-        out.write("\">Email模版</a>\r\n");
+        out.write("\">登入历史</a>\r\n");
         out.write("\t");
         int evalDoAfterBody = _jspx_th_c_005fwhen_005f9.doAfterBody();
         if (evalDoAfterBody != javax.servlet.jsp.tagext.BodyTag.EVAL_BODY_AGAIN)
@@ -620,7 +625,7 @@ public final class navbar_jsp extends org.apache.jasper.runtime.HttpJspBase
     _jspx_th_c_005fwhen_005f10.setPageContext(_jspx_page_context);
     _jspx_th_c_005fwhen_005f10.setParent((javax.servlet.jsp.tagext.Tag) _jspx_th_c_005fchoose_005f0);
     // /WEB-INF/navbar.jsp(41,1) name = test type = boolean reqTime = true required = true fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
-    _jspx_th_c_005fwhen_005f10.setTest(((java.lang.Boolean) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${pathname=='公司信息管理 ' }", java.lang.Boolean.class, (PageContext)_jspx_page_context, null, false)).booleanValue());
+    _jspx_th_c_005fwhen_005f10.setTest(((java.lang.Boolean) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${pathname=='Email模版' }", java.lang.Boolean.class, (PageContext)_jspx_page_context, null, false)).booleanValue());
     int _jspx_eval_c_005fwhen_005f10 = _jspx_th_c_005fwhen_005f10.doStartTag();
     if (_jspx_eval_c_005fwhen_005f10 != javax.servlet.jsp.tagext.Tag.SKIP_BODY) {
       do {
@@ -629,7 +634,7 @@ public final class navbar_jsp extends org.apache.jasper.runtime.HttpJspBase
         out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${syssetting }", java.lang.String.class, (PageContext)_jspx_page_context, null, false));
         out.write("&gt;<a href=\"");
         out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${url }", java.lang.String.class, (PageContext)_jspx_page_context, null, false));
-        out.write("\">公司信息管理</a>\r\n");
+        out.write("\">Email模版</a>\r\n");
         out.write("\t");
         int evalDoAfterBody = _jspx_th_c_005fwhen_005f10.doAfterBody();
         if (evalDoAfterBody != javax.servlet.jsp.tagext.BodyTag.EVAL_BODY_AGAIN)
@@ -653,7 +658,7 @@ public final class navbar_jsp extends org.apache.jasper.runtime.HttpJspBase
     _jspx_th_c_005fwhen_005f11.setPageContext(_jspx_page_context);
     _jspx_th_c_005fwhen_005f11.setParent((javax.servlet.jsp.tagext.Tag) _jspx_th_c_005fchoose_005f0);
     // /WEB-INF/navbar.jsp(44,1) name = test type = boolean reqTime = true required = true fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
-    _jspx_th_c_005fwhen_005f11.setTest(((java.lang.Boolean) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${pathname=='SMTP服务器 ' }", java.lang.Boolean.class, (PageContext)_jspx_page_context, null, false)).booleanValue());
+    _jspx_th_c_005fwhen_005f11.setTest(((java.lang.Boolean) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${pathname=='公司信息管理 ' }", java.lang.Boolean.class, (PageContext)_jspx_page_context, null, false)).booleanValue());
     int _jspx_eval_c_005fwhen_005f11 = _jspx_th_c_005fwhen_005f11.doStartTag();
     if (_jspx_eval_c_005fwhen_005f11 != javax.servlet.jsp.tagext.Tag.SKIP_BODY) {
       do {
@@ -662,7 +667,7 @@ public final class navbar_jsp extends org.apache.jasper.runtime.HttpJspBase
         out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${syssetting }", java.lang.String.class, (PageContext)_jspx_page_context, null, false));
         out.write("&gt;<a href=\"");
         out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${url }", java.lang.String.class, (PageContext)_jspx_page_context, null, false));
-        out.write("\">SMTP服务器</a>\r\n");
+        out.write("\">公司信息管理</a>\r\n");
         out.write("\t");
         int evalDoAfterBody = _jspx_th_c_005fwhen_005f11.doAfterBody();
         if (evalDoAfterBody != javax.servlet.jsp.tagext.BodyTag.EVAL_BODY_AGAIN)
@@ -686,7 +691,7 @@ public final class navbar_jsp extends org.apache.jasper.runtime.HttpJspBase
     _jspx_th_c_005fwhen_005f12.setPageContext(_jspx_page_context);
     _jspx_th_c_005fwhen_005f12.setParent((javax.servlet.jsp.tagext.Tag) _jspx_th_c_005fchoose_005f0);
     // /WEB-INF/navbar.jsp(47,1) name = test type = boolean reqTime = true required = true fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
-    _jspx_th_c_005fwhen_005f12.setTest(((java.lang.Boolean) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${pathname=='货币币种' }", java.lang.Boolean.class, (PageContext)_jspx_page_context, null, false)).booleanValue());
+    _jspx_th_c_005fwhen_005f12.setTest(((java.lang.Boolean) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${pathname=='SMTP服务器 ' }", java.lang.Boolean.class, (PageContext)_jspx_page_context, null, false)).booleanValue());
     int _jspx_eval_c_005fwhen_005f12 = _jspx_th_c_005fwhen_005f12.doStartTag();
     if (_jspx_eval_c_005fwhen_005f12 != javax.servlet.jsp.tagext.Tag.SKIP_BODY) {
       do {
@@ -695,7 +700,7 @@ public final class navbar_jsp extends org.apache.jasper.runtime.HttpJspBase
         out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${syssetting }", java.lang.String.class, (PageContext)_jspx_page_context, null, false));
         out.write("&gt;<a href=\"");
         out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${url }", java.lang.String.class, (PageContext)_jspx_page_context, null, false));
-        out.write("\">货币币种</a>\r\n");
+        out.write("\">SMTP服务器</a>\r\n");
         out.write("\t");
         int evalDoAfterBody = _jspx_th_c_005fwhen_005f12.doAfterBody();
         if (evalDoAfterBody != javax.servlet.jsp.tagext.BodyTag.EVAL_BODY_AGAIN)
@@ -719,7 +724,7 @@ public final class navbar_jsp extends org.apache.jasper.runtime.HttpJspBase
     _jspx_th_c_005fwhen_005f13.setPageContext(_jspx_page_context);
     _jspx_th_c_005fwhen_005f13.setParent((javax.servlet.jsp.tagext.Tag) _jspx_th_c_005fchoose_005f0);
     // /WEB-INF/navbar.jsp(50,1) name = test type = boolean reqTime = true required = true fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
-    _jspx_th_c_005fwhen_005f13.setTest(((java.lang.Boolean) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${pathname=='授权许可' }", java.lang.Boolean.class, (PageContext)_jspx_page_context, null, false)).booleanValue());
+    _jspx_th_c_005fwhen_005f13.setTest(((java.lang.Boolean) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${pathname=='货币币种' }", java.lang.Boolean.class, (PageContext)_jspx_page_context, null, false)).booleanValue());
     int _jspx_eval_c_005fwhen_005f13 = _jspx_th_c_005fwhen_005f13.doStartTag();
     if (_jspx_eval_c_005fwhen_005f13 != javax.servlet.jsp.tagext.Tag.SKIP_BODY) {
       do {
@@ -728,7 +733,7 @@ public final class navbar_jsp extends org.apache.jasper.runtime.HttpJspBase
         out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${syssetting }", java.lang.String.class, (PageContext)_jspx_page_context, null, false));
         out.write("&gt;<a href=\"");
         out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${url }", java.lang.String.class, (PageContext)_jspx_page_context, null, false));
-        out.write("\">授权许可</a>\r\n");
+        out.write("\">货币币种</a>\r\n");
         out.write("\t");
         int evalDoAfterBody = _jspx_th_c_005fwhen_005f13.doAfterBody();
         if (evalDoAfterBody != javax.servlet.jsp.tagext.BodyTag.EVAL_BODY_AGAIN)
@@ -740,6 +745,39 @@ public final class navbar_jsp extends org.apache.jasper.runtime.HttpJspBase
       return true;
     }
     _005fjspx_005ftagPool_005fc_005fwhen_0026_005ftest.reuse(_jspx_th_c_005fwhen_005f13);
+    return false;
+  }
+
+  private boolean _jspx_meth_c_005fwhen_005f14(javax.servlet.jsp.tagext.JspTag _jspx_th_c_005fchoose_005f0, PageContext _jspx_page_context)
+          throws Throwable {
+    PageContext pageContext = _jspx_page_context;
+    JspWriter out = _jspx_page_context.getOut();
+    //  c:when
+    org.apache.taglibs.standard.tag.rt.core.WhenTag _jspx_th_c_005fwhen_005f14 = (org.apache.taglibs.standard.tag.rt.core.WhenTag) _005fjspx_005ftagPool_005fc_005fwhen_0026_005ftest.get(org.apache.taglibs.standard.tag.rt.core.WhenTag.class);
+    _jspx_th_c_005fwhen_005f14.setPageContext(_jspx_page_context);
+    _jspx_th_c_005fwhen_005f14.setParent((javax.servlet.jsp.tagext.Tag) _jspx_th_c_005fchoose_005f0);
+    // /WEB-INF/navbar.jsp(53,1) name = test type = boolean reqTime = true required = true fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
+    _jspx_th_c_005fwhen_005f14.setTest(((java.lang.Boolean) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${pathname=='授权许可' }", java.lang.Boolean.class, (PageContext)_jspx_page_context, null, false)).booleanValue());
+    int _jspx_eval_c_005fwhen_005f14 = _jspx_th_c_005fwhen_005f14.doStartTag();
+    if (_jspx_eval_c_005fwhen_005f14 != javax.servlet.jsp.tagext.Tag.SKIP_BODY) {
+      do {
+        out.write("\r\n");
+        out.write("\t\t");
+        out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${syssetting }", java.lang.String.class, (PageContext)_jspx_page_context, null, false));
+        out.write("&gt;<a href=\"");
+        out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${url }", java.lang.String.class, (PageContext)_jspx_page_context, null, false));
+        out.write("\">授权许可</a>\r\n");
+        out.write("\t");
+        int evalDoAfterBody = _jspx_th_c_005fwhen_005f14.doAfterBody();
+        if (evalDoAfterBody != javax.servlet.jsp.tagext.BodyTag.EVAL_BODY_AGAIN)
+          break;
+      } while (true);
+    }
+    if (_jspx_th_c_005fwhen_005f14.doEndTag() == javax.servlet.jsp.tagext.Tag.SKIP_PAGE) {
+      _005fjspx_005ftagPool_005fc_005fwhen_0026_005ftest.reuse(_jspx_th_c_005fwhen_005f14);
+      return true;
+    }
+    _005fjspx_005ftagPool_005fc_005fwhen_0026_005ftest.reuse(_jspx_th_c_005fwhen_005f14);
     return false;
   }
 
