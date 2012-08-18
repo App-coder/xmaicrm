@@ -36,9 +36,38 @@ function init(){
 		    text : '删除',
 		    iconCls:'icon-remove',
 		    handler : function() {
+			//删除多条记录，注意
+			var selected = $('#view_list').datagrid("getSelections");
+			if(selected.length!=0){
+			    	confirm('确定删除营销活动？',function(r){
+				    if(r){
+					var recordids = ""
+					for(var i=0;i<selected.length;i++){
+					    if(i==0){
+						recordids +=selected.campaignid;
+					    }else{
+						recordids +=","+selected.campaignid;
+					    }
+					}
+					
+					$.post('crm/module/campaigns/deleteRecords',{recordids:recordids},function(res){
+						if(res.type == true){
+						    $('#view_list').datagrid("reload")
+						}
+					},'json');
+				    }
+				});
+			}else{
+			    message("请选择记录！");
+			}			
+		    }
+		},{
+		    text : '预览',
+		    iconCls:'icon-view',
+		    handler : function() {
 			var selected = $('#view_list').datagrid("getSelected");
 			if(selected){
-			    
+			    window.location.href="crm/module/campaigns/view?recordid="+selected.campaignid+"&ptb="+ptb+"&module="+entitytype;
 			}else{
 			    message("请选择记录！");
 			}			

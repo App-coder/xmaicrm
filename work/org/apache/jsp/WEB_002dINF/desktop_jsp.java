@@ -166,7 +166,7 @@ String win_topbar = "resizable=\"false\"  closed=\"true\" modal=\"true\" collaps
       out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${navbar }", java.lang.String.class, (PageContext)_jspx_page_context, null, false));
       out.write("\r\n");
       out.write("<div id=\"main\" >\r\n");
-      out.write("<div class=\"path\" >&gt;<a  href=\"crm/welcome/desktop\">工作台</a></div>\r\n");
+      out.write("<div class=\"path\" >&gt;<a  href=\"crm/module/home/index\">工作台</a></div>\r\n");
       out.write("<div id=\"desktop\" >\r\n");
       out.write("\t\t<div style=\"width:33%;\">\r\n");
       out.write("\t\t\t");

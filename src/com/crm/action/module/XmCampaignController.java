@@ -10,6 +10,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.SessionAttributes;
 
@@ -100,5 +101,45 @@ public class XmCampaignController extends BaseController {
 		}
 		return JSON.toJSONString(msg);
 	}
+	
+	@RequestMapping(value = "/view")
+	public String view(int recordid,String module,int ptb,ModelMap modelmap){
+		
+		this.actionCls.showView(ptb, module, modelmap,recordid);
+		
+		return "module/campaigns/view";
+	}
+	
+	@RequestMapping(value = "/deleteById", method = RequestMethod.POST)
+	@ResponseBody
+	public String deleteById(int recordid){
+		boolean res = this.xmCampaignService.delete(recordid);
+		Message msg = new Message();
+		if(res == true){
+			msg.setType(true);
+			msg.setMessage("删除成功！");
+		}else{
+			msg.setType(false);
+			msg.setMessage("删除失败！");
+		}
+		return JSON.toJSONString(msg);
+	}
+	
+	@RequestMapping(value = "/deleteRecords", method = RequestMethod.POST)
+	@ResponseBody
+	public String deleteRecords(String recordids){
+		boolean res = this.xmCampaignService.deleteRecords(recordids);
+		Message msg = new Message();
+		if(res == true){
+			msg.setType(true);
+			msg.setMessage("删除成功！");
+		}else{
+			msg.setType(false);
+			msg.setMessage("删除失败！");
+		}
+		return JSON.toJSONString(msg);
+	}
+	
+	
 	
 }

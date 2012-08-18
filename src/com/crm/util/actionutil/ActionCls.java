@@ -259,4 +259,56 @@ public class ActionCls {
 		return false;
 	}
 
+	public void showView(int ptb, String module, ModelMap modelmap, int recordid) {
+		Map obj = null;
+		if(recordid!=0){
+			modelmap.addAttribute("recordid",recordid);
+			obj = this.xmCustomViewService.getObject(recordid,module);
+			modelmap.addAttribute("record",obj);
+		}
+		
+		XmTab tab = CustomViewUtil.getTabByName(module);
+		modelmap.addAttribute("tab",tab );
+
+		HashMap<Integer, XmParenttab> parenttabs = (HashMap<Integer, XmParenttab>) CacheManager
+				.getFromCache(Constant.PARENTTAB);
+		XmParenttab parenttab = parenttabs.get(ptb);
+		modelmap.addAttribute("ptb", parenttab);
+		
+		// 初始化编辑窗口
+		XmEntityname entity = this.xmEntitynameService.getEntityByModule(module);
+		modelmap.addAttribute("entity", entity);
+
+		// 得到block，
+		List<XmBlocks> blocks = this.xmBlocksService.getFieldBlocksByTabId(entity
+				.getTabid());
+
+		List<Object> blockArray = new ArrayList<Object>();
+		for (int i = 0; i < blocks.size(); i++) {
+			blockArray.add(blocks.get(i).getBlockid());
+		}
+		String blockstr = ArrayUtil.arrayToJoinStr(blockArray, ",", true);
+
+		List<XmField> fields = this.xmFieldService.getDisplayFields(
+				entity.getTabid(), blockstr);
+		Set setblock = new HashSet();
+
+		if (fields.size() > 0) {
+			for (int i = 0; i < fields.size(); i++) {
+				fields.get(i).setFieldHtml(HtmlUtil.getMapVal(obj,fields.get(i).getColumnname()));
+				setblock.add(fields.get(i).getBlock());
+			}
+		}
+		modelmap.addAttribute("fields", fields);
+
+		// 整理后的block modelmap.addAttribute("blocks",blocks);
+		List<XmBlocks> arrangeBlock = new ArrayList<XmBlocks>();
+		for (int i = 0; i < blocks.size(); i++) {
+			if (setblock.contains(blocks.get(i).getBlockid())) {
+				arrangeBlock.add(blocks.get(i));
+			}
+		}
+		modelmap.addAttribute("blocks", arrangeBlock);
+	}
+
 }

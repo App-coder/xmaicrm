@@ -224,7 +224,22 @@ public class HtmlUtil {
 		String[] tds = xmField.getTypeofdata().split("~");
 		
 		if(uitype.equals("1")){
-			fieldstr += "<input type=\"text\" name=\""+xmField.getColumnname()+"\" value=\""+getMapVal(obj,xmField.getColumnname())+"\" class=\"text2 easyui-validatebox\" />";
+			//判断typeofdata
+			if(tds[0].equals("V")){
+				if(tds[1].equals("M")){
+					fieldstr += "<input type=\"text\" name=\""+xmField.getColumnname()+"\" value=\""+getMapVal(obj,xmField.getColumnname())+"\" class=\"text2 easyui-validatebox\" data-options=\"required:true\" /><span class=\"must\">*</span>";
+				}else{
+					fieldstr += "<input type=\"text\" name=\""+xmField.getColumnname()+"\" value=\""+getMapVal(obj,xmField.getColumnname())+"\" class=\"text2 easyui-validatebox\" />";
+				}
+			}else if(tds[0].equals("N")){
+				if(tds[1].equals("M")){
+					fieldstr += "<input type=\"text\" name=\""+xmField.getColumnname()+"\" value=\""+getMapVal(obj,xmField.getColumnname())+"\" class=\"text2 easyui-numberbox\" data-options=\"required:true\" /><span class=\"must\">*</span>";
+				}else{
+					fieldstr += "<input type=\"text\" name=\""+xmField.getColumnname()+"\" value=\""+getMapVal(obj,xmField.getColumnname())+"\" class=\"text2 easyui-numberbox\" />";
+				}
+			}
+			
+			
 		}else if(uitype.equals("2")){
 			if(tds[1].equals("M")){
 				fieldstr += "<input type=\"text\" name=\""+xmField.getColumnname()+"\" value=\""+getMapVal(obj,xmField.getColumnname())+"\" class=\"easyui-validatebox text2\" data-options=\"required:true\" /><span class=\"must\">*</span>";
@@ -233,7 +248,7 @@ public class HtmlUtil {
 			}
 		}else if(uitype.equals("15")){
 			List<XmPicklist> picks = xmPicklistService.getPicks(xmField.getFieldname());
-			fieldstr +=getSelectHtml(xmField,picks,tds);
+			fieldstr +=getSelectHtml(xmField,picks,tds,getMapVal(obj,xmField.getColumnname()));
 		}else if(uitype.equals("5")){
 			if(tds[1].equals("M")){
 				fieldstr += "<input type=\"text\" name=\""+xmField.getColumnname()+"\" value=\""+getMapVal(obj,xmField.getColumnname())+"\" class=\"easyui-datebox text2\" class=\"easyui-validatebox text2\" data-options=\"required:true\" /><span class=\"must\">*</span>";	
@@ -243,7 +258,7 @@ public class HtmlUtil {
 			
 		}else if(uitype.equals("53")){
 			List<XmUsers> users = xmUsersService.getOptionsUser();
-			fieldstr += getUserSelect(xmField,users,tds);
+			fieldstr += getUserSelect(xmField,users,tds,getMapVal(obj,xmField.getColumnname()));
 		}else if(uitype.equals("59")){
 			HashMap<String, XmEntityname> hm_noline = (HashMap<String, XmEntityname>)CacheManager.getFromCache(Constant.ENTITYNAME_NOLINE);
 			XmEntityname et = hm_noline.get(xmField.getFieldname().replace("_", ""));
@@ -284,13 +299,18 @@ public class HtmlUtil {
 	 * @param xmField
 	 * @param objs
 	 * @param tds 
+	 * @param val 
 	 * @return
 	 */
-	public static String getSelectHtml(XmField xmField,List<XmPicklist> objs, String[] tds){
+	public static String getSelectHtml(XmField xmField,List<XmPicklist> objs, String[] tds, String val){
 		StringBuffer sb = new StringBuffer();
 		sb.append("<select name=\""+xmField.getColumnname()+"\" >");
 		for(int i=0;i<objs.size();i++){
-			sb.append("<option>"+objs.get(i).getColvalue()+"</option>");
+			if(val.equals(objs.get(i).getColvalue())){
+				sb.append("<option selected=\"selected\" >"+objs.get(i).getColvalue()+"</option>");
+			}else{
+				sb.append("<option>"+objs.get(i).getColvalue()+"</option>");
+			}
 		}
 		sb.append("</select>");
 		if(tds[1].equals("M")){
@@ -305,13 +325,18 @@ public class HtmlUtil {
 	 * 
 	 * @param xmField
 	 * @param users
+	 * @param val 
 	 * @return
 	 */
-	public static String getUserSelect(XmField xmField,List<XmUsers> users, String[] tds){
+	public static String getUserSelect(XmField xmField,List<XmUsers> users, String[] tds, String val){
 		StringBuffer sb = new StringBuffer();
 		sb.append("<select name=\""+xmField.getColumnname()+"\" >");
 		for(int i=0;i<users.size();i++){
-			sb.append("<option value=\""+users.get(i).getId()+"\">"+users.get(i).getUserName()+"</option>");
+			if(val.equals(users.get(i).getId())){
+				sb.append("<option value=\""+users.get(i).getId()+"\" selected=\"selected\" >"+users.get(i).getUserName()+"</option>");
+			}else{
+				sb.append("<option value=\""+users.get(i).getId()+"\">"+users.get(i).getUserName()+"</option>");
+			}
 		}
 		sb.append("</select>");
 		if(tds[1].equals("M")){
@@ -319,7 +344,7 @@ public class HtmlUtil {
 		}
 		return sb.toString();
 	}
-	
+
 	
 	
 	

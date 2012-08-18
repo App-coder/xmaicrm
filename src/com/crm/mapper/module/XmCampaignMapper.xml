@@ -441,4 +441,8 @@
   <select id="getMaxId" resultType="String">
   	select max(campaignid) from xm_campaign
   </select>
+  <select id="deleteRecords" resultType="Integer">
+  	delete from xm_campaign 
+    where campaignid in ${recordids}
+  </select>
 </mapper>

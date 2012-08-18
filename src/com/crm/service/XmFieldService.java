@@ -69,4 +69,6 @@ public interface XmFieldService {
 	 */
 	public List<XmField> getRecycleBinFields(int tabid, String[] columns);
 
+	public List<XmField> getDisplayFields(Integer tabid, String blockstr);
+
 }

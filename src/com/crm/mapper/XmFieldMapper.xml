@@ -337,6 +337,21 @@
 		block,
 		sequence;
 	</select>
+	<select id="getDisplayFields" resultMap="BaseResultMap" >
+		SELECT
+			xm_field.*
+		FROM
+			xm_field
+		INNER JOIN xm_def_org_field ON xm_def_org_field.fieldid = xm_field.fieldid
+		AND xm_def_org_field.visible = 0
+		WHERE
+			xm_field.tabid = ${tabid}
+		AND xm_field.block IN(${blockstr})
+		AND xm_field.displaytype IN(1, 2, 4)
+		ORDER BY
+			block,
+			sequence;
+	</select>
 	<select id="getFieldsByTabid" resultMap="BaseResultMap">
 		select fieldid,columnname,fieldlabel,uitype,displaytype,tablename,typeofdata
 		from xm_field where tabid=#{tabid} and generatedtype=2 and uitype not

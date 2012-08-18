@@ -119,4 +119,9 @@ public class XmFieldServiceImpl implements XmFieldService{
 		return recyclebinFields;
 	}
 
+	@Override
+	public List<XmField> getDisplayFields(Integer tabid, String blockstr) {
+		return this.xmFieldMapper.getDisplayFields(tabid,blockstr);
+	}
+
 }
