@@ -5,8 +5,6 @@ import java.util.List;
 
 import javax.annotation.Resource;
 
-import net.sf.json.JsonConfig;
-
 import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -15,9 +13,9 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.alibaba.fastjson.JSON;
 import com.crm.action.util.ModuleUtil;
 import com.crm.bean.crm.Message;
-import com.crm.bean.easyui.Column;
 import com.crm.bean.easyui.ListBean;
 import com.crm.bean.easyui.expand.CVColumn;
 import com.crm.bean.html.TimeOptions;
@@ -39,7 +37,6 @@ import com.crm.service.XmSequenceService;
 import com.crm.service.XmTabService;
 import com.crm.util.DateUtil;
 import com.crm.util.HtmlUtil;
-import com.crm.util.JsonDateValueProcessor;
 import com.crm.util.crm.CustomViewUtil;
 
 @Controller
@@ -626,9 +623,11 @@ public class XmCustomViewController extends BaseController {
 	 * @param viewid
 	 * @return
 	 */
+	@RequestMapping(value = "/getAdvfilter", method = RequestMethod.POST)
+	@ResponseBody
 	public String getAdvfilter(int viewid){
-		XmCvadvfilter advfilter = this.xmCvadvfilterService.getAdvfilter(viewid);
-		return arrayToJson(advfilter);
+		List<XmCvadvfilter> advfilters = this.xmCvadvfilterService.getAdvFilters(viewid);
+		return arrayToJson(advfilters);
 	}
 	
 	
@@ -675,9 +674,10 @@ public class XmCustomViewController extends BaseController {
 		ListBean list = new ListBean();
 		list.setRows(ls);
 		list.setTotal(total);
-		JsonConfig jsonConfig = new JsonConfig();
-		jsonConfig.registerJsonValueProcessor(java.util.Date.class, new JsonDateValueProcessor("yyyy-MM-dd"));
-		return objToJson(list,jsonConfig);
+//		JsonConfig jsonConfig = new JsonConfig();
+//		jsonConfig.registerJsonValueProcessor(java.sql.Date.class, new JsonDateValueProcessor("yyyy-MM-dd"));
+		
+		return JSON.toJSONStringWithDateFormat(list, "yyyy-MM-dd");
 	}
 	
 	@RequestMapping(value = "/report", method = RequestMethod.GET)

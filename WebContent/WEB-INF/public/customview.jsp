@@ -161,12 +161,12 @@
 </script>
 <div class="container">
 	<div class="hidden">
-		<div id="customview_edit" iconCls="icon-save"
+		<div id="customview_${entitytype}_edit" iconCls="icon-save"
 			style="width: 700px; height: 480px;" class="easyui-window"
 			<%=win_topbar%> title="属性编辑">
 			<div class="easyui-layout" data-options="fit:true">
 				<div region="center" border="false" class="bdcenter">
-					<form name="form_customview" id="form_customview" method="post" >
+					<form name="form_${entitytype}_customview" id="form_${entitytype}_customview" method="post" >
 					<input type="hidden" name="id" />
 					<input type="hidden" name="action"  />
 					<input type="hidden" name="entitytype" value="${entitytype}"/>
@@ -181,16 +181,16 @@
 								<tr>
 									<td width="33%">视图名称&nbsp;&nbsp;<input name="viewname" class="easyui-validatebox" required="true" type="text"
 										class="text" /></td>
-									<td width="33%">默认视图&nbsp;&nbsp;<input id="setdefault" type="checkbox" /></td>
+									<td width="33%">默认视图&nbsp;&nbsp;<input id="setdefault_${entitytype}" type="checkbox" /></td>
 									<td width="33%" rowspan="2">角色&nbsp;&nbsp;<select
 										multiple="multiple" class="text" 
-										id="roles" style="height: 50px;"></select></td>
+										id="roles_${entitytype}" style="height: 50px;"></select></td>
 								</tr>
 								<tr>
 									<td width="33%">首页关键视图列表中显示&nbsp;&nbsp;<input
-										type="checkbox" id="setmetrics" /></td>
+										type="checkbox" id="setmetrics_${entitytype}" /></td>
 									<td width="33%">公共视图&nbsp;&nbsp;<input type="checkbox"
-										id="ispublic" value="0" /></td>
+										id="ispublic_${entitytype}" value="0" /></td>
 								</tr>
 							</table>
 						</fieldset>
@@ -331,27 +331,27 @@
 													<legend>根据字段设置过滤条件</legend>
 													<table class="tab_form">
 														<tr>
-															<td><select class="text" name="advfiltercol_1">${optionstr }</select></td>
+															<td><select class="text" name="advfiltercol_1" onchange="setComp(this.value,'comparator_1')" >${optionstr }</select></td>
 															<td><select class="text" name="comparator_1">${filter }</select></td>
 															<td><input type="text" class="text" name="fv_1" /></td>
 														</tr>
 														<tr>
-															<td><select class="text" name="advfiltercol_2">${optionstr }</select></td>
+															<td><select class="text" name="advfiltercol_2" onchange="setComp(this.value,'comparator_2')" >${optionstr }</select></td>
 															<td><select class="text" name="comparator_2">${filter }</select></td>
 															<td><input type="text" class="text" name="fv_2" /></td>
 														</tr>
 														<tr>
-															<td><select class="text" name="advfiltercol_3">${optionstr }</select></td>
+															<td><select class="text" name="advfiltercol_3" onchange="setComp(this.value,'comparator_3')" >${optionstr }</select></td>
 															<td><select class="text" name="comparator_3">${filter }</select></td>
 															<td><input type="text" class="text" name="fv_3" /></td>
 														</tr>
 														<tr>
-															<td><select class="text" name="advfiltercol_4">${optionstr }</select></td>
+															<td><select class="text" name="advfiltercol_4" onchange="setComp(this.value,'comparator_4')" >${optionstr }</select></td>
 															<td><select class="text" name="comparator_4">${filter }</select></td>
 															<td><input type="text" class="text" name="fv_4" /></td>
 														</tr>
 														<tr>
-															<td><select class="text" name="advfiltercol_5">${optionstr }</select></td>
+															<td><select class="text" name="advfiltercol_5" onchange="setComp(this.value,'comparator_5')" >${optionstr }</select></td>
 															<td><select class="text" name="comparator_5">${filter }</select></td>
 															<td><input type="text" class="text" name="fv_5" /></td>
 														</tr>																																																								
@@ -368,12 +368,12 @@
 				</div>
 				<div region="south" class="btnbar" border="false">
 					<a class="easyui-linkbutton" iconCls="icon-ok"
-						href="javascript:void(0)" onclick="formsubmit('form_customview')">编辑</a> <a
+						href="javascript:void(0)" onclick="formsubmit('form_${entitytype }_customview')">编辑</a> <a
 						class="easyui-linkbutton" iconCls="icon-cancel"
-						href="javascript:void(0)" onclick="closeWin('customview_edit')">取消</a>
+						href="javascript:void(0)" onclick="closeWin('customview_${entitytype }_edit')">取消</a>
 				</div>
 			</div>
 		</div>
 	</div>
-	<table id="customview_list" data-options="fit:true,fitColumns:true"></table>
+	<table id="customview_${entitytype }_list" data-options="fit:true,fitColumns:true"></table>
 </div>

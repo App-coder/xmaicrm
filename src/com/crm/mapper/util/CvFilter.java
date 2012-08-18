@@ -149,7 +149,9 @@ public class CvFilter {
 				if(n.getFieldname().indexOf("assigned_")!=-1){
 					totalfilter +=" INNER JOIN xm_users on "+n.getFieldtabname()+"."+n.getFieldcolname()+"=xm_users.id";
 				}else if(n.getFieldname().indexOf("_")!=-1){
-					totalfilter += " INNER JOIN "+n.getFieldtabname() +" on "+n.getFieldtabname()+"."+n.getFieldcolname()+"="+cd.getTablename()+"."+cd.getEntityidfield();
+					XmTab tab = CustomViewUtil.getTabByLab(n.getFieldlabel());
+					XmEntityname et = CustomViewUtil.getEntitynameByET(tab.getName());
+					totalfilter += " INNER JOIN "+et.getTablename() +" on "+n.getFieldtabname()+"."+n.getFieldcolname()+"="+cd.getTablename()+"."+cd.getEntityidfield();
 				}
 				
 			}
@@ -179,14 +181,15 @@ public class CvFilter {
 					joinstr +=" INNER JOIN xm_users on "+n.getFieldtabname()+"."+n.getFieldcolname()+"=xm_users.id";
 					
 				}else if(n.getFieldname().indexOf("_")!=-1){
-					
+					XmTab tab = CustomViewUtil.getTabByLab(n.getFieldlabel());
+					XmEntityname et = CustomViewUtil.getEntitynameByET(tab.getName());
 					if(columnstr!=""){
-						columnstr +=","+ey.getTablename()+"."+ey.getFieldname();
+						columnstr +=","+et.getTablename()+"."+et.getFieldname();
 					}else{
-						columnstr +=ey.getTablename()+"."+ey.getFieldname();
+						columnstr +=et.getTablename()+"."+et.getFieldname();
 					}
 
-					joinstr += " INNER JOIN "+ey.getTablename() +" on "+n.getFieldtabname()+"."+n.getFieldcolname()+"="+ey.getTablename()+"."+ey.getEntityidfield();
+					joinstr += " INNER JOIN "+et.getTablename() +" on "+n.getFieldtabname()+"."+n.getFieldcolname()+"="+et.getTablename()+"."+et.getEntityidfield();
 					
 				}else{
 					if(columnstr!=""){

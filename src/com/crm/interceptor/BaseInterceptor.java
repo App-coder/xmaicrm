@@ -45,11 +45,14 @@ public class BaseInterceptor implements HandlerInterceptor {
 		
 		if(CacheManager.getFromCache(Constant.TAB) == null){
 			HashMap<String,XmTab> hmentityname = new HashMap<String,XmTab>();
+			HashMap<String,XmTab> hmlabtabs = new HashMap<String,XmTab>();
 			List<XmTab> tabs = this.xmTabService.getAll();
 			for(int i=0;i<tabs.size();i++){
 				hmentityname.put(tabs.get(i).getName(), tabs.get(i));
+				hmlabtabs.put(tabs.get(i).getTablabel(), tabs.get(i));
 			}
 			CacheManager.putInCache(Constant.TAB, hmentityname);
+			CacheManager.putInCache(Constant.TABBYLAB, hmlabtabs);
 		}
 		
 		return true;

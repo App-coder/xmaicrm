@@ -98,8 +98,8 @@
   </delete>
   <select id="getAdvfilter" resultMap="BaseResultMap" >
   	 select 
-    <include refid="Base_Column_List" />
-    from xm_cvadvfilter
+    <include refid="Base_Column_List" /> 
+    from xm_cvadvfilter 
     where cvid = #{cvid,jdbcType=INTEGER}
   </select>
 </mapper>

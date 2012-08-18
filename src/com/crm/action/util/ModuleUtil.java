@@ -14,6 +14,7 @@ import com.crm.bean.easyui.expand.CVColumn;
 import com.crm.model.XmCustomview;
 import com.crm.model.XmEntityname;
 import com.crm.model.XmField;
+import com.crm.model.XmTab;
 import com.crm.service.XmCustomViewService;
 import com.crm.service.XmCvcolumnlistService;
 import com.crm.service.XmFieldService;
@@ -66,9 +67,10 @@ public class ModuleUtil extends BaseController{
 					Column ne = new Column();
 					if(n.getFieldname().indexOf("assigned_")!=-1){
 						ne.setField("user_name");
-					}else if(n.getField().indexOf("_")!=-1){
-						XmEntityname en = CustomViewUtil.getEntitynameByET(n.getEntitytype());
-						ne.setField(en.getFieldname());
+					}else if(n.getFieldname().indexOf("_")!=-1){
+						XmTab tab = CustomViewUtil.getTabByLab(n.getFieldlabel());
+						XmEntityname et = CustomViewUtil.getEntitynameByET(tab.getName());
+						ne.setField(et.getFieldname());
 					}else{
 						ne.setField(n.getFieldcolname());
 					}

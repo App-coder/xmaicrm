@@ -22,5 +22,5 @@ public interface XmCvadvfilterMapper {
 
 	void deleteCv(@Param("cvid") int cvid);
 
-	XmCvadvfilter getAdvfilter(@Param("cvid") int viewid);
+	XmCvadvfilter getAdvfilter(@Param("cvid") int cvid);
 }
