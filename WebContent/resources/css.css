@@ -412,3 +412,5 @@ background-color: #D0E5F5;
     border: 1px dotted #CCCCCC;
     height: 25px;
 }
+
+.focus{cursor: pointer;}

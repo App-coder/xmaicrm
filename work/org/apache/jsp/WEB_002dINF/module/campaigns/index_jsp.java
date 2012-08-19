@@ -240,6 +240,22 @@ String win_bar_1 = "resizable=\"false\"  closed=\"true\" modal=\"false\" collaps
       out.write("\r\n");
       out.write("<script type=\"text/javascript\" src=\"resources/desktop/module/view_search.js\"></script> \r\n");
       out.write("<div class=\"hidden\">\r\n");
+      out.write("\t\r\n");
+      out.write("\t<table class=\"advCol\" >\r\n");
+      out.write("\t<tr>\r\n");
+      out.write("\t\t<td width=\"30%\"><select class=\"text\" name=\"field\"  onchange=\"setComp(this.value,this)\" >");
+      out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${optionstr }", java.lang.String.class, (PageContext)_jspx_page_context, null, false));
+      out.write("</select></td>\r\n");
+      out.write("\t\t<td width=\"30%\"><select class=\"text\" name=\"reg\"  >");
+      out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${filter }", java.lang.String.class, (PageContext)_jspx_page_context, null, false));
+      out.write("</select></td>\r\n");
+      out.write("\t\t<td width=\"30%\"><input type=\"text\" name=\"fval\"  class=\"text\"></td>\r\n");
+      out.write("\t\t<td width=\"10%\">\r\n");
+      out.write("\t\t<span class=\"l-btn-left focus\" onclick=\"removeThis(this)\" ><span class=\"l-btn-text icon-remove\" style=\"padding-left: 20px;height:25px;line-height:25px;\"  >删除</span></span>\r\n");
+      out.write("\t\t</td>\r\n");
+      out.write("\t</tr>\r\n");
+      out.write("\t</table>\r\n");
+      out.write("\r\n");
       out.write("\t<div id=\"wind_advSearch\" iconCls=\"icon-search\"\r\n");
       out.write("\t\t\tstyle=\"width: 700px; height:432px;\" class=\"easyui-window p10\"\r\n");
       out.write("\t\t\t");
@@ -251,17 +267,16 @@ String win_bar_1 = "resizable=\"false\"  closed=\"true\" modal=\"false\" collaps
       out.write("\t\t\t\t\t\t\t<input type=\"radio\" name=\"matchMeth\" value=\"and\" checked=\"checked\" />&nbsp;匹配以下所有条件&nbsp;&nbsp;\r\n");
       out.write("\t\t\t\t\t\t\t<input type=\"radio\" name=\"matchMeth\" value=\"or\" />&nbsp;匹配以下任意条件\r\n");
       out.write("\t\t\t\t\t\t</div>\r\n");
-      out.write("\t\t\t\t\t\t<table class=\"tab_form tablist\" style=\"border:1px solid #CCCCCC;border-collapse: collapse;\"  >\r\n");
+      out.write("\t\t\t\t\t\t<table id=\"tab_advfilter\" class=\"tab_form tablist\" style=\"border:1px solid #CCCCCC;border-collapse: collapse;\"  >\r\n");
       out.write("\t\t\t\t\t\t\t<tr>\r\n");
-      out.write("\t\t\t\t\t\t\t\t<td width=\"30%\"><select class=\"text\" >");
+      out.write("\t\t\t\t\t\t\t\t<td width=\"30%\"><select class=\"text\" name=\"field\" onchange=\"setComp(this.value,this)\" >");
       out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${optionstr }", java.lang.String.class, (PageContext)_jspx_page_context, null, false));
       out.write("</select></td>\r\n");
-      out.write("\t\t\t\t\t\t\t\t<td width=\"30%\"><select class=\"text\" >");
+      out.write("\t\t\t\t\t\t\t\t<td width=\"30%\"><select class=\"text\" name=\"reg\" >");
       out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${filter }", java.lang.String.class, (PageContext)_jspx_page_context, null, false));
       out.write("</select></td>\r\n");
-      out.write("\t\t\t\t\t\t\t\t<td width=\"30%\"><input type=\"text\" class=\"text\"></td>\r\n");
+      out.write("\t\t\t\t\t\t\t\t<td width=\"30%\"><input type=\"text\" name=\"fval\" class=\"text\"></td>\r\n");
       out.write("\t\t\t\t\t\t\t\t<td width=\"10%\">\r\n");
-      out.write("\t\t\t\t\t\t\t\t<span class=\"l-btn-left\"><span class=\"l-btn-text icon-remove\" style=\"padding-left: 20px;height:25px;line-height:25px;\">删除</span></span>\r\n");
       out.write("\t\t\t\t\t\t\t\t</td>\r\n");
       out.write("\t\t\t\t\t\t\t</tr>\r\n");
       out.write("\t\t\t\t\t\t</table>\r\n");
@@ -271,7 +286,7 @@ String win_bar_1 = "resizable=\"false\"  closed=\"true\" modal=\"false\" collaps
       out.write("\t\t\t\t\t<div region=\"south\" class=\"btnbar\" border=\"false\">\r\n");
       out.write("\t\t\t\t\t\t<span class=\"fl\" >\r\n");
       out.write("\t\t\t\t\t\t\t<a class=\"easyui-linkbutton\" iconCls=\"icon-add\"\r\n");
-      out.write("\t\t\t\t\t\t\thref=\"javascript:void(0)\" onclick=\"advSearchDo()\">增加条件</a> \r\n");
+      out.write("\t\t\t\t\t\t\thref=\"javascript:void(0)\" onclick=\"addCollection()\">增加条件</a> \r\n");
       out.write("\t\t\t\t\t\t</span>\r\n");
       out.write("\t\t\t\t\t\t<span class=\"fr\">\r\n");
       out.write("\t\t\t\t\t\t\t<a class=\"easyui-linkbutton\" iconCls=\"icon-search\"\r\n");
@@ -821,14 +836,14 @@ String win_bar_1 = "resizable=\"false\"  closed=\"true\" modal=\"false\" collaps
     org.apache.taglibs.standard.tag.rt.core.WhenTag _jspx_th_c_005fwhen_005f2 = (org.apache.taglibs.standard.tag.rt.core.WhenTag) _005fjspx_005ftagPool_005fc_005fwhen_0026_005ftest.get(org.apache.taglibs.standard.tag.rt.core.WhenTag.class);
     _jspx_th_c_005fwhen_005f2.setPageContext(_jspx_page_context);
     _jspx_th_c_005fwhen_005f2.setParent((javax.servlet.jsp.tagext.Tag) _jspx_th_c_005fchoose_005f2);
-    // /WEB-INF/module/campaigns/../include_view_search.jsp(43,1) name = test type = boolean reqTime = true required = true fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
+    // /WEB-INF/module/campaigns/../include_view_search.jsp(54,1) name = test type = boolean reqTime = true required = true fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
     _jspx_th_c_005fwhen_005f2.setTest(((java.lang.Boolean) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${searchtype =='basicsearch' }", java.lang.Boolean.class, (PageContext)_jspx_page_context, null, false)).booleanValue());
     int _jspx_eval_c_005fwhen_005f2 = _jspx_th_c_005fwhen_005f2.doStartTag();
     if (_jspx_eval_c_005fwhen_005f2 != javax.servlet.jsp.tagext.Tag.SKIP_BODY) {
       do {
         out.write("\r\n");
         out.write("\t查找：<select class=\"text\" name=\"basicsearchfield\" ></select>\r\n");
-        out.write("<input type=\"text\" class=\"text\" />\r\n");
+        out.write("<input type=\"text\" class=\"text\" name=\"basicsearchvalue\" />\r\n");
         out.write("<a class=\"easyui-linkbutton\" data-options=\"plain:true,iconCls:'icon-search'\" onclick=\"basicSearch()\" >查找</a>   \r\n");
         out.write("<a class=\"easyui-linkbutton\" data-options=\"plain:true,iconCls:'icon-undo'\" onclick=\"cacelSearch()\" >取消查找</a>\t\t\r\n");
         out.write("\t");
@@ -858,7 +873,7 @@ String win_bar_1 = "resizable=\"false\"  closed=\"true\" modal=\"false\" collaps
       do {
         out.write("\r\n");
         out.write("\t查找：<select class=\"text\"  name=\"basicsearchfield\" ></select>\r\n");
-        out.write("<input type=\"text\" class=\"text\" />\r\n");
+        out.write("<input type=\"text\" class=\"text\" name=\"basicsearchvalue\" />\r\n");
         out.write("<a class=\"easyui-linkbutton\" data-options=\"plain:true,iconCls:'icon-search'\" onclick=\"basicSearch()\" >查找</a>   \r\n");
         out.write("<a class=\"easyui-linkbutton\" data-options=\"plain:true,iconCls:'icon-search'\" onclick=\"advSearch()\">高级查找</a>\r\n");
         out.write("<a class=\"easyui-linkbutton\" data-options=\"plain:true,iconCls:'icon-undo'\" onclick=\"cacelSearch()\" >取消查找</a>\t\t\r\n");

@@ -7,8 +7,10 @@ import javax.annotation.Resource;
 import org.springframework.stereotype.Component;
 
 import com.crm.bean.crm.SearchField;
+import com.crm.bean.crm.customview.AdvSearch;
 import com.crm.bean.easyui.Column;
 import com.crm.bean.easyui.expand.CVColumn;
+import com.crm.bean.easyui.expand.FilterColumn;
 import com.crm.mapper.XmCustomviewMapper;
 import com.crm.mapper.XmCvadvfilterMapper;
 import com.crm.mapper.XmCvstdfilterMapper;
@@ -21,6 +23,7 @@ import com.crm.model.XmTab;
 import com.crm.util.DateUtil;
 import com.crm.util.JsonUtil;
 import com.crm.util.crm.CustomViewUtil;
+import com.sun.xml.internal.stream.Entity;
 
 @Component
 public class CvFilter {
@@ -71,6 +74,32 @@ public class CvFilter {
 		}else if(cpen.equals("h")){
 			c = " >= "+getColumnVal(adv.getFieldtypeofdata(),advfilter.getValue());
 		}else if(cpen.equals("")){
+			
+		}
+		return c;
+	}
+	
+	public String getJudge(String reg,String val){
+		String c = "";
+		if(reg.equals("e")){
+			c = " = '"+val+"'";;
+		}else if(reg.equals("n")){
+			c = " != '"+val+"'";;
+		}else if(reg.equals("s")){
+			c = " like '"+val+"%'";
+		}else if(reg.equals("c")){
+			c = " like "+"'%"+val+"%'";
+		}else if(reg.equals("k")){
+			c = " not like "+"'%"+val+"%'";
+		}else if(reg.equals("l")){
+			c = " < '"+val+"'";;
+		}else if(reg.equals("g")){
+			c = " > '"+val+"'";;
+		}else if(reg.equals("m")){
+			c = " <= '"+val+"'";;
+		}else if(reg.equals("h")){
+			c = " >= '"+val+"'";;
+		}else if(reg.equals("")){
 			
 		}
 		return c;
@@ -182,9 +211,9 @@ public class CvFilter {
 				if(n.getFieldname()!=null){
 					if(n.getFieldname().indexOf("assigned_")!=-1){
 						if(columnstr!=""){
-							columnstr +=",xm_users.user_name";
+							columnstr +=",xm_users.last_name";
 						}else{
-							columnstr +="xm_users.user_name";;
+							columnstr +="xm_users.last_name";;
 						}
 
 						joinstr +=" INNER JOIN xm_users on "+n.getFieldtabname()+"."+n.getFieldcolname()+"=xm_users.id";
@@ -236,6 +265,70 @@ public class CvFilter {
 		sb.append("where "+en.getTablename()+"."+en.getEntityidfield());
 		sb.append(" = ");
 		sb.append(recordid);
+		return sb.toString();
+	}
+
+	public String getBasicSearchString(String entitytype,
+			String basicsearchfield, String basicsearchvalue) {
+		
+		String search = "";
+		XmEntityname en = CustomViewUtil.getEntitynameByET(entitytype);
+		
+		if(basicsearchfield.indexOf("assigned_")!=-1){
+			search = " and xm_users.last_name like '%"+basicsearchvalue+"%'";
+		}else if(basicsearchfield.indexOf("_")!=-1 && basicsearchfield.split("_")[1].equals("id")){
+			XmEntityname relEntity = CustomViewUtil.getEntitynameByEID(basicsearchfield.replace("_", ""));
+			search = " and "+relEntity.getTablename()+"."+relEntity.getFieldname()+" like "+"'%"+basicsearchvalue+"%' ";
+		}else{
+			if("last_name".equals(basicsearchfield)){
+				search = " and xm_users."+basicsearchfield+" like "+"'%"+basicsearchvalue+"%' ";
+			}else{
+				search = " and "+en.getTablename()+"."+basicsearchfield+" like "+"'%"+basicsearchvalue+"%' ";
+			}
+		}
+		
+		return search;
+	}
+
+	public String getAdvSearchFilterString(String entitytype,
+			String advfilters, String matchMeth) {
+		
+		List<FilterColumn> searchs = JsonUtil.getList4Json(advfilters, FilterColumn.class);
+		XmEntityname en = CustomViewUtil.getEntitynameByET(entitytype);
+		
+		StringBuffer sb = new StringBuffer();
+		
+		for(int i=0;i<searchs.size();i++){
+			if(searchs.get(i).getField().indexOf("assigned_")!=-1){
+				sb.append(" "+matchMeth+" ");
+				sb.append(" xm_users.last_name ");
+				sb.append(getJudge(searchs.get(i).getReg(),searchs.get(i).getValue()));
+				sb.append(" ");
+			}else if(searchs.get(i).getField().indexOf("_")!=-1 && searchs.get(i).getField().split("_")[1].equals("id")){
+				XmEntityname relEntity = CustomViewUtil.getEntitynameByEID(searchs.get(i).getField().replace("_", ""));
+				sb.append(" "+matchMeth+" ");
+				sb.append(relEntity.getTablename()+"."+relEntity.getFieldname());
+				sb.append(getJudge(searchs.get(i).getReg(),searchs.get(i).getValue()));
+				sb.append(" ");
+			}else{
+				if("last_name".equals(searchs.get(i).getField())){
+					sb.append(" "+matchMeth+" ");
+					sb.append(" xm_users.last_name ");
+					sb.append(getJudge(searchs.get(i).getReg(),searchs.get(i).getValue()));
+					sb.append(" ");
+				}else{
+					sb.append(" "+matchMeth+" ");
+					sb.append(en.getTablename()+"."+searchs.get(i).getField());
+					sb.append(getJudge(searchs.get(i).getReg(),searchs.get(i).getValue()));
+					sb.append(" ");
+				}
+			}
+		}
+		
+		if(matchMeth.equals("or")){
+			return "and ("+sb.toString().replaceFirst("or", "")+")";
+		}
+		
 		return sb.toString();
 	}
 	

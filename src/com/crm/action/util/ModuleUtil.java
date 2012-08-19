@@ -68,7 +68,7 @@ public class ModuleUtil extends BaseController{
 					if(n!=null){
 						if(n.getFieldname()!=null){
 							if(n.getFieldname().indexOf("assigned_")!=-1){
-								ne.setField("user_name");
+								ne.setField("last_name");
 							}else{
 								ne.setField(n.getFieldcolname());
 							}
@@ -96,7 +96,7 @@ public class ModuleUtil extends BaseController{
 				XmField uf = new XmField();
 				uf.setFieldname("assign_user_id");
 				uf.setTablename("xm_users");
-				uf.setColumnname("user_name");
+				uf.setColumnname("last_name");
 				uf.setFieldlabel("负责人");
 				repfields.add(uf);
 			}
@@ -118,7 +118,6 @@ public class ModuleUtil extends BaseController{
 			}
 			modelMap.addAttribute("reportoptions",sb.toString());
 		}
-		
 		
 		modelMap.addAttribute("repfields",repfields);
 	}

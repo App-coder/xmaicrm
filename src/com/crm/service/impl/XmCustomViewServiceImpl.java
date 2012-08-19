@@ -278,4 +278,15 @@ public class XmCustomViewServiceImpl implements XmCustomViewService {
 		modelmap.addAttribute("filter", HtmlUtil.getFilter());
 	}
 
+	@Override
+	public String getBasicSearchString(String entitytype,
+			String basicsearchfield, String basicsearchvalue) {
+		return this.cvFilter.getBasicSearchString(entitytype,basicsearchfield,basicsearchvalue);
+	}
+
+	@Override
+	public String getAdvSearchFilterString(String entitytype,String advfilters, String matchMeth) {
+		return this.cvFilter.getAdvSearchFilterString(entitytype,advfilters,matchMeth);
+	}
+
 }

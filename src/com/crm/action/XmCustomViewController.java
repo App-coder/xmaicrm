@@ -799,6 +799,8 @@ public class XmCustomViewController extends BaseController {
 				.getAdvFilters(viewid);
 
 		String customfilter = getCustomFilter(entitytype,request);
+		String searchfilter = getSearchFilter(entitytype,request);
+		customfilter = customfilter + searchfilter;
 		
 		int total = this.xmCustomViewService.getTotal(viewid, customview,
 				stdfilter, advfilter, cols,customfilter);
@@ -859,6 +861,27 @@ public class XmCustomViewController extends BaseController {
 		return JSON.toJSONStringWithDateFormat(list, "yyyy-MM-dd");
 	}
 	
+	private String getSearchFilter(String entitytype, HttpServletRequest request) {
+		StringBuffer sb_search = new StringBuffer();
+		
+		String searchtype = request.getParameter("searchtype");
+		if("basic".equals(searchtype)){
+			//基本查找
+			String basicsearchfield = request.getParameter("basicsearchfield");
+			String basicsearchvalue = request.getParameter("basicsearchvalue");
+			sb_search.append(this.xmCustomViewService.getBasicSearchString(entitytype,basicsearchfield,basicsearchvalue));
+			
+		}else if("adv".equals(searchtype)){
+			//高级查找
+			String advfilters = request.getParameter("advfilters");
+			if(advfilters!="[]"){
+				String matchMeth = request.getParameter("matchMeth");
+				sb_search.append(this.xmCustomViewService.getAdvSearchFilterString(entitytype,advfilters, matchMeth));
+			}
+		}
+		return sb_search.toString();
+	}
+
 	/**
 	 * 根据类型获取和组合自定义的过滤条件
 	 * 
@@ -873,22 +896,26 @@ public class XmCustomViewController extends BaseController {
 			int cangku = Integer.parseInt(request.getParameter("cangku"));
 			if(cangku!=1){
 				sb.append(" and xm_warehouses.cangkusid = "+cangku);
+				sb.append(" ");
 			}
 		}else if(entitytype.equals("Deliverys")){
 			int cangku = Integer.parseInt(request.getParameter("cangku"));
 			if(cangku!=1){
 				sb.append(" and xm_deliverys.cangkusid = "+cangku);
+				sb.append(" ");
 			}
 		}else if(entitytype.equals("Products")){
 			//catalogid
 			String catalogid = request.getParameter("catalogid");
 			if(catalogid!=null && !catalogid.equals("H1")){
 				sb.append(" and xm_products.catalogid = '"+catalogid+"'");
+				sb.append(" ");
 			}
 		}else if(entitytype.equals("Checks")){
 			int cangku = Integer.parseInt(request.getParameter("cangku"));
 			if(cangku!=1){
 				sb.append(" and xm_checks.cangkusid = "+cangku);
+				sb.append(" ");
 			}
 		}
 		

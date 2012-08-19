@@ -92,8 +92,21 @@ public interface XmCustomViewService {
 	 * 
 	 * @param string entitytype 
 	 * @param modelMap
+	 * 
 	 */
 	void getAdvSearchFilter(String string, ModelMap modelMap);
+
+	String getBasicSearchString(String entitytype, String basicsearchfield,
+			String basicsearchvalue);
+
+	/**
+	 * 
+	 * 高级查询时候的条件选择
+	 * 
+	 * @param advfilters
+	 * @param matchMeth
+	 */
+	String getAdvSearchFilterString(String entitytype,String advfilters, String matchMeth);
 
 
 	

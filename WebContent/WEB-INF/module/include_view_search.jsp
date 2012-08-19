@@ -2,6 +2,18 @@
     pageEncoding="utf-8"%>
 <script type="text/javascript" src="resources/desktop/module/view_search.js"></script> 
 <div class="hidden">
+	
+	<table class="advCol" >
+	<tr>
+		<td width="30%"><select class="text" name="field"  onchange="setComp(this.value,this)" >${optionstr }</select></td>
+		<td width="30%"><select class="text" name="reg"  >${filter }</select></td>
+		<td width="30%"><input type="text" name="fval"  class="text"></td>
+		<td width="10%">
+		<span class="l-btn-left focus" onclick="removeThis(this)" ><span class="l-btn-text icon-remove" style="padding-left: 20px;height:25px;line-height:25px;"  >删除</span></span>
+		</td>
+	</tr>
+	</table>
+
 	<div id="wind_advSearch" iconCls="icon-search"
 			style="width: 700px; height:432px;" class="easyui-window p10"
 			<%=win_topbar%> title="高级查找 " >
@@ -11,13 +23,12 @@
 							<input type="radio" name="matchMeth" value="and" checked="checked" />&nbsp;匹配以下所有条件&nbsp;&nbsp;
 							<input type="radio" name="matchMeth" value="or" />&nbsp;匹配以下任意条件
 						</div>
-						<table class="tab_form tablist" style="border:1px solid #CCCCCC;border-collapse: collapse;"  >
+						<table id="tab_advfilter" class="tab_form tablist" style="border:1px solid #CCCCCC;border-collapse: collapse;"  >
 							<tr>
-								<td width="30%"><select class="text" >${optionstr }</select></td>
-								<td width="30%"><select class="text" >${filter }</select></td>
-								<td width="30%"><input type="text" class="text"></td>
+								<td width="30%"><select class="text" name="field" onchange="setComp(this.value,this)" >${optionstr }</select></td>
+								<td width="30%"><select class="text" name="reg" >${filter }</select></td>
+								<td width="30%"><input type="text" name="fval" class="text"></td>
 								<td width="10%">
-								<span class="l-btn-left"><span class="l-btn-text icon-remove" style="padding-left: 20px;height:25px;line-height:25px;">删除</span></span>
 								</td>
 							</tr>
 						</table>
@@ -27,7 +38,7 @@
 					<div region="south" class="btnbar" border="false">
 						<span class="fl" >
 							<a class="easyui-linkbutton" iconCls="icon-add"
-							href="javascript:void(0)" onclick="advSearchDo()">增加条件</a> 
+							href="javascript:void(0)" onclick="addCollection()">增加条件</a> 
 						</span>
 						<span class="fr">
 							<a class="easyui-linkbutton" iconCls="icon-search"
@@ -42,13 +53,13 @@
 <c:choose>
 	<c:when test="${searchtype =='basicsearch' }" >
 	查找：<select class="text" name="basicsearchfield" ></select>
-<input type="text" class="text" />
+<input type="text" class="text" name="basicsearchvalue" />
 <a class="easyui-linkbutton" data-options="plain:true,iconCls:'icon-search'" onclick="basicSearch()" >查找</a>   
 <a class="easyui-linkbutton" data-options="plain:true,iconCls:'icon-undo'" onclick="cacelSearch()" >取消查找</a>		
 	</c:when>
 	<c:otherwise>
 	查找：<select class="text"  name="basicsearchfield" ></select>
-<input type="text" class="text" />
+<input type="text" class="text" name="basicsearchvalue" />
 <a class="easyui-linkbutton" data-options="plain:true,iconCls:'icon-search'" onclick="basicSearch()" >查找</a>   
 <a class="easyui-linkbutton" data-options="plain:true,iconCls:'icon-search'" onclick="advSearch()">高级查找</a>
 <a class="easyui-linkbutton" data-options="plain:true,iconCls:'icon-undo'" onclick="cacelSearch()" >取消查找</a>		
