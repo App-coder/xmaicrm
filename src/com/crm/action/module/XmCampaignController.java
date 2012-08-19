@@ -19,6 +19,8 @@ import com.crm.action.util.ModuleUtil;
 import com.crm.bean.crm.Message;
 import com.crm.bean.crm.UserPermission;
 import com.crm.bean.easyui.ComboTree;
+import com.crm.model.XmBlocks;
+import com.crm.model.XmField;
 import com.crm.model.XmFreetags;
 import com.crm.model.XmGroups;
 import com.crm.model.XmRelatedlists;
@@ -32,6 +34,7 @@ import com.crm.service.settings.basic.XmGroupsService;
 import com.crm.service.settings.basic.XmUsersService;
 import com.crm.util.ActionUtil;
 import com.crm.util.Constant;
+import com.crm.util.HtmlUtil;
 import com.crm.util.actionutil.ActionCls;
 import com.crm.util.crm.CustomViewUtil;
 
@@ -96,7 +99,9 @@ public class XmCampaignController extends BaseController {
 	public String index(int ptb,ModelMap modelMap) throws UnsupportedEncodingException{
 		
 		ActionUtil.setTitle("Campaigns", ptb, modelMap, this.moduleUtil);
-
+		this.xmCustomViewService.getAdvSearchFilter("Campaigns",modelMap);
+		
+		
 		return "module/campaigns/index";
 	}
 	

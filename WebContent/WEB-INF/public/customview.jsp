@@ -160,6 +160,9 @@ var entitytype = '${entitytype}';
 	$("#enddate").datebox('setValue', end_newday);
     }
 </script>
+<style>
+.tab_filter .text{width:177px !important;}
+</style>
 </head>
 <body id="wrap">
 ${navbar }
@@ -337,7 +340,7 @@ ${navbar }
 												</p>
 												<fieldset>
 													<legend>根据字段设置过滤条件</legend>
-													<table class="tab_form">
+													<table class="tab_form tab_filter">
 														<tr>
 															<td><select class="text"  name="advfiltercol_1" onchange="setComp(this.value,'comparator_1')" >${optionstr }</select></td>
 															<td><select class="text" name="comparator_1">${filter }</select></td>

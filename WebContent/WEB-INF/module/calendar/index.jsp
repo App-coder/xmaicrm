@@ -26,6 +26,7 @@ var viewid = '${viewid}';
 var tabid = ${tab.tabid};
 var tablabel = '${tab.tablabel}';
 var ptb = ${ptb.parenttabid };
+var searchtype = 'basicsearch';
 </script>
 
 <script type="text/javascript" src="resources/desktop/module/calendar/index.js"></script>
@@ -33,82 +34,7 @@ var ptb = ${ptb.parenttabid };
 </head>
 <body id="wrap">
 	${navbar }
-	<div class="hidden">
-	
-		<div id="wind_batchUpdate" iconCls="icon-edit"
-			style="width: 500px; height: 309px;" class="easyui-window p10"
-			<%=win_topbar%> title="批量修改 " >
-				<div class="easyui-layout" data-options="fit:true,border:false">
-					<div data-options="region:'center',border:false" style="padding:10px;">
-						<table class="tab_editlist">
-							<tr>
-								<td>选择字段</td>
-							</tr>
-							<tr>
-								<td><select class="text" ></select></td>
-							</tr>
-						</table>
-					</div>
-					<div region="south" class="btnbar" border="false">
-						<a class="easyui-linkbutton" iconCls="icon-ok"
-						href="javascript:void(0)" onclick="formsubmit('form_customview')">编辑</a> <a
-						class="easyui-linkbutton" iconCls="icon-cancel"
-						href="javascript:void(0)" onclick="closeWin('wind_batchUpdate')">取消</a>
-					</div>
-				</div>
-		</div>
-		
-		<div id="wind_smowerUpdate" iconCls="icon-edit"
-			style="width: 500px; height: 309px;" class="easyui-window p10"
-			<%=win_topbar%> title="修改负责人 " >
-				<div class="easyui-layout" data-options="fit:true,border:false">
-					<div data-options="region:'center',border:false" style="padding:10px;">
-						<table class="tab_editlist">
-							<tr>
-								<td>选择负责人</td>
-							</tr>
-							<tr>
-								<td>
-									<select class="easyui-combotree" style="width:200px;" data-options="url:'crm/relation/users/getSmowners'" ></select>
-								</td>
-							</tr>
-						</table>
-					</div>
-					<div region="south" class="btnbar" border="false">
-						<a class="easyui-linkbutton" iconCls="icon-ok"
-						href="javascript:void(0)" onclick="formsubmit('form_customview')">编辑</a> <a
-						class="easyui-linkbutton" iconCls="icon-cancel"
-						href="javascript:void(0)" onclick="closeWin('wind_batchUpdate')">取消</a>
-					</div>
-				</div>
-		</div>
-		
-		<div id="wind_share" iconCls="icon-edit"
-			style="width: 500px; height: 309px;" class="easyui-window p10"
-			<%=win_topbar%> title="共享" >
-				<div class="easyui-layout" data-options="fit:true,border:false">
-					<div data-options="region:'center',border:false" style="padding:10px;">
-						<table class="tab_editlist">
-							<tr>
-								<td>选择共享用户</td>
-							</tr>
-							<tr>
-								<td>
-									<select class="easyui-combotree" style="width:200px;" data-options="url:'crm/relation/users/getCkSmowners',checkbox:true,multiple:true"  ></select>
-								</td>
-							</tr>
-						</table>
-					</div>
-					<div region="south" class="btnbar" border="false">
-						<a class="easyui-linkbutton" iconCls="icon-ok"
-						href="javascript:void(0)" onclick="formsubmit('form_customview')">编辑</a> <a
-						class="easyui-linkbutton" iconCls="icon-cancel"
-						href="javascript:void(0)" onclick="closeWin('wind_share')">取消</a>
-					</div>
-				</div>
-		</div>
-	
-	</div>
+	<%@ include file="../include_view.jsp"  %>
 	<div id="main">
 		<div id="navpath" class="path">
 			${ptb.parenttabLabel }&gt;<a
@@ -116,9 +42,11 @@ var ptb = ${ptb.parenttabid };
 		</div>
 		
 		<div class="easyui-tabs"   >  
+	        <!-- 
 	        <div title="日程安排" style="overflow:hidden;"  >  
 	        	<iframe width="100%" height="650px"  frameborder="0" src="crm/module/calendar/viewcalendar?_rd=${rd }" ></iframe>
 	        </div>  
+	         -->
 	        <div title="列表视图" class="p10" >
 	        	 
         	 	<div class="d_view ">
@@ -131,11 +59,8 @@ var ptb = ${ptb.parenttabid };
 						href="crm/customview/index?entitytype=${entitytype}&ptb=${ptb.parenttabid }"
 						class="easyui-linkbutton"
 						data-options="plain:true,iconCls:'icon-view'">视图管理</a>&nbsp;&nbsp;
-						查找：
-						<select class="text" ></select>
-						<input type="text" class="text" />
-						<a class="easyui-linkbutton" 
-						data-options="plain:true,iconCls:'icon-search'">查找</a>
+						<c:set var="searchtype" value="basicsearch"></c:set>
+						<%@ include file="../include_view_search.jsp"  %>
 				</div>
 				<div id="tabbar" class="gtb" style="display: block;" >  
 			查看范围：<select class="easyui-combotree" style="width:160px;" data-options="url:'crm/module/calendar/getCondition'"></select>

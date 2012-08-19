@@ -3,6 +3,8 @@ package com.crm.service;
 import java.util.List;
 import java.util.Map;
 
+import org.springframework.ui.ModelMap;
+
 import com.crm.bean.easyui.expand.CVColumn;
 import com.crm.model.XmContactdetails;
 import com.crm.model.XmCustomview;
@@ -84,6 +86,14 @@ public interface XmCustomViewService {
 	 * @return
 	 */
 	List<XmContactdetails> getContactdetailsByAccountid(int accountid);
+
+	/**
+	 * 得到高级查询的条件
+	 * 
+	 * @param string entitytype 
+	 * @param modelMap
+	 */
+	void getAdvSearchFilter(String string, ModelMap modelMap);
 
 
 	

@@ -26,6 +26,7 @@ var viewid = '${viewid}';
 var tabid = ${tab.tabid};
 var tablabel = '${tab.tablabel}';
 var ptb = ${ptb.parenttabid };
+var searchtype = 'advsearch';
 </script>
 <script type="text/javascript" src="resources/desktop/module/campaigns/index.js"></script>
 </head>
@@ -69,12 +70,8 @@ ${ptb.parenttabLabel }&gt;<a href="crm/module/${fn:toLowerCase(entityname.module
 					class="easyui-linkbutton"
 					data-options="plain:true,iconCls:'icon-view'">视图管理</a>
 					&nbsp;&nbsp;
-					查找：
-					<select class="text" ></select>
-					<input type="text" class="text" />
-					<a class="easyui-linkbutton" 
-					data-options="plain:true,iconCls:'icon-search'">查找</a>
-					<a class="easyui-linkbutton" data-options="plain:true" iconCls="icon-undo" onclick="cacelSearch()" >取消查找</a>
+					<c:set var="searchtype" value="advsearch"></c:set>
+					<%@ include file="../include_view_search.jsp"  %>
 			</div>
 			
 			<div id="tabbar" class="gtb" style="display: block;" >  

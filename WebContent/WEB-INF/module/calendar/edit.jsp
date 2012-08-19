@@ -17,13 +17,7 @@ var recurringinfo = '${recurringinfo}';
 <body id="wrap">
 ${navbar }
 <div id="main">
-<div class="hidden">
-		<div id="optionwindow" iconCls="icon-save"
-			style="width: 700px; height: 440px;" class="easyui-window"
-			<%=win_topbar%> >  
-  			<iframe id="optionframe" frameborder="0" width="100%" height="100%"></iframe>
-    	</div>  
-</div>
+<%@ include file="../include_edit.jsp"  %>
 <div id="navpath" class="path">
 ${ptb.parenttabLabel }&gt;<a href="crm/module/${fn:toLowerCase(entity.modulename) }/index?ptb=${ptb.parenttabid }">${tab.tablabel}</a>&gt;
 <c:choose>

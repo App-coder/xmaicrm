@@ -407,3 +407,8 @@ background-color: #D0E5F5;
 .bggray{background-color: #EFEFEF;}
 .plr_5{padding-right: 5px;padding-left: 5px;}
 
+.tablist tr td {
+	padding-left:5px;
+    border: 1px dotted #CCCCCC;
+    height: 25px;
+}

@@ -1,23 +1,32 @@
 package com.crm.service.impl;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
 import javax.annotation.Resource;
 
 import org.springframework.stereotype.Service;
+import org.springframework.ui.ModelMap;
 
 import com.crm.bean.amcharts.ReportData;
 import com.crm.bean.easyui.expand.CVColumn;
 import com.crm.mapper.XmCustomviewMapper;
 import com.crm.mapper.util.CvFilter;
+import com.crm.model.XmBlocks;
 import com.crm.model.XmContactdetails;
 import com.crm.model.XmCustomview;
 import com.crm.model.XmCvadvfilter;
 import com.crm.model.XmCvstdfilter;
 import com.crm.model.XmEntityname;
+import com.crm.model.XmField;
+import com.crm.model.XmTab;
+import com.crm.service.XmBlocksService;
 import com.crm.service.XmContactdetailsService;
 import com.crm.service.XmCustomViewService;
+import com.crm.service.XmFieldService;
+import com.crm.service.XmTabService;
+import com.crm.util.HtmlUtil;
 import com.crm.util.JsonUtil;
 
 @Service("xmCustomViewService")
@@ -40,6 +49,24 @@ public class XmCustomViewServiceImpl implements XmCustomViewService {
     @Resource(name="xmCustomviewMapper")
 	public void setXmCustomviewMapper(XmCustomviewMapper xmCustomviewMapper) {
 		this.xmCustomviewMapper = xmCustomviewMapper;
+	}
+    
+    XmTabService xmTabService;
+	@Resource(name = "xmTabService")
+	public void setXmTabService(XmTabService xmTabService) {
+		this.xmTabService = xmTabService;
+	}
+
+	XmBlocksService xmBlocksService;
+	@Resource(name = "xmBlocksService")
+	public void setXmBlocksService(XmBlocksService xmBlocksService) {
+		this.xmBlocksService = xmBlocksService;
+	}
+
+	XmFieldService xmFieldService;
+	@Resource(name = "xmFieldService")
+	public void setXmFieldService(XmFieldService xmFieldService) {
+		this.xmFieldService = xmFieldService;
 	}
 
 	public List<XmCustomview> queryByEntityType(String entitytype) {
@@ -231,6 +258,24 @@ public class XmCustomViewServiceImpl implements XmCustomViewService {
 	@Override
 	public List<XmContactdetails> getContactdetailsByAccountid(int accountid) {
 		return this.xmContactdetailsService.getContactdetailsByAccountid(accountid+"");
+	}
+
+	@Override
+	public void getAdvSearchFilter(String entitytype, ModelMap modelmap) {
+		XmTab tab = this.xmTabService.getTabByName(entitytype);
+		modelmap.addAttribute("tab", tab);
+		List<XmBlocks> blocks = this.xmBlocksService.getBlocksByTabId(tab
+				.getTabid());
+		List<List<XmField>> fieldsList = new ArrayList<List<XmField>>();
+		for (int i = 0; i < blocks.size(); i++) {
+			XmBlocks b = blocks.get(i);
+			List<XmField> fds = this.xmFieldService.getFieldByBlockAndTab(
+					tab.getTabid(), b.getBlockid());
+			fieldsList.add(fds);
+		}
+		modelmap.addAttribute("optionstr",
+				HtmlUtil.getMultSelect(blocks, fieldsList, entitytype));
+		modelmap.addAttribute("filter", HtmlUtil.getFilter());
 	}
 
 }
