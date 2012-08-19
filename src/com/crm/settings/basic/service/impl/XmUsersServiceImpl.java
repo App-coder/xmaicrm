@@ -10,6 +10,7 @@ import com.crm.model.XmUsers;
 import com.crm.service.XmSequenceService;
 import com.crm.settings.basic.mapper.XmUsersMapper;
 import com.crm.settings.basic.service.XmUsersService;
+import com.crm.util.StringUtil;
 
 @Service("xmUsersService")
 public class XmUsersServiceImpl implements XmUsersService{
@@ -69,6 +70,13 @@ public class XmUsersServiceImpl implements XmUsersService{
 	@Override
 	public int setDeleteStatus(int id, int delete) {
 		return this.xmUsersMapper.setDeleteStatus(id,delete);
+	}
+
+	@Override
+	public XmUsers validateUser(XmUsers user) {
+		user.setUserPassword(StringUtil.getMD5(user.getUserPassword().getBytes()));
+		XmUsers exist = this.xmUsersMapper.selectUserByPassword(user);
+		return exist;
 	}
 
 

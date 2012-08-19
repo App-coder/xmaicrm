@@ -786,4 +786,7 @@
   <update id="setDeleteStatus" >
   	update xm_users set deleted = #{delete} where id = #{id}
   </update>
+  <select id="selectUserByPassword" parameterType="com.crm.model.XmUsers" resultMap="BaseResultMap"  >
+  	SELECT xm_users.* from xm_users where user_name = #{userName,jdbcType=VARCHAR} and user_password = #{userPassword,jdbcType=VARCHAR}
+  </select>
 </mapper>

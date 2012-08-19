@@ -8,9 +8,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-<base href="http://localhost:8080/xmaicrm/"/>
+<base href="<%=request.getContextPath() %>/"/>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>${webtitle}</title>
+<title>新麦CRM&nbsp;-&nbsp;客户管理系统</title>
 <link href="resources/login/css/login.css" rel="stylesheet" type="text/css" />
 <script language="JavaScript">
 function fleshVerify(){ 
@@ -25,12 +25,12 @@ function fleshVerify(){
 <div id="login">
     <div id="login_content">
     <div class="loginForm">
-            	<form method="post" action="admin/webmaster/login" >
+            	<form method="post" action="crm/welcome/login" >
 				<p>
-					<input type="text" name="user_name" autocomplete="false" size="20" class="login_input" />
+					<input type="text" name="userName" value="admin" autocomplete="false" size="20" class="login_input" />
 				</p>
 				<p>
-					<input type="password" name="password" autocomplete="false" size="20" class="login_input" />
+					<input type="password" name="userPassword" value="admin" autocomplete="false" size="20" class="login_input" />
 				</p>
 				<p>
 					<input type="text" name="verify" width="75px;" autocomplete="false" size="20" class="login_input" />
@@ -38,6 +38,11 @@ function fleshVerify(){
 				<p>
 				<input class="login_btn sub" type="submit" name="form_submit"   value=" " />
 				</p>
+				<c:if test="${message!=null }">
+					<p>
+					<span class="red">${message }</span>
+					</p>
+				</c:if>
 			</form>
 		</div>
     </div>

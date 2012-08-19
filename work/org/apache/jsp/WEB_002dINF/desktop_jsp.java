@@ -1,10 +1,10 @@
-package org.apache.jsp.WEB_002dINF.settings.other;
+package org.apache.jsp.WEB_002dINF;
 
 import javax.servlet.*;
 import javax.servlet.http.*;
 import javax.servlet.jsp.*;
 
-public final class cangkus_jsp extends org.apache.jasper.runtime.HttpJspBase
+public final class desktop_jsp extends org.apache.jasper.runtime.HttpJspBase
     implements org.apache.jasper.runtime.JspSourceDependent {
 
   private static final JspFactory _jspxFactory = JspFactory.getDefaultFactory();
@@ -12,13 +12,10 @@ public final class cangkus_jsp extends org.apache.jasper.runtime.HttpJspBase
   private static java.util.List _jspx_dependants;
 
   static {
-    _jspx_dependants = new java.util.ArrayList(6);
-    _jspx_dependants.add("/WEB-INF/settings/other/../../head.jsp");
-    _jspx_dependants.add("/WEB-INF/settings/other/../../common/config.jsp");
-    _jspx_dependants.add("/WEB-INF/settings/other/../../path.jsp");
-    _jspx_dependants.add("/WEB-INF/settings/other/../../nav.jsp");
-    _jspx_dependants.add("/WEB-INF/settings/other/../../foot.jsp");
-    _jspx_dependants.add("/WEB-INF/tld/jstl/fn.tld");
+    _jspx_dependants = new java.util.ArrayList(3);
+    _jspx_dependants.add("/WEB-INF/head.jsp");
+    _jspx_dependants.add("/WEB-INF/nav.jsp");
+    _jspx_dependants.add("/WEB-INF/foot.jsp");
   }
 
   private javax.el.ExpressionFactory _el_expressionfactory;
@@ -72,7 +69,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
       out.write("<!DOCTYPE html PUBLIC \"-//W3C//DTD HTML 4.01 Transitional//EN\" \"http://www.w3.org/TR/html4/loose.dtd\">\r\n");
       out.write("<html>\r\n");
       out.write("<head>\r\n");
-      out.write("<base href=\"/xmaicrm/\"/>\r\n");
+      out.write("<base href=\"");
+      out.print(request.getContextPath() );
+      out.write("/\"/>\r\n");
       out.write("<meta http-equiv=\"Content-Type\" content=\"text/html; charset=UTF-8\">\r\n");
       out.write("<title>");
       out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${webtitle}", java.lang.String.class, (PageContext)_jspx_page_context, null, false));
@@ -102,35 +101,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
       out.write("\r\n");
       out.write("<!-- 文件上传 -->\r\n");
       out.write("<script type=\"text/javascript\" src=\"resources/plugins/ajaxfileupload.js\"></script>\r\n");
-      out.write('\r');
-      out.write('\n');
       out.write("\r\n");
-      out.write("\r\n");
-      out.write("\r\n");
-
-String win_topbar = "resizable=\"false\"  closed=\"true\" modal=\"true\" collapsible=\"false\"  draggable=\"false\" minimizable=\"false\" maximizable=\"false\" inline=\"false\"";
-
-      out.write("    ");
-      out.write("\r\n");
-      out.write("<script>\r\n");
-      out.write("    var pathname = \"多仓库管理\";\r\n");
-      out.write("</script>\r\n");
-      out.write("\r\n");
-      out.write("<script>\r\n");
-      out.write("$(function(){\r\n");
-      out.write("    var _spath = '");
-      out.print(request.getContextPath());
-      out.write("';\r\n");
-      out.write("    var _loc = window.location.href;\r\n");
-      out.write("    var _url = _loc.substring(_loc.indexOf(_spath)+_spath.length+1);\r\n");
-      out.write("    $.post('welcome/navbar',{pathname:pathname,url:_url},function(html){\r\n");
-      out.write("\t\t$(\"#navpath\").html(html);\t\r\n");
-      out.write("    },'html');\r\n");
-      out.write("});\r\n");
-      out.write("</script>");
-      out.write("\r\n");
-      out.write("<script type=\"text/javascript\"\r\n");
-      out.write("\tsrc=\"resources/desktop/settings/other/cangkus.js\"></script>\r\n");
       out.write("</head>\r\n");
       out.write("<body id=\"wrap\">\r\n");
       out.write("\t");
@@ -266,25 +237,10 @@ String win_topbar = "resizable=\"false\"  closed=\"true\" modal=\"true\" collaps
       out.write("</div>");
       out.write("\r\n");
       out.write("\t<div id=\"main\">\r\n");
-      out.write("\t\t<div class=\"hidden\">\r\n");
-      out.write("\t\t\t<div id=\"cangkus\" class=\"easyui-window\" ");
-      out.print(win_topbar);
-      out.write("\r\n");
-      out.write("\t\t\t\tstyle=\"width: 700px; height: 432px;\">\r\n");
-      out.write("\t\t\t\t<div class=\"easyui-layout\" data-options=\"fit:true,border:false\">\r\n");
-      out.write("\t\t\t\t\t<div data-options=\"region:'center',border:false\"\r\n");
-      out.write("\t\t\t\t\t\tstyle=\"padding: 10px;\">\r\n");
-      out.write("\t\t\t\t\t\tsdfsdfsdf\r\n");
-      out.write("\t\t\t\t\t\t</div>\r\n");
-      out.write("\t\t\t\t</div>\r\n");
-      out.write("\t\t\t\t<div region=\"south\" class=\"btnbar\" border=\"false\">\r\n");
-      out.write("\t\t\t\t\t<a class=\"easyui-linkbutton\" iconCls=\"icon-ok\" onclick=\"formsubmit('form_cangkus')\">编辑</a>\r\n");
-      out.write("\t\t\t\t\t<a class=\"easyui-linkbutton\" iconCls=\"icon-cancel\" onclick=\"closeWin('cangkus')\">取消</a>\r\n");
-      out.write("\t\t\t\t</div>\r\n");
-      out.write("\t\t\t</div>\r\n");
+      out.write("\t\t<div class=\"path\">\r\n");
+      out.write("\t\t\t<a href=\"/\">首页</a>&gt;<a href=\"/sc/\">素材</a>&gt;<a href=\"/js/\">js特效</a>&gt;<a\r\n");
+      out.write("\t\t\t\thref=\"/js/5/\">导航菜单</a>\r\n");
       out.write("\t\t</div>\r\n");
-      out.write("\t\t<div class=\"path\" id=\"navpath\"></div>\r\n");
-      out.write("\t\t<table id=\"cangkus_list\"></table>\r\n");
       out.write("\t</div>\r\n");
       out.write("\t");
       out.write("\r\n");

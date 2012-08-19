@@ -16,7 +16,7 @@ import com.crm.action.BaseController;
  * Time: 上午10:07:11
  */
 @Controller
-@RequestMapping(value = "setting")
+@RequestMapping(value = "crm/setting")
 public class XmSettingController extends BaseController {
 
 	@RequestMapping(value = "/index", method = RequestMethod.GET)

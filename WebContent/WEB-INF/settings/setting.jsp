@@ -266,13 +266,13 @@
 												<tr>
 
 													<td valign="top"><a
-														href="javascript:tab('主菜单','settings/customtab/index')"><img
+														href="crm/settings/parenttab/index"><img
 															border="0" title="主菜单" alt="主菜单"
 															src="resources/images/settings/panel/mainmenu.gif"></a></td>
 												</tr>
 												<tr>
 													<td valign="top" class="big"><a
-														href="javascript:tab('主菜单','settings/customtab/index')">主菜单</a></td>
+														href="crm/settings/parenttab/index">主菜单</a></td>
 												</tr>
 
 											</tbody>
