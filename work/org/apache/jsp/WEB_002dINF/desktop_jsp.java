@@ -91,6 +91,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
       out.write("<link rel=\"stylesheet\" type=\"text/css\" href=\"resources/prodrop/pro_drop.css\" />\r\n");
       out.write("<script src=\"resources/prodrop/stuHover.js\" type=\"text/javascript\"></script>");
       out.write("\r\n");
+      out.write("\r\n");
+      out.write("\r\n");
       out.write("</head>\r\n");
       out.write("<body id=\"wrap\">\r\n");
       out.write("\r\n");
@@ -224,7 +226,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
       out.write("\t</ul>\r\n");
       out.write("</div>");
       out.write("\r\n");
-      out.write("<div id=\"main\">dsasdfs</div>\r\n");
+      out.write("<div id=\"main\">\r\n");
+      out.write("<div class=\"path\"><a href=\"/\">首页</a>&gt;<a href=\"/sc/\">素材</a>&gt;<a href=\"/js/\">js特效</a>&gt;<a href=\"/js/5/\">导航菜单</a></div>\r\n");
+      out.write("</div>\r\n");
       out.write("\r\n");
       out.write("<div id=\"div_foot\" class=\"footercss\" >\r\n");
       out.write("<table width=\"100%\" cellspacing=\"0\" cellpadding=\"5\" border=\"0\" style=\"padding: 8px 20px;display:table;\">\r\n");
