@@ -45,12 +45,12 @@ var viewid = '${viewid}';
 						<option value="${v.cvid }">${v.viewname}</option>
 					</c:forEach>
 				</select> <a
-					href="javascript:tab('${tab.tablabel } - 视图管理','customview/index?entitytype=${entitytype}')"
+					href="customview/index?entitytype=${entitytype}"
 					class="easyui-linkbutton"
 					data-options="plain:true,iconCls:'icon-view'">视图管理</a>
 			</div>
-			<table id="${fn:toLowerCase(entitytype)}_list"
-				data-options="fitColumns:true,height:300" ></table>
+			<table id="view_list"
+				data-options="fitColumns:true" ></table>
 				
 	<c:if test="${repfields!=null }">
 			<div data-options="region:'south',border:false">

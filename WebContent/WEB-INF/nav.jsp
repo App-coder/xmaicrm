@@ -1,5 +1,16 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"
 	pageEncoding="utf-8"%>
+<div class="headerNav"  >
+		<a class="logo"></a>
+		<ul class="nav">
+			<li><a>手机短信</a></li>
+			<li><a>我的审批中心</a></li>
+			<li><a>自定义提醒</a></li>
+			<li><a>我要提问</a></li>
+			<li><a>帐号&设置</a></li>
+			<li><a>退出（BOSS）</a></li>
+		</ul>
+</div>	
 <div id="nav_div">
 	<ul id="nav">
 		<li class="top" style="float: left;"><a href="#nogo1"
@@ -116,16 +127,6 @@
 			<ul class="sub">
 				<li><a href="javascript:tab('控制面板','setting/index')">控制面板</a></li>
 				<li><a href="javascript:tab('业务规则','workflow/index')">业务规则</a></li>
-			</ul></li>
-		<li class="top" style="float: right;"><a href="#nogo1"
-			class="top_link"><span class="down">（BOSS）设置</span></a>
-			<ul class="sub">
-				<li><a href="#nogo54">手机短信</a></li>
-				<li><a href="#nogo55">审批中心</a></li>
-				<li><a href="#nogo56">自定义提醒</a></li>
-				<li><a>我要提问</a></li>
-				<li><a>帐号&设置</a></li>
-				<li><a>退出</a></li>
 			</ul></li>
 	</ul>
 </div>

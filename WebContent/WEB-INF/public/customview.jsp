@@ -2,8 +2,8 @@
     pageEncoding="utf-8"%>
 <%@ include file="../head.jsp"%>
 <%@ include file="../common/config.jsp"%>
-<script>
-    var entitytype = '${entitytype}';
+<script> 
+var entitytype = '${entitytype}';
 </script>
 <script type="text/javascript" src="resources/plugins/dateutils.js"></script>
 <script type="text/javascript"
@@ -173,8 +173,6 @@
 		<div id="customview_${entitytype}_edit" iconCls="icon-save"
 			style="width: 700px; height: 480px;" class="easyui-window"
 			<%=win_topbar%> title="属性编辑">
-			<div class="easyui-layout" data-options="fit:true">
-				<div region="center" border="false" class="bdcenter">
 					<form name="form_${entitytype}_customview" id="form_${entitytype}_customview" method="post" >
 					<input type="hidden" name="id" />
 					<input type="hidden" name="action"  />
@@ -374,17 +372,13 @@
 						</fieldset>
 						<br>
 					</form>
-				</div>
-				<div region="south" class="btnbar" border="false">
 					<a class="easyui-linkbutton" iconCls="icon-ok"
 						href="javascript:void(0)" onclick="formsubmit('form_${entitytype }_customview')">编辑</a> <a
 						class="easyui-linkbutton" iconCls="icon-cancel"
 						href="javascript:void(0)" onclick="closeWin('customview_${entitytype }_edit')">取消</a>
-				</div>
-			</div>
 		</div>
 	</div>
-	<table id="customview_${entitytype }_list" data-options="fit:true,fitColumns:true"></table>
+	<table id="customview_list" data-options="fitColumns:true"></table>
 </div>
 </div>
 <%@ include file="../foot.jsp"%>

@@ -92,7 +92,7 @@ function initContainer() {
     }, 'json');
 }
 function initGrid() {
-    $('#customview_'+entitytype+'_list').datagrid({
+    $('#customview_list').datagrid({
 	url : 'customview/load',
 	doSize : true,
 	collapsible : false,
@@ -101,6 +101,7 @@ function initGrid() {
 	rownumbers : true,
 	pagination : true,
 	fitColumns:true,
+	height:362,
 	queryParams : {
 	    'entitytype' : entitytype
 	},

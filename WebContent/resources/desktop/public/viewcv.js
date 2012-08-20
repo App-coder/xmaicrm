@@ -6,7 +6,7 @@ $(function() {
 function init(){
 
   //设置视图
-	$('#'+viewtab+'_list').datagrid({
+	$('#view_list').datagrid({
 		url : 'customview/renderView',
 		collapsible : false,
 		idField : viewid,
@@ -15,6 +15,7 @@ function init(){
 		pagination:true,
 		queryParams:{entitytype:entitytype,viewid:tab_viewid},
 		columns : [tab_columns],
+		height:362,
 		toolbar : [ {
 		    text : '编辑',
 		    iconCls:'icon-view',
@@ -29,9 +30,7 @@ function init(){
 	    });
 }
 function viewSearchReport(){
-    //customview/report
     $("#reportframe").attr("src","customview/report?_rd="+rdbytime);
-    
     $("#"+viewtab+"_winreport").window("open");
     
 }
