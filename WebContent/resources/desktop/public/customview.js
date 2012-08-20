@@ -17,36 +17,36 @@ $(function() {
     initGrid();
 });
 function initBind() {
-    $('#form_'+entitytype+'_customview').form({ 
+    $('#form_customview').form({ 
         url:'customview/editView',  
         onSubmit: function(){
             $.messager.progress();	
             //设置ckbox值
-            if($('#form_'+entitytype+'_customview').find("input[id=setdefault_"+entitytype+"]").attr("checked") == "checked"){
-        	$('#form_'+entitytype+'_customview').find("input[name=setdefault]").val(1);
+            if($('#form_customview').find("input[id=setdefault_"+entitytype+"]").attr("checked") == "checked"){
+        	$('#form_customview').find("input[name=setdefault]").val(1);
             }else{
-        	$('#form_'+entitytype+'_customview').find("input[name=setdefault]").val(0);
+        	$('#form_customview').find("input[name=setdefault]").val(0);
             }
             
-            if($('#form_'+entitytype+'_customview').find("input[id=ispublic_"+entitytype+"]").attr("checked") == "checked"){
-        	$('#form_'+entitytype+'_customview').find("input[name=ispublic]").val(1);
+            if($('#form_customview').find("input[id=ispublic_"+entitytype+"]").attr("checked") == "checked"){
+        	$('#form_customview').find("input[name=ispublic]").val(1);
             }else{
-        	$('#form_'+entitytype+'_customview').find("input[name=ispublic]").val(0);
+        	$('#form_customview').find("input[name=ispublic]").val(0);
         	
         	//设置public setpublic
         	var setpublic = $("#roles").val();
-        	$('#form_'+entitytype+'_customview').find("input[name=setpublic]").val(setpublic);
+        	$('#form_customview').find("input[name=setpublic]").val(setpublic);
         	
             }
             
-            if($('#form_'+entitytype+'_customview').find("input[id=setmetrics_"+entitytype+"]").attr("checked") == "checked"){
-        	$('#form_'+entitytype+'_customview').find("input[name=setmetrics]").val(1);
+            if($('#form_customview').find("input[id=setmetrics_"+entitytype+"]").attr("checked") == "checked"){
+        	$('#form_customview').find("input[name=setmetrics]").val(1);
             }else{
-        	$('#form_'+entitytype+'_customview').find("input[name=setmetrics]").val(0);
+        	$('#form_customview').find("input[name=setmetrics]").val(0);
             }
             
             //验证
-            if(!$('#form_'+entitytype+'_customview').form("validate")){
+            if(!$('#form_customview').form("validate")){
         	$.messager.progress('close');
         	return false;
             }
@@ -58,21 +58,21 @@ function initBind() {
             if(msg.type==true){
         	//关闭wind,datagrid刷新
         	closeWin("customview_"+entitytype+"_edit");
-        	$('#customview_'+entitytype+'_list').datagrid("reload");
+        	$('#customview_list').datagrid("reload");
             }
         }  
     });  
     
-    $('#form_'+entitytype+'_customview').find("input[id=ispublic_"+entitytype+"]").click(
+    $('#form_customview').find("input[id=ispublic_"+entitytype+"]").click(
 	    function() {
-		var cked = $('#form_'+entitytype+'_customview').find("input[id=ispublic_"+entitytype+"]")
+		var cked = $('#form_customview').find("input[id=ispublic_"+entitytype+"]")
 			.attr("checked");
 		if (cked == "checked") {
-		    $('#form_'+entitytype+'_customview').find("select[id=roles_"+entitytype+"]").attr(
+		    $('#form_customview').find("select[id=roles_"+entitytype+"]").attr(
 			    "disabled", "disabled");
-		    $('#form_'+entitytype+'_customview').find("select[id=roles_"+entitytype+"]").find("option").removeAttr("selected");
+		    $('#form_customview').find("select[id=roles_"+entitytype+"]").find("option").removeAttr("selected");
 		} else {
-		    $('#form_'+entitytype+'_customview').find("select[id=roles_"+entitytype+"]")
+		    $('#form_customview').find("select[id=roles_"+entitytype+"]")
 			    .removeAttr("disabled");
 		}
 
@@ -88,7 +88,7 @@ function initContainer() {
 			+ "</option>";
 	    }
 	}
-	$('#form_'+entitytype+'_customview').find("select[id=roles_"+entitytype+"]").html(ostr);
+	$('#form_customview').find("select[id=roles_"+entitytype+"]").html(ostr);
     }, 'json');
 }
 function initGrid() {
@@ -111,17 +111,17 @@ function initGrid() {
 	    text : '添加',
 	    iconCls : 'icon-add',
 	    handler : function() {
-		$("#customview_"+entitytype+"_edit").window("open");
-		$('#form_'+entitytype+'_customview').find("input[name=action]").val("add");
+		$("#customview_edit").window("open");
+		$('#form_customview').find("input[name=action]").val("add");
 	    }
 	}, {
 	    text : '编辑',
 	    iconCls : 'icon-edit',
 	    handler : function() {
-		var selected = $('#customview_'+entitytype+'_list').datagrid('getSelected');
-		$('#form_'+entitytype+'_customview').find("input[name=action]").val("update");
+		var selected = $('#customview_list').datagrid('getSelected');
+		$('#form_customview').find("input[name=action]").val("update");
 		if (selected) {
-		    $('#form_'+entitytype+'_customview').find("input[name=id]").val(selected.cvid);
+		    $('#form_customview').find("input[name=id]").val(selected.cvid);
 		    $("#customview_"+entitytype+"_edit").window("open");
 		    
 		    //初始化页面数据
@@ -135,13 +135,13 @@ function initGrid() {
 	    text : '删除',
 	    iconCls : 'icon-remove',
 	    handler : function() {
-		var selected = $('#customview_'+entitytype+'_list').datagrid('getSelected');
+		var selected = $('#customview_list').datagrid('getSelected');
 		if (selected) {
 		    $.post('customview/deleteCv', {
 			cvid : selected.cvid
 		    }, function(msg) {
 			if (msg.type == true) {
-			    $('#customview_'+entitytype+'_list').datagrid("reload");
+			    $('#customview_list').datagrid("reload");
 			} else {
 			    error(msg.message);
 			}
@@ -154,7 +154,7 @@ function initGrid() {
 	    text : '设为默认',
 	    iconCls : 'icon-edit',
 	    handler : function() {
-		var selected = $('#customview_'+entitytype+'_list').datagrid('getSelected');
+		var selected = $('#customview_list').datagrid('getSelected');
 		if (selected.setdefault == 1) {
 		    message('选择的视图已经是默认视图！');
 		    return;
@@ -166,7 +166,7 @@ function initGrid() {
 		    }, function(msg) {
 			if (msg.type == true) {
 			    message(msg.message);
-			    $('#customview_'+entitytype+'_list').datagrid("reload");
+			    $('#customview_list').datagrid("reload");
 			} else {
 			    error(msg.message);
 			}
@@ -247,5 +247,5 @@ function setComp(val,cmpid){
 	}
 	opstr +="<option value=\""+soptions[i]+"\">"+v+"</option>";
     }
-    $('#form_'+entitytype+'_customview').find("select[name="+cmpid+"]").html(opstr);
+    $('#form_customview').find("select[name="+cmpid+"]").html(opstr);
 }
