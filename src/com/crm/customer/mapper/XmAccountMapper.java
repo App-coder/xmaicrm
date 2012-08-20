@@ -2,7 +2,6 @@ package com.crm.customer.mapper;
 
 import com.crm.mapper.ModuleMapper;
 import com.crm.model.XmAccount;
-import com.crm.model.XmPotential;
 
 public interface XmAccountMapper extends ModuleMapper<XmAccount> {
     int deleteByPrimaryKey(Integer accountid);

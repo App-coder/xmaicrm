@@ -1,19 +1,19 @@
 //定义页面变量，需要前缀，防止多页面变量重复
-var note_entitytype = 'Notes';
-var note_id = 'noteid';
+var noteplans_entitytype = 'Noteplans';
+var noteplans_id = 'noteplansid';
 
 $(function() {
   //设置视图
-	$('#note_list').datagrid({
-		url : 'note/renderView',
+	$('#noteplans_list').datagrid({
+		url : 'noteplans/renderView',
 		doSize:true,
 		collapsible : false,
-		idField : note_id,
+		idField : noteplans_id,
 		singleSelect : true,
 		rownumbers : true,
 		pagination:true,
-		queryParams:{entitytype:note_entitytype,viewid:note_viewid},
-		columns : [note_columns],
+		queryParams:{entitytype:noteplans_entitytype,viewid:noteplans_viewid},
+		columns : [noteplans_columns],
 		toolbar : [ {
 		    text : '编辑',
 		    iconCls:'icon-view',
@@ -26,7 +26,7 @@ $(function() {
 			checkbox : true
 		}]],
 		onLoadSuccess:function(data){
-		    $('#note_list').datagrid('fixColumnSize'); 
+		    $('#noteplans_list').datagrid('fixColumnSize'); 
 		}
 	    });
     
