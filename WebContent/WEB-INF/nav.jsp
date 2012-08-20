@@ -109,7 +109,7 @@
 		<li class="top"><a href="#nogo57" class="top_link"><span
 				class="down">报表</span></a>
 			<ul class="sub">
-				<li><a href="javascript:tab('综合报表','integradedreports/index')">综合报表</a></li>
+				<li><a href="integradedreports/index/2012">综合报表</a></li>
 				<li><a href="javascript:tab('常用报表','ureports/index')">常用报表</a></li>
 				<li><a href="javascript:tab('年终销售报表','salesreports/index')">年终销售报表</a></li>
 			</ul></li>

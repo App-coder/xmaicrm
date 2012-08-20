@@ -1,7 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"
 	pageEncoding="utf-8"%>
 <!-- 综合报表界面 -->	
+<%@ include file="../head.jsp"%>
 <%@ include file="../common/config.jsp"%>
+
 
 <script>
    <c:choose>
@@ -36,6 +38,10 @@ a {
     text-decoration: none;
 }
 </style>
+<body id="wrap">
+<%@ include file="../nav.jsp"%>
+<div id="main">
+<div class="path"><a href="/">市场管理</a>&gt;<a href="/sc/">营销活动</a></div>
 
 <div class="container">
 	<div class="easyui-layout" fit="true">
@@ -122,8 +128,10 @@ a {
 					   </td>
 				   </tr>
 				</table>
-				
 			</div>
 		</div>
 	</div>
 </div>
+</div>
+<%@ include file="../foot.jsp"%>
+</body>

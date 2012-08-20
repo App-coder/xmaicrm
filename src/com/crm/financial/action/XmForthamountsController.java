@@ -31,10 +31,4 @@ public class XmForthamountsController extends BaseController {
 		this.moduleUtil.setViewProp(modelMap,"Gathers");
 		return "financial/forthamounts";
 	}
-
-	@RequestMapping(value = "/index", method = RequestMethod.GET)
-	public String index(ModelMap modelMap){
-		return "financial/forthamounts";
-	}
-	
 }
