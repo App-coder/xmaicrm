@@ -21,7 +21,7 @@ a.l-btn{border-radius:0px;}
 .navmenuitem .menu-text {left:5px;}
 .navmenuitem.menu{background: none;border:none;}
 .navmentitem .a.m-btn-plain-active{border-radius:none;background: none;}
-.consolebd .menu-shadow{box-shadow:none;border-radius:0px;background: none;border:1px solid #D3D3D3;}
+.consolebd .menu-shadow{box-shadow:none;border-radius:0px;background: #fff;border:1px solid #D3D3D3;}
 
 .combo {width:110px !important;margin-top:4px;}
 .combo-arrow {height:17px}
