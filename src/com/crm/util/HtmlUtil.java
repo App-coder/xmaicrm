@@ -238,8 +238,6 @@ public class HtmlUtil {
 					fieldstr += "<input type=\"text\" name=\""+xmField.getColumnname()+"\" value=\""+getMapVal(obj,xmField.getColumnname())+"\" class=\"text2 easyui-numberbox\" />";
 				}
 			}
-			
-			
 		}else if(uitype.equals("2")){
 			if(tds[1].equals("M")){
 				fieldstr += "<input type=\"text\" name=\""+xmField.getColumnname()+"\" value=\""+getMapVal(obj,xmField.getColumnname())+"\" class=\"easyui-validatebox text2\" data-options=\"required:true\" /><span class=\"must\">*</span>";
@@ -270,7 +268,53 @@ public class HtmlUtil {
 		}else if(uitype.equals("9")){
 			fieldstr +="<input type=\"text\" name=\""+xmField.getColumnname()+"\" value=\""+getMapVal(obj,xmField.getColumnname())+"\" class=\"text2 easyui-numberbox\" data-options=\"min:0,precision:2\" />";
 		}else if(uitype.equals("19")){
-			fieldstr +="<textarea name=\""+xmField.getColumnname()+"\" >"+getMapVal(obj,xmField.getColumnname())+"</textarea>";
+			fieldstr +="<textarea class=\"fullarea\" name=\""+xmField.getColumnname()+"\" >"+getMapVal(obj,xmField.getColumnname())+"</textarea>";
+		}else if(uitype.equals("1006")){
+			if(xmField.getFieldname().equals("catalogid")&&xmField.getTablename().equals("xm_products")){
+				HashMap<String, XmEntityname> hm_noline = (HashMap<String, XmEntityname>)CacheManager.getFromCache(Constant.ENTITYNAME_NOLINE);
+				XmEntityname et = hm_noline.get("Products");
+				fieldstr +="<input type=\"hidden\" name=\""+xmField.getColumnname()+"\" value=\""+getMapVal(obj,xmField.getColumnname())+"\" class=\"text2\"  />";
+				fieldstr +="<input type=\"text\" name=\""+xmField.getColumnname()+"_text\" class=\"text2\" value=\""+getText(getMapVal(obj,xmField.getColumnname()),et,xmCustomViewService)+"\" readonly=\"readonly\" />";
+				fieldstr +="<a class=\"easyui-linkbutton mgl_10\" title=\"查询\" data-options=\"iconCls:'icon-search'\" href=\"javascript:showOptionPanel('Products','"+xmField.getColumnname()+"','"+xmField.getFieldlabel()+"')\" ></a>";
+				fieldstr +="<a class=\"easyui-linkbutton mgl_10\" title=\"清空\" data-options=\"iconCls:'icon-clear'\" ></a>";
+			}
+		}else if(uitype.equals("75")){
+			if(xmField.getFieldname().equals("vendor_id")&&xmField.getTablename().equals("xm_products")){
+				HashMap<String, XmEntityname> hm_noline = (HashMap<String, XmEntityname>)CacheManager.getFromCache(Constant.ENTITYNAME_NOLINE);
+				XmEntityname et = hm_noline.get("Products");
+				fieldstr +="<input type=\"hidden\" name=\""+xmField.getColumnname()+"\" value=\""+getMapVal(obj,xmField.getColumnname())+"\" class=\"text2\"  />";
+				fieldstr +="<input type=\"text\" name=\""+xmField.getColumnname()+"_text\" class=\"text2\" value=\""+getText(getMapVal(obj,xmField.getColumnname()),et,xmCustomViewService)+"\" readonly=\"readonly\" />";
+				fieldstr +="<a class=\"easyui-linkbutton mgl_10\" title=\"查询\" data-options=\"iconCls:'icon-search'\" href=\"javascript:showOptionPanel('Products','"+xmField.getColumnname()+"','"+xmField.getFieldlabel()+"')\" ></a>";
+				fieldstr +="<a class=\"easyui-linkbutton mgl_10\" title=\"清空\" data-options=\"iconCls:'icon-clear'\" ></a>";
+			}
+		}else if(uitype.equals("17")){
+			if(tds[0].equals("V")){
+				if(tds[1].equals("M")){
+					fieldstr += "<input type=\"text\" name=\""+xmField.getColumnname()+"\" value=\""+getMapVal(obj,xmField.getColumnname())+"\" class=\"text2 easyui-validatebox\" data-options=\"required:true\" /><span class=\"must\">*</span>";
+				}else{
+					fieldstr += "<input type=\"text\" name=\""+xmField.getColumnname()+"\" value=\""+getMapVal(obj,xmField.getColumnname())+"\" class=\"text2 easyui-validatebox\" />";
+				}
+			}else if(tds[0].equals("N")){
+				if(tds[1].equals("M")){
+					fieldstr += "<input type=\"text\" name=\""+xmField.getColumnname()+"\" value=\""+getMapVal(obj,xmField.getColumnname())+"\" class=\"text2 easyui-numberbox\" data-options=\"required:true\" /><span class=\"must\">*</span>";
+				}else{
+					fieldstr += "<input type=\"text\" name=\""+xmField.getColumnname()+"\" value=\""+getMapVal(obj,xmField.getColumnname())+"\" class=\"text2 easyui-numberbox\" />";
+				}
+			}
+		}else if(uitype.equals("71")){
+			if(tds[0].equals("V")){
+				if(tds[1].equals("M")){
+					fieldstr += "<input type=\"text\" name=\""+xmField.getColumnname()+"\" value=\""+getMapVal(obj,xmField.getColumnname())+"\" class=\"text2 easyui-validatebox\" data-options=\"required:true\" /><span class=\"must\">*</span>";
+				}else{
+					fieldstr += "<input type=\"text\" name=\""+xmField.getColumnname()+"\" value=\""+getMapVal(obj,xmField.getColumnname())+"\" class=\"text2 easyui-validatebox\" />";
+				}
+			}else if(tds[0].equals("N")){
+				if(tds[1].equals("M")){
+					fieldstr += "<input type=\"text\" name=\""+xmField.getColumnname()+"\" value=\""+getMapVal(obj,xmField.getColumnname())+"\" class=\"text2 easyui-numberbox\" data-options=\"required:true\" /><span class=\"must\">*</span>";
+				}else{
+					fieldstr += "<input type=\"text\" name=\""+xmField.getColumnname()+"\" value=\""+getMapVal(obj,xmField.getColumnname())+"\" class=\"text2 easyui-numberbox\" />";
+				}
+			}
 		}
 		
 		return fieldstr;

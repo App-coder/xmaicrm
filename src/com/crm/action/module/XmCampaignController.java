@@ -122,6 +122,7 @@ public class XmCampaignController extends BaseController {
 		this.actionCls.showView(ptb, module, modelmap,recordid,tab);
 		this.actionCls.setRelatedlist(tab, modelmap);
 		List<XmFreetags> freetags = this.xmFreetagsService.getModuleTags(module,recordid); 
+		modelmap.addAttribute("freetags",freetags);
 		
 		return "module/campaigns/view";
 	}

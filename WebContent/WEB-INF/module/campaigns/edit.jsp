@@ -2,6 +2,8 @@
     pageEncoding="utf-8"%>
 <%@ include file="../../head.jsp"%>
 <%@ include file="../../common/config.jsp"%>
+<script charset="utf-8" src="resources/plugins/kindeditor/kindeditor.js"></script>
+<script charset="utf-8" src="resources/plugins/kindeditor/lang/zh_CN.js"></script>
 <script type="text/javascript" src="resources/desktop/module/campaigns/edit.js"></script>
 <script>
 var ptb = ${ptb.parenttabid};
@@ -33,34 +35,44 @@ ${ptb.parenttabLabel }&gt;<a href="crm/module/${fn:toLowerCase(entity.modulename
 <input type="hidden" name="edit_tabid" value="${tab.tabid}" />
 <input type="hidden" name="edit_module" value="${entity.modulename }"/>
 <input type="hidden" name="recordid" value="${recordid }"/>
-<c:forEach items="${blocks }" var="b">
+<c:forEach items="${blocks }" var="b" varStatus="vb"  >
 <fieldset class="mb_10">
 	<legend>${b.blocklabel }</legend>
 	<table class="tab_form" >
 		<tbody>
-			<c:forEach items="${fields }" var="f" varStatus="vs" >
-				<c:if test="${f.block == b.blockid }">
-					<c:if test="${vs.first == true }">
-						<tr>
-					</c:if>
-					<td class="edittd2" valign="top">
-					${f.fieldlabel }
-					</td>
-					<td width="350">
-					${f.fieldHtml }
-					</td>
+		<tr>
+			<c:forEach items="${b.fields }" var="f" varStatus="vs" >
 					<c:choose>
-						<c:when test="${vs.count%2!=0 &&vs.last == true }" >
-						<td class="edittd2" valign="top" ></td><td  width="350"></td></tr>
+						<c:when test="${f.uitype == 19 }">
+							<td colspan="4">
+							${f.fieldHtml }
+							<script>
+							initEdit('${f.columnname}','campaigns');
+							</script>
+							</td>
+							</tr>
 						</c:when>
-						<c:when test="${vs.count%2==0 &&vs.last == true }" >
-						</tr>
-						</c:when>
-						<c:when test="${vs.count%2==0 &&vs.last == false }" >
-						</tr>
-						</c:when>
+						<c:otherwise>
+							<td class="edittd2" valign="top">
+							${f.fieldlabel }
+							</td>
+							<td width="350">
+							${f.fieldHtml }
+							</td>
+							<c:choose>
+								<c:when test="${vs.count%2!=0 &&vs.last == true }" >
+								<td class="edittd2" valign="top" ></td><td  width="350"></td></tr>
+								</c:when>
+								<c:when test="${vs.count%2==0 &&vs.last == true }" >
+								</tr>
+								</c:when>
+								<c:when test="${vs.count%2==0 &&vs.last == false }" >
+								</tr>
+								<tr>
+								</c:when>
+							</c:choose>						
+						</c:otherwise>
 					</c:choose>
-				</c:if>
 			</c:forEach>
 		</tbody>
 	</table>

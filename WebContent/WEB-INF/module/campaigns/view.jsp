@@ -8,8 +8,15 @@ var relateds = ${relatedstr};
 var module  = '${tab.name}';
 var crmid = ${recordid};
 </script>
+
+<!-- 文件上传 -->
+<script type="text/javascript" src="resources/plugins/swfupload/swfupload.js"></script>
+<script type="text/javascript" src="resources/plugins/swfupload/handler.js"></script>
+<script type="text/javascript" src="resources/plugins/swfupload/swfupload.css"></script>
+
 <script type="text/javascript" src="resources/desktop/module/campaigns/relatedlists.js"></script>
 <script type="text/javascript" src="resources/desktop/module/campaigns/view.js"></script>
+
 </head>
 <body id="wrap">
 ${navbar }
@@ -17,6 +24,45 @@ ${navbar }
 <div id="navpath" class="path">
 ${ptb.parenttabLabel }&gt;<a href="crm/module/${fn:toLowerCase(entity.modulename) }/index?ptb=${ptb.parenttabid }">${tab.tablabel}</a>&gt;预览${tab.tablabel}&gt;${record.campaignname }
 </div>
+
+<div class="hidden" >
+	<div id="wind_attachments"  iconCls="icon-save"
+		style="width: 500px; height:309px;" class="easyui-window"
+		<%=win_topbar%> title="新增附件" >
+	<div class="easyui-layout" data-options="fit:true,border:false">
+		<div data-options="region:'center',border:false" class="p10">
+			<form name="form_attach" id="form_attach" method="post" enctype="multipart/form-data">
+			<fieldset style="height:190px;">
+				<legend>上传你的文件</legend>
+				<table class="tab_form" >
+					<tr>
+						<td>
+							<input type="text" class="text" name="filename" id="filename" disabled="true"  />&nbsp;&nbsp;(10 MB max)
+						</td>
+					</tr>
+					<tr>
+						<td>
+						<span id="btnuploader"></span>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<textarea name="description"  ></textarea>
+						</td>
+					</tr>
+				</table>
+			</fieldset>
+			</form>
+		</div>
+		<div region="south" class="btnbar" border="false">
+			<a class="easyui-linkbutton" iconCls="icon-ok" id="btn_attach_edit" onclick="submitAttach()" >编辑</a> <a
+				class="easyui-linkbutton" iconCls="icon-cancel"
+				href="javascript:void(0)" onclick="closeWin('wind_attachments')">取消</a>
+				</div>
+		</div>
+	</div>
+</div>
+
 
 <div class="easyui-tabs">  
     <div title="营销活动信息" class="p10" >  
@@ -78,19 +124,19 @@ ${ptb.parenttabLabel }&gt;<a href="crm/module/${fn:toLowerCase(entity.modulename
     						<table class="tab_form">
 								<tr>
 									<td>
-										<input type="text" class="text"  />
+										<input type="text" name="tag" id="tag" class="text easyui-validatebox" data-options="required:true"   />
 									</td>
 								</tr>
 								<tr>
 									<td>
-									<a class="easyui-linkbutton" iconCls="icon-add" >贴标签</a>
+									<a class="easyui-linkbutton" iconCls="icon-add" href="javascript:pasteTag()" >贴标签</a>
 									</td>
 								</tr>
 							</table>
-							<div class="tag">
+							<div class="tag" id="tagdiv">
 								<ul>
 									<c:forEach items="${freetags }" var="tag">
-										<li>${tag.tag }<span class="icon-mini-delete mini_delete" style="height:5px;" title="删除"></span></li>
+										<li>${tag.tag }<span class="icon-mini-delete mini_delete" style="height:5px;" title="删除" onclick="deleteTag(${tag.id })" ></span></li>
 									</c:forEach>
 								</ul>
 							</div>

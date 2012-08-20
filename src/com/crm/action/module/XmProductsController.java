@@ -33,6 +33,12 @@ public class XmProductsController extends BaseController{
 	public void setModuleUtil(ModuleUtil moduleUtil) {
 		this.moduleUtil = moduleUtil;
 	}
+	
+	ActionCls actionCls;
+	@Resource(name="actionCls")
+	public void setActionCls(ActionCls actionCls) {
+		this.actionCls = actionCls;
+	}
 
 	@RequestMapping(value = "/index")
 	public String index(int ptb, ModelMap modelMap)
@@ -58,6 +64,14 @@ public class XmProductsController extends BaseController{
 		modelmap.addAttribute("entityname", entityname);
 		
 		return "module/products/viewpop";
+	}
+	
+	@RequestMapping(value = "/showedit")
+	public String showedit(int recordid,String module,int ptb,ModelMap modelmap){
+		
+		this.actionCls.showEdit(ptb, module, modelmap,recordid);
+		
+		return "module/products/edit";
 	}
 	
 }

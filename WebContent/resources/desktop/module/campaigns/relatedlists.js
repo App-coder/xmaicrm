@@ -1,6 +1,66 @@
+var swf;
+var filename;
+
 $(function(){
     initGrid();
+    initSwf();
 });
+function initSwf(){
+    swf = new SWFUpload({
+        	upload_url: "../../../crm/file/uploadAttach",
+        	file_post_name: "attach",
+        	post_params:{module:module},
+        	file_size_limit : "10MB",
+        	file_types : "*.*",			
+        	file_types_description : "All Files",
+        	file_queue_limit : 1,
+        	debug: false,
+        	
+        	//文件选择之后
+        	file_queued_handler : function(file){
+        	    try {
+                	    $("#filename").val(file.name);
+                	    filename = file.name;
+                	    $('#btn_attach_edit').linkbutton('enable');
+        	    } catch (e) {
+        	    }
+        	},
+        	upload_success_handler:function(file, serverData){
+        	    var json = $.parseJSON(serverData);
+        	    if(json.type == true){
+        		
+        		var param = {
+        			description:$("#form_attach").find("textarea[name=description]").val(),
+        			path:json.path,
+        			type:json.filetype,
+        			name:filename,
+        			module:module,
+        			crmid:crmid
+        		};
+        		
+        		$.post('crm/attachments/add',param,function(res){
+        		    if(res.type == true){
+        			closeWin('wind_attachments');
+        			$('#tab_get_attachments').datagrid("reload");
+        		    }else{
+        			message('文件上传有误！');
+        		    }
+        		},'json');
+        		
+        	    }else{
+        		message('文件上传有误！');
+        	    }
+        	},
+        	file_queue_error_handler : fileQueueError,
+        	button_image_url : "../../../resources/plugins/swfupload/upload.png",
+        	button_placeholder_id : "btnuploader",
+        	button_width: 61,
+        	button_height: 22,
+        	
+        	flash_url : "resources/plugins/swfupload/swfupload.swf"
+        });
+}
+
 function initGrid(){
     for(var i=0;i<relateds.length;i++){
 	//附件模块
@@ -22,19 +82,16 @@ function initGrid(){
 }
 function rel_attachments(){
     var cols = [ {
-	field : 'serialname',
+	field : 'name',
 	title : '附件'
     }, {
-	field : 'productname',
+	field : 'description',
 	title : '描述'
     },{
-	field : 'cangku',
+	field : 'username',
 	title : '负责人'
     },{
-	field : 'setype',
-	title : '工具'
-    },{
-	field : 'ismakeup',
+	field : 'createdtime',
 	title : '创建时间'
     }];
     cols = setDefWidth(cols, 80);
@@ -51,12 +108,29 @@ function rel_attachments(){
 	    text : '新增',
 	    iconCls:'icon-add',
 	    handler : function() {
-		
+		$("#wind_attachments").window("open");
 	    }
 	},{
 	    text : '删除',
 	    iconCls:'icon-remove',
 	    handler : function() {
+		var selected = $('#tab_get_attachments').datagrid("getSelected");
+		if(selected){
+		    confirm('确定删除附件？',function(r){
+			if(r){
+			    var param = {
+				    attachmentid:selected.attachmentsid
+			    };
+			    $.post('crm/attachments/delete',param,function(res){
+				if(res.type == true){
+				    $('#tab_get_attachments').datagrid("reload");
+				}
+			    },'json');
+			}
+		    });
+		}else{
+		    message("请选择记录！");
+		}
 	    }
 	}],
 	frozenColumns : [[{
@@ -98,7 +172,7 @@ function rel_accounts(){
     cols = setDefWidth(cols, 80);
     $('#tab_get_accounts').datagrid({
 	title:'客户',
-	url:'crm/attachments/getRelAttachments',
+	url:'',
 	collapsible : false,
 	idField : 'accountid',
 	singleSelect : true,
@@ -298,4 +372,8 @@ function rel_activities(){
 	}]],
 	columns : [ cols ],
     });    
+}
+function submitAttach(){
+    //进行上传，根据对应的事件进行处理 
+    swf.startUpload();
 }

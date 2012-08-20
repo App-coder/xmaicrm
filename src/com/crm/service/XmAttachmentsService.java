@@ -8,4 +8,8 @@ public interface XmAttachmentsService {
 
 	List<XmAttachments> getRelAttachments(String module, Integer crmid);
 
+	int insert(XmAttachments attach);
+
+	void deleteById(Integer attachmentid);
+
 }

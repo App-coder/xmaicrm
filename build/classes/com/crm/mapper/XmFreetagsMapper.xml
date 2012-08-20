@@ -71,8 +71,7 @@
   </update>
   <select id="getModuleTags" resultMap="BaseResultMap"  >
   	SELECT
-		tag,
-		tag_id,
+		xm_freetags.*,
 		COUNT(object_id)AS quantity
 	FROM
 		xm_freetags

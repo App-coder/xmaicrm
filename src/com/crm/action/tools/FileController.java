@@ -5,6 +5,7 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.Hashtable;
 import java.util.List;
@@ -14,10 +15,12 @@ import javax.servlet.ServletContext;
 import net.sf.json.JSONObject;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.context.ServletContextAware;
 import org.springframework.web.multipart.commons.CommonsMultipartFile;
 
@@ -25,12 +28,16 @@ import com.alibaba.fastjson.JSON;
 import com.crm.action.tools.file.NameComparator;
 import com.crm.action.tools.file.SizeComparator;
 import com.crm.action.tools.file.TypeComparator;
+import com.crm.bean.crm.Message;
+import com.crm.bean.crm.UserPermission;
+import com.crm.util.Constant;
 import com.crm.util.DateUtil;
 import com.crm.util.FileUtil;
 import com.crm.util.StringUtil;
 
 @Controller
 @RequestMapping(value = "crm/file/")
+@SessionAttributes({Constant.USERPERMISSION})
 public class FileController implements
 		ServletContextAware {
 
@@ -224,5 +231,74 @@ public class FileController implements
 		}
 		return JSON.toJSONString(message);
 	}
+	
+	
+	/**
+	 * 
+	 * 文件夹的路径：
+	 * attach/模块/用户/年-月-日/对应文件
+	 * 
+	 * @param imgFile
+	 * @param description
+	 * @param module
+	 * @param crmid
+	 * @return
+	 */
+	@RequestMapping(value = "/uploadAttach", method = RequestMethod.POST)
+	@ResponseBody
+	public String uploadAttach(@RequestParam("attach") CommonsMultipartFile imgFile,String module,@ModelAttribute(Constant.USERPERMISSION) UserPermission userpermission) {
+		
+		HashMap<String, Object> msg = new HashMap<String, Object>();
+		StringBuffer sb = new StringBuffer();
+		
+		if (!imgFile.isEmpty()) {
+			
+			sb.append("attach/");
+			String rootPath = this.servletContext.getRealPath("attach/"+module);
+			 
+			File saveDirFile = new File(rootPath);
+			if (!saveDirFile.exists()) {
+				saveDirFile.mkdirs();
+			}
+			
+			
+			String userpath = rootPath +"/"+userpermission.getUser().getUserName();  
+			sb.append(userpermission.getUser().getUserName()+"/");
+			if(!new File(userpath).exists()){
+				new File(userpath).mkdir();
+			}
+			
+			String dtstr = DateUtil.formatTime(new Date(), DateUtil.C_DATE_PATTON_DEFAULT);
+			sb.append(dtstr+"/");
+			String datestr =rootPath+"/"+dtstr;
+			if(!new File(datestr).exists()){
+				new File(datestr).mkdir();
+			}
+			
+			
+			String fname = StringUtil.getTimeMD5();
+			String suffix = FileUtil.getSuffix(imgFile.getFileItem().getName());
+			userpath += "/file/" + fname  + suffix;
+			sb.append("file/");
+			sb.append(fname  + suffix);
+			File file = new File(userpath); // 新建一个文件
 
+			try {
+				imgFile.getFileItem().write(file); // 将上传的文件写入新建的文件中
+				
+				msg.put("type", true);
+				msg.put("message","文件上传成功！");
+				msg.put("filetype", imgFile.getFileItem().getContentType());
+				msg.put("path", sb.toString());
+				
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}else{
+			msg.put("type", false);
+			msg.put("message", "上传文件不能为空！");
+		}
+		
+		return JSON.toJSONString(msg);
+	}
 }

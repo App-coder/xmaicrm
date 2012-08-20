@@ -290,3 +290,18 @@ function showLocale(objD)
 	str = yy + "-" + MM + "-" + dd + " " + hh + ":" + mm + ":" + ss;
     return(str);
 }
+
+function initEdit(name,module){
+    KindEditor.ready(function(K) {
+    	editor = K.create('textarea[name="'+name+'"]', {
+    		resizeType : 1,
+    		allowPreviewEmoticons : true,
+    		allowImageUpload : true,
+    		allowFileManager : true,
+    		items:editoritem_more,
+    		uploadJson:'crm/file/upload',
+    		fileManagerJson:'crm/file/filemanager',
+    		fileloc:"attach/"+module
+    	});
+    });
+}

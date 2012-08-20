@@ -133,12 +133,22 @@ public class ActionCls {
 				setblock.add(fields.get(i).getBlock());
 			}
 		}
-		modelmap.addAttribute("fields", fields);
+//		modelmap.addAttribute("fields", fields);
 
 		// 整理后的block modelmap.addAttribute("blocks",blocks);
 		List<XmBlocks> arrangeBlock = new ArrayList<XmBlocks>();
 		for (int i = 0; i < blocks.size(); i++) {
 			if (setblock.contains(blocks.get(i).getBlockid())) {
+				List<XmField> fs = new ArrayList<XmField>();
+				//添加对应的fields
+				if (fields.size() > 0) {
+					for (int j = 0; j < fields.size(); j++) {
+						if(fields.get(j).getBlock().equals(blocks.get(i).getBlockid())){
+							fs.add(fields.get(j));
+						}
+					}
+				}
+				blocks.get(i).setFields(fs);
 				arrangeBlock.add(blocks.get(i));
 			}
 		}

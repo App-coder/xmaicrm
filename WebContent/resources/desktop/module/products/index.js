@@ -19,7 +19,7 @@ function init(){
 		    text : '添加',
 		    iconCls:'icon-add',
 		    handler : function() {
-			window.location.href="crm/module/campaigns/showedit?recordid=0&ptb="+ptb+"&module="+entitytype;
+			window.location.href="crm/module/products/showedit?recordid=0&ptb="+ptb+"&module="+entitytype;
 		    }
 		}, {
 		    text : '编辑',

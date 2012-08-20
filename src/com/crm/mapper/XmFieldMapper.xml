@@ -331,8 +331,7 @@
 		WHERE
 		xm_field.tabid = ${tabid}
 		AND xm_field.block IN(${blockstr})
-		AND xm_field.displaytype IN(1, 4)
-		AND info_type = 'BAS'
+		AND xm_field.displaytype IN(1, 4) 
 		ORDER BY
 		block,
 		sequence;

@@ -1,5 +1,8 @@
 package com.crm.model;
 
+import java.util.List;
+
+
 public class XmBlocks {
 
 	private Integer blockid;
@@ -22,6 +25,7 @@ public class XmBlocks {
     
     private String tabname;
     
+    private List<XmField> fields ;
 
 	public Integer getBlockid() {
         return blockid;
@@ -102,7 +106,13 @@ public class XmBlocks {
 	public void setTabname(String tabname) {
 		this.tabname = tabname;
 	}
-    
-    
+
+	public List<XmField> getFields() {
+		return fields;
+	}
+
+	public void setFields(List<XmField> fields) {
+		this.fields = fields;
+	}
 
 }

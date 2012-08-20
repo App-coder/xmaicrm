@@ -8,4 +8,8 @@ public interface XmFreetagsService {
 
 	List<XmFreetags> getModuleTags(String module, int recordid);
 
+	int add(String tag, String module, Integer objectid);
+
+	boolean deleteById(int id);
+
 }
