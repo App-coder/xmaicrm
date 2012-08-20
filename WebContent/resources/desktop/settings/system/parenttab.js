@@ -293,6 +293,11 @@ function initEditWind(parenttabid){
 function isExist(select){
     var selected = $('#viewmodule').datagrid("getRows");
     var exist = false;
+    
+    if(selected[0] == null){
+	return false;
+    }
+    
     for(var i=0;i<selected.length;i++){
 	if(select.tabid == selected[i].tabid ){
 	    exist = true;
