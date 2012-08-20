@@ -12,6 +12,7 @@ import com.crm.bean.easyui.expand.CVColumn;
 import com.crm.mapper.XmCustomviewMapper;
 import com.crm.mapper.XmCvadvfilterMapper;
 import com.crm.mapper.XmCvstdfilterMapper;
+import com.crm.mapper.XmEntitynameMapper;
 import com.crm.model.XmCustomview;
 import com.crm.model.XmCvadvfilter;
 import com.crm.model.XmCvstdfilter;
@@ -41,6 +42,12 @@ public class CvFilter {
 		this.xmCvstdfilterMapper = xmCvstdfilterMapper;
 	}
 	
+	XmEntitynameMapper xmEntitynameMapper;
+	@Resource(name="xmEntitynameMapper")
+	public void setXmEntitynameMapper(XmEntitynameMapper xmEntitynameMapper) {
+		this.xmEntitynameMapper = xmEntitynameMapper;
+	}
+
 	private String getJudge(XmCvadvfilter advfilter,CVColumn adv){
 		String c = "";
 		String cpen = advfilter.getComparator();
@@ -182,20 +189,22 @@ public class CvFilter {
 					}else if(n.getFieldname().indexOf("_")!=-1){ 
 						
 						XmEntityname et  =  CustomViewUtil.getEntitynameByET(n.getEntitytype());
-						XmEntityname eref = CustomViewUtil.getEntitynameByEID(n.getFieldname().replace("_", ""));
-							
-						if(columnstr!=""){
-							columnstr +=",( select "+eref.getFieldname()+" from "+eref.getTablename()+" as tmp where tmp."+eref.getEntityidfield()+" = "+ey.getTablename()+"."+n.getFieldcolname()+" )  as "+n.getFieldcolname();
+						
+						XmEntityname eref = null;
+						if(n.getFieldname().split("_")[1].equals("id")){
+							eref = CustomViewUtil.getEntitynameByEID(n.getFieldname().replace("_", ""));
 						}else{
-							columnstr +="( select "+eref.getFieldname()+" from "+eref.getTablename()+" as tmp where tmp."+eref.getEntityidfield()+" = "+ey.getTablename()+"."+n.getFieldcolname()+" )  as  "+n.getFieldcolname();
+							eref = CustomViewUtil.getEntitynameByET(n.getEntitytype());
+						}
+						
+						if(n.getFieldname().split("_")[1].equals("id")){
+							columnstr +=Join(columnstr)+"( select "+eref.getFieldname()+" from "+eref.getTablename()+" as tmp where tmp."+eref.getEntityidfield()+" = "+ey.getTablename()+"."+n.getFieldcolname()+" )  as "+n.getFieldcolname();
+						}else{
+							columnstr +=Join(columnstr)+n.getFieldname().split("_")[1]+" as "+n.getFieldcolname();
 						}
 						
 					}else{
-						if(columnstr!=""){
-							columnstr +=","+n.getFieldtabname()+"."+n.getFieldcolname()+" ";
-						}else{
-							columnstr +=n.getFieldtabname()+"."+n.getFieldcolname();
-						}
+						columnstr +=Join(columnstr)+n.getFieldtabname()+"."+n.getFieldcolname()+" ";
 					}
 				}
 				
@@ -209,5 +218,11 @@ public class CvFilter {
 		return selectall+" where 1=1 and "+en.getTablename()+".deleted = 0 "+getFilter(customview, stdfilter, advfilters);
 	}
 	
+	public String Join(String str){
+		if(str!=null && !str.equals("")){
+			return ",";
+		}
+		return "";
+	}
 	
 }

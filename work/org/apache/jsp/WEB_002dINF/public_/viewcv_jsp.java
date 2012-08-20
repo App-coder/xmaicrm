@@ -236,7 +236,7 @@ String win_topbar = "resizable=\"false\"  closed=\"true\" modal=\"true\" collaps
       out.write("\t\t\t\t\thref=\"crm/customview/index?entitytype=");
       out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${entitytype}", java.lang.String.class, (PageContext)_jspx_page_context, null, false));
       out.write("&ptb=");
-      out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${ptb }", java.lang.String.class, (PageContext)_jspx_page_context, null, false));
+      out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${ptb.parenttabid }", java.lang.String.class, (PageContext)_jspx_page_context, null, false));
       out.write("\"\r\n");
       out.write("\t\t\t\t\tclass=\"easyui-linkbutton\"\r\n");
       out.write("\t\t\t\t\tdata-options=\"plain:true,iconCls:'icon-view'\">视图管理</a>\r\n");

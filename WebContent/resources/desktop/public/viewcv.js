@@ -10,17 +10,16 @@ function init(){
 		url : 'crm/customview/renderView',
 		collapsible : false,
 		idField : viewid,
-		singleSelect : true,
 		rownumbers : true,
 		pagination:true,
 		queryParams:{entitytype:entitytype,viewid:tab_viewid},
 		columns : [tab_columns],
-		height:362,
+		pageSize:20,
 		toolbar : [{
 		    text : '添加',
 		    iconCls:'icon-add',
 		    handler : function() {
-			window.location.href="crm/customview/showEdit?recordid=0&module="+entitytype+"&ptb="+ptb;
+			
 		    }
 		}, {
 		    text : '编辑',
@@ -64,11 +63,7 @@ function init(){
 	    });
 }
 function viewSearchReport(){
-    //var reportcolumn= $("#reportselect").find("option:selected").attr("value");
     var reporttext = $("#reportselect").find("option:selected").text();
-    //var objparam = $.parseJSON(reportcolumn);
-    
-    //${tab.tablabel }-分布统计
     $("#winreport").window({title:tablabel+"-"+reporttext+"-分布统计"});
     $("#winreport").window("open");
     viewReport();

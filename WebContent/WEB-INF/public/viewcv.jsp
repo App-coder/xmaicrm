@@ -64,7 +64,7 @@ ${ptb.parenttabLabel }&gt;<a href="crm/module/${fn:toLowerCase(entityname.module
 						<option value="${v.cvid }">${v.viewname}</option>
 					</c:forEach>
 				</select> <a
-					href="crm/customview/index?entitytype=${entitytype}&ptb=${ptb }"
+					href="crm/customview/index?entitytype=${entitytype}&ptb=${ptb.parenttabid }"
 					class="easyui-linkbutton"
 					data-options="plain:true,iconCls:'icon-view'">视图管理</a>
 			</div>

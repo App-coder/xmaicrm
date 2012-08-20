@@ -161,7 +161,7 @@ var entitytype = '${entitytype}';
 <body id="wrap">
 ${navbar }
 <div id="main">
-<div class="path"><a>视图管理</a>&gt;<a href="crm/customview/viewIndex?entitytype=${entitytype.modulename }&ptb=${ptb }">${tab.tablabel}</a></div>
+<div class="path"><a>视图管理</a>&gt;<a href="crm/customview/index?entitytype=${entitytype }&ptb=${ptb.parenttabid }">${tab.tablabel}</a></div>
 <div class="container">
 	<div class="hidden">
 		<div id="customview_edit" iconCls="icon-save"

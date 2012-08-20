@@ -1,4 +1,4 @@
-package org.apache.jsp.WEB_002dINF.module.qunfas;
+package org.apache.jsp.WEB_002dINF.module.maillist;
 
 import javax.servlet.*;
 import javax.servlet.http.*;
@@ -13,9 +13,9 @@ public final class index_jsp extends org.apache.jasper.runtime.HttpJspBase
 
   static {
     _jspx_dependants = new java.util.ArrayList(4);
-    _jspx_dependants.add("/WEB-INF/module/qunfas/../../head.jsp");
-    _jspx_dependants.add("/WEB-INF/module/qunfas/../../common/config.jsp");
-    _jspx_dependants.add("/WEB-INF/module/qunfas/../../foot.jsp");
+    _jspx_dependants.add("/WEB-INF/module/maillist/../../head.jsp");
+    _jspx_dependants.add("/WEB-INF/module/maillist/../../common/config.jsp");
+    _jspx_dependants.add("/WEB-INF/module/maillist/../../foot.jsp");
     _jspx_dependants.add("/WEB-INF/tld/jstl/fn.tld");
   }
 
@@ -127,7 +127,7 @@ String win_topbar = "resizable=\"false\"  closed=\"true\" modal=\"true\" collaps
 
       out.write("    ");
       out.write("\r\n");
-      out.write("<script type=\"text/javascript\" src=\"resources/desktop/module/qunfas/index.js\"></script>\r\n");
+      out.write("<script type=\"text/javascript\" src=\"resources/desktop/module/maillist/index.js\"></script>\r\n");
       out.write("</head>\r\n");
       out.write("<body id=\"wrap\">\r\n");
       out.write("\t");
@@ -317,7 +317,7 @@ String win_topbar = "resizable=\"false\"  closed=\"true\" modal=\"true\" collaps
     org.apache.taglibs.standard.tag.rt.core.WhenTag _jspx_th_c_005fwhen_005f0 = (org.apache.taglibs.standard.tag.rt.core.WhenTag) _005fjspx_005ftagPool_005fc_005fwhen_0026_005ftest.get(org.apache.taglibs.standard.tag.rt.core.WhenTag.class);
     _jspx_th_c_005fwhen_005f0.setPageContext(_jspx_page_context);
     _jspx_th_c_005fwhen_005f0.setParent((javax.servlet.jsp.tagext.Tag) _jspx_th_c_005fchoose_005f0);
-    // /WEB-INF/module/qunfas/../../head.jsp(16,1) name = test type = boolean reqTime = true required = true fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
+    // /WEB-INF/module/maillist/../../head.jsp(16,1) name = test type = boolean reqTime = true required = true fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
     _jspx_th_c_005fwhen_005f0.setTest(((java.lang.Boolean) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${ptb!=null&&tab!=null}", java.lang.Boolean.class, (PageContext)_jspx_page_context, null, false)).booleanValue());
     int _jspx_eval_c_005fwhen_005f0 = _jspx_th_c_005fwhen_005f0.doStartTag();
     if (_jspx_eval_c_005fwhen_005f0 != javax.servlet.jsp.tagext.Tag.SKIP_BODY) {

@@ -14,6 +14,10 @@ public class XmMaillist {
     private Integer queryid;
 
     private String maillistmsg;
+    
+    private String sentcount;
+    
+    private String unsentcount;
 
     public Integer getMaillistid() {
         return maillistid;
@@ -70,4 +74,23 @@ public class XmMaillist {
     public void setMaillistmsg(String maillistmsg) {
         this.maillistmsg = maillistmsg == null ? null : maillistmsg.trim();
     }
+
+	public String getSentcount() {
+		return sentcount;
+	}
+
+	public void setSentcount(String sentcount) {
+		this.sentcount = sentcount;
+	}
+
+	public String getUnsentcount() {
+		return unsentcount;
+	}
+
+	public void setUnsentcount(String unsentcount) {
+		this.unsentcount = unsentcount;
+	}
+    
+    
+    
 }
