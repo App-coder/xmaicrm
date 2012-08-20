@@ -22,6 +22,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <!-- loadmask -->
 <link href="resources/plugins/loadmask/jquery.loadmask.css" rel="stylesheet" type="text/css" />
 <script type="text/javascript" src="resources/plugins/loadmask/jquery.loadmask.min.js"></script>
-<script type="text/javascript" src="resources/global.js"></script>
+<script type="text/javascript" src="resources/global.js"></script>    
 
-
+<!-- 菜单 -->
+<link rel="stylesheet" type="text/css" href="resources/prodrop/pro_drop.css" />
+<script src="resources/prodrop/stuHover.js" type="text/javascript"></script>

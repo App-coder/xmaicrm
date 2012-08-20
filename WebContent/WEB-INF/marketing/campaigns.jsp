@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"
 	pageEncoding="utf-8"%>
+<%@ include file="../header.jsp"%>
 <%@ include file="../common/config.jsp"%>
 <c:choose>
 	<c:when test="${customview.cvid!=null && dview!=null}">
@@ -51,3 +52,4 @@
 		</c:if>
 	</div>
 </div>
+<%@ include file="../footer.jsp"%>

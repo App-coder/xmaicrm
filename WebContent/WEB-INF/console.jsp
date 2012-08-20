@@ -13,7 +13,7 @@
 		</div>
 		<!-- com.crm.marketing -->
 		<div id="agora_item" style="width: 120px;" class="navmenuitem"  >
-			<div><a href="javascript:tab('营销活动','customview/viewIndex?entitytype=Campaigns')">营销活动</a></div>
+			<div><a href="customview/viewIndex?entitytype=Campaigns">营销活动</a></div>
 			<div><a href="javascript:tab('群发短信','qunfa/index')">群发短信</a></div>
 			<div><a href="javascript:tab('群发邮件','maillist/index')">群发邮件</a></div>
 		</div>

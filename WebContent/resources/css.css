@@ -1,7 +1,10 @@
 /*easyui*/
 .panel-body{background:none; }
 /*easyui*/
-body{font-size:12px/1.5;}
+*{font-size:12px;}
+html, body, #wrap {height: 100%;}
+body > #wrap {height: auto; min-height: 100%;}
+body{margin:0px;padding:0px;}
 body, input, button, select, textarea{font: Tahoma,'Microsoft Yahei','Simsun'}
 textarea{ resize: none;}
 
@@ -125,3 +128,5 @@ fieldset legend{color:#15428B;}
 .red{color:red;}
 .tab_center tbody tr td{text-align: center !important;}
 .wtop{text-align: center;padding:5px;line-height: 20px;}
+#div_foot{position: absolute;bottom:0px;height: 40px;clear:both;width:100%;}
+#main {padding-bottom: 45px;} /* 必须使用和footer相同的高度 */

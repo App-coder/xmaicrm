@@ -12,9 +12,8 @@ public final class console_jsp extends org.apache.jasper.runtime.HttpJspBase
   private static java.util.List _jspx_dependants;
 
   static {
-    _jspx_dependants = new java.util.ArrayList(2);
+    _jspx_dependants = new java.util.ArrayList(1);
     _jspx_dependants.add("/WEB-INF/header.jsp");
-    _jspx_dependants.add("/WEB-INF/common/commonjs.jsp");
   }
 
   private javax.el.ExpressionFactory _el_expressionfactory;
@@ -73,7 +72,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
       out.write("<title>");
       out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${webtitle}", java.lang.String.class, (PageContext)_jspx_page_context, null, false));
       out.write("</title>\r\n");
-      out.write("\r\n");
       out.write("<link rel=\"stylesheet\" type=\"text/css\" href=\"resources/easyui/themes/default/easyui.css\">\r\n");
       out.write("<link rel=\"stylesheet\" type=\"text/css\" href=\"resources/easyui/themes/icon.css\">\r\n");
       out.write("<link rel=\"stylesheet\" type=\"text/css\" href=\"resources/css.css\">\r\n");
@@ -85,11 +83,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
       out.write("<!-- loadmask -->\r\n");
       out.write("<link href=\"resources/plugins/loadmask/jquery.loadmask.css\" rel=\"stylesheet\" type=\"text/css\" />\r\n");
       out.write("<script type=\"text/javascript\" src=\"resources/plugins/loadmask/jquery.loadmask.min.js\"></script>\r\n");
-      out.write("\r\n");
       out.write("<script type=\"text/javascript\" src=\"resources/global.js\"></script>\r\n");
       out.write("\r\n");
-      out.write('\r');
-      out.write('\n');
+      out.write("\r\n");
       out.write("\r\n");
       out.write("<script type=\"text/javascript\" src=\"resources/desktop/index.js\"></script>\r\n");
       out.write("</head>\r\n");
@@ -103,7 +99,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
       out.write("\t\t</div>\r\n");
       out.write("\t\t<!-- com.crm.marketing -->\r\n");
       out.write("\t\t<div id=\"agora_item\" style=\"width: 120px;\" class=\"navmenuitem\"  >\r\n");
-      out.write("\t\t\t<div><a href=\"javascript:tab('营销活动','customview/viewIndex?entitytype=Campaigns')\">营销活动</a></div>\r\n");
+      out.write("\t\t\t<div><a href=\"customview/viewIndex?entitytype=Campaigns\">营销活动</a></div>\r\n");
       out.write("\t\t\t<div><a href=\"javascript:tab('群发短信','qunfa/index')\">群发短信</a></div>\r\n");
       out.write("\t\t\t<div><a href=\"javascript:tab('群发邮件','maillist/index')\">群发邮件</a></div>\r\n");
       out.write("\t\t</div>\r\n");
