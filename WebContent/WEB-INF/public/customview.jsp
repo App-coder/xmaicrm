@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"
-	pageEncoding="utf-8"%>
+    pageEncoding="utf-8"%>
+<%@ include file="../head.jsp"%>
 <%@ include file="../common/config.jsp"%>
 <script>
     var entitytype = '${entitytype}';
@@ -159,6 +160,14 @@
 	$("#enddate").datebox('setValue', end_newday);
     }
 </script>
+</head>
+<body id="wrap">
+<%@ include file="../nav.jsp"%>
+
+<div id="main">
+<div class="path"><a href="/">首页</a>&gt;<a href="/sc/">素材</a>&gt;<a href="/js/">js特效</a>&gt;<a href="/js/5/">导航菜单</a></div>
+
+
 <div class="container">
 	<div class="hidden">
 		<div id="customview_${entitytype}_edit" iconCls="icon-save"
@@ -377,3 +386,7 @@
 	</div>
 	<table id="customview_${entitytype }_list" data-options="fit:true,fitColumns:true"></table>
 </div>
+</div>
+<%@ include file="../foot.jsp"%>
+</body>
+</html>

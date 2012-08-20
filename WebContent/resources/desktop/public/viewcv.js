@@ -8,7 +8,6 @@ function init(){
   //设置视图
 	$('#'+viewtab+'_list').datagrid({
 		url : 'customview/renderView',
-		doSize:true,
 		collapsible : false,
 		idField : viewid,
 		singleSelect : true,

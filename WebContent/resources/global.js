@@ -2,6 +2,7 @@ var msg_ex = "系统出现异常，请联系管理员！";
 
 $(function() {
 	
+    /*
 	 $("body").ajaxStart(function(){ mask(); });
 	  
 	 $("body").ajaxStop(function(){ unmask(); });
@@ -13,6 +14,7 @@ $(function() {
 	
 	tabClose();
 	tabCloseEven();
+	*/
 
 });
 function tab(title, url, closable) {

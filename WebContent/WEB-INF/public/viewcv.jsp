@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"
-	pageEncoding="utf-8"%>
+    pageEncoding="utf-8"%>
+<%@ include file="../head.jsp"%>
 <%@ include file="../common/config.jsp"%>
 <c:choose>
 	<c:when test="${customview.cvid!=null && dview!=null}">
@@ -22,7 +23,13 @@ var viewtab = entitytype.toLowerCase();
 var viewid = '${viewid}';
 </script>
 <script type="text/javascript" src="resources/desktop/public/viewcv.js"></script>
-<div class="container">
+
+</head>
+<body id="wrap">
+<%@ include file="../nav.jsp"%>
+<div id="main">
+<div class="path"><a href="/">市场管理</a>&gt;<a href="/sc/">营销活动</a></div>
+
 	<div class="hidden">
 		<div id="${fn:toLowerCase(entitytype)}_winreport"
 			title="${tab.tablabel }-分布统计" class="easyui-window" <%=win_topbar %>
@@ -30,9 +37,8 @@ var viewid = '${viewid}';
 			<iframe style="width:100%;height:100%;" frameborder="0" id="reportframe" ></iframe>
 		</div>
 	</div>
-	<div class="easyui-layout" fit="true">
-		<div data-options="region:'north',border:false">
-			<div class="d_view ">
+	
+	<div class="d_view ">
 				<span class="icon-filter view_span">视图：</span> <select
 					class="sel_120">
 					<c:forEach items="${views}" var="v">
@@ -43,13 +49,10 @@ var viewid = '${viewid}';
 					class="easyui-linkbutton"
 					data-options="plain:true,iconCls:'icon-view'">视图管理</a>
 			</div>
-		</div>
-		<div data-options="region:'center',border:false"
-			style="overflow: hidden">
 			<table id="${fn:toLowerCase(entitytype)}_list"
-				data-options="fit:true,fitColumns:true"></table>
-		</div>
-		<c:if test="${repfields!=null }">
+				data-options="fitColumns:true,height:300" ></table>
+				
+	<c:if test="${repfields!=null }">
 			<div data-options="region:'south',border:false">
 				<div class="d_report ">
 					<span class="icon-report view_span">报表：</span> <select
@@ -62,5 +65,10 @@ var viewid = '${viewid}';
 				</div>
 			</div>
 		</c:if>
-	</div>
+	
 </div>
+
+
+<%@ include file="../foot.jsp"%>
+</body>
+</html>

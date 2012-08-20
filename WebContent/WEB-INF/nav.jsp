@@ -13,7 +13,7 @@
 		<li class="top"><a href="#nogo2" class="top_link"><span
 				class="down">市场管理</span></a>
 			<ul class="sub">
-				<li><a href="#nogo19">营销活动</a></li>
+				<li><a href="customview/viewIndex?entitytype=Campaigns">营销活动</a></li>
 				<li><a href="#nogo20">群发短信</a></li>
 				<li><a href="#nogo21">群发邮件</a></li>
 			</ul></li>

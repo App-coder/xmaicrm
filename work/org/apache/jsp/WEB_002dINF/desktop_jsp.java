@@ -91,8 +91,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
       out.write("<link rel=\"stylesheet\" type=\"text/css\" href=\"resources/prodrop/pro_drop.css\" />\r\n");
       out.write("<script src=\"resources/prodrop/stuHover.js\" type=\"text/javascript\"></script>");
       out.write("\r\n");
-      out.write("\r\n");
-      out.write("\r\n");
       out.write("</head>\r\n");
       out.write("<body id=\"wrap\">\r\n");
       out.write("\r\n");
@@ -109,7 +107,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
       out.write("\t\t<li class=\"top\"><a href=\"#nogo2\" class=\"top_link\"><span\r\n");
       out.write("\t\t\t\tclass=\"down\">市场管理</span></a>\r\n");
       out.write("\t\t\t<ul class=\"sub\">\r\n");
-      out.write("\t\t\t\t<li><a href=\"#nogo19\">营销活动</a></li>\r\n");
+      out.write("\t\t\t\t<li><a href=\"customview/viewIndex?entitytype=Campaigns\">营销活动</a></li>\r\n");
       out.write("\t\t\t\t<li><a href=\"#nogo20\">群发短信</a></li>\r\n");
       out.write("\t\t\t\t<li><a href=\"#nogo21\">群发邮件</a></li>\r\n");
       out.write("\t\t\t</ul></li>\r\n");
@@ -231,7 +229,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
       out.write("</div>\r\n");
       out.write("\r\n");
       out.write("<div id=\"div_foot\" class=\"footercss\" >\r\n");
-      out.write("<table width=\"100%\" cellspacing=\"0\" cellpadding=\"5\" border=\"0\" style=\"padding: 8px 20px;display:table;\">\r\n");
+      out.write("<table width=\"100%\" cellspacing=\"0\" cellpadding=\"5\" border=\"0\" style=\"padding: 8px 20px;display:table;height:40px;\">\r\n");
       out.write("<tbody>\r\n");
       out.write("\t<tr>\r\n");
       out.write("\t\t<td align=\"left\" class=\"small\"><span style=\"color: rgb(153, 153, 153);\">Powered by 新麦 CRM <span id=\"_vtiger_product_version_\">2.0</span></span></td>\r\n");
