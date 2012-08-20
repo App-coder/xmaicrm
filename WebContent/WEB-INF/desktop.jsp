@@ -12,10 +12,9 @@ var pathname = "工作台";
 <script type="text/javascript" src="resources/desktop/desktop.js"></script>
 </head>
 <body id="wrap">
-
-<%@ include file="nav.jsp"%>
+${navbar }
 <div id="main">
-<div class="path" id="navpath"></div>
+<div class="path" >&gt;<a  href="crm/welcome/desktop">工作台</a></div>
 <div id="desktop" >
 		<div style="width:33%;">
 			<div title="Clock" style="text-align:center;background:#f3eeaf;height:150px;padding:5px;">

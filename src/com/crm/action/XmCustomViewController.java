@@ -52,7 +52,7 @@ import com.crm.util.JsonUtil;
 import com.crm.util.crm.CustomViewUtil;
 
 @Controller
-@RequestMapping(value = "customview")
+@RequestMapping(value = "crm/customview")
 public class XmCustomViewController extends BaseController {
 
 	ModuleUtil moduleUtil;

@@ -19,7 +19,7 @@
 							<ul class="sub">
 								<#list menu.tabs as tb>
 									<#if tb??>
-									<li><a>${tb.tablabel}</a></li>	
+									<li><a href="crm/customview/viewIndex?entitytype=${tb.name}">${tb.tablabel}</a></li>	
 									</#if>
 								</#list>
 							</ul>
@@ -28,7 +28,35 @@
 				</li>
 			</#list>
 		<#else>
-		weewew
+			<#list menubar as menu>
+				<#assign exist=false>
+				<#if menu.tabs??>
+				<#list menu.tabs as jd>
+					<#if jd??>
+						<#if permission.modulePermission[jd.tabid+'']??>
+							<#assign exist=true>
+						</#if>
+					</#if>
+				</#list>
+				</#if>
+				<#if exist==true>
+					<li class="top" style="float: left;"><a class="top_link"><span class="down">${menu.parenttab.parenttabLabel}</span></a>
+						<#if menu.tabs??>
+							<#if (menu.tabs?size>0)>
+								<ul class="sub">
+									<#list menu.tabs as tb>
+										<#if tb??>
+											<#if permission.modulePermission[tb.tabid+'']??>
+												<li><a href="crm/customview/viewIndex?entitytype=${tb.name}">${tb.tablabel}</a></li>
+											</#if>
+										</#if>
+									</#list>
+								</ul>
+							</#if>
+						</#if>
+					</li>
+				</#if>
+			</#list>
 		</#if>
 	</ul>
 </div>

@@ -8,6 +8,7 @@ import java.util.*;
 public class MenuBar {
 	XmParenttab parenttab;
 	List<XmTab> tabs;
+	
 	public XmParenttab getParenttab() {
 		return parenttab;
 	}
