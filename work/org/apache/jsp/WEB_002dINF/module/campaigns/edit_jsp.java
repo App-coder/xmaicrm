@@ -672,7 +672,9 @@ String win_topbar = "resizable=\"false\"  closed=\"true\" modal=\"true\" collaps
         out.write("\t\t\t\t\t\t\t<script>\r\n");
         out.write("\t\t\t\t\t\t\tinitEdit('");
         out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${f.columnname}", java.lang.String.class, (PageContext)_jspx_page_context, null, false));
-        out.write("','campaigns');\r\n");
+        out.write("','campaigns/");
+        out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${USERPERMISSION.user.userName}", java.lang.String.class, (PageContext)_jspx_page_context, null, false));
+        out.write("');\r\n");
         out.write("\t\t\t\t\t\t\t</script>\r\n");
         out.write("\t\t\t\t\t\t\t</td>\r\n");
         out.write("\t\t\t\t\t\t\t</tr>\r\n");

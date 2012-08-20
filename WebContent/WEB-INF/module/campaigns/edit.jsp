@@ -47,7 +47,7 @@ ${ptb.parenttabLabel }&gt;<a href="crm/module/${fn:toLowerCase(entity.modulename
 							<td colspan="4">
 							${f.fieldHtml }
 							<script>
-							initEdit('${f.columnname}','campaigns');
+							initEdit('${f.columnname}','campaigns/${USERPERMISSION.user.userName}');
 							</script>
 							</td>
 							</tr>
