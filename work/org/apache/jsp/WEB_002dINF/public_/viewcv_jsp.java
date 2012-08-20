@@ -143,6 +143,17 @@ String win_topbar = "closed=\"true\" modal=\"true\" collapsible=\"false\"  dragg
       out.write("</head>\r\n");
       out.write("<body id=\"wrap\">\r\n");
       out.write("\r\n");
+      out.write("<div class=\"headerNav\"  >\r\n");
+      out.write("\t\t<a class=\"logo\"></a>\r\n");
+      out.write("\t\t<ul class=\"nav\">\r\n");
+      out.write("\t\t\t<li><a>手机短信</a></li>\r\n");
+      out.write("\t\t\t<li><a>我的审批中心</a></li>\r\n");
+      out.write("\t\t\t<li><a>自定义提醒</a></li>\r\n");
+      out.write("\t\t\t<li><a>我要提问</a></li>\r\n");
+      out.write("\t\t\t<li><a>帐号&设置</a></li>\r\n");
+      out.write("\t\t\t<li><a>退出（BOSS）</a></li>\r\n");
+      out.write("\t\t</ul>\r\n");
+      out.write("</div>\t\r\n");
       out.write("<div id=\"nav_div\">\r\n");
       out.write("\t<ul id=\"nav\">\r\n");
       out.write("\t\t<li class=\"top\" style=\"float: left;\"><a href=\"#nogo1\"\r\n");
@@ -260,16 +271,6 @@ String win_topbar = "closed=\"true\" modal=\"true\" collapsible=\"false\"  dragg
       out.write("\t\t\t\t<li><a href=\"javascript:tab('控制面板','setting/index')\">控制面板</a></li>\r\n");
       out.write("\t\t\t\t<li><a href=\"javascript:tab('业务规则','workflow/index')\">业务规则</a></li>\r\n");
       out.write("\t\t\t</ul></li>\r\n");
-      out.write("\t\t<li class=\"top\" style=\"float: right;\"><a href=\"#nogo1\"\r\n");
-      out.write("\t\t\tclass=\"top_link\"><span class=\"down\">（BOSS）设置</span></a>\r\n");
-      out.write("\t\t\t<ul class=\"sub\">\r\n");
-      out.write("\t\t\t\t<li><a href=\"#nogo54\">手机短信</a></li>\r\n");
-      out.write("\t\t\t\t<li><a href=\"#nogo55\">审批中心</a></li>\r\n");
-      out.write("\t\t\t\t<li><a href=\"#nogo56\">自定义提醒</a></li>\r\n");
-      out.write("\t\t\t\t<li><a>我要提问</a></li>\r\n");
-      out.write("\t\t\t\t<li><a>帐号&设置</a></li>\r\n");
-      out.write("\t\t\t\t<li><a>退出</a></li>\r\n");
-      out.write("\t\t\t</ul></li>\r\n");
       out.write("\t</ul>\r\n");
       out.write("</div>");
       out.write("\r\n");
@@ -305,7 +306,7 @@ String win_topbar = "closed=\"true\" modal=\"true\" collapsible=\"false\"  dragg
       out.write("\t\t\t\t\tdata-options=\"plain:true,iconCls:'icon-view'\">视图管理</a>\r\n");
       out.write("\t\t\t</div>\r\n");
       out.write("\t\t\t<table id=\"view_list\"\r\n");
-      out.write("\t\t\t\tdata-options=\"fitColumns:true,height:300\" ></table>\r\n");
+      out.write("\t\t\t\tdata-options=\"fitColumns:true\" ></table>\r\n");
       out.write("\t\t\t\t\r\n");
       out.write("\t");
       if (_jspx_meth_c_005fif_005f0(_jspx_page_context))

@@ -134,6 +134,7 @@ public class XmCustomViewController extends BaseController {
 			ModelMap modelmap) {
 
 		XmTab tab = this.xmTabService.getTabByName(entitytype);
+		modelmap.addAttribute("tab",tab);
 		List<XmBlocks> blocks = this.xmBlocksService.getBlocksByTabId(tab
 				.getTabid());
 		List<List<XmField>> fieldsList = new ArrayList<List<XmField>>();
@@ -177,8 +178,8 @@ public class XmCustomViewController extends BaseController {
 
 	@RequestMapping(value = "/load", method = RequestMethod.POST)
 	@ResponseBody
-	public String load(@Param("entitytype") String entitytype) {
-		List<XmCustomview> list = this.xmCustomViewService.loadList(entitytype);
+	public String load(@Param("entitytype") String entitytype,int page,int rows) {
+		List<XmCustomview> list = this.xmCustomViewService.loadList(entitytype,page,rows);
 		ListBean bean = new ListBean();
 		bean.setRows(list);
 		bean.setTotal(list.size());

@@ -35,6 +35,8 @@ public interface XmCustomViewService {
 			XmCustomview customview, XmCvstdfilter stdfilter,
 			List<XmCvadvfilter> advfilter, List<CVColumn> cols);
 
+	List<XmCustomview> loadList(String entitytype, int page, int rows);
+
 	
 
 }

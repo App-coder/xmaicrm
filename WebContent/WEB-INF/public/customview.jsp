@@ -165,15 +165,17 @@ var entitytype = '${entitytype}';
 <%@ include file="../nav.jsp"%>
 
 <div id="main">
-<div class="path"><a href="/">首页</a>&gt;<a href="/sc/">素材</a>&gt;<a href="/js/">js特效</a>&gt;<a href="/js/5/">导航菜单</a></div>
+<div class="path"><a href="/">视图管理</a>&gt;<a href="/sc/">${tab.tablabel}</a></div>
 
 
 <div class="container">
 	<div class="hidden">
-		<div id="customview_${entitytype}_edit" iconCls="icon-save"
+		<div id="customview_edit" iconCls="icon-save"
 			style="width: 700px; height: 480px;" class="easyui-window"
-			<%=win_topbar%> title="属性编辑">
-					<form name="form_${entitytype}_customview" id="form_${entitytype}_customview" method="post" >
+			<%=win_topbar%> title="属性编辑" >
+			<div class="easyui-layout" data-options="fit:true,border:false">
+			<div data-options="region:'center',border:false" style="padding:10px;background:#fff;border:1px solid #ccc;">
+					<form name="form_${entitytype}_customview" id="form_customview" method="post" >
 					<input type="hidden" name="id" />
 					<input type="hidden" name="action"  />
 					<input type="hidden" name="entitytype" value="${entitytype}"/>
@@ -188,16 +190,16 @@ var entitytype = '${entitytype}';
 								<tr>
 									<td width="33%">视图名称&nbsp;&nbsp;<input name="viewname" class="easyui-validatebox" required="true" type="text"
 										class="text" /></td>
-									<td width="33%">默认视图&nbsp;&nbsp;<input id="setdefault_${entitytype}" type="checkbox" /></td>
+									<td width="33%">默认视图&nbsp;&nbsp;<input id="setdefault" type="checkbox" /></td>
 									<td width="33%" rowspan="2">角色&nbsp;&nbsp;<select
 										multiple="multiple" class="text" 
-										id="roles_${entitytype}" style="height: 50px;"></select></td>
+										id="roles" style="height: 50px;"></select></td>
 								</tr>
 								<tr>
 									<td width="33%">首页关键视图列表中显示&nbsp;&nbsp;<input
-										type="checkbox" id="setmetrics_${entitytype}" /></td>
+										type="checkbox" id="setmetrics" /></td>
 									<td width="33%">公共视图&nbsp;&nbsp;<input type="checkbox"
-										id="ispublic_${entitytype}" value="0" /></td>
+										id="ispublic" value="0" /></td>
 								</tr>
 							</table>
 						</fieldset>
@@ -372,10 +374,14 @@ var entitytype = '${entitytype}';
 						</fieldset>
 						<br>
 					</form>
+					</div>
+				<div region="south" class="btnbar" border="false">
 					<a class="easyui-linkbutton" iconCls="icon-ok"
-						href="javascript:void(0)" onclick="formsubmit('form_${entitytype }_customview')">编辑</a> <a
+						href="javascript:void(0)" onclick="formsubmit('form_customview')">编辑</a> <a
 						class="easyui-linkbutton" iconCls="icon-cancel"
-						href="javascript:void(0)" onclick="closeWin('customview_${entitytype }_edit')">取消</a>
+						href="javascript:void(0)" onclick="closeWin('customview_edit')">取消</a>
+						</div>
+				</div>
 		</div>
 	</div>
 	<table id="customview_list" data-options="fitColumns:true"></table>
