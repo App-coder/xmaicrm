@@ -149,7 +149,7 @@ public class CvFilter {
 		String totalfilter = "";
 		XmEntityname en = CustomViewUtil.getEntitynameByET(customview.getEntitytype());
 		if(cols.size()>=1){
-			totalfilter +="SELECT count(1) AS count FROM "+en.getTablename()+" where 1=1 " ;
+			totalfilter +="SELECT count(1) AS count FROM "+en.getTablename()+"" ;
 			for(int i=0;i<cols.size();i++){
 				CVColumn n = cols.get(i);
 				XmEntityname cd = CustomViewUtil.getEntitynameByET(n.getEntitytype());
@@ -159,6 +159,7 @@ public class CvFilter {
 					}
 				}
 			}
+			totalfilter +=" where 1=1  ";
 		}else{
 			totalfilter +="SELECT count(1) AS count FROM "+en.getTablename() +" where 1=1 and "+en.getTablename()+".deleted = 0 " ;
 		}

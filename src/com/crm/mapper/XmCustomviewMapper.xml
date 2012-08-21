@@ -155,7 +155,7 @@
   </select>
   <select id="getKeyCustomview" resultMap="BaseResultMap">
   	SELECT
-		xm_customview.cvid,xm_customview.viewname,xm_tab.tablabel
+		xm_customview.*,xm_tab.tablabel
 	FROM
 		xm_customview
 	INNER JOIN xm_tab ON xm_tab. NAME = xm_customview.entitytype
