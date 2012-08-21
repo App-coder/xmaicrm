@@ -5,9 +5,12 @@
 		select id from xm_${table}_seq
 	</select>
 	<update id="updateSeq">
-		update xm_${table}_seq set id = '${seq}'
+		INSERT INTO xm_${table}_seq (`id`) VALUES ('${seq}')
 	</update>
 	<select id="getMax" resultType="Integer">
 		select max(${key}) from ${tablename}
+	</select>
+	<select id="clearSeq">
+		delete from xm_${tablename}_seq
 	</select>
 </mapper>

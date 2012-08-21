@@ -23,6 +23,7 @@ public class XmSequenceServiceImpl implements XmSequenceService {
 		if(now_seq!=null){
 			newseq = Integer.parseInt(now_seq);
 		}
+		this.xmSequenceMapper.clearSeq(table);
 		this.xmSequenceMapper.updateSeq(table,newseq+1);
 		return newseq+1;
 	}
