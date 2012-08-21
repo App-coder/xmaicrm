@@ -224,7 +224,7 @@ String win_topbar = "resizable=\"false\"  closed=\"true\" modal=\"true\" collaps
       out.write("</div>\r\n");
       out.write("\t<div class=\"d_view \">\r\n");
       out.write("\t\t\t\t<span class=\"icon-filter \">视图：</span> <select\r\n");
-      out.write("\t\t\t\t\tclass=\"sel_120\" >\r\n");
+      out.write("\t\t\t\t\tclass=\"sel_120\" onchange=\"reloadView(this.value)\" >\r\n");
       out.write("\t\t\t\t\t");
       if (_jspx_meth_c_005fforEach_005f0(_jspx_page_context))
         return;

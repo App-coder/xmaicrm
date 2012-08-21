@@ -1,6 +1,7 @@
 package com.crm.service.impl;
 
 import java.util.List;
+import java.util.Map;
 
 import javax.annotation.Resource;
 
@@ -108,7 +109,7 @@ public class XmCustomViewServiceImpl implements XmCustomViewService {
 	}
 
 	@Override
-	public List<Object> loadList(int page, int rows, int viewid,
+	public List<Map> loadList(int page, int rows, int viewid,
 			XmCustomview customview, XmCvstdfilter stdfilter,
 			List<XmCvadvfilter> advfilter, List<CVColumn> cols) {
 		String listsql = this.cvFilter.getListFilter(viewid,customview,stdfilter,advfilter,cols);
@@ -150,6 +151,11 @@ public class XmCustomViewServiceImpl implements XmCustomViewService {
 		}
 		
 		return xmCustomviewMapper.getChartData(resultsql);
+	}
+
+	@Override
+	public XmCustomview selectByPrimaryKey(int cvid) {
+		return this.xmCustomviewMapper.selectByPrimaryKey(cvid);
 	}
 
 }

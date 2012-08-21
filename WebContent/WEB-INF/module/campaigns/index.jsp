@@ -58,7 +58,7 @@ ${ptb.parenttabLabel }&gt;<a href="crm/module/${fn:toLowerCase(entityname.module
 </div>
 	<div class="d_view ">
 				<span class="icon-filter ">视图：</span> <select
-					class="sel_120" >
+					class="sel_120" onchange="reloadView(this.value)" >
 					<c:forEach items="${views}" var="v">
 						<option value="${v.cvid }">${v.viewname}</option>
 					</c:forEach>

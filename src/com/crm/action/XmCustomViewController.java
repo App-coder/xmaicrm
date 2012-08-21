@@ -26,6 +26,7 @@ import com.crm.bean.amcharts.ChartAssemble;
 import com.crm.bean.amcharts.ChartData;
 import com.crm.bean.amcharts.chartdata.ChartObject;
 import com.crm.bean.crm.Message;
+import com.crm.bean.easyui.Column;
 import com.crm.bean.easyui.ListBean;
 import com.crm.bean.easyui.expand.CVColumn;
 import com.crm.bean.html.TimeOptions;
@@ -785,7 +786,7 @@ public class XmCustomViewController extends BaseController {
 
 		int total = this.xmCustomViewService.getTotal(viewid, customview,
 				stdfilter, advfilter, cols);
-		List<Object> ls = this.xmCustomViewService.loadList(page, rows, viewid,
+		List<Map> ls = this.xmCustomViewService.loadList(page, rows, viewid,
 				customview, stdfilter, advfilter, cols);
 
 		ListBean list = new ListBean();
@@ -1021,6 +1022,43 @@ public class XmCustomViewController extends BaseController {
 		modelmap.addAttribute("blocks",arrangeBlock);
 		
 		return "public/showedit";
+	}
+	
+	/**
+	 * 根据视图ID，获取视图的column
+	 * 
+	 * @param cvid 视图ID
+	 * @return
+	 */
+	@RequestMapping(value = "/getDView", method = RequestMethod.GET)
+	@ResponseBody
+	public String getDView(int cvid){
+		XmCustomview customview = this.xmCustomViewService.selectByPrimaryKey(cvid);
+		try {
+			List<CVColumn> cols = this.xmCvcolumnlistService.getColumns(customview);
+			List<Column> reset = new ArrayList<Column>();
+			if(cols!=null){
+				for(int i=0;i<cols.size();i++){
+					CVColumn n = cols.get(i);
+					Column ne = new Column();
+					if(n!=null){
+						if(n.getFieldname()!=null){
+							if(n.getFieldname().indexOf("assigned_")!=-1){
+								ne.setField("user_name");
+							}else{
+								ne.setField(n.getFieldcolname());
+							}
+							ne.setTitle(n.getTitle());
+							ne.setResizable(false);
+							reset.add(ne);
+						}
+					}
+				}
+			}
+			return arrayToJson(reset);
+		} catch (net.sf.json.JSONException e) {
+			return "";
+		}
 	}
 	
 	

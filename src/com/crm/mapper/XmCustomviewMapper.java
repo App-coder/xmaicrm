@@ -1,6 +1,7 @@
 package com.crm.mapper;
 
 import java.util.List;
+import java.util.Map;
 
 import org.apache.ibatis.annotations.Param;
 
@@ -37,7 +38,7 @@ public interface XmCustomviewMapper {
 
 	int getTotalBySql(@Param("totalsql") String totalsql);
 
-	List<Object> loadListBySql(@Param("start") int start,@Param("rows") int rows,@Param("listsql") String listsql);
+	List<Map> loadListBySql(@Param("start") int start,@Param("rows") int rows,@Param("listsql") String listsql);
 
 	List<XmCustomview> loadListByPage(@Param("entitytype") String entitytype,@Param("start") int start,@Param("rows") int rows);
 

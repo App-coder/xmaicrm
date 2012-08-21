@@ -211,7 +211,7 @@ public class CvFilter {
 				
 				
 			}
-			
+			columnstr = en.getTablename()+"."+en.getEntityidfield()+","+columnstr;
 			selectall +="select "+columnstr+" from "+en.getTablename()+" "+joinstr+"  ";
 		}else{
 			selectall +="SELECT "+en.getTablename()+".* FROM "+en.getTablename()+" " ;

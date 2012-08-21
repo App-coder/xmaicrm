@@ -58,6 +58,8 @@ function init(){
 			    $(".stat_div").append($(stat));
 			}
 			$(".stat_div").show();
+		    }else{
+			$(".stat_div").hide();
 		    }
 		}
 	    });
@@ -90,4 +92,26 @@ function viewReport(){
     
     //使用IFRAME进行报表展现
     $("#reportframe").attr("src","crm/customview/createChart?graphtype="+graphtype+"&grouptype="+grouptype+"&cvid="+tab_viewid+"&pickfieldtable="+reportselect.fieldtable+"&pickfieldname="+reportselect.fieldname+"&pickfieldcolname="+reportselect.fieldcolname+"&title="+title+"&grouptitle="+grouptitle+"&reporttext="+reporttext+"&_rd="+rdnum());
+}
+
+/*切换视图*/
+function reloadView(val){
+    
+    $('#view_list').datagrid("loadData",[]);
+    
+    $.get('crm/customview/getDView',{cvid:val},function(res){
+	setDefWidth(res,80);
+	$('#view_list').datagrid({
+		url : 'crm/customview/renderView',
+		collapsible : false,
+		idField : viewid,
+		rownumbers : true,
+		pagination:true,
+		queryParams:{entitytype:entitytype,viewid:val},
+		columns : [res],
+		pageSize:20
+	});
+    },'json');
+    
+    
 }
