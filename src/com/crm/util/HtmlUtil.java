@@ -26,7 +26,7 @@ public class HtmlUtil {
 				 */
 				for (int j = 0; j < fieldslist.get(i).size(); j++) {
 					// multSelectStr.append("<option value='{\"field\":\""+fieldslist.get(i).get(j).getFieldname()+"\",\"resizable\":false,\"title\":\""+fieldslist.get(i).get(j).getFieldlabel()+"\",\"table\":\""+fieldslist.get(i).get(j).getTablename()+"\",\"column\":\""+fieldslist.get(i).get(j).getColumnname()+"\",\"type\":\""+fieldslist.get(i).get(j).getTypeofdata()+"\"}' >"+fieldslist.get(i).get(j).getFieldlabel()+"</option>");
-					multSelectStr.append("<option value='{"
+					multSelectStr.append("<option fid='"+fieldslist.get(i).get(j).getFieldid()+"' value='{"
 							+"\"title\":\""+fieldslist.get(i).get(j).getFieldlabel()+"\","
 							+"\"field\":\""+fieldslist.get(i).get(j).getFieldname()+"\","
 							+"\"resizable\":false,"
@@ -63,7 +63,7 @@ public class HtmlUtil {
 									+ blocks.get(i).getBlocklabel() + "\">");
 						}
 						exist = true;
-						collectSelectStr.append("<option value='{"
+						collectSelectStr.append("<option fid='"+fieldslist.get(i).get(j).getFieldid()+"' value='{"
 								+"\"title\":\""+fieldslist.get(i).get(j).getFieldlabel()+"\","
 								+"\"field\":\""+fieldslist.get(i).get(j).getFieldname()+"\","
 								+"\"resizable\":false,"

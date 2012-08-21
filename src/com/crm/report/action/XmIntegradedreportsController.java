@@ -84,7 +84,7 @@ public class XmIntegradedreportsController extends BaseController {
 		List<XmCangkuInfo> footer=this.xmIntegradedreportsService.getCangkuFooter();
 		ListBean ls = new ListBean();
 		ls.setRows(list);
-		ls.setFooter(footer);
+//		ls.setFooter(footer);
 		return objToJson(ls, JsonUtil.configJson(CANGKU_EXCLUDES));
 	}
 	

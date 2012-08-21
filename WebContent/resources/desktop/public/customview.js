@@ -20,7 +20,23 @@ function initBind() {
     $('#form_customview').form({ 
         url:'customview/editView',  
         onSubmit: function(){
+            
+            //验证显示字段不能重复
+            var cols = [];
+            for(var i=1;i<=9;i++){
+        	var selval = $('#form_customview').find("select[name=column_"+i+"]").find("option[selected=selected]").attr("fid");
+        	if(selval!=""&&selval!="undefined"){
+        	    cols.push(selval);
+        	}
+            }
+
+	    if(mm(cols)){
+		message("显示字段不能重复！");
+		return false;
+	    }
+            
             $.messager.progress();	
+            
             //设置ckbox值
             if($('#form_customview').find("input[id=setdefault]").attr("checked") == "checked"){
         	$('#form_customview').find("input[name=setdefault]").val(1);
@@ -310,4 +326,9 @@ function setComp(val,cmpid){
 	opstr +="<option value=\""+soptions[i]+"\">"+v+"</option>";
     }
     $('#form_customview').find("select[name="+cmpid+"]").html(opstr);
+}
+function updateCol(obj){
+    $('#form_customview').find("select[name="+$(obj).attr("name")+"]").find("option[selected=selected]").removeAttr("selected");
+    $('#form_customview').find("select[name="+$(obj).attr("name")+"]").find("option[value=\""+obj.value+"\"]").attr("selected","selected");
+    
 }

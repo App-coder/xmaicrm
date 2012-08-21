@@ -207,27 +207,27 @@ var entitytype = '${entitytype}';
 							<legend>选择列表中显示字段 </legend>
 							<table class="tab_form">
 								<tr>
-									<td><select class="text" name="column_1"> ${optionstr }
+									<td><select class="text" name="column_1" onchange="updateCol(this)" > ${optionstr }
 									</select></td>
-									<td><select class="text" name="column_2"> ${optionstr }
+									<td><select class="text" name="column_2" onchange="updateCol(this)"> ${optionstr }
 									</select></td>
-									<td><select class="text" name="column_3"> ${optionstr }
-									</select></td>
-								</tr>
-								<tr>
-									<td><select class="text" name="column_4"> ${optionstr }
-									</select></td>
-									<td><select class="text" name="column_5"> ${optionstr }
-									</select></td>
-									<td><select class="text" name="column_6"> ${optionstr }
+									<td><select class="text" name="column_3" onchange="updateCol(this)"> ${optionstr }
 									</select></td>
 								</tr>
 								<tr>
-									<td><select class="text" name="column_7"> ${optionstr }
+									<td><select class="text" name="column_4" onchange="updateCol(this)"> ${optionstr }
 									</select></td>
-									<td><select class="text" name="column_8"> ${optionstr }
+									<td><select class="text" name="column_5" onchange="updateCol(this)"> ${optionstr }
 									</select></td>
-									<td><select class="text" name="column_9"> ${optionstr }
+									<td><select class="text" name="column_6" onchange="updateCol(this)"> ${optionstr }
+									</select></td>
+								</tr>
+								<tr>
+									<td><select class="text" name="column_7" onchange="updateCol(this)"> ${optionstr }
+									</select></td>
+									<td><select class="text" name="column_8" onchange="updateCol(this)"> ${optionstr }
+									</select></td>
+									<td><select class="text" name="column_9" onchange="updateCol(this)"> ${optionstr }
 									</select></td>
 							</table>
 						</fieldset>

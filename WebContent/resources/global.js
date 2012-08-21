@@ -230,3 +230,14 @@ function tabCloseEven()
 function hideWind(id){
 	$('#'+id).window('close');
 }
+/*判断数组是否重复*/
+function mm(arr) {
+	var hash = {};
+	for (var i in arr) {
+		if (hash[arr[i]]) {
+			return true;
+		}
+		hash[arr[i]] = true;
+	}
+	return false;
+}
