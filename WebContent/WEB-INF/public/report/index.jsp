@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"
     pageEncoding="utf-8"%>
-<%@ include file="../../head_1.jsp"%>
+<%@ include file="../../head_report.jsp"%>
 <!-- amchart -->
 <script type="text/javascript" src="resources/amcharts/amcharts.js"></script>    
 <%@ include file="../../common/config.jsp"%>
@@ -131,7 +131,7 @@ if(graphtype == 'vertical3D'){
 </script>
 </head>
 <body id="wrap">
-<div class="easyui-tabs">
+<div class="easyui-tabs" fit="true">
 	<div title="报表图形" class="p10">
 		<div id="reportchart" style="width:100%;height:379px;"></div>
 	</div>
