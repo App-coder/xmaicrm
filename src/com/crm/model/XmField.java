@@ -48,7 +48,6 @@ public class XmField {
     public void setFieldid(Integer fieldid) {
         this.fieldid = fieldid;
     }
-
     public Integer getTabid() {
         return tabid;
     }

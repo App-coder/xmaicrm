@@ -1,11 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"
 	pageEncoding="utf-8"%>
 <script>
-var spath = '<%=request.getContextPath()%>';
-var loc = window.location.href;
-var url = loc.substring(loc.indexOf(spath)+spath.length+1);
 $(function(){
-    $.post('welcome/navbar',{url:url},function(html){
+    var _spath = '<%=request.getContextPath()%>';
+    var _loc = window.location.href;
+    var _url = _loc.substring(_loc.indexOf(_spath)+_spath.length+1);
+    $.post('welcome/navbar',{pathname:pathname,url:_url},function(html){
 		$("#navpath").html(html);	
     },'html');
 });

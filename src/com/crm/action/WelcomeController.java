@@ -30,7 +30,8 @@ public class WelcomeController {
 	}
 	
 	@RequestMapping(value = "/navbar", method = RequestMethod.POST)
-	public String navbar(String url,ModelMap modelmap){
+	public String navbar(String pathname,String url,ModelMap modelmap){
+		modelmap.addAttribute("pathname",pathname);
 		modelmap.addAttribute("url",url);
 		return "navbar";
 	}

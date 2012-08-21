@@ -2,6 +2,19 @@
     pageEncoding="utf-8"%>
 <%@ include file="../head.jsp"%>
 <%@ include file="../common/config.jsp"%>
+<c:choose>
+	<c:when test="${recordid!=null }">
+		<script>
+			var pathname = "编辑营销活动";
+		</script>
+	</c:when>
+	<c:otherwise>
+		<script>
+			var pathname = "添加营销活动";
+		</script>
+	</c:otherwise>
+</c:choose>
+
 <%@ include file="../path.jsp" %>
 </head>
 <body id="wrap">

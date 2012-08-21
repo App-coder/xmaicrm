@@ -2,6 +2,9 @@
     pageEncoding="utf-8"%>
 <%@ include file="../head.jsp"%>
 <%@ include file="../common/config.jsp"%>
+<script>
+var pathname = "营销活动";
+</script>
 <%@ include file="../path.jsp" %>
 <c:choose>
 	<c:when test="${customview.cvid!=null && dview!=null}">

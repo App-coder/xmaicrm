@@ -916,6 +916,7 @@ public class XmCustomViewController extends BaseController {
 		//加载对应的数据
 		if(recordid!=0){
 			
+			modelmap.addAttribute("recordid",recordid);
 		}
 		
 		//初始化编辑窗口
