@@ -266,4 +266,27 @@
   <select id="getSearchFields" resultMap="BaseResultMap"  >
   	select * from xm_field inner join xm_tab on xm_tab.tabid = xm_field.tabid where xm_field.tabid=#{tabid} and xm_field.uitype in (5,6,23,70) order by xm_field.sequence;
   </select>
+  <select id="getReportItems" resultMap="BaseResultMap">
+  	SELECT 
+		xm_field.* 
+	FROM 
+		xm_field 
+	INNER JOIN xm_def_org_field ON xm_def_org_field.fieldid = xm_field.fieldid 
+	AND xm_def_org_field.visible = 0 
+	INNER JOIN xm_tab ON xm_tab.tabid = xm_field.tabid 
+	WHERE 
+		xm_field.uitype != 50 
+	AND xm_field.tabid = #{tabid} 
+	AND xm_field.displaytype = 1 
+	UNION 
+		SELECT 
+			* 
+		FROM 
+			xm_field 
+		WHERE 
+			xm_field.displaytype = 3 
+		AND xm_field.tabid = #{tabid} 
+		ORDER BY  
+			sequence 
+  </select>
 </mapper>

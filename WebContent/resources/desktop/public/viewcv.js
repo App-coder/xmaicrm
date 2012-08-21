@@ -42,7 +42,6 @@ function init(){
 		onLoadSuccess:function(data){
 		    if(data.footer!="undefined"){
 			$(".stat_div").empty();
-			//div_statdemo
 			for(var i=0;i<data.footer.length;i++){
 			    var stat = $(".div_statdemo").clone();
 			    $(stat).find(".stat_name").html(data.footer[i].statname);
@@ -55,7 +54,14 @@ function init(){
 	    });
 }
 function viewSearchReport(){
-    $("#reportframe").attr("src","customview/report?_rd="+rdbytime);
-    $("#"+viewtab+"_winreport").window("open");
+    var reportcolumn= $("#reportselect").find("option:selected").attr("value");
+    $("select[name=graphtype]").attr("selected","selected");
+    var objparam = $.parseJSON(reportcolumn);
+    
+    //生成报表视图
+    $.post('field/getReportItems',{tabid:tabid},function(data){
+	$("select[name=grouptype]").html(data);
+	$("#winreport").window("open");
+    },'html');
     
 }

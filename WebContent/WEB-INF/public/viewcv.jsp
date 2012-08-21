@@ -21,6 +21,7 @@
 var entitytype = '${entitytype}';
 var viewtab = entitytype.toLowerCase();
 var viewid = '${viewid}';
+var tabid = ${tab.tabid};
 </script>
 <script type="text/javascript" src="resources/desktop/public/viewcv.js"></script>
 
@@ -28,10 +29,25 @@ var viewid = '${viewid}';
 <body id="wrap">
 <%@ include file="../nav.jsp"%>
 <div class="hidden">
-	<div id="${fn:toLowerCase(entitytype)}_winreport"
+	<div id="winreport"
 		title="${tab.tablabel }-分布统计" class="easyui-window" <%=win_topbar %>
 		style="width:700px; height: 500px;">
-		<iframe style="width:100%;height:100%;" frameborder="0" id="reportframe" ></iframe>
+		<div class="wtop">
+			显示类型：<select name="graphtype" class="text">
+				<option value="vertical3D" selected="selected" >3D柱图</option>
+				<option selected="" value="vertical2D">2D柱图</option>
+				<option value="Line2D">折线图</option>
+				<option value="Pie3D">3D饼图</option>
+				<option value="Pie2D">2D饼图</option>
+			</select>&nbsp;&nbsp;统计项目：<select name="grouptype" class="text">
+			</select>&nbsp;&nbsp;<a href="#" iconCls="icon-view" class="easyui-linkbutton">预览</a>
+		</div>
+		<div class="easyui-tabs">
+			<div title="报表图形" class="p10">
+				<div id="s_chart" style="width: 100%;"></div>
+			</div>
+			<div title="报表数据" class="p10">tab2</div>
+		</div>
 	</div>
 	<div class="div_stat div_statdemo"> <span class="stat_name"></span>：<span class="stat_num"></span></div>
 </div>
@@ -54,10 +70,9 @@ var viewid = '${viewid}';
 	<c:if test="${repfields!=null }">
 			<div data-options="region:'south',border:false">
 				<div class="d_report ">
-					<span class="icon-report view_span">报表：</span> <select
-						class="sel_120">
+					<span class="icon-report view_span">报表：</span> <select id="reportselect">
 						<c:forEach items="${repfields}" var="f">
-							<option>${f.fieldlabel}</option>
+							<option value='{"fieldname":"${f.fieldname}","fieldtable":"${f.tablename}","fieldcolname":"${f.columnname }","relatedmodule":"${entitytype}"}'>${f.fieldlabel}</option>
 						</c:forEach>
 					</select> <a href="javascript:viewSearchReport()" class="easyui-linkbutton"
 						data-options="plain:true,iconCls:'icon-view'">预览</a>
