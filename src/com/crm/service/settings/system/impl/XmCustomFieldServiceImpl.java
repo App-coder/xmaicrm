@@ -179,7 +179,11 @@ public class XmCustomFieldServiceImpl extends BaseController implements XmCustom
    	//获取xm_field的field主键
    	@Override
    	public int getSequence(String table) {
-   		return this.xmSequenceMapper.getSequenceId(table);
+   		String seq = this.xmSequenceMapper.getSequenceId(table);
+   		if(seq!=null){
+   			return Integer.parseInt(seq);
+   		}
+   		return 0;
    	}
    	
    	public void setSequence(String table){
@@ -222,7 +226,10 @@ public class XmCustomFieldServiceImpl extends BaseController implements XmCustom
     	int sequence=0;
     	XmPicklist xp=new XmPicklist();
     	String[] pick=arrpick.split(",");
-    	sequence=this.xmSequenceMapper.getSequenceId("picklist");
+    	String seq = this.xmSequenceMapper.getSequenceId("picklist");
+    	if(seq!=null){
+    		sequence = Integer.parseInt(seq);
+    	}
     	for(int i=0;i<pick.length;i++){
     		sequence+=1;
     		xp.setId(sequence);
