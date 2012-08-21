@@ -4,7 +4,7 @@
 <%@ include file="../common/config.jsp"%>
 </head>
 <body id="wrap">
-	<%@ include file="../nav.jsp"%>
+	${navbar }
 	<div id="main">
 		<div class="path" >&gt;<a  href="crm/welcome/desktop">控制面板</a></div>
 		<div class="container panel-noscroll">
