@@ -5,6 +5,8 @@ import java.util.List;
 
 import javax.annotation.Resource;
 
+import net.sf.json.JsonConfig;
+
 import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -235,7 +237,7 @@ public class XmCustomViewController extends BaseController {
 			String comparator_4, String comparator_5, String enddate,
 			String fv_1, String fv_2, String fv_3, String fv_4, String fv_5,
 			Integer id, String startdate, String stddatefilter, String viewname,
-			String entitytype,Integer setdefault,Integer setmetrics,String setpublic,Integer ispublic) {
+			String entitytype,Integer setdefault,Integer setmetrics,String setpublic,String ispublic) {
 		
 		if(action.equals("update")){
 			//编辑
@@ -248,14 +250,7 @@ public class XmCustomViewController extends BaseController {
 			cv.setEntitytype(entitytype);
 			cv.setSetdefault(setdefault);
 			cv.setSetmetrics(setmetrics);
-			
-			if(ispublic==0){
-				//角色，或，0
-				cv.setSetpublic("0");
-			}else{
-				//设置roles
-				cv.setSetpublic(setpublic);
-			}
+			cv.setSetpublic(setpublic);
 			
 			this.xmCustomViewService.update(cv);
 			
@@ -647,7 +642,7 @@ public class XmCustomViewController extends BaseController {
 	@ResponseBody
 	public String getStdfilter(int viewid){
 		XmCvstdfilter stdfilter = this.xmCvstdfilterService.getStdfilterByCvid(viewid);
-		return objToJson(stdfilter); 
+		return JSON.toJSONStringWithDateFormat(stdfilter, "yyyy-MM-dd");
 	}
 	
 	/**
@@ -661,7 +656,7 @@ public class XmCustomViewController extends BaseController {
 	@ResponseBody
 	public String getAdvfilter(int viewid){
 		List<XmCvadvfilter> advfilters = this.xmCvadvfilterService.getAdvFilters(viewid);
-		return arrayToJson(advfilters);
+		return JSON.toJSONStringWithDateFormat(advfilters, "yyyy-MM-dd");
 	}
 	
 	

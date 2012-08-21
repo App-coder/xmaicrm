@@ -584,14 +584,10 @@ String win_topbar = "closed=\"true\" modal=\"true\" collapsible=\"false\"  dragg
       out.write(" title=\"属性编辑\" >\r\n");
       out.write("\t\t\t<div class=\"easyui-layout\" data-options=\"fit:true,border:false\">\r\n");
       out.write("\t\t\t<div data-options=\"region:'center',border:false\" style=\"padding:10px;background:#fff;border:1px solid #ccc;\">\r\n");
-      out.write("\t\t\t\t\t<form name=\"form_");
-      out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${entitytype}", java.lang.String.class, (PageContext)_jspx_page_context, null, false));
-      out.write("_customview\" id=\"form_customview\" method=\"post\" >\r\n");
+      out.write("\t\t\t\t\t<form name=\"form_customview\" id=\"form_customview\" method=\"post\" >\r\n");
       out.write("\t\t\t\t\t<input type=\"hidden\" name=\"id\" />\r\n");
       out.write("\t\t\t\t\t<input type=\"hidden\" name=\"action\"  />\r\n");
-      out.write("\t\t\t\t\t<input type=\"hidden\" name=\"entitytype\" value=\"");
-      out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${entitytype}", java.lang.String.class, (PageContext)_jspx_page_context, null, false));
-      out.write("\"/>\r\n");
+      out.write("\t\t\t\t\t<input type=\"hidden\" name=\"entitytype\" />\r\n");
       out.write("\t\t\t\t\t<input type=\"hidden\" name=\"setpublic\" />\r\n");
       out.write("\t\t\t\t\t<input type=\"hidden\" name=\"ispublic\" />\r\n");
       out.write("\t\t\t\t\t<input type=\"hidden\" name=\"setdefault\" />\r\n");
@@ -612,7 +608,7 @@ String win_topbar = "closed=\"true\" modal=\"true\" collapsible=\"false\"  dragg
       out.write("\t\t\t\t\t\t\t\t\t<td width=\"33%\">首页关键视图列表中显示&nbsp;&nbsp;<input\r\n");
       out.write("\t\t\t\t\t\t\t\t\t\ttype=\"checkbox\" id=\"setmetrics\" /></td>\r\n");
       out.write("\t\t\t\t\t\t\t\t\t<td width=\"33%\">公共视图&nbsp;&nbsp;<input type=\"checkbox\"\r\n");
-      out.write("\t\t\t\t\t\t\t\t\t\tid=\"ispublic\" value=\"0\" /></td>\r\n");
+      out.write("\t\t\t\t\t\t\t\t\t\tid=\"ispublic\" /></td>\r\n");
       out.write("\t\t\t\t\t\t\t\t</tr>\r\n");
       out.write("\t\t\t\t\t\t\t</table>\r\n");
       out.write("\t\t\t\t\t\t</fieldset>\r\n");

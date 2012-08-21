@@ -175,10 +175,10 @@ var entitytype = '${entitytype}';
 			<%=win_topbar%> title="属性编辑" >
 			<div class="easyui-layout" data-options="fit:true,border:false">
 			<div data-options="region:'center',border:false" style="padding:10px;background:#fff;border:1px solid #ccc;">
-					<form name="form_${entitytype}_customview" id="form_customview" method="post" >
+					<form name="form_customview" id="form_customview" method="post" >
 					<input type="hidden" name="id" />
 					<input type="hidden" name="action"  />
-					<input type="hidden" name="entitytype" value="${entitytype}"/>
+					<input type="hidden" name="entitytype" />
 					<input type="hidden" name="setpublic" />
 					<input type="hidden" name="ispublic" />
 					<input type="hidden" name="setdefault" />
@@ -199,7 +199,7 @@ var entitytype = '${entitytype}';
 									<td width="33%">首页关键视图列表中显示&nbsp;&nbsp;<input
 										type="checkbox" id="setmetrics" /></td>
 									<td width="33%">公共视图&nbsp;&nbsp;<input type="checkbox"
-										id="ispublic" value="0" /></td>
+										id="ispublic" /></td>
 								</tr>
 							</table>
 						</fieldset>

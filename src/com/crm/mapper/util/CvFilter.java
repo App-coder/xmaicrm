@@ -113,7 +113,7 @@ public class CvFilter {
 		if(stdfilter!=null){
 			if(stdfilter.getColumnname()!=null && stdfilter.getStartdate()!=null){
 					CVColumn std = (CVColumn)JsonUtil.getObject4JsonString(stdfilter.getColumnname(), CVColumn.class);
-					filter +=" and "+en.getTablename() +"."+std.getFieldcolname()+">'"+stdfilter.getStartdate()+"' and "+en.getTablename() +"."+std.getFieldcolname()+"<'"+stdfilter.getEnddate()+"'";
+					filter +=" and "+en.getTablename() +"."+std.getField()+">'"+stdfilter.getStartdate()+"' and "+en.getTablename() +"."+std.getField()+"<'"+stdfilter.getEnddate()+"'";
 			}
 		}
 		
@@ -160,9 +160,9 @@ public class CvFilter {
 				}
 			}
 		}else{
-			totalfilter +="SELECT count(1) AS count FROM "+en.getTablename()+" where 1=1 " ;
+			totalfilter +="SELECT count(1) AS count FROM "+en.getTablename() ;
 		}
-		return totalfilter+getFilter(customview, stdfilter, advfilters);
+		return totalfilter+" where 1=1 "+getFilter(customview, stdfilter, advfilters);
 	}
 
 	public String getListFilter(int viewid, XmCustomview customview,
@@ -216,7 +216,6 @@ public class CvFilter {
 						}else{
 							columnstr +=n.getFieldtabname()+"."+n.getFieldcolname();
 						}
-						
 					}
 				}
 				
@@ -226,7 +225,7 @@ public class CvFilter {
 		}else{
 			selectall +="SELECT "+en.getTablename()+".* FROM "+en.getTablename()+" where 1=1 " ;
 		}
-		return selectall+getFilter(customview, stdfilter, advfilters);
+		return selectall+" where 1=1 "+getFilter(customview, stdfilter, advfilters);
 	}
 	
 	

@@ -22,24 +22,21 @@ function initBind() {
         onSubmit: function(){
             $.messager.progress();	
             //设置ckbox值
-            if($('#form_customview').find("input[id=setdefault_"+entitytype+"]").attr("checked") == "checked"){
+            if($('#form_customview').find("input[id=setdefault]").attr("checked") == "checked"){
         	$('#form_customview').find("input[name=setdefault]").val(1);
             }else{
         	$('#form_customview').find("input[name=setdefault]").val(0);
             }
             
-            if($('#form_customview').find("input[id=ispublic_"+entitytype+"]").attr("checked") == "checked"){
-        	$('#form_customview').find("input[name=ispublic]").val(1);
+            if($('#form_customview').find("input[id=ispublic]").attr("checked") == "checked"){
+        	$('#form_customview').find("input[name=setpublic]").val(0);
             }else{
-        	$('#form_customview').find("input[name=ispublic]").val(0);
-        	
         	//设置public setpublic
         	var setpublic = $("#roles").val();
         	$('#form_customview').find("input[name=setpublic]").val(setpublic);
-        	
             }
             
-            if($('#form_customview').find("input[id=setmetrics_"+entitytype+"]").attr("checked") == "checked"){
+            if($('#form_customview').find("input[id=setmetrics]").attr("checked") == "checked"){
         	$('#form_customview').find("input[name=setmetrics]").val(1);
             }else{
         	$('#form_customview').find("input[name=setmetrics]").val(0);
@@ -75,9 +72,21 @@ function initBind() {
 		    $('#form_customview').find("select[id=roles]")
 			    .removeAttr("disabled");
 		}
-
-	    });
-
+    });
+    
+    //初始化设置window的close方法
+    $("#customview_edit").window({
+	onClose:function(){
+	    $('#form_customview').form("clear");
+	    $(".validatebox-tip").hide();
+	    $('#form_customview').find("select[id=roles]")
+	    .removeAttr("disabled");
+	},
+	onOpen:function(){
+	    $('#form_customview').find("input[name=entitytype]").val(entitytype);
+	}
+    });
+    
 }
 function initContainer() {
     $.get('role/getroles', null, function(data) {
@@ -199,21 +208,52 @@ function initview(vid){
     //视图基本信息
     $.post('customview/getView',{viewid:vid},function(data){
 	
+	$("#form_customview").find("input[name=viewname]").val(data.viewname);
+	$("#form_customview").find("input[name=id]").val(data.cvid);
+    	$("#id").val(data.cvid);
+    	if(data.setdefault == 1){
+    	    $("#setdefault").attr("checked","checked");
+    	}
+    	if(data.setmetrics == 1){
+    	    $("#setmetrics").attr("checked","checked");
+    	}
+    	if(data.setpublic == 0){
+    	    $("#ispublic").attr("checked","checked");
+    	}else{
+    	    var rs = data.setpublic.split(",");
+    	    for(var i=0;i<rs.length;i++){
+    		$("#roles").find("option[value="+rs[i]+"]").attr("selected","selected");
+    	    }
+    	}
+    	
+    	if(data.collectcolumn!=""){
+    	    $("#form_customview").find("select[name=column_collect]").find("option[value=\""+data.collectcolumn+"\"]").attr("selected","selected");
+    	}
+    	
     },'json');
-    
+
     //九个列的信息
     $.post('customview/getColumns',{viewid:vid},function(data){
-	
+	for(var i=0;i<data.length;i++){
+	    $("#form_customview").find("select[name=column_"+(i+1)+"]").find("option[value=\""+data[i].columnname+"\"]").attr("selected","selected");
+	}
     },'json');
     
     //标准查询信息
     $.post('customview/getStdfilter',{viewid:vid},function(data){
-	
+	$("#form_customview").find("select[name=column_stdfilter]").find("option[value=\""+data.columnname+"\"]").attr("selected","selected");
+	$("#form_customview").find("select[name=stddatefilter]").find("option[value=\""+data.stdfilter+"\"]").attr("selected","selected");
+	$('#startdate').datebox('setValue', data.startdate);
+	$('#enddate').datebox('setValue', data.enddate);
+	if("custom"!=data.stdfilter){
+	    $("#startdate").datebox({disabled:true});
+	    $("#enddate").datebox({disabled:true});
+	}
     },'json');
     
     //高级查询信息
     $.post('customview/getAdvfilter',{viewid:vid},function(data){
-	
+	$("#form_customview").form('load',data);
     },'json');
     
 }

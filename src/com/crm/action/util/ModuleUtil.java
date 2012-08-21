@@ -65,19 +65,21 @@ public class ModuleUtil extends BaseController{
 				for(int i=0;i<cols.size();i++){
 					CVColumn n = cols.get(i);
 					Column ne = new Column();
-					if(n.getFieldname()!=null){
-						if(n.getFieldname().indexOf("assigned_")!=-1){
-							ne.setField("user_name");
-						}else if(n.getFieldname().indexOf("_")!=-1){
-							XmTab tab = CustomViewUtil.getTabByLab(n.getFieldlabel());
-							XmEntityname et = CustomViewUtil.getEntitynameByET(tab.getName());
-							ne.setField(et.getFieldname());
-						}else{
-							ne.setField(n.getFieldcolname());
+					if(n!=null){
+						if(n.getFieldname()!=null){
+							if(n.getFieldname().indexOf("assigned_")!=-1){
+								ne.setField("user_name");
+							}else if(n.getFieldname().indexOf("_")!=-1){
+								XmTab tab = CustomViewUtil.getTabByLab(n.getFieldlabel());
+								XmEntityname et = CustomViewUtil.getEntitynameByET(tab.getName());
+								ne.setField(et.getFieldname());
+							}else{
+								ne.setField(n.getFieldcolname());
+							}
+							ne.setTitle(n.getTitle());
+							ne.setResizable(false);
+							reset.add(ne);
 						}
-						ne.setTitle(n.getTitle());
-						ne.setResizable(false);
-						reset.add(ne);
 					}
 				}
 			}
