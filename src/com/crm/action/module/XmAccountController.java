@@ -14,9 +14,14 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.alibaba.fastjson.JSON;
 import com.crm.action.BaseController;
 import com.crm.action.util.ModuleUtil;
+import com.crm.bean.crm.Message;
 import com.crm.bean.easyui.ComboTree;
+import com.crm.bean.easyui.ListBean;
+import com.crm.model.XmAccount;
+import com.crm.model.XmCampaignaccountrel;
 import com.crm.model.XmGroups;
 import com.crm.model.XmUsers;
+import com.crm.service.XmCampaignaccountrelService;
 import com.crm.service.module.XmAccountService;
 import com.crm.service.settings.basic.XmGroupsService;
 import com.crm.service.settings.basic.XmUsersService;
@@ -56,6 +61,13 @@ public class XmAccountController extends BaseController{
 		return "module/accounts/index";
 	}
 	
+	XmCampaignaccountrelService xmCampaignaccountrelService;
+	@Resource(name="xmCampaignaccountrelService")
+	public void setXmCampaignaccountrelService(
+			XmCampaignaccountrelService xmCampaignaccountrelService) {
+		this.xmCampaignaccountrelService = xmCampaignaccountrelService;
+	}
+
 	@RequestMapping(value = "/getCondition")
 	@ResponseBody
 	public String getCondition(){
@@ -105,6 +117,75 @@ public class XmAccountController extends BaseController{
 		}
 		
 		return JSON.toJSONString(cbos);
+	}
+	
+	
+	/**
+	 * 营销活动 - 相关信息，得到用户
+	 * 
+	 * @param campaignid
+	 * @return
+	 */
+	@RequestMapping(value = "/getCampaignAccount")
+	@ResponseBody
+	public String getCampaignAccount(int campaignid){
+		
+		ListBean bean = new ListBean();
+		
+		List<XmAccount> accounts = this.xmAccountService.getAccount(campaignid);
+		bean.setTotal(accounts.size());
+		bean.setRows(accounts);
+		
+		return JSON.toJSONString(bean);
+	}
+	
+	/**
+	 * 营销活动 - 相关信息，用户列表
+	 * 
+	 * @param campaignid
+	 * @return
+	 */
+	@RequestMapping(value = "/related/campaign")
+	public String getAccountForCampaign(int campaignid,ModelMap modelMap){
+		List<XmAccount> exists = this.xmAccountService.getAccountsExist(campaignid);
+		String existsstr = "";
+		for(int i=0;i<exists.size();i++){
+			if(i==0){
+				existsstr +=exists.get(i).getAccountid();
+			}else{
+				existsstr +=","+exists.get(i).getAccountid();
+			}
+		}
+		modelMap.addAttribute("exists",existsstr);
+		modelMap.addAttribute("campaignid",campaignid);
+		ActionUtil.showList("Accounts", modelMap, this.moduleUtil);
+		return "module/accounts/related/campaign";
+	}
+	
+	@RequestMapping(value = "/related/campaignAccountAdd")
+	@ResponseBody
+	public String addAccountForCampaign(int campaignid,String selects){
+		String[] sels = selects.split(",");
+		for(int i=0;i<sels.length;i++){
+			XmCampaignaccountrel rel = new XmCampaignaccountrel();
+			rel.setAccountid(Integer.parseInt(sels[i]));
+			rel.setCampaignid(campaignid);
+			this.xmCampaignaccountrelService.insert(rel);
+		}
+		Message msg = new Message();
+		msg.setType(true);
+		msg.setMessage("客户添加成功！");
+		return JSON.toJSONString(msg);
+	}
+	
+	@RequestMapping(value = "/related/campaignAccountdelete")
+	@ResponseBody
+	public String deletedAccountForCampaign(int campaignid,String selects){
+		this.xmCampaignaccountrelService.delete(campaignid,selects);
+		Message msg = new Message();
+		msg.setType(true);
+		msg.setMessage("客户删除成功！");
+		return JSON.toJSONString(msg);
 	}
 	
 	

@@ -42,6 +42,22 @@ public class ActionUtil {
 		modelmap.addAttribute("entityname", entityname);
 
 	}
+	
+	public static void showList(String entitytype, ModelMap modelmap,
+			ModuleUtil moduleUtil) {
+
+		modelmap.addAttribute("entitytype", entitytype);
+
+		XmTab tab = CustomViewUtil.getTabByName(entitytype);
+		modelmap.addAttribute("tab", tab);
+
+		moduleUtil.setViewProp(modelmap, entitytype, tab);
+
+		XmEntityname entityname = CustomViewUtil.getEntitynameByET(entitytype);
+		modelmap.addAttribute("viewid", entityname.getEntityidfield());
+		modelmap.addAttribute("entityname", entityname);
+
+	}
 
 	public static void setTitle2(String entitytype, int ptb, ModelMap modelmap,
 			ModuleUtil moduleUtil) {

@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"
     pageEncoding="utf-8"%>
 <%@ include file="../../head.jsp"%>
+<%@ include file="../../head_page.jsp"%>
 <%@ include file="../../common/config.jsp"%>
 <c:choose>
 	<c:when test="${customview.cvid!=null && dview!=null}">

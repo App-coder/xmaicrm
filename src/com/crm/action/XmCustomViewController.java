@@ -878,6 +878,19 @@ public class XmCustomViewController extends BaseController {
 				sb.append(" and xm_checks.cangkusid = "+cangku);
 			}
 		}
+		
+		//相关信息模块的信息过滤处理
+		String related = request.getParameter("related");
+		if(related!=null && related!=""){
+			if(related.equals("Campaigns")){
+				String exists = request.getParameter("exists");
+				if(exists!=""){
+					sb.append(" and xm_account.accountid not in ("+exists+")");
+				}
+			}
+			
+		}
+
 		return sb.toString();
 	}
 

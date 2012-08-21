@@ -35,4 +35,10 @@ public interface XmAccountMapper extends ModuleMapper<XmAccount> {
 	int getTotalAssigned();
 
 	List<Object> loadAssigned(@Param("start") int start,@Param("rows") int rows);
+
+	List<XmAccount> getAccount(@Param("campaignid") int campaignid);
+
+	String getExistAccounts(@Param("campaignid") int campaignid);
+
+	List<XmAccount> getAccountsExist(@Param("campaignid") int campaignid);
 }

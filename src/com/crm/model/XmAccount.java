@@ -132,6 +132,11 @@ public class XmAccount {
 
     private String description;
 
+    //负责人 
+    private String username;
+    
+    private Integer crmid;
+    
     public Integer getAccountid() {
         return accountid;
     }
@@ -643,4 +648,20 @@ public class XmAccount {
     public void setDescription(String description) {
         this.description = description == null ? null : description.trim();
     }
+
+	public String getUsername() {
+		return username;
+	}
+
+	public void setUsername(String username) {
+		this.username = username;
+	}
+
+	public Integer getCrmid() {
+		return crmid;
+	}
+
+	public void setCrmid(Integer crmid) {
+		this.crmid = crmid;
+	}
 }

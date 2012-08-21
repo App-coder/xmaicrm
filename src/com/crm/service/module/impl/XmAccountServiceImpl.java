@@ -49,6 +49,18 @@ public class XmAccountServiceImpl implements XmAccountService {
 		int start = (page-1)*rows;
 		return this.xmAccountMapper.loadAssigned(start,rows);
 	}
+	@Override
+	public List<XmAccount> getAccount(int campaignid) {
+		return this.xmAccountMapper.getAccount(campaignid);
+	}
+	@Override
+	public String getExistAccounts(int campaignid) {
+		return this.xmAccountMapper.getExistAccounts(campaignid);
+	}
+	@Override
+	public List<XmAccount> getAccountsExist(int campaignid) {
+		return this.xmAccountMapper.getAccountsExist(campaignid);
+	}
     
 
 }

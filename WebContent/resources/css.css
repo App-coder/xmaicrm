@@ -8,7 +8,9 @@ body{margin:0px;padding:0px;overflow-x:hidden;}
 body, input, button, select, textarea {
     font: 12px/1.5 Tahoma,'微软雅黑',"Microsoft Yahei", "Simsun";
 }
-
+body, html {
+    min-height:101%;
+}
 textarea{ resize: none;}
 form{margin:0px;padding:0px;}
 red{color:red;}

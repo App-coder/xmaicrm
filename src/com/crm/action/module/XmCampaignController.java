@@ -97,19 +97,21 @@ public class XmCampaignController extends BaseController {
 		Message msg = new Message();
 		Boolean res = false;
 		
+		int crmid = 0;
 		//修改
 		if(request.getParameter("recordid")!=null&&request.getParameter("recordid")!=""){
-			res = this.actionCls.update(request,Integer.parseInt(request.getParameter("recordid")));
+			crmid = Integer.parseInt(request.getParameter("recordid"));
+			res = this.actionCls.update(request,crmid);
 		}else{
-			int insertid = this.xmCampaignService.getMaxId()+1;
-			res = this.actionCls.add(request,insertid,userPermission.getUser().getId());
+			crmid = this.xmCampaignService.getMaxId()+1;
+			res = this.actionCls.add(request,crmid,userPermission.getUser().getId());
 		}
 		
 		if(res){
-			msg.setMessage("编辑成功！");
+			msg.setMessage(crmid+"");
 			msg.setType(true);
 		}else{
-			msg.setMessage("编辑失败！");
+			msg.setMessage(crmid+"");
 			msg.setType(false);
 		}
 		return JSON.toJSONString(msg);
@@ -147,7 +149,6 @@ public class XmCampaignController extends BaseController {
 		}
 		return JSON.toJSONString(msg);
 	}
-	
 	
 	
 }

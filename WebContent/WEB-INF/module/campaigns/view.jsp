@@ -61,6 +61,17 @@ ${ptb.parenttabLabel }&gt;<a href="crm/module/${fn:toLowerCase(entity.modulename
 				</div>
 		</div>
 	</div>
+	
+	<div id="wind_accounts"  iconCls="icon-save"
+		style="width: 700px; height:432px;" class="easyui-window"
+		<%=win_topbar%> title="选择用户" >
+	<div class="easyui-layout" data-options="fit:true,border:false">
+		<div data-options="region:'center',border:false" >
+			<iframe id="frame_get_accounts"  width="100%" height="100%" frameborder="0"  ></iframe>
+		</div>
+		</div>
+	</div>
+	
 </div>
 
 

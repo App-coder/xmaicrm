@@ -7,6 +7,8 @@
 <script type="text/javascript" src="resources/desktop/module/campaigns/edit.js"></script>
 <script>
 var ptb = ${ptb.parenttabid};
+var recordid = ${recordid };
+var kinds = [];
 </script>
 </head>
 <body id="wrap">
@@ -47,7 +49,8 @@ ${ptb.parenttabLabel }&gt;<a href="crm/module/${fn:toLowerCase(entity.modulename
 							<td colspan="4">
 							${f.fieldHtml }
 							<script>
-							initEdit('${f.columnname}','campaigns/${USERPERMISSION.user.userName}');
+							var kind_${f.columnname} = initEdit('${f.columnname}','campaigns/${USERPERMISSION.user.userName}');
+							kinds.push(kind_${f.columnname});
 							</script>
 							</td>
 							</tr>
