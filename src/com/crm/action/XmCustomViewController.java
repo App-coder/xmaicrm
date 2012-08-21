@@ -180,9 +180,10 @@ public class XmCustomViewController extends BaseController {
 	@ResponseBody
 	public String load(@Param("entitytype") String entitytype,int page,int rows) {
 		List<XmCustomview> list = this.xmCustomViewService.loadList(entitytype,page,rows);
+		int total = this.xmCustomViewService.getTotal(entitytype);
 		ListBean bean = new ListBean();
 		bean.setRows(list);
-		bean.setTotal(list.size());
+		bean.setTotal(total);
 		return objToJson(bean);
 	}
 
@@ -315,6 +316,22 @@ public class XmCustomViewController extends BaseController {
 				col.setCvid(id);
 				col.setColumnindex(6);
 				col.setColumnname(column_7);
+				this.xmCvcolumnlistService.insert(col);
+			}
+			
+			if(!"".equals(column_8)){
+				XmCvcolumnlist col = new XmCvcolumnlist();
+				col.setCvid(id);
+				col.setColumnindex(7);
+				col.setColumnname(column_8);
+				this.xmCvcolumnlistService.insert(col);
+			}
+			
+			if(!"".equals(column_9)){
+				XmCvcolumnlist col = new XmCvcolumnlist();
+				col.setCvid(id);
+				col.setColumnindex(8);
+				col.setColumnname(column_9);
 				this.xmCvcolumnlistService.insert(col);
 			}
 
@@ -485,6 +502,22 @@ public class XmCustomViewController extends BaseController {
 				col.setColumnname(column_7);
 				this.xmCvcolumnlistService.insert(col);
 			}
+			
+			if(!"".equals(column_8)){
+				XmCvcolumnlist col = new XmCvcolumnlist();
+				col.setCvid(keyid);
+				col.setColumnindex(7);
+				col.setColumnname(column_8);
+				this.xmCvcolumnlistService.insert(col);
+			}
+			
+			if(!"".equals(column_9)){
+				XmCvcolumnlist col = new XmCvcolumnlist();
+				col.setCvid(keyid);
+				col.setColumnindex(8);
+				col.setColumnname(column_9);
+				this.xmCvcolumnlistService.insert(col);
+			}
 
 			//标准条件
 			XmCvstdfilter stdfilter = new XmCvstdfilter();
@@ -639,11 +672,7 @@ public class XmCustomViewController extends BaseController {
 	 */
 	@RequestMapping(value = "/viewIndex", method = RequestMethod.GET)
 	public String viewIndex(String entitytype,ModelMap modelMap){
-		try{
 		this.moduleUtil.setViewProp(modelMap,entitytype);
-		}catch(java.lang.NullPointerException e){
-			
-		}
 		XmEntityname entityname = CustomViewUtil.getEntitynameByET(entitytype);
 		XmTab tab = CustomViewUtil.getTabByName(entitytype);
 		modelMap.addAttribute("tab",tab);

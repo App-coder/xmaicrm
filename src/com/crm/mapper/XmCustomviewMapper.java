@@ -39,6 +39,8 @@ public interface XmCustomviewMapper {
 
 	List<Object> loadListBySql(@Param("start") int start,@Param("rows") int rows,@Param("listsql") String listsql);
 
-	List<XmCustomview> loadListByPage(String entitytype, int start, int rows);
+	List<XmCustomview> loadListByPage(@Param("entitytype") String entitytype,@Param("start") int start,@Param("rows") int rows);
+
+	int getTotal(@Param("entitytype") String entitytype);
 	
 }

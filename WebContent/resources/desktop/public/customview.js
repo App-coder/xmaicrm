@@ -57,22 +57,22 @@ function initBind() {
             var msg = $.parseJSON(data);
             if(msg.type==true){
         	//关闭wind,datagrid刷新
-        	closeWin("customview_"+entitytype+"_edit");
+        	closeWin("customview_edit");
         	$('#customview_list').datagrid("reload");
             }
         }  
     });  
     
-    $('#form_customview').find("input[id=ispublic_"+entitytype+"]").click(
+    $('#form_customview').find("input[id=ispublic]").click(
 	    function() {
-		var cked = $('#form_customview').find("input[id=ispublic_"+entitytype+"]")
+		var cked = $('#form_customview').find("input[id=ispublic]")
 			.attr("checked");
 		if (cked == "checked") {
-		    $('#form_customview').find("select[id=roles_"+entitytype+"]").attr(
+		    $('#form_customview').find("select[id=roles]").attr(
 			    "disabled", "disabled");
-		    $('#form_customview').find("select[id=roles_"+entitytype+"]").find("option").removeAttr("selected");
+		    $('#form_customview').find("select[id=roles]").find("option").removeAttr("selected");
 		} else {
-		    $('#form_customview').find("select[id=roles_"+entitytype+"]")
+		    $('#form_customview').find("select[id=roles]")
 			    .removeAttr("disabled");
 		}
 
@@ -88,7 +88,7 @@ function initContainer() {
 			+ "</option>";
 	    }
 	}
-	$('#form_customview').find("select[id=roles_"+entitytype+"]").html(ostr);
+	$('#form_customview').find("select[id=roles]").html(ostr);
     }, 'json');
 }
 function initGrid() {
@@ -105,7 +105,6 @@ function initGrid() {
 	queryParams : {
 	    'entitytype' : entitytype
 	},
-	pageNumber : 20,
 	fitColumns : true,
 	toolbar : [ {
 	    text : '添加',
@@ -122,7 +121,7 @@ function initGrid() {
 		$('#form_customview').find("input[name=action]").val("update");
 		if (selected) {
 		    $('#form_customview').find("input[name=id]").val(selected.cvid);
-		    $("#customview_"+entitytype+"_edit").window("open");
+		    $("#customview_edit").window("open");
 		    
 		    //初始化页面数据
 		    initview(selected.cvid);

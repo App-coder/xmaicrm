@@ -37,6 +37,8 @@ public interface XmCustomViewService {
 
 	List<XmCustomview> loadList(String entitytype, int page, int rows);
 
+	int getTotal(String entitytype);
+
 	
 
 }

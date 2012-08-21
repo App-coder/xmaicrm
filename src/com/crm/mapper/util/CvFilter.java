@@ -146,14 +146,18 @@ public class CvFilter {
 			for(int i=0;i<cols.size();i++){
 				CVColumn n = cols.get(i);
 				XmEntityname cd = CustomViewUtil.getEntitynameByET(n.getEntitytype());
-				if(n.getFieldname().indexOf("assigned_")!=-1){
-					totalfilter +=" INNER JOIN xm_users on "+n.getFieldtabname()+"."+n.getFieldcolname()+"=xm_users.id";
-				}else if(n.getFieldname().indexOf("_")!=-1){
-					XmTab tab = CustomViewUtil.getTabByLab(n.getFieldlabel());
-					XmEntityname et = CustomViewUtil.getEntitynameByET(tab.getName());
-					totalfilter += " INNER JOIN "+et.getTablename() +" on "+n.getFieldtabname()+"."+n.getFieldcolname()+"="+cd.getTablename()+"."+cd.getEntityidfield();
+				if(n.getFieldname()!=null){
+					if(n.getFieldname().indexOf("assigned_")!=-1){
+						totalfilter +=" INNER JOIN xm_users on "+n.getFieldtabname()+"."+n.getFieldcolname()+"=xm_users.id";
+					}
+					/*
+					else if(n.getFieldname().indexOf("_")!=-1){
+						XmTab tab = CustomViewUtil.getTabByLab(n.getFieldlabel());
+						XmEntityname et = CustomViewUtil.getEntitynameByET(tab.getName());
+						totalfilter += " INNER JOIN "+et.getTablename() +" on "+n.getFieldtabname()+"."+n.getFieldcolname()+"="+cd.getTablename()+"."+cd.getEntityidfield();
+					}
+					*/
 				}
-				
 			}
 		}else{
 			totalfilter +="SELECT count(1) AS count FROM "+en.getTablename()+" where 1=1 " ;
@@ -171,34 +175,51 @@ public class CvFilter {
 			for(int i=0;i<cols.size();i++){
 				CVColumn n = cols.get(i);
 				XmEntityname ey = CustomViewUtil.getEntitynameByET(n.getEntitytype());
-				if(n.getFieldname().indexOf("assigned_")!=-1){
-					if(columnstr!=""){
-						columnstr +=",xm_users.user_name";
-					}else{
-						columnstr +="xm_users.user_name";;
-					}
+				if(n.getFieldname()!=null){
+					if(n.getFieldname().indexOf("assigned_")!=-1){
+						if(columnstr!=""){
+							columnstr +=",xm_users.user_name";
+						}else{
+							columnstr +="xm_users.user_name";;
+						}
 
-					joinstr +=" INNER JOIN xm_users on "+n.getFieldtabname()+"."+n.getFieldcolname()+"=xm_users.id";
-					
-				}else if(n.getFieldname().indexOf("_")!=-1){
-					XmTab tab = CustomViewUtil.getTabByLab(n.getFieldlabel());
-					XmEntityname et = CustomViewUtil.getEntitynameByET(tab.getName());
-					if(columnstr!=""){
-						columnstr +=","+et.getTablename()+"."+et.getFieldname();
-					}else{
-						columnstr +=et.getTablename()+"."+et.getFieldname();
+						joinstr +=" INNER JOIN xm_users on "+n.getFieldtabname()+"."+n.getFieldcolname()+"=xm_users.id";
+						
 					}
+					/*
+					else if(n.getFieldname().indexOf("_")!=-1){
+						XmTab tab = CustomViewUtil.getTabByLab(n.getFieldlabel());
+						XmEntityname et = CustomViewUtil.getEntitynameByET(tab.getName());
+						if(columnstr!=""){
+							columnstr +=","+et.getTablename()+"."+et.getFieldname();
+						}else{
+							columnstr +=et.getTablename()+"."+et.getFieldname();
+						}
 
-					joinstr += " INNER JOIN "+et.getTablename() +" on "+n.getFieldtabname()+"."+n.getFieldcolname()+"="+et.getTablename()+"."+et.getEntityidfield();
-					
-				}else{
-					if(columnstr!=""){
-						columnstr +=","+n.getFieldtabname()+"."+n.getFieldcolname()+" ";
-					}else{
-						columnstr +=n.getFieldtabname()+"."+n.getFieldcolname();
+						joinstr += " INNER JOIN "+et.getTablename() +" on "+n.getFieldtabname()+"."+n.getFieldcolname()+"="+et.getTablename()+"."+et.getEntityidfield();
+						
 					}
-					
+					*/
+					else if(n.getFieldname().indexOf("_")!=-1){
+						XmTab tab = CustomViewUtil.getTabByLab(n.getFieldlabel());
+						XmEntityname et = CustomViewUtil.getEntitynameByET(tab.getName());
+						if(columnstr!=""){
+							columnstr +=",( select "+et.getFieldname()+" from "+et.getTablename()+" where "+et.getEntityidfield()+" = "+ey.getTablename()+"."+n.getFieldname()+"  )  as "+et.getFieldname();
+						}else{
+							columnstr +="( select "+et.getFieldname()+" from "+et.getTablename()+" where "+et.getEntityidfield()+" = "+ey.getTablename()+"."+n.getFieldname()+" )  as  "+et.getFieldname();
+						}
+
+						
+					}else{
+						if(columnstr!=""){
+							columnstr +=","+n.getFieldtabname()+"."+n.getFieldcolname()+" ";
+						}else{
+							columnstr +=n.getFieldtabname()+"."+n.getFieldcolname();
+						}
+						
+					}
 				}
+				
 			}
 			
 			selectall +="select "+columnstr+" from "+en.getTablename()+" "+joinstr;

@@ -112,4 +112,9 @@ public class XmCustomViewServiceImpl implements XmCustomViewService {
 		int start = (page-1)*rows;
 		return this.xmCustomviewMapper.loadListByPage(entitytype,start,rows);
 	}
+
+	@Override
+	public int getTotal(String entitytype) {
+		return this.xmCustomviewMapper.getTotal(entitytype);
+	}
 }
