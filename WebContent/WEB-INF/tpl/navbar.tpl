@@ -15,15 +15,18 @@
 			<#list menubar as menu>
 				<li class="top" style="float: left;"><a class="top_link"><span class="down">${menu.parenttab.parenttabLabel}</span></a>
 					<#if menu.tabs??>
-						<#if (menu.tabs?size>0)>
-							<ul class="sub">
-								<#list menu.tabs as tb>
-									<#if tb??>
-									<li><a href="crm/customview/viewIndex?entitytype=${tb.name}">${tb.tablabel}</a></li>	
-									</#if>
-								</#list>
-							</ul>
+					<ul class="sub">
+						<#if menu.parenttab.parenttabid==11>
+							<li><a href="crm/setting/index">${menu.parenttab.parenttabLabel}</a></li>
 						</#if>
+						<#if (menu.tabs?size>0)>
+							<#list menu.tabs as tb>
+								<#if tb??>
+								<li><a href="crm/customview/viewIndex?entitytype=${tb.name}">${tb.tablabel}</a></li>	
+								</#if>
+							</#list>
+						</#if>
+					</ul>
 					</#if>
 				</li>
 			</#list>
