@@ -185,4 +185,7 @@
   <select id="getAccountByContactid" resultType="String">
   	select accountid from xm_contactdetails where contactid = ${contactid}
   </select>
+  <update id="updateSmowner">
+  	${updatesql}
+  </update>
 </mapper>

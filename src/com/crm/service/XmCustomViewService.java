@@ -108,6 +108,18 @@ public interface XmCustomViewService {
 	 */
 	String getAdvSearchFilterString(String entitytype,String advfilters, String matchMeth);
 
+	/**
+	 * 
+	 * 修改负责人
+	 * 
+	 * @param ids
+	 * @param entitytype
+	 * @param ownerid
+	 * @return
+	 */
+	Boolean updateSmowner(String ids, String entitytype, int ownerid);
+
+
 
 	
 

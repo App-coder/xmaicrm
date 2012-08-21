@@ -118,3 +118,22 @@ function setComp(val,obj){
     }
     $(obj).closest("tr").find("select[name=reg]").html(opstr);
 }
+/*切换视图*/
+function reloadView(val){
+    
+    $('#view_list').datagrid("loadData",[]);
+    
+    $.get('crm/customview/getDView',{cvid:val},function(res){
+	setDefWidth(res,80);
+	$('#view_list').datagrid({
+		url : 'crm/customview/renderView',
+		collapsible : false,
+		idField : viewid,
+		rownumbers : true,
+		pagination:true,
+		queryParams:{entitytype:entitytype,viewid:val},
+		columns : [res],
+		pageSize:20
+	});
+    },'json');
+}

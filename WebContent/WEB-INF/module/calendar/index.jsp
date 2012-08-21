@@ -40,33 +40,25 @@ var searchtype = 'basicsearch';
 			${ptb.parenttabLabel }&gt;<a
 				href="crm/module/${fn:toLowerCase(entityname.modulename) }/index?ptb=${ptb.parenttabid }">${tab.tablabel}</a>
 		</div>
-		
 		<div class="easyui-tabs"   >  
-	        <!-- 
 	        <div title="日程安排" style="overflow:hidden;"  >  
-	        	<iframe width="100%" height="650px"  frameborder="0" src="crm/module/calendar/viewcalendar?_rd=${rd }" ></iframe>
-	        </div>  
-	         -->
+	        <div class="def_div">
+			<span class="fl mgl_10">
+			查看范围：<select class="easyui-combotree " id="cbt_calendarscope" style="width:160px;"  data-options="url:'crm/customview/getCondition?entitytype=${entitytype }'"></select>
+			</span>
+			<span class="fr mgr_10" >
+			<a class="easyui-linkbutton"
+			data-options="iconCls:'icon-share'" onclick="advSearch()">共享日程</a>
+			</span>
+			</div>
+	        	<iframe width="100%" name="frame_calendar" id="frame_calendar" height="1025px" scrolling="no" frameborder="0" src="crm/module/events/viewcalendar?_rd=${rd }" ></iframe>
+	        </div> 
 	        <div title="列表视图" class="p10" >
-	        	 
-        	 	<div class="d_view ">
-					<span class="icon-filter ">视图：</span> <select
-						class="text" onchange="reloadView(this.value)" >
-						<c:forEach items="${views}" var="v">
-							<option value="${v.cvid }">${v.viewname}</option>
-						</c:forEach>
-					</select> <a
-						href="crm/customview/index?entitytype=${entitytype}&ptb=${ptb.parenttabid }"
-						class="easyui-linkbutton"
-						data-options="plain:true,iconCls:'icon-view'">视图管理</a>&nbsp;&nbsp;
-						<c:set var="searchtype" value="basicsearch"></c:set>
-						<%@ include file="../include_view_search.jsp"  %>
-				</div>
-				<div id="tabbar" class="gtb" style="display: block;" >  
-					<%@ include file="../include_index_toolbar.jsp" %>
-				</div>
+	        	<c:set var="searchtype" value="basicsearch"></c:set>
+				<%@ include file="../include_view_search.jsp"  %>
+        	 	<%@ include file="../include_index_toolbar.jsp" %>
 				<table id="view_list"
-					data-options="fitColumns:true" toolbar="#tabbar"   ></table>
+					data-options="fitColumns:true" toolbar="#tabbar" ></table>
 					<div class="stat_div hidden"></div>
 	        	 
 	        </div>	        

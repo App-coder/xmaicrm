@@ -25,13 +25,22 @@ $(function() {
 	    day:      '日'
 	},
 	viewDisplay : function(view) {
-	    $.post('crm/module/calendar/getEvent',{start:view.start.toString('yyyy-MM-d'),end:view.end.toString('yyyy-MM-d')},function(evts){
-		if(oldevts.length>0){
-		    $('#calendar').fullCalendar('removeEventSource',oldevts);
-		}
-		oldevts = evts; 
-		$('#calendar').fullCalendar('addEventSource', evts);
-	    },'json');
+	    reView(view,-1);
 	}
     });
 });
+
+function reView(view,smowner){
+    $.post('crm/module/events/getEvent',{start:view.start.toString('yyyy-MM-d'),end:view.end.toString('yyyy-MM-d'),smowner:smowner},function(evts){
+	if(oldevts.length>0){
+	    $('#calendar').fullCalendar('removeEventSource',oldevts);
+	}
+	oldevts = evts; 
+	$('#calendar').fullCalendar('addEventSource', evts);
+    },'json');
+}
+
+function viewEvents(node){
+    var view = $('#calendar').fullCalendar('getView');
+    reView(view,node.id);
+}

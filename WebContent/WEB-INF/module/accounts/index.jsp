@@ -51,24 +51,6 @@ ${navbar }
 			</div>
 	</div>
 	
-	<div id="win_editLeading" iconCls="icon-edit"
-			style="width:300px; height:185px;" class="easyui-window"
-			<%=win_topbar%> title="修改负责人" >
-			<div class="easyui-layout" data-options="fit:true,border:false">
-			<div data-options="region:'center',border:false" class="p10">
-				<table class="tab_form">
-					<tr><td>转移拥有关系</td></tr>
-					<tr><td><select class="easyui-combotree" style="width:200px;" data-options="url:'crm/module/accounts/getLeadings'"></select></td></tr>
-				</table>
-			</div>
-			<div region="south" class="btnbar" border="false">
-			<a class="easyui-linkbutton" iconCls="icon-ok"
-				href="javascript:void(0)" onclick="formsubmit('form_customview')">编辑</a> <a
-				class="easyui-linkbutton" iconCls="icon-cancel"
-				href="javascript:void(0)" onclick="closeWin('customview_edit')">取消</a>
-				</div>
-			</div>
-	</div>
 	
 	<div id="win_share" iconCls="icon-edit"
 			style="width:300px; height:185px;" class="easyui-window"

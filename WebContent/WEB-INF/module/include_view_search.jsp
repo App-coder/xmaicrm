@@ -49,21 +49,38 @@
 					</div>
 				</div>
 		</div>
-</div>    
+</div>
+
+<div class="d_view ">
+<span class="icon-filter ">视图：</span> <select
+	class="text" onchange="reloadView(this.value)" >
+	<c:forEach items="${views}" var="v">
+		<option value="${v.cvid }">${v.viewname}</option>
+	</c:forEach>
+</select> 
+<a href="crm/customview/index?entitytype=${entitytype}&ptb=${ptb.parenttabid }"
+	class="easyui-linkbutton" data-options="plain:true,iconCls:'icon-view'">视图管理</a>
+&nbsp;&nbsp;
 <c:choose>
-	<c:when test="${searchtype =='basicsearch' }" >
-	查找：<select class="text" name="basicsearchfield" ></select>
-<input type="text" class="text" name="basicsearchvalue" />
-<a class="easyui-linkbutton" data-options="plain:true,iconCls:'icon-search'" onclick="basicSearch()" >查找</a>   
-<a class="easyui-linkbutton" data-options="plain:true,iconCls:'icon-undo'" onclick="cacelSearch()" >取消查找</a>		
+	<c:when test="${searchtype =='basicsearch' }">
+	查找：<select class="text" name="basicsearchfield"></select>
+		<input type="text" class="text" name="basicsearchvalue" />
+		<a class="easyui-linkbutton"
+			data-options="plain:true,iconCls:'icon-search'"
+			onclick="basicSearch()">查找</a>
+		<a class="easyui-linkbutton"
+			data-options="plain:true,iconCls:'icon-undo'" onclick="cacelSearch()">取消查找</a>
 	</c:when>
 	<c:otherwise>
-	查找：<select class="text"  name="basicsearchfield" ></select>
-<input type="text" class="text" name="basicsearchvalue" />
-<a class="easyui-linkbutton" data-options="plain:true,iconCls:'icon-search'" onclick="basicSearch()" >查找</a>   
-<a class="easyui-linkbutton" data-options="plain:true,iconCls:'icon-search'" onclick="advSearch()">高级查找</a>
-<a class="easyui-linkbutton" data-options="plain:true,iconCls:'icon-undo'" onclick="cacelSearch()" >取消查找</a>		
+	查找：<select class="text" name="basicsearchfield"></select>
+		<input type="text" class="text" name="basicsearchvalue" />
+		<a class="easyui-linkbutton"
+			data-options="plain:true,iconCls:'icon-search'"
+			onclick="basicSearch()">查找</a>
+		<a class="easyui-linkbutton"
+			data-options="plain:true,iconCls:'icon-search'" onclick="advSearch()">高级查找</a>
+		<a class="easyui-linkbutton"
+			data-options="plain:true,iconCls:'icon-undo'" onclick="cacelSearch()">取消查找</a>
 	</c:otherwise>
-</c:choose>    
-						
-						 
+</c:choose>
+</div>

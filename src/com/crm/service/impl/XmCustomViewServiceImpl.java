@@ -28,6 +28,7 @@ import com.crm.service.XmFieldService;
 import com.crm.service.XmTabService;
 import com.crm.util.HtmlUtil;
 import com.crm.util.JsonUtil;
+import com.crm.util.crm.CustomViewUtil;
 
 @Service("xmCustomViewService")
 public class XmCustomViewServiceImpl implements XmCustomViewService {
@@ -287,6 +288,18 @@ public class XmCustomViewServiceImpl implements XmCustomViewService {
 	@Override
 	public String getAdvSearchFilterString(String entitytype,String advfilters, String matchMeth) {
 		return this.cvFilter.getAdvSearchFilterString(entitytype,advfilters,matchMeth);
+	}
+
+	@Override
+	public Boolean updateSmowner(String ids, String entitytype, int ownerid) {
+		
+		XmEntityname entityname = CustomViewUtil.getEntitynameByET(entitytype);
+		String updatesql = "update "+entityname.getTablename()+" set smownerid = "+ownerid+" where "+entityname.getEntityidfield()+" in ("+ids+")";
+		
+		if(this.xmCustomviewMapper.updateSmowner(updatesql)>0){
+			return true;
+		}
+		return false;
 	}
 
 }

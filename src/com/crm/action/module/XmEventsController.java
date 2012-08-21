@@ -116,7 +116,7 @@ public class XmEventsController extends BaseController{
 		ActionUtil.setTitle("Events", ptb, modelMap, this.moduleUtil);
 		modelMap.addAttribute("rd",MathUtil.getRd());
 		
-		this.setBar(new String[]{"scope","insert","edit","deleteRecord","batchUpdate","view","smowerUpdate","shareUpdate"}, modelMap);
+		this.setBar(new String[]{"scope","insert","edit","deleteRecord","batchUpdate","view","smowerUpdate"}, modelMap);
 		
 		return "module/calendar/index";
 	}
@@ -462,10 +462,10 @@ public class XmEventsController extends BaseController{
 	 */
 	@RequestMapping(value = "/getEvent")
 	@ResponseBody
-	public String getEvent(String start,String end,ModelMap modelmap){
+	public String getEvent(String start,String end,ModelMap modelmap,String smowner,HttpServletRequest request,@ModelAttribute(Constant.USERPERMISSION) UserPermission userPermission){
 		List<Event> events = new ArrayList<Event>();
 		//默认视图是天，得到当天的事件
-		List<XmActivity> activitys = this.xmActivityService.getActivity(start,end);
+		List<XmActivity> activitys = this.xmActivityService.getActivity(start,end,smowner,userPermission);
 		if(activitys.size()>0){
 			for(int i=0;i<activitys.size();i++){
 				Event e = new Event();

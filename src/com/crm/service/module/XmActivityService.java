@@ -2,6 +2,7 @@ package com.crm.service.module;
 
 import java.util.List;
 
+import com.crm.bean.crm.UserPermission;
 import com.crm.model.XmActivity;
 
 public interface XmActivityService {
@@ -20,9 +21,10 @@ public interface XmActivityService {
 	 * 
 	 * @param start
 	 * @param end
+	 * @param smowner 
 	 * @return
 	 */
-	List<XmActivity> getActivity(String start, String end);
+	List<XmActivity> getActivity(String start, String end, String smowner,UserPermission userPermission);
 
 	int getMaxId(); 
 

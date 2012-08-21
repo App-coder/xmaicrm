@@ -1150,7 +1150,7 @@ public class XmCustomViewController extends BaseController {
 					if(n!=null){
 						if(n.getFieldname()!=null){
 							if(n.getFieldname().indexOf("assigned_")!=-1){
-								ne.setField("user_name");
+								ne.setField("last_name");
 							}else{
 								ne.setField(n.getFieldcolname());
 							}
@@ -1220,4 +1220,28 @@ public class XmCustomViewController extends BaseController {
 		return JSON.toJSONString(cbos);
 	}
 
+	/**
+	 * 
+	 * 修改负责人
+	 * 
+	 * @param ids 记录ID 
+	 * @param entitytype 模块
+	 * @param ownerid 负责人
+	 * @return
+	 */
+	@RequestMapping(value = "/updateSmowner",method = RequestMethod.POST)
+	@ResponseBody
+	public String updateSmowner(String ids,String entitytype,int ownerid){
+		
+		Message msg = new Message();
+		Boolean result = this.xmCustomViewService.updateSmowner(ids,entitytype,ownerid);
+		if(result == true){
+			msg.setMessage("负责人修改成功！");
+		}else{
+			msg.setMessage("负责人修改有误！");
+		}
+		msg.setType(result);
+		return JSON.toJSONString(msg);
+	}
+	
 }

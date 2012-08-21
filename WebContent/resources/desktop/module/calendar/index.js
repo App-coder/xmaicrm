@@ -2,9 +2,24 @@ $(function() {
     if(tab_viewid != -1){
 	init();
     }   
+    init_calendarComponent();
 });
-function init(){
 
+function init_calendarComponent(){
+    $("#cbt_calendarscope").combotree({
+	onBeforeSelect:function(node){
+	    if(node.iconCls == "icon-group"){
+		return false;
+	    }
+	},
+	onSelect:function(node){
+	    //调用ifrme里面的calendar
+	    window.frames["frame_calendar"].viewEvents(node);
+	}
+    });
+}
+
+function init(){
   //设置视图
 	$('#view_list').datagrid({
 		url : 'crm/customview/renderView',
@@ -36,22 +51,3 @@ function init(){
 	    });
 }
 
-/*切换视图*/
-function reloadView(val){
-    
-    $('#view_list').datagrid("loadData",[]);
-    
-    $.get('crm/customview/getDView',{cvid:val},function(res){
-	setDefWidth(res,80);
-	$('#view_list').datagrid({
-		url : 'crm/customview/renderView',
-		collapsible : false,
-		idField : viewid,
-		rownumbers : true,
-		pagination:true,
-		queryParams:{entitytype:entitytype,viewid:val},
-		columns : [res],
-		pageSize:20
-	});
-    },'json');
-}

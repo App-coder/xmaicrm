@@ -598,7 +598,9 @@
 		xm_activity.date_start  <![CDATA[<=]]> #{finish}
 		AND xm_activity.date_start >= #{begin}
 	)
-	AND xm_recurringevents.activityid IS NULL
+	AND xm_recurringevents.activityid IS NULL 
+	${filter} 
+	GROUP BY xm_activity.activityid 
 	ORDER BY
 		xm_activity.date_start,
 		xm_activity.time_start;

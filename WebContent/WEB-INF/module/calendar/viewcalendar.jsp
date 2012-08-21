@@ -12,9 +12,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 </meta>
 <base href="<%=basePath %>"/>
-
-<link rel="stylesheet" type="text/css" href="resources/easyui/themes/default/easyui.css"/>
-<link rel="stylesheet" type="text/css" href="resources/easyui/themes/icon.css"/>
 <link rel="stylesheet" type="text/css" href="resources/css.css"/>
 <link rel="stylesheet" type="text/css" href="resources/easyui_update.css"/>
 <link rel="stylesheet" type="text/css" href="resources/css.css" />
@@ -29,14 +26,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 
 </head>
 <body id="wrap" class="p10"  >
-	<div class="def_div">
-	<span class="fl">
-	查看范围：<select><option>所有日程安排</option></select>
-	</span>
-	<span class="fr" >
-	<a onclick="formsubmit('form_customview')" href="javascript:void(0)" iconcls="icon-share" class="easyui-linkbutton l-btn" id=""><span class="l-btn-left"><span class="l-btn-text icon-share" style="padding-left: 20px;">共享日程</span></span></a>
-	</span>
-	</div>
 	<div id='calendar' class="mgb_10" ></div>
 </body>
 </html>    
