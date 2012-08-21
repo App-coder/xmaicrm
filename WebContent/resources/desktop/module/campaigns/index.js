@@ -88,13 +88,7 @@ function insert(){
     window.location.href="crm/module/campaigns/showedit?recordid=0&ptb="+ptb+"&module="+entitytype;
 }
 function edit() {
-    var selected = $('#view_list').datagrid("getSelected");
-    if (selected) {
-	window.location.href = "crm/module/campaigns/showedit?recordid="
-		+ selected.campaignid + "&ptb=" + ptb + "&module=" + entitytype;
-    } else {
-	message("请选择记录！");
-    }
+    
 }
 function view() {
     var selected = $('#view_list').datagrid("getSelected");

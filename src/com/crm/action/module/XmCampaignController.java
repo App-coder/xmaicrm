@@ -101,6 +101,7 @@ public class XmCampaignController extends BaseController {
 		ActionUtil.setTitle("Campaigns", ptb, modelMap, this.moduleUtil);
 		this.xmCustomViewService.getAdvSearchFilter("Campaigns",modelMap);
 		
+		this.setBar(new String[]{"scope"}, modelMap);
 		
 		return "module/campaigns/index";
 	}
@@ -170,57 +171,6 @@ public class XmCampaignController extends BaseController {
 			msg.setMessage("删除失败！");
 		}
 		return JSON.toJSONString(msg);
-	}
-	
-	@RequestMapping(value = "/getCondition")
-	@ResponseBody
-	public String getCondition(){
-		
-		List<ComboTree> cbos = new ArrayList<ComboTree>();
-		
-		ComboTree all = new ComboTree();
-		all.setId("0");
-		all.setText("所有营销活动");
-		cbos.add(all);
-		
-		ComboTree  myaccount = new ComboTree();
-		myaccount.setId("-1");
-		myaccount.setText("我的营销活动");
-		cbos.add(myaccount);
-		
-		ComboTree  mycreate = new ComboTree();
-		mycreate.setId("-2");
-		mycreate.setText("我创建的营销活动");
-		cbos.add(mycreate);
-		
-		ComboTree  mybranch = new ComboTree();
-		mybranch.setId("-3");
-		mybranch.setText("下属的营销活动");
-		cbos.add(mybranch);
-		
-		List<XmGroups> groups = this.xmGroupsService.loadAll();
-		List<XmUsers> users = this.xmUsersService.loadAll();
-		
-		for(int i=0;i<groups.size();i++){
-			ComboTree group = new ComboTree();
-			group.setId(groups.get(i).getGroupid()+"");
-			group.setText(groups.get(i).getGroupname());
-			group.setIconCls("icon-group");
-			List<ComboTree> childs = new ArrayList();
-			for(int j=0;j<users.size();j++){
-				if(users.get(j).getGroupid().equals(group.getId())){
-					ComboTree u = new ComboTree();
-					u.setId(users.get(j).getId()+"");
-					u.setText(users.get(j).getLastName());
-					u.setIconCls("icon-user");
-					childs.add(u);
-				}
-			}
-			group.setChildren(childs);
-			cbos.add(group);
-		}
-		
-		return JSON.toJSONString(cbos);
 	}
 	
 }

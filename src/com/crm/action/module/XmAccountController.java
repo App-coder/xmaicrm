@@ -78,6 +78,9 @@ public class XmAccountController extends BaseController{
 	@RequestMapping(value = "/index")
 	public String index(int ptb,ModelMap modelMap) throws UnsupportedEncodingException{
 		ActionUtil.setTitle("Accounts", ptb, modelMap, this.moduleUtil);
+		
+		this.setBar(new String[]{"scope"}, modelMap);
+		
 		return "module/accounts/index";
 	}
 	

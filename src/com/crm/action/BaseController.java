@@ -1,8 +1,12 @@
 package com.crm.action;
 
+import java.util.HashMap;
+
 import net.sf.json.JSONArray;
 import net.sf.json.JSONObject;
 import net.sf.json.JsonConfig;
+
+import org.springframework.ui.ModelMap;
 
 /**
  * 基本的CONTROLLER
@@ -35,4 +39,13 @@ public class BaseController {
 	public String arrayToJson(Object o){
 		return JSONArray.fromObject(o).toString();
 	}
+	
+	public void setBar(String[] barArray,ModelMap modelmap){
+		HashMap barmap = new HashMap();
+		for(int i=0;i<barArray.length;i++){
+			barmap.put(barArray[i], barArray[i]);
+		}
+		modelmap.addAttribute("barmap",barmap);
+	}
+	
 }

@@ -16,10 +16,12 @@ import javax.servlet.http.HttpServletRequest;
 import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.SessionAttributes;
 
 import com.alibaba.fastjson.JSON;
 import com.crm.action.util.ModuleUtil;
@@ -27,7 +29,9 @@ import com.crm.bean.amcharts.ChartAssemble;
 import com.crm.bean.amcharts.ChartData;
 import com.crm.bean.amcharts.chartdata.ChartObject;
 import com.crm.bean.crm.Message;
+import com.crm.bean.crm.UserPermission;
 import com.crm.bean.easyui.Column;
+import com.crm.bean.easyui.ComboTree;
 import com.crm.bean.easyui.ListBean;
 import com.crm.bean.easyui.expand.CVColumn;
 import com.crm.bean.html.TimeOptions;
@@ -38,8 +42,10 @@ import com.crm.model.XmCvcolumnlist;
 import com.crm.model.XmCvstdfilter;
 import com.crm.model.XmEntityname;
 import com.crm.model.XmField;
+import com.crm.model.XmGroups;
 import com.crm.model.XmParenttab;
 import com.crm.model.XmTab;
+import com.crm.model.XmUsers;
 import com.crm.service.XmBlocksService;
 import com.crm.service.XmCustomViewService;
 import com.crm.service.XmCvadvfilterService;
@@ -51,6 +57,7 @@ import com.crm.service.XmPicklistService;
 import com.crm.service.XmSequenceService;
 import com.crm.service.XmTabService;
 import com.crm.service.module.XmNoteplansService;
+import com.crm.service.settings.basic.XmGroupsService;
 import com.crm.service.settings.basic.XmUsersService;
 import com.crm.util.ArrayUtil;
 import com.crm.util.CacheUtil;
@@ -62,7 +69,14 @@ import com.crm.util.crm.CustomViewUtil;
 
 @Controller
 @RequestMapping(value = "crm/customview")
+@SessionAttributes(Constant.USERPERMISSION)
 public class XmCustomViewController extends BaseController {
+	
+	XmGroupsService xmGroupsService;
+	@Resource(name="xmGroupsService")
+	public void setXmGroupsService(XmGroupsService xmGroupsService) {
+		this.xmGroupsService = xmGroupsService;
+	}
 
 	ModuleUtil moduleUtil;
 	@Resource(name = "moduleUtil")
@@ -785,9 +799,18 @@ public class XmCustomViewController extends BaseController {
 	 *            视图ID
 	 * @return
 	 */
+	/**
+	 * @param page
+	 * @param rows
+	 * @param entitytype
+	 * @param viewid
+	 * @param request
+	 * @param userPermission
+	 * @return
+	 */
 	@RequestMapping(value = "/renderView", method = RequestMethod.POST)
 	@ResponseBody
-	public String renderView(int page, int rows, String entitytype, int viewid,HttpServletRequest request) {
+	public String renderView(int page, int rows, String entitytype, int viewid,HttpServletRequest request,@ModelAttribute(Constant.USERPERMISSION) UserPermission userPermission) {
 		
 		XmCustomview customview = this.xmCustomViewService.selectByPrimaryKey(
 				entitytype, viewid);
@@ -798,14 +821,21 @@ public class XmCustomViewController extends BaseController {
 		List<XmCvadvfilter> advfilter = xmCvadvfilterService
 				.getAdvFilters(viewid);
 
+		StringBuffer sbfilter = new StringBuffer();
+		//特定页面的需要的处理
 		String customfilter = getCustomFilter(entitytype,request);
+		sbfilter.append(customfilter);
+		//查询时候需要的处理
 		String searchfilter = getSearchFilter(entitytype,request);
-		customfilter = customfilter + searchfilter;
+		sbfilter.append(searchfilter);
+		//范围需要的处理
+		String scopefilter = getScopefilter(userPermission,request);
+		sbfilter.append(scopefilter);
 		
 		int total = this.xmCustomViewService.getTotal(viewid, customview,
-				stdfilter, advfilter, cols,customfilter);
+				stdfilter, advfilter, cols,sbfilter.toString());
 		List<Map> ls = this.xmCustomViewService.loadList(page, rows, viewid,
-				customview, stdfilter, advfilter, cols,customfilter);
+				customview, stdfilter, advfilter, cols,sbfilter.toString());
 
 		
 		//根据模块的不同，整理生成的数据……
@@ -861,6 +891,42 @@ public class XmCustomViewController extends BaseController {
 		return JSON.toJSONStringWithDateFormat(list, "yyyy-MM-dd");
 	}
 	
+	private String getScopefilter(UserPermission userPermission,
+			HttpServletRequest request) {
+		
+		String entitytype = request.getParameter("entitytype");
+		String scope = request.getParameter("scope");
+		
+		XmEntityname entity = CustomViewUtil.getEntitynameByET(entitytype);
+		
+		if(!"".equals(scope)&&!"0".equals(scope)&&scope!=null){
+			//-1我的,-2我创建的,-3下属的，其他人的
+			if(scope.equals("-1")){
+				return " and "+entity.getTablename()+".smownerid in ("+userPermission.getUser().getId()+")";
+			}else if(scope.equals("-2")){
+				return " and "+entity.getTablename()+".smcreatorid in ("+userPermission.getUser().getId()+")";
+			}else if(scope.equals("-3")){
+				
+				StringBuffer sb = new StringBuffer();
+				sb.append(" AND "+entity.getTablename()+".smownerid IN ");
+				sb.append("(");
+				sb.append(" SELECT xm_user2role.userid ");
+				sb.append(" FROM ");
+				sb.append(" xm_user2role ");
+				sb.append(" INNER JOIN xm_users ON xm_users.id = xm_user2role.userid ");
+				sb.append(" INNER JOIN xm_role ON xm_role.roleid = xm_user2role.roleid ");
+				sb.append(" WHERE ");
+				sb.append(" xm_role.parentrole LIKE '%"+userPermission.getRole().getRoleid()+"::%' ");
+				sb.append(")");
+				
+				return sb.toString();
+			}else{
+				return " and "+entity.getTablename()+".smownerid in ("+scope+")";
+			}
+		}
+		return "";
+	}
+
 	private String getSearchFilter(String entitytype, HttpServletRequest request) {
 		StringBuffer sb_search = new StringBuffer();
 		
@@ -882,6 +948,9 @@ public class XmCustomViewController extends BaseController {
 		return sb_search.toString();
 	}
 
+	
+	
+	
 	/**
 	 * 根据类型获取和组合自定义的过滤条件
 	 * 
@@ -1098,6 +1167,57 @@ public class XmCustomViewController extends BaseController {
 		}
 	}
 	
-	
+	@RequestMapping(value = "/getCondition")
+	@ResponseBody
+	public String getCondition(String entitytype){
+		
+		XmTab tab = CustomViewUtil.getTabByName(entitytype);
+		
+		List<ComboTree> cbos = new ArrayList<ComboTree>();
+		
+		ComboTree all = new ComboTree();
+		all.setId("0");
+		all.setText("所有"+tab.getTablabel());
+		cbos.add(all);
+		
+		ComboTree  myaccount = new ComboTree();
+		myaccount.setId("-1");
+		myaccount.setText("我的"+tab.getTablabel());
+		cbos.add(myaccount);
+		
+		ComboTree  mycreate = new ComboTree();
+		mycreate.setId("-2");
+		mycreate.setText("我创建的"+tab.getTablabel());
+		cbos.add(mycreate);
+		
+		ComboTree  mybranch = new ComboTree();
+		mybranch.setId("-3");
+		mybranch.setText("下属的"+tab.getTablabel());
+		cbos.add(mybranch);
+		
+		List<XmGroups> groups = this.xmGroupsService.loadAll();
+		List<XmUsers> users = this.xmUsersService.loadAll();
+		
+		for(int i=0;i<groups.size();i++){
+			ComboTree group = new ComboTree();
+			group.setId(groups.get(i).getGroupid()+"");
+			group.setText(groups.get(i).getGroupname());
+			group.setIconCls("icon-group");
+			List<ComboTree> childs = new ArrayList();
+			for(int j=0;j<users.size();j++){
+				if(users.get(j).getGroupid().equals(group.getId())){
+					ComboTree u = new ComboTree();
+					u.setId(users.get(j).getId()+"");
+					u.setText(users.get(j).getLastName());
+					u.setIconCls("icon-user");
+					childs.add(u);
+				}
+			}
+			group.setChildren(childs);
+			cbos.add(group);
+		}
+		
+		return JSON.toJSONString(cbos);
+	}
 
 }

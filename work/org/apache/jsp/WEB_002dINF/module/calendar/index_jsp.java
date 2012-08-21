@@ -1,4 +1,4 @@
-package org.apache.jsp.WEB_002dINF.module.campaigns;
+package org.apache.jsp.WEB_002dINF.module.calendar;
 
 import javax.servlet.*;
 import javax.servlet.http.*;
@@ -18,12 +18,13 @@ static {
   private static java.util.List _jspx_dependants;
 
   static {
-    _jspx_dependants = new java.util.ArrayList(7);
-    _jspx_dependants.add("/WEB-INF/module/campaigns/../../head.jsp");
-    _jspx_dependants.add("/WEB-INF/module/campaigns/../../head_page.jsp");
-    _jspx_dependants.add("/WEB-INF/module/campaigns/../../common/config.jsp");
-    _jspx_dependants.add("/WEB-INF/module/campaigns/../include_view_search.jsp");
-    _jspx_dependants.add("/WEB-INF/module/campaigns/../../foot.jsp");
+    _jspx_dependants = new java.util.ArrayList(8);
+    _jspx_dependants.add("/WEB-INF/module/calendar/../../head.jsp");
+    _jspx_dependants.add("/WEB-INF/module/calendar/../../common/config.jsp");
+    _jspx_dependants.add("/WEB-INF/module/calendar/../include_view.jsp");
+    _jspx_dependants.add("/WEB-INF/module/calendar/../include_view_search.jsp");
+    _jspx_dependants.add("/WEB-INF/module/calendar/../include_index_toolbar.jsp");
+    _jspx_dependants.add("/WEB-INF/module/calendar/../../foot.jsp");
     _jspx_dependants.add("/WEB-INF/tld/jstl/fn.tld");
     _jspx_dependants.add("/WEB-INF/tld/oscache/oscache.tld");
   }
@@ -32,9 +33,9 @@ static {
   private org.apache.jasper.runtime.TagHandlerPool _005fjspx_005ftagPool_005fc_005fwhen_0026_005ftest;
   private org.apache.jasper.runtime.TagHandlerPool _005fjspx_005ftagPool_005fc_005fotherwise;
   private org.apache.jasper.runtime.TagHandlerPool _005fjspx_005ftagPool_005fcache_005fcache;
-  private org.apache.jasper.runtime.TagHandlerPool _005fjspx_005ftagPool_005fc_005fif_0026_005ftest;
   private org.apache.jasper.runtime.TagHandlerPool _005fjspx_005ftagPool_005fc_005fforEach_0026_005fvar_005fitems;
   private org.apache.jasper.runtime.TagHandlerPool _005fjspx_005ftagPool_005fc_005fset_0026_005fvar_005fvalue_005fnobody;
+  private org.apache.jasper.runtime.TagHandlerPool _005fjspx_005ftagPool_005fc_005fif_0026_005ftest;
 
   private javax.el.ExpressionFactory _el_expressionfactory;
   private org.apache.AnnotationProcessor _jsp_annotationprocessor;
@@ -48,9 +49,9 @@ static {
     _005fjspx_005ftagPool_005fc_005fwhen_0026_005ftest = org.apache.jasper.runtime.TagHandlerPool.getTagHandlerPool(getServletConfig());
     _005fjspx_005ftagPool_005fc_005fotherwise = org.apache.jasper.runtime.TagHandlerPool.getTagHandlerPool(getServletConfig());
     _005fjspx_005ftagPool_005fcache_005fcache = org.apache.jasper.runtime.TagHandlerPool.getTagHandlerPool(getServletConfig());
-    _005fjspx_005ftagPool_005fc_005fif_0026_005ftest = org.apache.jasper.runtime.TagHandlerPool.getTagHandlerPool(getServletConfig());
     _005fjspx_005ftagPool_005fc_005fforEach_0026_005fvar_005fitems = org.apache.jasper.runtime.TagHandlerPool.getTagHandlerPool(getServletConfig());
     _005fjspx_005ftagPool_005fc_005fset_0026_005fvar_005fvalue_005fnobody = org.apache.jasper.runtime.TagHandlerPool.getTagHandlerPool(getServletConfig());
+    _005fjspx_005ftagPool_005fc_005fif_0026_005ftest = org.apache.jasper.runtime.TagHandlerPool.getTagHandlerPool(getServletConfig());
     _el_expressionfactory = _jspxFactory.getJspApplicationContext(getServletConfig().getServletContext()).getExpressionFactory();
     _jsp_annotationprocessor = (org.apache.AnnotationProcessor) getServletConfig().getServletContext().getAttribute(org.apache.AnnotationProcessor.class.getName());
   }
@@ -60,9 +61,9 @@ static {
     _005fjspx_005ftagPool_005fc_005fwhen_0026_005ftest.release();
     _005fjspx_005ftagPool_005fc_005fotherwise.release();
     _005fjspx_005ftagPool_005fcache_005fcache.release();
-    _005fjspx_005ftagPool_005fc_005fif_0026_005ftest.release();
     _005fjspx_005ftagPool_005fc_005fforEach_0026_005fvar_005fitems.release();
     _005fjspx_005ftagPool_005fc_005fset_0026_005fvar_005fvalue_005fnobody.release();
+    _005fjspx_005ftagPool_005fc_005fif_0026_005ftest.release();
   }
 
   public void _jspService(HttpServletRequest request, HttpServletResponse response)
@@ -117,10 +118,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
         return;
       out.write('\r');
       out.write('\n');
-      out.write("\r\n");
-      out.write("<link rel=\"stylesheet\" type=\"text/css\" href=\"resources/page.css\">    ");
-      out.write('\r');
-      out.write('\n');
       out.write('\r');
       out.write('\n');
 
@@ -128,8 +125,8 @@ String win_topbar = "resizable=\"false\"  closed=\"true\" modal=\"true\" collaps
 String win_bar_1 = "resizable=\"false\"  closed=\"true\" modal=\"false\" collapsible=\"false\"  draggable=\"true\" minimizable=\"false\" maximizable=\"false\" inline=\"false\"";
 
       out.write("    ");
-      out.write('\r');
-      out.write('\n');
+      out.write("\r\n");
+      out.write("\r\n");
       if (_jspx_meth_c_005fchoose_005f1(_jspx_page_context))
         return;
       out.write("\r\n");
@@ -151,63 +148,107 @@ String win_bar_1 = "resizable=\"false\"  closed=\"true\" modal=\"false\" collaps
       out.write("var ptb = ");
       out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${ptb.parenttabid }", java.lang.String.class, (PageContext)_jspx_page_context, null, false));
       out.write(";\r\n");
-      out.write("var searchtype = 'advsearch';\r\n");
+      out.write("var searchtype = 'basicsearch';\r\n");
       out.write("</script>\r\n");
-      out.write("<script type=\"text/javascript\" src=\"resources/desktop/module/campaigns/index.js\"></script>\r\n");
+      out.write("\r\n");
+      out.write("<script type=\"text/javascript\" src=\"resources/desktop/module/calendar/index.js\"></script>\r\n");
+      out.write("\t\r\n");
       out.write("</head>\r\n");
       out.write("<body id=\"wrap\">\r\n");
+      out.write("\t");
       out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${navbar }", java.lang.String.class, (PageContext)_jspx_page_context, null, false));
+      out.write('\r');
+      out.write('\n');
+      out.write('	');
       out.write("\r\n");
       out.write("<div class=\"hidden\">\r\n");
-      //  c:if
-      org.apache.taglibs.standard.tag.rt.core.IfTag _jspx_th_c_005fif_005f0 = (org.apache.taglibs.standard.tag.rt.core.IfTag) _005fjspx_005ftagPool_005fc_005fif_0026_005ftest.get(org.apache.taglibs.standard.tag.rt.core.IfTag.class);
-      _jspx_th_c_005fif_005f0.setPageContext(_jspx_page_context);
-      _jspx_th_c_005fif_005f0.setParent(null);
-      // /WEB-INF/module/campaigns/index.jsp(36,0) name = test type = boolean reqTime = true required = true fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
-      _jspx_th_c_005fif_005f0.setTest(((java.lang.Boolean) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${repfields!=null }", java.lang.Boolean.class, (PageContext)_jspx_page_context, null, false)).booleanValue());
-      int _jspx_eval_c_005fif_005f0 = _jspx_th_c_005fif_005f0.doStartTag();
-      if (_jspx_eval_c_005fif_005f0 != javax.servlet.jsp.tagext.Tag.SKIP_BODY) {
-        do {
-          out.write("\r\n");
-          out.write("\t<div id=\"winreport\" class=\"easyui-window\" ");
-          out.print(win_topbar );
-          out.write("\r\n");
-          out.write("\t\tstyle=\"width:700px; height: 499px;\">\r\n");
-          out.write("\t\t<div class=\"wtop\">\r\n");
-          out.write("\t\t\t显示类型：<select name=\"graphtype\" class=\"text\">\r\n");
-          out.write("\t\t\t\t<option value=\"vertical3D\" selected=\"selected\" >3D柱图</option>\r\n");
-          out.write("\t\t\t\t<option value=\"vertical2D\">2D柱图</option>\r\n");
-          out.write("\t\t\t\t<option value=\"Line2D\">折线图</option>\r\n");
-          out.write("\t\t\t\t<option value=\"Pie3D\">3D饼图</option>\r\n");
-          out.write("\t\t\t\t<option value=\"Pie2D\">2D饼图</option>\r\n");
-          out.write("\t\t\t</select>&nbsp;&nbsp;统计项目：<select name=\"grouptype\" id=\"grouptype\" class=\"text\">\r\n");
-          out.write("\t\t\t");
-          out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${reportoptions }", java.lang.String.class, (PageContext)_jspx_page_context, null, false));
-          out.write("\r\n");
-          out.write("\t\t\t</select>&nbsp;&nbsp;<a href=\"javascript:viewReport()\" iconCls=\"icon-view\" class=\"easyui-linkbutton\">预览</a>\r\n");
-          out.write("\t\t</div>\r\n");
-          out.write("\t\t<iframe src=\"\" id=\"reportframe\" frameborder=\"0\" style=\"width:100%;height:430px;\" ></iframe>\r\n");
-          out.write("\t</div>\r\n");
-          int evalDoAfterBody = _jspx_th_c_005fif_005f0.doAfterBody();
-          if (evalDoAfterBody != javax.servlet.jsp.tagext.BodyTag.EVAL_BODY_AGAIN)
-            break;
-        } while (true);
-      }
-      if (_jspx_th_c_005fif_005f0.doEndTag() == javax.servlet.jsp.tagext.Tag.SKIP_PAGE) {
-        _005fjspx_005ftagPool_005fc_005fif_0026_005ftest.reuse(_jspx_th_c_005fif_005f0);
-        return;
-      }
-      _005fjspx_005ftagPool_005fc_005fif_0026_005ftest.reuse(_jspx_th_c_005fif_005f0);
-      out.write("\t\r\n");
+      out.write("    \t\r\n");
+      out.write("    \t<div id=\"wind_batchUpdate\" iconCls=\"icon-edit\"\r\n");
+      out.write("\t\t\tstyle=\"width: 500px; height: 309px;\" class=\"easyui-window p10\"\r\n");
+      out.write("\t\t\t");
+      out.print(win_topbar);
+      out.write(" title=\"批量修改 \" >\r\n");
+      out.write("\t\t\t\t<div class=\"easyui-layout\" data-options=\"fit:true,border:false\">\r\n");
+      out.write("\t\t\t\t\t<div data-options=\"region:'center',border:false\" style=\"padding:10px;\">\r\n");
+      out.write("\t\t\t\t\t\t<table class=\"tab_editlist\">\r\n");
+      out.write("\t\t\t\t\t\t\t<tr>\r\n");
+      out.write("\t\t\t\t\t\t\t\t<td>选择字段</td>\r\n");
+      out.write("\t\t\t\t\t\t\t</tr>\r\n");
+      out.write("\t\t\t\t\t\t\t<tr>\r\n");
+      out.write("\t\t\t\t\t\t\t\t<td><select class=\"text\" ></select></td>\r\n");
+      out.write("\t\t\t\t\t\t\t</tr>\r\n");
+      out.write("\t\t\t\t\t\t</table>\r\n");
+      out.write("\t\t\t\t\t</div>\r\n");
+      out.write("\t\t\t\t\t<div region=\"south\" class=\"btnbar\" border=\"false\">\r\n");
+      out.write("\t\t\t\t\t\t<a class=\"easyui-linkbutton\" iconCls=\"icon-ok\"\r\n");
+      out.write("\t\t\t\t\t\thref=\"javascript:void(0)\" onclick=\"formsubmit('form_customview')\">编辑</a> <a\r\n");
+      out.write("\t\t\t\t\t\tclass=\"easyui-linkbutton\" iconCls=\"icon-cancel\"\r\n");
+      out.write("\t\t\t\t\t\thref=\"javascript:void(0)\" onclick=\"closeWin('wind_batchUpdate')\">取消</a>\r\n");
+      out.write("\t\t\t\t\t</div>\r\n");
+      out.write("\t\t\t\t</div>\r\n");
+      out.write("\t\t</div>\r\n");
+      out.write("\t\t\r\n");
+      out.write("\t\t<div id=\"wind_smowerUpdate\" iconCls=\"icon-edit\"\r\n");
+      out.write("\t\t\tstyle=\"width: 500px; height: 309px;\" class=\"easyui-window p10\"\r\n");
+      out.write("\t\t\t");
+      out.print(win_topbar);
+      out.write(" title=\"修改负责人 \" >\r\n");
+      out.write("\t\t\t\t<div class=\"easyui-layout\" data-options=\"fit:true,border:false\">\r\n");
+      out.write("\t\t\t\t\t<div data-options=\"region:'center',border:false\" style=\"padding:10px;\">\r\n");
+      out.write("\t\t\t\t\t\t<table class=\"tab_editlist\">\r\n");
+      out.write("\t\t\t\t\t\t\t<tr>\r\n");
+      out.write("\t\t\t\t\t\t\t\t<td>选择负责人</td>\r\n");
+      out.write("\t\t\t\t\t\t\t</tr>\r\n");
+      out.write("\t\t\t\t\t\t\t<tr>\r\n");
+      out.write("\t\t\t\t\t\t\t\t<td>\r\n");
+      out.write("\t\t\t\t\t\t\t\t\t<select class=\"easyui-combotree\" style=\"width:200px;\" data-options=\"url:'crm/relation/users/getSmowners'\" ></select>\r\n");
+      out.write("\t\t\t\t\t\t\t\t</td>\r\n");
+      out.write("\t\t\t\t\t\t\t</tr>\r\n");
+      out.write("\t\t\t\t\t\t</table>\r\n");
+      out.write("\t\t\t\t\t</div>\r\n");
+      out.write("\t\t\t\t\t<div region=\"south\" class=\"btnbar\" border=\"false\">\r\n");
+      out.write("\t\t\t\t\t\t<a class=\"easyui-linkbutton\" iconCls=\"icon-ok\"\r\n");
+      out.write("\t\t\t\t\t\thref=\"javascript:void(0)\" onclick=\"formsubmit('form_customview')\">编辑</a> <a\r\n");
+      out.write("\t\t\t\t\t\tclass=\"easyui-linkbutton\" iconCls=\"icon-cancel\"\r\n");
+      out.write("\t\t\t\t\t\thref=\"javascript:void(0)\" onclick=\"closeWin('wind_batchUpdate')\">取消</a>\r\n");
+      out.write("\t\t\t\t\t</div>\r\n");
+      out.write("\t\t\t\t</div>\r\n");
+      out.write("\t\t</div>\r\n");
+      out.write("\t\t\r\n");
+      out.write("\t\t<div id=\"wind_share\" iconCls=\"icon-edit\"\r\n");
+      out.write("\t\t\tstyle=\"width: 500px; height: 309px;\" class=\"easyui-window p10\"\r\n");
+      out.write("\t\t\t");
+      out.print(win_topbar);
+      out.write(" title=\"共享\" >\r\n");
+      out.write("\t\t\t\t<div class=\"easyui-layout\" data-options=\"fit:true,border:false\">\r\n");
+      out.write("\t\t\t\t\t<div data-options=\"region:'center',border:false\" style=\"padding:10px;\">\r\n");
+      out.write("\t\t\t\t\t\t<table class=\"tab_editlist\">\r\n");
+      out.write("\t\t\t\t\t\t\t<tr>\r\n");
+      out.write("\t\t\t\t\t\t\t\t<td>选择共享用户</td>\r\n");
+      out.write("\t\t\t\t\t\t\t</tr>\r\n");
+      out.write("\t\t\t\t\t\t\t<tr>\r\n");
+      out.write("\t\t\t\t\t\t\t\t<td>\r\n");
+      out.write("\t\t\t\t\t\t\t\t\t<select class=\"easyui-combotree\" style=\"width:200px;\" data-options=\"url:'crm/relation/users/getCkSmowners',checkbox:true,multiple:true\"  ></select>\r\n");
+      out.write("\t\t\t\t\t\t\t\t</td>\r\n");
+      out.write("\t\t\t\t\t\t\t</tr>\r\n");
+      out.write("\t\t\t\t\t\t</table>\r\n");
+      out.write("\t\t\t\t\t</div>\r\n");
+      out.write("\t\t\t\t\t<div region=\"south\" class=\"btnbar\" border=\"false\">\r\n");
+      out.write("\t\t\t\t\t\t<a class=\"easyui-linkbutton\" iconCls=\"icon-ok\"\r\n");
+      out.write("\t\t\t\t\t\thref=\"javascript:void(0)\" onclick=\"formsubmit('form_customview')\">编辑</a> <a\r\n");
+      out.write("\t\t\t\t\t\tclass=\"easyui-linkbutton\" iconCls=\"icon-cancel\"\r\n");
+      out.write("\t\t\t\t\t\thref=\"javascript:void(0)\" onclick=\"closeWin('wind_share')\">取消</a>\r\n");
+      out.write("\t\t\t\t\t</div>\r\n");
+      out.write("\t\t\t\t</div>\r\n");
+      out.write("\t\t</div>\r\n");
+      out.write("</div>");
       out.write("\r\n");
-      out.write("<!-- 合并记录的demo的html -->\t\r\n");
-      out.write("<div class=\"div_stat div_statdemo\"> <span class=\"stat_name\"></span>：<span class=\"stat_num\"></span></div>\r\n");
-      out.write("\t\r\n");
-      out.write("</div>\r\n");
-      out.write("<div id=\"main\">\r\n");
-      out.write("<div id=\"navpath\" class=\"path\">\r\n");
+      out.write("\t<div id=\"main\">\r\n");
+      out.write("\t\t<div id=\"navpath\" class=\"path\">\r\n");
+      out.write("\t\t\t");
       out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${ptb.parenttabLabel }", java.lang.String.class, (PageContext)_jspx_page_context, null, false));
-      out.write("&gt;<a href=\"crm/module/");
+      out.write("&gt;<a\r\n");
+      out.write("\t\t\t\thref=\"crm/module/");
       out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${fn:toLowerCase(entityname.modulename) }", java.lang.String.class, (PageContext)_jspx_page_context, _jspx_fnmap_0, false));
       out.write("/index?ptb=");
       out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${ptb.parenttabid }", java.lang.String.class, (PageContext)_jspx_page_context, null, false));
@@ -215,28 +256,38 @@ String win_bar_1 = "resizable=\"false\"  closed=\"true\" modal=\"false\" collaps
       out.write('>');
       out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${tab.tablabel}", java.lang.String.class, (PageContext)_jspx_page_context, null, false));
       out.write("</a>\r\n");
-      out.write("</div>\r\n");
-      out.write("\t<div class=\"d_view \">\r\n");
-      out.write("\t\t\t\t<span class=\"icon-filter \">视图：</span> <select\r\n");
-      out.write("\t\t\t\t\tclass=\"text\" onchange=\"reloadView(this.value)\" >\r\n");
-      out.write("\t\t\t\t\t");
+      out.write("\t\t</div>\r\n");
+      out.write("\t\t\r\n");
+      out.write("\t\t<div class=\"easyui-tabs\"   >  \r\n");
+      out.write("\t        <!-- \r\n");
+      out.write("\t        <div title=\"日程安排\" style=\"overflow:hidden;\"  >  \r\n");
+      out.write("\t        \t<iframe width=\"100%\" height=\"650px\"  frameborder=\"0\" src=\"crm/module/calendar/viewcalendar?_rd=");
+      out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${rd }", java.lang.String.class, (PageContext)_jspx_page_context, null, false));
+      out.write("\" ></iframe>\r\n");
+      out.write("\t        </div>  \r\n");
+      out.write("\t         -->\r\n");
+      out.write("\t        <div title=\"列表视图\" class=\"p10\" >\r\n");
+      out.write("\t        \t \r\n");
+      out.write("        \t \t<div class=\"d_view \">\r\n");
+      out.write("\t\t\t\t\t<span class=\"icon-filter \">视图：</span> <select\r\n");
+      out.write("\t\t\t\t\t\tclass=\"text\" onchange=\"reloadView(this.value)\" >\r\n");
+      out.write("\t\t\t\t\t\t");
       if (_jspx_meth_c_005fforEach_005f0(_jspx_page_context))
         return;
       out.write("\r\n");
-      out.write("\t\t\t\t</select> <a\r\n");
-      out.write("\t\t\t\t\thref=\"crm/customview/index?entitytype=");
+      out.write("\t\t\t\t\t</select> <a\r\n");
+      out.write("\t\t\t\t\t\thref=\"crm/customview/index?entitytype=");
       out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${entitytype}", java.lang.String.class, (PageContext)_jspx_page_context, null, false));
       out.write("&ptb=");
       out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${ptb.parenttabid }", java.lang.String.class, (PageContext)_jspx_page_context, null, false));
       out.write("\"\r\n");
-      out.write("\t\t\t\t\tclass=\"easyui-linkbutton\"\r\n");
-      out.write("\t\t\t\t\tdata-options=\"plain:true,iconCls:'icon-view'\">视图管理</a>\r\n");
-      out.write("\t\t\t\t\t&nbsp;&nbsp;\r\n");
-      out.write("\t\t\t\t\t");
+      out.write("\t\t\t\t\t\tclass=\"easyui-linkbutton\"\r\n");
+      out.write("\t\t\t\t\t\tdata-options=\"plain:true,iconCls:'icon-view'\">视图管理</a>&nbsp;&nbsp;\r\n");
+      out.write("\t\t\t\t\t\t");
       if (_jspx_meth_c_005fset_005f0(_jspx_page_context))
         return;
       out.write("\r\n");
-      out.write("\t\t\t\t\t");
+      out.write("\t\t\t\t\t\t");
       out.write("\r\n");
       out.write("<script type=\"text/javascript\" src=\"resources/desktop/module/view_search.js\"></script> \r\n");
       out.write("<div class=\"hidden\">\r\n");
@@ -304,28 +355,67 @@ String win_bar_1 = "resizable=\"false\"  closed=\"true\" modal=\"false\" collaps
       out.write("\t\t\t\t\t\t\r\n");
       out.write("\t\t\t\t\t\t ");
       out.write("\r\n");
-      out.write("\t\t\t</div>\r\n");
-      out.write("\t\t\t\r\n");
-      out.write("\t\t\t<div id=\"tabbar\" class=\"gtb\" style=\"display: block;\" >  \r\n");
-      out.write("\t\t\t查看范围：<select class=\"easyui-combotree\" style=\"width:200px;\" data-options=\"url:'crm/module/campaigns/getCondition'\"></select>\r\n");
-      out.write("\t\t\t\t\t\t<a class=\"easyui-linkbutton\" data-options=\"plain:true\" iconCls=\"icon-add\" onclick=\"insert()\" >添加</a>\r\n");
-      out.write("\t\t\t\t\t\t<a class=\"easyui-linkbutton\" data-options=\"plain:true\" iconCls=\"icon-edit\" onclick=\"edit()\" >修改</a>\r\n");
-      out.write("\t\t\t\t\t\t<a class=\"easyui-linkbutton\" data-options=\"plain:true\" iconCls=\"icon-view\" onclick=\"view()\" >预览</a>\r\n");
-      out.write("\t\t\t\t\t\t<a class=\"easyui-linkbutton\" data-options=\"plain:true\" iconCls=\"icon-edit\" onclick=\"smowerUpdate()\" >修改负责人</a>\r\n");
-      out.write("\t\t\t\t\t\t<a class=\"easyui-linkbutton\" data-options=\"plain:true\" iconCls=\"icon-share\" onclick=\"shareUpdate()\" >共享</a>\r\n");
-      out.write("\t\t\t\t\t\t<a class=\"easyui-linkbutton\" data-options=\"plain:true\" iconCls=\"icon-remove\" onclick=\"deleteRecord()\" >删除</a>\r\n");
-      out.write("\t\t\t</div>\r\n");
-      out.write("\t\t\t<table id=\"view_list\"\r\n");
-      out.write("\t\t\t\tdata-options=\"fitColumns:true\" toolbar=\"#tabbar\" ></table>\r\n");
-      out.write("\t\t\t\t<div class=\"stat_div hidden\"></div>\r\n");
-      out.write("\t");
+      out.write("\t\t\t\t</div>\r\n");
+      out.write("\t\t\t\t<div id=\"tabbar\" class=\"gtb\" style=\"display: block;\" >  \r\n");
+      out.write("\t\t\t\t\t");
+      out.write("\r\n");
+      out.write("<script type=\"text/javascript\" src=\"resources/desktop/module/index_toolbar.js\"></script>\r\n");
+      if (_jspx_meth_c_005fif_005f0(_jspx_page_context))
+        return;
+      out.write('\r');
+      out.write('\n');
       if (_jspx_meth_c_005fif_005f1(_jspx_page_context))
         return;
+      out.write('\r');
+      out.write('\n');
+      if (_jspx_meth_c_005fif_005f2(_jspx_page_context))
+        return;
+      out.write('\r');
+      out.write('\n');
+      if (_jspx_meth_c_005fif_005f3(_jspx_page_context))
+        return;
+      out.write('\r');
+      out.write('\n');
+      if (_jspx_meth_c_005fif_005f4(_jspx_page_context))
+        return;
+      out.write('\r');
+      out.write('\n');
+      if (_jspx_meth_c_005fif_005f5(_jspx_page_context))
+        return;
+      out.write('\r');
+      out.write('\n');
+      if (_jspx_meth_c_005fif_005f6(_jspx_page_context))
+        return;
+      out.write('\r');
+      out.write('\n');
+      if (_jspx_meth_c_005fif_005f7(_jspx_page_context))
+        return;
+      out.write('\r');
+      out.write('\n');
+      if (_jspx_meth_c_005fif_005f8(_jspx_page_context))
+        return;
+      out.write('\r');
+      out.write('\n');
+      if (_jspx_meth_c_005fif_005f9(_jspx_page_context))
+        return;
+      out.write("\r\n");
+      out.write("\r\n");
+      out.write("\r\n");
+      out.write("\r\n");
+      out.write("\r\n");
+      out.write("\r\n");
       out.write("\r\n");
       out.write("\t\r\n");
-      out.write("</div>\r\n");
       out.write("\r\n");
-      out.write("\r\n");
+      out.write("\t\t\t\t</div>\r\n");
+      out.write("\t\t\t\t<table id=\"view_list\"\r\n");
+      out.write("\t\t\t\t\tdata-options=\"fitColumns:true\" toolbar=\"#tabbar\"   ></table>\r\n");
+      out.write("\t\t\t\t\t<div class=\"stat_div hidden\"></div>\r\n");
+      out.write("\t        \t \r\n");
+      out.write("\t        </div>\t        \r\n");
+      out.write("\t    </div>  \r\n");
+      out.write("\t</div>\r\n");
+      out.write("\t");
       out.write("\r\n");
       out.write("<div id=\"div_foot\" class=\"footercss\">\r\n");
       out.write("\t<table width=\"100%\" cellspacing=\"0\" cellpadding=\"5\" border=\"0\"\r\n");
@@ -496,7 +586,7 @@ String win_bar_1 = "resizable=\"false\"  closed=\"true\" modal=\"false\" collaps
     org.apache.taglibs.standard.tag.rt.core.WhenTag _jspx_th_c_005fwhen_005f0 = (org.apache.taglibs.standard.tag.rt.core.WhenTag) _005fjspx_005ftagPool_005fc_005fwhen_0026_005ftest.get(org.apache.taglibs.standard.tag.rt.core.WhenTag.class);
     _jspx_th_c_005fwhen_005f0.setPageContext(_jspx_page_context);
     _jspx_th_c_005fwhen_005f0.setParent((javax.servlet.jsp.tagext.Tag) _jspx_th_c_005fchoose_005f0);
-    // /WEB-INF/module/campaigns/../../head.jsp(17,1) name = test type = boolean reqTime = true required = true fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
+    // /WEB-INF/module/calendar/../../head.jsp(17,1) name = test type = boolean reqTime = true required = true fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
     _jspx_th_c_005fwhen_005f0.setTest(((java.lang.Boolean) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${ptb!=null&&tab!=null}", java.lang.Boolean.class, (PageContext)_jspx_page_context, null, false)).booleanValue());
     int _jspx_eval_c_005fwhen_005f0 = _jspx_th_c_005fwhen_005f0.doStartTag();
     if (_jspx_eval_c_005fwhen_005f0 != javax.servlet.jsp.tagext.Tag.SKIP_BODY) {
@@ -668,7 +758,7 @@ String win_bar_1 = "resizable=\"false\"  closed=\"true\" modal=\"false\" collaps
     org.apache.taglibs.standard.tag.rt.core.WhenTag _jspx_th_c_005fwhen_005f1 = (org.apache.taglibs.standard.tag.rt.core.WhenTag) _005fjspx_005ftagPool_005fc_005fwhen_0026_005ftest.get(org.apache.taglibs.standard.tag.rt.core.WhenTag.class);
     _jspx_th_c_005fwhen_005f1.setPageContext(_jspx_page_context);
     _jspx_th_c_005fwhen_005f1.setParent((javax.servlet.jsp.tagext.Tag) _jspx_th_c_005fchoose_005f1);
-    // /WEB-INF/module/campaigns/index.jsp(7,1) name = test type = boolean reqTime = true required = true fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
+    // /WEB-INF/module/calendar/index.jsp(7,1) name = test type = boolean reqTime = true required = true fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
     _jspx_th_c_005fwhen_005f1.setTest(((java.lang.Boolean) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${customview.cvid!=null && dview!=null}", java.lang.Boolean.class, (PageContext)_jspx_page_context, null, false)).booleanValue());
     int _jspx_eval_c_005fwhen_005f1 = _jspx_th_c_005fwhen_005f1.doStartTag();
     if (_jspx_eval_c_005fwhen_005f1 != javax.servlet.jsp.tagext.Tag.SKIP_BODY) {
@@ -735,9 +825,9 @@ String win_bar_1 = "resizable=\"false\"  closed=\"true\" modal=\"false\" collaps
     org.apache.taglibs.standard.tag.rt.core.ForEachTag _jspx_th_c_005fforEach_005f0 = (org.apache.taglibs.standard.tag.rt.core.ForEachTag) _005fjspx_005ftagPool_005fc_005fforEach_0026_005fvar_005fitems.get(org.apache.taglibs.standard.tag.rt.core.ForEachTag.class);
     _jspx_th_c_005fforEach_005f0.setPageContext(_jspx_page_context);
     _jspx_th_c_005fforEach_005f0.setParent(null);
-    // /WEB-INF/module/campaigns/index.jsp(65,5) name = items type = java.lang.Object reqTime = true required = false fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
+    // /WEB-INF/module/calendar/index.jsp(55,6) name = items type = java.lang.Object reqTime = true required = false fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
     _jspx_th_c_005fforEach_005f0.setItems((java.lang.Object) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${views}", java.lang.Object.class, (PageContext)_jspx_page_context, null, false));
-    // /WEB-INF/module/campaigns/index.jsp(65,5) name = var type = java.lang.String reqTime = false required = false fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
+    // /WEB-INF/module/calendar/index.jsp(55,6) name = var type = java.lang.String reqTime = false required = false fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
     _jspx_th_c_005fforEach_005f0.setVar("v");
     int[] _jspx_push_body_count_c_005fforEach_005f0 = new int[] { 0 };
     try {
@@ -745,13 +835,13 @@ String win_bar_1 = "resizable=\"false\"  closed=\"true\" modal=\"false\" collaps
       if (_jspx_eval_c_005fforEach_005f0 != javax.servlet.jsp.tagext.Tag.SKIP_BODY) {
         do {
           out.write("\r\n");
-          out.write("\t\t\t\t\t\t<option value=\"");
+          out.write("\t\t\t\t\t\t\t<option value=\"");
           out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${v.cvid }", java.lang.String.class, (PageContext)_jspx_page_context, null, false));
           out.write('"');
           out.write('>');
           out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${v.viewname}", java.lang.String.class, (PageContext)_jspx_page_context, null, false));
           out.write("</option>\r\n");
-          out.write("\t\t\t\t\t");
+          out.write("\t\t\t\t\t\t");
           int evalDoAfterBody = _jspx_th_c_005fforEach_005f0.doAfterBody();
           if (evalDoAfterBody != javax.servlet.jsp.tagext.BodyTag.EVAL_BODY_AGAIN)
             break;
@@ -779,10 +869,10 @@ String win_bar_1 = "resizable=\"false\"  closed=\"true\" modal=\"false\" collaps
     org.apache.taglibs.standard.tag.rt.core.SetTag _jspx_th_c_005fset_005f0 = (org.apache.taglibs.standard.tag.rt.core.SetTag) _005fjspx_005ftagPool_005fc_005fset_0026_005fvar_005fvalue_005fnobody.get(org.apache.taglibs.standard.tag.rt.core.SetTag.class);
     _jspx_th_c_005fset_005f0.setPageContext(_jspx_page_context);
     _jspx_th_c_005fset_005f0.setParent(null);
-    // /WEB-INF/module/campaigns/index.jsp(73,5) name = var type = java.lang.String reqTime = false required = false fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
+    // /WEB-INF/module/calendar/index.jsp(62,6) name = var type = java.lang.String reqTime = false required = false fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
     _jspx_th_c_005fset_005f0.setVar("searchtype");
-    // /WEB-INF/module/campaigns/index.jsp(73,5) name = value type = null reqTime = true required = false fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
-    _jspx_th_c_005fset_005f0.setValue(new String("advsearch"));
+    // /WEB-INF/module/calendar/index.jsp(62,6) name = value type = null reqTime = true required = false fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
+    _jspx_th_c_005fset_005f0.setValue(new String("basicsearch"));
     int _jspx_eval_c_005fset_005f0 = _jspx_th_c_005fset_005f0.doStartTag();
     if (_jspx_th_c_005fset_005f0.doEndTag() == javax.servlet.jsp.tagext.Tag.SKIP_PAGE) {
       _005fjspx_005ftagPool_005fc_005fset_0026_005fvar_005fvalue_005fnobody.reuse(_jspx_th_c_005fset_005f0);
@@ -836,7 +926,7 @@ String win_bar_1 = "resizable=\"false\"  closed=\"true\" modal=\"false\" collaps
     org.apache.taglibs.standard.tag.rt.core.WhenTag _jspx_th_c_005fwhen_005f2 = (org.apache.taglibs.standard.tag.rt.core.WhenTag) _005fjspx_005ftagPool_005fc_005fwhen_0026_005ftest.get(org.apache.taglibs.standard.tag.rt.core.WhenTag.class);
     _jspx_th_c_005fwhen_005f2.setPageContext(_jspx_page_context);
     _jspx_th_c_005fwhen_005f2.setParent((javax.servlet.jsp.tagext.Tag) _jspx_th_c_005fchoose_005f2);
-    // /WEB-INF/module/campaigns/../include_view_search.jsp(54,1) name = test type = boolean reqTime = true required = true fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
+    // /WEB-INF/module/calendar/../include_view_search.jsp(54,1) name = test type = boolean reqTime = true required = true fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
     _jspx_th_c_005fwhen_005f2.setTest(((java.lang.Boolean) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${searchtype =='basicsearch' }", java.lang.Boolean.class, (PageContext)_jspx_page_context, null, false)).booleanValue());
     int _jspx_eval_c_005fwhen_005f2 = _jspx_th_c_005fwhen_005f2.doStartTag();
     if (_jspx_eval_c_005fwhen_005f2 != javax.servlet.jsp.tagext.Tag.SKIP_BODY) {
@@ -891,6 +981,36 @@ String win_bar_1 = "resizable=\"false\"  closed=\"true\" modal=\"false\" collaps
     return false;
   }
 
+  private boolean _jspx_meth_c_005fif_005f0(PageContext _jspx_page_context)
+          throws Throwable {
+    PageContext pageContext = _jspx_page_context;
+    JspWriter out = _jspx_page_context.getOut();
+    //  c:if
+    org.apache.taglibs.standard.tag.rt.core.IfTag _jspx_th_c_005fif_005f0 = (org.apache.taglibs.standard.tag.rt.core.IfTag) _005fjspx_005ftagPool_005fc_005fif_0026_005ftest.get(org.apache.taglibs.standard.tag.rt.core.IfTag.class);
+    _jspx_th_c_005fif_005f0.setPageContext(_jspx_page_context);
+    _jspx_th_c_005fif_005f0.setParent(null);
+    // /WEB-INF/module/calendar/../include_index_toolbar.jsp(4,0) name = test type = boolean reqTime = true required = true fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
+    _jspx_th_c_005fif_005f0.setTest(((java.lang.Boolean) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${barmap['scope']!=null}", java.lang.Boolean.class, (PageContext)_jspx_page_context, null, false)).booleanValue());
+    int _jspx_eval_c_005fif_005f0 = _jspx_th_c_005fif_005f0.doStartTag();
+    if (_jspx_eval_c_005fif_005f0 != javax.servlet.jsp.tagext.Tag.SKIP_BODY) {
+      do {
+        out.write("\r\n");
+        out.write("查看范围：<select class=\"easyui-combotree \" id=\"cbt_scope\" style=\"width:160px;\"  data-options=\"url:'crm/customview/getCondition?entitytype=");
+        out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${entitytype }", java.lang.String.class, (PageContext)_jspx_page_context, null, false));
+        out.write("'\"></select>\r\n");
+        int evalDoAfterBody = _jspx_th_c_005fif_005f0.doAfterBody();
+        if (evalDoAfterBody != javax.servlet.jsp.tagext.BodyTag.EVAL_BODY_AGAIN)
+          break;
+      } while (true);
+    }
+    if (_jspx_th_c_005fif_005f0.doEndTag() == javax.servlet.jsp.tagext.Tag.SKIP_PAGE) {
+      _005fjspx_005ftagPool_005fc_005fif_0026_005ftest.reuse(_jspx_th_c_005fif_005f0);
+      return true;
+    }
+    _005fjspx_005ftagPool_005fc_005fif_0026_005ftest.reuse(_jspx_th_c_005fif_005f0);
+    return false;
+  }
+
   private boolean _jspx_meth_c_005fif_005f1(PageContext _jspx_page_context)
           throws Throwable {
     PageContext pageContext = _jspx_page_context;
@@ -899,24 +1019,13 @@ String win_bar_1 = "resizable=\"false\"  closed=\"true\" modal=\"false\" collaps
     org.apache.taglibs.standard.tag.rt.core.IfTag _jspx_th_c_005fif_005f1 = (org.apache.taglibs.standard.tag.rt.core.IfTag) _005fjspx_005ftagPool_005fc_005fif_0026_005ftest.get(org.apache.taglibs.standard.tag.rt.core.IfTag.class);
     _jspx_th_c_005fif_005f1.setPageContext(_jspx_page_context);
     _jspx_th_c_005fif_005f1.setParent(null);
-    // /WEB-INF/module/campaigns/index.jsp(89,1) name = test type = boolean reqTime = true required = true fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
-    _jspx_th_c_005fif_005f1.setTest(((java.lang.Boolean) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${repfields!=null }", java.lang.Boolean.class, (PageContext)_jspx_page_context, null, false)).booleanValue());
+    // /WEB-INF/module/calendar/../include_index_toolbar.jsp(7,0) name = test type = boolean reqTime = true required = true fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
+    _jspx_th_c_005fif_005f1.setTest(((java.lang.Boolean) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${barmap['insert']!=null}", java.lang.Boolean.class, (PageContext)_jspx_page_context, null, false)).booleanValue());
     int _jspx_eval_c_005fif_005f1 = _jspx_th_c_005fif_005f1.doStartTag();
     if (_jspx_eval_c_005fif_005f1 != javax.servlet.jsp.tagext.Tag.SKIP_BODY) {
       do {
         out.write("\r\n");
-        out.write("\t\t\t<div data-options=\"region:'south',border:false\">\r\n");
-        out.write("\t\t\t\t<div class=\"d_report \">\r\n");
-        out.write("\t\t\t\t\t<span class=\"icon-report view_span\">报表：</span> <select id=\"reportselect\">\r\n");
-        out.write("\t\t\t\t\t\t");
-        if (_jspx_meth_c_005fforEach_005f1(_jspx_th_c_005fif_005f1, _jspx_page_context))
-          return true;
-        out.write("\r\n");
-        out.write("\t\t\t\t\t</select> <a href=\"javascript:viewSearchReport()\" class=\"easyui-linkbutton\"\r\n");
-        out.write("\t\t\t\t\t\tdata-options=\"plain:true,iconCls:'icon-view'\">预览</a>\r\n");
-        out.write("\t\t\t\t</div>\r\n");
-        out.write("\t\t\t</div>\r\n");
-        out.write("\t\t");
+        out.write("<a class=\"easyui-linkbutton\" data-options=\"plain:true\" iconCls=\"icon-add\" onclick=\"insert()\" >添加</a>\r\n");
         int evalDoAfterBody = _jspx_th_c_005fif_005f1.doAfterBody();
         if (evalDoAfterBody != javax.servlet.jsp.tagext.BodyTag.EVAL_BODY_AGAIN)
           break;
@@ -930,52 +1039,227 @@ String win_bar_1 = "resizable=\"false\"  closed=\"true\" modal=\"false\" collaps
     return false;
   }
 
-  private boolean _jspx_meth_c_005fforEach_005f1(javax.servlet.jsp.tagext.JspTag _jspx_th_c_005fif_005f1, PageContext _jspx_page_context)
+  private boolean _jspx_meth_c_005fif_005f2(PageContext _jspx_page_context)
           throws Throwable {
     PageContext pageContext = _jspx_page_context;
     JspWriter out = _jspx_page_context.getOut();
-    //  c:forEach
-    org.apache.taglibs.standard.tag.rt.core.ForEachTag _jspx_th_c_005fforEach_005f1 = (org.apache.taglibs.standard.tag.rt.core.ForEachTag) _005fjspx_005ftagPool_005fc_005fforEach_0026_005fvar_005fitems.get(org.apache.taglibs.standard.tag.rt.core.ForEachTag.class);
-    _jspx_th_c_005fforEach_005f1.setPageContext(_jspx_page_context);
-    _jspx_th_c_005fforEach_005f1.setParent((javax.servlet.jsp.tagext.Tag) _jspx_th_c_005fif_005f1);
-    // /WEB-INF/module/campaigns/index.jsp(93,6) name = items type = java.lang.Object reqTime = true required = false fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
-    _jspx_th_c_005fforEach_005f1.setItems((java.lang.Object) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${repfields}", java.lang.Object.class, (PageContext)_jspx_page_context, null, false));
-    // /WEB-INF/module/campaigns/index.jsp(93,6) name = var type = java.lang.String reqTime = false required = false fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
-    _jspx_th_c_005fforEach_005f1.setVar("f");
-    int[] _jspx_push_body_count_c_005fforEach_005f1 = new int[] { 0 };
-    try {
-      int _jspx_eval_c_005fforEach_005f1 = _jspx_th_c_005fforEach_005f1.doStartTag();
-      if (_jspx_eval_c_005fforEach_005f1 != javax.servlet.jsp.tagext.Tag.SKIP_BODY) {
-        do {
-          out.write("\r\n");
-          out.write("\t\t\t\t\t\t\t<option value='{\"fieldname\":\"");
-          out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${f.fieldname}", java.lang.String.class, (PageContext)_jspx_page_context, null, false));
-          out.write("\",\"fieldtable\":\"");
-          out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${f.tablename}", java.lang.String.class, (PageContext)_jspx_page_context, null, false));
-          out.write("\",\"fieldcolname\":\"");
-          out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${f.columnname }", java.lang.String.class, (PageContext)_jspx_page_context, null, false));
-          out.write("\",\"relatedmodule\":\"");
-          out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${entitytype}", java.lang.String.class, (PageContext)_jspx_page_context, null, false));
-          out.write("\"}'>");
-          out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${f.fieldlabel}", java.lang.String.class, (PageContext)_jspx_page_context, null, false));
-          out.write("</option>\r\n");
-          out.write("\t\t\t\t\t\t");
-          int evalDoAfterBody = _jspx_th_c_005fforEach_005f1.doAfterBody();
-          if (evalDoAfterBody != javax.servlet.jsp.tagext.BodyTag.EVAL_BODY_AGAIN)
-            break;
-        } while (true);
-      }
-      if (_jspx_th_c_005fforEach_005f1.doEndTag() == javax.servlet.jsp.tagext.Tag.SKIP_PAGE) {
-        return true;
-      }
-    } catch (Throwable _jspx_exception) {
-      while (_jspx_push_body_count_c_005fforEach_005f1[0]-- > 0)
-        out = _jspx_page_context.popBody();
-      _jspx_th_c_005fforEach_005f1.doCatch(_jspx_exception);
-    } finally {
-      _jspx_th_c_005fforEach_005f1.doFinally();
-      _005fjspx_005ftagPool_005fc_005fforEach_0026_005fvar_005fitems.reuse(_jspx_th_c_005fforEach_005f1);
+    //  c:if
+    org.apache.taglibs.standard.tag.rt.core.IfTag _jspx_th_c_005fif_005f2 = (org.apache.taglibs.standard.tag.rt.core.IfTag) _005fjspx_005ftagPool_005fc_005fif_0026_005ftest.get(org.apache.taglibs.standard.tag.rt.core.IfTag.class);
+    _jspx_th_c_005fif_005f2.setPageContext(_jspx_page_context);
+    _jspx_th_c_005fif_005f2.setParent(null);
+    // /WEB-INF/module/calendar/../include_index_toolbar.jsp(10,0) name = test type = boolean reqTime = true required = true fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
+    _jspx_th_c_005fif_005f2.setTest(((java.lang.Boolean) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${barmap['edit']!=null}", java.lang.Boolean.class, (PageContext)_jspx_page_context, null, false)).booleanValue());
+    int _jspx_eval_c_005fif_005f2 = _jspx_th_c_005fif_005f2.doStartTag();
+    if (_jspx_eval_c_005fif_005f2 != javax.servlet.jsp.tagext.Tag.SKIP_BODY) {
+      do {
+        out.write("\r\n");
+        out.write("<a class=\"easyui-linkbutton\" data-options=\"plain:true\" iconCls=\"icon-edit\" onclick=\"edit()\" >修改</a>\r\n");
+        int evalDoAfterBody = _jspx_th_c_005fif_005f2.doAfterBody();
+        if (evalDoAfterBody != javax.servlet.jsp.tagext.BodyTag.EVAL_BODY_AGAIN)
+          break;
+      } while (true);
     }
+    if (_jspx_th_c_005fif_005f2.doEndTag() == javax.servlet.jsp.tagext.Tag.SKIP_PAGE) {
+      _005fjspx_005ftagPool_005fc_005fif_0026_005ftest.reuse(_jspx_th_c_005fif_005f2);
+      return true;
+    }
+    _005fjspx_005ftagPool_005fc_005fif_0026_005ftest.reuse(_jspx_th_c_005fif_005f2);
+    return false;
+  }
+
+  private boolean _jspx_meth_c_005fif_005f3(PageContext _jspx_page_context)
+          throws Throwable {
+    PageContext pageContext = _jspx_page_context;
+    JspWriter out = _jspx_page_context.getOut();
+    //  c:if
+    org.apache.taglibs.standard.tag.rt.core.IfTag _jspx_th_c_005fif_005f3 = (org.apache.taglibs.standard.tag.rt.core.IfTag) _005fjspx_005ftagPool_005fc_005fif_0026_005ftest.get(org.apache.taglibs.standard.tag.rt.core.IfTag.class);
+    _jspx_th_c_005fif_005f3.setPageContext(_jspx_page_context);
+    _jspx_th_c_005fif_005f3.setParent(null);
+    // /WEB-INF/module/calendar/../include_index_toolbar.jsp(13,0) name = test type = boolean reqTime = true required = true fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
+    _jspx_th_c_005fif_005f3.setTest(((java.lang.Boolean) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${barmap['deleteRecord']!=null}", java.lang.Boolean.class, (PageContext)_jspx_page_context, null, false)).booleanValue());
+    int _jspx_eval_c_005fif_005f3 = _jspx_th_c_005fif_005f3.doStartTag();
+    if (_jspx_eval_c_005fif_005f3 != javax.servlet.jsp.tagext.Tag.SKIP_BODY) {
+      do {
+        out.write("\r\n");
+        out.write("<a class=\"easyui-linkbutton\" data-options=\"plain:true\" iconCls=\"icon-remove\" onclick=\"deleteRecord()\" >删除</a>\r\n");
+        int evalDoAfterBody = _jspx_th_c_005fif_005f3.doAfterBody();
+        if (evalDoAfterBody != javax.servlet.jsp.tagext.BodyTag.EVAL_BODY_AGAIN)
+          break;
+      } while (true);
+    }
+    if (_jspx_th_c_005fif_005f3.doEndTag() == javax.servlet.jsp.tagext.Tag.SKIP_PAGE) {
+      _005fjspx_005ftagPool_005fc_005fif_0026_005ftest.reuse(_jspx_th_c_005fif_005f3);
+      return true;
+    }
+    _005fjspx_005ftagPool_005fc_005fif_0026_005ftest.reuse(_jspx_th_c_005fif_005f3);
+    return false;
+  }
+
+  private boolean _jspx_meth_c_005fif_005f4(PageContext _jspx_page_context)
+          throws Throwable {
+    PageContext pageContext = _jspx_page_context;
+    JspWriter out = _jspx_page_context.getOut();
+    //  c:if
+    org.apache.taglibs.standard.tag.rt.core.IfTag _jspx_th_c_005fif_005f4 = (org.apache.taglibs.standard.tag.rt.core.IfTag) _005fjspx_005ftagPool_005fc_005fif_0026_005ftest.get(org.apache.taglibs.standard.tag.rt.core.IfTag.class);
+    _jspx_th_c_005fif_005f4.setPageContext(_jspx_page_context);
+    _jspx_th_c_005fif_005f4.setParent(null);
+    // /WEB-INF/module/calendar/../include_index_toolbar.jsp(16,0) name = test type = boolean reqTime = true required = true fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
+    _jspx_th_c_005fif_005f4.setTest(((java.lang.Boolean) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${barmap['batchUpdate']!=null}", java.lang.Boolean.class, (PageContext)_jspx_page_context, null, false)).booleanValue());
+    int _jspx_eval_c_005fif_005f4 = _jspx_th_c_005fif_005f4.doStartTag();
+    if (_jspx_eval_c_005fif_005f4 != javax.servlet.jsp.tagext.Tag.SKIP_BODY) {
+      do {
+        out.write("\r\n");
+        out.write("<a class=\"easyui-linkbutton\" data-options=\"plain:true\" iconCls=\"icon-edit\" onclick=\"batchUpdate()\" >批量修改</a>\r\n");
+        int evalDoAfterBody = _jspx_th_c_005fif_005f4.doAfterBody();
+        if (evalDoAfterBody != javax.servlet.jsp.tagext.BodyTag.EVAL_BODY_AGAIN)
+          break;
+      } while (true);
+    }
+    if (_jspx_th_c_005fif_005f4.doEndTag() == javax.servlet.jsp.tagext.Tag.SKIP_PAGE) {
+      _005fjspx_005ftagPool_005fc_005fif_0026_005ftest.reuse(_jspx_th_c_005fif_005f4);
+      return true;
+    }
+    _005fjspx_005ftagPool_005fc_005fif_0026_005ftest.reuse(_jspx_th_c_005fif_005f4);
+    return false;
+  }
+
+  private boolean _jspx_meth_c_005fif_005f5(PageContext _jspx_page_context)
+          throws Throwable {
+    PageContext pageContext = _jspx_page_context;
+    JspWriter out = _jspx_page_context.getOut();
+    //  c:if
+    org.apache.taglibs.standard.tag.rt.core.IfTag _jspx_th_c_005fif_005f5 = (org.apache.taglibs.standard.tag.rt.core.IfTag) _005fjspx_005ftagPool_005fc_005fif_0026_005ftest.get(org.apache.taglibs.standard.tag.rt.core.IfTag.class);
+    _jspx_th_c_005fif_005f5.setPageContext(_jspx_page_context);
+    _jspx_th_c_005fif_005f5.setParent(null);
+    // /WEB-INF/module/calendar/../include_index_toolbar.jsp(19,0) name = test type = boolean reqTime = true required = true fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
+    _jspx_th_c_005fif_005f5.setTest(((java.lang.Boolean) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${barmap['view']!=null}", java.lang.Boolean.class, (PageContext)_jspx_page_context, null, false)).booleanValue());
+    int _jspx_eval_c_005fif_005f5 = _jspx_th_c_005fif_005f5.doStartTag();
+    if (_jspx_eval_c_005fif_005f5 != javax.servlet.jsp.tagext.Tag.SKIP_BODY) {
+      do {
+        out.write("\r\n");
+        out.write("<a class=\"easyui-linkbutton\" data-options=\"plain:true\" iconCls=\"icon-view\" onclick=\"view()\" >预览</a>\r\n");
+        int evalDoAfterBody = _jspx_th_c_005fif_005f5.doAfterBody();
+        if (evalDoAfterBody != javax.servlet.jsp.tagext.BodyTag.EVAL_BODY_AGAIN)
+          break;
+      } while (true);
+    }
+    if (_jspx_th_c_005fif_005f5.doEndTag() == javax.servlet.jsp.tagext.Tag.SKIP_PAGE) {
+      _005fjspx_005ftagPool_005fc_005fif_0026_005ftest.reuse(_jspx_th_c_005fif_005f5);
+      return true;
+    }
+    _005fjspx_005ftagPool_005fc_005fif_0026_005ftest.reuse(_jspx_th_c_005fif_005f5);
+    return false;
+  }
+
+  private boolean _jspx_meth_c_005fif_005f6(PageContext _jspx_page_context)
+          throws Throwable {
+    PageContext pageContext = _jspx_page_context;
+    JspWriter out = _jspx_page_context.getOut();
+    //  c:if
+    org.apache.taglibs.standard.tag.rt.core.IfTag _jspx_th_c_005fif_005f6 = (org.apache.taglibs.standard.tag.rt.core.IfTag) _005fjspx_005ftagPool_005fc_005fif_0026_005ftest.get(org.apache.taglibs.standard.tag.rt.core.IfTag.class);
+    _jspx_th_c_005fif_005f6.setPageContext(_jspx_page_context);
+    _jspx_th_c_005fif_005f6.setParent(null);
+    // /WEB-INF/module/calendar/../include_index_toolbar.jsp(22,0) name = test type = boolean reqTime = true required = true fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
+    _jspx_th_c_005fif_005f6.setTest(((java.lang.Boolean) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${barmap['smowerUpdate']!=null}", java.lang.Boolean.class, (PageContext)_jspx_page_context, null, false)).booleanValue());
+    int _jspx_eval_c_005fif_005f6 = _jspx_th_c_005fif_005f6.doStartTag();
+    if (_jspx_eval_c_005fif_005f6 != javax.servlet.jsp.tagext.Tag.SKIP_BODY) {
+      do {
+        out.write("\r\n");
+        out.write("<a class=\"easyui-linkbutton\" data-options=\"plain:true\" iconCls=\"icon-edit\" onclick=\"smowerUpdate()\" >修改负责人</a>\r\n");
+        int evalDoAfterBody = _jspx_th_c_005fif_005f6.doAfterBody();
+        if (evalDoAfterBody != javax.servlet.jsp.tagext.BodyTag.EVAL_BODY_AGAIN)
+          break;
+      } while (true);
+    }
+    if (_jspx_th_c_005fif_005f6.doEndTag() == javax.servlet.jsp.tagext.Tag.SKIP_PAGE) {
+      _005fjspx_005ftagPool_005fc_005fif_0026_005ftest.reuse(_jspx_th_c_005fif_005f6);
+      return true;
+    }
+    _005fjspx_005ftagPool_005fc_005fif_0026_005ftest.reuse(_jspx_th_c_005fif_005f6);
+    return false;
+  }
+
+  private boolean _jspx_meth_c_005fif_005f7(PageContext _jspx_page_context)
+          throws Throwable {
+    PageContext pageContext = _jspx_page_context;
+    JspWriter out = _jspx_page_context.getOut();
+    //  c:if
+    org.apache.taglibs.standard.tag.rt.core.IfTag _jspx_th_c_005fif_005f7 = (org.apache.taglibs.standard.tag.rt.core.IfTag) _005fjspx_005ftagPool_005fc_005fif_0026_005ftest.get(org.apache.taglibs.standard.tag.rt.core.IfTag.class);
+    _jspx_th_c_005fif_005f7.setPageContext(_jspx_page_context);
+    _jspx_th_c_005fif_005f7.setParent(null);
+    // /WEB-INF/module/calendar/../include_index_toolbar.jsp(25,0) name = test type = boolean reqTime = true required = true fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
+    _jspx_th_c_005fif_005f7.setTest(((java.lang.Boolean) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${barmap['shareUpdate']!=null}", java.lang.Boolean.class, (PageContext)_jspx_page_context, null, false)).booleanValue());
+    int _jspx_eval_c_005fif_005f7 = _jspx_th_c_005fif_005f7.doStartTag();
+    if (_jspx_eval_c_005fif_005f7 != javax.servlet.jsp.tagext.Tag.SKIP_BODY) {
+      do {
+        out.write("\r\n");
+        out.write("<a class=\"easyui-linkbutton\" data-options=\"plain:true\" iconCls=\"icon-share\" onclick=\"shareUpdate()\" >共享</a>\r\n");
+        int evalDoAfterBody = _jspx_th_c_005fif_005f7.doAfterBody();
+        if (evalDoAfterBody != javax.servlet.jsp.tagext.BodyTag.EVAL_BODY_AGAIN)
+          break;
+      } while (true);
+    }
+    if (_jspx_th_c_005fif_005f7.doEndTag() == javax.servlet.jsp.tagext.Tag.SKIP_PAGE) {
+      _005fjspx_005ftagPool_005fc_005fif_0026_005ftest.reuse(_jspx_th_c_005fif_005f7);
+      return true;
+    }
+    _005fjspx_005ftagPool_005fc_005fif_0026_005ftest.reuse(_jspx_th_c_005fif_005f7);
+    return false;
+  }
+
+  private boolean _jspx_meth_c_005fif_005f8(PageContext _jspx_page_context)
+          throws Throwable {
+    PageContext pageContext = _jspx_page_context;
+    JspWriter out = _jspx_page_context.getOut();
+    //  c:if
+    org.apache.taglibs.standard.tag.rt.core.IfTag _jspx_th_c_005fif_005f8 = (org.apache.taglibs.standard.tag.rt.core.IfTag) _005fjspx_005ftagPool_005fc_005fif_0026_005ftest.get(org.apache.taglibs.standard.tag.rt.core.IfTag.class);
+    _jspx_th_c_005fif_005f8.setPageContext(_jspx_page_context);
+    _jspx_th_c_005fif_005f8.setParent(null);
+    // /WEB-INF/module/calendar/../include_index_toolbar.jsp(28,0) name = test type = boolean reqTime = true required = true fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
+    _jspx_th_c_005fif_005f8.setTest(((java.lang.Boolean) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${barmap['import']!=null}", java.lang.Boolean.class, (PageContext)_jspx_page_context, null, false)).booleanValue());
+    int _jspx_eval_c_005fif_005f8 = _jspx_th_c_005fif_005f8.doStartTag();
+    if (_jspx_eval_c_005fif_005f8 != javax.servlet.jsp.tagext.Tag.SKIP_BODY) {
+      do {
+        out.write("\r\n");
+        out.write("<a class=\"easyui-linkbutton\" data-options=\"plain:true\" iconCls=\"icon-import\" onclick=\"import()\" >导入</a>\r\n");
+        int evalDoAfterBody = _jspx_th_c_005fif_005f8.doAfterBody();
+        if (evalDoAfterBody != javax.servlet.jsp.tagext.BodyTag.EVAL_BODY_AGAIN)
+          break;
+      } while (true);
+    }
+    if (_jspx_th_c_005fif_005f8.doEndTag() == javax.servlet.jsp.tagext.Tag.SKIP_PAGE) {
+      _005fjspx_005ftagPool_005fc_005fif_0026_005ftest.reuse(_jspx_th_c_005fif_005f8);
+      return true;
+    }
+    _005fjspx_005ftagPool_005fc_005fif_0026_005ftest.reuse(_jspx_th_c_005fif_005f8);
+    return false;
+  }
+
+  private boolean _jspx_meth_c_005fif_005f9(PageContext _jspx_page_context)
+          throws Throwable {
+    PageContext pageContext = _jspx_page_context;
+    JspWriter out = _jspx_page_context.getOut();
+    //  c:if
+    org.apache.taglibs.standard.tag.rt.core.IfTag _jspx_th_c_005fif_005f9 = (org.apache.taglibs.standard.tag.rt.core.IfTag) _005fjspx_005ftagPool_005fc_005fif_0026_005ftest.get(org.apache.taglibs.standard.tag.rt.core.IfTag.class);
+    _jspx_th_c_005fif_005f9.setPageContext(_jspx_page_context);
+    _jspx_th_c_005fif_005f9.setParent(null);
+    // /WEB-INF/module/calendar/../include_index_toolbar.jsp(31,0) name = test type = boolean reqTime = true required = true fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
+    _jspx_th_c_005fif_005f9.setTest(((java.lang.Boolean) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${barmap['excel']!=null}", java.lang.Boolean.class, (PageContext)_jspx_page_context, null, false)).booleanValue());
+    int _jspx_eval_c_005fif_005f9 = _jspx_th_c_005fif_005f9.doStartTag();
+    if (_jspx_eval_c_005fif_005f9 != javax.servlet.jsp.tagext.Tag.SKIP_BODY) {
+      do {
+        out.write("\r\n");
+        out.write("<a class=\"easyui-linkbutton\" data-options=\"plain:true\" iconCls=\"icon-excel\" onclick=\"excel()\" >导出</a>\t\r\n");
+        int evalDoAfterBody = _jspx_th_c_005fif_005f9.doAfterBody();
+        if (evalDoAfterBody != javax.servlet.jsp.tagext.BodyTag.EVAL_BODY_AGAIN)
+          break;
+      } while (true);
+    }
+    if (_jspx_th_c_005fif_005f9.doEndTag() == javax.servlet.jsp.tagext.Tag.SKIP_PAGE) {
+      _005fjspx_005ftagPool_005fc_005fif_0026_005ftest.reuse(_jspx_th_c_005fif_005f9);
+      return true;
+    }
+    _005fjspx_005ftagPool_005fc_005fif_0026_005ftest.reuse(_jspx_th_c_005fif_005f9);
     return false;
   }
 }

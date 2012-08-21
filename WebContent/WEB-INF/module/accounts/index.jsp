@@ -134,16 +134,7 @@ ${ptb.parenttabLabel }&gt;<a href="crm/module/${fn:toLowerCase(entityname.module
 			</div>
 			
 			<div id="tabbar" class="gtb" style="display: block;" >  
-			查看范围：<select class="easyui-combotree " style="width:160px;"  data-options="url:'crm/module/accounts/getCondition'"></select>
-						<a class="easyui-linkbutton" data-options="plain:true" iconCls="icon-add" onclick="insert()" >添加</a>
-						<a class="easyui-linkbutton" data-options="plain:true" iconCls="icon-edit" onclick="edit()" >修改</a>
-						<a class="easyui-linkbutton" data-options="plain:true" iconCls="icon-edit" onclick="batchUpdate()" >批量修改</a>
-						<a class="easyui-linkbutton" data-options="plain:true" iconCls="icon-view" onclick="view()" >预览</a>
-						<a class="easyui-linkbutton" data-options="plain:true" iconCls="icon-edit" onclick="smowerUpdate()" >修改负责人</a>
-						<a class="easyui-linkbutton" data-options="plain:true" iconCls="icon-share" onclick="shareUpdate()" >共享</a>
-						<a class="easyui-linkbutton" data-options="plain:true" iconCls="icon-remove" onclick="deleteRecord()" >删除</a>
-						<a class="easyui-linkbutton" data-options="plain:true" iconCls="icon-import" onclick="import()" >导入</a>	
-						<a class="easyui-linkbutton" data-options="plain:true" iconCls="icon-excel" onclick="excel()" >导出</a>	
+				<%@ include file="../include_index_toolbar.jsp" %>			
 			</div>
 			<table id="view_list"
 				data-options="fitColumns:true" toolbar="#tabbar"  ></table>

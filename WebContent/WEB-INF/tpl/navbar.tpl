@@ -65,7 +65,7 @@
 	 	<li class="fr">
 	 		<div class="searchuser">
 	 			<form action="crm/search/query" method="post" >
-	 			<input type="text" class="searchtext" name="searchuser"/><input class="button" type="submit" value="查找"/>
+	 			<input type="text" class="searchtext" name="searchuser" style="height:14px;"/><input class="button" type="submit" value="查找"/>
 	 			</form>
 	 		</div>
 	 	</li>

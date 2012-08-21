@@ -63,14 +63,7 @@ var searchtype = 'basicsearch';
 						<%@ include file="../include_view_search.jsp"  %>
 				</div>
 				<div id="tabbar" class="gtb" style="display: block;" >  
-			查看范围：<select class="easyui-combotree" style="width:160px;" data-options="url:'crm/module/calendar/getCondition'"></select>
-						<a class="easyui-linkbutton" data-options="plain:true" iconCls="icon-add" onclick="insert()" >添加</a>
-						<a class="easyui-linkbutton" data-options="plain:true" iconCls="icon-edit" onclick="edit()" >修改</a>
-						<a class="easyui-linkbutton" data-options="plain:true" iconCls="icon-edit" onclick="batchUpdate()" >批量修改</a>
-						<a class="easyui-linkbutton" data-options="plain:true" iconCls="icon-view" onclick="view()" >预览</a>
-						<a class="easyui-linkbutton" data-options="plain:true" iconCls="icon-edit" onclick="smowerUpdate()" >修改负责人</a>
-						<a class="easyui-linkbutton" data-options="plain:true" iconCls="icon-share" onclick="shareUpdate()" >共享</a>
-						<a class="easyui-linkbutton" data-options="plain:true" iconCls="icon-remove" onclick="deleteRecord()" >删除</a>
+					<%@ include file="../include_index_toolbar.jsp" %>
 				</div>
 				<table id="view_list"
 					data-options="fitColumns:true" toolbar="#tabbar"   ></table>
