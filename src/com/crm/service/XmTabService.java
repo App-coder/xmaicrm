@@ -41,10 +41,18 @@ public interface XmTabService {
 	List<XmTab> getDefOrgFieldModule();
 
 	/**
-	 * 得到关联字段的模块
+	 * 得到相关信息的模块
 	 * @return
 	 */
 	List<XmTab> getRelatedModule();
+	
+	/**
+	 * 得到产品关联字段的模块
+	 * @return
+	 */
+	List<XmTab> getProductFieldModule();
+	
+	List<XmTab> getRelmodField();
 
 
 }

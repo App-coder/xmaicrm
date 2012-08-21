@@ -46,4 +46,8 @@ public interface XmTabMapper {
 
 	List<XmTab> getRelatedModule();
 	
+	List<XmTab> getProductFieldModule();
+	
+	List<XmTab> getRelmodField();
+	
 }

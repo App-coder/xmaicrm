@@ -95,5 +95,15 @@ public class XmFieldServiceImpl implements XmFieldService{
 		}
 		return affect;
 	}
+	
+	@Override
+	public List<Object> getProductField(String module) {
+		return this.xmFieldMapper.getProductField(module);
+	}
+	
+	@Override
+	public List<Object> getRelmodField(String module, int tabid) {
+		return this.xmFieldMapper.getRelmodField(module, tabid);
+	}
 
 }

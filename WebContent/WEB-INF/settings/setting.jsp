@@ -349,13 +349,13 @@
 											<tbody>
 												<tr>
 													<td valign="top"><a
-														href="javascript:tab('关联产品字段','settings/multiapprove/index')"><img
+														href="crm/settings/productfield/index"><img
 															width="48" height="48" border="0"
 															src="resources/images/settings/panel/productfield.gif"></a></td>
 												</tr>
 												<tr>
 													<td valign="top" class="big"><a
-														href="javascript:tab('关联产品字段','settings/multiapprove/index')">关联产品字段</a></td>
+														href="crm/settings/productfield/index">关联产品字段</a></td>
 												</tr>
 											</tbody>
 										</table>
@@ -403,13 +403,13 @@
 											<tbody>
 												<tr>
 													<td valign="top"><a
-														href="javascript:tab('关联产品字段','settings/multiapprove/index')"><img
+														href="crm/settings/relmodfield/index"><img
 															width="48" height="48" border="0"
 															src="resources/images/settings/panel/productfield.gif"></a></td>
 												</tr>
 												<tr>
 													<td valign="top" class="big"><a
-														href="javascript:tab('关联产品字段','settings/multiapprove/index')">关联信息模块</a></td>
+														href="crm/settings/relmodfield/index">相关信息模块字段</a></td>
 												</tr>
 											</tbody>
 										</table>

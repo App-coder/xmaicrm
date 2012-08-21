@@ -71,6 +71,14 @@ public class XmTabServiceImpl implements XmTabService {
 		return this.xmTabMapper.getRelatedModule();
 	}
 	
+	@Override
+	public List<XmTab> getProductFieldModule() {
+		return this.xmTabMapper.getProductFieldModule();
+	}
 	
+	@Override
+	public List<XmTab> getRelmodField() {
+		return this.xmTabMapper.getRelmodField();
+	}
 
 }

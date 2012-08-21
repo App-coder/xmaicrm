@@ -366,4 +366,86 @@
 	   update xm_def_org_field set visible=#{visible,jdbcType=INTEGER} where tabid=#{tabid,jdbcType=INTEGER} and fieldid in ${fieldids}
 	</update>
 	
+	<select id="getProductField" resultType="map">
+		SELECT
+			xm_field.columnname,
+			xm_field.fieldlabel,
+			xm_productfieldlist.fieldname,
+			xm_productfieldlist.width,
+			xm_productfieldlist.module,
+			xm_field.fieldid,
+			xm_productfieldlist.id
+		FROM
+			xm_field
+		INNER JOIN xm_def_org_field ON xm_def_org_field.fieldid = xm_field.fieldid
+		LEFT JOIN xm_productfieldlist ON xm_productfieldlist.fieldname = xm_field.columnname
+		AND xm_productfieldlist.module = #{module}
+		WHERE
+			xm_def_org_field.visible = 0
+		AND xm_field.tabid = 14
+		AND xm_field.fieldlabel != 'Product Image'
+		AND xm_field.fieldlabel != 'Description'
+		AND xm_field.fieldlabel != 'Modified Time'
+		AND xm_field.fieldlabel != 'Created Time'
+		AND xm_field.fieldlabel != 'Website'
+	</select>
+	
+	<select id="getProductOfFieldname" resultType="String">
+	   SELECT			
+			xm_productfieldlist.fieldname			
+		FROM
+			xm_field
+		INNER JOIN xm_def_org_field ON xm_def_org_field.fieldid = xm_field.fieldid
+		LEFT JOIN xm_productfieldlist ON xm_productfieldlist.fieldname = xm_field.columnname
+		AND xm_productfieldlist.module = #{module}		
+		WHERE
+			xm_def_org_field.visible = 0
+		AND xm_field.fieldid= #{fieldid}
+		AND xm_field.tabid = 14
+		AND xm_field.fieldlabel != 'Product Image'
+		AND xm_field.fieldlabel != 'Description'
+		AND xm_field.fieldlabel != 'Modified Time'
+		AND xm_field.fieldlabel != 'Created Time'
+		AND xm_field.fieldlabel != 'Website'
+	</select>
+	
+	<select id="getRelmodField" resultType="map">
+	   SELECT
+			xm_field.columnname,
+			xm_field.fieldlabel,
+			xm_relmodfieldlist.fieldname,
+			xm_relmodfieldlist.width,
+			xm_relmodfieldlist.module,
+			xm_field.fieldid,
+			xm_field.sequence
+		FROM
+			xm_field
+		INNER JOIN xm_def_org_field ON xm_def_org_field.fieldid = xm_field.fieldid
+		LEFT JOIN xm_relmodfieldlist ON xm_relmodfieldlist.fieldname = xm_field.columnname
+		AND xm_relmodfieldlist.module = #{module}
+		WHERE
+			xm_def_org_field.visible = 0
+		AND xm_field.tabid = #{tabid}
+		AND xm_field.uitype NOT IN(19, 69, 61, 30, 105)
+		UNION
+			SELECT
+				xm_field.columnname,
+				xm_field.fieldlabel,
+				xm_relmodfieldlist.fieldname,
+				xm_relmodfieldlist.width,
+				xm_relmodfieldlist.module,
+				xm_field.fieldid,
+				xm_field.sequence
+			FROM
+				xm_field
+			LEFT JOIN xm_relmodfieldlist ON xm_relmodfieldlist.fieldname = xm_field.columnname
+			AND xm_relmodfieldlist.module = #{module}
+			WHERE
+				xm_field.columnname = 'total'
+			AND xm_field.displaytype = 3
+			AND xm_field.tabid = #{tabid}
+			ORDER BY
+				sequence
+	</select>
+	
 </mapper>

@@ -54,4 +54,8 @@ public interface XmFieldService {
 	public List<Object> getDefOrgFields(int tabid);
 	
 	int submit(int tabid,String ck_fieldid,String unck_fieldid);
+	
+	List<Object> getProductField(String module);
+	
+	List<Object> getRelmodField(String module,int tabid);
 }

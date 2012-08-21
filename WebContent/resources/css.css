@@ -249,3 +249,19 @@ fieldset legend{color:#15428B;}
 .searchuser{margin-top:4px;}
 .searchuser.searchtext{width:100px;border:1px solid #D2D2D2;height:14px;line-height:14px;font-size:12px;float:right;}
 .searchuser .button{border:1px solid #AAAAAA;height:20px;line-height:20px;float:right;margin-right:10px;background: url("images/btn_bg.gif") repeat-x scroll left top transparent;}
+
+
+
+
+.layerHeadingULine {
+    border-bottom: 2px solid #717351;
+}
+
+.lvtCol {
+    background: url("./images/settings/mailSubHeaderBg-grey.gif") repeat-x scroll center bottom #F6F6F6;
+    border-color: #FFFFFF #FFFFFF #FFFFFF #DDDDDD;
+    border-style: solid;
+    border-width: 1px 0 0 1px;
+    font-weight: bold;
+}
+

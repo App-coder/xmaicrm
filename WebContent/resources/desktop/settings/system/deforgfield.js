@@ -2,6 +2,13 @@ $(function(){
     initpage();
 });
 function initpage(){
+	$("body").ajaxStart(function() {
+		mask();
+	});
+
+    $("body").ajaxStop(function() {
+	    unmask();
+    });
     reloadview();
 }
 
@@ -52,7 +59,6 @@ function submitDeforgFid(){
 	$.post("crm/settings/deforgfield/submit",{tabid:tabid,ck_fieldid:ck_fieldid.join(","),unck_fieldid:unck_fieldid.join(",")},function(result){
 	    if(result.type == true){
 	    	reloadview();
-	    	$.messager.alert('编辑','保存成功！');
 	    }
 	},"json");
 	
