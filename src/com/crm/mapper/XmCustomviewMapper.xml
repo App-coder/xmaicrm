@@ -164,4 +164,7 @@
 	ORDER BY
 		xm_customview.entitytype;
   </select>
+  <select id="getFirstCView" resultMap="BaseResultMap" >
+  	select <include refid="Base_Column_List" /> from xm_customview where entitytype=#{entitytype} limit 0,1
+  </select>
 </mapper>

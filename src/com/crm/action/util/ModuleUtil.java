@@ -57,7 +57,7 @@ public class ModuleUtil extends BaseController{
 	 */
 	public void setViewProp(ModelMap modelMap,String tabname,XmTab current){
 		//得到默认的view
-		XmCustomview customview = this.xmCustomViewService.selectByPrimaryKey(tabname,-1);
+		XmCustomview customview = this.xmCustomViewService.selectByPrimaryKey(tabname,-2);
 		try {
 			List<CVColumn> cols = this.xmCvcolumnlistService.getColumns(customview);
 			List<Column> reset = new ArrayList<Column>();

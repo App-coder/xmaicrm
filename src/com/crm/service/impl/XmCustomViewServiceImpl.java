@@ -44,6 +44,13 @@ public class XmCustomViewServiceImpl implements XmCustomViewService {
 	public XmCustomview selectByPrimaryKey(String entitytype, int viewid) {
 		if(viewid==-1){
 			return this.xmCustomviewMapper.getDefaultCView(entitytype);
+		}else if(viewid == -2){ 
+			XmCustomview cv = this.xmCustomviewMapper.getDefaultCView(entitytype);
+			//先取值默认的，如果不存在，取第一个
+			if(cv==null){
+				cv = this.xmCustomviewMapper.getFirstCView(entitytype);
+			}
+			return cv;
 		}
 		return this.xmCustomviewMapper.selectByPrimaryKey(viewid);
 	}
