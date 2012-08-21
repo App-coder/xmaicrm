@@ -247,8 +247,8 @@ function submitCustomField(){
 	else
 		defieldtype="text";
 		
-	var cfField="add "+fieldname+" "+defieldtype+"";
-	params="{tabid:"+tabid+",cfField:\""+cfField+"\"}";
+	var cfField="+defieldtype+";
+	params="{tabid:"+tabid+",cfField:\""+cfField+"\",uitype:"+uitype+",fieldlabel:\""+fieldname+"\",typeofdata:\""+typeofdata+"\"}";
 	$("input[name=queryParams]").val(params);
     formsubmit("form_customfield");
 }

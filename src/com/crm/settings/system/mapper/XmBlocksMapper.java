@@ -23,5 +23,7 @@ public interface XmBlocksMapper {
 	
 	int getMaxId();
 	
+	int getBlockIdByTabId(int tabid);
+	
 
 }

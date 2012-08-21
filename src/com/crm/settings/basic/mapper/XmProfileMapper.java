@@ -1,5 +1,7 @@
 package com.crm.settings.basic.mapper;
 
+import java.util.List;
+
 import com.crm.model.XmProfile;
 
 public interface XmProfileMapper {
@@ -16,4 +18,6 @@ public interface XmProfileMapper {
     int updateByPrimaryKeyWithBLOBs(XmProfile record);
 
     int updateByPrimaryKey(XmProfile record);
+    
+    List<XmProfile> selectProfileid();
 }

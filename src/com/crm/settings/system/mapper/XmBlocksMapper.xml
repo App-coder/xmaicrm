@@ -150,4 +150,8 @@
      select distinct xm_field.tabid,name,xm_tab.tablabel from xm_field inner join xm_tab on xm_field.tabid=xm_tab.tabid where xm_field.tabid not in(7,9,10,29);
   </select>
   
+  <select id="getBlockIdByTabId" resultType="INTEGER">
+     select blockid from xm_blocks where tabid=#{tabid} and blocklabel ='自定义信息';
+  </select>
+  
 </mapper>

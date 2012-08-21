@@ -13,7 +13,7 @@ public interface XmFieldMapper {
 
     int deleteByPrimaryKey(Integer fieldid);
 
-    int insert(XmField record);
+    int insert(XmField xmField);
 
     int insertSelective(XmField record);
 
@@ -33,7 +33,7 @@ public interface XmFieldMapper {
 
 	List<XmField> getFieldsByTabid(@Param("tabid") Integer tabid,@Param("start") int start,@Param("rows") int rows);
 
-	List<XmEntityname> getTableNameByTabid(@Param("tabid") Integer tabid);
+	String getTableNameByTabid(@Param("tabid") Integer tabid);
 	
 	int addColumn(@Param("tablename") String tablename,@Param("cfField") String cfField);
 }
