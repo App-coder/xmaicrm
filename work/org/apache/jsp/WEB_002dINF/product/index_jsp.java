@@ -1,4 +1,4 @@
-package org.apache.jsp;
+package org.apache.jsp.WEB_002dINF.product;
 
 import javax.servlet.*;
 import javax.servlet.http.*;
@@ -10,6 +10,11 @@ public final class index_jsp extends org.apache.jasper.runtime.HttpJspBase
   private static final JspFactory _jspxFactory = JspFactory.getDefaultFactory();
 
   private static java.util.List _jspx_dependants;
+
+  static {
+    _jspx_dependants = new java.util.ArrayList(1);
+    _jspx_dependants.add("/WEB-INF/product/../common/config.jsp");
+  }
 
   private javax.el.ExpressionFactory _el_expressionfactory;
   private org.apache.AnnotationProcessor _jsp_annotationprocessor;
@@ -52,10 +57,36 @@ public final class index_jsp extends org.apache.jasper.runtime.HttpJspBase
 
       out.write('\r');
       out.write('\n');
-      if (true) {
-        _jspx_page_context.forward("welcome/index");
-        return;
-      }
+      out.write("\r\n");
+      out.write("\r\n");
+
+String win_topbar = "closed=\"true\" modal=\"true\" collapsible=\"false\"  draggable=\"false\" minimizable=\"false\" maximizable=\"false\" inline=\"false\" resizable=\"false\"";
+
+      out.write("    ");
+      out.write("\r\n");
+      out.write("<script type=\"text/javascript\" src=\"resources/desktop/product/index.js\"></script>\r\n");
+      out.write("<div class=\"container\"  >\r\n");
+      out.write("\t<div class=\"easyui-layout\" fit=\"true\">\r\n");
+      out.write("\t\t<div data-options=\"region:'west',split:true,minimizable:false\" title=\"产品分类\" style=\"width:150px;\">\r\n");
+      out.write("\t\t\t<ul id=\"tree_catalog\"  ></ul>  \r\n");
+      out.write("\t\t</div>\r\n");
+      out.write("\t\t<div data-options=\"region:'center',title:'产品列表'\" style=\"overflow:hidden\" >\r\n");
+      out.write("\t\t\t<table class=\"easyui-datagrid\" data-options=\"border:false,fit:true,fitColumns:true\">\r\n");
+      out.write("\t\t\t\t<thead>\r\n");
+      out.write("\t\t\t\t\t<tr>\r\n");
+      out.write("\t\t\t\t\t\t<th data-options=\"field:'itemid'\">产品名称</th>\r\n");
+      out.write("\t\t\t\t\t\t<th data-options=\"field:'productid'\" >产品编码</th>\r\n");
+      out.write("\t\t\t\t\t\t<th data-options=\"field:'listprice'\" >产品类别</th>\r\n");
+      out.write("\t\t\t\t\t\t<th data-options=\"field:'unitcost'\" >型号</th>\r\n");
+      out.write("\t\t\t\t\t\t<th data-options=\"field:'attr1'\">供应商名称</th>\r\n");
+      out.write("\t\t\t\t\t\t<th data-options=\"field:'status'\" >单价</th>\r\n");
+      out.write("\t\t\t\t\t\t<th data-options=\"field:'status'\" >总库存数量</th>\r\n");
+      out.write("\t\t\t\t\t</tr>\r\n");
+      out.write("\t\t\t\t</thead>\r\n");
+      out.write("\t\t\t</table>\r\n");
+      out.write("\t\t</div>\r\n");
+      out.write("\t</div>\r\n");
+      out.write("</div>");
     } catch (Throwable t) {
       if (!(t instanceof SkipPageException)){
         out = _jspx_out;

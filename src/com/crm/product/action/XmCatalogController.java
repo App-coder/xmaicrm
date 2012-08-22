@@ -44,4 +44,10 @@ public class XmCatalogController extends BaseController{
 		return arrayToJson(trees);
 	}
 	
+	
+	@RequestMapping(value = "/index", method = RequestMethod.GET)
+	public String index(){
+		return "product/catalog";
+	}
+	
 }

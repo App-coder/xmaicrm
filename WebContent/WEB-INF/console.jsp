@@ -11,10 +11,11 @@
 			<div>文档中心</div>
 			<div>公告</div>
 		</div>
+		<!-- com.crm.marketing -->
 		<div id="agora_item" style="width: 120px;" class="navmenuitem"  >
 			<div><a href="javascript:tab('营销活动','campaign/index')">营销活动</a></div>
 			<div><a href="javascript:tab('群发短信','qunfa/index')">群发短信</a></div>
-			<div><a href="javascript:tab('群发邮件','campaign/index')">群发邮件</a></div>
+			<div><a href="javascript:tab('群发邮件','maillist/index')">群发邮件</a></div>
 		</div>
 		<div id="customer_item"  style="width: 120px;" class="navmenuitem"  >
 			<div><a href="javascript:tab('客户','account/index')">客户</a></div>
@@ -28,8 +29,8 @@
 		</div>
 		<div id="product_item"  style="width: 120px;" class="navmenuitem"  >
 			<div><a href="javascript:tab('产品列表','product/index')" >产品列表</a></div>
-			<div>产品分类</div>
-			<div>产品序号</div>
+			<div><a href="javascript:tab('产品分类','catalog/index')" >产品分类</a></div>
+			<div><a href="javascript:tab('产品序号','serialnumbers/index')" >产品序号</a></div>
 		</div>
 		<div id="sale_item" style="width: 120px;" class="navmenuitem"  >
 			<div>销售导航</div>
