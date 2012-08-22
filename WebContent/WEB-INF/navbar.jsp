@@ -32,6 +32,9 @@
 	<c:when test="${pathname=='显示区域' }">
 		${syssetting }&gt;<a href="${url }">显示区域</a>
 	</c:when>
+	<c:when test="${pathname=='自定义字段' }">
+		${syssetting }&gt;<a href="${url }">自定义字段</a>
+	</c:when>
 	<c:when test="${pathname=='系统日志' }">
 		${syssetting }&gt;<a href="${url }">系统日志</a>
 	</c:when>

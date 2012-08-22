@@ -12,7 +12,11 @@ public interface XmCustomBlockService {
 	
 	List<XmBlocks> getFieldBlocksByTabId(int tabid,int page,int rows);
 	
-	int updateByPrimaryKey(String json);
+	int updateByPrimaryKey(XmBlocks xmBlocks);
 	
-	int deleteByPrimaryKey(String json);
+	int deleteByPrimaryKey(int blockid);
+	
+	int getMaxId();
+	
+	int insert(XmBlocks xmBlocks);
 }

@@ -34,11 +34,14 @@
       sequence, show_title, visible, 
       create_view, edit_view, detail_view
       )
-    values (#{blockid,jdbcType=INTEGER}, #{tabid,jdbcType=INTEGER}, #{blocklabel,jdbcType=VARCHAR}, 
+    values (#{blockid,jdbcType=INTEGER},#{tabid,jdbcType=INTEGER}, #{blocklabel,jdbcType=VARCHAR}, 
       #{sequence,jdbcType=INTEGER}, #{showTitle,jdbcType=INTEGER}, #{visible,jdbcType=INTEGER}, 
       #{createView,jdbcType=INTEGER}, #{editView,jdbcType=INTEGER}, #{detailView,jdbcType=INTEGER}
       )
   </insert>
+  <select id="getMaxId" resultType="int" >
+  	select max(blockid) blockid from xm_blocks
+  </select>
   <insert id="insertSelective" parameterType="com.crm.model.XmBlocks" >
     insert into xm_blocks
     <trim prefix="(" suffix=")" suffixOverrides="," >
