@@ -25,6 +25,22 @@ public class XmTabServiceImpl implements XmTabService {
 	public List<XmTab> getAll() {
 		return xmTabMapper.getAll();
 	}
+	@Override
+	public List<XmTab> getParentTabAll() {
+		return this.xmTabMapper.getParentTabAll();
+	}
+	@Override
+	public List<XmTab> existParenttabList(int parenttabid) {
+		return this.xmTabMapper.existParenttabList(parenttabid);
+	}
+	@Override
+	public String getExistTabids(int parenttabid) {
+		return this.xmTabMapper.getExistTabids(parenttabid);
+	}
+	@Override
+	public List<XmTab> getHiddenParenttabs(String existtabids) {
+		return this.xmTabMapper.getHiddenParenttabs(existtabids);
+	}
 	
 	
 

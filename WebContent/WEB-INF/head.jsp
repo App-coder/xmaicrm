@@ -10,7 +10,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <head>
 <base href="<%=request.getContextPath() %>/"/>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>${webtitle}</title>
+<title></title>
 <link rel="stylesheet" type="text/css" href="resources/easyui/themes/default/easyui.css">
 <link rel="stylesheet" type="text/css" href="resources/easyui/themes/icon.css">
 <link rel="stylesheet" type="text/css" href="resources/css.css">
@@ -18,6 +18,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <script type="text/javascript" src="resources/easyui/jquery-1.7.2.min.js"></script>
 <script type="text/javascript" src="resources/easyui/jquery.easyui.min.js"></script>
 <script type="text/javascript" src="resources/easyui/locale/easyui-lang-zh_CN.js"></script>
+
+<!-- JSON插件 -->
+<script type="text/javascript" src="resources/lib/JSONUtil.js"></script>
 
 <!-- easyuipack.js 补充拓展 -->
 <script type="text/javascript" src="resources/easyui/easyuipack.js"></script>

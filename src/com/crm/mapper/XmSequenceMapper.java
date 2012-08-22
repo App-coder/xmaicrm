@@ -8,4 +8,6 @@ public interface XmSequenceMapper {
 
 	void updateSeq(@Param("table") String table,@Param("seq")  int seq);
 
+	int getMax(@Param("tablename") String tablename,@Param("key") String key);
+
 }

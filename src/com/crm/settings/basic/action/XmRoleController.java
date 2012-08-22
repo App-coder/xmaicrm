@@ -27,7 +27,7 @@ import com.crm.settings.basic.service.XmRoleService;
  * Time: 上午10:11:55
  */
 @Controller("settings.basic.action.XmRoleController")
-@RequestMapping(value = "settings/role")
+@RequestMapping(value = "crm/settings/role")
 public class XmRoleController extends BaseController {
 	
 	XmRoleService xmRoleService;
@@ -97,5 +97,7 @@ public class XmRoleController extends BaseController {
 		}
 		return trees;
 	}
+	
+	
 	
 }

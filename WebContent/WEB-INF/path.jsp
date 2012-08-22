@@ -5,7 +5,7 @@ $(function(){
     var _spath = '<%=request.getContextPath()%>';
     var _loc = window.location.href;
     var _url = _loc.substring(_loc.indexOf(_spath)+_spath.length+1);
-    $.post('welcome/navbar',{pathname:pathname,url:_url},function(html){
+    $.post('crm/welcome/navbar',{pathname:pathname,url:_url},function(html){
 		$("#navpath").html(html);	
     },'html');
 });

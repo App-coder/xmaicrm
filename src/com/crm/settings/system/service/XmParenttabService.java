@@ -8,4 +8,12 @@ public interface XmParenttabService {
 
 	List<XmParenttab> getAll();
 
+	XmParenttab getParenttab(int id);
+
+	int insertParenttab(XmParenttab parenttab);
+
+	void update(XmParenttab parenttab);
+
+	void deleteById(int parenttabid);
+
 }

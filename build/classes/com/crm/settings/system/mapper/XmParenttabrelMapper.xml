@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.crm.settings.system.mapper.XmParenttabrelMapper" >
+  <resultMap id="BaseResultMap" type="com.crm.model.XmParenttabrel" >
+    <result column="parenttabid" property="parenttabid" jdbcType="INTEGER" />
+    <result column="tabid" property="tabid" jdbcType="INTEGER" />
+    <result column="sequence" property="sequence" jdbcType="INTEGER" />
+  </resultMap>
+  <insert id="insert" parameterType="com.crm.model.XmParenttabrel" >
+    insert into xm_parenttabrel (parenttabid, tabid, sequence
+      )
+    values (#{parenttabid,jdbcType=INTEGER}, #{tabid,jdbcType=INTEGER}, #{sequence,jdbcType=INTEGER}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.crm.model.XmParenttabrel" >
+    insert into xm_parenttabrel
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="parenttabid != null" >
+        parenttabid,
+      </if>
+      <if test="tabid != null" >
+        tabid,
+      </if>
+      <if test="sequence != null" >
+        sequence,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="parenttabid != null" >
+        #{parenttabid,jdbcType=INTEGER},
+      </if>
+      <if test="tabid != null" >
+        #{tabid,jdbcType=INTEGER},
+      </if>
+      <if test="sequence != null" >
+        #{sequence,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <delete id="clearRelByParentid" >
+  	delete from xm_parenttabrel where parenttabid = #{parenttabid}
+  </delete>
+</mapper>

@@ -10,4 +10,12 @@ public interface XmTabService {
 
 	List<XmTab> getAll();
 
+	List<XmTab> getParentTabAll();
+
+	List<XmTab> existParenttabList(int parenttabid);
+
+	String getExistTabids(int parenttabid);
+
+	List<XmTab> getHiddenParenttabs(String existtabids);
+
 }

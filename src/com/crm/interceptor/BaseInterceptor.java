@@ -22,6 +22,11 @@ public class BaseInterceptor implements HandlerInterceptor {
 	// preHandle()方法在业务处理器处理请求之前被调用  
 	public boolean preHandle(HttpServletRequest request, HttpServletResponse response,
 			Object obj) throws Exception {
+		
+		this.cacheDataService.initData();
+		return true;
+		/*
+		 * 系统完成后加上
 		if(request.getSession().getAttribute(Constant.USER)!=null){
 			this.cacheDataService.initData();
 			return true;
@@ -34,6 +39,7 @@ public class BaseInterceptor implements HandlerInterceptor {
 			request.getRequestDispatcher("/index.jsp").forward(request, response);  
 			return true;
 		}
+		*/
 	}
 	
 	// afterCompletion()方法在DispatcherServlet完全处理完请求后被调用  

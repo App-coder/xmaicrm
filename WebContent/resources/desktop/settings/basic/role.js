@@ -5,7 +5,7 @@ function initPage() {
     $('#rolelist')
 	    .treegrid(
 		    {
-			url : 'settings/role/getRolesByParent',
+			url : 'crm/settings/role/getRolesByParent',
 			title : '角色和继承关系',
 			fit : 'true',
 			nowrap : false,
@@ -47,7 +47,13 @@ function initPage() {
 			    text : '编辑权限',
 			    iconCls : 'icon-edit',
 			    handler : function() {
-
+				var selected = $('#rolelist').datagrid("getSelected");
+				if (selected) {
+				    $("#roleedit").window({title:'编辑权限'});
+				    $("#roleedit").window("open");
+				} else {
+				    message("请选择一行记录！");
+				}				
 			    }
 			} ,{
 			    text : '查看用户',
