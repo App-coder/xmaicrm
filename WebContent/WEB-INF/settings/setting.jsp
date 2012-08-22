@@ -203,13 +203,13 @@
 												<tr>
 
 													<td valign="top"><a
-														href="javascript:tab('自定义字段','settings/picklist/index')"><img
+														href="settings/customfield/index"><img
 															border="0" title="自定义字段" alt="自定义字段"
 															src="resources/images/settings/panel/custom.gif"></a></td>
 												</tr>
 												<tr>
 													<td valign="top" class="big"><a
-														href="javascript:tab('自定义字段','settings/picklist/index')">自定义字段</a></td>
+														href="settings/customfield/index">自定义字段</a></td>
 												</tr>
 
 											</tbody>

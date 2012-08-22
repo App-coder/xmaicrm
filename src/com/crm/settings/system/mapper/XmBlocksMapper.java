@@ -19,5 +19,9 @@ public interface XmBlocksMapper {
 	
 	int deleteByPrimaryKey(@Param("blockid") int blockid);
 	
+	int insert(XmBlocks xmBlock);
+	
+	int getMaxId();
+	
 
 }

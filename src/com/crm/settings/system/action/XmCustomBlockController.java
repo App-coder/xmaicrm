@@ -50,12 +50,14 @@ public class XmCustomBlockController extends BaseController {
 	
 	@RequestMapping(value="/submit",method=RequestMethod.POST)
 	@ResponseBody
-	public String execute(ModelMap modelMap,String cmd,String json){
+	public String execute(ModelMap modelMap,XmBlocks xmBlocks,String action,int blockid){
 		int affectrows  = 0;
-		if(cmd.equals("update"))
-			affectrows=this.xmCustomBlockService.updateByPrimaryKey(json);
-		else if(cmd.equals("delete"))
-			affectrows=this.xmCustomBlockService.deleteByPrimaryKey(json);
+		if(action.equals("add"))
+			affectrows=this.xmCustomBlockService.insert(xmBlocks);
+		else if(action.equals("update"))
+			affectrows=this.xmCustomBlockService.updateByPrimaryKey(xmBlocks);
+		else 
+			affectrows=this.xmCustomBlockService.deleteByPrimaryKey(blockid);
 		
 		Message msg = new Message();
 		if(affectrows>=1){

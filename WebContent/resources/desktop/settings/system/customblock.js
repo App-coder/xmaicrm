@@ -1,15 +1,10 @@
 $(function() {
     initPage();
-    $(".importBox").change(function(){
-    	tabid=$(".importBox").val();
-    	$('#blocklist').datagrid('load',{  
-            tabid: tabid  
-        });  
-    });
+    initForm();
 });
 
 var tabid=null;
-var cols = [ {
+var cols = [{
 	field:'blocklabel',
 	title:'显示区域'
 },{
@@ -17,6 +12,38 @@ var cols = [ {
     title:'显示顺序'
 }];
 cols = setDefWidth(cols,80);
+
+//初始化
+function initForm() {
+	$(".importBox").change(function(){
+    	tabid=$(".importBox").val();
+    	$('#blocklist').datagrid('load',{  
+            tabid: tabid  
+        });  
+    });
+
+    $('#form_block').form({
+		url : 'settings/customblock/submit',
+		onSubmit : function() {
+		    if ($('#form_block').form("validate")) {
+			     return true;
+		    } else {
+			     return false;
+		    }
+	    },
+		success : function(res) {
+		    res = $.parseJSON(res);
+		    if(res.type == true){
+		       closeWin('block');
+		       $('#form_block').form("clear");
+		       $(".validatebox-tip").hide();
+		       $('#blocklist').datagrid("reload",{  
+		            tabid: $(".importBox").val() 
+		       });
+		    }
+		}
+    });
+}
 
 function initPage(){
 	$.get("settings/customblock/getBlockList",null,function(result){
@@ -38,7 +65,7 @@ function initGrid(){
 			tabid:tabid,
 		},
 		doSize:true,
-		height:480,
+		height : 362,
 		collapsible : false,
 		singleSelect : true,
 		rownumbers : true,
@@ -47,19 +74,48 @@ function initGrid(){
 		    text : '添加',
 		    iconCls:'icon-add',
 		    handler : function() {
-
+		    	$("input[name=action]").val("add");
+		    	$("input[name=tabid]").val(tabid);
+		    	$("input[name=blockid]").val(0);
+				$("#block").window({
+				    title : "新增显示区域"
+				});
+				
+				$("#block").window("open");
 		    }
 		},{
 		    text : '修改',
 		    iconCls:'icon-edit',
 		    handler : function() {
-
+		    	var selected = $('#blocklist').datagrid("getSelected");
+				if (selected) {
+				    $("input[name=action]").val("update");
+				    $("#form_block").find("input[name=blockid]").val(selected.blockid);
+				    
+				    // 赋值操作
+				    loadForm(selected);
+				} else {
+				    message("请选择一行记录！");
+				}
 		    }
 		},{
 		    text : '删除',
 		    iconCls:'icon-remove',
 		    handler : function() {
-
+		    	var selected = $('#blocklist').datagrid("getSelected");
+				if (selected) {
+				    confirm('确定删除用户?',function(r){
+					if (r){  
+					    $.post("settings/customblock/submit",{blockid:selected.blockid,action:"delete"},function(res){
+							if(res.type == true){
+							    $('#blocklist').datagrid("reload");
+							}
+					    },'json');			        
+					}  
+				    });
+				}else {
+				    message("请选择一行记录！");
+				}
 		    }
 		}],
 		frozenColumns : [[{
@@ -70,45 +126,26 @@ function initGrid(){
 	});
 }
 
+//编辑窗口的初始化
+function loadForm(row) {
+	$('#form_block').form('load',{
+		blocklabel:row.blocklabel,
+		sequence:row.sequence
+	});
+	$("#block").window({
+	    title:'编辑显示区域',
+	    onOpen:function(){
+		    $(".validatebox-tip").hide();
+	    },
+	    onClose:function(){
+	    	$('#form_block').form("clear");
+	    	$(".validatebox-tip").hide();
+	    }
+	});
+	$("#block").window("open");
+}
 
-/*function submit(param){
-	$.post("settings/customblock/submit",param,function(result){
-		$.messager.alert("显示区域",result.message);
-		$('#blocklist').datagrid('reload',{  
-            tabid: $(".importBox").val()  
-        });  
-	},"json");
-}*/
-/*
- * datagrid edit event
- */
-/*function updateActions(i){
-	$('#blocklist').datagrid('updateRow',{
-		index:i,
-		row:{tabid:''}
-	});
+function submitBlock(){
+    formsubmit("form_block");
 }
-function editrow(index){
-	$('#blocklist').datagrid('beginEdit', index);
-}
-function deleterow(index){
-	$.messager.confirm('Confirm','确定删除此条记录吗?',function(r){
-		if (r){
-			$('#blocklist').datagrid('deleteRow', index);
-			$('#blocklist').datagrid('selectRow',index);
-			var row = $('#blocklist').datagrid('getSelected');
-			var deleted=JSON.stringify(row);
-			var param={cmd:"delete",json:deleted};
-			submit(param);
-		}
-	});
-	
-	
-	
-}
-function saverow(index){
-	$('#blocklist').datagrid('endEdit', index);
-}
-function cancelrow(index){
-	$('#blocklist').datagrid('cancelEdit', index);
-}*/
+

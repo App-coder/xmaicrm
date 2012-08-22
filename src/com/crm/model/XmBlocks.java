@@ -12,27 +12,16 @@ public class XmBlocks {
 
     private Integer showTitle;
 
-    private Integer visible;
+    private Integer visible=0;
 
-    private Integer createView;
+    private Integer createView=0;
 
-    private Integer editView;
+    private Integer editView=0;
 
-    private Integer detailView;
+    private Integer detailView=0;
     
     private String tabname;
     
-    private boolean editing;
-    
-    
-
-    public boolean isEditing() {
-		return editing;
-	}
-
-	public void setEditing(boolean editing) {
-		this.editing = editing;
-	}
 
 	public Integer getBlockid() {
         return blockid;

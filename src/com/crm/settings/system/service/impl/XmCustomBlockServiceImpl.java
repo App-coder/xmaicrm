@@ -16,7 +16,7 @@ import com.crm.settings.system.service.XmCustomBlockService;
 import com.crm.util.JsonUtil;
 import com.sun.corba.se.impl.copyobject.JavaStreamObjectCopierImpl;
 
-@Service("XmCustomBlockService")
+@Service("xmCustomBlockService")
 public class XmCustomBlockServiceImpl implements XmCustomBlockService{
 	
 	XmBlocksMapper xmBlocksMapper;
@@ -38,17 +38,28 @@ public class XmCustomBlockServiceImpl implements XmCustomBlockService{
 	}
 	
 	@Override
-	public int updateByPrimaryKey(String json) {
-		XmBlocks xmblock=(XmBlocks)JsonUtil.getObject4JsonString(json, XmBlocks.class);
-		int num=this.xmBlocksMapper.updateByPrimaryKey(xmblock); 
+	public int updateByPrimaryKey(XmBlocks xmBlocks) {
+		int num=this.xmBlocksMapper.updateByPrimaryKey(xmBlocks); 
 		return num;
 	}
 	
 	@Override
-	public int deleteByPrimaryKey(String json) {
-		int blockid=JSONObject.fromObject(json).getInt("blockid");
+	public int deleteByPrimaryKey(int blockid) {
 		int num=this.xmBlocksMapper.deleteByPrimaryKey(blockid);
 		return num;
+	}
+	
+	@Override
+	public int getMaxId() {
+		return this.xmBlocksMapper.getMaxId();
+	}
+	
+	@Override
+	public int insert(XmBlocks xmBlocks) {
+		int maxId=this.xmBlocksMapper.getMaxId();
+		xmBlocks.setBlockid(++maxId);
+		int affectrow=this.xmBlocksMapper.insert(xmBlocks);
+		return affectrow;
 	}
 
 }

@@ -99,19 +99,18 @@ function initPage() {
 	    text : '修改',
 	    iconCls : 'icon-edit',
 	    handler : function() {
-		var selected = $('#user_list').datagrid("getSelected");
-		if (selected) {
-		    $("input[name=todo]").val("update");
-		    $("#form_edit").find("input[name=id]").val(selected.id);
-		    
-		    // 赋值操作
-		    loadForm(selected.id);
-		    $("#form_edit").show();
-		    $("#form_add").hide();
-		} else {
-		    message("请选择一行记录！");
-		}
-
+			var selected = $('#user_list').datagrid("getSelected");
+			if (selected) {
+			    $("input[name=todo]").val("update");
+			    $("#form_edit").find("input[name=id]").val(selected.id);
+			    
+			    // 赋值操作
+			    loadForm(selected.id);
+			    $("#form_edit").show();
+			    $("#form_add").hide();
+			} else {
+			    message("请选择一行记录！");
+			}
 	    }
 	}, {
 	    text : '删除',
