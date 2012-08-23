@@ -119,12 +119,9 @@ String win_topbar = "closed=\"true\" modal=\"true\" collapsible=\"false\"  dragg
       out.write("\t\t$(\"#startdate\").datebox('setValue', '');\r\n");
       out.write("\t\t$(\"#enddate\").datebox('setValue', '');\r\n");
       out.write("\t\t\r\n");
-      out.write("\t    $(\"#startdate\").datebox({disabled:false});\r\n");
-      out.write("\t\t$(\"#enddate\").datebox({disabled:false});\r\n");
+      out.write("\t\t$(\"#form_customview\").find(\"input[name=startdate]\").val(\"\");\r\n");
+      out.write("\t\t$(\"#form_customview\").find(\"input[name=enddate]\").val(\"\");\r\n");
       out.write("\t\t\r\n");
-      out.write("\t}else{\r\n");
-      out.write("\t    $(\"#startdate\").datebox({disabled:true});\r\n");
-      out.write("\t\t$(\"#enddate\").datebox({disabled:true});\r\n");
       out.write("\t}\r\n");
       out.write("\r\n");
       out.write("\tif (type == \"today\") {\r\n");
@@ -592,6 +589,8 @@ String win_topbar = "closed=\"true\" modal=\"true\" collapsible=\"false\"  dragg
       out.write("\t\t\t\t\t<input type=\"hidden\" name=\"ispublic\" />\r\n");
       out.write("\t\t\t\t\t<input type=\"hidden\" name=\"setdefault\" />\r\n");
       out.write("\t\t\t\t\t<input type=\"hidden\" name=\"setmetrics\" />\r\n");
+      out.write("\t\t\t\t\t<input type=\"hidden\" name=\"startdate\" />\r\n");
+      out.write("\t\t\t\t\t<input type=\"hidden\" name=\"enddate\" />\r\n");
       out.write("\t\t\t\t\t\r\n");
       out.write("\t\t\t\t\t\t<fieldset>\r\n");
       out.write("\t\t\t\t\t\t\t<legend>基本信息</legend>\r\n");
@@ -749,13 +748,13 @@ String win_topbar = "closed=\"true\" modal=\"true\" collapsible=\"false\"  dragg
       out.write("\t\t\t\t\t\t\t\t\t\t\t\t\t\t</tr>\r\n");
       out.write("\t\t\t\t\t\t\t\t\t\t\t\t\t\t<tr>\r\n");
       out.write("\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<td class=\"edittd\">开始日期</td>\r\n");
-      out.write("\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<td><input type=\"text\" name=\"startdate\"\r\n");
+      out.write("\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<td><input type=\"text\"\r\n");
       out.write("\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\tid=\"startdate\" editable=\"false\"\r\n");
       out.write("\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\tclass=\"text easyui-datebox\" /></td>\r\n");
       out.write("\t\t\t\t\t\t\t\t\t\t\t\t\t\t</tr>\r\n");
       out.write("\t\t\t\t\t\t\t\t\t\t\t\t\t\t<tr>\r\n");
       out.write("\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<td class=\"edittd\">结束日期</td>\r\n");
-      out.write("\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<td><input type=\"text\" name=\"enddate\" id=\"enddate\"\r\n");
+      out.write("\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<td><input type=\"text\" id=\"enddate\"\r\n");
       out.write("\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\teditable=\"false\" class=\"text easyui-datebox\" /></td>\r\n");
       out.write("\t\t\t\t\t\t\t\t\t\t\t\t\t\t</tr>\r\n");
       out.write("\t\t\t\t\t\t\t\t\t\t\t\t\t</table>\r\n");
@@ -771,7 +770,7 @@ String win_topbar = "closed=\"true\" modal=\"true\" collapsible=\"false\"  dragg
       out.write("\t\t\t\t\t\t\t\t\t\t\t\t\t<legend>根据字段设置过滤条件</legend>\r\n");
       out.write("\t\t\t\t\t\t\t\t\t\t\t\t\t<table class=\"tab_form\">\r\n");
       out.write("\t\t\t\t\t\t\t\t\t\t\t\t\t\t<tr>\r\n");
-      out.write("\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<td><select class=\"text\" name=\"advfiltercol_1\" onchange=\"setComp(this.value,'comparator_1')\" >");
+      out.write("\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<td><select class=\"text\"  name=\"advfiltercol_1\" onchange=\"setComp(this.value,'comparator_1')\" >");
       out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${optionstr }", java.lang.String.class, (PageContext)_jspx_page_context, null, false));
       out.write("</select></td>\r\n");
       out.write("\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<td><select class=\"text\" name=\"comparator_1\">");

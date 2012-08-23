@@ -17,12 +17,9 @@ var entitytype = '${entitytype}';
 		$("#startdate").datebox('setValue', '');
 		$("#enddate").datebox('setValue', '');
 		
-	    $("#startdate").datebox({disabled:false});
-		$("#enddate").datebox({disabled:false});
+		$("#form_customview").find("input[name=startdate]").val("");
+		$("#form_customview").find("input[name=enddate]").val("");
 		
-	}else{
-	    $("#startdate").datebox({disabled:true});
-		$("#enddate").datebox({disabled:true});
 	}
 
 	if (type == "today") {
@@ -183,6 +180,8 @@ var entitytype = '${entitytype}';
 					<input type="hidden" name="ispublic" />
 					<input type="hidden" name="setdefault" />
 					<input type="hidden" name="setmetrics" />
+					<input type="hidden" name="startdate" />
+					<input type="hidden" name="enddate" />
 					
 						<fieldset>
 							<legend>基本信息</legend>
@@ -318,13 +317,13 @@ var entitytype = '${entitytype}';
 														</tr>
 														<tr>
 															<td class="edittd">开始日期</td>
-															<td><input type="text" name="startdate"
+															<td><input type="text"
 																id="startdate" editable="false"
 																class="text easyui-datebox" /></td>
 														</tr>
 														<tr>
 															<td class="edittd">结束日期</td>
-															<td><input type="text" name="enddate" id="enddate"
+															<td><input type="text" id="enddate"
 																editable="false" class="text easyui-datebox" /></td>
 														</tr>
 													</table>
@@ -340,7 +339,7 @@ var entitytype = '${entitytype}';
 													<legend>根据字段设置过滤条件</legend>
 													<table class="tab_form">
 														<tr>
-															<td><select class="text" name="advfiltercol_1" onchange="setComp(this.value,'comparator_1')" >${optionstr }</select></td>
+															<td><select class="text"  name="advfiltercol_1" onchange="setComp(this.value,'comparator_1')" >${optionstr }</select></td>
 															<td><select class="text" name="comparator_1">${filter }</select></td>
 															<td><input type="text" class="text" name="fv_1" /></td>
 														</tr>

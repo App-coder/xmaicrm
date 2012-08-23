@@ -244,20 +244,42 @@ function initview(vid){
 	$("#form_customview").find("select[name=column_stdfilter]").find("option[value=\""+data.columnname+"\"]").attr("selected","selected");
 	$("#form_customview").find("select[name=stddatefilter]").find("option[value=\""+data.stdfilter+"\"]").attr("selected","selected");
 	$('#startdate').datebox('setValue', data.startdate);
+	$("#form_customview").find("input[name=startdate]").val(data.startdate);
 	$('#enddate').datebox('setValue', data.enddate);
-	if("custom"!=data.stdfilter){
-	    $("#startdate").datebox({disabled:true});
-	    $("#enddate").datebox({disabled:true});
-	}
+	$("#form_customview").find("input[name=enddate]").val(data.enddate);
+
+	$("#startdate").datebox({
+	    onSelect:function(date){
+		$("#form_customview").find("input[name=startdate]").val(date.pattern("yyyy-MM-dd"));
+	    }
+	});
+	$("#enddate").datebox({
+	    onSelect:function(date){
+		$("#form_customview").find("input[name=startdate]").val(date.pattern("yyyy-MM-dd"));
+	    }
+	});
+
     },'json');
     
     //高级查询信息
     $.post('customview/getAdvfilter',{viewid:vid},function(data){
+	//column_1 name
+	for(var i=0;i<data.length;i++){
+	    if(data[i].columnname!=""&&typeof(data[i].columnname)!="undefined"){
+		$("#form_customview").find("select[name=advfiltercol_"+(i+1)+"]").find("option[value=\""+data[i].columnname+"\"]").attr("selected","selected");
+		setComp(data[i].columnname,"comparator_"+(i+1));
+		$("#form_customview").find("select[name=comparator_"+(i+1)+"]").find("option[value=\""+data[i].comparator+"\"]").attr("selected","selected");
+		$("#form_customview").find("input[name=fv_"+(i+1)+"]").val(data[i].value);
+	    }
+	}
 	$("#form_customview").form('load',data);
     },'json');
     
 }
 function setComp(val,cmpid){
+    if(fcol==null){
+	return;
+    }
     var fcol = $.parseJSON(val);
     var tp = fcol.fieldtypeofdata.substring(0,1);
 
