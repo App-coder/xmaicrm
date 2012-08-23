@@ -947,6 +947,18 @@
 	WHERE
 		xm_account.deleted = 0
 	AND xm_campaignaccountrel.campaignid = #{campaignid};
+		limit #{start},#{rows}
+  </select>
+  <select id="getTotalAccount" resultType="Integer" >
+  	  	SELECT
+			count(1) 
+		FROM
+			xm_account
+		INNER JOIN xm_campaignaccountrel ON xm_campaignaccountrel.accountid = xm_account.accountid
+		LEFT JOIN xm_users ON xm_account.smownerid = xm_users.id
+		WHERE
+			xm_account.deleted = 0
+		AND xm_campaignaccountrel.campaignid = #{campaignid}; 
   </select>
   <select id="getExistAccounts" resultType="String">
   	SELECT

@@ -253,35 +253,38 @@ public class FileController implements
 		
 		if (!imgFile.isEmpty()) {
 			
-			sb.append("attach/");
-			String rootPath = this.servletContext.getRealPath("attach/"+module);
+			sb.append("attach/"+module.toLowerCase());
+			String rootPath = this.servletContext.getRealPath("attach/"+module.toLowerCase());
 			 
 			File saveDirFile = new File(rootPath);
 			if (!saveDirFile.exists()) {
 				saveDirFile.mkdirs();
 			}
 			
+			sb.append("/"+userpermission.getUser().getUserName().toLowerCase());
+			rootPath +="/"+userpermission.getUser().getUserName().toLowerCase();
+			if(!new File(rootPath).exists()){
+				new File(rootPath).mkdir();
+			}
 			
-			String userpath = rootPath +"/"+userpermission.getUser().getUserName();  
-			sb.append(userpermission.getUser().getUserName()+"/");
-			if(!new File(userpath).exists()){
-				new File(userpath).mkdir();
+			sb.append("/file");
+			rootPath +="/file";
+			if(!new File(rootPath).exists()){
+				new File(rootPath).mkdir();
 			}
 			
 			String dtstr = DateUtil.formatTime(new Date(), DateUtil.C_DATE_PATTON_DEFAULT);
-			sb.append(dtstr+"/");
-			String datestr =rootPath+"/"+dtstr;
-			if(!new File(datestr).exists()){
-				new File(datestr).mkdir();
+			sb.append("/"+dtstr);
+			rootPath +="/"+dtstr;
+			if(!new File(rootPath).exists()){
+				new File(rootPath).mkdir();
 			}
-			
 			
 			String fname = StringUtil.getTimeMD5();
 			String suffix = FileUtil.getSuffix(imgFile.getFileItem().getName());
-			userpath += "/file/" + fname  + suffix;
-			sb.append("file/");
-			sb.append(fname  + suffix);
-			File file = new File(userpath); // 新建一个文件
+			rootPath += "/" + fname  + suffix;
+			sb.append("/"+fname  + suffix);
+			File file = new File(rootPath); // 新建一个文件
 
 			try {
 				imgFile.getFileItem().write(file); // 将上传的文件写入新建的文件中

@@ -297,7 +297,7 @@ function initEdit(name,module){
 		allowPreviewEmoticons : true,
 		allowImageUpload : true,
 		allowFileManager : true,
-		urlType:'absolute',
+		//urlType:'absolute',
 		items:editoritem_more,
 		uploadJson:'crm/file/upload',
 		fileManagerJson:'crm/file/filemanager',

@@ -89,11 +89,16 @@ ${ptb.parenttabLabel }&gt;<a href="crm/module/${fn:toLowerCase(entity.modulename
 			<legend>${b.blocklabel }</legend>
 			<table class="tabview" >
 				<tbody>
-					<c:forEach items="${fields }" var="f" varStatus="vs" >
-						<c:if test="${f.block == b.blockid }">
-							<c:if test="${vs.first == true }">
-								<tr>
-							</c:if>
+					<tr>
+					<c:forEach items="${b.fields }" var="f" varStatus="vs" >
+					<c:choose>
+						<c:when test="${f.uitype == 19 }">
+							<td colspan="4">
+							${f.fieldHtml }
+							</td>
+							</tr>
+						</c:when>
+						<c:otherwise>
 							<td class="label" valign="top">
 							${f.fieldlabel }
 							</td>
@@ -111,9 +116,10 @@ ${ptb.parenttabLabel }&gt;<a href="crm/module/${fn:toLowerCase(entity.modulename
 								</tr>
 								<tr>
 								</c:when>
-							</c:choose>
-						</c:if>
-					</c:forEach>
+							</c:choose>						
+						</c:otherwise>
+					</c:choose>
+			</c:forEach>
 				</tbody>
 			</table>
 		</fieldset>

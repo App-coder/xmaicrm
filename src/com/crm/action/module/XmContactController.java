@@ -18,7 +18,6 @@ import com.crm.action.util.ModuleUtil;
 import com.crm.bean.easyui.ComboTree;
 import com.crm.model.XmGroups;
 import com.crm.model.XmUsers;
-import com.crm.service.module.XmContactService;
 import com.crm.service.settings.basic.XmGroupsService;
 import com.crm.service.settings.basic.XmUsersService;
 import com.crm.util.ActionUtil;

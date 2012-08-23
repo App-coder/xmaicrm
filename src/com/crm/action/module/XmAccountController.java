@@ -128,12 +128,13 @@ public class XmAccountController extends BaseController{
 	 */
 	@RequestMapping(value = "/getCampaignAccount")
 	@ResponseBody
-	public String getCampaignAccount(int campaignid){
+	public String getCampaignAccount(int campaignid,int page,int rows){
 		
 		ListBean bean = new ListBean();
 		
-		List<XmAccount> accounts = this.xmAccountService.getAccount(campaignid);
-		bean.setTotal(accounts.size());
+		int total = this.xmAccountService.getTotalAccount(campaignid);
+		List<XmAccount> accounts = this.xmAccountService.getAccount(campaignid,page,rows);
+		bean.setTotal(total);
 		bean.setRows(accounts);
 		
 		return JSON.toJSONString(bean);

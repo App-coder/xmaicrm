@@ -19,5 +19,7 @@ public interface XmAttachmentsMapper {
 
     int updateByPrimaryKey(XmAttachments record);
 
-	List<XmAttachments> getRelAttachments(@Param("module") String module,@Param("crmid") Integer crmid);
+	List<XmAttachments> getRelAttachments(@Param("module") String module,@Param("crmid") Integer crmid,@Param("start") int start,@Param("rows") int rows);
+
+	int getTotalRelAttachments(@Param("module") String module,@Param("crmid") Integer crmid);
 }

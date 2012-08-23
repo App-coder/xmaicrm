@@ -149,6 +149,19 @@
 	WHERE
 		xm_attachments.deleted = 0
 	and xm_attachments.setype = #{module}		
-	AND xm_seattachmentsrel.crmid = #{crmid} 
+	AND xm_seattachmentsrel.crmid = #{crmid}  
+		limit #{start},#{rows}
+  </select>
+  <select id="getTotalRelAttachments" resultType="Integer" >
+  	  	SELECT
+			count(1) 
+		FROM
+			xm_attachments
+		INNER JOIN xm_users ON xm_attachments.smcreatorid = xm_users.id
+		INNER JOIN xm_seattachmentsrel ON xm_seattachmentsrel.attachmentsid = xm_attachments.attachmentsid
+		WHERE
+			xm_attachments.deleted = 0
+		and xm_attachments.setype = #{module}		
+		AND xm_seattachmentsrel.crmid = #{crmid}  
   </select>
 </mapper>

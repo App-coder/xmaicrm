@@ -50,13 +50,14 @@ public class XmAttachmentsController {
 
 	@RequestMapping(value = "/getRelAttachments", method = RequestMethod.POST)
 	@ResponseBody
-	public String getRelAttachments(String module,Integer crmid){
+	public String getRelAttachments(int page,int rows,String module,Integer crmid){
 		
 		ListBean bean = new ListBean();
-		List<XmAttachments> attachments = this.xmAttachmentsService.getRelAttachments(module,crmid);
+		int total = this.xmAttachmentsService.getTotalRelAttachments(module,crmid);
+		List<XmAttachments> attachments = this.xmAttachmentsService.getRelAttachments(module,crmid,page,rows);
 		
 		bean.setRows(attachments);
-		bean.setTotal(attachments.size());
+		bean.setTotal(total);
 		
 		return JSON.toJSONStringWithDateFormat(bean, DateUtil.C_DATE_PATTON_DEFAULT);
 	}

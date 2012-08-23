@@ -28,8 +28,9 @@ public class XmAttachmentsServiceImpl implements XmAttachmentsService {
 
 
 	@Override
-	public List<XmAttachments> getRelAttachments(String module, Integer crmid) {
-		return this.xmAttachmentsMapper.getRelAttachments(module,crmid);
+	public List<XmAttachments> getRelAttachments(String module, Integer crmid, int page, int rows) {
+		int start = (page-1)*rows;
+		return this.xmAttachmentsMapper.getRelAttachments(module,crmid,start,rows);
 	}
 
 
@@ -48,6 +49,12 @@ public class XmAttachmentsServiceImpl implements XmAttachmentsService {
 		attach.setAttachmentsid(attachmentid);
 		attach.setDeleted(1);
 		this.xmAttachmentsMapper.updateByPrimaryKeySelective(attach);
+	}
+
+
+	@Override
+	public int getTotalRelAttachments(String module, Integer crmid) {
+		return this.xmAttachmentsMapper.getTotalRelAttachments(module,crmid);
 	}
 	
 }

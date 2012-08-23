@@ -108,6 +108,8 @@ function rel_attachments() {
 			singleSelect : true,
 			rownumbers : true,
 			fitColumns : true,
+			pageSize:20,
+			pagination:true,
 			queryParams : {
 			    module : module,
 			    crmid : crmid
@@ -201,6 +203,8 @@ function rel_accounts() {
 		singleSelect : true,
 		rownumbers : true,
 		fitColumns : true,
+		pageSize:20,
+		pagination:true,
 		queryParams : {
 		    campaignid : crmid
 		},
@@ -315,36 +319,40 @@ function rel_contacts() {
     cols = setDefWidth(cols, 80);
     $('#tab_get_contacts').datagrid({
 	title : '联系人',
-	url : '',
+	url : 'crm/contactdetails/getContacts',
 	collapsible : false,
-	idField : 'accountid',
+	idField : 'crmid',
 	singleSelect : true,
 	rownumbers : true,
 	fitColumns : true,
+	pageSize:20,
+	pagination:true,
 	queryParams : {
-	    module : module,
-	    crmid : crmid
+	    campaignid : crmid
 	},
 	toolbar : [ {
 	    text : '选择',
 	    iconCls : 'icon-ok',
 	    handler : function() {
-
+		
 	    }
 	}, {
 	    text : '新增',
 	    iconCls : 'icon-add',
 	    handler : function() {
+		
 	    }
 	}, {
 	    text : '编辑',
 	    iconCls : 'icon-edit',
 	    handler : function() {
+		
 	    }
 	}, {
 	    text : '删除',
 	    iconCls : 'icon-remove',
 	    handler : function() {
+		
 	    }
 	} ],
 	frozenColumns : [ [ {
@@ -368,6 +376,8 @@ function rel_opportunities() {
 	singleSelect : true,
 	rownumbers : true,
 	fitColumns : true,
+	pageSize:20,
+	pagination:true,
 	queryParams : {
 	    module : module,
 	    crmid : crmid
@@ -433,6 +443,8 @@ function rel_activities() {
 	singleSelect : true,
 	rownumbers : true,
 	fitColumns : true,
+	pageSize:20,
+	pagination:true,
 	queryParams : {
 	    module : module,
 	    crmid : crmid
