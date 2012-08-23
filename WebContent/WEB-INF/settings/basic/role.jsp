@@ -29,9 +29,23 @@
 								</tr>
 							</table>
 						</fieldset>
-						<fieldset>
+						<fieldset class="mgb_10" >
 							<legend>模块权限 </legend>
-							<table id="moduleAuth"></table>
+							<table class="tabauth " id="tabRoleAuth" >
+								<thead>
+								<tr class="datagrid-header">
+									<td width="16%">模块名称 </td>
+									<td width="16%">新增</td>
+									<td width="16%">编辑</td>
+									<td width="16%">查看</td>
+									<td width="16%">删除</td>
+									<td width="16%">字段/工具</td>
+								</tr>
+								</thead>
+								<tbody>
+										
+								</tbody>
+							</table>
 						</fieldset>
 						</div>
 				</div>

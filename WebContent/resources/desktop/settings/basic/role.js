@@ -49,8 +49,13 @@ function initPage() {
 			    handler : function() {
 				var selected = $('#rolelist').datagrid("getSelected");
 				if (selected) {
-				    $("#roleedit").window({title:'编辑权限'});
-				    $("#roleedit").window("open");
+				    if(selected.roleid!='H1'){
+					$("#roleedit").window({title:'编辑权限'});
+					$("#roleedit").window("open");
+					loadEditForm(selected.roleid);
+				    }else {
+					message("请选择总公司下的的角色！");
+				    }
 				} else {
 				    message("请选择一行记录！");
 				}				
@@ -76,5 +81,24 @@ function initPage() {
         			}
 			}
 		    });
-
+}
+function loadEditForm(roleid){
+    
+    $.post('crm/settings/role/getRoleAuthority',{roleid:roleid},function(res){
+	var modPers = res.modulePermission.rows;
+	var trs = "";
+	for(var i=0;i<modPers.length;i++){
+	    trs += "<tr class=\"datagrid-row\"><td>"+modPers[i].tablabel+"</td><td>"+getCked(modPers[i].tabid,'create',modPers[i].create)+"</td><td>"+getCked(modPers[i].tabid,'edit',modPers[i].edit)+"</td><td>"+getCked(modPers[i].tabid,'view',modPers[i].view)+"</td><td>"+getCked(modPers[i].tabid,'del',modPers[i].del)+"</td><td><a>编辑</a></td></tr>";
+//	    trs += getViewField(modPers[i].tabid,res.);
+	}
+	$("#tabRoleAuth").find("tbody").append($(trs));
+    },'json');
+    
+}
+function getCked(tabid,type,value){
+    if(value == 1){
+	return "<input type=\"checkbox\" checked=\"checked\" value=\"1\" name=\""+tabid+"_"+type+"\" />";
+    }else{
+	return "<input type=\"checkbox\"  value=\"1\" name=\""+tabid+"_"+type+"\" />";
+    }
 }

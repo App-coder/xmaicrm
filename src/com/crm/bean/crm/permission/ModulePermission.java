@@ -11,7 +11,7 @@ public class ModulePermission {
 	int create;
 	int edit;
 	int view;
-	int delete;
+	int del;
 	
 	public int getProfileid() {
 		return profileid;
@@ -61,10 +61,11 @@ public class ModulePermission {
 	public void setView(int view) {
 		this.view = view;
 	}
-	public int getDelete() {
-		return delete;
+	public int getDel() {
+		return del;
 	}
-	public void setDelete(int delete) {
-		this.delete = delete;
+	public void setDel(int del) {
+		this.del = del;
 	}
+	
 }
