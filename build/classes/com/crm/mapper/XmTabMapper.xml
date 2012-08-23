@@ -11,6 +11,8 @@
     <result column="modifiedtime" property="modifiedtime" jdbcType="INTEGER" />
     <result column="customized" property="customized" jdbcType="INTEGER" />
     <result column="reportable" property="reportable" jdbcType="INTEGER" />
+    <result column="permissions" property="permissions" jdbcType="INTEGER" />
+    <result column="profileid" property="profileid" jdbcType="INTEGER" />
   </resultMap>
   <sql id="Base_Column_List" >
     tabid, name, presence, tabsequence, tablabel, modifiedby, modifiedtime, customized, 
@@ -147,5 +149,38 @@
   </select>
   <select id="getAll" resultMap="BaseResultMap" >
   	select * from xm_tab
+  </select>
+  <select id="getParentTabAll" resultMap="BaseResultMap" >
+  	select * from xm_tab where tabid not in(1,7,24,27,29) order by tabsequence;
+  </select>
+  <select id="existParenttabList" resultMap="BaseResultMap" >
+  	SELECT
+		xm_tab.*
+	FROM
+		xm_parenttab
+	LEFT JOIN xm_parenttabrel ON xm_parenttabrel.parenttabid = xm_parenttab.parenttabid
+	LEFT JOIN xm_tab ON xm_tab.tabid = xm_parenttabrel.tabid
+	WHERE
+		xm_parenttab.parenttabid = #{parenttabid}
+	ORDER BY
+		xm_parenttabrel.sequence;
+  </select>
+  <select id="getExistTabids" resultType="String">
+  	SELECT
+		GROUP_CONCAT(cast(  xm_tab.tabid AS char )) as tabids
+	FROM
+		xm_parenttab
+	LEFT JOIN xm_parenttabrel ON xm_parenttabrel.parenttabid = xm_parenttab.parenttabid
+	LEFT JOIN xm_tab ON xm_tab.tabid = xm_parenttabrel.tabid
+	WHERE
+		xm_parenttab.parenttabid = #{parenttabid}
+	ORDER BY
+		xm_parenttabrel.sequence
+  </select>
+  <select id="getHiddenParenttabs" resultMap="BaseResultMap"  >
+  	select xm_tab.* from xm_tab where tabid not in(1,7,24,27,29,${existtabids}) order by tabsequence;
+  </select>
+  <select id="getTabPermission" resultMap="BaseResultMap" >
+  	select xm_tab.*,xm_profile2tab.permissions,xm_profile2tab.profileid from xm_profile2tab inner join xm_tab on xm_tab.tabid=xm_profile2tab.tabid where profileid=#{profileid};
   </select>
 </mapper>

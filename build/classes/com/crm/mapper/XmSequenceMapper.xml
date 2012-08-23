@@ -7,4 +7,7 @@
 	<update id="updateSeq">
 		update xm_${table}_seq set id = ${seq} 
 	</update>
+	<select id="getMax" resultType="Integer">
+		select max(${key}) from ${tablename}
+	</select>
 </mapper>

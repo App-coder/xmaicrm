@@ -8,4 +8,13 @@ public interface XmGroupsService {
 
 	List<XmGroups> loadAll();
 
+	XmGroups getGroupById(int groupid);
+
+	void add(XmGroups groups);
+
+	void update(XmGroups groups);
+
+	void deleteById(int groupid);
+
+
 }

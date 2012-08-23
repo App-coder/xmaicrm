@@ -31,5 +31,7 @@ public interface XmUsersMapper {
 	Object getUserById(@Param("id") int id);
 
 	int setDeleteStatus(@Param("id") int id,@Param("delete") int delete);
+
+	XmUsers selectUserByPassword(XmUsers user);
 	
 }

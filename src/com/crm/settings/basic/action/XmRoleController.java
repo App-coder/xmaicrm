@@ -14,9 +14,22 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.alibaba.fastjson.JSON;
 import com.crm.action.BaseController;
+import com.crm.bean.crm.Permission;
+import com.crm.bean.crm.permission.ModulePermission;
 import com.crm.bean.easyui.ComboTree;
+import com.crm.bean.easyui.ListBean;
+import com.crm.model.XmProfile;
+import com.crm.model.XmProfile2globalpermissions;
+import com.crm.model.XmProfile2standardpermissions;
 import com.crm.model.XmRole;
+import com.crm.model.XmTab;
+import com.crm.service.XmTabService;
+import com.crm.settings.basic.service.XmProfile2globalpermissionsService;
+import com.crm.settings.basic.service.XmProfile2standardpermissionsService;
+import com.crm.settings.basic.service.XmProfileService;
+import com.crm.settings.basic.service.XmRole2profileService;
 import com.crm.settings.basic.service.XmRoleService;
+import com.crm.util.crm.PermissionUtil;
 
 /**
  * 
@@ -27,13 +40,46 @@ import com.crm.settings.basic.service.XmRoleService;
  * Time: 上午10:11:55
  */
 @Controller("settings.basic.action.XmRoleController")
-@RequestMapping(value = "settings/role")
+@RequestMapping(value = "crm/settings/role")
 public class XmRoleController extends BaseController {
 	
 	XmRoleService xmRoleService;
 	@Resource(name="settings.basic.service.xmRoleService")
 	public void setXmRoleService(XmRoleService xmRoleService) {
 		this.xmRoleService = xmRoleService;
+	}
+	
+	XmRole2profileService xmRole2profileService;
+	@Resource(name="xmRole2profileService")
+	public void setXmRole2profileService(XmRole2profileService xmRole2profileService) {
+		this.xmRole2profileService = xmRole2profileService;
+	}
+	
+	XmProfileService xmProfileService;
+	@Resource(name="xmProfileService")
+	public void setXmProfileService(XmProfileService xmProfileService) {
+		this.xmProfileService = xmProfileService;
+	}
+	
+	XmProfile2globalpermissionsService xmProfile2globalpermissionsService;
+	@Resource(name="xmProfile2globalpermissionsService")
+	public void setXmProfile2globalpermissionsService(
+			XmProfile2globalpermissionsService xmProfile2globalpermissionsService) {
+		this.xmProfile2globalpermissionsService = xmProfile2globalpermissionsService;
+	}
+	
+	//标准接口的操作
+	XmProfile2standardpermissionsService xmProfile2standardpermissionsService;
+	@Resource(name="xmProfile2standardpermissionsService")
+	public void setXmProfile2standardpermissionsService(
+			XmProfile2standardpermissionsService xmProfile2standardpermissionsService) {
+		this.xmProfile2standardpermissionsService = xmProfile2standardpermissionsService;
+	}
+
+	XmTabService xmTabService;
+	@Resource(name="xmTabService")
+	public void setXmTabService(XmTabService xmTabService) {
+		this.xmTabService = xmTabService;
 	}
 
 	@RequestMapping(value = "/index", method = RequestMethod.GET)
@@ -97,5 +143,31 @@ public class XmRoleController extends BaseController {
 		}
 		return trees;
 	}
+	
+	@RequestMapping(value = "/getRoleAuthority", method = RequestMethod.GET)
+	@ResponseBody
+	public String getRoleAuthority(String roleid){
+		Permission permission = new Permission();
+		
+		int profileid = this.xmRole2profileService.getProfileidByRoleId(roleid);
+		XmProfile profile = this.xmProfileService.getProfile(profileid);
+		permission.setProfile(profile);
+		
+		//全局权限 
+		List<XmProfile2globalpermissions>  globalpermissions = this.xmProfile2globalpermissionsService.getPermissionsByProfileid(profileid);
+		permission.setProfile2globalpermissions(globalpermissions);
+		
+		//模块的权限规则
+		List<XmTab> tabPermissions = this.xmTabService.getTabPermission(profileid);
+		List<XmProfile2standardpermissions> standardpermissions = this.xmProfile2standardpermissionsService.getStandardPermissionsByProfileId(profileid);
+		List<ModulePermission> modulePermission = PermissionUtil.GenerateModulePerssion(tabPermissions,standardpermissions);
+		ListBean beanPermission = new ListBean();
+		beanPermission.setRows(modulePermission);
+		beanPermission.setTotal(modulePermission.size());
+		permission.setModulePermission(beanPermission);
+		
+		return JSON.toJSONString(permission);
+	}
+	
 	
 }

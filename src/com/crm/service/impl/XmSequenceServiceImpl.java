@@ -23,4 +23,11 @@ public class XmSequenceServiceImpl implements XmSequenceService {
 		return now_seq+1;
 	}
 
+
+	@Override
+	public int getMaxAddOne(String tablename, String key) {
+		int max = this.xmSequenceMapper.getMax(tablename,key);
+		return max+1;
+	}
+
 }

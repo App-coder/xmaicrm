@@ -157,7 +157,7 @@ KindEditor.plugin('image', function(K) {
 		var uploadbutton = K.uploadbutton({
 			button : K('.ke-upload-button', div)[0],
 			fieldName : 'imgFile',
-			url : K.addParam(uploadJson, 'dir=image'),
+			url : K.addParam(uploadJson, 'dir=image&fileloc='+self.options.fileloc),
 			width: 60,
 			afterUpload : function(data) {
 				dialog.hideLoading();

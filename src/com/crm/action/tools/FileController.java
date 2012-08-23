@@ -43,9 +43,9 @@ public class FileController implements
 	@RequestMapping(value = "/filemanager", method = RequestMethod.GET)
 	@ResponseBody
 	public String filemanager(String path, String name, String dir,
-			String order, String imgLocation) {
-		String rootPath = this.servletContext.getRealPath(imgLocation);
-		String rootUrl = imgLocation;
+			String order, String fileloc) {
+		String rootPath = this.servletContext.getRealPath(fileloc);
+		String rootUrl = fileloc;
 
 		// 图片扩展名
 		String[] fileTypes = new String[] { "gif", "jpg", "jpeg", "png", "bmp" };
@@ -144,16 +144,22 @@ public class FileController implements
 	}
 
 	/**
+	 * 
+	 * KindEditor文件处理，也可用于普通文本的异步处理，返回带contxtpath+文件路径
+	 * 
 	 * @param imgFile
 	 *            图片文件信息
-	 * @param savefolder
+	 * @param fileloc
 	 *            文件保存路径
+	 * @param dir "image", "flash", "media", "file"             
+	 *            
 	 */
 	@RequestMapping(value = "/upload", method = RequestMethod.POST)
+	@ResponseBody
 	public String upload(@RequestParam("imgFile") CommonsMultipartFile imgFile,
-			String imgLocation, String dir) {
-		String rootPath = this.servletContext.getRealPath(imgLocation);
-		String rootUrl = imgLocation;
+			String fileloc, String dir) {
+		String rootPath = this.servletContext.getRealPath(fileloc);
+		String rootUrl = fileloc;
 		HashMap<String, Object> message = new HashMap<String, Object>();
 		if (!imgFile.isEmpty()) {
 			if (dir != null) {
@@ -199,21 +205,22 @@ public class FileController implements
 			}
 
 			String fname = StringUtil.getTimeMD5();
-			String suffix = FileUtil.getSuffix(imgFile.getName());
-			rootPath += "/" + fname + "." + suffix;
-			rootUrl += fname + "." + suffix;
+			String suffix = FileUtil.getSuffix(imgFile.getFileItem().getName());
+			rootPath += "/" + fname  + suffix;
+			rootUrl += fname + suffix;
 			File file = new File(rootPath); // 新建一个文件
 
 			try {
 				imgFile.getFileItem().write(file); // 将上传的文件写入新建的文件中
-				message.put("message",rootUrl);
-				message.put("result", true);
+				message.put("url",this.servletContext.getContextPath()+"/"+rootUrl);
+				message.put("fileurl", rootUrl);
+				message.put("error", 0);
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
 		} else {
 			message.put("message","文件不能为空！");
-			message.put("result", false);
+			message.put("error", 1);
 		}
 		return JSON.toJSONString(message);
 	}

@@ -24,4 +24,14 @@ public interface XmTabMapper {
 
 	List<XmTab> getAll();
 
+	List<XmTab> getParentTabAll();
+
+	List<XmTab> existParenttabList(@Param("parenttabid") int parenttabid);
+
+	String getExistTabids(@Param("parenttabid") int parenttabid);
+
+	List<XmTab> getHiddenParenttabs(@Param("existtabids") String existtabids);
+
+	List<XmTab> getTabPermission(@Param("profileid") int profileid);
+	
 }

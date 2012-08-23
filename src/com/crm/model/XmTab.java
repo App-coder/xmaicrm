@@ -18,6 +18,11 @@ public class XmTab {
     private Integer customized;
 
     private Integer reportable;
+    
+    //用于权限控制的字段
+    private Integer permissions;
+    
+    private Integer profileid;
 
     public Integer getTabid() {
         return tabid;
@@ -90,4 +95,23 @@ public class XmTab {
     public void setReportable(Integer reportable) {
         this.reportable = reportable;
     }
+
+	public Integer getPermissions() {
+		return permissions;
+	}
+
+	public void setPermissions(Integer permissions) {
+		this.permissions = permissions;
+	}
+
+	public Integer getProfileid() {
+		return profileid;
+	}
+
+	public void setProfileid(Integer profileid) {
+		this.profileid = profileid;
+	}
+    
+    
+    
 }

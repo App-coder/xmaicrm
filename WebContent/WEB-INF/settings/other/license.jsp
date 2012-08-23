@@ -15,11 +15,11 @@ var pathname = "授权许可";
 <table class="tab_editlist">
 	<tr>
 		<td class="edittd" >开始时间</td>
-		<td>2010-01-01</td>
+		<td>${starttime }</td>
 	</tr>
 	<tr>
 		<td class="edittd" >结束时间</td>
-		<td>2015-01-01</td>
+		<td>${endtime }</td>
 	</tr>
 </table>
 </div>

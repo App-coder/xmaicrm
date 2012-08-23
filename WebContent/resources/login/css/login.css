@@ -21,3 +21,5 @@ body { margin:0; text-align:center;}
 .login_input{width:150px;height:25px;font-size: 18px;color:#828282;background:none;border:none;}
 .login_btn{background: #fff url('../images/login_btn.png') no-repeat;height:22px;width:58px;border:none;margin-right:-35px; }
 .login_bar{text-align:right;margin-top:20px;}
+
+.red{color:red;}

@@ -7,6 +7,7 @@
 		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.0.xsd">
 
 	<mvc:resources mapping="/resources/**" location="/resources/**" />
+	<mvc:resources mapping="/attach/**" location="/attach/**" />
 	<mvc:resources mapping="/favicon.ico" location="/favicon.ico" />
 
 	<bean class="org.springframework.web.servlet.mvc.annotation.AnnotationMethodHandlerAdapter">
@@ -29,9 +30,9 @@
 	<mvc:annotation-driven />
 
 	<mvc:interceptors>
-		<!-- 全局拦截，可用于防盗链，记住访问来源，记住刚才访问的链接  -->
+		<!-- 用于用户登入的验证 ，全局拦截，可用于防盗链，记住访问来源，记住刚才访问的链接，系统数据的初始化-->
 		<mvc:interceptor>
-			<mvc:mapping path="/**" />
+			<mvc:mapping path="/crm/**" />
 			<bean class="com.crm.interceptor.BaseInterceptor" />
 		</mvc:interceptor>
 	</mvc:interceptors>

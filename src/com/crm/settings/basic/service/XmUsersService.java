@@ -23,6 +23,8 @@ public interface XmUsersService {
 
 	int setDeleteStatus(int id, int delete);
 
+	XmUsers validateUser(XmUsers user);
+
 
 	
 }
