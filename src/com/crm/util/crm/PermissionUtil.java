@@ -30,7 +30,7 @@ public class PermissionUtil {
 					permission.setEdit(standardpermissions.get(j).getPermissions());
 				}
 				if(standardpermissions.get(j).getTabid() == tabPermissions.get(i).getTabid() && standardpermissions.get(j).getOperation()==2 ){
-					permission.setDelete(standardpermissions.get(j).getPermissions());
+					permission.setDel(standardpermissions.get(j).getPermissions());
 				}
 				if(standardpermissions.get(j).getTabid() == tabPermissions.get(i).getTabid() && standardpermissions.get(j).getOperation()==4){
 					permission.setView(standardpermissions.get(j).getPermissions());

@@ -144,7 +144,7 @@ public class XmRoleController extends BaseController {
 		return trees;
 	}
 	
-	@RequestMapping(value = "/getRoleAuthority", method = RequestMethod.GET)
+	@RequestMapping(value = "/getRoleAuthority", method = RequestMethod.POST)
 	@ResponseBody
 	public String getRoleAuthority(String roleid){
 		Permission permission = new Permission();
