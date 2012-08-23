@@ -46,6 +46,7 @@ public class XmAccountController extends BaseController{
 	}
 	
 	
+	
 
 	/**
 	 * 根据视图ID返回对应的JSON

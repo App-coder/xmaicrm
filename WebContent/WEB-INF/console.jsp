@@ -44,7 +44,7 @@
 			<div>销售目标</div>
 		</div>
 		<div id="buy_item" style="width: 120px;" class="navmenuitem"  >
-			<div>采购导航</div>
+			<div><a href="javascript:tab('采购导航','bsteps/index')">采购导航</a></div>
 			<div>进货单</div>
 			<div>供应商</div>
 			<div>供应商联系人</div>
