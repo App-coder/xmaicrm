@@ -31,6 +31,9 @@ public class XmCvcolumnlistServiceImpl implements XmCvcolumnlistService {
 
 	@Override
 	public List<Column> getViewColumn(XmCustomview customview) {
+		if(customview==null){
+			return null;
+		}
 		List<Column> cols = new ArrayList<Column>();
 		List<XmCvcolumnlist> columns = this.getXmCvcolumnlistByCvid(customview.getCvid());
 		if(columns.size()>=1){

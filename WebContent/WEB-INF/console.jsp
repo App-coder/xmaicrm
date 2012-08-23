@@ -12,7 +12,7 @@
 			<div>公告</div>
 		</div>
 		<div id="agora_item" style="width: 120px;" class="navmenuitem"  >
-			<div>营销活动</div>
+			<div><a href="javascript:tab('营销活动','campaign/index')">营销活动</a></div>
 			<div>群发短信</div>
 			<div>群发邮件</div>
 		</div>
