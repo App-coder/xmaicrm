@@ -52,8 +52,8 @@
 		</div>
 		<div id="afterser_item" style="width: 120px;" class="navmenuitem"  >
 			<div>客服控制台</div>
-			<div>客户服务</div>
-			<div>客户投诉</div>
+			<div><a href="javascript:tab('客户服务','accountrecordss/index')" >客户服务</a></div>
+			<div><a href="javascript:tab('客户投诉','complaints/index')" >客户投诉</a></div>
 			<div>知识库</div>
 			<div>知识库分类</div>
 		</div>
