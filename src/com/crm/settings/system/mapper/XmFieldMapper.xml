@@ -302,7 +302,7 @@
   	select fieldid,columnname,fieldlabel,uitype,displaytype from xm_field where tabid=#{tabid} and  generatedtype=2 and uitype not in('1021','1022','1023') order by sequence limit #{start},#{rows}
   </select>
   
-  <select id="getTableNameByTabid" resultMap="EntityResultMap">
+  <select id="getTableNameByTabid" resultType="VARCHAR">
      select tablename from xm_entityname where tabid=#{tabid}
   </select>
   
