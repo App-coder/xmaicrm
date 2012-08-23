@@ -18,4 +18,6 @@ public interface XmCustomFieldService {
 	String getTableNameByTabid(int tabid);
 	
 	int insert(XmField record,String queryParams);
+	
+	int insertProfile2field();
 }

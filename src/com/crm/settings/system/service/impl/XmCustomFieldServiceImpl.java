@@ -13,6 +13,7 @@ import com.crm.action.BaseController;
 import com.crm.mapper.XmSequenceMapper;
 import com.crm.model.XmEntityname;
 import com.crm.model.XmField;
+import com.crm.settings.basic.mapper.XmProfileMapper;
 import com.crm.settings.system.mapper.XmBlocksMapper;
 import com.crm.settings.system.mapper.XmFieldMapper;
 import com.crm.settings.system.service.XmCustomFieldService;
@@ -37,6 +38,12 @@ public class XmCustomFieldServiceImpl extends BaseController implements XmCustom
 	@Resource(name="settings.system.mapper.xmBlocksMapper")
 	public void setXmBlocksMapper(XmBlocksMapper xmBlocksMapper) {
 		this.xmBlocksMapper = xmBlocksMapper;
+	}
+	
+	XmProfileMapper xmProfileMapper;
+	@Resource(name="xmProfileMapper")
+	public void setXmProfileMapper(XmProfileMapper xmProfileMapper) {
+		this.xmProfileMapper = xmProfileMapper;
 	}
 	
 	private int fieldid;
@@ -116,6 +123,13 @@ public class XmCustomFieldServiceImpl extends BaseController implements XmCustom
    	public int addCfField(String tablename, String cfField) {
    		return this.xmFieldMapper.addColumn(tablename, cfField);
    	}
-
+   	
+   	//在权限字段表中插入自定义字段
+    @Override
+    public int insertProfile2field() {
+    	List<XmProfile> xmProfile=this.xmProfileMapper.selectProfileid();
+    	return 0;
+    }
+   	
 
 }

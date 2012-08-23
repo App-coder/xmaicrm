@@ -14,6 +14,10 @@
   <sql id="Blob_Column_List" >
     description
   </sql>
+  <select id="selectProfileid" resultMap="BaseResultMap">
+     select profileid from xm_profile
+  </select>
+  
   <select id="selectByPrimaryKey" resultMap="ResultMapWithBLOBs" parameterType="java.lang.Integer" >
     select 
     <include refid="Base_Column_List" />
