@@ -10,6 +10,7 @@ import org.springframework.web.servlet.ModelAndView;
 import com.crm.bean.crm.UserPermission;
 import com.crm.model.XmUsers;
 import com.crm.service.settings.basic.XmUsersService;
+import com.crm.service.system.CacheDataService;
 import com.crm.service.system.UserService;
 import com.crm.util.Constant;
 
@@ -26,6 +27,12 @@ public class BaseInterceptor implements HandlerInterceptor {
 	@Resource(name = "userService")
 	public void setUserService(UserService userService) {
 		this.userService = userService;
+	}
+	
+	CacheDataService cacheDataService;
+	@Resource(name = "cacheDataService")
+	public void setCacheDataService(CacheDataService cacheDataService) {
+		this.cacheDataService = cacheDataService;
 	}
 
 	// preHandle()方法在业务处理器处理请求之前被调用  

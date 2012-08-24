@@ -3,15 +3,18 @@ package com.crm.action.settings.system;
 import java.util.List;
 
 import javax.annotation.Resource;
+import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.alibaba.fastjson.JSON;
 import com.crm.bean.crm.Message;
+import com.crm.bean.crm.UserPermission;
 import com.crm.bean.easyui.ListBean;
 import com.crm.model.XmParenttab;
 import com.crm.model.XmParenttabrel;
@@ -19,6 +22,8 @@ import com.crm.model.XmTab;
 import com.crm.service.XmTabService;
 import com.crm.service.settings.system.XmParenttabService;
 import com.crm.service.settings.system.XmParenttabrelService;
+import com.crm.service.system.CacheDataService;
+import com.crm.util.Constant;
 import com.crm.util.JsonUtil;
 
 /**
@@ -53,6 +58,12 @@ public class XmParenttabController {
 	@RequestMapping(value = "/index", method = RequestMethod.GET)
 	public String index(ModelMap modelMap){
 		return "settings/system/parenttab";
+	}
+	
+	CacheDataService cacheDataService;
+	@Resource(name = "cacheDataService")
+	public void setCacheDataService(CacheDataService cacheDataService) {
+		this.cacheDataService = cacheDataService;
 	}
 	
 	@RequestMapping(value = "/list", method = RequestMethod.POST)
@@ -135,7 +146,7 @@ public class XmParenttabController {
 	
 	@RequestMapping(value = "/edit", method = RequestMethod.POST)
 	@ResponseBody
-	public String edit(XmParenttab parenttab,String tabrel){
+	public String edit(XmParenttab parenttab,String tabrel,HttpServletRequest request){
 		int keyid;
 		if(parenttab.getParenttabid()==null){
 			//添加
@@ -157,6 +168,9 @@ public class XmParenttabController {
 				this.xmParenttabrelService.insert(rels.get(i));
 			}
 		}
+		
+		this.cacheDataService.initMenuBar();
+		
 		Message msg = new Message();
 		msg.setType(true);
 		msg.setMessage("主菜单设置成功！");

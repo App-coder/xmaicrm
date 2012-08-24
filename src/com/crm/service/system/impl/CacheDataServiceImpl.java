@@ -43,6 +43,7 @@ public class CacheDataServiceImpl implements CacheDataService {
 	@Override
 	public void initData() {
 		initGlobalData();
+		initMenuBar();
 	}
 	
 	public void initGlobalData(){
@@ -75,6 +76,10 @@ public class CacheDataServiceImpl implements CacheDataService {
 			CacheManager.putInCache(Constant.TAB, tabOfName);
 			CacheManager.putInCache(Constant.TABBYLAB, hmlabtabs);
 		}
+		
+	}
+	
+	public void initMenuBar(){
 		if (CacheManager.getFromCache(Constant.MENUBAR) == null) {
 			List<MenuBar> menubar = new ArrayList<MenuBar>();
 			List<XmParenttab> parenttabs = this.xmParenttabService

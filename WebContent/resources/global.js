@@ -301,7 +301,8 @@ function initEdit(name,module){
 		items:editoritem_more,
 		uploadJson:'crm/file/upload',
 		fileManagerJson:'crm/file/filemanager',
-		fileloc:"attach/"+module+"/"
+		fileloc:"attach/"+module+"/",
+		pluginsPath:"resources/plugins/kindeditor/plugins/"
 	});
 	return editor;
 }
