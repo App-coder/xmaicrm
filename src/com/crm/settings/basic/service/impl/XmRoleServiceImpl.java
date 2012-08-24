@@ -34,4 +34,9 @@ public class XmRoleServiceImpl implements XmRoleService {
 		return this.xmRoleMapper.getAll();
 	}
 
+	@Override
+	public XmRole getUserRole(Integer id) {
+		return this.xmRoleMapper.getUserRole(id);
+	}
+
 }

@@ -12,4 +12,6 @@ public interface XmRoleService {
 
 	List<XmRole> getAll();
 
+	XmRole getUserRole(Integer id);
+
 }

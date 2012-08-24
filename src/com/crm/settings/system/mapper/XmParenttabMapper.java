@@ -18,4 +18,6 @@ public interface XmParenttabMapper {
     int updateByPrimaryKey(XmParenttab record);
 
 	List<XmParenttab> getAll();
+
+	List<XmParenttab> getVisibleParenttab();
 }

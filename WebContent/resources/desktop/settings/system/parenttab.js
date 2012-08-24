@@ -173,9 +173,19 @@ function initPage(){
 	    iconCls : 'icon-remove',
 	    handler : function() {
 		var selected = $('#viewmodule').datagrid("getSelected");
+		var viewall = $('#viewmodule').datagrid("getRows");
 		if (selected) {
+		    var newdata = [];
+		    for(var i=0;i<viewall.length;i++){
+			if(selected.tabid!=viewall[i].tabid){
+			    newdata.push({
+				tabid:viewall[i].tabid,
+				tablabel:viewall[i].tablabel
+			    });
+			}
+		    }
 		    
-		    
+		    $('#viewmodule').datagrid("loadData",newdata);
 		    
 		}else {
 		    message("请选择一行记录！");

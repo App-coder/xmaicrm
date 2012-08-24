@@ -22,6 +22,8 @@
     <result column="quickcreatesequence" property="quickcreatesequence" jdbcType="INTEGER" />
     <result column="info_type" property="infoType" jdbcType="VARCHAR" />
     <result column="tablabel" property="tablabel" jdbcType="VARCHAR" />
+    <result column="profile_readonly" property="profileReadonly" jdbcType="VARCHAR" />
+    <result column="visible" property="visible" jdbcType="VARCHAR" />
   </resultMap>
   <sql id="Base_Column_List" >
     fieldid, tabid, columnname, tablename, generatedtype, uitype, fieldname, fieldlabel, 
@@ -291,5 +293,8 @@
   </select>
   <select id="getFieldsByTabid" resultMap="BaseResultMap" >
   	select * from xm_field where tabid=#{tabid}
+  </select>
+  <select id="getProfileFieldsByTabid" resultMap="BaseResultMap"  >
+  	select xm_profile2field.readonly as profile_readonly,xm_profile2field.visible,xm_field.* from xm_profile2field inner join xm_field on xm_field.fieldid=xm_profile2field.fieldid where xm_profile2field.profileid=#{profileid} and xm_profile2field.tabid=#{tabid}
   </select>
 </mapper>

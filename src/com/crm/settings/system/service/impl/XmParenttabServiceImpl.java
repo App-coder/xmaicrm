@@ -59,4 +59,10 @@ public class XmParenttabServiceImpl implements XmParenttabService {
 		this.xmParenttabMapper.deleteByPrimaryKey(parenttabid);
 	}
 
+
+	@Override
+	public List<XmParenttab> getVisibleParenttab() {
+		return this.xmParenttabMapper.getVisibleParenttab();
+	}
+
 }

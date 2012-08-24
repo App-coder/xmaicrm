@@ -82,4 +82,7 @@
   <select id="getAll" resultMap="BaseResultMap">
   	select * from xm_parenttab order by sequence;
   </select>
+  <select id="getVisibleParenttab" resultMap="BaseResultMap" >
+  	select * from xm_parenttab where visible = 0  order by sequence
+  </select>
 </mapper>

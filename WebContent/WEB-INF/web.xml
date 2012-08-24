@@ -24,7 +24,7 @@
 	    <description>用于监听session的一系列操作</description>
 	    <listener-class>com.crm.listener.SessionListener</listener-class>
 	</listener>
-
+	
     <!-- 乱码 -->
     <filter>
         <filter-name>CharacterEncodingFilter</filter-name>
@@ -166,6 +166,10 @@
         <taglib>
             <taglib-uri>http://java.sun.com/jstl/x-rt</taglib-uri>
             <taglib-location>/WEB-INF/tld/jstl/x-1_0-rt.tld</taglib-location>
+        </taglib>
+       <taglib>
+            <taglib-uri>http://www.opensymphony.com/oscache</taglib-uri>
+            <taglib-location>/WEB-INF/tld/oscache/oscache.tld</taglib-location>
         </taglib>
     </jsp-config>
 
