@@ -77,10 +77,9 @@ public class WelcomeController implements ServletContextAware {
 			UserPermission userpermission = this.userService.getUserPermission(login);
 			session.setAttribute("userpermission", userpermission);
 			// 缓存导航栏
-			session.setAttribute("navbar", this.userService.getNavBar(login,this.servletContext.getRealPath("WEB-INF/tpl")));
-			
-			System.out.println(session.getAttribute("navbar"));
-			return "redirect:/crm/welcome/desktop";
+			session.setAttribute("navbar", this.userService.getNavBar(login,this.servletContext.getRealPath("WEB-INF/tpl"),userpermission));
+			return "test";
+			//return "redirect:/crm/welcome/desktop";
 		} else {
 			modelmap.addAttribute("message", "用户验证没有通过！");
 			return "welcome";

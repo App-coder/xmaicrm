@@ -2,7 +2,7 @@ package com.crm.service.system.impl;
 
 import java.io.File;
 import java.io.IOException;
-import java.io.OutputStreamWriter;
+import java.io.StringWriter;
 import java.io.Writer;
 import java.util.HashMap;
 import java.util.List;
@@ -38,7 +38,7 @@ import freemarker.template.TemplateException;
 public class UserServiceImpl implements UserService {
 
 	XmRoleService xmRoleService;
-	@Resource(name="xmRoleService")
+	@Resource(name="settings.basic.service.xmRoleService")
 	public void setXmRoleService(XmRoleService xmRoleService) {
 		this.xmRoleService = xmRoleService;
 	}
@@ -76,7 +76,7 @@ public class UserServiceImpl implements UserService {
 	}
 	
 	@Override
-	public String getNavBar(XmUsers login,String tpl) {
+	public String getNavBar(XmUsers login,String tpl,UserPermission userpermission) {
 		List<MenuBar> menubar = (List<MenuBar>) CacheManager.getFromCache(Constant.MENUBAR);
 		
 		Configuration cfg = new Configuration();
@@ -85,7 +85,9 @@ public class UserServiceImpl implements UserService {
 			Template temp = cfg.getTemplate("navbar.tpl");
 			Map data = new HashMap();
 			data.put("login", login);
-			Writer out = new OutputStreamWriter(System.out);
+			data.put("menubar", menubar);
+			data.put("permission", userpermission);
+			Writer out = new StringWriter();  
 			temp.process(data, out);
 			out.flush();
 			return out.toString();
