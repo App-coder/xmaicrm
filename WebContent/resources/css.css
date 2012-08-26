@@ -106,3 +106,9 @@ a.cus_markhui:link {
 .sel_120{
 	width: 120px;
 }
+
+
+/*------------------采购模块采购导航-------------*/
+.lvtColDataHover {
+    background-color: #FEFF99;
+}
