@@ -98,7 +98,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
       out.write("\t\t\t<div>公告</div>\r\n");
       out.write("\t\t</div>\r\n");
       out.write("\t\t<div id=\"agora_item\" style=\"width: 120px;\" class=\"navmenuitem\"  >\r\n");
-      out.write("\t\t\t<div>营销活动</div>\r\n");
+      out.write("\t\t\t<div><a href=\"javascript:tab('营销活动','campaign/index')\">营销活动</a></div>\r\n");
       out.write("\t\t\t<div>群发短信</div>\r\n");
       out.write("\t\t\t<div>群发邮件</div>\r\n");
       out.write("\t\t</div>\r\n");
@@ -138,8 +138,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
       out.write("\t\t</div>\r\n");
       out.write("\t\t<div id=\"afterser_item\" style=\"width: 120px;\" class=\"navmenuitem\"  >\r\n");
       out.write("\t\t\t<div>客服控制台</div>\r\n");
-      out.write("\t\t\t<div>客户服务</div>\r\n");
-      out.write("\t\t\t<div>客户投诉</div>\r\n");
+      out.write("\t\t\t<div><a href=\"javascript:tab('客户服务','accountrecordss/index')\" >客户服务</a></div>\r\n");
+      out.write("\t\t\t<div><a href=\"javascript:tab('客户投诉','complaints/index')\" >客户投诉</a></div>\r\n");
       out.write("\t\t\t<div>知识库</div>\r\n");
       out.write("\t\t\t<div>知识库分类</div>\r\n");
       out.write("\t\t</div>\r\n");
