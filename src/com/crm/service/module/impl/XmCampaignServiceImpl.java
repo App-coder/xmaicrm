@@ -48,6 +48,15 @@ public class XmCampaignServiceImpl implements XmCampaignService {
 		return this.xmCampaignMapper.loadListBySql(start,rows,listsql);
 	}
 
+	@Override
+	public int getMaxId() {
+		String maxid = this.xmCampaignMapper.getMaxId();
+		if(maxid!=null&&maxid!=""){
+			return Integer.parseInt(maxid); 
+		}
+		return 0;
+	}
+
 
 
 }

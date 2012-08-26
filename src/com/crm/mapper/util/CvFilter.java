@@ -18,6 +18,7 @@ import com.crm.model.XmCvadvfilter;
 import com.crm.model.XmCvstdfilter;
 import com.crm.model.XmEntityname;
 import com.crm.model.XmTab;
+import com.crm.util.DateUtil;
 import com.crm.util.JsonUtil;
 import com.crm.util.crm.CustomViewUtil;
 
@@ -120,7 +121,7 @@ public class CvFilter {
 		if(stdfilter!=null){
 			if(stdfilter.getColumnname()!=null && stdfilter.getStartdate()!=null){
 					CVColumn std = (CVColumn)JsonUtil.getObject4JsonString(stdfilter.getColumnname(), CVColumn.class);
-					filter +=" and "+en.getTablename() +"."+std.getField()+">'"+stdfilter.getStartdate()+"' and "+en.getTablename() +"."+std.getField()+"<'"+stdfilter.getEnddate()+"'";
+					filter +=" and "+en.getTablename() +"."+std.getField()+">'"+DateUtil.format(stdfilter.getStartdate(),DateUtil.C_DATE_PATTON_DEFAULT)+"' and "+en.getTablename() +"."+std.getField()+"<'"+DateUtil.format(stdfilter.getEnddate(),DateUtil.C_DATE_PATTON_DEFAULT)+"'";
 			}
 		}
 		

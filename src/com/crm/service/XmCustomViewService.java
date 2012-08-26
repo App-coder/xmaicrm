@@ -46,6 +46,8 @@ public interface XmCustomViewService {
 
 	XmCustomview selectByPrimaryKey(int cvid);
 
+	int insert(String string);
+
 	
 
 }

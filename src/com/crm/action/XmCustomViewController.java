@@ -758,7 +758,7 @@ public class XmCustomViewController extends BaseController {
 		modelMap.addAttribute("entitytype", modulename);
 		modelMap.addAttribute("entityname", entityname);
 		modelMap.addAttribute("columnname",columnname);
-		return "public/viewpop";
+		return "module/"+modulename.toLowerCase()+"/viewpop";
 	}
 
 	/**

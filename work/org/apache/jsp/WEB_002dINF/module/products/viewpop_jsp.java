@@ -1,10 +1,10 @@
-package org.apache.jsp.WEB_002dINF.portlets;
+package org.apache.jsp.WEB_002dINF.module.products;
 
 import javax.servlet.*;
 import javax.servlet.http.*;
 import javax.servlet.jsp.*;
 
-public final class topsalesbymonth_jsp extends org.apache.jasper.runtime.HttpJspBase
+public final class viewpop_jsp extends org.apache.jasper.runtime.HttpJspBase
     implements org.apache.jasper.runtime.JspSourceDependent {
 
   private static final JspFactory _jspxFactory = JspFactory.getDefaultFactory();
@@ -12,8 +12,9 @@ public final class topsalesbymonth_jsp extends org.apache.jasper.runtime.HttpJsp
   private static java.util.List _jspx_dependants;
 
   static {
-    _jspx_dependants = new java.util.ArrayList(2);
-    _jspx_dependants.add("/WEB-INF/portlets/../head_portlets.jsp");
+    _jspx_dependants = new java.util.ArrayList(3);
+    _jspx_dependants.add("/WEB-INF/module/products/../../head_viewpop.jsp");
+    _jspx_dependants.add("/WEB-INF/module/products/../../common/config.jsp");
     _jspx_dependants.add("/WEB-INF/tld/jstl/fn.tld");
   }
 
@@ -77,27 +78,29 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
       out.write("</title>\r\n");
       out.write("<link rel=\"stylesheet\" type=\"text/css\" href=\"resources/easyui/themes/default/easyui.css\">\r\n");
       out.write("<link rel=\"stylesheet\" type=\"text/css\" href=\"resources/easyui/themes/icon.css\">\r\n");
-      out.write("<link rel=\"stylesheet\" type=\"text/css\" href=\"resources/portlets.css\">\r\n");
+      out.write("<link rel=\"stylesheet\" type=\"text/css\" href=\"resources/css.css\">\r\n");
       out.write("<link rel=\"stylesheet\" type=\"text/css\" href=\"resources/easyui_update.css\">\r\n");
       out.write("<script type=\"text/javascript\" src=\"resources/easyui/jquery-1.7.2.min.js\"></script>\r\n");
       out.write("<script type=\"text/javascript\" src=\"resources/easyui/jquery.easyui.min.js\"></script>\r\n");
-      out.write("<script type=\"text/javascript\" src=\"resources/easyui/locale/easyui-lang-zh_CN.js\"></script>\r\n");
+      out.write("<script type=\"text/javascript\" src=\"resources/easyui/locale/easyui-lang-zh_CN.js\"></script>");
+      out.write('\r');
+      out.write('\n');
+      out.write('\r');
+      out.write('\n');
+
+String win_topbar = "resizable=\"false\"  closed=\"true\" modal=\"true\" collapsible=\"false\"  draggable=\"true\" minimizable=\"false\" maximizable=\"false\" inline=\"false\"";
+
+      out.write("    ");
       out.write("\r\n");
-      out.write("<script type=\"text/javascript\" src=\"resources/amcharts/amcharts.js\"></script>    \r\n");
-      out.write("\r\n");
-      out.write("<script type=\"text/javascript\" src=\"resources/fusionchart/FusionCharts.js\"></script>    \r\n");
-      out.write("\r\n");
-      out.write("<!-- loadmask -->\r\n");
-      out.write("<link href=\"resources/plugins/loadmask/jquery.loadmask.css\" rel=\"stylesheet\" type=\"text/css\" />\r\n");
-      out.write("<script type=\"text/javascript\" src=\"resources/plugins/loadmask/jquery.loadmask.min.js\"></script>\r\n");
-      out.write("\r\n");
-      out.write("<script type=\"text/javascript\" src=\"resources/global.js\"></script>    \r\n");
-      out.write("<script type=\"text/javascript\" src=\"resources/desktop/portlets.js\"></script>");
-      out.write("\r\n");
-      out.write("<script type=\"text/javascript\" src=\"resources/desktop/portlets/topsalesbymonth.js\"></script>\r\n");
+      out.write("<script type=\"text/javascript\" src=\"resources/desktop/module/product/viewpop.js\"></script>\r\n");
       out.write("</head>\r\n");
-      out.write("<body>\r\n");
-      out.write("<div id=\"chart\" style=\"width:100%;height:250px;\"></div>\r\n");
+      out.write("<body class=\"easyui-layout\" >\r\n");
+      out.write("\t<div data-options=\"region:'west',noheader:true,border:none\"  style=\"width:200px\">\r\n");
+      out.write("\t\r\n");
+      out.write("\t</div>  \r\n");
+      out.write("    <div data-options=\"region:'center',border:none\" >\r\n");
+      out.write("    \r\n");
+      out.write("    </div>  \r\n");
       out.write("</body>\r\n");
       out.write("</html>");
     } catch (Throwable t) {

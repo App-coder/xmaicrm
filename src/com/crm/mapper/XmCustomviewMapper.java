@@ -49,5 +49,7 @@ public interface XmCustomviewMapper {
 	List<XmCustomview> getKeyCustomview();
 
 	XmCustomview getFirstCView(@Param("entitytype") String entitytype);
+
+	int insertsql(@Param("sql") String sql);
 	
 }

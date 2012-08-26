@@ -6,18 +6,27 @@ import java.util.List;
 import javax.annotation.Resource;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.crm.action.BaseController;
+import com.crm.action.util.ModuleUtil;
 import com.crm.bean.easyui.Tree;
 import com.crm.model.XmCatalog;
 import com.crm.service.module.XmCatalogService;
+import com.crm.util.ActionUtil;
 
 @Controller
-@RequestMapping(value = "catalog")
+@RequestMapping(value = "crm/module/catalogs")
 public class XmCatalogController extends BaseController{
+	
+	ModuleUtil moduleUtil;
+	@Resource(name = "moduleUtil")
+	public void setModuleUtil(ModuleUtil moduleUtil) {
+		this.moduleUtil = moduleUtil;
+	}
 	
 	XmCatalogService xmCatalogService;
 	@Resource(name="xmCatalogService")
@@ -28,9 +37,9 @@ public class XmCatalogController extends BaseController{
 
 	@RequestMapping(value = "/getCatalogById", method = RequestMethod.GET)
 	@ResponseBody
-	public String getCatalogById(String parentid){
+	public String getCatalogById(String id){
 		
-		List<XmCatalog> catalog = this.xmCatalogService.getCatalogById(parentid);
+		List<XmCatalog> catalog = this.xmCatalogService.getCatalogById(id);
 		List<Tree> trees = new ArrayList<Tree>();
 		for(XmCatalog c :catalog){
 			Tree t = new Tree();
@@ -46,8 +55,9 @@ public class XmCatalogController extends BaseController{
 	
 	
 	@RequestMapping(value = "/index", method = RequestMethod.GET)
-	public String index(){
-		return "product/catalog";
+	public String index(int ptb,ModelMap modelMap){
+		ActionUtil.setTitle2("Catalogs", ptb, modelMap, this.moduleUtil);
+		return "module/catalogs/index";
 	}
 	
 }

@@ -438,4 +438,7 @@
   <select id="loadListBySql" resultType="map">
   	${filter}
   </select>
+  <select id="getMaxId" resultType="String">
+  	select max(campaignid) from xm_campaign
+  </select>
 </mapper>

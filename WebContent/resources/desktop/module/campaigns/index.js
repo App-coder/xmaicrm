@@ -19,11 +19,11 @@ function init(){
 		    text : '添加',
 		    iconCls:'icon-add',
 		    handler : function() {
-			
+			window.location.href="crm/module/campaigns/showedit?recordid=0&ptb="+ptb+"&module="+entitytype;
 		    }
 		}, {
 		    text : '编辑',
-		    iconCls:'icon-view',
+		    iconCls:'icon-edit',
 		    handler : function() {
 			var selected = $('#view_list').datagrid("getSelected");
 			if(selected){
@@ -42,6 +42,18 @@ function init(){
 			}else{
 			    message("请选择记录！");
 			}			
+		    }
+		},{
+		    text : '修改负责人',
+		    iconCls:'icon-edit',
+		    handler:function(){
+			
+		    }
+		},{
+		    text : '共享',
+		    iconCls:'icon-share',
+		    handler : function() {
+			
 		    }
 		}],
 		frozenColumns : [[{

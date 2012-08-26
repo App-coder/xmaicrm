@@ -12,5 +12,6 @@ import com.crm.model.XmCvstdfilter;
 public interface XmCampaignService{
 	public List<Object> loadList(int page, int rows, int viewid,XmCustomview customview,XmCvstdfilter stdfilter,List<XmCvadvfilter> advfilters,List<CVColumn> cols) ;
 	public int getTotal(int viewid,XmCustomview customview,XmCvstdfilter stdfilter,List<XmCvadvfilter> advfilters,List<CVColumn> cols);
+	public int getMaxId();
 }
 

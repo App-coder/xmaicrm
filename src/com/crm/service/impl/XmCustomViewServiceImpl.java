@@ -158,4 +158,9 @@ public class XmCustomViewServiceImpl implements XmCustomViewService {
 		return this.xmCustomviewMapper.selectByPrimaryKey(cvid);
 	}
 
+	@Override
+	public int insert(String sql) {
+		return this.xmCustomviewMapper.insertsql(sql);
+	}
+
 }

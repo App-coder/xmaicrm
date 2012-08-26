@@ -16,6 +16,9 @@
 .icon-group{
 	background:url('icons/group.png') no-repeat;
 }
+.icon-share{
+	background:url('icons/share.png') no-repeat;
+}
 .icon-unauditoffline{
 	background:url('icons/unauditoffline.png') no-repeat;
 }
