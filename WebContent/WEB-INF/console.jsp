@@ -45,10 +45,10 @@
 		</div>
 		<div id="buy_item" style="width: 120px;" class="navmenuitem"  >
 			<div><a href="javascript:tab('采购导航','bsteps/index')">采购导航</a></div>
-			<div>进货单</div>
-			<div>供应商</div>
-			<div>供应商联系人</div>
-			<div>供应商联系记录</div>
+			<div><a href="javascript:tab('进货单','purchaseorder/index')">进货单</div>
+			<div><a href="javascript:tab('供应商','bsteps/index')">供应商</div>
+			<div><a href="javascript:tab('供应商联系人','bsteps/index')">供应商联系人</div>
+			<div><a href="javascript:tab('供应商联系记录','bsteps/index')">供应商联系记录</div>
 		</div>
 		<div id="afterser_item" style="width: 120px;" class="navmenuitem"  >
 			<div>客服控制台</div>

@@ -3,15 +3,15 @@
 
 	
 <script>
-    var vendor_columns = ${dview};
-    var vendor_viewid = ${customview.cvid}
+    var vnotes_columns = ${dview};
+    var vnotes_viewid = ${customview.cvid}
 </script>
-<script type="text/javascript" 	src="resources/desktop/customer/vendor.js"></script>
+<script type="text/javascript" 	src="resources/desktop/customer/vnotes.js"></script>
 
 
 <div class="container">
 	<div class="hidden">
-		<div id="vendor_m1" style="width:100px;">
+		<div id="vnotes_m1" style="width:100px;">
 			<div data-options="iconCls:'icon-add'" >创建视图</div>
 			<div data-options="iconCls:'icon-edit'" >编辑</div>
 			<div data-options="iconCls:'icon-remove'" >删除</div>
@@ -26,12 +26,12 @@
 					<option value="${v.cvid }">${v.viewname}</option>
 				</c:forEach>
 				</select>
-				<a href="javascript:void(0)" class="easyui-menubutton" data-options="menu:'#vendor_m1',iconCls:'icon-tool'">管理</a>
+				<a href="javascript:void(0)" class="easyui-menubutton" data-options="menu:'#vnotes_m1',iconCls:'icon-tool'">管理</a>
 			</div>
 		</div>
 		<div data-options="region:'center',border:false"
 			style="overflow: hidden">
-			<table id="vendor_list" data-options="fit:true,fitColumns:true"></table>
+			<table id="vnotes_list" data-options="fit:true,fitColumns:true"></table>
 		</div>
 		<c:if test="${repfields!=null }">
 			<div data-options="region:'south',border:false">
