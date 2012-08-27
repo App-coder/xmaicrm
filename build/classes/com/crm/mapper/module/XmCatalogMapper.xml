@@ -119,4 +119,7 @@
 	ORDER BY  
 		sortorder ASC 
   </select>
+  <select id="getCatalogAll" resultMap="BaseResultMap"  >
+  	select * from xm_catalog order by sortorder asc
+  </select>
 </mapper>
