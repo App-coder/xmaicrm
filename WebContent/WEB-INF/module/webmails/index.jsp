@@ -38,7 +38,23 @@
 				</div>
 	        </div>  
 	        <div data-options="region:'center'" >
-
+	        	<div class="d_view "  style="display: block;height:25px;border:none;border-bottom: 1px solid #99BBE8;" >
+		        	<span class="fl">
+			         [收件箱] - 未读 0 封 共 1 封 
+			         </span>
+			         <span class="fr">
+			         	<input type="text" class="text" />
+			         	<a class="easyui-linkbutton" data-options="plain:true" iconCls="icon-search" >查找</a>
+			         </span>
+	        	</div>
+		        <div id="tabbar" class="gtb" style="display: block;" > 
+		         	<a class="easyui-linkbutton" data-options="plain:true" iconCls="icon-remove" >删除</a>
+		         	<a class="easyui-linkbutton" data-options="plain:true" iconCls="icon-remove" >永久删除</a>
+		         	<select><option>标记为</option></select>
+		         	<select><option>移动到</option></select>
+		         	<select><option>复制到</option></select>
+		        </div>
+				<table id="view_list" data-options="fitColumns:true,fit:true,border:false" toolbar="#tabbar"  ></table>
 			</div>  
 	    </div>  
 		

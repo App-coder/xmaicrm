@@ -1,4 +1,4 @@
-package org.apache.jsp.WEB_002dINF.module.webmails;
+package org.apache.jsp.WEB_002dINF.module.weeklylogs;
 
 import javax.servlet.*;
 import javax.servlet.http.*;
@@ -19,9 +19,9 @@ static {
 
   static {
     _jspx_dependants = new java.util.ArrayList(4);
-    _jspx_dependants.add("/WEB-INF/module/webmails/../../head.jsp");
-    _jspx_dependants.add("/WEB-INF/module/webmails/../../common/config.jsp");
-    _jspx_dependants.add("/WEB-INF/module/webmails/../../foot.jsp");
+    _jspx_dependants.add("/WEB-INF/module/weeklylogs/../../head.jsp");
+    _jspx_dependants.add("/WEB-INF/module/weeklylogs/../../common/config.jsp");
+    _jspx_dependants.add("/WEB-INF/module/weeklylogs/../../foot.jsp");
     _jspx_dependants.add("/WEB-INF/tld/jstl/fn.tld");
   }
 
@@ -135,7 +135,7 @@ String win_topbar = "resizable=\"false\"  closed=\"true\" modal=\"true\" collaps
       out.write("    ");
       out.write("\r\n");
       out.write("<script type=\"text/javascript\"\r\n");
-      out.write("\tsrc=\"resources/desktop/module/webmails/index.js\"></script>\r\n");
+      out.write("\tsrc=\"resources/desktop/module/dailylogs/index.js\"></script>\r\n");
       out.write("</head>\r\n");
       out.write("<body id=\"wrap\">\r\n");
       out.write("\t");
@@ -157,49 +157,43 @@ String win_topbar = "resizable=\"false\"  closed=\"true\" modal=\"true\" collaps
       out.write("</a>\r\n");
       out.write("\t\t</div>\r\n");
       out.write("\t\t\r\n");
-      out.write("\t\t<div  class=\"easyui-layout\" data-options=\"fit:true\" >   \r\n");
-      out.write("\t        <div data-options=\"region:'west',split:false\" style=\"width:210px;border-right:0px;\">\r\n");
-      out.write("\t\t        <div class=\"navcontainer1\" style=\"margin-right:0px;border:none;\">\r\n");
-      out.write("\t\t        \t<div class=\"datagrid-toolbar\" >\r\n");
-      out.write("\t\t        \t\t<span class=\"icon-writeemail iconblock\">写邮件</span>&nbsp;&nbsp;\r\n");
-      out.write("\t\t        \t\t<span class=\"icon-receiveemail iconblock\">收邮件</span>&nbsp;&nbsp;\r\n");
-      out.write("\t\t        \t\t<span class=\"icon-emailcfg iconblock\">帐号</span>\r\n");
-      out.write("\t\t        \t</div>\r\n");
-      out.write("\t\t        \t<ul>\r\n");
-      out.write("\t\t        \t\t<li style=\"height:20px;line-height:20px;\">\r\n");
-      out.write("\t\t        \t\t\t<select class=\"easyui-combotree\" style=\"width:200px;\" data-options=\"url:'crm/module/webmails/getCondition'\"></select>\r\n");
-      out.write("\t\t        \t\t</li>\r\n");
-      out.write("\t\t        \t</ul>\r\n");
-      out.write("\t\t\t\t\t<div class=\"datagrid-toolbar\"><span class=\"icon-folder iconblock\">文件夹</span></div>\r\n");
-      out.write("\t\t\t\t\t<ul>\r\n");
-      out.write("\t\t\t\t\t\t<li><span class=\"icon-inbox iconblock\">收件箱</span></li>\r\n");
-      out.write("\t\t\t\t\t\t<li><span class=\"icon-sendmsg iconblock\">已发送</span></li>\r\n");
-      out.write("\t\t\t\t\t\t<li><span class=\"icon-remove iconblock\">已删除</span></li>\r\n");
-      out.write("\t\t\t\t\t\t<li><span class=\"icon-draft iconblock\">草稿箱</span></li>\r\n");
-      out.write("\t\t\t\t\t\t<li><span class=\"icon-dustbin iconblock\">垃圾箱</span></li>\r\n");
-      out.write("\t\t\t\t\t</ul>\r\n");
-      out.write("\t\t\t\t</div>\r\n");
-      out.write("\t        </div>  \r\n");
-      out.write("\t        <div data-options=\"region:'center'\" >\r\n");
-      out.write("\t        \t<div class=\"d_view \"  style=\"display: block;height:25px;border:none;border-bottom: 1px solid #99BBE8;\" >\r\n");
-      out.write("\t\t        \t<span class=\"fl\">\r\n");
-      out.write("\t\t\t         [收件箱] - 未读 0 封 共 1 封 \r\n");
-      out.write("\t\t\t         </span>\r\n");
-      out.write("\t\t\t         <span class=\"fr\">\r\n");
-      out.write("\t\t\t         \t<input type=\"text\" class=\"text\" />\r\n");
-      out.write("\t\t\t         \t<a class=\"easyui-linkbutton\" data-options=\"plain:true\" iconCls=\"icon-search\" >查找</a>\r\n");
-      out.write("\t\t\t         </span>\r\n");
-      out.write("\t        \t</div>\r\n");
-      out.write("\t\t        <div id=\"tabbar\" class=\"gtb\" style=\"display: block;\" > \r\n");
-      out.write("\t\t         \t<a class=\"easyui-linkbutton\" data-options=\"plain:true\" iconCls=\"icon-remove\" >删除</a>\r\n");
-      out.write("\t\t         \t<a class=\"easyui-linkbutton\" data-options=\"plain:true\" iconCls=\"icon-remove\" >永久删除</a>\r\n");
-      out.write("\t\t         \t<select><option>标记为</option></select>\r\n");
-      out.write("\t\t         \t<select><option>移动到</option></select>\r\n");
-      out.write("\t\t         \t<select><option>复制到</option></select>\r\n");
-      out.write("\t\t        </div>\r\n");
-      out.write("\t\t\t\t<table id=\"view_list\" data-options=\"fitColumns:true,fit:true,border:false\" toolbar=\"#tabbar\"  ></table>\r\n");
-      out.write("\t\t\t</div>  \r\n");
-      out.write("\t    </div>  \r\n");
+      out.write("\t\t<div class=\"def_div bggray plr_5 mgb_10\" style=\"height:22px;line-height:22px;\" >\r\n");
+      out.write("\t\t<span class=\"fl\">2012-08-26(星期日) 管理员  过去5天： 2012-08-22 写 2012-08-23 写 2012-08-24 写 2012-08-25 写 2012-08-26 看</span>\r\n");
+      out.write("\t\t<span class=\"fr\">日报日期：<input type=\"text\" id=\"startdate\"  class=\"text easyui-datebox\" />&nbsp;\r\n");
+      out.write("\t\t负责人：<select class=\"easyui-combotree\" style=\"width:160px;\" data-options=\"url:'crm/module/dailylogs/getCondition'\"></select>\r\n");
+      out.write("\t\t<a class=\"easyui-linkbutton\" data-options=\"iconCls:'icon-search'\">搜索</a>\r\n");
+      out.write("\t\t</span>\r\n");
+      out.write("\t\t</div>\r\n");
+      out.write("\t\t\r\n");
+      out.write("\t\t<fieldset class=\"mgb_10\" >\r\n");
+      out.write("\t\t\t<legend>本周计划：（由上周拟定）</legend>\r\n");
+      out.write("\t\t\t<table class=\"tab_form\">\r\n");
+      out.write("\t\t\t\t<tr>\r\n");
+      out.write("\t\t\t\t\t<td width=\"10%\" valign=\"top\" class=\"edittd3\">本周计划</td>\r\n");
+      out.write("\t\t\t\t\t<td colspan=\"3\"></td>\r\n");
+      out.write("\t\t\t\t</tr>\r\n");
+      out.write("\t\t\t</table>\r\n");
+      out.write("\t\t</fieldset>\r\n");
+      out.write("\t\t\r\n");
+      out.write("\t\t<fieldset class=\"mgb_10\" >\r\n");
+      out.write("\t\t\t<legend>周报内容：</legend>\r\n");
+      out.write("\t\t\t<table class=\"tab_form\">\r\n");
+      out.write("\t\t\t\t<tr>\r\n");
+      out.write("\t\t\t\t\t<td width=\"10%\" valign=\"top\" class=\"edittd3\">本周总结</td><td width=\"40%\">\r\n");
+      out.write("\t\t\t\t\t<textarea ></textarea>\r\n");
+      out.write("\t\t\t\t\t</td>\r\n");
+      out.write("\t\t\t\t\t<td width=\"10%\" valign=\"top\" class=\"edittd3\">下周计划</td><td width=\"40%\">\r\n");
+      out.write("\t\t\t\t\t<textarea ></textarea>\r\n");
+      out.write("\t\t\t\t\t</td>\r\n");
+      out.write("\t\t\t\t</tr>\r\n");
+      out.write("\t\t\t</table>\r\n");
+      out.write("\t\t</fieldset>\r\n");
+      out.write("\t\t\r\n");
+      out.write("\t\t<div class=\"def_div tac\" >\r\n");
+      out.write("\t\t\t<a class=\"easyui-linkbutton\" data-options=\"iconCls:'icon-save'\">暂存</a>&nbsp;<a class=\"easyui-linkbutton\" data-options=\"iconCls:'icon-submit'\">交周报</a>\r\n");
+      out.write("\t\t</div>\r\n");
+      out.write("\t\t\r\n");
+      out.write("\t\t<iframe width=\"100%\" height=\"650px\"  frameborder=\"0\" src=\"crm/module/calendar/week\" ></iframe>\r\n");
       out.write("\t\t\r\n");
       out.write("\t</div>\r\n");
       out.write("\t");
@@ -373,7 +367,7 @@ String win_topbar = "resizable=\"false\"  closed=\"true\" modal=\"true\" collaps
     org.apache.taglibs.standard.tag.rt.core.WhenTag _jspx_th_c_005fwhen_005f0 = (org.apache.taglibs.standard.tag.rt.core.WhenTag) _005fjspx_005ftagPool_005fc_005fwhen_0026_005ftest.get(org.apache.taglibs.standard.tag.rt.core.WhenTag.class);
     _jspx_th_c_005fwhen_005f0.setPageContext(_jspx_page_context);
     _jspx_th_c_005fwhen_005f0.setParent((javax.servlet.jsp.tagext.Tag) _jspx_th_c_005fchoose_005f0);
-    // /WEB-INF/module/webmails/../../head.jsp(16,1) name = test type = boolean reqTime = true required = true fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
+    // /WEB-INF/module/weeklylogs/../../head.jsp(16,1) name = test type = boolean reqTime = true required = true fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
     _jspx_th_c_005fwhen_005f0.setTest(((java.lang.Boolean) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${ptb!=null&&tab!=null}", java.lang.Boolean.class, (PageContext)_jspx_page_context, null, false)).booleanValue());
     int _jspx_eval_c_005fwhen_005f0 = _jspx_th_c_005fwhen_005f0.doStartTag();
     if (_jspx_eval_c_005fwhen_005f0 != javax.servlet.jsp.tagext.Tag.SKIP_BODY) {

@@ -30,7 +30,7 @@ public class XmDocumentsController {
 	
 	@RequestMapping(value = "/index")
 	public String index(int ptb,ModelMap modelMap) throws UnsupportedEncodingException{
-		ActionUtil.setTitle2("Documents", ptb, modelMap, this.moduleUtil);
+		ActionUtil.setTitle("Documents", ptb, modelMap, this.moduleUtil);
 		return "module/documents/index";
 	}
 	

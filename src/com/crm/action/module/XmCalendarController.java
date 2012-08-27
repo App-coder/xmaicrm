@@ -62,6 +62,27 @@ public class XmCalendarController {
 		return "module/calendar/view";
 	}
 	
+	/**
+	 * 周报参考
+	 * 
+	 * @return
+	 */
+	@RequestMapping(value = "/week")
+	public String week(){
+		return "module/calendar/weeklylogs/week";
+	}
+	
+	
+	/**
+	 * 月报参考
+	 * 
+	 * @return
+	 */
+	@RequestMapping(value = "/month")
+	public String month(){
+		return "module/calendar/monthlylogs/month";
+	}
+	
 	@RequestMapping(value = "/getCondition")
 	@ResponseBody
 	public String getCondition(){
