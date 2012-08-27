@@ -19,7 +19,7 @@ function init(){
 		    text : '添加',
 		    iconCls:'icon-add',
 		    handler : function() {
-			window.location.href="crm/module/campaigns/showedit?recordid=0&ptb="+ptb+"&module="+entitytype;
+			window.location.href="crm/module/documents/showedit?recordid=0&ptb="+ptb+"&module="+entitytype;
 		    }
 		}, {
 		    text : '编辑',
@@ -27,7 +27,7 @@ function init(){
 		    handler : function() {
 			var selected = $('#view_list').datagrid("getSelected");
 			if(selected){
-			    window.location.href="crm/module/campaigns/showedit?recordid="+selected.campaignid+"&ptb="+ptb+"&module="+entitytype;
+			    window.location.href="crm/module/documents/showedit?recordid="+selected.documentsid+"&ptb="+ptb+"&module="+entitytype;
 			}else{
 			    message("请选择记录！");
 			}
@@ -39,17 +39,17 @@ function init(){
 			//删除多条记录，注意
 			var selected = $('#view_list').datagrid("getSelections");
 			if(selected.length!=0){
-			    	confirm('确定删除营销活动？',function(r){
+			    	confirm('确定删除文档？',function(r){
 				    if(r){
 					var recordids = ""
 					for(var i=0;i<selected.length;i++){
 					    if(i==0){
-						recordids +=selected[i].campaignid;
+						recordids +=selected[i].documentsid;
 					    }else{
-						recordids +=","+selected[i].campaignid;
+						recordids +=","+selected[i].documentsid;
 					    }
 					}
-					$.post('crm/module/campaigns/deleteRecords',{recordids:recordids},function(res){
+					$.post('crm/module/documents/deleteRecords',{recordids:recordids},function(res){
 						if(res.type == true){
 						    $('#view_list').datagrid("reload");
 						    $('#view_list').datagrid("unselectAll");
@@ -67,7 +67,7 @@ function init(){
 		    handler : function() {
 			var selected = $('#view_list').datagrid("getSelected");
 			if(selected){
-			    window.location.href="crm/module/campaigns/view?recordid="+selected.campaignid+"&ptb="+ptb+"&module="+entitytype;
+			    window.location.href="crm/module/documents/view?recordid="+selected.documentsid+"&ptb="+ptb+"&module="+entitytype;
 			}else{
 			    message("请选择记录！");
 			}			

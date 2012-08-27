@@ -291,12 +291,13 @@ function showLocale(objD)
     return(str);
 }
 
-function initEdit(name,module){
+function initEdit(name,module,resizeType){
 	var editor = KindEditor.create('textarea[name="'+name+'"]', {
 		resizeType : 1,
 		allowPreviewEmoticons : true,
 		allowImageUpload : true,
 		allowFileManager : true,
+		resizeType:resizeType,
 		//urlType:'absolute',
 		items:editoritem_more,
 		uploadJson:'crm/file/upload',

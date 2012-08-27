@@ -13,6 +13,7 @@
 		<table id="tablist"></table>
 	</div>
 	
+	
 	<div class="hidden" >
 		<div id="wind_message"  iconCls="icon-sendmsg"
 			style="width:700px; height:432px;" class="easyui-window "
@@ -35,7 +36,7 @@
 					            		<td valign="top" ><textarea></textarea></td>
 					            	</tr>
 					            </table>  
-					            <fieldset class="mgt_10" >
+					            <fieldset class="mg10" >
 					            	<legend>提示</legend>
 					            	1.群发短信主要是针对系统中的联系人。<br>
 					            	2.群发前请确认企业短信通道是否配置成功。<br>
@@ -144,7 +145,6 @@
 				</div>
 			</div>
 		</div>
-	</div>
 	
 	<%@ include file="../../foot.jsp"%>
 </body>

@@ -19,7 +19,7 @@ function init(){
 		    text : '添加',
 		    iconCls:'icon-add',
 		    handler : function() {
-			window.location.href="crm/module/campaigns/showedit?recordid=0&ptb="+ptb+"&module="+entitytype;
+			window.location.href="crm/module/announcements/showedit?recordid=0&ptb="+ptb+"&module="+entitytype;
 		    }
 		}, {
 		    text : '编辑',
@@ -27,7 +27,7 @@ function init(){
 		    handler : function() {
 			var selected = $('#view_list').datagrid("getSelected");
 			if(selected){
-			    window.location.href="crm/module/campaigns/showedit?recordid="+selected.campaignid+"&ptb="+ptb+"&module="+entitytype;
+			    window.location.href="crm/module/announcements/showedit?recordid="+selected.announcementsid+"&ptb="+ptb+"&module="+entitytype;
 			}else{
 			    message("请选择记录！");
 			}
@@ -44,12 +44,12 @@ function init(){
 					var recordids = ""
 					for(var i=0;i<selected.length;i++){
 					    if(i==0){
-						recordids +=selected[i].campaignid;
+						recordids +=selected[i].announcementsid;
 					    }else{
-						recordids +=","+selected[i].campaignid;
+						recordids +=","+selected[i].announcementsid;
 					    }
 					}
-					$.post('crm/module/campaigns/deleteRecords',{recordids:recordids},function(res){
+					$.post('crm/module/announcements/deleteRecords',{recordids:recordids},function(res){
 						if(res.type == true){
 						    $('#view_list').datagrid("reload");
 						    $('#view_list').datagrid("unselectAll");
@@ -67,7 +67,7 @@ function init(){
 		    handler : function() {
 			var selected = $('#view_list').datagrid("getSelected");
 			if(selected){
-			    window.location.href="crm/module/campaigns/view?recordid="+selected.campaignid+"&ptb="+ptb+"&module="+entitytype;
+			    window.location.href="crm/module/announcements/view?recordid="+selected.announcementsid+"&ptb="+ptb+"&module="+entitytype;
 			}else{
 			    message("请选择记录！");
 			}			

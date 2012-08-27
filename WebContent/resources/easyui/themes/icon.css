@@ -22,6 +22,9 @@
 .icon-unauditoffline{
 	background:url('icons/unauditoffline.png') no-repeat;
 }
+.icon-sendemail{
+	background:url('icons/sendemail.png') no-repeat;
+}
 .icon-unauditOnline{
 	background:url('icons/unauditOnline.png') no-repeat;
 }

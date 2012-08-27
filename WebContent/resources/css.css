@@ -62,6 +62,7 @@ table .tb_list td.righttd{padding-left:10px;}
 .mgt_10{margin-top: 10px;}
 .mgl_10{margin-left: 10px;}
 .mgb_5{margin-bottom:5px;}
+.mg10{margin: 10px;}
 
 .tab_form{width:100%;font:12px/1.5 Tahoma,'Microsoft Yahei','Simsun';}
 .tab_form .edittd{width:110px;text-align: right;padding-right:10px;}
@@ -399,3 +400,4 @@ background-color: #D0E5F5;
 .def_div{padding-top:5px;padding-bottom:5px;height:25px;line-height:25px;}
 .bggray{background-color: #EFEFEF;}
 .plr_5{padding-right: 5px;padding-left: 5px;}
+
