@@ -14,7 +14,7 @@ public interface XmTabMapper {
 
     int insertSelective(XmTab record);
 
-    XmTab selectByPrimaryKey(Integer tabid);
+    XmTab selectByPrimaryKey(@Param("tabid") Integer tabid);
 
     int updateByPrimaryKeySelective(XmTab record);
 

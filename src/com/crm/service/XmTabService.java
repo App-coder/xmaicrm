@@ -2,6 +2,8 @@ package com.crm.service;
 
 import java.util.List;
 
+import org.apache.ibatis.annotations.Param;
+
 import com.crm.model.XmTab;
 
 public interface XmTabService {
@@ -57,6 +59,8 @@ public interface XmTabService {
 	List<XmTab> getTabPermission();
 
 	List<XmTab> getRecyclebinModule(String skipstr);
+	
+	XmTab selectByPrimaryKey(Integer tabid);
 
 
 

@@ -14,6 +14,7 @@
     <result column="alterapproveowner" property="alterapproveowner" jdbcType="INTEGER" />
     <result column="user_name" property="username" jdbcType="VARCHAR" />
     <result column="nextstepname" property="nextstepname" jdbcType="VARCHAR" />
+    <result column="userid" property="userid" jdbcType="VARCHAR" />
   </resultMap>
   <resultMap id="ResultMapWithBLOBs" type="com.crm.model.XmApprovestep" extends="BaseResultMap" >
     <result column="memo" property="memo" jdbcType="LONGVARCHAR" />
@@ -184,10 +185,14 @@
     where id = #{id,jdbcType=INTEGER}
   </update>
   
+  <select id="getApproveNextStep" resultMap="ResultMapWithBLOBs" >
+      select * from xm_approvestep t1 WHERE	t1.approveid=#{approveid} and t1.id!=#{id}
+  </select>
+  
   <select id="getApproveStepById" resultMap="ResultMapWithBLOBs">
      SELECT
-		t1.id,t1.approveid,t1.name,t1.memo,t1.ended,t1.sequnce,t1.alterapproveowner,
-		GROUP_CONCAT(xm_users.user_name) user_name,IFNULL(t2.name,0) nextstepname  
+		t1.id,t1.approveid,t1.name,t1.memo,t1.ended,t1.sequnce,t1.alterapproveowner,GROUP_CONCAT(cast(xm_step2users.userid AS char)) userid,
+		GROUP_CONCAT(xm_users.user_name) user_name,IFNULL(t2.name,'无') nextstepname  
 	FROM
 		xm_approvestep t1
 	left join xm_approvestep t2 on t1.nextstep=t2.id

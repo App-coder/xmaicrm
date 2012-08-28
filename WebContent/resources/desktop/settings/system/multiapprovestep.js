@@ -39,7 +39,7 @@ function reloadGrid(approveid){
 		title : '是否可以结束整个流程',
 		formatter: function(value,row,index){
 		    if(value == 0){
-			return "不是";
+			return "否";
 		    }
 		    return "是";
 		}
@@ -81,11 +81,11 @@ function toggleAdvOpt(){
 
 function doMultiApproveStep(action){
 	if(action=='add'){
-		
+		window.location.href="crm/settings/multiapprove/editApproveStep?id="+approveid+"&type=c";
 	}else if(action='edit'){
 		var selected = $('#multiapprovesteplist').datagrid("getSelected");
 		if (selected) {
-		     window.location.href="crm/settings/multiapprove/editApproveStep?id="+selected.id+"";
+		     window.location.href="crm/settings/multiapprove/editApproveStep?id="+selected.id+"&type=u";
 		}else{
 			message("请选择一行记录！");
 		}

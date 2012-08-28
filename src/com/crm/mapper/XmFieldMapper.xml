@@ -479,5 +479,48 @@
 		AND uitype IN('1021', '1022', '1023')
 		AND typeofdata LIKE #{typeofdata}
 	</select>
+	<select id="getApproveStepFieldTab" resultType="map">
+	   SELECT DISTINCT
+			block,
+			xm_field.tabid,
+			NAME,
+			blocklabel
+		FROM
+			xm_field
+		INNER JOIN xm_blocks ON xm_blocks.blockid = xm_field.block
+		INNER JOIN xm_tab ON xm_tab.tabid = xm_field.tabid
+		WHERE
+			xm_field.block NOT IN(40, 6, 75, 35, 30, 54, 60, 66, 72)
+		AND xm_tab.tabid =#{tabid}
+		ORDER BY block
+	</select>
+	<select id="getApproveStepFieldTabDetail" resultType="map">
+	    SELECT
+			xm_def_org_field.*, xm_field.*, xm_step2fields.readonly AS stepreadonly,
+			xm_blocks.blocklabel
+		FROM
+			xm_def_org_field
+		INNER JOIN xm_field ON xm_field.fieldid = xm_def_org_field.fieldid
+		LEFT JOIN xm_step2fields ON xm_step2fields.fieldid = xm_def_org_field.fieldid
+		AND xm_step2fields.stepid = 9
+		LEFT JOIN xm_blocks ON xm_blocks.blockid = xm_field.block
+		WHERE
+			xm_def_org_field.tabid = #{tabid}
+		AND xm_def_org_field.visible = 0
+		AND xm_field.displaytype = 1
+	</select>
 	
+	<select id="getApproveStepFilters" resultMap="BaseResultMap">
+	    SELECT
+			xm_field.*
+		FROM
+			xm_field
+		INNER JOIN xm_def_org_field ON xm_def_org_field.fieldid = xm_field.fieldid
+		AND xm_def_org_field.visible = 0
+		WHERE
+			xm_field.tabid = #{tabid}
+		AND xm_field.uitype IN(15, 111)
+		AND xm_field.columnname!='currency'
+		AND xm_field.displaytype IN(1, 2)
+	</select>
 </mapper>

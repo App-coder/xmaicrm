@@ -29,8 +29,18 @@ public class XmApprovestep {
     
     private String nextstepname;
 
+    private String userid;
     
-    public String getNextstepname() {
+    
+    public String getUserid() {
+		return userid;
+	}
+
+	public void setUserid(String userid) {
+		this.userid = userid;
+	}
+
+	public String getNextstepname() {
 		return nextstepname;
 	}
 
