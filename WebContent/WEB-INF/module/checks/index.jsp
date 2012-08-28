@@ -77,9 +77,17 @@
 								class="easyui-linkbutton"
 								data-options="plain:true,iconCls:'icon-view'">视图管理</a>
 						</div>
-						<div id="tabbar" class="gtb" style="display: block;" >  
-							查看范围：<select class="easyui-combotree" style="width:160px;"></select> 
+
+						<div id="tabbar" class="gtb" style="display: block;" >
+							查看范围：<select class="easyui-combotree" style="width:200px;" data-options="url:'crm/module/accounts/getCondition'"></select>
+							<a class="easyui-linkbutton" data-options="plain:true" iconCls="icon-add" onclick="add()" >添加</a>
+							<a class="easyui-linkbutton" data-options="plain:true" iconCls="icon-edit" onclick="edit()" >修改</a>
+							<a class="easyui-linkbutton" data-options="plain:true" iconCls="icon-view" onclick="view()" >预览</a>
+							<a class="easyui-linkbutton" data-options="plain:true" iconCls="icon-remove" onclick="del()" >删除</a>
+							<a class="easyui-linkbutton" data-options="plain:true" iconCls="icon-search" onclick="showSearch()" >查找</a>
+							<a class="easyui-linkbutton" data-options="plain:true" iconCls="icon-undo" onclick="cacelSearch()" >取消查找</a>		  
 						</div>
+
 						<table id="view_list_1"  toolbar="#tabbar" data-options="fitColumns:true"></table>
 						<div class="stat_div_1 hidden"></div>
 	        </div>  
@@ -96,9 +104,16 @@
 							class="easyui-linkbutton"
 							data-options="plain:true,iconCls:'icon-view'">视图管理</a>
 					</div>
-					<div id="tabbar_${ck.cangkusid}" class="gtb" style="display: block;" >  
-							查看范围：<select class="easyui-combotree" style="width:160px;" ></select> 
-					</div>
+					
+						<div id="tabbar_${ck.cangkusid}" class="gtb" style="display: block;" >
+							查看范围：<select class="easyui-combotree" style="width:200px;" data-options="url:'crm/module/accounts/getCondition'"></select>
+							<a class="easyui-linkbutton" data-options="plain:true" iconCls="icon-add" onclick="add()" >添加</a>
+							<a class="easyui-linkbutton" data-options="plain:true" iconCls="icon-edit" onclick="edit()" >修改</a>
+							<a class="easyui-linkbutton" data-options="plain:true" iconCls="icon-view" onclick="view()" >预览</a>
+							<a class="easyui-linkbutton" data-options="plain:true" iconCls="icon-remove" onclick="del()" >删除</a>
+							<a class="easyui-linkbutton" data-options="plain:true" iconCls="icon-search" onclick="showSearch()" >查找</a>
+							<a class="easyui-linkbutton" data-options="plain:true" iconCls="icon-undo" onclick="cacelSearch()" >取消查找</a>		  
+						</div>
 					<table id="view_list_${ck.cangkusid}" toolbar="#tabbar_${ck.cangkusid}" class="viewlist" data-options="fitColumns:true"></table>
 					<div class="stat_div_${ck.cangkusid} hidden"></div>
 		        </div>

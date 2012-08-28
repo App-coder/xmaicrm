@@ -26,7 +26,7 @@ var tabid = ${tab.tabid};
 var tablabel = '${tab.tablabel}';
 var ptb = ${ptb.parenttabid };
 </script>
-<script type="text/javascript" src="resources/desktop/module/campaigns/index.js"></script>
+<script type="text/javascript" src="resources/desktop/module/quotes/index.js"></script>
 </head>
 <body id="wrap">
 ${navbar }
@@ -138,8 +138,7 @@ ${ptb.parenttabLabel }&gt;<a href="crm/module/${fn:toLowerCase(entityname.module
 			<a class="easyui-linkbutton" data-options="plain:true" iconCls="icon-search" onclick="showSearch()" >查找</a>
 			<a class="easyui-linkbutton" data-options="plain:true" iconCls="icon-undo" onclick="cacelSearch()" >取消查找</a>		  
 			</div>
-			<table id="view_list"
-				data-options="fitColumns:true" toolbar="#tabbar"  ></table>
+			<table id="view_list" data-options="fitColumns:true" toolbar="#tabbar"  ></table>
 				<div class="stat_div hidden"></div>
 	<c:if test="${repfields!=null }">
 			<div data-options="region:'south',border:false">
