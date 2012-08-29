@@ -3,15 +3,15 @@
 
 	
 <script>
-    var vendor_columns = ${dview};
-    var vendor_viewid = ${customview.cvid}
+    var vcontacts_columns = ${dview};
+    var vcontacts_viewid = ${customview.cvid}
 </script>
-<script type="text/javascript" 	src="resources/desktop/customer/vendor.js"></script>
+<script type="text/javascript" 	src="resources/desktop/customer/vcontacts.js"></script>
 
 
 <div class="container">
 	<div class="hidden">
-		<div id="vendor_m1" style="width:100px;">
+		<div id="vcontacts_m1" style="width:100px;">
 			<div data-options="iconCls:'icon-add'" >创建视图</div>
 			<div data-options="iconCls:'icon-edit'" >编辑</div>
 			<div data-options="iconCls:'icon-remove'" >删除</div>
@@ -26,12 +26,12 @@
 					<option value="${v.cvid }">${v.viewname}</option>
 				</c:forEach>
 				</select>
-				<a href="javascript:void(0)" class="easyui-menubutton" data-options="menu:'#vendor_m1',iconCls:'icon-tool'">管理</a>
+				<a href="javascript:void(0)" class="easyui-menubutton" data-options="menu:'#vcontacts_m1',iconCls:'icon-tool'">管理</a>
 			</div>
 		</div>
 		<div data-options="region:'center',border:false"
 			style="overflow: hidden">
-			<table id="vendor_list" data-options="fit:true,fitColumns:true"></table>
+			<table id="vcontacts_list" data-options="fit:true,fitColumns:true"></table>
 		</div>
 		<c:if test="${repfields!=null }">
 			<div data-options="region:'south',border:false">
