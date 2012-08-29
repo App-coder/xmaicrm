@@ -1,7 +1,9 @@
 package com.crm.bean.crm.permission;
 
+import java.util.HashMap;
 import java.util.List;
 
+import com.crm.model.XmDefOrgField;
 import com.crm.model.XmField;
 
 public class ModulePermission {
@@ -19,6 +21,8 @@ public class ModulePermission {
 
 	// 对应的字段权限
 	List<XmField> profile2fields;
+	
+	HashMap<Integer, XmDefOrgField> defOrgFields;
 
 	public int getProfileid() {
 		return profileid;
@@ -73,6 +77,12 @@ public class ModulePermission {
 	}
 	public void setProfile2fields(List<XmField> profile2fields) {
 		this.profile2fields = profile2fields;
+	}
+	public HashMap<Integer, XmDefOrgField> getDefOrgFields() {
+		return defOrgFields;
+	}
+	public void setDefOrgFields(HashMap<Integer, XmDefOrgField> defOrgFields) {
+		this.defOrgFields = defOrgFields;
 	}
 
 }

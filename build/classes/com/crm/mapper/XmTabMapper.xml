@@ -181,7 +181,7 @@
   	select xm_tab.* from xm_tab where tabid not in(1,7,24,27,29,${existtabids}) order by tabsequence;
   </select>
   <select id="getTabPermission" resultMap="BaseResultMap" >
-  	select xm_tab.*,xm_profile2tab.permissions,xm_profile2tab.profileid from xm_profile2tab inner join xm_tab on xm_tab.tabid=xm_profile2tab.tabid where profileid=#{profileid};
+  	select * from xm_profile2tab inner join xm_tab on xm_tab.tabid=xm_profile2tab.tabid where profileid=#{profileid} ORDER BY xm_tab.tabsequence asc;
   </select>
   <select id="getModules" resultMap="BaseResultMap" >
   	select * from xm_tab where reportable=1 order by tabid;

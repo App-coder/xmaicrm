@@ -14,8 +14,8 @@
 	<div id="main">
 		<div class="path" id="navpath"></div>
 		<form method="post" id="form_roleadd" name="form_roleedit">
+			<input type="hidden" name="depth" value="${depth }" />
 					<div id="tabs_roleadd" class="easyui-tabs">
-						<input type="hidden" id="parentroleid" name="parentroleid" />
 						<div title="第一步(共2步) : 设置角色基本信息" class="p10">
 							<table class="tab_form">
 								<tr>
@@ -24,7 +24,7 @@
 								</tr>
 								<tr>
 									<td class="edittd">角色名称</td>
-									<td><input type="text" class="text" /><span class="must">*</span>
+									<td><input type="text" class="text" name="rolename" /><span class="must">*</span>
 									</td>
 								</tr>
 								<tr>

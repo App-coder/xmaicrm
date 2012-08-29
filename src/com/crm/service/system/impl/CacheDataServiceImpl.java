@@ -9,9 +9,11 @@ import javax.annotation.Resource;
 import org.springframework.stereotype.Service;
 
 import com.crm.bean.crm.MenuBar;
+import com.crm.model.XmDefOrgField;
 import com.crm.model.XmEntityname;
 import com.crm.model.XmParenttab;
 import com.crm.model.XmTab;
+import com.crm.service.XmDefOrgFieldService;
 import com.crm.service.XmEntitynameService;
 import com.crm.service.XmTabService;
 import com.crm.service.settings.system.XmParenttabService;
@@ -40,6 +42,12 @@ public class CacheDataServiceImpl implements CacheDataService {
 		this.xmTabService = xmTabService;
 	}
 	
+	XmDefOrgFieldService xmDefOrgFieldService;
+	@Resource(name="xmDefOrgFieldService")
+	public void setXmDefOrgFieldService(XmDefOrgFieldService xmDefOrgFieldService) {
+		this.xmDefOrgFieldService = xmDefOrgFieldService;
+	}
+
 	@Override
 	public void initData() {
 		initGlobalData();
@@ -75,6 +83,16 @@ public class CacheDataServiceImpl implements CacheDataService {
 			}
 			CacheManager.putInCache(Constant.TAB, tabOfName);
 			CacheManager.putInCache(Constant.TABBYLAB, hmlabtabs);
+		}
+		
+		if (CacheManager.getFromCache(Constant.HMDOF) == null) {
+			//默认的权限的DefOrgFields
+			List<XmDefOrgField> defOrgFieldLs = this.xmDefOrgFieldService.selectAll();
+			HashMap<Integer,XmDefOrgField> hmdof = new HashMap<Integer, XmDefOrgField>();
+			for(int i=0;i<defOrgFieldLs.size();i++){
+				hmdof.put(defOrgFieldLs.get(i).getFieldid(), defOrgFieldLs.get(i));
+			}
+			CacheManager.putInCache(Constant.HMDOF, hmdof);
 		}
 		
 	}

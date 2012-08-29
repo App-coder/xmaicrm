@@ -67,7 +67,10 @@
 									</thead>
 									<tbody>
 										<c:forEach items="${modulePermission }" var="m">
-											<tr>
+										
+											<c:choose>
+												<c:when  test="${fn:length(m.profile2fields)!=0 }" >
+												<tr>
 												<td class="mod">
 												<c:choose>
 													<c:when test="${m.tabpermission == 0 }">
@@ -127,11 +130,8 @@
 														
 													</c:otherwise>
 												</c:choose>
-												
-												
 											</tr>
-											<if test="${m.profile2fields!=null }">
-												<tr id="${m.tabid }_field" class="hidden" >
+											<tr id="${m.tabid }_field" class="hidden" >
 													<td colspan="6" class="p10" >
 														<table class="tab_field">
 															<thead>
@@ -152,9 +152,35 @@
 																<tr class="p10">
 																</c:if>
 																	<td>
-																		<input type="checkbox"/>&nbsp;${p.fieldlabel }
+																		<c:choose>
+																			<c:when test="${m.defOrgFields[p.fieldid].visible == 1}">
+																				<input type="checkbox" disabled="disabled" />
+																				&nbsp;${p.fieldlabel }<span class="must">*</span>
+																			</c:when>
+																			<c:otherwise>
+																				<c:choose>
+																					<c:when test="${p.visible == 0 }">
+																						<input type="checkbox" checked="checked" />
+																						&nbsp;${p.fieldlabel }
+																					</c:when>
+																					<c:otherwise>
+																						<input type="checkbox" />
+																						&nbsp;${p.fieldlabel }
+																					</c:otherwise>
+																				</c:choose>
+																			</c:otherwise>
+																		</c:choose>
 																	</td>
-																	<td><input type="checkbox"/>&nbsp;可见</td>
+																	<td>
+																	<c:choose>
+																		<c:when test="${p.profileReadonly == 0 }">
+																			<input type="checkbox"/>&nbsp;可写
+																		</c:when>
+																		<c:otherwise>
+																			<input type="checkbox" checked="checked"/>&nbsp;可写
+																		</c:otherwise>
+																	</c:choose>
+																	</td>
 																<c:choose>
 																	<c:when test="${s.count%4==0&&s.count!=0&&s.count!=fn:length(m.profile2fields) }">
 																	</tr>
@@ -172,7 +198,24 @@
 														</table>
 													</td>
 												</tr>
-											</if>
+												</c:when>
+												<c:otherwise>
+													<tr>
+												<td class="mod">
+												<c:choose>
+													<c:when test="${m.tabpermission == 0 }">
+														<input type="checkbox" checked="checked"  />
+													</c:when>
+													<c:otherwise>
+														<input type="checkbox"  />
+													</c:otherwise>
+												</c:choose>
+												&nbsp;${m.tablabel }</td>
+												<td colspan="5"></td>
+											</tr>
+												</c:otherwise>
+											</c:choose>
+										
 										</c:forEach>
 									</tbody>
 								</table>

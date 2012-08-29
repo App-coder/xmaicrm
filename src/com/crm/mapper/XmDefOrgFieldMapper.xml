@@ -79,4 +79,7 @@
       readonly = #{readonly,jdbcType=INTEGER}
     where fieldid = #{fieldid,jdbcType=INTEGER}
   </update>
+  <select id="selectAll" resultMap="BaseResultMap" >
+  	select * from xm_def_org_field
+  </select>
 </mapper>
