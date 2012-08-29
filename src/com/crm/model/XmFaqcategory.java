@@ -1,7 +1,7 @@
 package com.crm.model;
 
 public class XmFaqcategory {
-    private String faqcategoryid;
+    private Integer faqcategoryid;
 
     private String faqcategoryname;
 
@@ -9,16 +9,28 @@ public class XmFaqcategory {
 
     private Integer depth;
 
-    private String parentfaqcategoryid;
+    private Integer parentfaqcategoryid;
 
     private Integer sortorder;
+    
+    private String state;
+    
+    
 
-    public String getFaqcategoryid() {
+    public String getState() {
+		return state;
+	}
+
+	public void setState(String state) {
+		this.state = state;
+	}
+
+	public Integer getFaqcategoryid() {
         return faqcategoryid;
     }
 
-    public void setFaqcategoryid(String faqcategoryid) {
-        this.faqcategoryid = faqcategoryid == null ? null : faqcategoryid.trim();
+    public void setFaqcategoryid(Integer faqcategoryid) {
+        this.faqcategoryid = faqcategoryid == null ? null : faqcategoryid;
     }
 
     public String getFaqcategoryname() {
@@ -45,12 +57,12 @@ public class XmFaqcategory {
         this.depth = depth;
     }
 
-    public String getParentfaqcategoryid() {
+    public Integer getParentfaqcategoryid() {
         return parentfaqcategoryid;
     }
 
-    public void setParentfaqcategoryid(String parentfaqcategoryid) {
-        this.parentfaqcategoryid = parentfaqcategoryid == null ? null : parentfaqcategoryid.trim();
+    public void setParentfaqcategoryid(Integer parentfaqcategoryid) {
+        this.parentfaqcategoryid = parentfaqcategoryid == null ? null : parentfaqcategoryid;
     }
 
     public Integer getSortorder() {
