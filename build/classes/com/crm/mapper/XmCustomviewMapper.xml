@@ -126,4 +126,16 @@
   <select id="getDefaultCView" resultMap="BaseResultMap">
   	select <include refid="Base_Column_List" /> from xm_customview where setdefault=1 and entitytype=#{entitytype} and 1=1 ;
   </select>
+  <select id="loadCViewByEntitytype" resultMap="BaseResultMap" >
+  	select <include refid="Base_Column_List" /> from xm_customview where entitytype=#{entitytype} order by cvid asc
+  </select>
+  <select id="loadList" resultMap="BaseResultMap" >
+  	select <include refid="Base_Column_List" /> from xm_customview where entitytype=#{entitytype} order by cvid asc
+  </select>
+  <update id="setAllNotDef">
+  	update xm_customview set setdefault = 0 where entitytype=#{entitytype};
+  </update>
+  <update id="setDef" >
+  	update xm_customview set setdefault = 1 where cvid = #{cvid};
+  </update>
 </mapper>

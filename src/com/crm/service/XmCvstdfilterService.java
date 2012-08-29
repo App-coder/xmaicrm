@@ -4,5 +4,7 @@ import com.crm.model.XmCvstdfilter;
 
 public interface XmCvstdfilterService {
 
+	void deleteCv(int cvid);
+
 
 }

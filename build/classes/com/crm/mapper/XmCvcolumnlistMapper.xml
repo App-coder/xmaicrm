@@ -71,4 +71,7 @@
   <select id="getXmCvcolumnlistByCvid" resultMap="BaseResultMap">
   	select xm_cvcolumnlist.* from xm_cvcolumnlist inner join xm_customview on xm_customview.cvid = xm_cvcolumnlist.cvid where xm_customview.cvid =#{cvid} order by xm_cvcolumnlist.columnindex;
   </select>
+  <delete id="deleteCv">
+  	delete from xm_cvcolumnlist where cvid = #{cvid}
+  </delete>
 </mapper>

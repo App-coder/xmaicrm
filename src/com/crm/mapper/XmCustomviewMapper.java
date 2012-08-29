@@ -24,4 +24,15 @@ public interface XmCustomviewMapper {
 	int getDefault(@Param("entitytype") String entitytype);
 
 	XmCustomview getDefaultCView(@Param("entitytype") String entitytype);
+	
+	List<XmCustomview> loadCViewByEntitytype(@Param("entitytype") String entitytype);
+
+	List<XmCustomview> loadList(@Param("entitytype") String entitytype);
+
+	int setAllNotDef(@Param("entitytype") String entitytype);
+	
+	int setDef(@Param("cvid") int cvid);
+
+	int deleteCv(@Param("cvid") int cvid);
+	
 }

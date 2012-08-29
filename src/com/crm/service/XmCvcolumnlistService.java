@@ -12,4 +12,7 @@ public interface XmCvcolumnlistService {
 	
 	List<Column> getViewColumn(XmCustomview customview);
 
+	void deleteCv(int cvid);
+
+
 }

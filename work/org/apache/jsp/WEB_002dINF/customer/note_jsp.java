@@ -1,10 +1,10 @@
-package org.apache.jsp.WEB_002dINF.potential;
+package org.apache.jsp.WEB_002dINF.customer;
 
 import javax.servlet.*;
 import javax.servlet.http.*;
 import javax.servlet.jsp.*;
 
-public final class salesorder_jsp extends org.apache.jasper.runtime.HttpJspBase
+public final class note_jsp extends org.apache.jasper.runtime.HttpJspBase
     implements org.apache.jasper.runtime.JspSourceDependent {
 
   private static final JspFactory _jspxFactory = JspFactory.getDefaultFactory();
@@ -13,7 +13,7 @@ public final class salesorder_jsp extends org.apache.jasper.runtime.HttpJspBase
 
   static {
     _jspx_dependants = new java.util.ArrayList(1);
-    _jspx_dependants.add("/WEB-INF/potential/../common/config.jsp");
+    _jspx_dependants.add("/WEB-INF/customer/../common/config.jsp");
   }
 
   private org.apache.jasper.runtime.TagHandlerPool _005fjspx_005ftagPool_005fc_005fforEach_0026_005fvar_005fitems;
@@ -71,19 +71,21 @@ String win_topbar = "closed=\"true\" modal=\"true\" collapsible=\"false\"  dragg
 
       out.write("    ");
       out.write("\r\n");
+      out.write("\r\n");
       out.write("<script>\r\n");
-      out.write("    var salesorder_columns = ");
+      out.write("    var note_columns = ");
       out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${dview}", java.lang.String.class, (PageContext)_jspx_page_context, null, false));
       out.write(";\r\n");
-      out.write("    var salesorder_viewid = ");
+      out.write("    var note_viewid = ");
       out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${customview.cvid}", java.lang.String.class, (PageContext)_jspx_page_context, null, false));
       out.write("\r\n");
       out.write("</script>\r\n");
-      out.write("<script type=\"text/javascript\"\r\n");
-      out.write("\tsrc=\"resources/desktop/potential/salesorder.js\"></script>\r\n");
+      out.write("<script type=\"text/javascript\" \tsrc=\"resources/desktop/customer/note.js\"></script>\r\n");
+      out.write("\r\n");
+      out.write("\r\n");
       out.write("<div class=\"container\">\r\n");
       out.write("\t<div class=\"hidden\">\r\n");
-      out.write("\t\t<div id=\"salesorder_m1\" style=\"width:100px;\">\r\n");
+      out.write("\t\t<div id=\"note_m1\" style=\"width:100px;\">\r\n");
       out.write("\t\t\t<div data-options=\"iconCls:'icon-add'\" >创建视图</div>\r\n");
       out.write("\t\t\t<div data-options=\"iconCls:'icon-edit'\" >编辑</div>\r\n");
       out.write("\t\t\t<div data-options=\"iconCls:'icon-remove'\" >删除</div>\r\n");
@@ -99,19 +101,19 @@ String win_topbar = "closed=\"true\" modal=\"true\" collapsible=\"false\"  dragg
         return;
       out.write("\r\n");
       out.write("\t\t\t\t</select>\r\n");
-      out.write("\t\t\t\t<a href=\"javascript:void(0)\" class=\"easyui-menubutton\" data-options=\"menu:'#salesorder_m1',iconCls:'icon-tool'\">管理</a>\r\n");
+      out.write("\t\t\t\t<a href=\"javascript:void(0)\" class=\"easyui-menubutton\" data-options=\"menu:'#note_m1',iconCls:'icon-tool'\">管理</a>\r\n");
       out.write("\t\t\t</div>\r\n");
       out.write("\t\t</div>\r\n");
       out.write("\t\t<div data-options=\"region:'center',border:false\"\r\n");
       out.write("\t\t\tstyle=\"overflow: hidden\">\r\n");
-      out.write("\t\t\t<table id=\"salesorder_list\" data-options=\"fit:true,fitColumns:true\"></table>\r\n");
+      out.write("\t\t\t<table id=\"note_list\" data-options=\"fit:true,fitColumns:true\"></table>\r\n");
       out.write("\t\t</div>\r\n");
       out.write("\t\t");
       if (_jspx_meth_c_005fif_005f0(_jspx_page_context))
         return;
       out.write("\r\n");
       out.write("\t</div>\r\n");
-      out.write("</div>");
+      out.write("</div>\r\n");
     } catch (Throwable t) {
       if (!(t instanceof SkipPageException)){
         out = _jspx_out;
@@ -132,9 +134,9 @@ String win_topbar = "closed=\"true\" modal=\"true\" collapsible=\"false\"  dragg
     org.apache.taglibs.standard.tag.rt.core.ForEachTag _jspx_th_c_005fforEach_005f0 = (org.apache.taglibs.standard.tag.rt.core.ForEachTag) _005fjspx_005ftagPool_005fc_005fforEach_0026_005fvar_005fitems.get(org.apache.taglibs.standard.tag.rt.core.ForEachTag.class);
     _jspx_th_c_005fforEach_005f0.setPageContext(_jspx_page_context);
     _jspx_th_c_005fforEach_005f0.setParent(null);
-    // /WEB-INF/potential/salesorder.jsp(23,4) name = items type = java.lang.Object reqTime = true required = false fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
+    // /WEB-INF/customer/note.jsp(24,4) name = items type = java.lang.Object reqTime = true required = false fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
     _jspx_th_c_005fforEach_005f0.setItems((java.lang.Object) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${views}", java.lang.Object.class, (PageContext)_jspx_page_context, null, false));
-    // /WEB-INF/potential/salesorder.jsp(23,4) name = var type = java.lang.String reqTime = false required = false fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
+    // /WEB-INF/customer/note.jsp(24,4) name = var type = java.lang.String reqTime = false required = false fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
     _jspx_th_c_005fforEach_005f0.setVar("v");
     int[] _jspx_push_body_count_c_005fforEach_005f0 = new int[] { 0 };
     try {
@@ -146,7 +148,7 @@ String win_topbar = "closed=\"true\" modal=\"true\" collapsible=\"false\"  dragg
           out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${v.cvid }", java.lang.String.class, (PageContext)_jspx_page_context, null, false));
           out.write('"');
           out.write('>');
-          out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${v.viewname }", java.lang.String.class, (PageContext)_jspx_page_context, null, false));
+          out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${v.viewname}", java.lang.String.class, (PageContext)_jspx_page_context, null, false));
           out.write("</option>\r\n");
           out.write("\t\t\t\t");
           int evalDoAfterBody = _jspx_th_c_005fforEach_005f0.doAfterBody();
@@ -176,24 +178,24 @@ String win_topbar = "closed=\"true\" modal=\"true\" collapsible=\"false\"  dragg
     org.apache.taglibs.standard.tag.rt.core.IfTag _jspx_th_c_005fif_005f0 = (org.apache.taglibs.standard.tag.rt.core.IfTag) _005fjspx_005ftagPool_005fc_005fif_0026_005ftest.get(org.apache.taglibs.standard.tag.rt.core.IfTag.class);
     _jspx_th_c_005fif_005f0.setPageContext(_jspx_page_context);
     _jspx_th_c_005fif_005f0.setParent(null);
-    // /WEB-INF/potential/salesorder.jsp(34,2) name = test type = boolean reqTime = true required = true fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
+    // /WEB-INF/customer/note.jsp(35,2) name = test type = boolean reqTime = true required = true fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
     _jspx_th_c_005fif_005f0.setTest(((java.lang.Boolean) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${repfields!=null }", java.lang.Boolean.class, (PageContext)_jspx_page_context, null, false)).booleanValue());
     int _jspx_eval_c_005fif_005f0 = _jspx_th_c_005fif_005f0.doStartTag();
     if (_jspx_eval_c_005fif_005f0 != javax.servlet.jsp.tagext.Tag.SKIP_BODY) {
       do {
         out.write("\r\n");
-        out.write("\t\t<div data-options=\"region:'south',border:false\">\r\n");
-        out.write("\t\t\t<div class=\"d_report \">\r\n");
-        out.write("\t\t\t\t<span class=\"icon-report view_span\" >报表：</span>\r\n");
-        out.write("\t\t\t\t<select class=\"sel_120\">\r\n");
-        out.write("\t\t\t\t\t");
+        out.write("\t\t\t<div data-options=\"region:'south',border:false\">\r\n");
+        out.write("\t\t\t\t<div class=\"d_report \">\r\n");
+        out.write("\t\t\t\t\t<span class=\"icon-report view_span\" >报表：</span>\r\n");
+        out.write("\t\t\t\t\t<select class=\"sel_120\">\r\n");
+        out.write("\t\t\t\t\t\t");
         if (_jspx_meth_c_005fforEach_005f1(_jspx_th_c_005fif_005f0, _jspx_page_context))
           return true;
         out.write("\r\n");
-        out.write("\t\t\t\t</select>\r\n");
-        out.write("\t\t\t\t<a href=\"#\" class=\"easyui-linkbutton\" data-options=\"plain:true,iconCls:'icon-view'\">预览</a>\r\n");
+        out.write("\t\t\t\t\t</select>\r\n");
+        out.write("\t\t\t\t\t<a href=\"#\" class=\"easyui-linkbutton\" data-options=\"plain:true,iconCls:'icon-view'\">预览</a>\r\n");
+        out.write("\t\t\t\t</div>\r\n");
         out.write("\t\t\t</div>\r\n");
-        out.write("\t\t</div>\r\n");
         out.write("\t\t");
         int evalDoAfterBody = _jspx_th_c_005fif_005f0.doAfterBody();
         if (evalDoAfterBody != javax.servlet.jsp.tagext.BodyTag.EVAL_BODY_AGAIN)
@@ -216,9 +218,9 @@ String win_topbar = "closed=\"true\" modal=\"true\" collapsible=\"false\"  dragg
     org.apache.taglibs.standard.tag.rt.core.ForEachTag _jspx_th_c_005fforEach_005f1 = (org.apache.taglibs.standard.tag.rt.core.ForEachTag) _005fjspx_005ftagPool_005fc_005fforEach_0026_005fvar_005fitems.get(org.apache.taglibs.standard.tag.rt.core.ForEachTag.class);
     _jspx_th_c_005fforEach_005f1.setPageContext(_jspx_page_context);
     _jspx_th_c_005fforEach_005f1.setParent((javax.servlet.jsp.tagext.Tag) _jspx_th_c_005fif_005f0);
-    // /WEB-INF/potential/salesorder.jsp(39,5) name = items type = java.lang.Object reqTime = true required = false fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
-    _jspx_th_c_005fforEach_005f1.setItems((java.lang.Object) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${repfields }", java.lang.Object.class, (PageContext)_jspx_page_context, null, false));
-    // /WEB-INF/potential/salesorder.jsp(39,5) name = var type = java.lang.String reqTime = false required = false fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
+    // /WEB-INF/customer/note.jsp(40,6) name = items type = java.lang.Object reqTime = true required = false fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
+    _jspx_th_c_005fforEach_005f1.setItems((java.lang.Object) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${repfields}", java.lang.Object.class, (PageContext)_jspx_page_context, null, false));
+    // /WEB-INF/customer/note.jsp(40,6) name = var type = java.lang.String reqTime = false required = false fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
     _jspx_th_c_005fforEach_005f1.setVar("f");
     int[] _jspx_push_body_count_c_005fforEach_005f1 = new int[] { 0 };
     try {
@@ -226,10 +228,10 @@ String win_topbar = "closed=\"true\" modal=\"true\" collapsible=\"false\"  dragg
       if (_jspx_eval_c_005fforEach_005f1 != javax.servlet.jsp.tagext.Tag.SKIP_BODY) {
         do {
           out.write("\r\n");
-          out.write("\t\t\t\t\t\t<option>");
-          out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${f.columnname }", java.lang.String.class, (PageContext)_jspx_page_context, null, false));
+          out.write("\t\t\t\t\t\t\t<option>");
+          out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${f.columnname}", java.lang.String.class, (PageContext)_jspx_page_context, null, false));
           out.write("</option>\r\n");
-          out.write("\t\t\t\t\t");
+          out.write("\t\t\t\t\t\t");
           int evalDoAfterBody = _jspx_th_c_005fforEach_005f1.doAfterBody();
           if (evalDoAfterBody != javax.servlet.jsp.tagext.BodyTag.EVAL_BODY_AGAIN)
             break;

@@ -35,4 +35,33 @@ public class XmCustomViewServiceImpl implements XmCustomViewService {
 		}
 		return this.xmCustomviewMapper.selectByPrimaryKey(viewid);
 	}
+
+	@Override
+	public List<XmCustomview> loadCViewByEntitytype(String entitytype) {
+		return this.xmCustomviewMapper.loadCViewByEntitytype(entitytype);
+	}
+
+	@Override
+	public List<XmCustomview> loadList(String entitytype) {
+		return this.xmCustomviewMapper.loadList(entitytype);
+	}
+
+	@Override
+	public boolean setDef(int cvid, String entitytype) {
+		this.xmCustomviewMapper.setAllNotDef(entitytype);
+		int result = this.xmCustomviewMapper.setDef(cvid);
+		if(result==1){
+			return true;
+		}
+		return false;
+	}
+
+	@Override
+	public boolean deleteCv(int cvid) {
+		int result = this.xmCustomviewMapper.deleteByPrimaryKey(cvid);
+		if(result==1){
+			return true;
+		}
+		return false;
+	}
 }

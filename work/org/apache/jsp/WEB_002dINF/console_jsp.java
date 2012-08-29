@@ -12,8 +12,9 @@ public final class console_jsp extends org.apache.jasper.runtime.HttpJspBase
   private static java.util.List _jspx_dependants;
 
   static {
-    _jspx_dependants = new java.util.ArrayList(1);
+    _jspx_dependants = new java.util.ArrayList(2);
     _jspx_dependants.add("/WEB-INF/header.jsp");
+    _jspx_dependants.add("/WEB-INF/common/commonjs.jsp");
   }
 
   private javax.el.ExpressionFactory _el_expressionfactory;
@@ -87,6 +88,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
       out.write("\r\n");
       out.write("<script type=\"text/javascript\" src=\"resources/global.js\"></script>\r\n");
       out.write("\r\n");
+      out.write('\r');
+      out.write('\n');
+      out.write("\r\n");
       out.write("<script type=\"text/javascript\" src=\"resources/desktop/index.js\"></script>\r\n");
       out.write("</head>\r\n");
       out.write("<body id=\"bodycontainer\" class=\"easyui-layout consolebd\">\r\n");
@@ -130,7 +134,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
       out.write("\t\t\t<div>销售目标</div>\r\n");
       out.write("\t\t</div>\r\n");
       out.write("\t\t<div id=\"buy_item\" style=\"width: 120px;\" class=\"navmenuitem\"  >\r\n");
-      out.write("\t\t\t<div>采购导航</div>\r\n");
+      out.write("\t\t\t<div><a href=\"javascript:tab('采购导航','bsteps/index')\">采购导航</a></div>\r\n");
       out.write("\t\t\t<div>进货单</div>\r\n");
       out.write("\t\t\t<div>供应商</div>\r\n");
       out.write("\t\t\t<div>供应商联系人</div>\r\n");
