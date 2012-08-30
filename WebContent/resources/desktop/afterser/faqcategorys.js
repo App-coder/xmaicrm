@@ -14,7 +14,7 @@ $(function(){
 			{title:'系统',field:'sortorder',width:150},
 			{title:'操作',field:'faqcategoryid',width:250,
 				formatter:function(value,rowdata,rowindex){
-					return "<span class=\"iconsp icon-edit\" title=\"修改\" ></span><span class=\"iconsp icon-remove\" title=\"删除\" ></span>";
+					return "<span class='iconsp icon-edit' onclick='editCategory("+rowdata+")' title='修改'></span><span class='iconsp icon-remove' title='删除'></span>";
 				}	
 			}
 		]],
@@ -87,7 +87,32 @@ $(function(){
 		     }   
 	 });  
    });
+    
+   /*var setFormValue = function (item) {
+    if (!item) item = {};
+   
+   };*/
 
 	function addCategory(){
 		$('#form_article_category').submit();
+	}
+	
+	function editCategory(item){
+		/*$("#addCategory").window({
+			onOpen:function(){
+				$("#form_faqcategory").find("input[name=action]").val("add");
+				$("#parentfaqcategoryid").combotree({
+					url:'faqcategorys/getFaqCategory',
+					width:250,
+					valueField:'id'
+				});
+			},
+			onClose:function(){
+				$("#form_faqcategory").find("input[name=name]").val("");
+				$("#form_faqcategory").find("input[name=sortorder]").val("");
+				$("#form_faqcategory").find("input[name=parentfaqcategoryid]").val("");
+			}
+		});*/
+		alert(item);
+		$("#addCategory").window("open");
 	}

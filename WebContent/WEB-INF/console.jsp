@@ -91,6 +91,10 @@
 			<div><a href="javascript:tab('项目','billings/index')" >项目</a></div>
 			<div><a href="javascript:tab('常见问答','billings/index')" >常见问答</a></div>
 		</div>
+		<div id="setting_item" style="width: 120px;" class="navmenuitem" >
+			<div>控制面板</div>
+			<div>业务规则</div>
+		</div>
 	</div>
 	<div region="north" style="height: 62px;overflow: hidden; "
 		class="headerNav" border="false">
@@ -138,6 +142,10 @@
 				<li class="split"></li>
 				<li><a href="javascript:void(0)" id="service"
 					class="easyui-menubutton" data-options="menu:'#service_item'">服务支持</a></li>
+				<li class="split"></li>
+				<li><a href="javascript:void(0)" id="setting"
+					class="easyui-menubutton" data-options="menu:'#setting_item'">控制面板</a></li>
+				<li class="split"></li>
 				<li><a href="javascript:void(0)" id="quick"
 					class="easyui-menubutton" data-options="menu:'#quick_item'"><input id="quick" name="dept" value="aa"></a></li>
 			</ul>
