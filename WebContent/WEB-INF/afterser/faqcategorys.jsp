@@ -26,7 +26,7 @@
 						</tr>
 						<tr>
 							<td class="edittd">分类名称：</td>
-							<td><input type="text" class="text easyui-validatebox" 	name="name" required="true" validType="length[1,100]" /></td>
+							<td><input type="text" class="text easyui-validatebox" 	name="faqcategoryname" required="true" validType="length[1,100]" /></td>
 						</tr>
 						<tr>
 							<td class="edittd">排序：</td>

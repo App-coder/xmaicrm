@@ -14,7 +14,7 @@ $(function(){
 			{title:'系统',field:'sortorder',width:150},
 			{title:'操作',field:'faqcategoryid',width:250,
 				formatter:function(value,rowdata,rowindex){
-					return "<span class='iconsp icon-edit' onclick='editCategory("+rowdata+")' title='修改'></span><span class='iconsp icon-remove' title='删除'></span>";
+					return "<span class='iconsp icon-edit' onclick='editCategory("+value+")' title='修改'></span><span class='iconsp icon-remove' title='删除'></span>";
 				}	
 			}
 		]],
@@ -33,7 +33,6 @@ $(function(){
 						});
 					},
 					onClose:function(){
-						$("#form_faqcategory").find("input[name=name]").val("");
 						$("#form_faqcategory").find("input[name=sortorder]").val("");
 						$("#form_faqcategory").find("input[name=parentfaqcategoryid]").val("");
 					}
@@ -97,10 +96,14 @@ $(function(){
 		$('#form_article_category').submit();
 	}
 	
-	function editCategory(item){
-		/*$("#addCategory").window({
+	function editCategory(id){
+		var item=$('#faqcategory_list').treegrid("find",id);
+		$("#addCategory").window({
 			onOpen:function(){
-				$("#form_faqcategory").find("input[name=action]").val("add");
+				$("#form_faqcategory").find("input[name=action]").val("edit");
+				$("#form_faqcategory").find("input[name=parentfaqcategoryid]").val(id);
+				$("#form_faqcategory").find("input[name=sortorder]").val(item.sortorder);
+				$("#form_faqcategory").find("input[name=faqcategoryname]").val(item.faqcategoryname);
 				$("#parentfaqcategoryid").combotree({
 					url:'faqcategorys/getFaqCategory',
 					width:250,
@@ -112,7 +115,6 @@ $(function(){
 				$("#form_faqcategory").find("input[name=sortorder]").val("");
 				$("#form_faqcategory").find("input[name=parentfaqcategoryid]").val("");
 			}
-		});*/
-		alert(item);
+		});
 		$("#addCategory").window("open");
 	}
