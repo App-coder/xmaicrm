@@ -1,0 +1,11 @@
+com.crm.afterser 售后
+com.crm.customer 客户
+com.crm.financial 财务
+com.crm.inventory 库存
+com.crm.potentials 销售
+com.crm.product 产品
+com.crm.purchase 采购
+com.crm.report 报表
+com.crm.settings 控制面板
+com.crm.marketing 营销活动
+com.crm.home 工作台

@@ -62,3 +62,26 @@
 .icon-mini-refresh{
 	background:url('icons/mini_refresh.png') no-repeat 3px 2px;
 }
+
+/*新增*/
+.icon-folder{
+	background:url('icons/tree_folder.gif') no-repeat;
+}
+.tree-file {
+	background:url('icons/tree_file.gif') no-repeat;
+}
+.icon-view{
+	background:url('icons/view.png') no-repeat;
+}
+.icon-filter{
+	background:url('icons/filter.png') no-repeat;
+}
+.icon-report{
+	background:url('icons/report.png') no-repeat;
+}
+.icon-tool{
+	background:url('icons/tool.png') no-repeat;
+}
+.icon-list{
+	background:url('icons/list.png') no-repeat;
+}

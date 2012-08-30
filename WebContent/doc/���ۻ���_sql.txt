@@ -1,0 +1,113 @@
+select name,tablabel,parenttab_label,ec_tab.tabid from ec_parenttabrel inner join ec_tab on ec_parenttabrel.tabid = ec_tab.tabid inner join ec_parenttab on ec_parenttabrel.parenttabid = ec_parenttab.parenttabid order by ec_parenttab.sequence,ec_parenttabrel.sequence;
+
+select tabid from ec_tab where name='Potentials';
+
+select * from ec_parenttabrel order by sequence;
+
+select parenttabid,parenttab_label from ec_parenttab order by sequence;
+
+select * from ec_field where tabid='2';
+
+select cvid from ec_customview where setdefault=1 and entitytype='Potentials' and 1=1 ;
+
+select cvid from ec_customview where entitytype='Potentials' and 1=1 ;
+
+select cvid from ec_customview where cvid='14' and entitytype='Potentials';
+
+select tabid from ec_tab where name='';
+
+select ec_customview.cvid,ec_customview.viewname from ec_customview where ec_customview.entitytype='' and 1=1 order by ec_customview.cvid ;
+
+select ec_customview.* from ec_customview where ec_customview.cvid=14;
+
+select * from ec_users where deleted=0 and status='Active' order by prefix;
+
+select * from ec_entityname where modulename='Potentials';
+
+select ec_cvcolumnlist.* from ec_cvcolumnlist inner join ec_customview on ec_customview.cvid = ec_cvcolumnlist.cvid where ec_customview.cvid =14 order by ec_cvcolumnlist.columnindex;
+
+select ec_customview.* from ec_customview where ec_customview.cvid=14;
+
+select ec_cvstdfilter.* from ec_cvstdfilter inner join ec_customview on ec_customview.cvid = ec_cvstdfilter.cvid where ec_cvstdfilter.cvid=14;
+
+select ec_cvadvfilter.* from ec_cvadvfilter inner join ec_customview on ec_cvadvfilter.cvid = ec_customview.cvid where ec_cvadvfilter.cvid=14;
+
+SELECT count(1) AS count FROM ec_potential LEFT JOIN ec_account ON ec_potential.accountid = ec_account.accountid LEFT JOIN ec_users ON ec_users.id = ec_potential.smownerid WHERE ec_potential.deleted = 0 ;
+
+select tablename from ec_field where tabid='2' and columnname like '%modifiedtime%';
+
+select ec_potential.potentialname,ec_potential.accountid,ec_potential.sales_stage,ec_potential.probability,ec_potential.closingdate,ec_users.user_name,ec_potential.nextstep,ec_potential.createdtime,ec_potential.modifiedtime ,ec_potential.potentialid as crmid FROM ec_potential LEFT JOIN ec_account ON ec_potential.accountid = ec_account.accountid LEFT JOIN ec_users ON ec_users.id = ec_potential.smownerid WHERE ec_potential.deleted = 0 ;
+
+SELECT DISTINCT ec_field.fieldname,ec_field.columnname,ec_field.uitype FROM ec_field LEFT JOIN ec_def_org_field ON ec_def_org_field.fieldid = ec_field.fieldid WHERE ec_field.tabid = 2 AND (ec_def_org_field.visible = 0 or ec_field.displaytype=3) ;
+
+select accountname from ec_account where accountid=1168;
+
+select accountname from ec_account where accountid=1171;
+
+select accountname from ec_account where accountid=1167;
+
+select accountname from ec_account where accountid=855;
+
+select accountname from ec_account where accountid=1170;
+
+select accountname from ec_account where accountid=1033;
+
+select accountname from ec_account where accountid=852;
+
+select accountname from ec_account where accountid=1042;
+
+select accountname from ec_account where accountid=1041;
+
+select accountname from ec_account where accountid=856;
+
+select accountname from ec_account where accountid=1038;
+
+select accountname from ec_account where accountid=1035;
+
+select accountname from ec_account where accountid=1036;
+
+select accountname from ec_account where accountid=1037;
+
+select accountname from ec_account where accountid=837;
+
+select accountname from ec_account where accountid=861;
+
+select accountname from ec_account where accountid=855;
+
+select accountname from ec_account where accountid=859;
+
+select accountname from ec_account where accountid=862;
+
+select accountname from ec_account where accountid=858;
+
+select * from ec_field inner join ec_def_org_field on ec_def_org_field.fieldid=ec_field.fieldid where ec_def_org_field.visible=0 and ec_field.tabid=2 and ec_field.displaytype in (1,2) order by block,sequence;
+
+SELECT id, user_name from ec_users WHERE deleted=0 and status='Active' order by prefix ASC;
+
+select * from ec_groups order by groupid;
+
+select ec_users.id,ec_users.user_name,ec_role.* from ec_users left join ec_user2role on ec_user2role.userid=ec_users.id left join ec_role on ec_role.roleid=ec_user2role.roleid left join ec_users2group on ec_users2group.userid=ec_users.id left join ec_groups on ec_groups.groupid=ec_users2group.groupid where ec_users.deleted=0 and ec_users.status='Active' and is_admin != 'on' and id !='1' and ec_groups.groupid='1' order by ec_role.depth asc,ec_users.prefix asc;
+
+select ec_users.id,ec_users.user_name,ec_role.* from ec_users left join ec_user2role on ec_user2role.userid=ec_users.id left join ec_role on ec_role.roleid=ec_user2role.roleid left join ec_users2group on ec_users2group.userid=ec_users.id left join ec_groups on ec_groups.groupid=ec_users2group.groupid where ec_users.deleted=0 and ec_users.status='Active' and is_admin != 'on' and id !='1' and ec_groups.groupid='2' order by ec_role.depth asc,ec_users.prefix asc;
+
+select ec_users.id,ec_users.user_name,ec_role.* from ec_users left join ec_user2role on ec_user2role.userid=ec_users.id left join ec_role on ec_role.roleid=ec_user2role.roleid left join ec_users2group on ec_users2group.userid=ec_users.id left join ec_groups on ec_groups.groupid=ec_users2group.groupid where ec_users.deleted=0 and ec_users.status='Active' and is_admin != 'on' and id !='1' and ec_groups.groupid='3' order by ec_role.depth asc,ec_users.prefix asc;
+
+select ec_users.id,ec_users.user_name,ec_role.* from ec_users left join ec_user2role on ec_user2role.userid=ec_users.id left join ec_role on ec_role.roleid=ec_user2role.roleid left join ec_users2group on ec_users2group.userid=ec_users.id left join ec_groups on ec_groups.groupid=ec_users2group.groupid where ec_users.deleted=0 and ec_users.status='Active' and is_admin != 'on' and id !='1' and ec_groups.groupid='4' order by ec_role.depth asc,ec_users.prefix asc;
+
+select ec_users.id,ec_users.user_name,ec_role.* from ec_users left join ec_user2role on ec_user2role.userid=ec_users.id left join ec_role on ec_role.roleid=ec_user2role.roleid left join ec_users2group on ec_users2group.userid=ec_users.id left join ec_groups on ec_groups.groupid=ec_users2group.groupid where ec_users.deleted=0 and ec_users.status='Active' and is_admin != 'on' and id !='1' and ec_groups.groupid='5' order by ec_role.depth asc,ec_users.prefix asc;
+
+select ec_users.id,ec_users.user_name,ec_role.* from ec_users left join ec_user2role on ec_user2role.userid=ec_users.id left join ec_role on ec_role.roleid=ec_user2role.roleid left join ec_users2group on ec_users2group.userid=ec_users.id left join ec_groups on ec_groups.groupid=ec_users2group.groupid where ec_users.deleted=0 and ec_users.status='Active' and is_admin != 'on' and id !='1' and ec_groups.groupid='6' order by ec_role.depth asc,ec_users.prefix asc;
+
+select ec_field.* from ec_field INNER JOIN ec_def_org_field ON ec_def_org_field.fieldid=ec_field.fieldid AND ec_def_org_field.visible=0 where ec_field.tabid=2 and uitype in ('15') and ec_field.displaytype in (1,2) order by sequence;
+
+select cvid from ec_customview where cvid='14' and entitytype='Potentials';
+
+select ec_customview.* from ec_customview where ec_customview.cvid=14;
+
+select ec_customview.* from ec_customview where ec_customview.cvid=14;
+
+
+select ec_cvstdfilter.* from ec_cvstdfilter inner join ec_customview on ec_customview.cvid = ec_cvstdfilter.cvid where ec_cvstdfilter.cvid=105;
+
+select ec_cvadvfilter.* from ec_cvadvfilter inner join ec_customview on ec_cvadvfilter.cvid = ec_customview.cvid where ec_cvadvfilter.cvid=105;
+

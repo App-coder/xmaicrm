@@ -12,45 +12,50 @@
 			<div>公告</div>
 		</div>
 		<div id="agora_item" style="width: 120px;" class="navmenuitem"  >
-			<div>营销活动</div>
+			<div><a href="javascript:tab('营销活动','campaign/index')">营销活动</a></div>
+			<div>群发短信</div>
+			<div>群发邮件</div>
 		</div>
 		<div id="customer_item"  style="width: 120px;" class="navmenuitem"  >
-			<div>客户</div>
-			<div>联系人</div>
-			<div>客户关怀</div>
-			<div>联系记录</div>
-			<div>纪念日</div>
+			<div><a href="javascript:tab('客户','account/index')">客户</a></div>
+			<div><a href="javascript:tab('联系人','contact/index')">联系人</a></div>
+			<div><a href="javascript:tab('客户关怀','care/index')">客户关怀</a></div>
+			<div><a href="javascript:tab('联系记录','note/index')">联系记录</a></div>
+			<div><a href="javascript:tab('客户任务计划','noteplans/index')">客户任务计划</a></div>
+			<div><a href="javascript:tab('客户任务','note/index')">客户任务</a></div>
+			<div><a href="javascript:tab('客户池','note/index')">客户池</a></div>
+			<div><a href="javascript:tab('纪念日','memdays/index')">纪念日</a></div>
 		</div>
 		<div id="product_item"  style="width: 120px;" class="navmenuitem"  >
-			<div><a href="javascript:tab('产品列表','welcome/homepage')" >产品列表</a></div>
+			<div><a href="javascript:tab('产品列表','product/index')" >产品列表</a></div>
 			<div>产品分类</div>
 			<div>产品序号</div>
 		</div>
 		<div id="sale_item" style="width: 120px;" class="navmenuitem"  >
 			<div>销售导航</div>
-			<div>销售机会</div>
+			<div><a href="javascript:tab('销售机会','potential/index')" >销售机会</a></div>
 			<div>销售漏斗</div>
-			<div>报价单</div>
-			<div>竞争对手</div>
-			<div>合同订单</div>
-			<div>发货单</div>
-			<div>销售退货单</div>
+			<div><a href="javascript:tab('报价单','quotes/index')" >报价单</a></div>
+			<div><a href="javascript:tab('竞争对手','duishous/index')" >竞争对手</a></div>
+			<div><a href="javascript:tab('合同订单','salesorder/index')" >合同订单</a></div>
+			<div><a href="javascript:tab('发货单','invoice/index')" >发货单</a></div>
+			<div><a href="javascript:tab('销售退货单','tuihuos/index')" >销售退货单</a></div>
 			<div>员工绩效</div>
 			<div>销售目标</div>
 		</div>
 		<div id="buy_item" style="width: 120px;" class="navmenuitem"  >
-			<div>采购导航</div>
-			<div>进货单</div>
-			<div>供应商</div>
-			<div>供应商联系人</div>
-			<div>供应商联系记录</div>
+			<div><a href="javascript:tab('采购导航','bsteps/index')">采购导航</a></div>
+			<div><a href="javascript:tab('进货单','purchaseorder/index')">进货单</div>
+			<div><a href="javascript:tab('供应商','bsteps/index')">供应商</div>
+			<div><a href="javascript:tab('供应商联系人','bsteps/index')">供应商联系人</div>
+			<div><a href="javascript:tab('供应商联系记录','bsteps/index')">供应商联系记录</div>
 		</div>
 		<div id="afterser_item" style="width: 120px;" class="navmenuitem"  >
-			<div>客服控制台</div>
-			<div>客户服务</div>
-			<div>客户投诉</div>
+			<div><a href="javascript:tab('客服控制台','accountrecordss/index')" >客服控制台</div>
+			<div><a href="javascript:tab('客户服务','accountrecordss/index')" >客户服务</a></div>
+			<div><a href="javascript:tab('客户投诉','complaints/index')" >客户投诉</a></div>
 			<div>知识库</div>
-			<div>知识库分类</div>
+			<div><a href="javascript:tab('知识库分类','faqcategorys/index')" >知识库分类</a></div>
 		</div>
 		<div id="stock_item" style="width: 120px;" class="navmenuitem"  >
 			<div>库存导航</div>
@@ -79,8 +84,15 @@
 			<div>常用报表</div>
 			<div>年终销售报表</div>
 		</div>
+		<div id="service_item" style="width: 120px;" class="navmenuitem" >
+			<div>服务合同</div>
+			<div>项目里程碑</div>
+			<div>项目任务</div>
+			<div>项目</div>
+			<div>常见问答</div>
+		</div>
 	</div>
-	<div region="north" style="height: 68px; overflow: hidden;"
+	<div region="north" style="height: 62px;overflow: hidden; "
 		class="headerNav" border="false">
 		<a class="logo"></a>
 		<ul class="nav">
@@ -93,6 +105,7 @@
 		</ul>
 		<div id="navMenu">
 			<ul>
+				<li class="split"></li>
 				<li><a href="javascript:void(0)" id="workspace"
 					class="easyui-menubutton" data-options="menu:'#workspace_item'">工作台</a></li>
 				<li class="split"></li>
@@ -122,6 +135,11 @@
 				<li class="split"></li>
 				<li><a href="javascript:void(0)" id="report"
 					class="easyui-menubutton" data-options="menu:'#report_item'">报表</a></li>
+				<li class="split"></li>
+				<li><a href="javascript:void(0)" id="service"
+					class="easyui-menubutton" data-options="menu:'#service_item'">服务支持</a></li>
+				<li><a href="javascript:void(0)" id="quick"
+					class="easyui-menubutton" data-options="menu:'#quick_item'"><input id="quick" name="dept" value="aa"></a></li>
 			</ul>
 		</div>
 	</div>

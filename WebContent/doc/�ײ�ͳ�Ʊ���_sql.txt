@@ -1,0 +1,7 @@
+select ec_field.* from ec_field INNER JOIN ec_def_org_field ON ec_def_org_field.fieldid=ec_field.fieldid AND ec_def_org_field.visible=0 where ec_field.tabid=26 and uitype in ('15') and ec_field.displaytype in (1,2) order by sequence;
+
+select cvid from ec_customview where cvid='26' and entitytype='Campaigns';
+
+select ec_customview.* from ec_customview where ec_customview.cvid=26;
+
+select ec_customview.* from ec_customview where ec_customview.cvid=26;

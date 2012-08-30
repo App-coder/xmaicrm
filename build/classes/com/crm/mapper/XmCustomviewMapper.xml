@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.crm.mapper.XmCustomviewMapper" >
+  <resultMap id="BaseResultMap" type="com.crm.model.XmCustomview" >
+    <id column="cvid" property="cvid" jdbcType="INTEGER" />
+    <result column="viewname" property="viewname" jdbcType="VARCHAR" />
+    <result column="setdefault" property="setdefault" jdbcType="INTEGER" />
+    <result column="setmetrics" property="setmetrics" jdbcType="INTEGER" />
+    <result column="entitytype" property="entitytype" jdbcType="VARCHAR" />
+    <result column="setpublic" property="setpublic" jdbcType="VARCHAR" />
+    <result column="collectcolumn" property="collectcolumn" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    cvid, viewname, setdefault, setmetrics, entitytype, setpublic, collectcolumn
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from xm_customview
+    where cvid = #{cvid,jdbcType=INTEGER}
+  </select>
+  <select id="queryByEntityType" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from xm_customview
+    where entitytype = #{entitytype,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from xm_customview
+    where cvid = #{cvid,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.crm.model.XmCustomview" >
+    insert into xm_customview (cvid, viewname, setdefault, 
+      setmetrics, entitytype, setpublic, 
+      collectcolumn)
+    values (#{cvid,jdbcType=INTEGER}, #{viewname,jdbcType=VARCHAR}, #{setdefault,jdbcType=INTEGER}, 
+      #{setmetrics,jdbcType=INTEGER}, #{entitytype,jdbcType=VARCHAR}, #{setpublic,jdbcType=VARCHAR}, 
+      #{collectcolumn,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.crm.model.XmCustomview" >
+    insert into xm_customview
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="cvid != null" >
+        cvid,
+      </if>
+      <if test="viewname != null" >
+        viewname,
+      </if>
+      <if test="setdefault != null" >
+        setdefault,
+      </if>
+      <if test="setmetrics != null" >
+        setmetrics,
+      </if>
+      <if test="entitytype != null" >
+        entitytype,
+      </if>
+      <if test="setpublic != null" >
+        setpublic,
+      </if>
+      <if test="collectcolumn != null" >
+        collectcolumn,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="cvid != null" >
+        #{cvid,jdbcType=INTEGER},
+      </if>
+      <if test="viewname != null" >
+        #{viewname,jdbcType=VARCHAR},
+      </if>
+      <if test="setdefault != null" >
+        #{setdefault,jdbcType=INTEGER},
+      </if>
+      <if test="setmetrics != null" >
+        #{setmetrics,jdbcType=INTEGER},
+      </if>
+      <if test="entitytype != null" >
+        #{entitytype,jdbcType=VARCHAR},
+      </if>
+      <if test="setpublic != null" >
+        #{setpublic,jdbcType=VARCHAR},
+      </if>
+      <if test="collectcolumn != null" >
+        #{collectcolumn,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.crm.model.XmCustomview" >
+    update xm_customview
+    <set >
+      <if test="viewname != null" >
+        viewname = #{viewname,jdbcType=VARCHAR},
+      </if>
+      <if test="setdefault != null" >
+        setdefault = #{setdefault,jdbcType=INTEGER},
+      </if>
+      <if test="setmetrics != null" >
+        setmetrics = #{setmetrics,jdbcType=INTEGER},
+      </if>
+      <if test="entitytype != null" >
+        entitytype = #{entitytype,jdbcType=VARCHAR},
+      </if>
+      <if test="setpublic != null" >
+        setpublic = #{setpublic,jdbcType=VARCHAR},
+      </if>
+      <if test="collectcolumn != null" >
+        collectcolumn = #{collectcolumn,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where cvid = #{cvid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.crm.model.XmCustomview" >
+    update xm_customview
+    set viewname = #{viewname,jdbcType=VARCHAR},
+      setdefault = #{setdefault,jdbcType=INTEGER},
+      setmetrics = #{setmetrics,jdbcType=INTEGER},
+      entitytype = #{entitytype,jdbcType=VARCHAR},
+      setpublic = #{setpublic,jdbcType=VARCHAR},
+      collectcolumn = #{collectcolumn,jdbcType=VARCHAR}
+    where cvid = #{cvid,jdbcType=INTEGER}
+  </update>
+  <select id="getDefault" resultType="INTEGER">
+  	select cvid from xm_customview where setdefault=1 and entitytype=#{entitytype} and 1=1 ;
+  </select>
+  <select id="getDefaultCView" resultMap="BaseResultMap">
+  	select <include refid="Base_Column_List" /> from xm_customview where setdefault=1 and entitytype=#{entitytype} and 1=1 ;
+  </select>
+  <select id="loadCViewByEntitytype" resultMap="BaseResultMap" >
+  	select <include refid="Base_Column_List" /> from xm_customview where entitytype=#{entitytype} order by cvid asc
+  </select>
+  <select id="loadList" resultMap="BaseResultMap" >
+  	select <include refid="Base_Column_List" /> from xm_customview where entitytype=#{entitytype} order by cvid asc
+  </select>
+  <update id="setAllNotDef">
+  	update xm_customview set setdefault = 0 where entitytype=#{entitytype};
+  </update>
+  <update id="setDef" >
+  	update xm_customview set setdefault = 1 where cvid = #{cvid};
+  </update>
+</mapper>

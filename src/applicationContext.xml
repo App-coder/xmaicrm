@@ -85,11 +85,11 @@
 
 	<!-- DAO层由 MapperScannerConfigurer自动生成mapper bean -->
 	<bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
-		<property name="basePackage" value="com.crm.accounts.mapper,com.crm.activities.mapper,com.crm.administration.mapper" />
+		<property name="basePackage" value="com.crm.**.mapper" />
 	</bean>
 
 	<!-- Service层 -->
-	<context:component-scan base-package="com.crm.service.impl" />
+	<context:component-scan base-package="com.crm.**.service.impl,com.crm.mapper.util" />
 
 	<!-- 事务 -->
 	<tx:advice id="txAdvice" transaction-manager="transactionManager">
@@ -111,7 +111,7 @@
 		</tx:attributes>
 	</tx:advice>
 	<aop:config>
-		<aop:advisor pointcut="execution(* com.crm.service.*Service.*(..))"
+		<aop:advisor pointcut="execution(* com.crm.**.service.*Service.*(..))"
 			advice-ref="txAdvice" />
 	</aop:config>
 

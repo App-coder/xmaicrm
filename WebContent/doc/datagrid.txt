@@ -1,0 +1,7 @@
+select * from xm_customview where entitytype='Accounts';
+select * from xm_cvcolumnlist where cvid=12;
+
+select * from xm_account;
+select * from xm_tab t where t.tablabel='Accounts';
+select * from xm_field where tabid=6;
+select * from xm_def_org_field where tabid=6;
