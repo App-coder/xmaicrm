@@ -92,8 +92,8 @@
 			<div><a href="javascript:tab('常见问答','billings/index')" >常见问答</a></div>
 		</div>
 		<div id="setting_item" style="width: 120px;" class="navmenuitem" >
-			<div>控制面板</div>
-			<div>业务规则</div>
+			<div><a href="javascript:tab('控制面板','setting/index')" >控制面板</a></div>
+			<div><a href="javascript:tab('业务规则','workflow/index')" >业务规则</a></div>
 		</div>
 	</div>
 	<div region="north" style="height: 62px;overflow: hidden; "
