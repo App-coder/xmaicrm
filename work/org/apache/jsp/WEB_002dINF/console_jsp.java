@@ -103,8 +103,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
       out.write("\t\t</div>\r\n");
       out.write("\t\t<div id=\"agora_item\" style=\"width: 120px;\" class=\"navmenuitem\"  >\r\n");
       out.write("\t\t\t<div><a href=\"javascript:tab('营销活动','campaign/index')\">营销活动</a></div>\r\n");
-      out.write("\t\t\t<div>群发短信</div>\r\n");
-      out.write("\t\t\t<div>群发邮件</div>\r\n");
+      out.write("\t\t\t<div><a href=\"javascript:tab('群发短信','qunfa/index')\">群发短信</a></div>\r\n");
+      out.write("\t\t\t<div><a href=\"javascript:tab('群发邮件','campaign/index')\">群发邮件</a></div>\r\n");
       out.write("\t\t</div>\r\n");
       out.write("\t\t<div id=\"customer_item\"  style=\"width: 120px;\" class=\"navmenuitem\"  >\r\n");
       out.write("\t\t\t<div><a href=\"javascript:tab('客户','account/index')\">客户</a></div>\r\n");
