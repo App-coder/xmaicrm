@@ -52,8 +52,13 @@ public class ModuleUtil extends BaseController{
 	public void setViewProp(ModelMap modelMap,String tabname){
 		//得到默认的view
 		XmCustomview customview = this.xmCustomViewService.selectByPrimaryKey(tabname,-1);
-		List<Column> cols = this.xmCvcolumnlistService.getViewColumn(customview);
-		modelMap.addAttribute("dview",arrayToJson(cols));
+		
+		try {
+			List<Column> cols = this.xmCvcolumnlistService.getViewColumn(customview);
+			modelMap.addAttribute("dview",arrayToJson(cols));
+		} catch (net.sf.json.JSONException e) {
+			modelMap.addAttribute("dview",null);
+		}
 		modelMap.addAttribute("customview",customview);
 		
 		//配置customview

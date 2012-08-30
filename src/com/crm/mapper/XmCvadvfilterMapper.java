@@ -19,4 +19,6 @@ public interface XmCvadvfilterMapper {
     int updateByPrimaryKey(XmCvadvfilter record);
 
 	List<XmCvadvfilter> getAdvFilters(@Param("viewid") int viewid);
+
+	void deleteCv(@Param("cvid") int cvid);
 }

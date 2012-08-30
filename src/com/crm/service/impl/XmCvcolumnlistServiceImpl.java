@@ -60,4 +60,11 @@ public class XmCvcolumnlistServiceImpl implements XmCvcolumnlistService {
 		return cols;
 	}
 
+
+	@Override
+	public void deleteCv(int cvid) {
+		this.xmCvcolumnlistMapper.deleteCv(cvid);
+		
+	}
+
 }

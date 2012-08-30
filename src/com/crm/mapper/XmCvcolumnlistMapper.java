@@ -20,4 +20,6 @@ public interface XmCvcolumnlistMapper {
     int updateByPrimaryKey(XmCvcolumnlist record);
     
     List<XmCvcolumnlist> getXmCvcolumnlistByCvid(@Param("cvid") Integer cvid);
+
+	void deleteCv(@Param("cvid") Integer cvid);
 }

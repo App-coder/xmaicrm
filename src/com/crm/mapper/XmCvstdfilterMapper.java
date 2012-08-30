@@ -18,4 +18,6 @@ public interface XmCvstdfilterMapper {
     int updateByPrimaryKey(XmCvstdfilter record);
 
 	XmCvstdfilter getStdfilter(@Param("viewid") int viewid);
+
+	void deleteCv(@Param("cvid") int cvid);
 }

@@ -93,4 +93,7 @@
   <select id="getAdvFilters" resultMap="BaseResultMap" >
   	select xm_cvadvfilter.* from xm_cvadvfilter inner join xm_customview on xm_cvadvfilter.cvid = xm_customview.cvid where xm_cvadvfilter.cvid=#{viewid}
   </select>
+  <delete id="deleteCv">
+  	delete from xm_cvadvfilter where cvid = #{cvid}
+  </delete>
 </mapper>

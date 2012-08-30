@@ -12,8 +12,9 @@ public final class console_jsp extends org.apache.jasper.runtime.HttpJspBase
   private static java.util.List _jspx_dependants;
 
   static {
-    _jspx_dependants = new java.util.ArrayList(1);
+    _jspx_dependants = new java.util.ArrayList(2);
     _jspx_dependants.add("/WEB-INF/header.jsp");
+    _jspx_dependants.add("/WEB-INF/common/commonjs.jsp");
   }
 
   private javax.el.ExpressionFactory _el_expressionfactory;
@@ -87,6 +88,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
       out.write("\r\n");
       out.write("<script type=\"text/javascript\" src=\"resources/global.js\"></script>\r\n");
       out.write("\r\n");
+      out.write('\r');
+      out.write('\n');
+      out.write("\r\n");
       out.write("<script type=\"text/javascript\" src=\"resources/desktop/index.js\"></script>\r\n");
       out.write("</head>\r\n");
       out.write("<body id=\"bodycontainer\" class=\"easyui-layout consolebd\">\r\n");
@@ -99,8 +103,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
       out.write("\t\t</div>\r\n");
       out.write("\t\t<div id=\"agora_item\" style=\"width: 120px;\" class=\"navmenuitem\"  >\r\n");
       out.write("\t\t\t<div><a href=\"javascript:tab('营销活动','campaign/index')\">营销活动</a></div>\r\n");
-      out.write("\t\t\t<div>群发短信</div>\r\n");
-      out.write("\t\t\t<div>群发邮件</div>\r\n");
+      out.write("\t\t\t<div><a href=\"javascript:tab('群发短信','qunfa/index')\">群发短信</a></div>\r\n");
+      out.write("\t\t\t<div><a href=\"javascript:tab('群发邮件','campaign/index')\">群发邮件</a></div>\r\n");
       out.write("\t\t</div>\r\n");
       out.write("\t\t<div id=\"customer_item\"  style=\"width: 120px;\" class=\"navmenuitem\"  >\r\n");
       out.write("\t\t\t<div><a href=\"javascript:tab('客户','account/index')\">客户</a></div>\r\n");
@@ -108,8 +112,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
       out.write("\t\t\t<div><a href=\"javascript:tab('客户关怀','care/index')\">客户关怀</a></div>\r\n");
       out.write("\t\t\t<div><a href=\"javascript:tab('联系记录','note/index')\">联系记录</a></div>\r\n");
       out.write("\t\t\t<div><a href=\"javascript:tab('客户任务计划','noteplans/index')\">客户任务计划</a></div>\r\n");
-      out.write("\t\t\t<div><a href=\"javascript:tab('联系记录','note/index')\">客户任务</a></div>\r\n");
-      out.write("\t\t\t<div><a href=\"javascript:tab('联系记录','note/index')\">客户池</a></div>\r\n");
+      out.write("\t\t\t<div><a href=\"javascript:tab('客户任务','note/index')\">客户任务</a></div>\r\n");
+      out.write("\t\t\t<div><a href=\"javascript:tab('客户池','note/index')\">客户池</a></div>\r\n");
       out.write("\t\t\t<div><a href=\"javascript:tab('纪念日','memdays/index')\">纪念日</a></div>\r\n");
       out.write("\t\t</div>\r\n");
       out.write("\t\t<div id=\"product_item\"  style=\"width: 120px;\" class=\"navmenuitem\"  >\r\n");
@@ -130,18 +134,18 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
       out.write("\t\t\t<div>销售目标</div>\r\n");
       out.write("\t\t</div>\r\n");
       out.write("\t\t<div id=\"buy_item\" style=\"width: 120px;\" class=\"navmenuitem\"  >\r\n");
-      out.write("\t\t\t<div>采购导航</div>\r\n");
-      out.write("\t\t\t<div>进货单</div>\r\n");
-      out.write("\t\t\t<div>供应商</div>\r\n");
-      out.write("\t\t\t<div>供应商联系人</div>\r\n");
-      out.write("\t\t\t<div>供应商联系记录</div>\r\n");
+      out.write("\t\t\t<div><a href=\"javascript:tab('采购导航','bsteps/index')\">采购导航</a></div>\r\n");
+      out.write("\t\t\t<div><a href=\"javascript:tab('进货单','purchaseorder/index')\">进货单</div>\r\n");
+      out.write("\t\t\t<div><a href=\"javascript:tab('供应商','bsteps/index')\">供应商</div>\r\n");
+      out.write("\t\t\t<div><a href=\"javascript:tab('供应商联系人','bsteps/index')\">供应商联系人</div>\r\n");
+      out.write("\t\t\t<div><a href=\"javascript:tab('供应商联系记录','bsteps/index')\">供应商联系记录</div>\r\n");
       out.write("\t\t</div>\r\n");
       out.write("\t\t<div id=\"afterser_item\" style=\"width: 120px;\" class=\"navmenuitem\"  >\r\n");
-      out.write("\t\t\t<div>客服控制台</div>\r\n");
+      out.write("\t\t\t<div><a href=\"javascript:tab('客服控制台','accountrecordss/index')\" >客服控制台</div>\r\n");
       out.write("\t\t\t<div><a href=\"javascript:tab('客户服务','accountrecordss/index')\" >客户服务</a></div>\r\n");
       out.write("\t\t\t<div><a href=\"javascript:tab('客户投诉','complaints/index')\" >客户投诉</a></div>\r\n");
       out.write("\t\t\t<div>知识库</div>\r\n");
-      out.write("\t\t\t<div>知识库分类</div>\r\n");
+      out.write("\t\t\t<div><a href=\"javascript:tab('知识库分类','faqcategorys/index')\" >知识库分类</a></div>\r\n");
       out.write("\t\t</div>\r\n");
       out.write("\t\t<div id=\"stock_item\" style=\"width: 120px;\" class=\"navmenuitem\"  >\r\n");
       out.write("\t\t\t<div>库存导航</div>\r\n");

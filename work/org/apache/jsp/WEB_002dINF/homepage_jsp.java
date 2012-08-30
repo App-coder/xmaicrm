@@ -64,7 +64,7 @@ String win_topbar = "closed=\"true\" modal=\"true\" collapsible=\"false\"  dragg
 
       out.write("    ");
       out.write("\r\n");
-      out.write("<script type=\"text/javascript\" src=\"resource/homepage.js\"></script>\r\n");
+      out.write("<script type=\"text/javascript\" src=\"resources/homepage.js\"></script>\r\n");
       out.write("<div class=\"container\">\r\n");
       out.write("\r\n");
       out.write("\r\n");

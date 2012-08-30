@@ -11,6 +11,14 @@ public interface XmCustomViewService {
 
 	XmCustomview selectByPrimaryKey(String entitytype, int viewid);
 
+	List<XmCustomview> loadCViewByEntitytype(String entitytype);
+
+	List<XmCustomview> loadList(String entitytype);
+
+	boolean setDef(int cvid, String entitytype);
+
+	boolean deleteCv(int cvid);
+
 	
 
 }
