@@ -6,6 +6,7 @@
 <body id="wrap">
 	<%@ include file="../nav.jsp"%>
 	<div id="main">
+		<div class="path" >&gt;<a  href="crm/welcome/desktop">控制面板</a></div>
 		<div class="container panel-noscroll">
 			<div class="panel datagrid">
 				<div class="panel-header">
@@ -405,13 +406,13 @@
 											<tbody>
 												<tr>
 													<td valign="top"><a
-														href="javascript:tab('相关模块字段','settings/multiapprove/index')"><img
+														href="crm/settings/relmodfield/index"><img
 															width="48" height="48" border="0"
 															src="resources/images/settings/panel/productfield.gif"></a></td>
 												</tr>
 												<tr>
 													<td valign="top" class="big"><a
-														href="javascript:tab('相关模块字段','settings/multiapprove/index')">相关模块字段</a></td>
+														href="crm/settings/relmodfield/index">相关模块字段</a></td>
 												</tr>
 											</tbody>
 										</table>

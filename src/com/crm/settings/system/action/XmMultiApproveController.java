@@ -15,7 +15,7 @@ import com.crm.action.BaseController;
  * Time: 上午10:54:14
  */
 @Controller
-@RequestMapping(value = "settings/multiapprove")
+@RequestMapping(value = "crm/settings/multiapprove")
 public class XmMultiApproveController extends BaseController {
 
 	@RequestMapping(value = "/index", method = RequestMethod.GET)

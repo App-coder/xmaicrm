@@ -62,6 +62,9 @@
 	<c:when test="${pathname=='主菜单' }">
 		${syssetting }&gt;<a href="${url }">多仓库管理</a>
 	</c:when>
+	<c:when test="${pathname=='相关模块字段' }">
+		${syssetting }&gt;<a href="${url }">相关模块字段</a>
+	</c:when>
 	<c:otherwise>
 		导航设置不正确！
 	</c:otherwise>

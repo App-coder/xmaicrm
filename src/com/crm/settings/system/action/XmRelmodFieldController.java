@@ -1,7 +1,9 @@
 package com.crm.settings.system.action;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.crm.action.BaseController;
 
@@ -14,7 +16,12 @@ import com.crm.action.BaseController;
  * Time: 上午9:12:49
  */
 @Controller
-@RequestMapping(value = "relmodfield")
+@RequestMapping(value = "crm/settings/relmodfield")
 public class XmRelmodFieldController extends BaseController {
 
+	@RequestMapping(value = "/index", method = RequestMethod.GET)
+	public String index(ModelMap modelMap){
+		return "settings/system/relmodfield";
+	}
+	
 }
