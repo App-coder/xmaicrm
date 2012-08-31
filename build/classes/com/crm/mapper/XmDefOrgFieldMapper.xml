@@ -1,46 +1,36 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.crm.settings.basic.mapper.XmProfile2fieldMapper" >
-  <resultMap id="BaseResultMap" type="com.crm.model.XmProfile2field" >
+<mapper namespace="com.crm.mapper.XmDefOrgFieldMapper" >
+  <resultMap id="BaseResultMap" type="com.crm.model.XmDefOrgField" >
     <id column="fieldid" property="fieldid" jdbcType="INTEGER" />
-    <id column="profileid" property="profileid" jdbcType="INTEGER" />
     <result column="tabid" property="tabid" jdbcType="INTEGER" />
     <result column="visible" property="visible" jdbcType="INTEGER" />
     <result column="readonly" property="readonly" jdbcType="INTEGER" />
   </resultMap>
   <sql id="Base_Column_List" >
-    fieldid, profileid, tabid, visible, readonly
+    fieldid, tabid, visible, readonly
   </sql>
-  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="map" >
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
     select 
     <include refid="Base_Column_List" />
-    from xm_profile2field
+    from xm_def_org_field
     where fieldid = #{fieldid,jdbcType=INTEGER}
-      and profileid = #{profileid,jdbcType=INTEGER}
   </select>
-  <delete id="deleteByPrimaryKey" parameterType="map" >
-    delete from xm_profile2field
-    where fieldid = #{fieldid,jdbcType=INTEGER}
-      and profileid = #{profileid,jdbcType=INTEGER}
-  </delete>
-  <delete id="deleteByFieldId" parameterType="map" >
-    delete from xm_profile2field
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from xm_def_org_field
     where fieldid = #{fieldid,jdbcType=INTEGER}
   </delete>
-  <insert id="insert" parameterType="com.crm.model.XmProfile2field" >
-    insert into xm_profile2field (fieldid, profileid, tabid, 
-      visible, readonly)
-    values (#{fieldid,jdbcType=INTEGER}, #{profileid,jdbcType=INTEGER}, #{tabid,jdbcType=INTEGER}, 
-      #{visible,jdbcType=INTEGER}, #{readonly,jdbcType=INTEGER})
+  <insert id="insert" parameterType="com.crm.model.XmDefOrgField" >
+    insert into xm_def_org_field (fieldid, tabid, visible, 
+      readonly)
+    values (#{fieldid,jdbcType=INTEGER}, #{tabid,jdbcType=INTEGER}, #{visible,jdbcType=INTEGER}, 
+      #{readonly,jdbcType=INTEGER})
   </insert>
-  <insert id="insertSelective" parameterType="com.crm.model.XmProfile2field" >
-    insert into xm_profile2field
+  <insert id="insertSelective" parameterType="com.crm.model.XmDefOrgField" >
+    insert into xm_def_org_field
     <trim prefix="(" suffix=")" suffixOverrides="," >
       <if test="fieldid != null" >
         fieldid,
-      </if>
-      <if test="profileid != null" >
-        profileid,
       </if>
       <if test="tabid != null" >
         tabid,
@@ -56,9 +46,6 @@
       <if test="fieldid != null" >
         #{fieldid,jdbcType=INTEGER},
       </if>
-      <if test="profileid != null" >
-        #{profileid,jdbcType=INTEGER},
-      </if>
       <if test="tabid != null" >
         #{tabid,jdbcType=INTEGER},
       </if>
@@ -70,8 +57,8 @@
       </if>
     </trim>
   </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="com.crm.model.XmProfile2field" >
-    update xm_profile2field
+  <update id="updateByPrimaryKeySelective" parameterType="com.crm.model.XmDefOrgField" >
+    update xm_def_org_field
     <set >
       <if test="tabid != null" >
         tabid = #{tabid,jdbcType=INTEGER},
@@ -84,14 +71,12 @@
       </if>
     </set>
     where fieldid = #{fieldid,jdbcType=INTEGER}
-      and profileid = #{profileid,jdbcType=INTEGER}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.crm.model.XmProfile2field" >
-    update xm_profile2field
+  <update id="updateByPrimaryKey" parameterType="com.crm.model.XmDefOrgField" >
+    update xm_def_org_field
     set tabid = #{tabid,jdbcType=INTEGER},
       visible = #{visible,jdbcType=INTEGER},
       readonly = #{readonly,jdbcType=INTEGER}
     where fieldid = #{fieldid,jdbcType=INTEGER}
-      and profileid = #{profileid,jdbcType=INTEGER}
   </update>
 </mapper>

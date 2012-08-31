@@ -3,6 +3,7 @@ package com.crm.settings.system.action;
 import java.util.List;
 
 import net.sf.json.JSONObject;
+import net.sf.json.util.JSONUtils;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -11,10 +12,14 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.alibaba.fastjson.JSON;
 import com.crm.action.BaseController;
 import com.crm.bean.crm.Message;
+import com.crm.bean.easyui.ListBean;
 import com.crm.model.XmField;
+import com.crm.service.XmPicklistService;
 import com.crm.settings.system.service.XmCustomFieldService;
+import com.crm.util.JsonUtil;
 
 
 /**
@@ -30,6 +35,8 @@ public class XmCustomFieldController extends BaseController {
 	
 	@Autowired
 	XmCustomFieldService xmCustomFieldService;
+	@Autowired
+	XmPicklistService xmPicklistService;
 	
 	@RequestMapping(value = "/index", method = RequestMethod.GET)
 	public String index(ModelMap modelMap){
@@ -41,8 +48,21 @@ public class XmCustomFieldController extends BaseController {
 	@ResponseBody
 	public String getFieldsByTabid(ModelMap modelMap,int tabid,int page,int rows){
 		List<XmField> list=this.xmCustomFieldService.getFieldsByTabid(tabid, page, rows);
-		return arrayToJson(list);
+		int total=this.xmCustomFieldService.getTotal(tabid);
+		ListBean ls = new ListBean();
+		ls.setTotal(total);
+		ls.setRows(list);
+		return JSON.toJSONString(ls);
 	}
+	
+	@RequestMapping(value="/getPickListByColname",method=RequestMethod.GET)
+	@ResponseBody
+	public String getFieldsByTabid(ModelMap modelMap,String colname){
+		List<Object> list=this.xmPicklistService.getPickList(colname);
+		return JSON.toJSONString(list);
+	}
+	
+	
 	
 	@RequestMapping(value="/submit",method=RequestMethod.POST)
 	@ResponseBody
@@ -50,10 +70,10 @@ public class XmCustomFieldController extends BaseController {
 		int affectrows  = 0;
 		if(action.equals("add"))
 			affectrows=this.xmCustomFieldService.insertCustomField(queryParams);
-		/*else if(action.equals("update"))
-			affectrows=this.xmCustomBlockService.updateByPrimaryKey(xmBlocks);
+		else if(action.equals("update"))
+			affectrows=this.xmCustomFieldService.updateByPrimaryKeySelective(queryParams);
 		else 
-			affectrows=this.xmCustomBlockService.deleteByPrimaryKey(blockid);*/
+			affectrows=this.xmCustomFieldService.deleteCustomField(queryParams);
 		
 		Message msg = new Message();
 		if(affectrows>=1){

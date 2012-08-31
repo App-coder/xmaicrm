@@ -5,8 +5,9 @@ import org.apache.ibatis.annotations.Param;
 
 public interface XmProfile2fieldMapper {
     int deleteByPrimaryKey(@Param("fieldid") Integer fieldid, @Param("profileid") Integer profileid);
+    int deleteByFieldId(@Param("fieldid") Integer fieldid);
 
-    int insert(XmProfile2field record);
+    void insert(XmProfile2field record);
 
     int insertSelective(XmProfile2field record);
 

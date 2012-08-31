@@ -11,6 +11,8 @@ public interface XmCustomFieldService {
 	
 	int insertCustomField(String queryParams);
 	
+	int deleteCustomField(String queryParams);
+	
 	int getSequence(String table);
 	
 	int addCfField(String tablename, String cfField);
@@ -19,5 +21,9 @@ public interface XmCustomFieldService {
 	
 	int insert(XmField record,String queryParams);
 	
-	int insertProfile2field();
+	int getTotal(int tabid);
+	
+	int updateByPrimaryKeySelective(String queryParams);
+	
+	
 }

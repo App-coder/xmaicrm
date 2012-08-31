@@ -10,6 +10,7 @@ public class XmProfile2field {
     private Integer visible;
 
     private Integer readonly;
+    
 
     public Integer getFieldid() {
         return fieldid;

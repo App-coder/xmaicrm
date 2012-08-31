@@ -22,5 +22,7 @@ public class XmPicklistServiceImpl implements XmPicklistService {
 	public List<Object> getPickList(String pickfieldcolname) {
 		return this.xmPicklistMapper.getPickList(pickfieldcolname);
 	}
+	
+	
 
 }

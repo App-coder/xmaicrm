@@ -8,12 +8,16 @@ import com.crm.model.XmPicklist;
 
 public interface XmPicklistMapper {
     int deleteByPrimaryKey(Integer id);
+    
+    int deleteByColname(String colname);
 
     int insert(XmPicklist record);
 
     int insertSelective(XmPicklist record);
 
     XmPicklist selectByPrimaryKey(Integer id);
+    
+    List<XmPicklist> selectByColname(String colname);
 
     int updateByPrimaryKeySelective(XmPicklist record);
 
