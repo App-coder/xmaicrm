@@ -135,11 +135,11 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
       out.write("\t\t\t<div><a href=\"javascript:tab('销售目标','salestarget/index')\" >销售目标</a></div>\r\n");
       out.write("\t\t</div>\r\n");
       out.write("\t\t<div id=\"buy_item\" style=\"width: 120px;\" class=\"navmenuitem\"  >\r\n");
-      out.write("\t\t\t<div><a href=\"javascript:tab('采购导航','bsteps/index')\">采购导航</a></div>\r\n");
+      out.write("\t\t\t<div><a href=\"javascript:tab('采购导航','purchase/index')\">采购导航</a></div>\r\n");
       out.write("\t\t\t<div><a href=\"javascript:tab('进货单','purchaseorder/index')\">进货单</a></div>\r\n");
-      out.write("\t\t\t<div><a href=\"javascript:tab('供应商','bsteps/index')\">供应商</a></div>\r\n");
-      out.write("\t\t\t<div><a href=\"javascript:tab('供应商联系人','bsteps/index')\">供应商联系人</a></div>\r\n");
-      out.write("\t\t\t<div><a href=\"javascript:tab('供应商联系记录','bsteps/index')\">供应商联系记录</a></div>\r\n");
+      out.write("\t\t\t<div><a href=\"javascript:tab('供应商','vendor/index')\">供应商</a></div>\r\n");
+      out.write("\t\t\t<div><a href=\"javascript:tab('供应商联系人','vcontacts/index')\">供应商联系人</a></div>\r\n");
+      out.write("\t\t\t<div><a href=\"javascript:tab('供应商联系记录','vnotes/index')\">供应商联系记录</a></div>\r\n");
       out.write("\t\t</div>\r\n");
       out.write("\t\t<div id=\"afterser_item\" style=\"width: 120px;\" class=\"navmenuitem\"  >\r\n");
       out.write("\t\t\t<div><a href=\"javascript:tab('客服控制台','accountrecordss/index')\" >客服控制台</a></div>\r\n");

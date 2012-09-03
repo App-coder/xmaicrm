@@ -1,12 +1,22 @@
 <%@ page language="java" contentType="text/html; charset=utf-8" pageEncoding="utf-8"%>
 <%@ include file="../common/config.jsp" %>
 
+<c:choose>
+	<c:when test="${customview.cvid!=null && dview!=null}">
+		<script>
+			var vcontacts_columns = ${dview};
+			var vcontacts_viewid = ${customview.cvid};
+		</script>
+	</c:when>
+	<c:otherwise>
+		<script>
+			var vcontacts_columns = "";
+			var vcontacts_viewid = -1;
+		</script>
+	</c:otherwise>
+</c:choose>	
 	
-<script>
-    var vcontacts_columns = ${dview};
-    var vcontacts_viewid = ${customview.cvid}
-</script>
-<script type="text/javascript" 	src="resources/desktop/customer/vcontacts.js"></script>
+<script type="text/javascript" 	src="resources/desktop/purchase/vcontacts.js"></script>
 
 
 <div class="container">

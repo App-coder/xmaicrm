@@ -4,7 +4,7 @@ import javax.servlet.*;
 import javax.servlet.http.*;
 import javax.servlet.jsp.*;
 
-public final class purchaseorder_jsp extends org.apache.jasper.runtime.HttpJspBase
+public final class vcontacts_jsp extends org.apache.jasper.runtime.HttpJspBase
     implements org.apache.jasper.runtime.JspSourceDependent {
 
   private static final JspFactory _jspxFactory = JspFactory.getDefaultFactory();
@@ -83,14 +83,14 @@ String win_topbar = "closed=\"true\" modal=\"true\" collapsible=\"false\"  dragg
       out.write("\r\n");
       if (_jspx_meth_c_005fchoose_005f0(_jspx_page_context))
         return;
-      out.write("\r\n");
-      out.write("\r\n");
-      out.write("<script type=\"text/javascript\" \tsrc=\"resources/desktop/customer/purchaseorder.js\"></script>\r\n");
+      out.write("\t\r\n");
+      out.write("\t\r\n");
+      out.write("<script type=\"text/javascript\" \tsrc=\"resources/desktop/purchase/vcontacts.js\"></script>\r\n");
       out.write("\r\n");
       out.write("\r\n");
       out.write("<div class=\"container\">\r\n");
       out.write("\t<div class=\"hidden\">\r\n");
-      out.write("\t\t<div id=\"purchaseorder_m1\" style=\"width:100px;\">\r\n");
+      out.write("\t\t<div id=\"vcontacts_m1\" style=\"width:100px;\">\r\n");
       out.write("\t\t\t<div data-options=\"iconCls:'icon-add'\" >创建视图</div>\r\n");
       out.write("\t\t\t<div data-options=\"iconCls:'icon-edit'\" >编辑</div>\r\n");
       out.write("\t\t\t<div data-options=\"iconCls:'icon-remove'\" >删除</div>\r\n");
@@ -106,12 +106,12 @@ String win_topbar = "closed=\"true\" modal=\"true\" collapsible=\"false\"  dragg
         return;
       out.write("\r\n");
       out.write("\t\t\t\t</select>\r\n");
-      out.write("\t\t\t\t<a href=\"javascript:void(0)\" class=\"easyui-menubutton\" data-options=\"menu:'#purchaseorder_m1',iconCls:'icon-tool'\">管理</a>\r\n");
+      out.write("\t\t\t\t<a href=\"javascript:void(0)\" class=\"easyui-menubutton\" data-options=\"menu:'#vcontacts_m1',iconCls:'icon-tool'\">管理</a>\r\n");
       out.write("\t\t\t</div>\r\n");
       out.write("\t\t</div>\r\n");
       out.write("\t\t<div data-options=\"region:'center',border:false\"\r\n");
       out.write("\t\t\tstyle=\"overflow: hidden\">\r\n");
-      out.write("\t\t\t<table id=\"purchaseorder_list\" data-options=\"fit:true,fitColumns:true\"></table>\r\n");
+      out.write("\t\t\t<table id=\"vcontacts_list\" data-options=\"fit:true,fitColumns:true\"></table>\r\n");
       out.write("\t\t</div>\r\n");
       out.write("\t\t");
       if (_jspx_meth_c_005fif_005f0(_jspx_page_context))
@@ -175,17 +175,17 @@ String win_topbar = "closed=\"true\" modal=\"true\" collapsible=\"false\"  dragg
     org.apache.taglibs.standard.tag.rt.core.WhenTag _jspx_th_c_005fwhen_005f0 = (org.apache.taglibs.standard.tag.rt.core.WhenTag) _005fjspx_005ftagPool_005fc_005fwhen_0026_005ftest.get(org.apache.taglibs.standard.tag.rt.core.WhenTag.class);
     _jspx_th_c_005fwhen_005f0.setPageContext(_jspx_page_context);
     _jspx_th_c_005fwhen_005f0.setParent((javax.servlet.jsp.tagext.Tag) _jspx_th_c_005fchoose_005f0);
-    // /WEB-INF/purchase/purchaseorder.jsp(5,1) name = test type = boolean reqTime = true required = true fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
+    // /WEB-INF/purchase/vcontacts.jsp(5,1) name = test type = boolean reqTime = true required = true fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
     _jspx_th_c_005fwhen_005f0.setTest(((java.lang.Boolean) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${customview.cvid!=null && dview!=null}", java.lang.Boolean.class, (PageContext)_jspx_page_context, null, false)).booleanValue());
     int _jspx_eval_c_005fwhen_005f0 = _jspx_th_c_005fwhen_005f0.doStartTag();
     if (_jspx_eval_c_005fwhen_005f0 != javax.servlet.jsp.tagext.Tag.SKIP_BODY) {
       do {
         out.write("\r\n");
         out.write("\t\t<script>\r\n");
-        out.write("\t\t\tvar purchaseorder_columns = ");
+        out.write("\t\t\tvar vcontacts_columns = ");
         out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${dview}", java.lang.String.class, (PageContext)_jspx_page_context, null, false));
         out.write(";\r\n");
-        out.write("\t\t\tvar purchaseorder_viewid = ");
+        out.write("\t\t\tvar vcontacts_viewid = ");
         out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${customview.cvid}", java.lang.String.class, (PageContext)_jspx_page_context, null, false));
         out.write(";\r\n");
         out.write("\t\t</script>\r\n");
@@ -216,8 +216,8 @@ String win_topbar = "closed=\"true\" modal=\"true\" collapsible=\"false\"  dragg
       do {
         out.write("\r\n");
         out.write("\t\t<script>\r\n");
-        out.write("\t\t\tvar purchaseorder_columns = \"\";\r\n");
-        out.write("\t\t\tvar purchaseorder_viewid = -1;\r\n");
+        out.write("\t\t\tvar vcontacts_columns = \"\";\r\n");
+        out.write("\t\t\tvar vcontacts_viewid = -1;\r\n");
         out.write("\t\t</script>\r\n");
         out.write("\t");
         int evalDoAfterBody = _jspx_th_c_005fotherwise_005f0.doAfterBody();
@@ -241,9 +241,9 @@ String win_topbar = "closed=\"true\" modal=\"true\" collapsible=\"false\"  dragg
     org.apache.taglibs.standard.tag.rt.core.ForEachTag _jspx_th_c_005fforEach_005f0 = (org.apache.taglibs.standard.tag.rt.core.ForEachTag) _005fjspx_005ftagPool_005fc_005fforEach_0026_005fvar_005fitems.get(org.apache.taglibs.standard.tag.rt.core.ForEachTag.class);
     _jspx_th_c_005fforEach_005f0.setPageContext(_jspx_page_context);
     _jspx_th_c_005fforEach_005f0.setParent(null);
-    // /WEB-INF/purchase/purchaseorder.jsp(35,4) name = items type = java.lang.Object reqTime = true required = false fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
+    // /WEB-INF/purchase/vcontacts.jsp(35,4) name = items type = java.lang.Object reqTime = true required = false fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
     _jspx_th_c_005fforEach_005f0.setItems((java.lang.Object) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${views}", java.lang.Object.class, (PageContext)_jspx_page_context, null, false));
-    // /WEB-INF/purchase/purchaseorder.jsp(35,4) name = var type = java.lang.String reqTime = false required = false fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
+    // /WEB-INF/purchase/vcontacts.jsp(35,4) name = var type = java.lang.String reqTime = false required = false fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
     _jspx_th_c_005fforEach_005f0.setVar("v");
     int[] _jspx_push_body_count_c_005fforEach_005f0 = new int[] { 0 };
     try {
@@ -285,7 +285,7 @@ String win_topbar = "closed=\"true\" modal=\"true\" collapsible=\"false\"  dragg
     org.apache.taglibs.standard.tag.rt.core.IfTag _jspx_th_c_005fif_005f0 = (org.apache.taglibs.standard.tag.rt.core.IfTag) _005fjspx_005ftagPool_005fc_005fif_0026_005ftest.get(org.apache.taglibs.standard.tag.rt.core.IfTag.class);
     _jspx_th_c_005fif_005f0.setPageContext(_jspx_page_context);
     _jspx_th_c_005fif_005f0.setParent(null);
-    // /WEB-INF/purchase/purchaseorder.jsp(46,2) name = test type = boolean reqTime = true required = true fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
+    // /WEB-INF/purchase/vcontacts.jsp(46,2) name = test type = boolean reqTime = true required = true fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
     _jspx_th_c_005fif_005f0.setTest(((java.lang.Boolean) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${repfields!=null }", java.lang.Boolean.class, (PageContext)_jspx_page_context, null, false)).booleanValue());
     int _jspx_eval_c_005fif_005f0 = _jspx_th_c_005fif_005f0.doStartTag();
     if (_jspx_eval_c_005fif_005f0 != javax.servlet.jsp.tagext.Tag.SKIP_BODY) {
@@ -325,9 +325,9 @@ String win_topbar = "closed=\"true\" modal=\"true\" collapsible=\"false\"  dragg
     org.apache.taglibs.standard.tag.rt.core.ForEachTag _jspx_th_c_005fforEach_005f1 = (org.apache.taglibs.standard.tag.rt.core.ForEachTag) _005fjspx_005ftagPool_005fc_005fforEach_0026_005fvar_005fitems.get(org.apache.taglibs.standard.tag.rt.core.ForEachTag.class);
     _jspx_th_c_005fforEach_005f1.setPageContext(_jspx_page_context);
     _jspx_th_c_005fforEach_005f1.setParent((javax.servlet.jsp.tagext.Tag) _jspx_th_c_005fif_005f0);
-    // /WEB-INF/purchase/purchaseorder.jsp(51,6) name = items type = java.lang.Object reqTime = true required = false fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
+    // /WEB-INF/purchase/vcontacts.jsp(51,6) name = items type = java.lang.Object reqTime = true required = false fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
     _jspx_th_c_005fforEach_005f1.setItems((java.lang.Object) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${repfields}", java.lang.Object.class, (PageContext)_jspx_page_context, null, false));
-    // /WEB-INF/purchase/purchaseorder.jsp(51,6) name = var type = java.lang.String reqTime = false required = false fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
+    // /WEB-INF/purchase/vcontacts.jsp(51,6) name = var type = java.lang.String reqTime = false required = false fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
     _jspx_th_c_005fforEach_005f1.setVar("f");
     int[] _jspx_push_body_count_c_005fforEach_005f1 = new int[] { 0 };
     try {

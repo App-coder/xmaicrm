@@ -50,7 +50,7 @@ public class XmVnotesController extends BaseController {
 	@RequestMapping(value = "/index", method = RequestMethod.GET)
 	public String index(ModelMap modelMap){
 		this.moduleUtil.setViewProp(modelMap,"Vnotes");
-		return "stock/vnotes";
+		return "purchase/vnotes";
 	}
 	
 	/**

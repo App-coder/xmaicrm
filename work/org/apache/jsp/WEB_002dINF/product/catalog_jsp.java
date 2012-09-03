@@ -1,10 +1,10 @@
-package org.apache.jsp.WEB_002dINF.financial;
+package org.apache.jsp.WEB_002dINF.product;
 
 import javax.servlet.*;
 import javax.servlet.http.*;
 import javax.servlet.jsp.*;
 
-public final class nav_jsp extends org.apache.jasper.runtime.HttpJspBase
+public final class catalog_jsp extends org.apache.jasper.runtime.HttpJspBase
     implements org.apache.jasper.runtime.JspSourceDependent {
 
   private static final JspFactory _jspxFactory = JspFactory.getDefaultFactory();
@@ -13,7 +13,7 @@ public final class nav_jsp extends org.apache.jasper.runtime.HttpJspBase
 
   static {
     _jspx_dependants = new java.util.ArrayList(1);
-    _jspx_dependants.add("/WEB-INF/financial/../common/config.jsp");
+    _jspx_dependants.add("/WEB-INF/product/../common/config.jsp");
   }
 
   private javax.el.ExpressionFactory _el_expressionfactory;
@@ -64,27 +64,9 @@ String win_topbar = "closed=\"true\" modal=\"true\" collapsible=\"false\"  dragg
 
       out.write("    ");
       out.write("\r\n");
+      out.write("<script type=\"text/javascript\" src=\"resources/desktop/product/catalog.js\"></script>\r\n");
       out.write("<div class=\"container\"  >\r\n");
-      out.write("<div style=\"width:80%;position:relative;\">\r\n");
-      out.write("\t<table width=\"780\" border=\"0\">\r\n");
-      out.write("\t<tbody><tr><td align=\"center\"><img border=\"0\" usemap=\"#Map1\" src=\"resources/images/financial/nav/fi_01.jpg\"><br>\r\n");
-      out.write("\t<img border=\"0\" usemap=\"#Map2\" src=\"resources/images/financial/nav/fi_02.jpg\"><br>\r\n");
-      out.write("\t<img border=\"0\" usemap=\"#Map3\" src=\"resources/images/financial/nav/fi_03.jpg\">\r\n");
-      out.write("\t</td><td></td></tr>\r\n");
-      out.write("\t<tr class=\"lvtColDataHover\">\r\n");
-      out.write("\t<td align=\"center\"><font size=\"5\"><b></b></font></td>\r\n");
-      out.write("\t</tr>\r\n");
-      out.write("\t</tbody></table>\r\n");
-      out.write("\t<map id=\"Map1\" name=\"Map1\">\r\n");
-      out.write("\t<area href=\"index.php?action=index&amp;module=Gathers&amp;parenttab=Accounting\" coords=\"395, 5, 485, 90\" shape=\"rect\">\r\n");
-      out.write("\t</map>\r\n");
-      out.write("\t<map id=\"Map2\" name=\"Map2\">\r\n");
-      out.write("\t<area href=\"index.php?action=index&amp;module=Charges&amp;parenttab=Accounting\" coords=\"570, 15, 655, 105\" shape=\"rect\">\r\n");
-      out.write("\t</map>\r\n");
-      out.write("\t<map id=\"Map3\" name=\"Map3\">\r\n");
-      out.write("\t<area href=\"index.php?action=index&amp;module=Expenses&amp;parenttab=Accounting\" coords=\"440, 35, 535, 130\" shape=\"rect\">\r\n");
-      out.write("\t</map>\r\n");
-      out.write("</div>\r\n");
+      out.write("\t<table id=\"catalog_list\" title=\"群发邮件\" fit=\"true\"></table>\r\n");
       out.write("</div>\r\n");
     } catch (Throwable t) {
       if (!(t instanceof SkipPageException)){

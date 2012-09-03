@@ -1,11 +1,21 @@
 <%@ page language="java" contentType="text/html; charset=utf-8" pageEncoding="utf-8"%>
 <%@ include file="../common/config.jsp" %>
 
-	
-<script>
-    var purchaseorder_columns = ${dview};
-    var purchaseorder_viewid = ${customview.cvid}
-</script>
+<c:choose>
+	<c:when test="${customview.cvid!=null && dview!=null}">
+		<script>
+			var purchaseorder_columns = ${dview};
+			var purchaseorder_viewid = ${customview.cvid};
+		</script>
+	</c:when>
+	<c:otherwise>
+		<script>
+			var purchaseorder_columns = "";
+			var purchaseorder_viewid = -1;
+		</script>
+	</c:otherwise>
+</c:choose>
+
 <script type="text/javascript" 	src="resources/desktop/customer/purchaseorder.js"></script>
 
 

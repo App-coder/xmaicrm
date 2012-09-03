@@ -1,11 +1,21 @@
 <%@ page language="java" contentType="text/html; charset=utf-8" pageEncoding="utf-8"%>
 <%@ include file="../common/config.jsp" %>
 
+<c:choose>
+	<c:when test="${customview.cvid!=null && dview!=null}">
+		<script>
+			var accountrecordss_columns = ${dview};
+			var accountrecordss_viewid = ${customview.cvid};
+		</script>
+	</c:when>
+	<c:otherwise>
+		<script>
+			var accountrecordss_columns = "";
+			var accountrecordss_viewid = -1;
+		</script>
+	</c:otherwise>
+</c:choose>	
 	
-<script>
-    var accountrecordss_columns = ${dview};
-    var accountrecordss_viewid = ${customview.cvid}
-</script>
 <script type="text/javascript" 	src="resources/desktop/afterser/accountrecordss.js"></script>
 
 

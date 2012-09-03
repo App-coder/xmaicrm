@@ -45,17 +45,17 @@
 			<div><a href="javascript:tab('销售目标','salestarget/index')" >销售目标</a></div>
 		</div>
 		<div id="buy_item" style="width: 120px;" class="navmenuitem"  >
-			<div><a href="javascript:tab('采购导航','bsteps/index')">采购导航</a></div>
+			<div><a href="javascript:tab('采购导航','purchase/nav')">采购导航</a></div>
 			<div><a href="javascript:tab('进货单','purchaseorder/index')">进货单</a></div>
-			<div><a href="javascript:tab('供应商','bsteps/index')">供应商</a></div>
-			<div><a href="javascript:tab('供应商联系人','bsteps/index')">供应商联系人</a></div>
-			<div><a href="javascript:tab('供应商联系记录','bsteps/index')">供应商联系记录</a></div>
+			<div><a href="javascript:tab('供应商','vendor/index')">供应商</a></div>
+			<div><a href="javascript:tab('供应商联系人','vcontacts/index')">供应商联系人</a></div>
+			<div><a href="javascript:tab('供应商联系记录','vnotes/index')">供应商联系记录</a></div>
 		</div>
 		<div id="afterser_item" style="width: 120px;" class="navmenuitem"  >
 			<div><a href="javascript:tab('客服控制台','accountrecordss/index')" >客服控制台</a></div>
 			<div><a href="javascript:tab('客户服务','accountrecordss/index')" >客户服务</a></div>
 			<div><a href="javascript:tab('客户投诉','complaints/index')" >客户投诉</a></div>
-			<div>知识库</div>
+			<div><a href="javascript:tab('知识库','faq/index')" >知识库</a></div>
 			<div><a href="javascript:tab('知识库分类','faqcategorys/index')" >知识库分类</a></div>
 		</div>
 		<div id="stock_item" style="width: 120px;" class="navmenuitem"  >

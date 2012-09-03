@@ -1,12 +1,22 @@
 <%@ page language="java" contentType="text/html; charset=utf-8" pageEncoding="utf-8"%>
 <%@ include file="../common/config.jsp" %>
 
+<c:choose>
+	<c:when test="${customview.cvid!=null && dview!=null}">
+		<script>
+			var vendor_columns = ${dview};
+			var vendor_viewid = ${customview.cvid};
+		</script>
+	</c:when>
+	<c:otherwise>
+		<script>
+			var vendor_columns = "";
+			var vendor_viewid = -1;
+		</script>
+	</c:otherwise>
+</c:choose>	
 	
-<script>
-    var vendor_columns = ${dview};
-    var vendor_viewid = ${customview.cvid}
-</script>
-<script type="text/javascript" 	src="resources/desktop/customer/vendor.js"></script>
+<script type="text/javascript" 	src="resources/desktop/purchase/vendor.js"></script>
 
 
 <div class="container">
