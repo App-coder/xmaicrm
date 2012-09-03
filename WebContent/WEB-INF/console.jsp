@@ -11,10 +11,11 @@
 			<div>文档中心</div>
 			<div>公告</div>
 		</div>
+		<!-- com.crm.marketing -->
 		<div id="agora_item" style="width: 120px;" class="navmenuitem"  >
 			<div><a href="javascript:tab('营销活动','campaign/index')">营销活动</a></div>
 			<div><a href="javascript:tab('群发短信','qunfa/index')">群发短信</a></div>
-			<div><a href="javascript:tab('群发邮件','campaign/index')">群发邮件</a></div>
+			<div><a href="javascript:tab('群发邮件','maillist/index')">群发邮件</a></div>
 		</div>
 		<div id="customer_item"  style="width: 120px;" class="navmenuitem"  >
 			<div><a href="javascript:tab('客户','account/index')">客户</a></div>
@@ -28,33 +29,33 @@
 		</div>
 		<div id="product_item"  style="width: 120px;" class="navmenuitem"  >
 			<div><a href="javascript:tab('产品列表','product/index')" >产品列表</a></div>
-			<div>产品分类</div>
-			<div>产品序号</div>
+			<div><a href="javascript:tab('产品分类','catalog/index')" >产品分类</a></div>
+			<div><a href="javascript:tab('产品序号','serialnumbers/index')" >产品序号</a></div>
 		</div>
 		<div id="sale_item" style="width: 120px;" class="navmenuitem"  >
-			<div>销售导航</div>
+			<div><a href="javascript:tab('销售导航','potential/nav')" >销售导航</a></div>
 			<div><a href="javascript:tab('销售机会','potential/index')" >销售机会</a></div>
-			<div>销售漏斗</div>
+			<div><a href="javascript:tab('销售漏斗','potential/funnel')" >销售漏斗</a></div>
 			<div><a href="javascript:tab('报价单','quotes/index')" >报价单</a></div>
 			<div><a href="javascript:tab('竞争对手','duishous/index')" >竞争对手</a></div>
 			<div><a href="javascript:tab('合同订单','salesorder/index')" >合同订单</a></div>
 			<div><a href="javascript:tab('发货单','invoice/index')" >发货单</a></div>
 			<div><a href="javascript:tab('销售退货单','tuihuos/index')" >销售退货单</a></div>
-			<div>员工绩效</div>
-			<div>销售目标</div>
+			<div><a href="javascript:tab('员工绩效','performances/index')" >员工绩效</a></div>
+			<div><a href="javascript:tab('销售目标','salestarget/index')" >销售目标</a></div>
 		</div>
 		<div id="buy_item" style="width: 120px;" class="navmenuitem"  >
-			<div><a href="javascript:tab('采购导航','bsteps/index')">采购导航</a></div>
+			<div><a href="javascript:tab('采购导航','purchase/nav')">采购导航</a></div>
 			<div><a href="javascript:tab('进货单','purchaseorder/index')">进货单</a></div>
-			<div><a href="javascript:tab('供应商','bsteps/index')">供应商</a></div>
-			<div><a href="javascript:tab('供应商联系人','bsteps/index')">供应商联系人</a></div>
-			<div><a href="javascript:tab('供应商联系记录','bsteps/index')">供应商联系记录</a></div>
+			<div><a href="javascript:tab('供应商','vendor/index')">供应商</a></div>
+			<div><a href="javascript:tab('供应商联系人','vcontacts/index')">供应商联系人</a></div>
+			<div><a href="javascript:tab('供应商联系记录','vnotes/index')">供应商联系记录</a></div>
 		</div>
 		<div id="afterser_item" style="width: 120px;" class="navmenuitem"  >
 			<div><a href="javascript:tab('客服控制台','accountrecordss/index')" >客服控制台</a></div>
 			<div><a href="javascript:tab('客户服务','accountrecordss/index')" >客户服务</a></div>
 			<div><a href="javascript:tab('客户投诉','complaints/index')" >客户投诉</a></div>
-			<div>知识库</div>
+			<div><a href="javascript:tab('知识库','faq/index')" >知识库</a></div>
 			<div><a href="javascript:tab('知识库分类','faqcategorys/index')" >知识库分类</a></div>
 		</div>
 		<div id="stock_item" style="width: 120px;" class="navmenuitem"  >
@@ -69,7 +70,7 @@
 			<div><a href="javascript:tab('库存台帐','inventoryledgers/index')" >库存台帐</a></div>
 		</div>
 		<div id="finance_item" style="width: 120px;" class="navmenuitem"  >
-			<div><a href="javascript:tab('财务导航','accounting/index')" >财务导航</a></div>
+			<div><a href="javascript:tab('财务导航','accounting/nav')" >财务导航</a></div>
 			<div><a href="javascript:tab('应收款','gathers/index')" >应收款</a></div>
 			<div><a href="javascript:tab('应付款','inventoryledgers/index')" >应付款</a></div>
 			<div><a href="javascript:tab('收款单','gathersrecords/index')" >收款单</a></div>

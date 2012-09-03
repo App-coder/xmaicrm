@@ -14,4 +14,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @RequestMapping(value = "inventory")
 public class XmInventoryController {
 
+	
+	
+	
 }

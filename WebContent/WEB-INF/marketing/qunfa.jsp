@@ -4,5 +4,5 @@
 <script type="text/javascript"
 	src="resources/desktop/marketing/qunfa.js"></script>
 <div class="container">
-<table id="demo_list" title="配送方式列表" fit="true"></table>
+<table id="qunfa_list" title="群发短信" fit="true"></table>
 </div>

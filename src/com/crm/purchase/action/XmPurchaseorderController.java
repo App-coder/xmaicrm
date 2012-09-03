@@ -50,8 +50,8 @@ public class XmPurchaseorderController extends BaseController {
 	
 	@RequestMapping(value = "/index", method = RequestMethod.GET)
 	public String index(ModelMap modelMap){
-		this.moduleUtil.setViewProp(modelMap,"Purchaseorder");
-		return "stock/purchaseorder";
+		//this.moduleUtil.setViewProp(modelMap,"Purchaseorder");
+		return "purchase/purchaseorder";
 	}
 	
 	/**

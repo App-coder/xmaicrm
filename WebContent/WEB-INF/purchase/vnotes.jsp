@@ -1,13 +1,21 @@
 <%@ page language="java" contentType="text/html; charset=utf-8" pageEncoding="utf-8"%>
 <%@ include file="../common/config.jsp" %>
 
-	
-<script>
-    var vnotes_columns = ${dview};
-    var vnotes_viewid = ${customview.cvid}
-</script>
-<script type="text/javascript" 	src="resources/desktop/customer/vnotes.js"></script>
-
+<c:choose>
+	<c:when test="${customview.cvid!=null && dview!=null}">
+		<script>
+			var vnotes_columns = ${dview};
+			var vnotes_viewid = ${customview.cvid};
+		</script>
+	</c:when>
+	<c:otherwise>
+		<script>
+			var vnotes_columns = "";
+			var vnotes_viewid = -1;
+		</script>
+	</c:otherwise>
+</c:choose>	
+<script type="text/javascript" 	src="resources/desktop/purchase/vnotes.js"></script>
 
 <div class="container">
 	<div class="hidden">

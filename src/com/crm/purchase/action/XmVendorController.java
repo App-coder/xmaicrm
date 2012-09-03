@@ -51,7 +51,7 @@ public class XmVendorController extends BaseController {
 	@RequestMapping(value = "/index", method = RequestMethod.GET)
 	public String index(ModelMap modelMap){
 		this.moduleUtil.setViewProp(modelMap,"Vendor");
-		return "stock/vendor";
+		return "purchase/vendor";
 	}
 	
 	/**

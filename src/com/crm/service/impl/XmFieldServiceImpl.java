@@ -28,8 +28,12 @@ public class XmFieldServiceImpl implements XmFieldService{
 
 	public List<XmField> getReportField(String tabname) {
 		XmTab tab = this.xmTabMapper.getTabByName(tabname);
-		List<XmField> fields = this.xmFieldMapper.getReportField(tab.getTabid());
-		return fields;
+		try{
+			List<XmField> fields = this.xmFieldMapper.getReportField(tab.getTabid());
+			return fields;
+		}catch(NullPointerException e){
+			return null;
+		}
 	}
 
 }

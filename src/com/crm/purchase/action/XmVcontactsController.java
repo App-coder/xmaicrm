@@ -51,7 +51,7 @@ public class XmVcontactsController extends BaseController {
 	@RequestMapping(value = "/index", method = RequestMethod.GET)
 	public String index(ModelMap modelMap){
 		this.moduleUtil.setViewProp(modelMap,"Vcontacts");
-		return "stock/vendor";
+		return "purchase/vcontacts";
 	}
 	
 	/**
