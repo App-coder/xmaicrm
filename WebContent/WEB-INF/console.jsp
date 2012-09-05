@@ -85,6 +85,7 @@
 			<div><a href="javascript:tab('常用报表','ureports/index')" >常用报表</a></div>
 			<div><a href="javascript:tab('年终销售报表','salesreports/index')" >年终销售报表</a></div>
 		</div>
+		<!-- 
 		<div id="service_item" style="width: 120px;" class="navmenuitem" >
 			<div><a href="javascript:tab('服务合同','billings/index')" >服务合同</a></div>
 			<div><a href="javascript:tab('项目里程碑','billings/index')" >项目里程碑</a></div>
@@ -92,6 +93,7 @@
 			<div><a href="javascript:tab('项目','billings/index')" >项目</a></div>
 			<div><a href="javascript:tab('常见问答','billings/index')" >常见问答</a></div>
 		</div>
+		 -->
 		<div id="setting_item" style="width: 120px;" class="navmenuitem" >
 			<div><a href="javascript:tab('控制面板','setting/index')" >控制面板</a></div>
 			<div><a href="javascript:tab('业务规则','workflow/index')" >业务规则</a></div>
@@ -141,14 +143,22 @@
 				<li><a href="javascript:void(0)" id="report"
 					class="easyui-menubutton" data-options="menu:'#report_item'">报表</a></li>
 				<li class="split"></li>
+				
+				<!-- 
 				<li><a href="javascript:void(0)" id="service"
 					class="easyui-menubutton" data-options="menu:'#service_item'">服务支持</a></li>
 				<li class="split"></li>
+				 -->
+				
 				<li><a href="javascript:void(0)" id="setting"
 					class="easyui-menubutton" data-options="menu:'#setting_item'">控制面板</a></li>
 				<li class="split"></li>
+				
+				<!-- 
 				<li><a href="javascript:void(0)" id="quick"
 					class="easyui-menubutton" data-options="menu:'#quick_item'"><input id="quick" name="dept" value="aa"></a></li>
+				 -->
+					
 			</ul>
 		</div>
 	</div>

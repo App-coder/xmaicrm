@@ -1,10 +1,10 @@
-package org.apache.jsp.WEB_002dINF;
+package org.apache.jsp.WEB_002dINF.financial;
 
 import javax.servlet.*;
 import javax.servlet.http.*;
 import javax.servlet.jsp.*;
 
-public final class homepage_jsp extends org.apache.jasper.runtime.HttpJspBase
+public final class gathers_jsp extends org.apache.jasper.runtime.HttpJspBase
     implements org.apache.jasper.runtime.JspSourceDependent {
 
   private static final JspFactory _jspxFactory = JspFactory.getDefaultFactory();
@@ -13,7 +13,7 @@ public final class homepage_jsp extends org.apache.jasper.runtime.HttpJspBase
 
   static {
     _jspx_dependants = new java.util.ArrayList(1);
-    _jspx_dependants.add("/WEB-INF/common/config.jsp");
+    _jspx_dependants.add("/WEB-INF/financial/../common/config.jsp");
   }
 
   private javax.el.ExpressionFactory _el_expressionfactory;
@@ -55,8 +55,8 @@ public final class homepage_jsp extends org.apache.jasper.runtime.HttpJspBase
       out = pageContext.getOut();
       _jspx_out = out;
 
-      out.write('\r');
-      out.write('\n');
+      out.write("\r\n");
+      out.write("<!-- 应收款界面 -->\t\r\n");
       out.write("\r\n");
       out.write("\r\n");
 
@@ -64,11 +64,9 @@ String win_topbar = "closed=\"true\" modal=\"true\" collapsible=\"false\"  dragg
 
       out.write("    ");
       out.write("\r\n");
-      out.write("<script type=\"text/javascript\" src=\"resources/homepage.js\"></script>\r\n");
+      out.write("<script type=\"text/javascript\" src=\"resources/desktop/financial/gathers.js\"></script>\r\n");
       out.write("<div class=\"container\">\r\n");
-      out.write("\r\n");
-      out.write("\r\n");
-      out.write("\r\n");
+      out.write("应收款界面\r\n");
       out.write("</div>");
     } catch (Throwable t) {
       if (!(t instanceof SkipPageException)){

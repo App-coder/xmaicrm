@@ -1,15 +1,20 @@
-package org.apache.jsp;
+package org.apache.jsp.WEB_002dINF.inventory;
 
 import javax.servlet.*;
 import javax.servlet.http.*;
 import javax.servlet.jsp.*;
 
-public final class error_jsp extends org.apache.jasper.runtime.HttpJspBase
+public final class deliverys_jsp extends org.apache.jasper.runtime.HttpJspBase
     implements org.apache.jasper.runtime.JspSourceDependent {
 
   private static final JspFactory _jspxFactory = JspFactory.getDefaultFactory();
 
   private static java.util.List _jspx_dependants;
+
+  static {
+    _jspx_dependants = new java.util.ArrayList(1);
+    _jspx_dependants.add("/WEB-INF/inventory/../common/config.jsp");
+  }
 
   private javax.el.ExpressionFactory _el_expressionfactory;
   private org.apache.AnnotationProcessor _jsp_annotationprocessor;
@@ -40,7 +45,7 @@ public final class error_jsp extends org.apache.jasper.runtime.HttpJspBase
 
 
     try {
-      response.setContentType("text/html");
+      response.setContentType("text/html; charset=utf-8");
       pageContext = _jspxFactory.getPageContext(this, request, response,
       			null, true, 8192, true);
       _jspx_page_context = pageContext;
@@ -50,7 +55,19 @@ public final class error_jsp extends org.apache.jasper.runtime.HttpJspBase
       out = pageContext.getOut();
       _jspx_out = out;
 
-      out.write("dssdf");
+      out.write("\r\n");
+      out.write("<!-- 出库单界面 -->\t\r\n");
+      out.write("\r\n");
+      out.write("\r\n");
+
+String win_topbar = "closed=\"true\" modal=\"true\" collapsible=\"false\"  draggable=\"false\" minimizable=\"false\" maximizable=\"false\" inline=\"false\" resizable=\"false\"";
+
+      out.write("    ");
+      out.write("\r\n");
+      out.write("<script type=\"text/javascript\" src=\"resources/desktop/inventory/warehouses.js\"></script>\r\n");
+      out.write("<div class=\"container\">\r\n");
+      out.write("出库单界面\r\n");
+      out.write("</div>");
     } catch (Throwable t) {
       if (!(t instanceof SkipPageException)){
         out = _jspx_out;

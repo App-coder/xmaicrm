@@ -19,10 +19,10 @@
 					<!-- icon 1-->
 						<table width="100%" class="tab_center" cellspacing="0" cellpadding="5" border="0">
 						<tbody><tr>
-							<td valign="top"><a href="index.php?module=Users&amp;action=index&amp;parenttab=Settings"><img width="48" height="48" border="0" title="系统用户" alt="系统用户" src="resources/images/settings/panel/ico-users.gif"></a></td>
+							<td valign="top"><a href="javascript:tab('系统用户','settings/users/index')"><img width="48" height="48" border="0" title="系统用户" alt="系统用户" src="resources/images/settings/panel/ico-users.gif"></a></td>
 							</tr>
 							<tr>
-							<td valign="top" class="big"><a href="index.php?module=Users&amp;action=index&amp;parenttab=Settings">系统用户</a></td>
+							<td valign="top" class="big"><a href="javascript:tab('系统用户','settings/users/index')">系统用户</a></td>
 						</tr>
 						</tbody></table>
 					</td>
@@ -30,10 +30,10 @@
 					<!-- icon 2-->
 						<table width="100%" class="tab_center"  cellspacing="0" cellpadding="5" border="0">
 						<tbody><tr>
-							<td valign="top"><a href="index.php?module=Users&amp;action=listroles&amp;parenttab=Settings"><img width="48" height="48" border="0" title="角色权限" alt="角色权限" src="resources/images/settings/panel/ico-roles.gif"></a></td>
+							<td valign="top"><a href="javascript:tab('角色权限','settings/role/index')"><img width="48" height="48" border="0" title="角色权限" alt="角色权限" src="resources/images/settings/panel/ico-roles.gif"></a></td>
 							</tr>
 							<tr>
-							<td valign="top" class="big"><a href="index.php?module=Users&amp;action=listroles&amp;parenttab=Settings">角色权限</a></td>
+							<td valign="top" class="big"><a href="javascript:tab('角色权限','settings/role/index')">角色权限</a></td>
 						</tr>
 						</tbody></table>
 					</td>
@@ -42,10 +42,10 @@
 					<!-- icon 4-->
 						<table width="100%" class="tab_center"  cellspacing="0" cellpadding="5" border="0">
 						<tbody><tr>
-							<td valign="top"><a href="index.php?module=Users&amp;action=listgroups&amp;parenttab=Settings"><img width="48" height="48" border="0" title="部门机构" alt="部门机构" src="resources/images/settings/panel/ico-groups.gif"></a></td>
+							<td valign="top"><a href="javascript:tab('部门机构','settings/group/index')"><img width="48" height="48" border="0" title="部门机构" alt="部门机构" src="resources/images/settings/panel/ico-groups.gif"></a></td>
 						</tr>
 							<tr>
-							<td valign="top" class="big"><a href="index.php?module=Users&amp;action=listgroups&amp;parenttab=Settings">部门机构</a></td>
+							<td valign="top" class="big"><a href="javascript:tab('部门机构','settings/group/index')">部门机构</a></td>
 						</tr>
 						</tbody></table>
 					</td>
@@ -54,10 +54,10 @@
 					<!-- icon 5-->
 						<table width="100%" class="tab_center"  cellspacing="0" cellpadding="5" border="0">
 						<tbody><tr>
-							<td valign="top"><a href="index.php?module=Users&amp;action=OrgSharingDetailView&amp;parenttab=Settings"><img width="48" height="48" border="0" title="全局共享规则" alt="全局共享规则" src="resources/images/settings/panel/shareaccess.gif"></a></td>
+							<td valign="top"><a href="javascript:tab('全局共享规则','settings/orgsharingdetailview/index')"><img width="48" height="48" border="0" title="全局共享规则" alt="全局共享规则" src="resources/images/settings/panel/shareaccess.gif"></a></td>
 						</tr>
 						<tr>
-							<td valign="top" class="big"><a href="index.php?module=Users&amp;action=OrgSharingDetailView&amp;parenttab=Settings">全局共享规则</a></td>
+							<td valign="top" class="big"><a href="javascript:tab('全局共享规则','settings/orgsharingdetailview/index')">全局共享规则</a></td>
 						</tr>
 						
 						</tbody></table>
@@ -66,45 +66,30 @@
 					<!-- icon 5-->
 						<table width="100%" class="tab_center"  cellspacing="0" cellpadding="5" border="0">
 						<tbody><tr>
-							<td valign="top"><a href="index.php?module=Settings&amp;action=CustomSharingDetailView&amp;parenttab=Settings"><img width="48" height="48" border="0" title="自定义共享规则" alt="全局共享规则" src="resources/images/settings/panel/shareaccess.gif"></a>
+							<td valign="top"><a href="javascript:tab('自定义共享规则','settings/customsharingdetailview/index')"><img width="48" height="48" border="0" title="自定义共享规则" alt="全局共享规则" src="resources/images/settings/panel/shareaccess.gif"></a>
 							</td>
 						</tr>
 						<tr>
-							<td valign="top" class="big"><a href="index.php?module=Settings&amp;action=CustomSharingDetailView&amp;parenttab=Settings">自定义共享规则</a></td>
+							<td valign="top" class="big"><a href="javascript:tab('自定义共享规则','settings/customsharingdetailview/index')">自定义共享规则</a></td>
 						</tr>
 						
 						</tbody></table>
 					</td>
 
-					
-					<td width="12.5%" valign="top">
-					<!-- icon 7-->
-						<table width="100%" class="tab_center"  cellspacing="0" cellpadding="5" border="0">
-						<tbody><tr>
-							<td valign="top"><a href="index.php?module=Users&amp;action=AuditTrailList&amp;parenttab=Settings"><img border="0" title="系统日志" alt="系统日志" src="resources/images/settings/panel/audit.gif"></a></td>
-						</tr>
-						<tr>
-							<td valign="top" class="big"><a href="index.php?module=Users&amp;action=AuditTrailList&amp;parenttab=Settings">系统日志</a></td>
-						</tr>
-
-						
-						</tbody></table>
-
-						
-					</td>
 					<td width="12.5%" valign="top">
 					<!-- icon 8-->	
 						<table width="100%" class="tab_center"  cellspacing="0" cellpadding="5" border="0">
 						<tbody><tr>
-							<td valign="top"><a href="index.php?module=Users&amp;action=ListLoginHistory&amp;parenttab=Settings"><img width="48" height="48" border="0" title="登录历史" alt="登录历史" src="resources/images/settings/panel/set-IcoLoginHistory.gif"></a></td>
+							<td valign="top"><a href="javascript:tab('登录历史','settings/loginhistory/index')"><img width="48" height="48" border="0" title="登录历史" alt="登录历史" src="resources/images/settings/panel/set-IcoLoginHistory.gif"></a></td>
 						</tr>
 						<tr>
-							<td valign="top" class="big"><a href="index.php?module=Users&amp;action=ListLoginHistory&amp;parenttab=Settings">登录历史</a></td>
+							<td valign="top" class="big"><a href="javascript:tab('登录历史','settings/loginhistory/index')">登录历史</a></td>
 						</tr>
 						
 
 						</tbody></table>
 					</td>
+					<td width="12.5%" valign="top"></td>
 					<td width="12.5%" valign="top"></td>
 					<!-- Row 3 -->
 					</tr><tr>
@@ -122,53 +107,16 @@
 				<div style="display: block;">
 				<table width="100%" class="tab_center" cellspacing="0" cellpadding="10" border="0">
 				<tbody><tr>
-				        <td width="12.5%" valign="top">
-					<!-- empty-->
-						<table width="100%" cellspacing="0" cellpadding="5" border="0">
-						<tbody><tr>
-
-							<td valign="top"><a href="index.php?module=Settings&amp;action=CustomModuleList&amp;parenttab=Settings"><img border="0" title="模块开发" alt="模块开发" src="resources/images/settings/panel/modulelist.gif"></a></td>
-						</tr>
-						<tr>
-							<td valign="top" class="big"><a href="index.php?module=Settings&amp;action=CustomModuleList&amp;parenttab=Settings">模块开发</a></td>
-						</tr>
-						
-						</tbody></table>
-					</td>
-					<td width="12.5%" valign="top">
-					<!-- empty-->
-						<table width="100%" class="tab_center" cellspacing="0" cellpadding="5" border="0">
-						<tbody><tr>
-
-							<td valign="top"><a href="index.php?module=Settings&amp;action=CustomBlockList&amp;parenttab=Settings"><img border="0" title="显示区域" alt="显示区域" src="resources/images/settings/panel/blocklist.gif"></a></td>
-						</tr>
-						<tr>
-							<td valign="top" class="big"><a href="index.php?module=Settings&amp;action=CustomBlockList&amp;parenttab=Settings">显示区域</a></td>
-						</tr>
-						
-						</tbody></table>
-					</td>
-					<td width="12.5%" valign="top">
-					<!-- icon 9-->
-						<table width="100%" class="tab_center" cellspacing="0" cellpadding="5" border="0">
-						<tbody><tr>
-							<td valign="top"><a href="index.php?module=Settings&amp;action=CustomFieldList&amp;parenttab=Settings"><img border="0" title="自定义字段" alt="自定义字段" src="resources/images/settings/panel/custom.gif"></a></td>
-						</tr>
-						<tr>
-							<td valign="top" class="big"><a href="index.php?module=Settings&amp;action=CustomFieldList&amp;parenttab=Settings">自定义字段</a></td>
-						</tr>
-						
-						</tbody></table>
-					</td>
+				
 					<td width="12.5%" valign="top">
 					<!-- icon 10-->
 						<table width="100%" class="tab_center" cellspacing="0" cellpadding="5" border="0">
 						<tbody><tr>
 
-							<td valign="top"><a href="index.php?module=Settings&amp;action=PickList&amp;parenttab=Settings"><img border="0" title="下拉框选项" alt="下拉框选项" src="resources/images/settings/panel/picklist.gif"></a></td>
+							<td valign="top"><a href="javascript:tab('下拉框选项','settings/picklist/index')"><img border="0" title="下拉框选项" alt="下拉框选项" src="resources/images/settings/panel/picklist.gif"></a></td>
 						</tr>
 						<tr>
-							<td valign="top" class="big"><a href="index.php?module=Settings&amp;action=PickList&amp;parenttab=Settings">下拉框选项</a></td>
+							<td valign="top" class="big"><a href="javascript:tab('下拉框选项','settings/picklist/index')">下拉框选项</a></td>
 						</tr>
 						
 						</tbody></table>
@@ -178,134 +126,35 @@
 							<table width="100%" class="tab_center" cellspacing="0" cellpadding="5" border="0">
 							<tbody><tr>
 
-								<td valign="top"><a href="index.php?module=Settings&amp;action=LayoutList&amp;parenttab=Settings"><img border="0" title="页面布局" alt="页面布局" src="resources/images/settings/panel/layout.gif"></a></td>
+								<td valign="top"><a href="javascript:tab('主菜单','settings/customtab/index')"><img border="0" title="主菜单" alt="主菜单" src="resources/images/settings/panel/mainmenu.gif"></a></td>
 							</tr>
 							<tr>
-								<td valign="top" class="big"><a href="index.php?module=Settings&amp;action=LayoutList&amp;parenttab=Settings">页面布局</a></td>
+								<td valign="top" class="big"><a href="javascript:tab('主菜单','settings/customtab/index')">主菜单</a></td>
 							</tr>
 							
 							</tbody></table>
-					</td>
-					<td width="12.5%" valign="top">
-						<!-- empty-->
-							<table width="100%" class="tab_center" cellspacing="0" cellpadding="5" border="0">
-							<tbody><tr>
-
-								<td valign="top"><a href="index.php?module=Settings&amp;action=CustomTabList&amp;parenttab=Settings"><img border="0" title="主菜单" alt="主菜单" src="resources/images/settings/panel/mainmenu.gif"></a></td>
-							</tr>
-							<tr>
-								<td valign="top" class="big"><a href="index.php?module=Settings&amp;action=CustomTabList&amp;parenttab=Settings">主菜单</a></td>
-							</tr>
-							
-							</tbody></table>
-					</td>
-					<!-- icon 6 -->
-					<td width="12.5%" valign="top">
-						<table width="100%" class="tab_center" cellspacing="0" cellpadding="5" border="0">
-						<tbody><tr>
-							<td valign="top"><a href="index.php?module=Users&amp;action=DefaultFieldPermissions&amp;parenttab=Settings"><img width="48" height="48" border="0" title="全局字段" alt="全局字段" src="resources/images/settings/panel/orgshar.gif"></a></td>
-						</tr>
-						<tr>
-							<td valign="top" class="big"><a href="index.php?module=Users&amp;action=DefaultFieldPermissions&amp;parenttab=Settings">全局字段</a></td>
-						</tr>
-						
-						</tbody></table>
 					</td>
 					
-					<!-- icon 6 -->
-					<td width="12.5%" valign="top">
-						<table width="100%" class="tab_center" cellspacing="0" cellpadding="5" border="0">
-						<tbody><tr>
-							<td valign="top"><a href="index.php?module=Settings&amp;action=RelatedList&amp;parenttab=Settings"><img width="48" height="48" border="0" src="resources/images/settings/panel/relatedinfo.gif"></a></td>
-						</tr>
-						<tr>
-							<td valign="top" class="big"><a href="index.php?module=Settings&amp;action=RelatedList&amp;parenttab=Settings">相关信息</a></td>
-						</tr>
-						
-						</tbody></table>
-					</td>
-					</tr>
-					</tbody></table>
-				</div>
-				
-				<div style="display:block;">
-				<table width="100%" class="tab_center" cellspacing="0" cellpadding="10" border="0">
-				<tbody><tr>
-				        <td width="12.5%" valign="top">
-					<!-- empty-->
-						<table width="100%" cellspacing="0" cellpadding="5" border="0">
-						<tbody><tr>
-							<td valign="top"><a href="index.php?module=Settings&amp;action=PrintTemplate&amp;parenttab=Settings"><img width="48" height="48" border="0" src="resources/images/settings/panel/printtemplate.gif"></a></td>
-						</tr>
-						<tr>
-							<td valign="top" class="big"><a href="index.php?module=Settings&amp;action=PrintTemplate&amp;parenttab=Settings">打印模板</a></td>
-						</tr>
-						
-						</tbody></table>
-					</td>
-					<td width="12.5%" valign="top">
-					<!-- empty-->
-						<table width="100%" class="tab_center" cellspacing="0" cellpadding="5" border="0">
-						<tbody><tr>
-							<td valign="top"><a href="index.php?module=Settings&amp;action=ProductField&amp;parenttab=Settings"><img width="48" height="48" border="0" src="resources/images/settings/panel/productfield.gif"></a></td>
-						</tr>
-						<tr>
-							<td valign="top" class="big"><a href="index.php?module=Settings&amp;action=ProductField&amp;parenttab=Settings">关联产品字段</a></td>
-						</tr>
-						
-						</tbody></table>
-						
-					</td>
-					<td width="12.5%" valign="top">
+										<td width="12.5%" valign="top">
 					<!-- empty-->
 					<table width="100%" class="tab_center" cellspacing="0" cellpadding="5" border="0">
 						<tbody><tr>
-							<td valign="top"><a href="index.php?module=Settings&amp;action=MultiApprove&amp;parenttab=Settings"><img width="48" height="48" border="0" src="resources/images/settings/panel/approvelist.gif"></a></td>
+							<td valign="top"><a href="javascript:tab('审批流程','settings/multiapprove/index')"><img width="48" height="48" border="0" src="resources/images/settings/panel/approvelist.gif"></a></td>
 						</tr>
 						<tr>
-							<td valign="top" class="big"><a href="index.php?module=Settings&amp;action=MultiApprove&amp;parenttab=Settings">审批流程</a></td>
+							<td valign="top" class="big"><a href="javascript:tab('审批流程','settings/multiapprove/index')">审批流程</a></td>
 						</tr>
 
 						</tbody></table>
 					</td>
-					<td width="12.5%" valign="top">
-					<!-- empty-->
-					<table width="100%" class="tab_center" cellspacing="0" cellpadding="5" border="0">
-						<tbody><tr>
-							<td valign="top"><a href="index.php?module=Settings&amp;action=CustomMultiFieldList&amp;parenttab=Settings"><img width="48" height="48" border="0" src="resources/images/settings/panel/relatedfield.gif"></a></td>
-						</tr>
-						<tr>
-							<td valign="top" class="big"><a href="index.php?module=Settings&amp;action=CustomMultiFieldList&amp;parenttab=Settings">级联字段</a></td>
-						</tr>
-
-						</tbody></table>
-					</td>
-					<td width="12.5%" valign="top">
-					<!-- empty-->
-						<table width="100%" class="tab_center" cellspacing="0" cellpadding="5" border="0">
-						<tbody><tr>
-							<td valign="top"><a href="index.php?module=Settings&amp;action=RelmodField&amp;parenttab=Settings"><img width="48" height="48" border="0" src="resources/images/settings/panel/productfield.gif"></a></td>
-						</tr>
-						<tr>
-							<td valign="top" class="big"><a href="index.php?module=Settings&amp;action=RelmodField&amp;parenttab=Settings">相关信息模块字段</a></td>
-						</tr>
-						
-						</tbody></table>
-						
-					</td>
-					<td width="12.5%" valign="top">
-					<!-- empty-->
-						
-					</td>
-					<td width="12.5%" valign="top">
-					<!-- empty-->
-						
-					</td>
-					<td width="12.5%" valign="top">
-					<!-- empty-->
-						
-					</td>
+					<td width="12.5%" valign="top"></td>
+					<td width="12.5%" valign="top"></td>
+					<td width="12.5%" valign="top"></td>
+					<td width="12.5%" valign="top"></td>
+					<td width="12.5%" valign="top"></td>
 					</tr>
+					
+					
 					</tbody></table>
 				</div>
 				
@@ -326,10 +175,10 @@
 					<!-- icon 11-->
 						<table width="100%" class="tab_center" cellspacing="0" cellpadding="5" border="0">
 						<tbody><tr>
-							<td valign="top"><a href="index.php?module=Users&amp;action=listemailtemplates&amp;parenttab=Settings"><img border="0" title="Email模版" alt="Email模版" src="resources/images/settings/panel/ViewTemplate.gif"></a></td>
+							<td valign="top"><a href="javascript:tab('Email模版','settings/emailtemplates/index')"><img border="0" title="Email模版" alt="Email模版" src="resources/images/settings/panel/ViewTemplate.gif"></a></td>
 						</tr>
 						<tr>
-							<td valign="top" class="big"><a href="index.php?module=Users&amp;action=listemailtemplates&amp;parenttab=Settings">Email模版</a></td>
+							<td valign="top" class="big"><a href="javascript:tab('Email模版','settings/emailtemplates/index')">Email模版</a></td>
 
 						</tr>
 						
@@ -339,10 +188,10 @@
 					<!-- icon 11-->
 						<table width="100%" class="tab_center" cellspacing="0" cellpadding="5" border="0">
 						<tbody><tr>
-							<td valign="top"><a href="index.php?module=Settings&amp;action=db_backup&amp;parenttab=Settings"><img border="0" title="数据库备份" alt="数据库备份" src="resources/images/settings/panel/dbbackup.gif"></a></td>
+							<td valign="top"><a href="javascript:tab('数据库备份','settings/dbbackup/index')"><img border="0" title="数据库备份" alt="数据库备份" src="resources/images/settings/panel/dbbackup.gif"></a></td>
 						</tr>
 						<tr>
-							<td valign="top" class="big"><a href="index.php?module=Settings&amp;action=db_backup&amp;parenttab=Settings">数据库备份</a></td>
+							<td valign="top" class="big"><a href="javascript:tab('数据库备份','settings/dbbackup/index')">数据库备份</a></td>
 
 						</tr>
 						
@@ -356,10 +205,10 @@
 						<table width="100%" class="tab_center" cellspacing="0" cellpadding="5" border="0">
 
 						<tbody><tr>
-							<td valign="top"><a href="index.php?module=Settings&amp;action=OrganizationConfig&amp;parenttab=Settings"><img border="0" title="公司信息" alt="公司信息" src="resources/images/settings/panel/company.gif"></a></td>
+							<td valign="top"><a href="javascript:tab('公司信息','settings/organizationconfig/index')"><img border="0" title="公司信息" alt="公司信息" src="resources/images/settings/panel/company.gif"></a></td>
 						</tr>
 						<tr>
-							<td valign="top" class="big"><a href="index.php?module=Settings&amp;action=OrganizationConfig&amp;parenttab=Settings">公司信息</a></td>
+							<td valign="top" class="big"><a href="javascript:tab('公司信息','settings/organizationconfig/index')">公司信息</a></td>
 						</tr>
 						
 						</tbody></table>
@@ -369,10 +218,10 @@
 					<!-- icon 17-->
 						<table width="100%" class="tab_center" cellspacing="0" cellpadding="5" border="0">
 						<tbody><tr>
-							<td valign="top"><a href="index.php?module=Settings&amp;action=EmailConfig&amp;parenttab=Settings"><img border="0" title="SMTP服务器" alt="SMTP服务器" src="resources/images/settings/panel/ogmailserver.gif"></a></td>
+							<td valign="top"><a href="javascript:tab('SMTP服务器','settings/emailconfig/index')"><img border="0" title="SMTP服务器" alt="SMTP服务器" src="resources/images/settings/panel/ogmailserver.gif"></a></td>
 						</tr>
 						<tr>
-							<td valign="top" class="big"><a href="index.php?module=Settings&amp;action=EmailConfig&amp;parenttab=Settings">SMTP服务器</a></td>
+							<td valign="top" class="big"><a href="javascript:tab('SMTP服务器','settings/emailconfig/index')">SMTP服务器</a></td>
 						</tr>
 
 						
@@ -383,70 +232,38 @@
 					<!-- icon 17-->
 						<table width="100%" class="tab_center" cellspacing="0" cellpadding="5" border="0">
 						<tbody><tr>
-							<td valign="top"><a href="index.php?module=Settings&amp;action=MessageConfig&amp;parenttab=Settings"><img border="0" title="短信通道" alt="短信通道" src="resources/images/settings/panel/ico_mobile.gif"></a></td>
+							<td valign="top"><a href="javascript:tab('短信通道','settings/messageconfig/index')"><img border="0" title="短信通道" alt="短信通道" src="resources/images/settings/panel/ico_mobile.gif"></a></td>
 						</tr>
 						<tr>
-							<td valign="top" class="big"><a href="index.php?module=Settings&amp;action=MessageConfig&amp;parenttab=Settings">短信通道</a></td>
+							<td valign="top" class="big"><a href="javascript:tab('短信通道','settings/messageconfig/index')">短信通道</a></td>
 						</tr>
 
 						
 						</tbody></table>
 					</td>
-					<td width="12.5%" valign="top">
-					<!-- icon 18-->
-					        <table width="100%" class="tab_center" cellspacing="0" cellpadding="5" border="0">
-						<tbody><tr>
-							<td valign="top"><a href="index.php?module=Settings&amp;action=CurrencyListView&amp;parenttab=Settings"><img border="0" title="货币币种" alt="货币币种" src="resources/images/settings/panel/currency.gif"></a></td>
-						</tr>
-						<tr>
-							<td valign="top" class="big"><a href="index.php?module=Settings&amp;action=CurrencyListView&amp;parenttab=Settings">货币币种</a></td>
-						</tr>
 
-						
-						</tbody></table>				       
-
-					</td>
-
-					
-					
-				       <td width="12.5%" valign="top">
-					<!-- icon 9-->	
-					<table width="100%" class="tab_center"  cellspacing="0" cellpadding="5" border="0">
-					<tbody><tr>
-						<td valign="top"><a href="index.php?module=Users&amp;action=DefModuleView&amp;parenttab=Settings"><img width="48" height="48" border="0" title="单页显示方式" alt="单页显示方式" src="resources/images/settings/panel/set-IcoTwoTabConfig.gif"></a></td>
-					</tr>
-					<tr>
-						<td valign="top" class="big"><a href="index.php?module=Users&amp;action=DefModuleView&amp;parenttab=Settings">单页显示方式</a></td>
-					</tr>
-					
-
-					</tbody></table>
-					</td>
-		
 					<td width="12.5%" valign="top">
 					<!-- icon 17-->
 					<table width="100%" class="tab_center" cellspacing="0" cellpadding="5" border="0">
 					<tbody><tr>
-						<td valign="top"><a href="index.php?module=Settings&amp;action=LicenseConfig&amp;parenttab=Settings"><img border="0" title="短信通道" alt="授权许可" src="resources/images/settings/panel/license.gif"></a></td>
+						<td valign="top"><a href="javascript:tab('授权许可','settings/licenseconfig/index')"><img border="0" title="短信通道" alt="授权许可" src="resources/images/settings/panel/license.gif"></a></td>
 						</tr>
 						<tr>
-						<td valign="top" class="big"><a href="index.php?module=Settings&amp;action=LicenseConfig&amp;parenttab=Settings">授权许可</a></td>
+						<td valign="top" class="big"><a href="javascript:tab('授权许可','settings/licenseconfig/index')">授权许可</a></td>
 					</tr>
 
 					
 					</tbody></table>
-					</td>					
-				</tr>
-                <tr>
-				        <td width="12.5%" valign="top">
+					</td>	
+					      <td width="12.5%" valign="top">
 					<!-- icon 11-->
 						<table width="100%" class="tab_center" cellspacing="0" cellpadding="5" border="0">
 						<tbody><tr>
-							<td valign="top"><a href="index.php?module=Recyclebin&amp;action=index&amp;parenttab=Settings"><img border="0" title="回收站" alt="回收站" src="resources/images/settings/panel/settingsTrash.gif"></a></td>
+							<td valign="top"><a href="javascript:tab('回收站','settings/recyclebin/index')"><img border="0" title="回收站" alt="回收站" src="resources/images/settings/panel/settingsTrash.gif"></a></td>
 							
 						</tr>
 						<tr>
-							<td valign="top" class="big"><a href="index.php?module=Recyclebin&amp;action=index&amp;parenttab=Settings">回收站</a></td>
+							<td valign="top" class="big"><a href="javascript:tab('回收站','settings/recyclebin/index')">回收站</a></td>
 
 						</tr>
 						</tbody></table>
@@ -456,27 +273,16 @@
 					<!-- icon 11-->
 						<table width="100%" class="tab_center" cellspacing="0" cellpadding="5" border="0">
 						<tbody><tr>
-							<td valign="top"><a href="index.php?module=Settings&amp;action=MultiWarehouseListView&amp;parenttab=Settings"><img border="0" title="多仓库管理" alt="多仓库管理" src="resources/images/settings/panel/cangku.gif"></a></td>
+							<td valign="top"><a href="javascript:tab('多仓库管理','settings/multiwarehouse/index')"><img border="0" title="多仓库管理" alt="多仓库管理" src="resources/images/settings/panel/cangku.gif"></a></td>
 						</tr>
 						<tr>
-							<td valign="top" class="big"><a href="index.php?module=Settings&amp;action=MultiWarehouseListView&amp;parenttab=Settings">多仓库管理</a></td>
+							<td valign="top" class="big"><a href="javascript:tab('多仓库管理','settings/multiwarehouse/index')">多仓库管理</a></td>
 
 						</tr>
 						
 						</tbody></table>
-					</td>
-					<td width="12.5%" valign="top">
-					<!-- Sync Shopex DB-->
-					<table width="100%" class="tab_center" cellspacing="0" cellpadding="5" border="0">
-					<tbody><tr>
-						<td valign="top"><a href="index.php?module=Settings&amp;action=ShopexConfig&amp;parenttab=Settings"><img border="0" title="导入Shopex" alt="导入Shopex" src="resources/images/settings/panel/ogmailserver.gif"></a></td>
-						</tr>
-						<tr>
-						<td valign="top" class="big"><a href="index.php?module=Settings&amp;action=ShopexConfig&amp;parenttab=Settings">导入Shopex</a></td>
-					</tr>					
-					</tbody></table>
-					</td>
-                   </tr>
+					</td>				
+				</tr>
 		</tbody></table>
 				</div>
 				</div>
