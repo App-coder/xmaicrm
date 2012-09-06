@@ -49,9 +49,7 @@ public class XmChargesController extends BaseController {
 	
 	@RequestMapping(value = "/index", method = RequestMethod.GET)
 	public String index(ModelMap modelMap){
-		
 		this.moduleUtil.setViewProp(modelMap,"Charges");
-		
 		return "financial/charges";
 	}
 	

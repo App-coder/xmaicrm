@@ -7,15 +7,15 @@ function init(){
     	fit:'true',
     	nowrap: false,
     	striped: true,
-            rownumbers:true,
-            idField:'id',
+        rownumbers:true,
+        idField:'id',
     	treeField:'name',
     	singleSelect:true,
     	queryParams:{pid:0},
     	fitColumns : true,
     	frozenColumns:[[
     	    {field:'ck',checkbox:true},
-        {title:'分类名称',field:'name',width:200
+            {title:'分类名称',field:'name',width:200
         }
     	]],
     	columns:[[

@@ -58,16 +58,16 @@
 			<div><a href="javascript:tab('知识库','faq/index')" >知识库</a></div>
 			<div><a href="javascript:tab('知识库分类','faqcategorys/index')" >知识库分类</a></div>
 		</div>
-		<div id="stock_item" style="width: 120px;" class="navmenuitem"  >
-			<div><a href="javascript:tab('库存导航','inventory/nav')" >库存导航</a></div>
-			<div><a href="javascript:tab('入库单','warehouses/index')" >入库单</a></div>
-			<div><a href="javascript:tab('出库单','deliverys/index')" >出库单</a></div>
+		<div id="stock_item" style="width: 120px;" class="navmenuitem">
+			<div><a href="javascript:tab('库存导航','inventory/nav')">库存导航</a></div>
+			<div><a href="javascript:tab('入库单','warehouses/index')">入库单</a></div>
+			<div><a href="javascript:tab('出库单','deliverys/index')">出库单</a></div>
 			<div><a href="javascript:tab('盘点','checks/index')" >盘点</a></div>
-			<div><a href="javascript:tab('库存余额','balances/index')" >库存余额</a></div>
-			<div><a href="javascript:tab('初始化库存','initinventory/index')" >初始化库存</a></div>
-			<div><a href="javascript:tab('库存调拨','warehousetransfers/index')" >库存调拨</a></div>
-			<div><a href="javascript:tab('库存流水帐','wareledgers/index')" >库存流水帐</a></div>
-			<div><a href="javascript:tab('库存台帐','inventoryledgers/index')" >库存台帐</a></div>
+			<div><a href="javascript:tab('库存余额','balances/index')">库存余额</a></div>
+			<div><a href="javascript:tab('初始化库存','initinventory/index')">初始化库存</a></div>
+			<div><a href="javascript:tab('库存调拨','warehousetransfers/index')">库存调拨</a></div>
+			<div><a href="javascript:tab('库存流水帐','wareledgers/index')">库存流水帐</a></div>
+			<div><a href="javascript:tab('库存台帐','inventoryledgers/index')">库存台帐</a></div>
 		</div>
 		<div id="finance_item" style="width: 120px;" class="navmenuitem"  >
 			<div><a href="javascript:tab('财务导航','accounting/nav')" >财务导航</a></div>
