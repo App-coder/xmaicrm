@@ -34,5 +34,9 @@ public interface XmCustomviewMapper {
 	int setDef(@Param("cvid") int cvid);
 
 	int deleteCv(@Param("cvid") int cvid);
+
+	int getTotalBySql(@Param("totalsql") String totalsql);
+
+	List<Object> loadListBySql(@Param("start") int start,@Param("rows") int rows,@Param("listsql") String listsql);
 	
 }

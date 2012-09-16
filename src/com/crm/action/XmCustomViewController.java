@@ -15,15 +15,18 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.crm.action.util.ModuleUtil;
 import com.crm.bean.crm.Message;
 import com.crm.bean.easyui.Column;
 import com.crm.bean.easyui.ListBean;
+import com.crm.bean.easyui.expand.CVColumn;
 import com.crm.bean.html.TimeOptions;
 import com.crm.model.XmBlocks;
 import com.crm.model.XmCustomview;
 import com.crm.model.XmCvadvfilter;
 import com.crm.model.XmCvcolumnlist;
 import com.crm.model.XmCvstdfilter;
+import com.crm.model.XmEntityname;
 import com.crm.model.XmField;
 import com.crm.model.XmTab;
 import com.crm.service.XmBlocksService;
@@ -37,10 +40,17 @@ import com.crm.service.XmTabService;
 import com.crm.util.DateUtil;
 import com.crm.util.HtmlUtil;
 import com.crm.util.JsonDateValueProcessor;
+import com.crm.util.crm.CustomViewUtil;
 
 @Controller
 @RequestMapping(value = "customview")
 public class XmCustomViewController extends BaseController {
+	
+	ModuleUtil moduleUtil;
+	@Resource(name="moduleUtil")
+	public void setModuleUtil(ModuleUtil moduleUtil) {
+		this.moduleUtil = moduleUtil;
+	}
 
 	XmCustomViewService xmCustomViewService;
 	@Resource(name = "xmCustomViewService")
@@ -116,7 +126,7 @@ public class XmCustomViewController extends BaseController {
 
 		XmCustomview customview = this.xmCustomViewService.selectByPrimaryKey(
 				entitytype, viewid);
-		List<Column> cols = this.xmCvcolumnlistService
+		List<CVColumn> cols = this.xmCvcolumnlistService
 				.getViewColumn(customview);
 
 		return arrayToJson(cols);
@@ -138,7 +148,7 @@ public class XmCustomViewController extends BaseController {
 		}
 
 		modelmap.addAttribute("optionstr",
-				HtmlUtil.getMultSelect(blocks, fieldsList));
+				HtmlUtil.getMultSelect(blocks, fieldsList,entitytype));
 		modelmap.addAttribute("colloptionstr",
 				HtmlUtil.getCollectSelect(blocks, fieldsList));
 		modelmap.addAttribute("filter", HtmlUtil.getFilter());
@@ -212,6 +222,7 @@ public class XmCustomViewController extends BaseController {
 		}
 		return objToJson(msg);
 	}
+	
 
 	@RequestMapping(value = "/editView", method = RequestMethod.POST)
 	@ResponseBody
@@ -618,6 +629,55 @@ public class XmCustomViewController extends BaseController {
 	public String getAdvfilter(int viewid){
 		XmCvadvfilter advfilter = this.xmCvadvfilterService.getAdvfilter(viewid);
 		return arrayToJson(advfilter);
+	}
+	
+	
+	/**
+	 * 公共视图载入
+	 * @param modelMap
+	 * @return
+	 */
+	@RequestMapping(value = "/viewIndex", method = RequestMethod.GET)
+	public String viewIndex(String entitytype,ModelMap modelMap){
+		try{
+		this.moduleUtil.setViewProp(modelMap,entitytype);
+		}catch(java.lang.NullPointerException e){
+			
+		}
+		XmEntityname entityname = CustomViewUtil.getEntitynameByET(entitytype);
+		XmTab tab = CustomViewUtil.getTabByName(entitytype);
+		modelMap.addAttribute("tab",tab);
+		modelMap.addAttribute("viewid",entityname.getEntityidfield());
+		modelMap.addAttribute("entitytype",entitytype);
+		modelMap.addAttribute("entityname",entityname);
+		return "public/viewcv";
+	}
+	
+	/**
+	 * 根据视图ID返回对应的JSON
+	 * 
+	 * @param page 页数
+	 * @param rows 行数
+	 * @param viewid 视图ID
+	 * @return
+	 */
+	@RequestMapping(value = "/renderView", method = RequestMethod.POST)
+	@ResponseBody
+	public String renderView(int page,int rows,String entitytype,int viewid){
+		XmCustomview customview = this.xmCustomViewService.selectByPrimaryKey(entitytype,viewid);
+		List<CVColumn> cols = this.xmCvcolumnlistService.getViewColumn(customview);
+		XmCvstdfilter stdfilter = xmCvstdfilterService.getStdfilterByCvid(viewid);
+		List<XmCvadvfilter> advfilter = xmCvadvfilterService.getAdvFilters(viewid);
+		
+		int total = this.xmCustomViewService.getTotal(viewid,customview,stdfilter,advfilter,cols);
+		List<Object> ls = this.xmCustomViewService.loadList(page,rows,viewid,customview,stdfilter,advfilter,cols);
+		
+		ListBean list = new ListBean();
+		list.setRows(ls);
+		list.setTotal(total);
+		JsonConfig jsonConfig = new JsonConfig();
+		jsonConfig.registerJsonValueProcessor(java.util.Date.class, new JsonDateValueProcessor("yyyy-MM-dd"));
+		return objToJson(list,jsonConfig);
 	}
 	
 }

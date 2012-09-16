@@ -25,17 +25,5 @@ public class XmTuihuosServiceImpl implements XmTuihuosService {
 		this.cvFilter = cvFilter;
 	}
 
-	@Override
-	public int getTotal(int viewid) {
-		String filter = this.cvFilter.getFilter(viewid);
-		return this.xmTuihuosMapper.getTotal(filter);
-	}
-
-	@Override
-	public List<XmTuihuos> loadList(int page, int rows, int viewid) {
-		String filter = this.cvFilter.getFilter(viewid);
-		int start = (page-1)*rows;
-		return this.xmTuihuosMapper.loadList(start,rows,filter);
-	}
 
 }

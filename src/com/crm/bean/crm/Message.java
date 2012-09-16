@@ -12,6 +12,7 @@ public class Message {
 		super();
 		this.type = type;
 		this.message = message;
+		
 	}
 
 	public boolean isType() {

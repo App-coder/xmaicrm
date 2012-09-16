@@ -1,5 +1,7 @@
 package com.crm.service.impl;
 
+import java.util.List;
+
 import javax.annotation.Resource;
 
 import org.springframework.stereotype.Service;
@@ -18,6 +20,10 @@ public class XmTabServiceImpl implements XmTabService {
 	@Override
 	public XmTab getTabByName(String entitytype) {
 		return xmTabMapper.getTabByName(entitytype);
+	}
+	@Override
+	public List<XmTab> getAll() {
+		return xmTabMapper.getAll();
 	}
 	
 	

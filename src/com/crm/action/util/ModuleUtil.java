@@ -10,11 +10,14 @@ import org.springframework.ui.ModelMap;
 
 import com.crm.action.BaseController;
 import com.crm.bean.easyui.Column;
+import com.crm.bean.easyui.expand.CVColumn;
 import com.crm.model.XmCustomview;
+import com.crm.model.XmEntityname;
 import com.crm.model.XmField;
 import com.crm.service.XmCustomViewService;
 import com.crm.service.XmCvcolumnlistService;
 import com.crm.service.XmFieldService;
+import com.crm.util.crm.CustomViewUtil;
 
 /**
  * 
@@ -55,16 +58,24 @@ public class ModuleUtil extends BaseController{
 		XmCustomview customview = this.xmCustomViewService.selectByPrimaryKey(tabname,-1);
 		
 		try {
-			List<Column> cols = this.xmCvcolumnlistService.getViewColumn(customview);
+			List<CVColumn> cols = this.xmCvcolumnlistService.getColumns(customview);
 			List<Column> reset = new ArrayList<Column>();
-			for(int i=0;i<cols.size();i++){
-				Column n = cols.get(i);
-				if(n.getField().indexOf("assigned_")!=-1){
-					n.setField(n.getField().replace("assigned_", "").replace("_id", "")+"_name");
-				}else if(n.getField().indexOf("_")!=-1){
-					n.setField(n.getField().replace("_id", "")+"name");
+			if(cols!=null){
+				for(int i=0;i<cols.size();i++){
+					CVColumn n = cols.get(i);
+					Column ne = new Column();
+					if(n.getFieldname().indexOf("assigned_")!=-1){
+						ne.setField("user_name");
+					}else if(n.getField().indexOf("_")!=-1){
+						XmEntityname en = CustomViewUtil.getEntitynameByET(n.getEntitytype());
+						ne.setField(en.getFieldname());
+					}else{
+						ne.setField(n.getFieldcolname());
+					}
+					ne.setTitle(n.getTitle());
+					ne.setResizable(false);
+					reset.add(ne);
 				}
-				reset.add(n);
 			}
 			modelMap.addAttribute("dview",arrayToJson(reset));
 		} catch (net.sf.json.JSONException e) {

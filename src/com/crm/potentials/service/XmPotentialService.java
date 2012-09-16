@@ -6,6 +6,6 @@ import com.crm.model.XmPotential;
 import com.crm.service.ModuleService;
 
 
-public interface XmPotentialService extends  ModuleService{
+public interface XmPotentialService{
 
 }

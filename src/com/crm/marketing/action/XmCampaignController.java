@@ -1,5 +1,6 @@
 package com.crm.marketing.action;
 
+import java.util.HashMap;
 import java.util.List;
 
 import javax.annotation.Resource;
@@ -14,8 +15,8 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.crm.action.BaseController;
 import com.crm.action.util.ModuleUtil;
-import com.crm.bean.easyui.Column;
 import com.crm.bean.easyui.ListBean;
+import com.crm.bean.easyui.expand.CVColumn;
 import com.crm.marketing.service.XmCampaignService;
 import com.crm.model.XmCampaign;
 import com.crm.model.XmCustomview;
@@ -94,12 +95,12 @@ public class XmCampaignController extends BaseController {
 	@ResponseBody
 	public String renderView(int page,int rows,String entitytype,int viewid){
 		XmCustomview customview = this.xmCustomViewService.selectByPrimaryKey(entitytype,viewid);
-		List<Column> cols = this.xmCvcolumnlistService.getViewColumn(customview);
+		List<CVColumn> cols = this.xmCvcolumnlistService.getViewColumn(customview);
 		XmCvstdfilter stdfilter = xmCvstdfilterService.getStdfilterByCvid(viewid);
 		List<XmCvadvfilter> advfilter = xmCvadvfilterService.getAdvFilters(viewid);
 		
 		int total = this.xmCampaignService.getTotal(viewid,customview,stdfilter,advfilter,cols);
-		List<XmCampaign> ls = this.xmCampaignService.loadList(page,rows,viewid,customview,stdfilter,advfilter,cols);
+		List<Object> ls = this.xmCampaignService.loadList(page,rows,viewid,customview,stdfilter,advfilter,cols);
 		
 		ListBean list = new ListBean();
 		list.setRows(ls);

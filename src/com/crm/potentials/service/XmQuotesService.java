@@ -10,7 +10,7 @@ import com.crm.service.ModuleService;
  * Date: 2012-8-13
  * Time: 下午3:31:56
  */
-public interface XmQuotesService  extends  ModuleService{
+public interface XmQuotesService  {
 
 
 }

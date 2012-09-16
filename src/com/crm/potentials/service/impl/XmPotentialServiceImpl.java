@@ -26,18 +26,5 @@ public class XmPotentialServiceImpl implements XmPotentialService {
 	}
 
 
-	@Override
-	public int getTotal(int viewid) {
-		String filter = this.cvFilter.getFilter(viewid);
-		return this.xmPotentialMapper.getTotal(filter);
-	}
-
-
-	@Override
-	public List loadList(int page, int rows, int viewid) {
-		String filter = this.cvFilter.getFilter(viewid);
-		int start = (page-1)*rows;
-		return this.xmPotentialMapper.loadList(start,rows,filter);
-	}
 
 }

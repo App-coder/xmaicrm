@@ -25,17 +25,4 @@ public class XmComplaintsServiceImpl implements XmComplaintsService {
 		this.cvFilter = cvFilter;
 	}
 
-	@Override
-	public int getTotal(int viewid) {
-		String filter = this.cvFilter.getFilter(viewid);
-		return this.xmComplaintsMapper.getTotal(filter);
-	}
-
-	@Override
-	public List<XmComplaints> loadList(int page, int rows, int viewid) {
-		String filter = this.cvFilter.getFilter(viewid);
-		int start = (page-1)*rows;
-		return this.xmComplaintsMapper.loadList(start,rows,filter);
-	}
-
 }

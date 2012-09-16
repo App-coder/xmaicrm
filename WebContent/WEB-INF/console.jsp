@@ -13,12 +13,12 @@
 		</div>
 		<!-- com.crm.marketing -->
 		<div id="agora_item" style="width: 120px;" class="navmenuitem"  >
-			<div><a href="javascript:tab('营销活动','campaign/index')">营销活动</a></div>
+			<div><a href="javascript:tab('营销活动','customview/viewIndex?entitytype=Campaigns')">营销活动</a></div>
 			<div><a href="javascript:tab('群发短信','qunfa/index')">群发短信</a></div>
 			<div><a href="javascript:tab('群发邮件','maillist/index')">群发邮件</a></div>
 		</div>
 		<div id="customer_item"  style="width: 120px;" class="navmenuitem"  >
-			<div><a href="javascript:tab('客户','account/index')">客户</a></div>
+			<div><a href="javascript:tab('客户','customview/viewIndex?entitytype=Accounts')">客户</a></div>
 			<div><a href="javascript:tab('联系人','contact/index')">联系人</a></div>
 			<div><a href="javascript:tab('客户关怀','care/index')">客户关怀</a></div>
 			<div><a href="javascript:tab('联系记录','note/index')">联系记录</a></div>

@@ -138,4 +138,10 @@
   <update id="setDef" >
   	update xm_customview set setdefault = 1 where cvid = #{cvid};
   </update>
+    <select id="getTotalBySql" resultType="INTEGER">
+  	${totalsql}
+  </select>
+  <select id="loadListBySql"  resultType="map" >
+  	${listsql} limit #{start},#{rows}
+  </select>
 </mapper>

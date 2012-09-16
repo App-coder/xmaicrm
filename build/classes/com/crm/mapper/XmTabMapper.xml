@@ -145,4 +145,7 @@
     from xm_tab
     where name = #{tabname,jdbcType=VARCHAR}
   </select>
+  <select id="getAll" resultMap="BaseResultMap" >
+  	select * from xm_tab
+  </select>
 </mapper>

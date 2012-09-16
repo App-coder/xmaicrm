@@ -22,4 +22,6 @@ public interface XmTabMapper {
 
 	XmTab getTabByName(@Param("tabname") String tabname);
 
+	List<XmTab> getAll();
+
 }

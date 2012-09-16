@@ -26,15 +26,5 @@ public class XmSalesorderServiceImpl implements XmSalesorderService {
 		this.cvFilter = cvFilter;
 	}
 
-	public int getTotal(int viewid) {
-		String filter = this.cvFilter.getFilter(viewid);
-		return this.xmSalesorderMapper.getTotal(filter);
-	}
-
-	public List<XmSalesorder> loadList(int page, int rows, int viewid) {
-		String filter = this.cvFilter.getFilter(viewid);
-		int start = (page-1)*rows;
-		return this.xmSalesorderMapper.loadList(start,rows,filter);
-	}
 
 }

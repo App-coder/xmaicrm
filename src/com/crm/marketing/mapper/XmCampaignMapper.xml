@@ -432,4 +432,10 @@
   <select id="loadList" resultMap="BaseResultMap">
     ${listsql}
   </select>
+  <select id="getTotalBySql" resultType="INTEGER">
+  	${filter}
+  </select>
+  <select id="loadListBySql" resultType="map">
+  	${filter}
+  </select>
 </mapper>
