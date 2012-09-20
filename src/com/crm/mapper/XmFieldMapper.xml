@@ -21,6 +21,7 @@
     <result column="quickcreate" property="quickcreate" jdbcType="INTEGER" />
     <result column="quickcreatesequence" property="quickcreatesequence" jdbcType="INTEGER" />
     <result column="info_type" property="infoType" jdbcType="VARCHAR" />
+    <result column="tablabel" property="tablabel" jdbcType="VARCHAR" />
   </resultMap>
   <sql id="Base_Column_List" >
     fieldid, tabid, columnname, tablename, generatedtype, uitype, fieldname, fieldlabel, 
@@ -258,5 +259,11 @@
   </update>
   <select id="getReportField" resultMap="BaseResultMap" >
   	select xm_field.* from xm_field INNER JOIN xm_def_org_field ON xm_def_org_field.fieldid=xm_field.fieldid AND xm_def_org_field.visible=0 where xm_field.tabid=#{tabid} and uitype in ('15') and xm_field.displaytype in (1,2) order by sequence;
+  </select>
+  <select id="getFieldByBlockAndTab"  resultMap="BaseResultMap"  >
+  	select xm_field.* from xm_field INNER JOIN xm_def_org_field ON xm_def_org_field.fieldid=xm_field.fieldid AND xm_def_org_field.visible=0 where xm_field.tabid=#{tabid} and xm_field.block in (${blockid}) and xm_field.displaytype in (1,2) union select xm_field.* from xm_field where xm_field.displaytype=3 and xm_field.block in (${blockid}) and xm_field.tabid=#{tabid} order by sequence
+  </select>
+  <select id="getSearchFields" resultMap="BaseResultMap"  >
+  	select * from xm_field inner join xm_tab on xm_tab.tabid = xm_field.tabid where xm_field.tabid=#{tabid} and xm_field.uitype in (5,6,23,70) order by xm_field.sequence;
   </select>
 </mapper>

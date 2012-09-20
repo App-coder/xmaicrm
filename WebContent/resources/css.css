@@ -1,7 +1,10 @@
 /*easyui*/
 .panel-body{background:none; }
 /*easyui*/
-body{font-size:12px/1.5;}
+*{font-size:12px;}
+html, body, #wrap {height: 100%;}
+body > #wrap {height: auto; min-height: 100%;}
+body{margin:0px;padding:0px;}
 body, input, button, select, textarea{font: Tahoma,'Microsoft Yahei','Simsun'}
 textarea{ resize: none;}
 
@@ -9,7 +12,7 @@ a{cursor: pointer;text-decoration: none;color:#000;}
 .a:hover{}
 .a:link{color:#27A5E1;text-decoration: underline;}
 
-.headerNav{background-position: 100% -50px;background-repeat: no-repeat;height: 50px;background: url("./images/header-bg.png") repeat-x scroll 0 0 transparent;}
+.headerNav{background-position: 100% -50px;background-repeat: no-repeat;height: 30px;background: url("./images/header-bg.png") repeat-x scroll 0 0 transparent;}
 .logo{float: left;text-indent: -1000px;width: 250px;background: url("./images/s-logo.png") no-repeat scroll 0 0 transparent;height:30px;}
 
 .nav{float:right;list-style: none outside none;height:0px;}
@@ -49,7 +52,7 @@ table .tb_list td.righttd{padding-left:10px;}
 
 .tab_form{width:100%;font:12px/1.5 Tahoma,'Microsoft Yahei','Simsun';}
 .tab_form .edittd{width:110px;text-align: right;padding-right:10px;}
-.tab_form input.text,.tab_form select.text{width:200px;margin-right: 10px;border:1px solid #D2D2D2;height: 20px;}
+.tab_form input.text,.tab_form select.text{width:180px;margin-right: 10px;border:1px solid #D2D2D2;height: 20px;}
 .tab_form textarea{width:90%;}
 .textborder{border:1px solid #D2D2D2;}
 
@@ -124,3 +127,17 @@ fieldset legend{color:#15428B;}
 .p_tip{font:12px/1.5 Tahoma,'Microsoft Yahei','Simsun';}
 .red{color:red;}
 .tab_center tbody tr td{text-align: center !important;}
+.wtop{text-align: center;padding:5px;line-height: 20px;}
+#div_foot{position:absolute;bottom:0px;height: 40px;clear:both;width:100%;}
+#main {padding:0 15px 45px;} /* 必须使用和footer相同的高度 */
+.path{
+    height: 30px;
+    line-height: 30px;
+    padding-left: 10px;
+    border-bottom:1px solid #767676;
+    margin-bottom:10px;
+    }
+.path a {
+    padding: 3px 5px;
+    white-space: normal;
+}

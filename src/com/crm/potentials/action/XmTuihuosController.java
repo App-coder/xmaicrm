@@ -46,28 +46,6 @@ public class XmTuihuosController extends BaseController {
 		return "potential/tuihuos";
 	}
 	
-	/**
-	 * 根据视图ID返回对应的JSON
-	 * 
-	 * @param page 页数
-	 * @param rows 行数
-	 * @param viewid 视图ID
-	 * @return
-	 */
-	@RequestMapping(value = "/renderView", method = RequestMethod.POST)
-	@ResponseBody
-	public String renderView(int page,int rows,String entitytype,int viewid){
-		
-		XmCustomview customview = this.xmCustomViewService.selectByPrimaryKey(entitytype,viewid);
-		
-		int total = this.xmTuihuosService.getTotal(viewid);
-		List<XmTuihuos> ls = this.xmTuihuosService.loadList(page,rows,viewid);
-		
-		ListBean list = new ListBean();
-		list.setRows(ls);
-		list.setTotal(total);
-		return objToJson(list);
-	}
 	
 	
 	

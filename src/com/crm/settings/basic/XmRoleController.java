@@ -15,7 +15,7 @@ import com.crm.action.BaseController;
  * Date: 2012-8-19
  * Time: 上午10:11:55
  */
-@Controller
+@Controller("setting_XmRoleController")
 @RequestMapping(value = "settings/role")
 public class XmRoleController extends BaseController {
 

@@ -22,4 +22,8 @@ public interface XmFieldMapper {
 	
 	List<XmField> getReportField(@Param("tabid") Integer tabid);
 
+	List<XmField> getFieldByBlockAndTab(@Param("tabid") Integer tabid,@Param("blockid") Integer blockid);
+
+	List<XmField> getSearchFields(@Param("tabid") Integer tabid);
+
 }

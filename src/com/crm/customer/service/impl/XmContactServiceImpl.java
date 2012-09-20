@@ -18,25 +18,5 @@ public class XmContactServiceImpl implements XmContactService {
     	this.xmContactdetailsMapper = xmContactdetailsMapper;
 	}
     
-    CvFilter cvFilter;
-	@Resource(name="cvFilter")
-	public void setCvFilter(CvFilter cvFilter) {
-		this.cvFilter = cvFilter;
-	}
-
-
-	@Override
-	public int getTotal(int viewid) {
-		String filter = this.cvFilter.getFilter(viewid);
-		return this.xmContactdetailsMapper.getTotal(filter);
-	}
-
-
-	@Override
-	public List loadList(int page, int rows, int viewid) {
-		String filter = this.cvFilter.getFilter(viewid);
-		int start = (page-1)*rows;
-		return this.xmContactdetailsMapper.loadList(start,rows,filter);
-	}
 
 }

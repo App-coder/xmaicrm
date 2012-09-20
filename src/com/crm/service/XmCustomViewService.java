@@ -2,7 +2,10 @@ package com.crm.service;
 
 import java.util.List;
 
+import com.crm.bean.easyui.expand.CVColumn;
 import com.crm.model.XmCustomview;
+import com.crm.model.XmCvadvfilter;
+import com.crm.model.XmCvstdfilter;
 
 public interface XmCustomViewService {
 	List<XmCustomview> queryByEntityType(String entitytype);
@@ -18,6 +21,19 @@ public interface XmCustomViewService {
 	boolean setDef(int cvid, String entitytype);
 
 	boolean deleteCv(int cvid);
+
+	Integer insert(XmCustomview cv);
+
+	void update(XmCustomview cv);
+
+	XmCustomview getView(int viewid);
+
+	int getTotal(int viewid, XmCustomview customview, XmCvstdfilter stdfilter,
+			List<XmCvadvfilter> advfilter, List<CVColumn> cols);
+
+	List<Object> loadList(int page, int rows, int viewid,
+			XmCustomview customview, XmCvstdfilter stdfilter,
+			List<XmCvadvfilter> advfilter, List<CVColumn> cols);
 
 	
 

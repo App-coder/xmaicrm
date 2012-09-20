@@ -29,7 +29,7 @@
     delete from xm_customview
     where cvid = #{cvid,jdbcType=INTEGER}
   </delete>
-  <insert id="insert" parameterType="com.crm.model.XmCustomview" >
+  <insert id="insert" parameterType="com.crm.model.XmCustomview" keyProperty="cvid" >
     insert into xm_customview (cvid, viewname, setdefault, 
       setmetrics, entitytype, setpublic, 
       collectcolumn)
@@ -138,4 +138,10 @@
   <update id="setDef" >
   	update xm_customview set setdefault = 1 where cvid = #{cvid};
   </update>
+    <select id="getTotalBySql" resultType="INTEGER">
+  	${totalsql}
+  </select>
+  <select id="loadListBySql"  resultType="map" >
+  	${listsql} limit #{start},#{rows}
+  </select>
 </mapper>

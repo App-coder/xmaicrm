@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"
 	pageEncoding="utf-8"%>
+<%@ include file="../header.jsp"%>
 <%@ include file="../common/config.jsp"%>
 <c:choose>
 	<c:when test="${customview.cvid!=null && dview!=null}">
@@ -34,7 +35,7 @@
 		</div>
 		<div data-options="region:'center',border:false"
 			style="overflow: hidden">
-			<table id="potential_list" data-options="fit:true,fitColumns:true"></table>
+			<table id="campaign_list" data-options="fit:true,fitColumns:true"></table>
 		</div>
 		<c:if test="${repfields!=null }">
 		<div data-options="region:'south',border:false">
@@ -51,3 +52,4 @@
 		</c:if>
 	</div>
 </div>
+<%@ include file="../footer.jsp"%>

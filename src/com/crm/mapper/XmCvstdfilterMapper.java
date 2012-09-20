@@ -20,4 +20,6 @@ public interface XmCvstdfilterMapper {
 	XmCvstdfilter getStdfilter(@Param("viewid") int viewid);
 
 	void deleteCv(@Param("cvid") int cvid);
+
+	XmCvstdfilter getStdfilterByCvid(@Param("cvid") int cvid);
 }

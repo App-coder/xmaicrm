@@ -21,50 +21,5 @@ import com.crm.customer.service.XmCareService;
 @Controller
 @RequestMapping(value = "care")
 public class XmCareController extends BaseController{
-	ModuleUtil moduleUtil;
-	@Resource(name="moduleUtil")
-	public void setModuleUtil(ModuleUtil moduleUtil) {
-		this.moduleUtil = moduleUtil;
-	}
+}	
 	
-	XmCustomViewService xmCustomViewService;
-	@Resource(name="xmCustomViewService")
-	public void setXmCustomViewService(XmCustomViewService xmCustomViewService) {
-		this.xmCustomViewService = xmCustomViewService;
-	}
-	
-	XmCareService xmCareService;
-	@Resource(name="xmCareService")
-	public void setXmCareService(XmCareService xmCareService) {
-		this.xmCareService = xmCareService;
-	}
-	
-	@RequestMapping(value = "/index", method = RequestMethod.GET)
-	public String index(ModelMap modelMap){
-		this.moduleUtil.setViewProp(modelMap,"Cares");
-		return "customer/care";
-	}
-	
-	
-
-	/**
-	 * 根据视图ID返回对应的JSON
-	 * 
-	 * @param page 页数
-	 * @param rows 行数
-	 * @param viewid 视图ID
-	 * @return
-	 */
-	@RequestMapping(value = "/renderView", method = RequestMethod.POST)
-	@ResponseBody
-	public String renderView(int page,int rows,String entitytype,int viewid){
-		XmCustomview customview = this.xmCustomViewService.selectByPrimaryKey(entitytype,viewid);
-		
-		int total = this.xmCareService.getTotal(viewid);
-		List<XmPotential> ls = this.xmCareService.loadList(page,rows,viewid);
-		ListBean list = new ListBean();
-		list.setRows(ls);
-		list.setTotal(total);
-		return objToJson(list);
-	}
-}

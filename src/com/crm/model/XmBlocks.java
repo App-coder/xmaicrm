@@ -1,7 +1,8 @@
 package com.crm.model;
 
 public class XmBlocks {
-    private Integer blockid;
+
+	private Integer blockid;
 
     private Integer tabid;
 
@@ -18,6 +19,8 @@ public class XmBlocks {
     private Integer editView;
 
     private Integer detailView;
+    
+    private String tabname;
 
     public Integer getBlockid() {
         return blockid;
@@ -90,4 +93,15 @@ public class XmBlocks {
     public void setDetailView(Integer detailView) {
         this.detailView = detailView;
     }
+
+	public String getTabname() {
+		return tabname;
+	}
+
+	public void setTabname(String tabname) {
+		this.tabname = tabname;
+	}
+    
+    
+
 }

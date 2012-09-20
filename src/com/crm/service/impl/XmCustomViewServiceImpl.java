@@ -6,12 +6,22 @@ import javax.annotation.Resource;
 
 import org.springframework.stereotype.Service;
 
+import com.crm.bean.easyui.expand.CVColumn;
 import com.crm.mapper.XmCustomviewMapper;
+import com.crm.mapper.util.CvFilter;
 import com.crm.model.XmCustomview;
+import com.crm.model.XmCvadvfilter;
+import com.crm.model.XmCvstdfilter;
 import com.crm.service.XmCustomViewService;
 
 @Service("xmCustomViewService")
 public class XmCustomViewServiceImpl implements XmCustomViewService {
+	
+	CvFilter cvFilter;
+	@Resource(name="cvFilter")
+	public void setCvFilter(CvFilter cvFilter) {
+		this.cvFilter = cvFilter;
+	}
 	
     XmCustomviewMapper xmCustomviewMapper;
     @Resource(name="xmCustomviewMapper")
@@ -63,5 +73,37 @@ public class XmCustomViewServiceImpl implements XmCustomViewService {
 			return true;
 		}
 		return false;
+	}
+
+	@Override
+	public Integer insert(XmCustomview cv) {
+		return this.xmCustomviewMapper.insert(cv);
+	}
+
+	@Override
+	public void update(XmCustomview cv) {
+		this.xmCustomviewMapper.updateByPrimaryKey(cv);
+	}
+
+	@Override
+	public XmCustomview getView(int viewid) {
+		return this.xmCustomviewMapper.selectByPrimaryKey(viewid);
+	}
+
+	@Override
+	public int getTotal(int viewid, XmCustomview customview,
+			XmCvstdfilter stdfilter, List<XmCvadvfilter> advfilter,
+			List<CVColumn> cols) {
+		String totalsql = this.cvFilter.getTotalFilter(viewid,customview,stdfilter,advfilter,cols);
+		return this.xmCustomviewMapper.getTotalBySql(totalsql);
+	}
+
+	@Override
+	public List<Object> loadList(int page, int rows, int viewid,
+			XmCustomview customview, XmCvstdfilter stdfilter,
+			List<XmCvadvfilter> advfilter, List<CVColumn> cols) {
+		String listsql = this.cvFilter.getListFilter(viewid,customview,stdfilter,advfilter,cols);
+		int start = (page-1)*rows;
+		return this.xmCustomviewMapper.loadListBySql(start,rows,listsql);
 	}
 }

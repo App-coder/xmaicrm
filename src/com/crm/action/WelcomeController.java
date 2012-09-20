@@ -23,4 +23,9 @@ public class WelcomeController {
 		return "homepage";
 	}
 	
+	@RequestMapping(value = "/desktop", method = RequestMethod.GET)
+	public String desktop(){
+		return "desktop";
+	}
+	
 }

@@ -36,4 +36,14 @@ public class XmFieldServiceImpl implements XmFieldService{
 		}
 	}
 
+	@Override
+	public List<XmField> getFieldByBlockAndTab(Integer tabid, Integer blockid) {
+		return this.xmFieldMapper.getFieldByBlockAndTab(tabid,blockid);
+	}
+
+	@Override
+	public List<XmField> getSearchFields(Integer tabid) {
+		return this.xmFieldMapper.getSearchFields(tabid);
+	}
+
 }

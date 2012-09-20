@@ -13,4 +13,8 @@ public interface XmFieldService {
 	 * @return
 	 */
 	public List<XmField> getReportField(String tabname);
+
+	public List<XmField> getFieldByBlockAndTab(Integer tabid, Integer blockid);
+
+	public List<XmField> getSearchFields(Integer tabid);
 }

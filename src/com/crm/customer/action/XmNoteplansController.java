@@ -47,25 +47,4 @@ public class XmNoteplansController extends BaseController{
 	}
 	
 	
-
-	/**
-	 * 根据视图ID返回对应的JSON
-	 * 
-	 * @param page 页数
-	 * @param rows 行数
-	 * @param viewid 视图ID
-	 * @return
-	 */
-	@RequestMapping(value = "/renderView", method = RequestMethod.POST)
-	@ResponseBody
-	public String renderView(int page,int rows,String entitytype,int viewid){
-		XmCustomview customview = this.xmCustomViewService.selectByPrimaryKey(entitytype,viewid);
-		
-		int total = this.xmNoteplansService.getTotal(viewid);
-		List<XmNoteplans> ls = this.xmNoteplansService.loadList(page,rows,viewid);
-		ListBean list = new ListBean();
-		list.setRows(ls);
-		list.setTotal(total);
-		return objToJson(list);
-	}
 }

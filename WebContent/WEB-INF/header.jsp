@@ -11,7 +11,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <base href="http://localhost:8080/xmaicrm/"/>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>${webtitle}</title>
-
 <link rel="stylesheet" type="text/css" href="resources/easyui/themes/default/easyui.css">
 <link rel="stylesheet" type="text/css" href="resources/easyui/themes/icon.css">
 <link rel="stylesheet" type="text/css" href="resources/css.css">
@@ -23,7 +22,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <!-- loadmask -->
 <link href="resources/plugins/loadmask/jquery.loadmask.css" rel="stylesheet" type="text/css" />
 <script type="text/javascript" src="resources/plugins/loadmask/jquery.loadmask.min.js"></script>
-
 <script type="text/javascript" src="resources/global.js"></script>
 
-<%@ include file="common/commonjs.jsp"%>
+
