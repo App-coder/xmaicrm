@@ -5,6 +5,7 @@ import java.util.List;
 public class ListBean {
 	private long total;
 	private List rows;
+	private List footer;
 	
 	public ListBean(){
 		
@@ -27,6 +28,15 @@ public class ListBean {
 	public void setRows(List rows) {
 		this.rows = rows;
 	}
+
+	public List getFooter() {
+		return footer;
+	}
+
+	public void setFooter(List footer) {
+		this.footer = footer;
+	}
+	
 	
 	
 }

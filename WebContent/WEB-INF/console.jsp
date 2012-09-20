@@ -81,7 +81,7 @@
 			<div><a href="javascript:tab('发票管理','billings/index')" >发票管理</a></div>
 		</div>
 		<div id="report_item" style="width: 120px;" class="navmenuitem" >
-			<div><a href="javascript:tab('综合报表','integradedreports/index')" >综合报表</a></div>
+			<div><a href="javascript:tab('综合报表','integradedreports/index/2012')" >综合报表</a></div>
 			<div><a href="javascript:tab('常用报表','ureports/index')" >常用报表</a></div>
 			<div><a href="javascript:tab('年终销售报表','salesreports/index')" >年终销售报表</a></div>
 		</div>

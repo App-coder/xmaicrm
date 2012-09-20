@@ -1,0 +1,496 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.crm.report.mapper.XmIntegradedreportsMapper">
+  <resultMap id="BaseResultMap" type="com.crm.model.XmGathers" >
+    <id column="gathersid" property="gathersid" jdbcType="INTEGER" />
+    <result column="gathername" property="gathername" jdbcType="VARCHAR" />
+    <result column="accountid" property="accountid" jdbcType="INTEGER" />
+    <result column="salesorderid" property="salesorderid" jdbcType="INTEGER" />
+    <result column="invoiceid" property="invoiceid" jdbcType="INTEGER" />
+    <result column="plandate" property="plandate" jdbcType="DATE" />
+    <result column="actualdate" property="actualdate" jdbcType="DATE" />
+    <result column="planamount" property="planamount" jdbcType="DECIMAL" />
+    <result column="actualamount" property="actualamount" jdbcType="DECIMAL" />
+    <result column="amountcomment" property="amountcomment" jdbcType="VARCHAR" />
+    <result column="gatherstatus" property="gatherstatus" jdbcType="VARCHAR" />
+    <result column="isinvoice" property="isinvoice" jdbcType="VARCHAR" />
+    <result column="gathertimes" property="gathertimes" jdbcType="VARCHAR" />
+    <result column="currency" property="currency" jdbcType="VARCHAR" />
+    <result column="currency_rate" property="currencyRate" jdbcType="DECIMAL" />
+    <result column="smcreatorid" property="smcreatorid" jdbcType="INTEGER" />
+    <result column="smownerid" property="smownerid" jdbcType="INTEGER" />
+    <result column="modifiedby" property="modifiedby" jdbcType="INTEGER" />
+    <result column="groupid" property="groupid" jdbcType="INTEGER" />
+    <result column="createdtime" property="createdtime" jdbcType="TIMESTAMP" />
+    <result column="modifiedtime" property="modifiedtime" jdbcType="TIMESTAMP" />
+    <result column="deleted" property="deleted" jdbcType="INTEGER" />
+    <result column="approved" property="approved" jdbcType="INTEGER" />
+    <result column="approvedby" property="approvedby" jdbcType="INTEGER" />
+  </resultMap>
+  <resultMap id="ResultMapWithBLOBs" type="com.crm.model.XmGathers" extends="BaseResultMap" >
+    <result column="description" property="description" jdbcType="LONGVARCHAR" />
+  </resultMap>
+  <resultMap id="ResultReceivePayment" type="com.crm.model.XmSalesTotal"></resultMap>
+  <resultMap id="ResultCangkuInfo" type="com.crm.model.XmCangkuInfo"></resultMap>
+  <resultMap id="ResultUsersalesinforeport" type="com.crm.model.XmUsersalesinforeport" ></resultMap>
+  
+  <sql id="Base_Column_List" >
+    gathersid, gathername, accountid, salesorderid, invoiceid, plandate, actualdate, 
+    planamount, actualamount, amountcomment, gatherstatus, isinvoice, gathertimes, currency, 
+    currency_rate, smcreatorid, smownerid, modifiedby, groupid, createdtime, modifiedtime, 
+    deleted, approved, approvedby
+  </sql>
+  <sql id="Blob_Column_List" >
+    description
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="ResultMapWithBLOBs" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from xm_gathers
+    where gathersid = #{gathersid,jdbcType=INTEGER}
+  </select>
+  <select id="getTotal" resultType="INTEGER">
+      <choose>
+	    <when test="id ==4">
+           select count(t.salesorderid) total from ( SELECT xm_users.last_name, xm_salesorder.salesorderid, xm_salesorder. SUBJECT, xm_account.accountname, ( IFNULL(xm_salesorder.total, 0.00)*( CASE WHEN xm_salesorder.currency_rate > 0 THEN xm_salesorder.currency_rate ELSE 1 END ) )AS total, salesgathers.actualamount, salesbillings.billingamount, salesgathers.notamount FROM xm_salesorder INNER JOIN xm_account ON xm_salesorder.accountid = xm_account.accountid INNER JOIN xm_users on xm_salesorder.smownerid=xm_users.id LEFT JOIN( SELECT smownerid, salesorderid, sum( IFNULL(actualamount, 0.00)*( CASE WHEN currency_rate > 0 THEN currency_rate ELSE 1 END ) )AS actualamount, sum( ( ( CASE WHEN xm_gathers.currency_rate > 0 THEN xm_gathers.currency_rate ELSE 1 END )* IFNULL(xm_gathers.planamount, 0)- IFNULL(xm_gathers.actualamount, 0) ) )AS notamount FROM xm_gathers WHERE deleted = 0 AND smownerid > 0 AND salesorderid > 0 GROUP BY smownerid, salesorderid )AS salesgathers ON salesgathers.salesorderid = xm_salesorder.salesorderid AND salesgathers.smownerid = xm_salesorder.smownerid LEFT JOIN( SELECT smownerid, salesorderid, sum(IFNULL(billingamount, 0.00))AS billingamount FROM xm_billings WHERE deleted = 0 AND smownerid > 0 AND salesorderid > 0 GROUP BY smownerid, salesorderid )AS salesbillings ON salesbillings.salesorderid = xm_salesorder.salesorderid AND salesbillings.smownerid = xm_salesorder.smownerid WHERE xm_salesorder.deleted = 0 AND xm_salesorder.approved = 1 AND xm_salesorder.duedate ${duedate} GROUP BY xm_salesorder.smownerid, xm_salesorder.salesorderid )t
+        </when>
+	  </choose>
+  </select>
+   
+  
+  <!-- 销售汇总表 -->
+  <select id="querySalesTotal" resultMap="ResultReceivePayment">
+	SELECT 1 as 'type',	'Total' AS 'duedate',
+	    sum(xm_salesorder.total *(CASE WHEN xm_salesorder.currency_rate > 0 THEN	xm_salesorder.currency_rate	ELSE	1	END))AS sumactualamount
+		FROM xm_salesorder
+		inner join xm_account on xm_account.accountid = xm_salesorder.accountid
+		LEFT JOIN xm_users ON xm_users.id = xm_salesorder.smownerid
+		WHERE	xm_salesorder.deleted = 0 AND xm_salesorder.approved = 1
+		AND xm_salesorder.duedate BETWEEN '2012-01-01 00:00:00'
+		AND '2012-12-31 23:59:00'
+		and  last_name='管理员'
+		GROUP BY type
+   union all
+   select type,CASE WHEN duedate='01' THEN 'One' WHEN duedate='02' THEN 'Two' WHEN duedate='03' THEN 'Three'
+		WHEN duedate='04' THEN 'Four' WHEN duedate='05' THEN 'Five' WHEN duedate='06' THEN 'Six' WHEN duedate='07' THEN 'Seven'
+		WHEN duedate='08' THEN 'Eight' WHEN duedate='09' THEN 'Nine' WHEN duedate='10' THEN 'Ten' WHEN duedate='11' THEN 'Eleven'
+		WHEN duedate='12' THEN 'Twelve'  end duedate,salessumtotal from (
+			SELECT 1 as 'type',	DATE_FORMAT(xm_salesorder.duedate, '%m') as duedate ,	xm_users.last_name,
+				sum(xm_salesorder.total *(CASE	WHEN xm_salesorder.currency_rate > 0 THEN	xm_salesorder.currency_rate	ELSE 1	END))AS salessumtotal
+			FROM	xm_salesorder
+			inner join xm_account on xm_account.accountid = xm_salesorder.accountid
+			LEFT JOIN xm_users ON xm_users.id = xm_salesorder.smownerid
+			WHERE	xm_salesorder.deleted = 0 AND xm_salesorder.approved = 1
+			AND xm_salesorder.duedate BETWEEN '2012-01-01 00:00:00'
+			AND '2012-12-31 23:59:00'
+			and  last_name='管理员'
+			GROUP BY DATE_FORMAT(xm_salesorder.duedate, '%m')
+			) t
+   union ALL
+   SELECT 2 as 'type','Total' AS 'duedate',
+		sum((CASE	WHEN xm_gathers.currency_rate > 0 THEN xm_gathers.currency_rate	ELSE 1 END)* actualamount)AS sumactualamount
+		FROM xm_gathers
+		 inner join xm_account on xm_account.accountid = xm_gathers.accountid 
+		LEFT JOIN xm_users ON xm_users.id = xm_gathers.smownerid
+		WHERE	xm_gathers.deleted = 0 AND last_name = '管理员'
+		AND xm_gathers.gatherstatus IN('已收', '部分已收')
+		AND xm_gathers.actualdate BETWEEN '2012-01-01 00:00:00'
+		AND '2012-12-31 23:59:00'
+		GROUP BY	type
+  UNION ALL
+	select type,CASE WHEN duedate='01' THEN 'One' WHEN duedate='02' THEN 'Two' WHEN duedate='03' THEN 'Three'
+		  WHEN duedate='04' THEN 'Four' WHEN duedate='05' THEN 'Five' WHEN duedate='06' THEN 'Six' WHEN duedate='07' THEN 'Seven'
+		  WHEN duedate='08' THEN 'Eight' WHEN duedate='09' THEN 'Nine' WHEN duedate='10' THEN 'Ten' WHEN duedate='11' THEN 'Eleven'
+		  WHEN duedate='12' THEN 'Twelve'  end duedate,sumactualamount from (
+			SELECT 2 as 'type',DATE_FORMAT(xm_gathers.actualdate, '%m')AS duedate,xm_users.last_name,
+				sum((CASE	WHEN xm_gathers.currency_rate > 0 THEN xm_gathers.currency_rate	ELSE	1	END)* actualamount)AS sumactualamount		    
+				FROM	xm_gathers
+			 inner join xm_account on xm_account.accountid = xm_gathers.accountid 
+				LEFT JOIN xm_users ON xm_users.id = xm_gathers.smownerid
+				WHERE	xm_gathers.deleted = 0
+				AND last_name = '管理员'	AND xm_gathers.gatherstatus IN('已收', '部分已收')
+				AND xm_gathers.actualdate BETWEEN '2012-01-01 00:00:00'	AND '2012-12-31 23:59:00'
+				GROUP BY		DATE_FORMAT(xm_gathers.actualdate, '%m')
+			) t
+   union ALL
+		SELECT 3 as 'type','Total' AS 'duedate',
+			sum(total) AS sumtotal
+		FROM xm_expenses
+		LEFT JOIN xm_users ON xm_users.id = xm_expenses.smownerid
+		 INNER JOIN xm_account ON xm_account.accountid = xm_expenses.accountid
+		WHERE	xm_expenses.deleted = 0 AND last_name = '管理员'
+		AND xm_expenses.approved = 1
+		AND xm_expenses.expensedate BETWEEN '2012-01-01 00:00:00'
+		AND '2012-12-31 23:59:00'
+		GROUP BY type
+   UNION ALL
+		select type,CASE WHEN duedate='01' THEN 'One' WHEN duedate='02' THEN 'Two' WHEN duedate='03' THEN 'Three'
+		  WHEN duedate='04' THEN 'Four' WHEN duedate='05' THEN 'Five' WHEN duedate='06' THEN 'Six' WHEN duedate='07' THEN 'Seven'
+		  WHEN duedate='08' THEN 'Eight' WHEN duedate='09' THEN 'Nine' WHEN duedate='10' THEN 'Ten' WHEN duedate='11' THEN 'Eleven'
+		  WHEN duedate='12' THEN 'Twelve'  end duedate,sumtotal from (
+		SELECT 3 as 'type',DATE_FORMAT(xm_expenses.expensedate,'%m')AS duedate,
+			sum(total) AS sumtotal		    
+			FROM	xm_expenses
+			LEFT JOIN xm_users ON xm_users.id = xm_expenses.smownerid
+		 INNER JOIN xm_account ON xm_account.accountid = xm_expenses.accountid
+		WHERE	xm_expenses.deleted = 0 AND last_name = '管理员'
+		AND xm_expenses.approved = 1
+		AND xm_expenses.expensedate BETWEEN '2012-01-01 00:00:00'
+		AND '2012-12-31 23:59:00'
+			GROUP BY DATE_FORMAT(xm_expenses.expensedate,'%m')
+		) t
+  </select>
+  
+ 
+  
+  <!-- 销售明细表;采购和仓库管理统计表 -->
+  <select id="queryUsersalesinforeport" resultMap="ResultUsersalesinforeport">
+	   <choose>
+	    <when test="id ==4">
+	         SELECT xm_salesorder.smownerid,xm_users.last_name,xm_salesorder.salesorderid, xm_salesorder.SUBJECT, xm_account.accountname, ( IFNULL(xm_salesorder.total, 0.00)*( CASE WHEN xm_salesorder.currency_rate > 0 THEN xm_salesorder.currency_rate ELSE 1 END ) )AS total, salesgathers.actualamount, salesbillings.billingamount, salesgathers.notamount FROM xm_salesorder INNER JOIN xm_account ON xm_salesorder.accountid = xm_account.accountid INNER JOIN xm_users on xm_salesorder.smownerid=xm_users.id LEFT JOIN( SELECT smownerid, salesorderid, sum( IFNULL(actualamount, 0.00)*( CASE WHEN currency_rate > 0 THEN currency_rate ELSE 1 END ) )AS actualamount, sum( ( ( CASE WHEN xm_gathers.currency_rate > 0 THEN xm_gathers.currency_rate ELSE 1 END )* IFNULL(xm_gathers.planamount, 0)- IFNULL(xm_gathers.actualamount, 0) ) )AS notamount FROM xm_gathers WHERE deleted = 0 AND smownerid > 0 AND salesorderid > 0 GROUP BY smownerid, salesorderid )AS salesgathers ON salesgathers.salesorderid = xm_salesorder.salesorderid AND salesgathers.smownerid = xm_salesorder.smownerid LEFT JOIN( SELECT smownerid, salesorderid, sum(IFNULL(billingamount, 0.00))AS billingamount FROM xm_billings WHERE deleted = 0 AND smownerid > 0 AND salesorderid > 0 GROUP BY smownerid, salesorderid )AS salesbillings ON salesbillings.salesorderid = xm_salesorder.salesorderid AND salesbillings.smownerid = xm_salesorder.smownerid WHERE xm_salesorder.deleted = 0 AND xm_salesorder.approved = 1 AND xm_salesorder.duedate  ${duedate}  GROUP BY xm_salesorder.smownerid, xm_salesorder.salesorderid  limit #{start},#{rows}
+	    </when>
+	  </choose>
+  </select>
+  
+  <!-- 当前库存资产 -->
+  <select id="queryCangkuTotal" resultMap="ResultCangkuInfo">
+     SELECT xm_cangkuproductrel.cangkusid,xm_cangkus.cangkuname,count(xm_cangkuproductrel.productid)AS prodcount,
+		sum(xm_cangkuproductrel.productnum)AS cangkucount,sum(xm_cangkuproductrel.productnum * xm_products.cost_price)AS assets
+		FROM	xm_cangkuproductrel
+		INNER JOIN xm_products ON xm_products.productid = xm_cangkuproductrel.productid
+		INNER JOIN xm_cangkus on xm_cangkus.cangkusid=xm_cangkuproductrel.cangkusid
+		WHERE	xm_products.deleted = 0
+		GROUP BY	xm_cangkuproductrel.cangkusid;
+  </select>
+  
+  <select id="getCangkuFooter" resultMap="ResultCangkuInfo">
+     select cangkuname,sum(prodcount) prodcount,sum(cangkucount) cangkucount,sum(assets) assets from (
+		SELECT 	'合计' as cangkuname,count(xm_cangkuproductrel.productid)AS prodcount,
+			sum(xm_cangkuproductrel.productnum)AS cangkucount,sum(xm_cangkuproductrel.productnum * xm_products.cost_price)AS assets
+		FROM	xm_cangkuproductrel
+		INNER JOIN xm_products ON xm_products.productid = xm_cangkuproductrel.productid
+		INNER JOIN xm_cangkus on xm_cangkus.cangkusid=xm_cangkuproductrel.cangkusid
+		WHERE	xm_products.deleted = 0
+		GROUP BY	cangkuname
+		) t group by t.cangkuname
+  </select>
+  
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from xm_gathers
+    where gathersid = #{gathersid,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.crm.model.XmGathers" >
+    insert into xm_gathers (gathersid, gathername, accountid, 
+      salesorderid, invoiceid, plandate, 
+      actualdate, planamount, actualamount, 
+      amountcomment, gatherstatus, isinvoice, 
+      gathertimes, currency, currency_rate, 
+      smcreatorid, smownerid, modifiedby, 
+      groupid, createdtime, modifiedtime, 
+      deleted, approved, approvedby, 
+      description)
+    values (#{gathersid,jdbcType=INTEGER}, #{gathername,jdbcType=VARCHAR}, #{accountid,jdbcType=INTEGER}, 
+      #{salesorderid,jdbcType=INTEGER}, #{invoiceid,jdbcType=INTEGER}, #{plandate,jdbcType=DATE}, 
+      #{actualdate,jdbcType=DATE}, #{planamount,jdbcType=DECIMAL}, #{actualamount,jdbcType=DECIMAL}, 
+      #{amountcomment,jdbcType=VARCHAR}, #{gatherstatus,jdbcType=VARCHAR}, #{isinvoice,jdbcType=VARCHAR}, 
+      #{gathertimes,jdbcType=VARCHAR}, #{currency,jdbcType=VARCHAR}, #{currencyRate,jdbcType=DECIMAL}, 
+      #{smcreatorid,jdbcType=INTEGER}, #{smownerid,jdbcType=INTEGER}, #{modifiedby,jdbcType=INTEGER}, 
+      #{groupid,jdbcType=INTEGER}, #{createdtime,jdbcType=TIMESTAMP}, #{modifiedtime,jdbcType=TIMESTAMP}, 
+      #{deleted,jdbcType=INTEGER}, #{approved,jdbcType=INTEGER}, #{approvedby,jdbcType=INTEGER}, 
+      #{description,jdbcType=LONGVARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.crm.model.XmGathers" >
+    insert into xm_gathers
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="gathersid != null" >
+        gathersid,
+      </if>
+      <if test="gathername != null" >
+        gathername,
+      </if>
+      <if test="accountid != null" >
+        accountid,
+      </if>
+      <if test="salesorderid != null" >
+        salesorderid,
+      </if>
+      <if test="invoiceid != null" >
+        invoiceid,
+      </if>
+      <if test="plandate != null" >
+        plandate,
+      </if>
+      <if test="actualdate != null" >
+        actualdate,
+      </if>
+      <if test="planamount != null" >
+        planamount,
+      </if>
+      <if test="actualamount != null" >
+        actualamount,
+      </if>
+      <if test="amountcomment != null" >
+        amountcomment,
+      </if>
+      <if test="gatherstatus != null" >
+        gatherstatus,
+      </if>
+      <if test="isinvoice != null" >
+        isinvoice,
+      </if>
+      <if test="gathertimes != null" >
+        gathertimes,
+      </if>
+      <if test="currency != null" >
+        currency,
+      </if>
+      <if test="currencyRate != null" >
+        currency_rate,
+      </if>
+      <if test="smcreatorid != null" >
+        smcreatorid,
+      </if>
+      <if test="smownerid != null" >
+        smownerid,
+      </if>
+      <if test="modifiedby != null" >
+        modifiedby,
+      </if>
+      <if test="groupid != null" >
+        groupid,
+      </if>
+      <if test="createdtime != null" >
+        createdtime,
+      </if>
+      <if test="modifiedtime != null" >
+        modifiedtime,
+      </if>
+      <if test="deleted != null" >
+        deleted,
+      </if>
+      <if test="approved != null" >
+        approved,
+      </if>
+      <if test="approvedby != null" >
+        approvedby,
+      </if>
+      <if test="description != null" >
+        description,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="gathersid != null" >
+        #{gathersid,jdbcType=INTEGER},
+      </if>
+      <if test="gathername != null" >
+        #{gathername,jdbcType=VARCHAR},
+      </if>
+      <if test="accountid != null" >
+        #{accountid,jdbcType=INTEGER},
+      </if>
+      <if test="salesorderid != null" >
+        #{salesorderid,jdbcType=INTEGER},
+      </if>
+      <if test="invoiceid != null" >
+        #{invoiceid,jdbcType=INTEGER},
+      </if>
+      <if test="plandate != null" >
+        #{plandate,jdbcType=DATE},
+      </if>
+      <if test="actualdate != null" >
+        #{actualdate,jdbcType=DATE},
+      </if>
+      <if test="planamount != null" >
+        #{planamount,jdbcType=DECIMAL},
+      </if>
+      <if test="actualamount != null" >
+        #{actualamount,jdbcType=DECIMAL},
+      </if>
+      <if test="amountcomment != null" >
+        #{amountcomment,jdbcType=VARCHAR},
+      </if>
+      <if test="gatherstatus != null" >
+        #{gatherstatus,jdbcType=VARCHAR},
+      </if>
+      <if test="isinvoice != null" >
+        #{isinvoice,jdbcType=VARCHAR},
+      </if>
+      <if test="gathertimes != null" >
+        #{gathertimes,jdbcType=VARCHAR},
+      </if>
+      <if test="currency != null" >
+        #{currency,jdbcType=VARCHAR},
+      </if>
+      <if test="currencyRate != null" >
+        #{currencyRate,jdbcType=DECIMAL},
+      </if>
+      <if test="smcreatorid != null" >
+        #{smcreatorid,jdbcType=INTEGER},
+      </if>
+      <if test="smownerid != null" >
+        #{smownerid,jdbcType=INTEGER},
+      </if>
+      <if test="modifiedby != null" >
+        #{modifiedby,jdbcType=INTEGER},
+      </if>
+      <if test="groupid != null" >
+        #{groupid,jdbcType=INTEGER},
+      </if>
+      <if test="createdtime != null" >
+        #{createdtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="modifiedtime != null" >
+        #{modifiedtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="deleted != null" >
+        #{deleted,jdbcType=INTEGER},
+      </if>
+      <if test="approved != null" >
+        #{approved,jdbcType=INTEGER},
+      </if>
+      <if test="approvedby != null" >
+        #{approvedby,jdbcType=INTEGER},
+      </if>
+      <if test="description != null" >
+        #{description,jdbcType=LONGVARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.crm.model.XmGathers" >
+    update xm_gathers
+    <set >
+      <if test="gathername != null" >
+        gathername = #{gathername,jdbcType=VARCHAR},
+      </if>
+      <if test="accountid != null" >
+        accountid = #{accountid,jdbcType=INTEGER},
+      </if>
+      <if test="salesorderid != null" >
+        salesorderid = #{salesorderid,jdbcType=INTEGER},
+      </if>
+      <if test="invoiceid != null" >
+        invoiceid = #{invoiceid,jdbcType=INTEGER},
+      </if>
+      <if test="plandate != null" >
+        plandate = #{plandate,jdbcType=DATE},
+      </if>
+      <if test="actualdate != null" >
+        actualdate = #{actualdate,jdbcType=DATE},
+      </if>
+      <if test="planamount != null" >
+        planamount = #{planamount,jdbcType=DECIMAL},
+      </if>
+      <if test="actualamount != null" >
+        actualamount = #{actualamount,jdbcType=DECIMAL},
+      </if>
+      <if test="amountcomment != null" >
+        amountcomment = #{amountcomment,jdbcType=VARCHAR},
+      </if>
+      <if test="gatherstatus != null" >
+        gatherstatus = #{gatherstatus,jdbcType=VARCHAR},
+      </if>
+      <if test="isinvoice != null" >
+        isinvoice = #{isinvoice,jdbcType=VARCHAR},
+      </if>
+      <if test="gathertimes != null" >
+        gathertimes = #{gathertimes,jdbcType=VARCHAR},
+      </if>
+      <if test="currency != null" >
+        currency = #{currency,jdbcType=VARCHAR},
+      </if>
+      <if test="currencyRate != null" >
+        currency_rate = #{currencyRate,jdbcType=DECIMAL},
+      </if>
+      <if test="smcreatorid != null" >
+        smcreatorid = #{smcreatorid,jdbcType=INTEGER},
+      </if>
+      <if test="smownerid != null" >
+        smownerid = #{smownerid,jdbcType=INTEGER},
+      </if>
+      <if test="modifiedby != null" >
+        modifiedby = #{modifiedby,jdbcType=INTEGER},
+      </if>
+      <if test="groupid != null" >
+        groupid = #{groupid,jdbcType=INTEGER},
+      </if>
+      <if test="createdtime != null" >
+        createdtime = #{createdtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="modifiedtime != null" >
+        modifiedtime = #{modifiedtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="deleted != null" >
+        deleted = #{deleted,jdbcType=INTEGER},
+      </if>
+      <if test="approved != null" >
+        approved = #{approved,jdbcType=INTEGER},
+      </if>
+      <if test="approvedby != null" >
+        approvedby = #{approvedby,jdbcType=INTEGER},
+      </if>
+      <if test="description != null" >
+        description = #{description,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    where gathersid = #{gathersid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.crm.model.XmGathers" >
+    update xm_gathers
+    set gathername = #{gathername,jdbcType=VARCHAR},
+      accountid = #{accountid,jdbcType=INTEGER},
+      salesorderid = #{salesorderid,jdbcType=INTEGER},
+      invoiceid = #{invoiceid,jdbcType=INTEGER},
+      plandate = #{plandate,jdbcType=DATE},
+      actualdate = #{actualdate,jdbcType=DATE},
+      planamount = #{planamount,jdbcType=DECIMAL},
+      actualamount = #{actualamount,jdbcType=DECIMAL},
+      amountcomment = #{amountcomment,jdbcType=VARCHAR},
+      gatherstatus = #{gatherstatus,jdbcType=VARCHAR},
+      isinvoice = #{isinvoice,jdbcType=VARCHAR},
+      gathertimes = #{gathertimes,jdbcType=VARCHAR},
+      currency = #{currency,jdbcType=VARCHAR},
+      currency_rate = #{currencyRate,jdbcType=DECIMAL},
+      smcreatorid = #{smcreatorid,jdbcType=INTEGER},
+      smownerid = #{smownerid,jdbcType=INTEGER},
+      modifiedby = #{modifiedby,jdbcType=INTEGER},
+      groupid = #{groupid,jdbcType=INTEGER},
+      createdtime = #{createdtime,jdbcType=TIMESTAMP},
+      modifiedtime = #{modifiedtime,jdbcType=TIMESTAMP},
+      deleted = #{deleted,jdbcType=INTEGER},
+      approved = #{approved,jdbcType=INTEGER},
+      approvedby = #{approvedby,jdbcType=INTEGER},
+      description = #{description,jdbcType=LONGVARCHAR}
+    where gathersid = #{gathersid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.crm.model.XmGathers" >
+    update xm_gathers
+    set gathername = #{gathername,jdbcType=VARCHAR},
+      accountid = #{accountid,jdbcType=INTEGER},
+      salesorderid = #{salesorderid,jdbcType=INTEGER},
+      invoiceid = #{invoiceid,jdbcType=INTEGER},
+      plandate = #{plandate,jdbcType=DATE},
+      actualdate = #{actualdate,jdbcType=DATE},
+      planamount = #{planamount,jdbcType=DECIMAL},
+      actualamount = #{actualamount,jdbcType=DECIMAL},
+      amountcomment = #{amountcomment,jdbcType=VARCHAR},
+      gatherstatus = #{gatherstatus,jdbcType=VARCHAR},
+      isinvoice = #{isinvoice,jdbcType=VARCHAR},
+      gathertimes = #{gathertimes,jdbcType=VARCHAR},
+      currency = #{currency,jdbcType=VARCHAR},
+      currency_rate = #{currencyRate,jdbcType=DECIMAL},
+      smcreatorid = #{smcreatorid,jdbcType=INTEGER},
+      smownerid = #{smownerid,jdbcType=INTEGER},
+      modifiedby = #{modifiedby,jdbcType=INTEGER},
+      groupid = #{groupid,jdbcType=INTEGER},
+      createdtime = #{createdtime,jdbcType=TIMESTAMP},
+      modifiedtime = #{modifiedtime,jdbcType=TIMESTAMP},
+      deleted = #{deleted,jdbcType=INTEGER},
+      approved = #{approved,jdbcType=INTEGER},
+      approvedby = #{approvedby,jdbcType=INTEGER}
+    where gathersid = #{gathersid,jdbcType=INTEGER}
+  </update>
+  
+  
+</mapper>
