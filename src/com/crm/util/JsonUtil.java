@@ -267,7 +267,6 @@ public class JsonUtil {
         return jsonConfig;  
     }  
   
-  
     /** 
      * 除去不想生成的字段（特别适合去掉级联的对象）+时间转换 
      * @param excludes 除去不想生成的字段 
@@ -281,8 +280,22 @@ public class JsonUtil {
         jsonConfig.setCycleDetectionStrategy(CycleDetectionStrategy.LENIENT);  
         jsonConfig.registerJsonValueProcessor(Date.class,  
                 new JsonDateValueProcessor(datePattern));  
-  
         return jsonConfig;  
     }  
+    
+    /** 
+     * 除去不想生成的字段（特别适合去掉级联的对象） 
+     *  
+     * @param excludes 
+     *            除去不想生成的字段 
+     * @return 
+     */  
+    public static JsonConfig configJson(String[] excludes) {  
+        JsonConfig jsonConfig = new JsonConfig();  
+        jsonConfig.setExcludes(excludes);  
+        jsonConfig.setIgnoreDefaultExcludes(false);  
+        jsonConfig.setCycleDetectionStrategy(CycleDetectionStrategy.LENIENT);  
+        return jsonConfig;  
+    } 
   
 }  

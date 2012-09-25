@@ -24,7 +24,6 @@ function tab(title, url, closable) {
 	var exists = $('#tabs').tabs('exists', title);
 
 	if (!exists) {
-
 		$('#tabs').tabs('add', {
 			title : title,
 			id : new Date().getTime(),
@@ -40,7 +39,7 @@ function tab(title, url, closable) {
 		tabClose();
 
 	} else {
-		$('#tabs').tabs("select", title)
+		$('#tabs').tabs("select", title);
 	}
 
 }

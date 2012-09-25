@@ -31,7 +31,4 @@ public class XmForthamountsController extends BaseController {
 		this.moduleUtil.setViewProp(modelMap,"Gathers");
 		return "financial/forthamounts";
 	}
-
-	
-	
 }
