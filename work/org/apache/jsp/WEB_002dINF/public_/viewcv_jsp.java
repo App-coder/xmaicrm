@@ -274,23 +274,22 @@ String win_topbar = "closed=\"true\" modal=\"true\" collapsible=\"false\"  dragg
       out.write("\t</ul>\r\n");
       out.write("</div>");
       out.write("\r\n");
-      out.write("<div id=\"main\">\r\n");
-      out.write("<div class=\"path\"><a href=\"/\">市场管理</a>&gt;<a href=\"/sc/\">营销活动</a></div>\r\n");
-      out.write("\r\n");
-      out.write("\t<div class=\"hidden\">\r\n");
-      out.write("\t\t<div id=\"");
+      out.write("<div class=\"hidden\">\r\n");
+      out.write("\t<div id=\"");
       out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${fn:toLowerCase(entitytype)}", java.lang.String.class, (PageContext)_jspx_page_context, _jspx_fnmap_0, false));
       out.write("_winreport\"\r\n");
-      out.write("\t\t\ttitle=\"");
+      out.write("\t\ttitle=\"");
       out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${tab.tablabel }", java.lang.String.class, (PageContext)_jspx_page_context, null, false));
       out.write("-分布统计\" class=\"easyui-window\" ");
       out.print(win_topbar );
       out.write("\r\n");
-      out.write("\t\t\tstyle=\"width:700px; height: 500px;\">\r\n");
-      out.write("\t\t\t<iframe style=\"width:100%;height:100%;\" frameborder=\"0\" id=\"reportframe\" ></iframe>\r\n");
-      out.write("\t\t</div>\r\n");
+      out.write("\t\tstyle=\"width:700px; height: 500px;\">\r\n");
+      out.write("\t\t<iframe style=\"width:100%;height:100%;\" frameborder=\"0\" id=\"reportframe\" ></iframe>\r\n");
       out.write("\t</div>\r\n");
-      out.write("\t\r\n");
+      out.write("\t<div class=\"div_stat div_statdemo\"> <span class=\"stat_name\"></span>：<span class=\"stat_num\"></span></div>\r\n");
+      out.write("</div>\r\n");
+      out.write("<div id=\"main\">\r\n");
+      out.write("<div class=\"path\"><a href=\"/\">市场管理</a>&gt;<a href=\"/sc/\">营销活动</a></div>\r\n");
       out.write("\t<div class=\"d_view \">\r\n");
       out.write("\t\t\t\t<span class=\"icon-filter view_span\">视图：</span> <select\r\n");
       out.write("\t\t\t\t\tclass=\"sel_120\">\r\n");
@@ -307,7 +306,7 @@ String win_topbar = "closed=\"true\" modal=\"true\" collapsible=\"false\"  dragg
       out.write("\t\t\t</div>\r\n");
       out.write("\t\t\t<table id=\"view_list\"\r\n");
       out.write("\t\t\t\tdata-options=\"fitColumns:true\" ></table>\r\n");
-      out.write("\t\t\t\t\r\n");
+      out.write("\t\t\t\t<div class=\"stat_div hidden\"></div>\r\n");
       out.write("\t");
       if (_jspx_meth_c_005fif_005f0(_jspx_page_context))
         return;
@@ -454,9 +453,9 @@ String win_topbar = "closed=\"true\" modal=\"true\" collapsible=\"false\"  dragg
     org.apache.taglibs.standard.tag.rt.core.ForEachTag _jspx_th_c_005fforEach_005f0 = (org.apache.taglibs.standard.tag.rt.core.ForEachTag) _005fjspx_005ftagPool_005fc_005fforEach_0026_005fvar_005fitems.get(org.apache.taglibs.standard.tag.rt.core.ForEachTag.class);
     _jspx_th_c_005fforEach_005f0.setPageContext(_jspx_page_context);
     _jspx_th_c_005fforEach_005f0.setParent(null);
-    // /WEB-INF/public/viewcv.jsp(44,5) name = items type = java.lang.Object reqTime = true required = false fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
+    // /WEB-INF/public/viewcv.jsp(43,5) name = items type = java.lang.Object reqTime = true required = false fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
     _jspx_th_c_005fforEach_005f0.setItems((java.lang.Object) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${views}", java.lang.Object.class, (PageContext)_jspx_page_context, null, false));
-    // /WEB-INF/public/viewcv.jsp(44,5) name = var type = java.lang.String reqTime = false required = false fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
+    // /WEB-INF/public/viewcv.jsp(43,5) name = var type = java.lang.String reqTime = false required = false fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
     _jspx_th_c_005fforEach_005f0.setVar("v");
     int[] _jspx_push_body_count_c_005fforEach_005f0 = new int[] { 0 };
     try {
@@ -498,7 +497,7 @@ String win_topbar = "closed=\"true\" modal=\"true\" collapsible=\"false\"  dragg
     org.apache.taglibs.standard.tag.rt.core.IfTag _jspx_th_c_005fif_005f0 = (org.apache.taglibs.standard.tag.rt.core.IfTag) _005fjspx_005ftagPool_005fc_005fif_0026_005ftest.get(org.apache.taglibs.standard.tag.rt.core.IfTag.class);
     _jspx_th_c_005fif_005f0.setPageContext(_jspx_page_context);
     _jspx_th_c_005fif_005f0.setParent(null);
-    // /WEB-INF/public/viewcv.jsp(55,1) name = test type = boolean reqTime = true required = true fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
+    // /WEB-INF/public/viewcv.jsp(54,1) name = test type = boolean reqTime = true required = true fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
     _jspx_th_c_005fif_005f0.setTest(((java.lang.Boolean) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${repfields!=null }", java.lang.Boolean.class, (PageContext)_jspx_page_context, null, false)).booleanValue());
     int _jspx_eval_c_005fif_005f0 = _jspx_th_c_005fif_005f0.doStartTag();
     if (_jspx_eval_c_005fif_005f0 != javax.servlet.jsp.tagext.Tag.SKIP_BODY) {
@@ -538,9 +537,9 @@ String win_topbar = "closed=\"true\" modal=\"true\" collapsible=\"false\"  dragg
     org.apache.taglibs.standard.tag.rt.core.ForEachTag _jspx_th_c_005fforEach_005f1 = (org.apache.taglibs.standard.tag.rt.core.ForEachTag) _005fjspx_005ftagPool_005fc_005fforEach_0026_005fvar_005fitems.get(org.apache.taglibs.standard.tag.rt.core.ForEachTag.class);
     _jspx_th_c_005fforEach_005f1.setPageContext(_jspx_page_context);
     _jspx_th_c_005fforEach_005f1.setParent((javax.servlet.jsp.tagext.Tag) _jspx_th_c_005fif_005f0);
-    // /WEB-INF/public/viewcv.jsp(60,6) name = items type = java.lang.Object reqTime = true required = false fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
+    // /WEB-INF/public/viewcv.jsp(59,6) name = items type = java.lang.Object reqTime = true required = false fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
     _jspx_th_c_005fforEach_005f1.setItems((java.lang.Object) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${repfields}", java.lang.Object.class, (PageContext)_jspx_page_context, null, false));
-    // /WEB-INF/public/viewcv.jsp(60,6) name = var type = java.lang.String reqTime = false required = false fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
+    // /WEB-INF/public/viewcv.jsp(59,6) name = var type = java.lang.String reqTime = false required = false fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
     _jspx_th_c_005fforEach_005f1.setVar("f");
     int[] _jspx_push_body_count_c_005fforEach_005f1 = new int[] { 0 };
     try {

@@ -27,17 +27,16 @@ var viewid = '${viewid}';
 </head>
 <body id="wrap">
 <%@ include file="../nav.jsp"%>
+<div class="hidden">
+	<div id="${fn:toLowerCase(entitytype)}_winreport"
+		title="${tab.tablabel }-分布统计" class="easyui-window" <%=win_topbar %>
+		style="width:700px; height: 500px;">
+		<iframe style="width:100%;height:100%;" frameborder="0" id="reportframe" ></iframe>
+	</div>
+	<div class="div_stat div_statdemo"> <span class="stat_name"></span>：<span class="stat_num"></span></div>
+</div>
 <div id="main">
 <div class="path"><a href="/">市场管理</a>&gt;<a href="/sc/">营销活动</a></div>
-
-	<div class="hidden">
-		<div id="${fn:toLowerCase(entitytype)}_winreport"
-			title="${tab.tablabel }-分布统计" class="easyui-window" <%=win_topbar %>
-			style="width:700px; height: 500px;">
-			<iframe style="width:100%;height:100%;" frameborder="0" id="reportframe" ></iframe>
-		</div>
-	</div>
-	
 	<div class="d_view ">
 				<span class="icon-filter view_span">视图：</span> <select
 					class="sel_120">
@@ -51,7 +50,7 @@ var viewid = '${viewid}';
 			</div>
 			<table id="view_list"
 				data-options="fitColumns:true" ></table>
-				
+				<div class="stat_div hidden"></div>
 	<c:if test="${repfields!=null }">
 			<div data-options="region:'south',border:false">
 				<div class="d_report ">

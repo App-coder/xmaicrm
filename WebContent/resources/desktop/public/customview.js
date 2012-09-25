@@ -203,6 +203,7 @@ function initGrid() {
 	    }
 	}, ] ]
     });
+    $('#customview_list').datagrid('fixColumnSize');
 }
 function initview(vid){
     //视图基本信息

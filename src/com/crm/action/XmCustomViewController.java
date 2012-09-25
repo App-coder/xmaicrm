@@ -1,11 +1,13 @@
 package com.crm.action;
 
+import java.math.BigDecimal;
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Iterator;
 import java.util.List;
+import java.util.Map;
 
 import javax.annotation.Resource;
-
-import net.sf.json.JsonConfig;
 
 import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Controller;
@@ -39,6 +41,7 @@ import com.crm.service.XmSequenceService;
 import com.crm.service.XmTabService;
 import com.crm.util.DateUtil;
 import com.crm.util.HtmlUtil;
+import com.crm.util.JsonUtil;
 import com.crm.util.crm.CustomViewUtil;
 
 @Controller
@@ -150,7 +153,7 @@ public class XmCustomViewController extends BaseController {
 		modelmap.addAttribute("optionstr",
 				HtmlUtil.getMultSelect(blocks, fieldsList,entitytype));
 		modelmap.addAttribute("colloptionstr",
-				HtmlUtil.getCollectSelect(blocks, fieldsList));
+				HtmlUtil.getCollectSelect(blocks, fieldsList,entitytype));
 		modelmap.addAttribute("filter", HtmlUtil.getFilter());
 		modelmap.addAttribute("entitytype", entitytype);
 
@@ -699,6 +702,36 @@ public class XmCustomViewController extends BaseController {
 		ListBean list = new ListBean();
 		list.setRows(ls);
 		list.setTotal(total);
+		
+		try{
+			List<HashMap<String, String>> listfooter = new ArrayList<HashMap<String, String>>();
+			if(customview.getCollectcolumn()!=null){
+				HashMap hs_collect = new HashMap();
+				CVColumn collect = (CVColumn)JsonUtil.getObject4JsonString(customview.getCollectcolumn(), CVColumn.class);
+				
+				BigDecimal collectall = new BigDecimal(0);
+				if(ls.size()>=1){
+					for(int i=0;i<ls.size();i++){
+						HashMap<String,String> h = (HashMap<String,String>)ls.get(i);
+						Iterator iter = h.entrySet().iterator();
+						while (iter.hasNext()) {
+						    Map.Entry entry = (Map.Entry) iter.next();
+						    if(entry.getKey().equals(collect.getFieldname())){
+						    	collectall = collectall.add(new BigDecimal(entry.getValue()+""));
+						    }
+						} 
+					}
+				}
+				hs_collect.put("statname",collect.getFieldlabel()+"合计");
+				hs_collect.put("statnum",collectall.doubleValue());
+				listfooter.add(hs_collect);
+				list.setFooter(listfooter);
+			}
+		}catch(Exception e){
+			
+		}
+		
+//		list.setFooter(footer);
 //		JsonConfig jsonConfig = new JsonConfig();
 //		jsonConfig.registerJsonValueProcessor(java.sql.Date.class, new JsonDateValueProcessor("yyyy-MM-dd"));
 		

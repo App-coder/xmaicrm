@@ -48,7 +48,7 @@ public class HtmlUtil {
 	}
 
 	public static String getCollectSelect(List<XmBlocks> blocks,
-			List<List<XmField>> fieldslist) {
+			List<List<XmField>> fieldslist,String entitytype) {
 		StringBuffer collectSelectStr = new StringBuffer();
 		collectSelectStr.append("<option value=''>无</option>");
 		if (blocks.size() >= 1) {
@@ -63,17 +63,17 @@ public class HtmlUtil {
 									+ blocks.get(i).getBlocklabel() + "\">");
 						}
 						exist = true;
-						collectSelectStr.append("<option value='{\"field\":\""
-								+ fieldslist.get(i).get(j).getFieldname()
-								+ "\",\"resizable\":false,\"title\":\""
-								+ fieldslist.get(i).get(j).getFieldlabel()
-								+ "\",\"table\":\""
-								+ fieldslist.get(i).get(j).getTablename()
-								+ "\",\"column\":\""
-								+ fieldslist.get(i).get(j).getColumnname()
-								+ "\",\"type\":\""
-								+ fieldslist.get(i).get(j).getTypeofdata()
-								+ "\"}' >"
+						collectSelectStr.append("<option value='{"
+								+"\"title\":\""+fieldslist.get(i).get(j).getFieldlabel()+"\","
+								+"\"field\":\""+fieldslist.get(i).get(j).getFieldname()+"\","
+								+"\"resizable\":false,"
+								+"\"fieldtabname\":\""+fieldslist.get(i).get(j).getTablename()+"\","
+								+"\"fieldcolname\":\""+fieldslist.get(i).get(j).getColumnname()+"\","
+								+"\"fieldname\":\""+fieldslist.get(i).get(j).getFieldname()+"\","
+								+"\"entitytype\":\""+entitytype+"\","
+								+"\"fieldlabel\":\""+fieldslist.get(i).get(j).getFieldlabel()+"\","
+								+"\"fieldtypeofdata\":\""+fieldslist.get(i).get(j).getTypeofdata()+"\""
+								+"}' >"
 								+ fieldslist.get(i).get(j).getFieldlabel()
 								+ "</option>");
 					}

@@ -160,9 +160,9 @@ public class CvFilter {
 				}
 			}
 		}else{
-			totalfilter +="SELECT count(1) AS count FROM "+en.getTablename() ;
+			totalfilter +="SELECT count(1) AS count FROM "+en.getTablename() +" where "+en.getTablename()+".deleted = 0 " ;
 		}
-		return totalfilter+" where 1=1 "+getFilter(customview, stdfilter, advfilters);
+		return totalfilter+" where 1=1 and "+en.getTablename()+".deleted = 0 "+getFilter(customview, stdfilter, advfilters);
 	}
 
 	public String getListFilter(int viewid, XmCustomview customview,
@@ -171,6 +171,7 @@ public class CvFilter {
 		String columnstr = "";
 		String joinstr = "";
 		XmEntityname en = CustomViewUtil.getEntitynameByET(customview.getEntitytype());
+		
 		if(cols.size()>=1){
 			for(int i=0;i<cols.size();i++){
 				CVColumn n = cols.get(i);
@@ -219,13 +220,14 @@ public class CvFilter {
 					}
 				}
 				
+				
 			}
 			
 			selectall +="select "+columnstr+" from "+en.getTablename()+" "+joinstr;
 		}else{
 			selectall +="SELECT "+en.getTablename()+".* FROM "+en.getTablename()+" where 1=1 " ;
 		}
-		return selectall+" where 1=1 "+getFilter(customview, stdfilter, advfilters);
+		return selectall+" where 1=1 and "+en.getTablename()+".deleted = 0 "+getFilter(customview, stdfilter, advfilters);
 	}
 	
 	

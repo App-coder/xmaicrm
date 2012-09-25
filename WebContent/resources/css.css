@@ -141,3 +141,13 @@ fieldset legend{color:#15428B;}
     padding: 3px 5px;
     white-space: normal;
 }
+.div_stat{
+	display: block;
+	border:1px solid #CCCCCC;
+	border-top:none;
+	height: 30px;
+    line-height: 30px;
+	padding-bottom: 2px;
+    padding-left: 30px;
+    padding-top: 2px;
+}

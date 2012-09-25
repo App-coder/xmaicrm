@@ -18,6 +18,7 @@ import com.crm.model.XmTab;
 import com.crm.service.XmCustomViewService;
 import com.crm.service.XmCvcolumnlistService;
 import com.crm.service.XmFieldService;
+import com.crm.util.JsonUtil;
 import com.crm.util.crm.CustomViewUtil;
 
 /**
@@ -57,7 +58,6 @@ public class ModuleUtil extends BaseController{
 	public void setViewProp(ModelMap modelMap,String tabname){
 		//得到默认的view
 		XmCustomview customview = this.xmCustomViewService.selectByPrimaryKey(tabname,-1);
-		
 		try {
 			List<CVColumn> cols = this.xmCvcolumnlistService.getColumns(customview);
 			List<Column> reset = new ArrayList<Column>();
@@ -95,6 +95,14 @@ public class ModuleUtil extends BaseController{
 		
 		//底部报表
 		List<XmField> repfields = this.xmFieldService.getReportField(tabname);
+		if(!customview.getEntitytype().equals("Products")&&!customview.getEntitytype().equals("Faq")&&!customview.getEntitytype().equals("PriceBooks")){
+			XmField uf = new XmField();
+			uf.setFieldname("assign_user_id");
+			uf.setTablename("xm_users");
+			uf.setColumnname("user_name");
+			uf.setFieldlabel("负责人");
+			repfields.add(uf);
+		}
 		modelMap.addAttribute("repfields",repfields);
 	}
 }
