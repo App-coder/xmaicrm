@@ -8,4 +8,7 @@
 	<c:when test="${url=='customview/viewIndex?entitytype=Campaigns' }">
 		${marketing }&gt;<a href="customview/viewIndex?entitytype=Campaigns">营销活动</a>
 	</c:when>
+	<c:when test="${url=='customview/showEdit?recordid=0&module=Campaigns'}">
+		${marketing }&gt;<a href="customview/showEdit?recordid=0&module=Campaigns">添加营销活动</a>
+	</c:when>
 </c:choose>	

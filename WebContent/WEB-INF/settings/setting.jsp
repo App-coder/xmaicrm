@@ -42,13 +42,13 @@
 											<tbody>
 												<tr>
 													<td valign="top"><a
-														href="javascript:tab('角色权限','settings/role/index')"><img
+														href="settings/role/index"><img
 															width="48" height="48" border="0" title="角色权限" alt="角色权限"
 															src="resources/images/settings/panel/ico-roles.gif"></a></td>
 												</tr>
 												<tr>
 													<td valign="top" class="big"><a
-														href="javascript:tab('角色权限','settings/role/index')">角色权限</a></td>
+														href="settings/role/index">角色权限</a></td>
 												</tr>
 											</tbody>
 										</table>
