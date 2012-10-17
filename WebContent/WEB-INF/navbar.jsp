@@ -32,6 +32,27 @@
 	<c:when test="${pathname=='显示区域' }">
 		${syssetting }&gt;<a href="${url }">显示区域</a>
 	</c:when>
+	<c:when test="${pathname=='系统日志' }">
+		${syssetting }&gt;<a href="${url }">系统日志</a>
+	</c:when>
+	<c:when test="${pathname=='登入历史' }">
+		${syssetting }&gt;<a href="${url }">登入历史</a>
+	</c:when>	
+	<c:when test="${pathname=='Email模版' }">
+		${syssetting }&gt;<a href="${url }">Email模版</a>
+	</c:when>
+	<c:when test="${pathname=='公司信息管理 ' }">
+		${syssetting }&gt;<a href="${url }">公司信息管理</a>
+	</c:when>
+	<c:when test="${pathname=='SMTP服务器 ' }">
+		${syssetting }&gt;<a href="${url }">SMTP服务器</a>
+	</c:when>
+	<c:when test="${pathname=='货币币种' }">
+		${syssetting }&gt;<a href="${url }">货币币种</a>
+	</c:when>
+	<c:when test="${pathname=='授权许可' }">
+		${syssetting }&gt;<a href="${url }">授权许可</a>
+	</c:when>	
 	<c:otherwise>
 		导航设置不正确！
 	</c:otherwise>

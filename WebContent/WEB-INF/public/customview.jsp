@@ -168,10 +168,10 @@ var entitytype = '${entitytype}';
 <div class="container">
 	<div class="hidden">
 		<div id="customview_edit" iconCls="icon-save"
-			style="width: 700px; height: 480px;" class="easyui-window"
+			style="width: 700px; height: 432px;" class="easyui-window"
 			<%=win_topbar%> title="属性编辑" >
 			<div class="easyui-layout" data-options="fit:true,border:false">
-			<div data-options="region:'center',border:false" style="padding:10px;background:#fff;border:1px solid #ccc;">
+			<div data-options="region:'center',border:false" style="padding:10px;background:#fff;">
 					<form name="form_customview" id="form_customview" method="post" >
 					<input type="hidden" name="id" />
 					<input type="hidden" name="action"  />

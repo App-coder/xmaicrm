@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.alibaba.fastjson.JSON;
 import com.crm.action.BaseController;
+import com.crm.bean.easyui.Combobox;
 import com.crm.bean.easyui.ListBean;
 import com.crm.model.XmGroups;
 import com.crm.settings.basic.service.XmGroupsService;
@@ -47,6 +48,20 @@ public class XmGroupsController extends BaseController {
 		bean.setRows(groups);
 		bean.setTotal(groups.size());
 		return JSON.toJSONString(bean);
+	}
+	
+	@RequestMapping(value = "/getCombox", method = RequestMethod.POST)
+	@ResponseBody
+	public String getCombox(){
+		List<XmGroups> groups = this.xmGroupsService.loadAll();
+		List<Combobox> boxs = new ArrayList<Combobox>();
+		for(int i=0;i<groups.size();i++){
+			Combobox cbo = new Combobox();
+			cbo.setId(groups.get(i).getGroupid()+"");
+			cbo.setText(groups.get(i).getGroupname());
+			boxs.add(cbo);
+		}
+		return JSON.toJSONString(boxs);
 	}
 	
 	

@@ -96,7 +96,7 @@
 				class="down">财务</span></a>
 			<ul class="sub">
 				<li><a href="javascript:tab('财务导航','accounting/nav')">财务导航</a></li>
-				<li><a href="javascript:tab('应收款','gathers/index')">应收款</a></li>
+				<li><a href="customview/viewIndex?entitytype=Gathers">应收款</a></li>
 				<li><a href="javascript:tab('应付款','charges/index')">应付款</a></li>
 				<li><a href="javascript:tab('收款单','gathersrecords/index')">收款单</a></li>
 				<li><a href="javascript:tab('付款单','chargesrecords/index')">付款单</a></li>

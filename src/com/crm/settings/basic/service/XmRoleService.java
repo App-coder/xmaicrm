@@ -10,4 +10,6 @@ public interface XmRoleService {
 
 	XmRole getRoleById(String id);
 
+	List<XmRole> getAll();
+
 }

@@ -59,8 +59,6 @@ public class BaseInterceptor implements HandlerInterceptor {
 			CacheManager.putInCache(Constant.TAB, hmentityname);
 			CacheManager.putInCache(Constant.TABBYLAB, hmlabtabs);
 		}
-
-		//Logger.getLogger("").info("ttt");
 		return true;
 	}
 	

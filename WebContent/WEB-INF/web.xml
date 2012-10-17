@@ -19,6 +19,11 @@
     <listener>
         <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
     </listener>
+    
+    <listener>
+	    <description>用于监听session的一系列操作</description>
+	    <listener-class>com.crm.listener.SessionListener</listener-class>
+	</listener>
 
     <!-- 乱码 -->
     <filter>

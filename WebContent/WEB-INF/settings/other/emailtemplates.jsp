@@ -1,9 +1,19 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"
-	pageEncoding="utf-8"%>
-<!-- Email模版 -->	
+    pageEncoding="utf-8"%>
+<%@ include file="../../head.jsp"%>
 <%@ include file="../../common/config.jsp"%>
+<script>
+var pathname = "Email模版";
+</script>
+<%@ include file="../../path.jsp" %>
 <script type="text/javascript" src="resources/desktop/settings/other/emailtemplates.js"></script>
-<div class="container">
-Email模版 
+</head>
+<body id="wrap">
+<%@ include file="../../nav.jsp"%>
+<div id="main">
+<div class="path" id="navpath"></div>
+<table id="emailtemplates_list" ></table>
 </div>
-
+<%@ include file="../../foot.jsp"%>
+</body>
+</html>

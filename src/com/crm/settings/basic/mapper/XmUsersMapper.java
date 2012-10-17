@@ -12,4 +12,24 @@ public interface XmUsersMapper {
 
 	int getTotal();
 
+	List<XmUsers> getActiveUser();
+
+    int deleteByPrimaryKey(Integer id);
+
+    int insert(XmUsers record);
+
+    int insertSelective(XmUsers record);
+
+    XmUsers selectByPrimaryKey(Integer id);
+
+    int updateByPrimaryKeySelective(XmUsers record);
+
+    int updateByPrimaryKeyWithBLOBs(XmUsers record);
+
+    int updateByPrimaryKey(XmUsers record);
+
+	Object getUserById(@Param("id") int id);
+
+	int setDeleteStatus(@Param("id") int id,@Param("delete") int delete);
+	
 }

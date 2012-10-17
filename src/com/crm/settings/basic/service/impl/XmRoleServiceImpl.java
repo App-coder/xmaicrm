@@ -29,4 +29,9 @@ public class XmRoleServiceImpl implements XmRoleService {
 		return this.xmRoleMapper.selectByPrimaryKey(id);
 	}
 
+	@Override
+	public List<XmRole> getAll() {
+		return this.xmRoleMapper.getAll();
+	}
+
 }

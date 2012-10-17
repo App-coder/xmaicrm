@@ -765,4 +765,25 @@
 	WHERE
 		deleted = 0
   </select>
+  <select id="getActiveUser" resultMap="BaseResultMap" >
+  	select * from xm_users where deleted=0 and status='Active' order by prefix;
+  </select>
+  <select id="getUserById" resultType="map" >
+  	  	SELECT 
+		xm_users.*,
+		xm_role.roleid,
+		xm_role.rolename,
+		xm_groups.groupid,
+		xm_groups.groupname 
+	FROM 
+		xm_users 
+	LEFT JOIN xm_user2role ON xm_user2role.userid = xm_users.id 
+	LEFT JOIN xm_role ON xm_role.roleid = xm_user2role.roleid 
+	LEFT JOIN xm_users2group ON xm_users2group.userid = xm_users.id 
+	LEFT JOIN xm_groups ON xm_groups.groupid = xm_users2group.groupid 
+		where xm_users.id = #{id}
+  </select>
+  <update id="setDeleteStatus" >
+  	update xm_users set deleted = #{delete} where id = #{id}
+  </update>
 </mapper>

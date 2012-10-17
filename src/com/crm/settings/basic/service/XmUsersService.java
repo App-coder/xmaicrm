@@ -10,5 +10,19 @@ public interface XmUsersService {
 	List<Object> getSysUser(int page, int rows);
 
 	int getTotal();
+
+	List<XmUsers> getActiveUser();
+
+	Object getUserById(int id);
+
+	int add(XmUsers user);
+
+	void update(XmUsers user);
+
+	int delete(int id);
+
+	int setDeleteStatus(int id, int delete);
+
+
 	
 }
