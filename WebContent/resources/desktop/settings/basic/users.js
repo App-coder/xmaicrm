@@ -62,7 +62,7 @@ function initPage(){
 		field : 'ck',
 		checkbox : true
 	}]],
-	columns : [ cols ],
+	columns : [ cols ]
     });
     
 }

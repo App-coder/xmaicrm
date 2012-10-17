@@ -21,8 +21,20 @@ public class XmBlocks {
     private Integer detailView;
     
     private String tabname;
+    
+    private boolean editing;
+    
+    
 
-    public Integer getBlockid() {
+    public boolean isEditing() {
+		return editing;
+	}
+
+	public void setEditing(boolean editing) {
+		this.editing = editing;
+	}
+
+	public Integer getBlockid() {
         return blockid;
     }
 
