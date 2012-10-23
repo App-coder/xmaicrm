@@ -181,6 +181,6 @@
   	select xm_tab.* from xm_tab where tabid not in(1,7,24,27,29,${existtabids}) order by tabsequence;
   </select>
   <select id="getTabPermission" resultMap="BaseResultMap" >
-  	select ec_tab.*,ec_profile2tab.permissions,ec_profile2tab.profileid from ec_profile2tab inner join ec_tab on ec_tab.tabid=ec_profile2tab.tabid where profileid=#{profileid};
+  	select xm_tab.*,xm_profile2tab.permissions,xm_profile2tab.profileid from xm_profile2tab inner join xm_tab on xm_tab.tabid=xm_profile2tab.tabid where profileid=#{profileid};
   </select>
 </mapper>

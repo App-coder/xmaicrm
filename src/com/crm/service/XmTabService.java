@@ -18,4 +18,6 @@ public interface XmTabService {
 
 	List<XmTab> getHiddenParenttabs(String existtabids);
 
+	List<XmTab> getTabPermission(int profileid);
+
 }

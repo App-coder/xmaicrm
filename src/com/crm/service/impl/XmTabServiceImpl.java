@@ -41,6 +41,10 @@ public class XmTabServiceImpl implements XmTabService {
 	public List<XmTab> getHiddenParenttabs(String existtabids) {
 		return this.xmTabMapper.getHiddenParenttabs(existtabids);
 	}
+	@Override
+	public List<XmTab> getTabPermission(int profileid) {
+		return this.xmTabMapper.getTabPermission(profileid);
+	}
 	
 	
 
