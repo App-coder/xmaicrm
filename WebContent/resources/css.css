@@ -193,6 +193,12 @@ fieldset legend{color:#15428B;}
     width:240px;
 }
 
+#picklist .fldPickList {
+    border: 1px solid #DADADA;
+    height: 180px;
+    width:240px;
+}
+
 .grayborder{border:1px solid #D2D2D2;}
 
 .tabauth{width:100%;border-collapse: collapse;border:1px solid #AED0EA;}

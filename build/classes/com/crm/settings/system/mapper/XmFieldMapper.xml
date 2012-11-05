@@ -322,4 +322,6 @@
   <update id="deleteColumn">
      alter table ${tablename} ${cfField};
   </update>
+  
+  
 </mapper>

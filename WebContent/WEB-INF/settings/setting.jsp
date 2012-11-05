@@ -224,13 +224,13 @@
 												<tr>
 
 													<td valign="top"><a
-														href="javascript:tab('下拉框选项','settings/picklist/index')"><img
+														href="crm/settings/picklist/index"><img
 															border="0" title="下拉框选项" alt="下拉框选项"
 															src="resources/images/settings/panel/picklist.gif"></a></td>
 												</tr>
 												<tr>
 													<td valign="top" class="big"><a
-														href="javascript:tab('下拉框选项','settings/picklist/index')">下拉框选项</a></td>
+														href="crm/settings/picklist/index">下拉框选项</a></td>
 												</tr>
 
 											</tbody>
@@ -245,13 +245,13 @@
 												<tr>
 
 													<td valign="top"><a
-														href="javascript:tab('页面布局','settings/picklist/index')"><img
+														href="crm/settings/layoutlist/index"><img
 															border="0" title="页面布局" alt="页面布局"
 															src="resources/images/settings/panel/layout.gif"></a></td>
 												</tr>
 												<tr>
 													<td valign="top" class="big"><a
-														href="javascript:tab('页面布局','settings/picklist/index')">页面布局</a></td>
+														href="crm/settings/layoutlist/index">页面布局</a></td>
 												</tr>
 
 											</tbody>

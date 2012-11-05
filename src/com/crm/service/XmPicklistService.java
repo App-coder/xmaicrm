@@ -8,5 +8,13 @@ public interface XmPicklistService {
 
 	List<Object> getPickList(String pickfieldcolname);
 	
+	List<Object> getPickListName(int tabid,int page,int rows);
+	
+	int getTotal(int tabid);
+	
+	List<XmPicklist> getPickListValue(String colname);
+	
+	int updatePickListValue(String colname,String arrpick);
+	
 
 }

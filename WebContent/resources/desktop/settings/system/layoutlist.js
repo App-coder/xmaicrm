@@ -52,7 +52,7 @@ function initPage(){
 		$(".importBox").append(options);
 		$(".importBox").get(0).selectedIndex=0;
 		tabid=$(".importBox").get(0).options[0].value;
-		initGrid();
+		//initGrid();
 	},"json");
 }
 
@@ -91,7 +91,7 @@ function initGrid(){
 }
 
 //编辑窗口的初始化
-function loadForm(row) {
+/*function loadForm(row) {
 	$("#picklist").window({
 	    title:'编辑下拉框选项'+"--"+row.fieldlabel,
 	    onOpen:function(){
@@ -119,5 +119,5 @@ function submitPicklist(){
 		if(result.type)
 			closeWin('picklist');
 	},"json");
-}
+}*/
 

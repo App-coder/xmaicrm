@@ -24,4 +24,10 @@ public interface XmPicklistMapper {
     int updateByPrimaryKey(XmPicklist record);
 
 	List<Object> getPickList(@Param("pickfieldcolname") String pickfieldcolname);
+	
+	List<Object> getPickListName(@Param("tabid") int tabid,@Param("start") int start,@Param("rows") int rows);
+	
+	int getTotal(@Param("tabid") int tabid);
+	
+	List<XmPicklist> getPickListValue(@Param("colname") String colname);
 }
