@@ -30,7 +30,7 @@ import com.crm.util.JsonUtil;
  * Time: 上午10:36:23
  */
 @Controller
-@RequestMapping(value = "settings/customfield")
+@RequestMapping(value = "crm/settings/customfield")
 public class XmCustomFieldController extends BaseController {
 	
 	@Autowired

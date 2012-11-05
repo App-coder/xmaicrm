@@ -81,7 +81,7 @@ public class UserServiceImpl implements UserService {
 		List<MenuBar> menubar = (List<MenuBar>) CacheManager.getFromCache(Constant.MENUBAR);
 		
 		Configuration cfg = new Configuration();
-		cfg.setEncoding(Locale.CHINA, "UTF-8");
+        cfg.setEncoding(Locale.CHINA, "UTF-8");
 		try {
 			cfg.setDirectoryForTemplateLoading(new File(tpl));
 			Template temp = cfg.getTemplate("navbar.tpl");

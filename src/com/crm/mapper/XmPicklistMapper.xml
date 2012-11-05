@@ -7,6 +7,7 @@
     <result column="colname" property="colname" jdbcType="VARCHAR" />
     <result column="sequence" property="sequence" jdbcType="INTEGER" />
   </resultMap>
+  
   <sql id="Base_Column_List" >
     id, colvalue, colname, sequence
   </sql>
@@ -89,5 +90,22 @@
   </select>
   <select id="getPicks" resultMap="BaseResultMap">
   	select * from xm_picklist where colname=#{fieldname} order by sequence asc;
+  </select>
+  
+  <select id="getPickListName" resultType="map">
+    select fieldlabel,generatedtype,columnname,fieldname,uitype from xm_field inner join 
+      xm_def_org_field on xm_def_org_field.fieldid=xm_field.fieldid where 
+      (xm_field.tabid =#{tabid} AND xm_field.uitype IN (15,16, 111,33)) 
+       OR (xm_field.tabid = #{tabid} AND xm_field.fieldname='salutationtype') limit #{start},#{rows}
+  </select>
+  
+  <select id="getTotal" resultType="Integer">
+     select count(*) total from xm_field inner join 
+		xm_def_org_field on xm_def_org_field.fieldid=xm_field.fieldid where 
+		(xm_field.tabid =#{tabid} AND xm_field.uitype IN (15,16, 111,33)) OR (xm_field.tabid = #{tabid} AND xm_field.fieldname='salutationtype') 
+  </select>
+  
+  <select id="getPickListValue" resultMap="BaseResultMap" parameterType="java.lang.String">
+    select * from xm_picklist where colname=#{colname} order by sequence
   </select>
 </mapper>

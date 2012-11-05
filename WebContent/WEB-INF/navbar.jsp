@@ -35,6 +35,12 @@
 	<c:when test="${pathname=='自定义字段' }">
 		${syssetting }&gt;<a href="${url }">自定义字段</a>
 	</c:when>
+	<c:when test="${pathname=='下拉框选项' }">
+		${syssetting }&gt;<a href="${url }">下拉框选项</a>
+	</c:when>
+	<c:when test="${pathname=='页面布局' }">
+		${syssetting }&gt;<a href="${url }">页面布局</a>
+	</c:when>
 	<c:when test="${pathname=='系统日志' }">
 		${syssetting }&gt;<a href="${url }">系统日志</a>
 	</c:when>
