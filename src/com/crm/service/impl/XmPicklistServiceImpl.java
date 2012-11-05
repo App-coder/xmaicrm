@@ -8,8 +8,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.crm.mapper.XmPicklistMapper;
-import com.crm.model.XmPicklist;
 import com.crm.mapper.XmSequenceMapper;
+import com.crm.model.XmPicklist;
 import com.crm.service.XmPicklistService;
 @Service("xmPicklistService")
 public class XmPicklistServiceImpl implements XmPicklistService {

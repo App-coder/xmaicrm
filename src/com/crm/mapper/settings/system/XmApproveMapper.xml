@@ -1,0 +1,201 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.crm.mapper.settings.system.XmApproveMapper" >
+  <resultMap id="BaseResultMap" type="com.crm.model.XmApprove" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="tabid" property="tabid" jdbcType="INTEGER" />
+    <result column="name" property="name" jdbcType="VARCHAR" />
+    <result column="username" property="username" jdbcType="INTEGER" />
+    <result column="department" property="department" jdbcType="INTEGER" />
+    <result column="used" property="used" jdbcType="INTEGER" />
+    <result column="creator" property="creator" jdbcType="INTEGER" />
+    <result column="last_updater" property="lastUpdater" jdbcType="INTEGER" />
+    <result column="created_at" property="createdAt" jdbcType="TIMESTAMP" />
+    <result column="updated_at" property="updatedAt" jdbcType="TIMESTAMP" />
+    <result column="userselected" property="userselected" jdbcType="INTEGER" />
+  </resultMap>
+  <resultMap id="ResultMapWithBLOBs" type="com.crm.model.XmApprove" extends="BaseResultMap" >
+    <result column="memo" property="memo" jdbcType="LONGVARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, tabid, name, username, department, used, creator, last_updater, created_at, updated_at, 
+    userselected
+  </sql>
+  <sql id="Blob_Column_List" >
+    memo
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="ResultMapWithBLOBs" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from xm_approve
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from xm_approve
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.crm.model.XmApprove" >
+    insert into xm_approve (id, tabid, name, 
+      username, department, used, 
+      creator, last_updater, created_at, 
+      updated_at, userselected, memo
+      )
+    values (#{id,jdbcType=INTEGER}, #{tabid,jdbcType=INTEGER}, #{name,jdbcType=VARCHAR}, 
+      #{username,jdbcType=INTEGER}, #{department,jdbcType=INTEGER}, #{used,jdbcType=INTEGER}, 
+      #{creator,jdbcType=INTEGER}, #{lastUpdater,jdbcType=INTEGER}, #{createdAt,jdbcType=TIMESTAMP}, 
+      #{updatedAt,jdbcType=TIMESTAMP}, #{userselected,jdbcType=INTEGER}, #{memo,jdbcType=LONGVARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.crm.model.XmApprove" >
+    insert into xm_approve
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="tabid != null" >
+        tabid,
+      </if>
+      <if test="name != null" >
+        name,
+      </if>
+      <if test="username != null" >
+        username,
+      </if>
+      <if test="department != null" >
+        department,
+      </if>
+      <if test="used != null" >
+        used,
+      </if>
+      <if test="creator != null" >
+        creator,
+      </if>
+      <if test="lastUpdater != null" >
+        last_updater,
+      </if>
+      <if test="createdAt != null" >
+        created_at,
+      </if>
+      <if test="updatedAt != null" >
+        updated_at,
+      </if>
+      <if test="userselected != null" >
+        userselected,
+      </if>
+      <if test="memo != null" >
+        memo,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="tabid != null" >
+        #{tabid,jdbcType=INTEGER},
+      </if>
+      <if test="name != null" >
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="username != null" >
+        #{username,jdbcType=INTEGER},
+      </if>
+      <if test="department != null" >
+        #{department,jdbcType=INTEGER},
+      </if>
+      <if test="used != null" >
+        #{used,jdbcType=INTEGER},
+      </if>
+      <if test="creator != null" >
+        #{creator,jdbcType=INTEGER},
+      </if>
+      <if test="lastUpdater != null" >
+        #{lastUpdater,jdbcType=INTEGER},
+      </if>
+      <if test="createdAt != null" >
+        #{createdAt,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updatedAt != null" >
+        #{updatedAt,jdbcType=TIMESTAMP},
+      </if>
+      <if test="userselected != null" >
+        #{userselected,jdbcType=INTEGER},
+      </if>
+      <if test="memo != null" >
+        #{memo,jdbcType=LONGVARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.crm.model.XmApprove" >
+    update xm_approve
+    <set >
+      <if test="tabid != null" >
+        tabid = #{tabid,jdbcType=INTEGER},
+      </if>
+      <if test="name != null" >
+        name = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="username != null" >
+        username = #{username,jdbcType=INTEGER},
+      </if>
+      <if test="department != null" >
+        department = #{department,jdbcType=INTEGER},
+      </if>
+      <if test="used != null" >
+        used = #{used,jdbcType=INTEGER},
+      </if>
+      <if test="creator != null" >
+        creator = #{creator,jdbcType=INTEGER},
+      </if>
+      <if test="lastUpdater != null" >
+        last_updater = #{lastUpdater,jdbcType=INTEGER},
+      </if>
+      <if test="createdAt != null" >
+        created_at = #{createdAt,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updatedAt != null" >
+        updated_at = #{updatedAt,jdbcType=TIMESTAMP},
+      </if>
+      <if test="userselected != null" >
+        userselected = #{userselected,jdbcType=INTEGER},
+      </if>
+      <if test="memo != null" >
+        memo = #{memo,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.crm.model.XmApprove" >
+    update xm_approve
+    set tabid = #{tabid,jdbcType=INTEGER},
+      name = #{name,jdbcType=VARCHAR},
+      username = #{username,jdbcType=INTEGER},
+      department = #{department,jdbcType=INTEGER},
+      used = #{used,jdbcType=INTEGER},
+      creator = #{creator,jdbcType=INTEGER},
+      last_updater = #{lastUpdater,jdbcType=INTEGER},
+      created_at = #{createdAt,jdbcType=TIMESTAMP},
+      updated_at = #{updatedAt,jdbcType=TIMESTAMP},
+      userselected = #{userselected,jdbcType=INTEGER},
+      memo = #{memo,jdbcType=LONGVARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.crm.model.XmApprove" >
+    update xm_approve
+    set tabid = #{tabid,jdbcType=INTEGER},
+      name = #{name,jdbcType=VARCHAR},
+      username = #{username,jdbcType=INTEGER},
+      department = #{department,jdbcType=INTEGER},
+      used = #{used,jdbcType=INTEGER},
+      creator = #{creator,jdbcType=INTEGER},
+      last_updater = #{lastUpdater,jdbcType=INTEGER},
+      created_at = #{createdAt,jdbcType=TIMESTAMP},
+      updated_at = #{updatedAt,jdbcType=TIMESTAMP},
+      userselected = #{userselected,jdbcType=INTEGER}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <select id="getApproveList" resultMap="BaseResultMap" >
+  	select id,name,used from xm_approve where tabid=#{tabid} order by created_at;
+  </select>
+</mapper>

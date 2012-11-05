@@ -22,11 +22,11 @@ import com.crm.model.XmTab;
 import com.crm.model.XmUsers;
 import com.crm.service.XmFieldService;
 import com.crm.service.XmTabService;
+import com.crm.service.settings.basic.XmProfile2globalpermissionsService;
+import com.crm.service.settings.basic.XmProfile2standardpermissionsService;
+import com.crm.service.settings.basic.XmRole2profileService;
+import com.crm.service.settings.basic.XmRoleService;
 import com.crm.service.system.UserService;
-import com.crm.settings.basic.service.XmProfile2globalpermissionsService;
-import com.crm.settings.basic.service.XmProfile2standardpermissionsService;
-import com.crm.settings.basic.service.XmRole2profileService;
-import com.crm.settings.basic.service.XmRoleService;
 import com.crm.util.CacheManager;
 import com.crm.util.Constant;
 import com.crm.util.crm.PermissionUtil;
@@ -39,7 +39,7 @@ import freemarker.template.TemplateException;
 public class UserServiceImpl implements UserService {
 
 	XmRoleService xmRoleService;
-	@Resource(name="settings.basic.service.xmRoleService")
+	@Resource(name="xmRoleService")
 	public void setXmRoleService(XmRoleService xmRoleService) {
 		this.xmRoleService = xmRoleService;
 	}

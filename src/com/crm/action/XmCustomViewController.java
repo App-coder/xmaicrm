@@ -47,7 +47,7 @@ import com.crm.service.XmFieldService;
 import com.crm.service.XmPicklistService;
 import com.crm.service.XmSequenceService;
 import com.crm.service.XmTabService;
-import com.crm.settings.basic.service.XmUsersService;
+import com.crm.service.settings.basic.XmUsersService;
 import com.crm.util.ArrayUtil;
 import com.crm.util.DateUtil;
 import com.crm.util.HtmlUtil;

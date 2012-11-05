@@ -34,4 +34,17 @@ public interface XmFieldMapper {
 
 	List<XmField> getEditFields(@Param("tabid") Integer tabid,@Param("blockstr") String blockstr);
 
+	List<XmField> getFieldsByTabid(@Param("tabid") Integer tabid,@Param("start") int start,@Param("rows") int rows);
+	
+	int getMaxSequence(@Param("tabid") Integer tabid);
+
+	String getTableNameByTabid(@Param("tabid") Integer tabid);
+	
+	int addColumn(@Param("tablename") String tablename,@Param("cfField") String cfField);
+	
+	int deleteColumn(@Param("tablename") String tablename,@Param("cfField") String cfField);
+	
+	int getTotal(@Param("tabid") int tabid);
+	
+	
 }

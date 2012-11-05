@@ -9,7 +9,7 @@ import com.crm.model.XmField;
 import com.crm.model.XmPicklist;
 import com.crm.model.XmUsers;
 import com.crm.service.XmPicklistService;
-import com.crm.settings.basic.service.XmUsersService;
+import com.crm.service.settings.basic.XmUsersService;
 
 /**
  * User: zhujun

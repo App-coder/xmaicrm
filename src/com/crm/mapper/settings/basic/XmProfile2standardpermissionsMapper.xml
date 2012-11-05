@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.crm.mapper.settings.basic.XmProfile2standardpermissionsMapper" >
+  <resultMap id="BaseResultMap" type="com.crm.model.XmProfile2standardpermissions" >
+    <id column="Operation" property="operation" jdbcType="INTEGER" />
+    <id column="profileid" property="profileid" jdbcType="INTEGER" />
+    <id column="tabid" property="tabid" jdbcType="INTEGER" />
+    <result column="permissions" property="permissions" jdbcType="INTEGER" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    Operation, profileid, tabid, permissions
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="map" >
+    select 
+    <include refid="Base_Column_List" />
+    from xm_profile2standardpermissions
+    where Operation = #{operation,jdbcType=INTEGER}
+      and profileid = #{profileid,jdbcType=INTEGER}
+      and tabid = #{tabid,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="map" >
+    delete from xm_profile2standardpermissions
+    where Operation = #{operation,jdbcType=INTEGER}
+      and profileid = #{profileid,jdbcType=INTEGER}
+      and tabid = #{tabid,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.crm.model.XmProfile2standardpermissions" >
+    insert into xm_profile2standardpermissions (Operation, profileid, tabid, 
+      permissions)
+    values (#{operation,jdbcType=INTEGER}, #{profileid,jdbcType=INTEGER}, #{tabid,jdbcType=INTEGER}, 
+      #{permissions,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" parameterType="com.crm.model.XmProfile2standardpermissions" >
+    insert into xm_profile2standardpermissions
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="operation != null" >
+        Operation,
+      </if>
+      <if test="profileid != null" >
+        profileid,
+      </if>
+      <if test="tabid != null" >
+        tabid,
+      </if>
+      <if test="permissions != null" >
+        permissions,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="operation != null" >
+        #{operation,jdbcType=INTEGER},
+      </if>
+      <if test="profileid != null" >
+        #{profileid,jdbcType=INTEGER},
+      </if>
+      <if test="tabid != null" >
+        #{tabid,jdbcType=INTEGER},
+      </if>
+      <if test="permissions != null" >
+        #{permissions,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.crm.model.XmProfile2standardpermissions" >
+    update xm_profile2standardpermissions
+    <set >
+      <if test="permissions != null" >
+        permissions = #{permissions,jdbcType=INTEGER},
+      </if>
+    </set>
+    where Operation = #{operation,jdbcType=INTEGER}
+      and profileid = #{profileid,jdbcType=INTEGER}
+      and tabid = #{tabid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.crm.model.XmProfile2standardpermissions" >
+    update xm_profile2standardpermissions
+    set permissions = #{permissions,jdbcType=INTEGER}
+    where Operation = #{operation,jdbcType=INTEGER}
+      and profileid = #{profileid,jdbcType=INTEGER}
+      and tabid = #{tabid,jdbcType=INTEGER}
+  </update>
+  <select id="getStandardPermissionsByProfileId" resultMap="BaseResultMap" >
+  	select * from xm_profile2standardpermissions where profileid=#{profileid} and tabid not in(16) order by(tabid)
+  </select>
+</mapper>

@@ -14,8 +14,8 @@ import com.crm.model.XmParenttab;
 import com.crm.model.XmTab;
 import com.crm.service.XmEntitynameService;
 import com.crm.service.XmTabService;
+import com.crm.service.settings.system.XmParenttabService;
 import com.crm.service.system.CacheDataService;
-import com.crm.settings.system.service.XmParenttabService;
 import com.crm.util.CacheManager;
 import com.crm.util.Constant;
 

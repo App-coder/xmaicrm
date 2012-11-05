@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.crm.mapper.settings.other.XmCurrencyInfoMapper" >
+  <resultMap id="BaseResultMap" type="com.crm.model.XmCurrencyInfo" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="currency_name" property="currencyName" jdbcType="VARCHAR" />
+    <result column="currency_code" property="currencyCode" jdbcType="VARCHAR" />
+    <result column="currency_symbol" property="currencySymbol" jdbcType="VARCHAR" />
+    <result column="conversion_rate" property="conversionRate" jdbcType="DECIMAL" />
+    <result column="currency_status" property="currencyStatus" jdbcType="VARCHAR" />
+    <result column="defaultid" property="defaultid" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, currency_name, currency_code, currency_symbol, conversion_rate, currency_status, 
+    defaultid
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from xm_currency_info
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from xm_currency_info
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.crm.model.XmCurrencyInfo" >
+    insert into xm_currency_info (id, currency_name, currency_code, 
+      currency_symbol, conversion_rate, currency_status, 
+      defaultid)
+    values (#{id,jdbcType=INTEGER}, #{currencyName,jdbcType=VARCHAR}, #{currencyCode,jdbcType=VARCHAR}, 
+      #{currencySymbol,jdbcType=VARCHAR}, #{conversionRate,jdbcType=DECIMAL}, #{currencyStatus,jdbcType=VARCHAR}, 
+      #{defaultid,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.crm.model.XmCurrencyInfo" >
+    insert into xm_currency_info
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="currencyName != null" >
+        currency_name,
+      </if>
+      <if test="currencyCode != null" >
+        currency_code,
+      </if>
+      <if test="currencySymbol != null" >
+        currency_symbol,
+      </if>
+      <if test="conversionRate != null" >
+        conversion_rate,
+      </if>
+      <if test="currencyStatus != null" >
+        currency_status,
+      </if>
+      <if test="defaultid != null" >
+        defaultid,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="currencyName != null" >
+        #{currencyName,jdbcType=VARCHAR},
+      </if>
+      <if test="currencyCode != null" >
+        #{currencyCode,jdbcType=VARCHAR},
+      </if>
+      <if test="currencySymbol != null" >
+        #{currencySymbol,jdbcType=VARCHAR},
+      </if>
+      <if test="conversionRate != null" >
+        #{conversionRate,jdbcType=DECIMAL},
+      </if>
+      <if test="currencyStatus != null" >
+        #{currencyStatus,jdbcType=VARCHAR},
+      </if>
+      <if test="defaultid != null" >
+        #{defaultid,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.crm.model.XmCurrencyInfo" >
+    update xm_currency_info
+    <set >
+      <if test="currencyName != null" >
+        currency_name = #{currencyName,jdbcType=VARCHAR},
+      </if>
+      <if test="currencyCode != null" >
+        currency_code = #{currencyCode,jdbcType=VARCHAR},
+      </if>
+      <if test="currencySymbol != null" >
+        currency_symbol = #{currencySymbol,jdbcType=VARCHAR},
+      </if>
+      <if test="conversionRate != null" >
+        conversion_rate = #{conversionRate,jdbcType=DECIMAL},
+      </if>
+      <if test="currencyStatus != null" >
+        currency_status = #{currencyStatus,jdbcType=VARCHAR},
+      </if>
+      <if test="defaultid != null" >
+        defaultid = #{defaultid,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.crm.model.XmCurrencyInfo" >
+    update xm_currency_info
+    set currency_name = #{currencyName,jdbcType=VARCHAR},
+      currency_code = #{currencyCode,jdbcType=VARCHAR},
+      currency_symbol = #{currencySymbol,jdbcType=VARCHAR},
+      conversion_rate = #{conversionRate,jdbcType=DECIMAL},
+      currency_status = #{currencyStatus,jdbcType=VARCHAR},
+      defaultid = #{defaultid,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <select id="getAll" resultMap="BaseResultMap" >
+  	select * from xm_currency_info;
+  </select>
+</mapper>
