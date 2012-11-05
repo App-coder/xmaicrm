@@ -9,6 +9,7 @@ public class Constant {
 	//视图view的操作
 	public static final String TABBYEID = "TABBYEID";
 	public static String ENTITYNAME = "ENTITYNAME";
+	public static String ENTITYNAME_NOLINE = "ENTITYNAME_NOLINE";
 	public static String TAB = "TAB";
 	public static String TABBYLAB = "TABBYLAB";
 	public static String ENTITYNAMEBYIDFIELD = "ENTITYNAMEBYIDFIELD";

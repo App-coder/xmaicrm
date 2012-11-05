@@ -25,6 +25,8 @@ public interface XmUsersService {
 
 	XmUsers validateUser(XmUsers user);
 
+	List<XmUsers> getOptionsUser();
+
 
 	
 }

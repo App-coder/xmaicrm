@@ -789,4 +789,7 @@
   <select id="selectUserByPassword" parameterType="com.crm.model.XmUsers" resultMap="BaseResultMap"  >
   	SELECT xm_users.* from xm_users where user_name = #{userName,jdbcType=VARCHAR} and user_password = #{userPassword,jdbcType=VARCHAR}
   </select>
+  <select id="getOptionsUser" resultMap="BaseResultMap" >
+  	SELECT id, user_name from xm_users WHERE deleted=0 and status='Active' OR id='1' order by prefix ASC;
+  </select>
 </mapper>

@@ -81,14 +81,14 @@
 											<tbody>
 												<tr>
 													<td valign="top"><a
-														href="settings/deforgshare/index"><img
+														href="crm/settings/deforgshare/index"><img
 															width="48" height="48" border="0" title="全局共享规则"
 															alt="全局共享规则"
 															src="resources/images/settings/panel/shareaccess.gif"></a></td>
 												</tr>
 												<tr>
 													<td valign="top" class="big"><a
-														href="settings/deforgshare/index">全局共享规则</a></td>
+														href="crm/settings/deforgshare/index">全局共享规则</a></td>
 												</tr>
 
 											</tbody>
@@ -100,15 +100,15 @@
 											<tbody>
 												<tr>
 													<td valign="top"><a
-														href="javascript:tab('自定义共享规则','settings/customsharingdetailview/index')"><img
+														href="crm/settings/customsharings/index"><img
 															width="48" height="48" border="0" title="自定义共享规则"
-															alt="全局共享规则"
+															alt="自定义共享规则"
 															src="resources/images/settings/panel/shareaccess.gif"></a>
 													</td>
 												</tr>
 												<tr>
 													<td valign="top" class="big"><a
-														href="javascript:tab('自定义共享规则','settings/customsharingdetailview/index')">自定义共享规则</a></td>
+														href="crm/settings/customsharings/index">自定义共享规则</a></td>
 												</tr>
 
 											</tbody>
@@ -342,8 +342,9 @@
 									</td>
 								</tr>
 								<tr>
+								
+								<!-- 
 									<td width="12.5%" valign="top">
-										<!-- empty-->
 										<table width="100%" class="tab_center" cellspacing="0"
 											cellpadding="5" border="0">
 											<tbody>
@@ -360,7 +361,7 @@
 											</tbody>
 										</table>
 									</td>
-								
+								 -->
 									<td width="12.5%" valign="top">
 										<!-- empty-->
 										<table width="100%" class="tab_center" cellspacing="0"
@@ -368,13 +369,13 @@
 											<tbody>
 												<tr>
 													<td valign="top"><a
-														href="javascript:tab('审批流程','settings/multiapprove/index')"><img
+														href="crm/settings/multiapprove/index"><img
 															width="48" height="48" border="0"
 															src="resources/images/settings/panel/approvelist.gif"></a></td>
 												</tr>
 												<tr>
 													<td valign="top" class="big"><a
-														href="javascript:tab('审批流程','settings/multiapprove/index')">审批流程</a></td>
+														href="crm/settings/multiapprove/index">审批流程</a></td>
 												</tr>
 											</tbody>
 										</table>
@@ -387,38 +388,20 @@
 											<tbody>
 												<tr>
 													<td valign="top"><a
-														href="javascript:tab('级联字段','settings/multiapprove/index')"><img
+														href="crm/settings/multifield/index"><img
 															width="48" height="48" border="0"
 															src="resources/images/settings/panel/relatedfield.gif"></a></td>
 												</tr>
 												<tr>
 													<td valign="top" class="big"><a
-														href="javascript:tab('级联字段','settings/multiapprove/index')">级联字段</a></td>
+														href="crm/settings/multifield/index">级联字段</a></td>
 												</tr>
 											</tbody>
 										</table>
 									</td>
 									
-									<td width="12.5%" valign="top">
-										<!-- empty-->
-										<table width="100%" class="tab_center" cellspacing="0"
-											cellpadding="5" border="0">
-											<tbody>
-												<tr>
-													<td valign="top"><a
-														href="crm/settings/relmodfield/index"><img
-															width="48" height="48" border="0"
-															src="resources/images/settings/panel/productfield.gif"></a></td>
-												</tr>
-												<tr>
-													<td valign="top" class="big"><a
-														href="crm/settings/relmodfield/index">相关模块字段</a></td>
-												</tr>
-											</tbody>
-										</table>
-									</td>									
-
-
+									<td width="12.5%" valign="top"></td>
+									<td width="12.5%" valign="top"></td>
 									<td width="12.5%" valign="top"></td>
 									<td width="12.5%" valign="top"></td>
 									<td width="12.5%" valign="top"></td>

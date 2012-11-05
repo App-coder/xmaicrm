@@ -7,6 +7,7 @@ import javax.annotation.Resource;
 import org.springframework.stereotype.Service;
 
 import com.crm.mapper.XmPicklistMapper;
+import com.crm.model.XmPicklist;
 import com.crm.service.XmPicklistService;
 @Service("xmPicklistService")
 public class XmPicklistServiceImpl implements XmPicklistService {
@@ -21,6 +22,12 @@ public class XmPicklistServiceImpl implements XmPicklistService {
 	@Override
 	public List<Object> getPickList(String pickfieldcolname) {
 		return this.xmPicklistMapper.getPickList(pickfieldcolname);
+	}
+
+
+	@Override
+	public List<XmPicklist> getPicks(String fieldname) {
+		return this.xmPicklistMapper.getPicks(fieldname);
 	}
 	
 	

@@ -7,6 +7,8 @@ import com.crm.model.XmPicklist;
 public interface XmPicklistService {
 
 	List<Object> getPickList(String pickfieldcolname);
+
+	List<XmPicklist> getPicks(String fieldname);
 	
 
 }

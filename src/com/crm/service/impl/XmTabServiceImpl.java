@@ -45,6 +45,23 @@ public class XmTabServiceImpl implements XmTabService {
 	public List<XmTab> getTabPermission(int profileid) {
 		return this.xmTabMapper.getTabPermission(profileid);
 	}
+	@Override
+	public List<XmTab> getModules() {
+		return this.xmTabMapper.getModules();
+	}
+	@Override
+	public List<XmTab> getModulesOfCustomMultiField() {
+		return this.xmTabMapper.getModulesOfCustomMultiField();
+	}
+	@Override
+	public List<XmTab> getMultiApproveModule() {
+		return this.xmTabMapper.getMultiApproveModule();
+	}
+
+	@Override
+	public List<XmTab> getCustomsharingsModule() {
+		return this.xmTabMapper.getCustomsharingsModule();
+	}
 	
 	
 

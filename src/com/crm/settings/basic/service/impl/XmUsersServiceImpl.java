@@ -79,6 +79,11 @@ public class XmUsersServiceImpl implements XmUsersService{
 		return exist;
 	}
 
+	@Override
+	public List<XmUsers> getOptionsUser() {
+		return this.xmUsersMapper.getOptionsUser();
+	}
+
 
 
 	

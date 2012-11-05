@@ -1,5 +1,3 @@
-
-
 $(function() {
     if(tab_viewid != -1){
 	init();
@@ -9,7 +7,7 @@ function init(){
 
   //设置视图
 	$('#view_list').datagrid({
-		url : 'customview/renderView',
+		url : 'crm/customview/renderView',
 		collapsible : false,
 		idField : viewid,
 		singleSelect : true,
@@ -22,7 +20,7 @@ function init(){
 		    text : '添加',
 		    iconCls:'icon-add',
 		    handler : function() {
-			window.location.href="customview/showEdit?recordid=0&module="+entitytype;
+			window.location.href="crm/customview/showEdit?recordid=0&module="+entitytype+"&ptb="+ptb;
 		    }
 		}, {
 		    text : '编辑',
@@ -96,5 +94,5 @@ function viewReport(){
     reportselect = $.parseJSON(reportselect);
     
     //使用IFRAME进行报表展现
-    $("#reportframe").attr("src","customview/createChart?graphtype="+graphtype+"&grouptype="+grouptype+"&cvid="+tab_viewid+"&pickfieldtable="+reportselect.fieldtable+"&pickfieldname="+reportselect.fieldname+"&pickfieldcolname="+reportselect.fieldcolname+"&title="+title+"&grouptitle="+grouptitle+"&reporttext="+reporttext+"&_rd="+rdnum());
+    $("#reportframe").attr("src","crm/customview/createChart?graphtype="+graphtype+"&grouptype="+grouptype+"&cvid="+tab_viewid+"&pickfieldtable="+reportselect.fieldtable+"&pickfieldname="+reportselect.fieldname+"&pickfieldcolname="+reportselect.fieldcolname+"&title="+title+"&grouptitle="+grouptitle+"&reporttext="+reporttext+"&_rd="+rdnum());
 }

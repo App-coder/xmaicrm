@@ -24,4 +24,6 @@ public interface XmPicklistMapper {
     int updateByPrimaryKey(XmPicklist record);
 
 	List<Object> getPickList(@Param("pickfieldcolname") String pickfieldcolname);
+
+	List<XmPicklist> getPicks(@Param("fieldname") String fieldname);
 }

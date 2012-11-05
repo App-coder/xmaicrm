@@ -297,4 +297,20 @@
   <select id="getProfileFieldsByTabid" resultMap="BaseResultMap"  >
   	select xm_profile2field.readonly as profile_readonly,xm_profile2field.visible,xm_field.* from xm_profile2field inner join xm_field on xm_field.fieldid=xm_profile2field.fieldid where xm_profile2field.profileid=#{profileid} and xm_profile2field.tabid=#{tabid}
   </select>
+  <select id="getEditFields"  resultMap="BaseResultMap"   >
+  	SELECT
+		xm_field.*
+	FROM
+		xm_field
+	INNER JOIN xm_def_org_field ON xm_def_org_field.fieldid = xm_field.fieldid
+	AND xm_def_org_field.visible = 0
+	WHERE
+		xm_field.tabid = ${tabid}
+	AND xm_field.block IN(${blockstr})
+	AND xm_field.displaytype IN(1, 4)
+	AND info_type = 'BAS'
+	ORDER BY
+		block,
+		sequence;
+  </select>
 </mapper>

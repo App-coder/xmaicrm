@@ -32,4 +32,6 @@ public interface XmFieldMapper {
 
 	List<XmField> getProfileFieldsByTabid(@Param("profileid") Integer profileid,@Param("tabid") Integer tabid);
 
+	List<XmField> getEditFields(@Param("tabid") Integer tabid,@Param("blockstr") String blockstr);
+
 }

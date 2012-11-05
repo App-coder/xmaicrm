@@ -61,4 +61,9 @@ public class XmFieldServiceImpl implements XmFieldService{
 		return this.xmFieldMapper.getProfileFieldsByTabid(profileid,tabid);
 	}
 
+	@Override
+	public List<XmField> getEditFields(Integer tabid, String blockstr) {
+		return this.xmFieldMapper.getEditFields(tabid,blockstr);
+	}
+
 }

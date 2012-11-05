@@ -1,10 +1,21 @@
 package com.crm.util;
 
+import java.util.HashMap;
 import java.util.List;
 
 import com.crm.model.XmBlocks;
+import com.crm.model.XmEntityname;
 import com.crm.model.XmField;
+import com.crm.model.XmPicklist;
+import com.crm.model.XmUsers;
+import com.crm.service.XmPicklistService;
+import com.crm.settings.basic.service.XmUsersService;
 
+/**
+ * User: zhujun
+ * Date: 2012-8-2
+ * Time: 下午11:17:59
+ */
 public class HtmlUtil {
 	public static String getMultSelect(List<XmBlocks> blocks,
 			List<List<XmField>> fieldslist, String entitytype) {
@@ -159,5 +170,137 @@ public class HtmlUtil {
 		stringBuffer.append("<option value=\"Inactive\">Inactive</option>");
 		return stringBuffer.toString();
 	}
+
+	public static String getFieldHtml(String columnname, String typeofdata) {
+		
+		String[] tds = typeofdata.split("~");
+		String htmlstr = "";
+		
+		if(tds[0].equals("C")){
+			htmlstr = "<input type=\"checkbox\" class=\"text2\" name=\""+columnname+"\"/>";
+		}else if(tds[0].equals("D")){
+			htmlstr = "<input type=\"text\" name=\""+columnname+"\" class=\"easyui-datebox text2\" />";
+		}else if(tds[0].equals("DT")){
+			htmlstr = "<input type=\"text\" class=\"easyui-datetimebox text2\" name=\""+columnname+"\"   >";
+		}else if(tds[0].equals("E")){
+			htmlstr = "<input type=\"text\" name=\""+columnname+"\"   >";
+		}else if(tds[0].equals("I")){
+			htmlstr = "<input type=\"text\" class=\"easyui-numberbox text2\" name=\""+columnname+"\"  data-options=\"precision:0\"  >";
+		}else if(tds[0].equals("N")){
+			String limit = "";
+			String precision = "";
+			if(tds.length>2){
+				String[] numlimit = tds[2].split(",");
+				int max = Integer.parseInt(numlimit[0]);
+				for(int i=0;i<max;i++){
+					limit +="9";
+				}
+				precision = numlimit[1];
+			}
+			if(limit!=""&&precision!=""){
+				htmlstr = "<input type=\"text\" class=\"easyui-numberbox text2\" name=\""+columnname+"\"  data-options=\"max:"+limit+",precision:"+precision+"\"  >";
+			}else{
+				htmlstr = "<input type=\"text\" class=\"easyui-numberbox text2\" name=\""+columnname+"\"   >";
+			}
+		}else if(tds[0].equals("NN")){
+			//负数
+			htmlstr = "<input type=\"text\" class=\"easyui-numberbox text2\" name=\""+columnname+"\"  data-options=\"max:0\"  >";
+		}else if(tds[0].equals("P")){
+			htmlstr = "<input type=\"password\" class=\"text2\" name=\""+columnname+"\"    >";
+		}else if(tds[0].equals("T")){
+			htmlstr = "<input name=\""+columnname+"\" class=\"easyui-timespinner \" data-options=\"showSeconds:true\" ></input>";
+		}else if(tds[0].equals("V")){
+			htmlstr = "<input type=\"text\" name=\""+columnname+"\" class=\"text2\" />";
+		}
+		
+		return htmlstr;
+	}
+
+	public static String getFieldHtml(XmField xmField,XmPicklistService xmPicklistService,XmUsersService xmUsersService) {
+		String fieldstr = "";
+		String uitype = xmField.getUitype();
+		String[] tds = xmField.getTypeofdata().split("~");
+		
+		if(uitype.equals("1")){
+			fieldstr += "<input type=\"text\" name=\""+xmField.getColumnname()+"\" class=\"text2 easyui-validatebox\" />";
+		}else if(uitype.equals("2")){
+			if(tds[1].equals("M")){
+				fieldstr += "<input type=\"text\" name=\""+xmField.getColumnname()+"\" class=\"easyui-validatebox text2\" data-options=\"required:true\" /><span class=\"must\">*</span>";
+			}else{
+				fieldstr += "<input type=\"text\" name=\""+xmField.getColumnname()+"\" class=\"easyui-validatebox text2\"  />";
+			}
+		}else if(uitype.equals("15")){
+			List<XmPicklist> picks = xmPicklistService.getPicks(xmField.getFieldname());
+			fieldstr +=getSelectHtml(xmField,picks,tds);
+		}else if(uitype.equals("5")){
+			if(tds[1].equals("M")){
+				fieldstr += "<input type=\"text\" name=\""+xmField.getColumnname()+"\" class=\"easyui-datebox text2\" class=\"easyui-validatebox text2\" data-options=\"required:true\" /><span class=\"must\">*</span>";	
+			}else{
+				fieldstr += "<input type=\"text\" name=\""+xmField.getColumnname()+"\" class=\"easyui-datebox text2\" />";
+			}
+			
+		}else if(uitype.equals("53")){
+			List<XmUsers> users = xmUsersService.getOptionsUser();
+			fieldstr += getUserSelect(xmField,users,tds);
+		}else if(uitype.equals("59")){
+			HashMap<String, XmEntityname> hm_noline = (HashMap<String, XmEntityname>)CacheManager.getFromCache(Constant.ENTITYNAME_NOLINE);
+			XmEntityname et = hm_noline.get(xmField.getFieldname().replace("_", ""));
+			//关联可选的字段
+			fieldstr +="<input type=\"hidden\" name=\""+xmField.getColumnname()+"\" class=\"text2\"  />";
+			fieldstr +="<input type=\"text\" name=\""+xmField.getColumnname()+"_text\" class=\"text2\" readonly=\"readonly\" />";
+			fieldstr +="<a class=\"easyui-linkbutton mgl_10\" title=\"查询\" data-options=\"iconCls:'icon-search'\" href=\"javascript:showOptionPanel('"+et.getModulename()+"','"+xmField.getColumnname()+"','"+xmField.getFieldlabel()+"')\" ></a>";
+			fieldstr +="<a class=\"easyui-linkbutton mgl_10\" title=\"清空\" data-options=\"iconCls:'icon-clear'\" ></a>";
+		}else if(uitype.equals("9")){
+			fieldstr +="<input type=\"text\" name=\""+xmField.getColumnname()+"\" class=\"text2 easyui-numberbox\" data-options=\"min:0,precision:2\" />";
+		}else if(uitype.equals("19")){
+			fieldstr +="<textarea name=\""+xmField.getColumnname()+"\" ></textarea>";
+		}
+		
+		return fieldstr;
+	}
+	
+	/**
+	 * 
+	 * 根据PICKLIST设置成select
+	 * 
+	 * @param xmField
+	 * @param objs
+	 * @param tds 
+	 * @return
+	 */
+	public static String getSelectHtml(XmField xmField,List<XmPicklist> objs, String[] tds){
+		StringBuffer sb = new StringBuffer();
+		sb.append("<select name=\""+xmField.getColumnname()+"\" >");
+		for(int i=0;i<objs.size();i++){
+			sb.append("<option>"+objs.get(i).getColvalue()+"</option>");
+		}
+		sb.append("</select>");
+		if(tds[1].equals("M")){
+			sb.append("<span class=\"must\">*</span>");
+		}
+		return sb.toString();
+	}
+	
+	
+	/**
+	 * 用户信息的select
+	 * 
+	 * @param xmField
+	 * @param users
+	 * @return
+	 */
+	public static String getUserSelect(XmField xmField,List<XmUsers> users, String[] tds){
+		StringBuffer sb = new StringBuffer();
+		sb.append("<select name=\""+xmField.getColumnname()+"\" >");
+		for(int i=0;i<users.size();i++){
+			sb.append("<option value=\""+users.get(i).getId()+"\">"+users.get(i).getUserName()+"</option>");
+		}
+		sb.append("</select>");
+		if(tds[1].equals("M")){
+			sb.append("<span class=\"must\">*</span>");
+		}
+		return sb.toString();
+	}
+	
 
 }

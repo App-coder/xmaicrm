@@ -87,4 +87,7 @@
   <select id="getPickList" resultType="map">
   	select colvalue from xm_picklist where colname=#{pickfieldcolname} order by sequence;
   </select>
+  <select id="getPicks" resultMap="BaseResultMap">
+  	select * from xm_picklist where colname=#{fieldname} order by sequence asc;
+  </select>
 </mapper>

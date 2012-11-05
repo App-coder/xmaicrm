@@ -62,8 +62,14 @@
 	<c:when test="${pathname=='主菜单' }">
 		${syssetting }&gt;<a href="${url }">多仓库管理</a>
 	</c:when>
-	<c:when test="${pathname=='相关模块字段' }">
-		${syssetting }&gt;<a href="${url }">相关模块字段</a>
+	<c:when test="${pathname=='级联字段' }">
+		${syssetting }&gt;<a href="${url }">级联字段</a>
+	</c:when>
+	<c:when test="${pathname=='审批流程' }">
+		${syssetting }&gt;<a href="${url }">审批流程</a>
+	</c:when>
+	<c:when test="${pathname=='自定义共享规则' }">
+		${syssetting }&gt;<a href="${url }">自定义共享规则</a>
 	</c:when>
 	<c:otherwise>
 		导航设置不正确！

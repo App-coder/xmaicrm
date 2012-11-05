@@ -6,6 +6,7 @@ import java.io.StringWriter;
 import java.io.Writer;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Locale;
 import java.util.Map;
 
 import javax.annotation.Resource;
@@ -80,6 +81,7 @@ public class UserServiceImpl implements UserService {
 		List<MenuBar> menubar = (List<MenuBar>) CacheManager.getFromCache(Constant.MENUBAR);
 		
 		Configuration cfg = new Configuration();
+		cfg.setEncoding(Locale.CHINA, "UTF-8");
 		try {
 			cfg.setDirectoryForTemplateLoading(new File(tpl));
 			Template temp = cfg.getTemplate("navbar.tpl");
@@ -87,7 +89,7 @@ public class UserServiceImpl implements UserService {
 			data.put("login", login);
 			data.put("menubar", menubar);
 			data.put("permission", userpermission);
-			Writer out = new StringWriter();  
+			Writer out = new StringWriter();
 			temp.process(data, out);
 			out.flush();
 			return out.toString();
