@@ -42,7 +42,6 @@ public class XmHomestuffServiceImpl implements XmHomestuffService {
 			stuffs = this.xmHomestuffMapper.getDefaultStuff();
 		}
 		
-		
 		return stuffs;
 	}
 

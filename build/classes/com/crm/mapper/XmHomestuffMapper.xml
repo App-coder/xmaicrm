@@ -104,9 +104,9 @@
       and stufftype = #{stufftype,jdbcType=VARCHAR}
   </update>
   <select id="getStuffById" resultMap="BaseResultMap" >
-  	
+  	select xm_homestuff.* from xm_homestuff where visible=0 and stuffid=#{stuffid} order by stuffsequence ;
   </select>
   <select id="getDefaultStuff" resultMap="BaseResultMap" >
-  
+  	SELECT * from xm_homedefault order by stuffsequence 
   </select>
 </mapper>

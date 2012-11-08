@@ -25,7 +25,6 @@ import com.crm.util.Constant;
 
 @Controller
 @RequestMapping(value = "crm/welcome")
-@SessionAttributes(Constant.USERPERMISSION)
 public class WelcomeController implements ServletContextAware {
 
 	private ServletContext servletContext;
@@ -73,8 +72,9 @@ public class WelcomeController implements ServletContextAware {
 	}
 
 	@RequestMapping(value = "/desktop", method = RequestMethod.GET)
-	public String desktop(@ModelAttribute(Constant.USERPERMISSION) UserPermission userpermission,ModelMap modelmap) {
+	public String desktop(HttpSession session,ModelMap modelmap) {
 		
+		UserPermission userpermission = (UserPermission)session.getAttribute(Constant.USERPERMISSION);
 		List<XmHomestuff> stuffs = this.xmHomestuffService.getStuffByRole(userpermission.getRole().getRoleid());
 		modelmap.addAttribute("stuffs",stuffs);
 		
@@ -90,7 +90,7 @@ public class WelcomeController implements ServletContextAware {
 			this.cacheDataService.initData();
 			//用户的权限得到
 			UserPermission userpermission = this.userService.getUserPermission(login);
-			session.setAttribute("userpermission", userpermission);
+			session.setAttribute(Constant.USERPERMISSION, userpermission);
 			// 缓存导航栏
 			session.setAttribute("navbar", this.userService.getNavBar(login,this.servletContext.getRealPath("WEB-INF/tpl"),userpermission));
 			

@@ -23,9 +23,8 @@ public class BaseInterceptor implements HandlerInterceptor {
 			if(servletpath.equals("/crm/welcome/index")||servletpath.equals("/crm/welcome/login")){
 				return true;
 			}
-			
 			request.getRequestDispatcher("/index.jsp").forward(request, response);  
-			return true;
+			return false;
 		}
 	}
 	
@@ -37,7 +36,6 @@ public class BaseInterceptor implements HandlerInterceptor {
 	
 	public void postHandle(HttpServletRequest request, HttpServletResponse response,
 			Object obj, ModelAndView mav) throws Exception {
-		
 	}
 	
 }

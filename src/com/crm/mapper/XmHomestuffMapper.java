@@ -18,7 +18,7 @@ public interface XmHomestuffMapper {
 
     int updateByPrimaryKey(XmHomestuff record);
 
-	List<XmHomestuff> getStuffById(int hometemplatesid);
+	List<XmHomestuff> getStuffById(int stuffid);
 
 	List<XmHomestuff> getDefaultStuff();
 }
