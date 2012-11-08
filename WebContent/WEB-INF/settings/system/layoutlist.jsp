@@ -47,6 +47,89 @@ var pathname ='页面布局';
     <div class="d_center">
     <table cellspacing="1" cellpadding="3">
     <tr><td>
+       <table class="easyui-datagrid" data-options="pagination:true,title:'test'" style="width:410px;height:315px" >  
+	    <thead>  
+	        <tr>  
+	            <th data-options="field:'code'">Code</th>  
+	            <th data-options="field:'name'">Name</th>  
+	            <th data-options="field:'price'">Price</th>  
+	            
+	        </tr>  
+	    </thead>  
+	    <tbody>  
+	        <tr>  
+	            <td>001</td><td>name1</td><td>2323</td>  
+	        </tr>  
+	        <tr>  
+	            <td>002</td><td>name2</td><td>4612</td>  
+	        </tr>  
+	        <tr>  
+	            <td>001</td><td>name1</td><td>2323</td>  
+	        </tr> 
+	        <tr>  
+	            <td>001</td><td>name1</td><td>2323</td>  
+	        </tr> 
+	        <tr>  
+	            <td>001</td><td>name1</td><td>2323</td>  
+	        </tr> 
+	        <tr>  
+	            <td>001</td><td>name1</td><td>2323</td>  
+	        </tr> 
+	        <tr>  
+	            <td>001</td><td>name1</td><td>2323</td>  
+	        </tr> 
+	        <tr>  
+	            <td>001</td><td>name1</td><td>2323</td>  
+	        </tr> 
+	        <tr>  
+	            <td>001</td><td>name1</td><td>2323</td>  
+	        </tr> 
+	        <tr>  
+	            <td>001</td><td>name1</td><td>2323</td>  
+	        </tr> 
+	    </tbody>  
+	</table>
+    </td>
+    <td>
+    <table  class="easyui-datagrid" style="width:400px;height:250px" >  
+	    <thead>  
+	        <tr>  
+	            <th data-options="field:'code'">Code</th>  
+	            <th data-options="field:'name'">Name</th>  
+	            <th data-options="field:'price'">Price</th>  
+	        </tr>  
+	    </thead>  
+	    <tbody>  
+	        <tr>  
+	            <td>001</td><td>name1</td><td>2323</td>  
+	        </tr>  
+	        <tr>  
+	            <td>002</td><td>name2</td><td>4612</td>  
+	        </tr>  
+	    </tbody>  
+	</table>
+    </td>
+    <td>
+    <table class="easyui-datagrid" style="width:400px;height:250px" >  
+	    <thead>  
+	        <tr>  
+	            <th data-options="field:'code'">Code</th>  
+	            <th data-options="field:'name'">Name</th>  
+	            <th data-options="field:'price'">Price</th>  
+	        </tr>  
+	    </thead>  
+	    <tbody>  
+	        <tr>  
+	            <td>001</td><td>name1</td><td>2323</td>  
+	        </tr>  
+	        <tr>  
+	            <td>002</td><td>name2</td><td>4612</td>  
+	        </tr>  
+	    </tbody>  
+	</table>
+    </td>
+    </tr>
+    <tr><td>
        <table class="easyui-datagrid" data-options="pagination:true" style="width:410px;height:315px" >  
 	    <thead>  
 	        <tr>  
