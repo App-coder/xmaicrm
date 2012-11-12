@@ -76,4 +76,9 @@ public class XmFieldServiceImpl implements XmFieldService{
 		return this.xmFieldMapper.updateByPrimaryKeySelective(xmField);
 	}
 
+	@Override
+	public List<Object> getDefOrgFields(int tabid) {
+		return this.xmFieldMapper.getDefOrgFields(tabid);
+	}
+
 }

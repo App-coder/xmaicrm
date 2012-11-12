@@ -24,7 +24,7 @@ import com.crm.service.settings.other.XmSystemsService;
  * 
  */
 @Controller
-@RequestMapping(value = "settings/system")
+@RequestMapping(value = "crm/settings/system")
 public class XmSystemsController {
 	
 	XmSystemsService xmSystemsService;

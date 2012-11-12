@@ -107,6 +107,8 @@ public class UserServiceImpl implements UserService {
 		UserPermission permission = new UserPermission();
 		XmRole role = this.xmRoleService.getUserRole(login.getId());
 		int profileid = this.xmRole2profileService.getProfileidByRoleId(role.getRoleid());
+		permission.setRole(role);
+		
 		//全局规则
 		List<XmProfile2globalpermissions> globalpermissions = this.xmProfile2globalpermissionsService.getPermissionsByProfileid(profileid);
 		permission.setGlobalpermissions(globalpermissions);

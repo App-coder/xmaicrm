@@ -33,5 +33,18 @@ public interface XmTabService {
 	 */
 	List<XmTab> getCustomsharingsModule();
 
+	/**
+	 * 
+	 * 默认全局字段的模块
+	 * @return
+	 */
+	List<XmTab> getDefOrgFieldModule();
+
+	/**
+	 * 得到关联字段的模块
+	 * @return
+	 */
+	List<XmTab> getRelatedModule();
+
 
 }

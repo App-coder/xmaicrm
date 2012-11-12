@@ -10,8 +10,22 @@ public class XmCustomsharings {
     private Integer whoshared;
 
     private Integer sharingsid;
+    
+    private String sharedstr;
+    
+    private String whosharedstr;
+    
+    private String shareactionname;
 
-    public Integer getShared() {
+    public String getShareactionname() {
+		return shareactionname;
+	}
+
+	public void setShareactionname(String shareactionname) {
+		this.shareactionname = shareactionname;
+	}
+
+	public Integer getShared() {
         return shared;
     }
 
@@ -50,4 +64,23 @@ public class XmCustomsharings {
     public void setSharingsid(Integer sharingsid) {
         this.sharingsid = sharingsid;
     }
+
+	public String getSharedstr() {
+		return sharedstr;
+	}
+
+	public void setSharedstr(String sharedstr) {
+		this.sharedstr = sharedstr;
+	}
+
+	public String getWhosharedstr() {
+		return whosharedstr;
+	}
+
+	public void setWhosharedstr(String whosharedstr) {
+		this.whosharedstr = whosharedstr;
+	}
+    
+    
+    
 }

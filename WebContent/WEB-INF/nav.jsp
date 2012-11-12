@@ -127,5 +127,12 @@
 				<li><a href="crm/setting/index" >控制面板</a></li>
 				<li><a href="crm/workflow/index" >业务规则</a></li>
 			</ul></li>
+	 	<li class="fr">
+	 		<div class="searchuser">
+	 			<form action="crm/search/query">
+	 			<input type="text" class="searchtext" name="searchuser"/><input class="button" type="submit" value="查找"/>
+	 			</form>
+	 		</div>
+	 	</li>			
 	</ul>
 </div>

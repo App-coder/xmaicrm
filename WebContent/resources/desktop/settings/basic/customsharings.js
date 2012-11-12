@@ -2,31 +2,33 @@ $(function(){
     initpage();
 });
 function initpage(){
+    $("#selectmodule").val("");
     var cols = [ {
-	field : 'shared',
-	title : '模块'
+	field : 'sharedstr',
+	title : '共享人'
     }, {
-	field : 'whoshared',
-	title : '共享规则'
+	field : 'whosharedstr',
+	title : '被共享人'
+    },{
+	field:'shareactionname',
+	title:'共享权限'
     } ];
     cols = setDefWidth(cols, 80);
     $('#customsharingslist').datagrid({
-	url:'crm/settings/deforgshare/loadData',
 	collapsible : false,
-	idField : 'ruleid',
+	idField : 'sharingsid',
 	singleSelect : true,
 	rownumbers : true,
 	fitColumns:true,
-	toolbar : [{
-	    text : '修改',
-	    iconCls:'icon-edit',
-	    handler : function() {
-	    }
-	}],
 	frozenColumns : [[{
 		field : 'ck',
 		checkbox : true
 	}]],
 	columns : [ cols ],
-    });    
+    });  
+}
+function reloadGrid(val){
+    $('#customsharingslist').datagrid("options").url = "crm/settings/customsharings/list";
+    $('#customsharingslist').datagrid("options").queryParams = {tabid:val};
+    $('#customsharingslist').datagrid("reload");
 }

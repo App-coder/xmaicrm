@@ -47,6 +47,8 @@ public class XmField {
     private int profileReadonly;
     
     private int visible;
+    
+    
 
     public Integer getFieldid() {
         return fieldid;

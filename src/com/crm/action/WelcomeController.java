@@ -8,10 +8,14 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.context.ServletContextAware;
 
+import com.alibaba.fastjson.JSON;
+import com.crm.bean.crm.Message;
 import com.crm.bean.crm.UserPermission;
 import com.crm.model.XmUsers;
+import com.crm.service.XmHomestuffService;
 import com.crm.service.settings.basic.XmUsersService;
 import com.crm.service.system.CacheDataService;
 import com.crm.service.system.UserService;
@@ -44,6 +48,12 @@ public class WelcomeController implements ServletContextAware {
 		this.userService = userService;
 	}
 
+	XmHomestuffService xmHomestuffService;
+	@Resource(name="xmHomestuffService")
+	public void setXmHomestuffService(XmHomestuffService xmHomestuffService) {
+		this.xmHomestuffService = xmHomestuffService;
+	}
+
 	@RequestMapping(value = "/index", method = RequestMethod.GET)
 	public String index() {
 		return "welcome";
@@ -59,29 +69,35 @@ public class WelcomeController implements ServletContextAware {
 		return "homepage";
 	}
 
-	@RequestMapping(value = "/desktop", method = RequestMethod.GET)
-	public String desktop() {
-		return "desktop";
-	}
-
 	@RequestMapping(value = "/login", method = RequestMethod.POST)
+	@ResponseBody
 	public String login(XmUsers user, ModelMap modelmap, HttpSession session) {
+		Message msg = new Message();
 		XmUsers login = this.xmUsersService.validateUser(user);
 		if (login != null) {
-			session.setAttribute(Constant.USER, login);
 			// 初始化系统缓存
 			this.cacheDataService.initData();
 			//用户的权限得到
 			UserPermission userpermission = this.userService.getUserPermission(login);
-			session.setAttribute("userpermission", userpermission);
+			userpermission.setUser(login);
+			session.setAttribute(Constant.USERPERMISSION, userpermission);
 			// 缓存导航栏
 			session.setAttribute("navbar", this.userService.getNavBar(login,this.servletContext.getRealPath("WEB-INF/tpl"),userpermission));
-            
-			return "redirect:/crm/welcome/desktop";
+			
+			msg.setType(true);
+			msg.setMessage("用户验证成功！");
+			return JSON.toJSONString(msg);
 		} else {
-			modelmap.addAttribute("message", "用户验证没有通过！");
-			return "welcome";
+			msg.setType(false);
+			msg.setMessage("用户验证没有通过！");
+			return JSON.toJSONString(msg);
 		}
+	}
+	
+	@RequestMapping(value = "/loginout", method = RequestMethod.GET)
+	public String loginout(HttpSession session){
+		session.removeAttribute(Constant.USERPERMISSION);
+		return "welcome";
 	}
 
 	@RequestMapping(value = "/navbar", method = RequestMethod.POST)

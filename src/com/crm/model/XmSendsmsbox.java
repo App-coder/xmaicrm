@@ -16,6 +16,8 @@ public class XmSendsmsbox {
     private String content;
 
     private String message;
+    
+    private String lastname;
 
     public Integer getId() {
         return id;
@@ -72,4 +74,15 @@ public class XmSendsmsbox {
     public void setMessage(String message) {
         this.message = message == null ? null : message.trim();
     }
+
+	public String getLastname() {
+		return lastname;
+	}
+
+	public void setLastname(String lastname) {
+		this.lastname = lastname;
+	}
+    
+    
+    
 }

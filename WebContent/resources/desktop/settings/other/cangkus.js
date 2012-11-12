@@ -23,7 +23,7 @@ function initPage(){
     cols = setDefWidth(cols, 80);
 
     $('#cangkus_list').datagrid({
-	url : 'settings/cangkus/list',
+	url : 'crm/settings/cangkus/list',
 	collapsible : false,
 	idField : 'cangkusid',
 	singleSelect : true,
@@ -60,7 +60,7 @@ function initPage(){
 	    handler : function() {
 		var selected = $('#cangkus_list').datagrid("getSelected");
 		if (selected) {
-		    $.post('settings/cangkus/delete',{cangkusid:selected.cangkusid},function(res){
+		    $.post('crm/settings/cangkus/delete',{cangkusid:selected.cangkusid},function(res){
 			if(res.type == true){
 			    $('#cangkus_list').datagrid("reload");
 			}

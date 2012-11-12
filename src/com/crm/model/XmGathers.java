@@ -53,6 +53,16 @@ public class XmGathers {
     private Integer approvedby;
 
     private String description;
+    
+    /**
+     * 应收款总额
+     */
+    private BigDecimal sumgathersplan;
+    
+    /**
+     * 应付款总额
+     */
+    private BigDecimal sumchargesplan;
 
     public Integer getGathersid() {
         return gathersid;
@@ -253,4 +263,23 @@ public class XmGathers {
     public void setDescription(String description) {
         this.description = description == null ? null : description.trim();
     }
+
+	public BigDecimal getSumgathersplan() {
+		return sumgathersplan;
+	}
+
+	public void setSumgathersplan(BigDecimal sumgathersplan) {
+		this.sumgathersplan = sumgathersplan;
+	}
+
+	public BigDecimal getSumchargesplan() {
+		return sumchargesplan;
+	}
+
+	public void setSumchargesplan(BigDecimal sumchargesplan) {
+		this.sumchargesplan = sumchargesplan;
+	}
+    
+    
+    
 }

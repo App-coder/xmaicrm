@@ -45,6 +45,8 @@ public interface XmFieldMapper {
 	int deleteColumn(@Param("tablename") String tablename,@Param("cfField") String cfField);
 	
 	int getTotal(@Param("tabid") int tabid);
+
+	List<Object> getDefOrgFields(@Param("tabid") int tabid);
 	
 	List<Object> getLayoutField(@Param("tabid") Integer tabid,@Param("blockid") Integer blockid);
 	

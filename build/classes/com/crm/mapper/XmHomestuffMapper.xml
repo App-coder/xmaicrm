@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.crm.mapper.XmHomestuffMapper" >
+  <resultMap id="BaseResultMap" type="com.crm.model.XmHomestuff" >
+    <id column="stuffid" property="stuffid" jdbcType="INTEGER" />
+    <id column="stufftype" property="stufftype" jdbcType="VARCHAR" />
+    <result column="stuffsequence" property="stuffsequence" jdbcType="INTEGER" />
+    <result column="userid" property="userid" jdbcType="INTEGER" />
+    <result column="visible" property="visible" jdbcType="INTEGER" />
+    <result column="stufftitle" property="stufftitle" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    stuffid, stufftype, stuffsequence, userid, visible, stufftitle
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="map" >
+    select 
+    <include refid="Base_Column_List" />
+    from xm_homestuff
+    where stuffid = #{stuffid,jdbcType=INTEGER}
+      and stufftype = #{stufftype,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="map" >
+    delete from xm_homestuff
+    where stuffid = #{stuffid,jdbcType=INTEGER}
+      and stufftype = #{stufftype,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.crm.model.XmHomestuff" >
+    insert into xm_homestuff (stuffid, stufftype, stuffsequence, 
+      userid, visible, stufftitle
+      )
+    values (#{stuffid,jdbcType=INTEGER}, #{stufftype,jdbcType=VARCHAR}, #{stuffsequence,jdbcType=INTEGER}, 
+      #{userid,jdbcType=INTEGER}, #{visible,jdbcType=INTEGER}, #{stufftitle,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.crm.model.XmHomestuff" >
+    insert into xm_homestuff
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="stuffid != null" >
+        stuffid,
+      </if>
+      <if test="stufftype != null" >
+        stufftype,
+      </if>
+      <if test="stuffsequence != null" >
+        stuffsequence,
+      </if>
+      <if test="userid != null" >
+        userid,
+      </if>
+      <if test="visible != null" >
+        visible,
+      </if>
+      <if test="stufftitle != null" >
+        stufftitle,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="stuffid != null" >
+        #{stuffid,jdbcType=INTEGER},
+      </if>
+      <if test="stufftype != null" >
+        #{stufftype,jdbcType=VARCHAR},
+      </if>
+      <if test="stuffsequence != null" >
+        #{stuffsequence,jdbcType=INTEGER},
+      </if>
+      <if test="userid != null" >
+        #{userid,jdbcType=INTEGER},
+      </if>
+      <if test="visible != null" >
+        #{visible,jdbcType=INTEGER},
+      </if>
+      <if test="stufftitle != null" >
+        #{stufftitle,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.crm.model.XmHomestuff" >
+    update xm_homestuff
+    <set >
+      <if test="stuffsequence != null" >
+        stuffsequence = #{stuffsequence,jdbcType=INTEGER},
+      </if>
+      <if test="userid != null" >
+        userid = #{userid,jdbcType=INTEGER},
+      </if>
+      <if test="visible != null" >
+        visible = #{visible,jdbcType=INTEGER},
+      </if>
+      <if test="stufftitle != null" >
+        stufftitle = #{stufftitle,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where stuffid = #{stuffid,jdbcType=INTEGER}
+      and stufftype = #{stufftype,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.crm.model.XmHomestuff" >
+    update xm_homestuff
+    set stuffsequence = #{stuffsequence,jdbcType=INTEGER},
+      userid = #{userid,jdbcType=INTEGER},
+      visible = #{visible,jdbcType=INTEGER},
+      stufftitle = #{stufftitle,jdbcType=VARCHAR}
+    where stuffid = #{stuffid,jdbcType=INTEGER}
+      and stufftype = #{stufftype,jdbcType=VARCHAR}
+  </update>
+  <select id="getStuffById" resultMap="BaseResultMap" >
+  	select xm_homestuff.* from xm_homestuff where visible=0 and stuffid=#{stuffid} order by stuffsequence ;
+  </select>
+  <select id="getDefaultStuff" resultMap="BaseResultMap" >
+  	SELECT * from xm_homedefault order by stuffsequence 
+  </select>
+</mapper>

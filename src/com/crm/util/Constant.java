@@ -16,10 +16,12 @@ public class Constant {
 	
 	//菜单，menu常量
 	public static String MENUBAR = "MENUBAR";
-	
 	/*用户常量*/
 	public static final String USER = "USER";
+	public static final String USERPERMISSION = "USERPERMISSION";
 	//导航菜单栏目
 	public static final String MENU = "MENU";
+	//主菜单目录
+	public static final String PARENTTAB = "PARENTTAB";
 
 }
