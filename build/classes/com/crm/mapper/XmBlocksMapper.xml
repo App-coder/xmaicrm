@@ -146,7 +146,7 @@
   	select distinct block as blockid,xm_field.tabid,name as tabname,blocklabel from xm_field inner join xm_blocks on xm_blocks.blockid=xm_field.block inner join xm_tab on xm_tab.tabid=xm_field.tabid where xm_tab.tabid=#{tabid} order by block;
   </select>
   <select id="getFieldBlocksByTabId" resultMap="BaseResultMap"  >
-  	select blockid,blocklabel,show_title from xm_blocks where tabid=#{tabid} and create_view=0 and visible = 0 order by sequence
+  	select blockid,blocklabel,show_title,sequence from xm_blocks where tabid=#{tabid} and create_view=0 and visible = 0 order by sequence
   </select>
   <select id="getBlockList" resultType="map">
      select distinct xm_field.tabid,name,xm_tab.tablabel from xm_field inner join xm_tab on xm_field.tabid=xm_tab.tabid where xm_field.tabid not in(7,9,10,29);

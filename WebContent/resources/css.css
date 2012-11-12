@@ -207,3 +207,30 @@ fieldset legend{color:#15428B;}
 .tabauth tr td{height: 26px;text-align: center;}
 
 .must{color:red;margin-left:4px;}
+
+/*----页面布局-----*/
+
+.small {
+    color: #000000;
+    font-family: Arial,Helvetica,sans-serif;
+    font-size: 12px;
+}
+
+.dvInnerHeader {
+    background: url("./images/settings/light-bg.png") repeat-x scroll center bottom #DDDCDD;
+    border-color: #FFFFFF #FFFFFF #DDDDDD #DDDDDD;
+    border-style: solid;
+    border-width: 1px 0;
+    color: #000000;
+    padding: 12px;
+}
+
+.dvtCellLabel, .cellLabel {
+    background-color: #EFEFF8;
+    border-bottom: 1px solid #DEDEDE;
+    border-top: 0 solid #DEDEDE;
+    color: #545454;
+    padding-left: 10px;
+    padding-right: 10px;
+    white-space: nowrap;
+}

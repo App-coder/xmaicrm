@@ -39,4 +39,8 @@ public interface XmFieldService {
 	 * @return
 	 */
 	public List<XmField> getEditFields(Integer tabid, String blockstr);
+	
+	public List<Object> getLayoutField(Integer tabid,Integer blockid);
+	
+	int updateByPrimaryKeySelective(XmField xmField);
 }

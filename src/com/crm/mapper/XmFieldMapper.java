@@ -46,5 +46,7 @@ public interface XmFieldMapper {
 	
 	int getTotal(@Param("tabid") int tabid);
 	
+	List<Object> getLayoutField(@Param("tabid") Integer tabid,@Param("blockid") Integer blockid);
+	
 	
 }

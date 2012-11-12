@@ -327,6 +327,11 @@
   </select>
   
   
+  <select id="getLayoutField" resultType="map">
+    select xm_field.fieldid,xm_field.fieldlabel,xm_field.block,xm_field.sequence,xm_field.typeofdata from xm_field inner join xm_def_org_field 
+      on xm_def_org_field.fieldid=xm_field.fieldid where xm_def_org_field.visible=0 and xm_field.tabid=#{tabid} and displaytype in(1,2,4) and xm_field.block=#{blockid} order by xm_field.block,xm_field.sequence
+  </select>
+  
   <update id="addColumn">
      alter table ${tablename} ${cfField};
   </update>
