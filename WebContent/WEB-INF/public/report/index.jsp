@@ -20,8 +20,8 @@ if(graphtype == 'vertical3D'){
 
 	        var categoryAxis = chart.categoryAxis;
 	        categoryAxis.labelRotation = 90;
-	        categoryAxis.dashLength = 5;
-	        categoryAxis.gridPosition = "start";
+	        categoryAxis.dashLength = 1;
+	        categoryAxis.gridPosition = "middle";
 
 	        chart.addTitle("${title}");
 

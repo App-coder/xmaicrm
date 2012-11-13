@@ -14,5 +14,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @Controller
 @RequestMapping(value = "crm/portlets/salesfunnels")
 public class SalesfunnelsController {
-
+	@RequestMapping(value = "/index")
+	public String index(){
+		return "portlets/salesfunnels";
+	}
+	
 }

@@ -7,6 +7,8 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.GregorianCalendar;
 
+import com.crm.util.time.TimeGet;
+
 /**
  * 日期转换工具
  */
@@ -287,10 +289,22 @@ public class DateUtil {
 		//
 		// System.out.println(strDate);
 
-		String date = "2006-07-31";
-		System.out.println(date);
-		Date date2 = addDate(date);
-		System.out.println(date2);
+//		String date = "2006-07-31";
+//		System.out.println(date);
+//		Date date2 = addDate(date);
+//		System.out.println(date2);
+		Calendar calendar = Calendar.getInstance();
+		calendar.setTime(new Date());
+		calendar.add(Calendar.MONTH, -6);
+		TimeGet timeget = new TimeGet();
+		for(int i=1;i<=6;i++){
+			calendar.add(Calendar.MONTH,1);
+			System.out.println(DateUtil.format(calendar.getTime(),DateUtil.C_DATE_PATTON_DEFAULT));   
+			System.out.println(calendar.get(Calendar.YEAR)+"-"+(calendar.get(Calendar.MONTH)+1));
+			System.out.println(timeget.getFirstDayOfMonth(calendar));
+			System.out.println(timeget.getLastDayOfMonth(calendar));
+			System.out.println("**************************************************");
+		}
 
 	}
 }

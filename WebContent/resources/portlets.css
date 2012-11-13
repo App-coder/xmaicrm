@@ -5,5 +5,10 @@ body, input, button, select, textarea{font: Tahoma,'Microsoft Yahei','Simsun'}
 .tablist tr td{height:25px;border:1px dotted #CCCCCC;}
 .pl10{padding-left:10px;}
 .pl5{padding-left:5px;}
+.ml_5{margin-left:5px;}
 
 .tabcalendar{width:100%;border-collapse: collapse;}
+.tabcalendar tr td{height:25px;border:1px solid #000000;text-align: center;}
+.tabcalendar thead {background-color: #336600;}
+.tabcalendar thead td{color:white;text-align: center;}
+.tabcalendar tbody .tdesc{text-align: right;background-color: #F0F8FF;}

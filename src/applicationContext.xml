@@ -78,9 +78,10 @@
 
 
 	<!-- myBatis配置 -->
+	<!-- 定义Mybatis的Session工厂,typeAliasesPackage为entity包全名,多个用逗号或者分号隔开 --> 
 	<bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
-		<property name="configLocation" value="classpath:mybatis-config.xml" />
 		<property name="dataSource" ref="dataSource" />
+		<property name="typeAliasesPackage" value="com.crm.model,com.crm.bean.**" />
 	</bean>
 
 	<!-- DAO层由 MapperScannerConfigurer自动生成mapper bean -->

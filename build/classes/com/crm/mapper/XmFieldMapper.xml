@@ -339,7 +339,6 @@
   <update id="deleteColumn">
      alter table ${tablename} ${cfField};
   </update>
-  <select id="getDefOrgFields" resultMap="BaseResultMap" >
-		select xm_def_org_field.visible,xm_field.* from xm_def_org_field inner join xm_field on xm_field.fieldid=xm_def_org_field.fieldid where xm_def_org_field.tabid=#{tabid}
-  </select>
+
+	</select>
 </mapper>

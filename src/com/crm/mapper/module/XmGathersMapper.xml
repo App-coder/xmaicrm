@@ -391,4 +391,7 @@
    <select id="getSupplierCharge" resultMap="BaseResultMap" >
    	select xm_charges.vendorid, sum(IFNULL(xm_charges.planamount,0.00)*(case when xm_charges.currency_rate > 0 then xm_charges.currency_rate else 1 end)) as sumchargesplan from xm_charges inner join xm_vendor on xm_vendor.vendorid = xm_charges.vendorid where xm_charges.deleted = 0 and xm_charges.chargestatus != '已付' group by xm_charges.vendorid;
    </select>
+   <select id="getYearGather" resultType="map" >
+   	select DATE_FORMAT(xm_gathers.actualdate,'%m') as duedate,count(xm_gathers.gathersid) as gatherscount, sum((case when xm_gathers.currency_rate > 0 then xm_gathers.currency_rate else 1 end)*xm_gathers.planamount) as sumplanamount, sum((case when xm_gathers.currency_rate > 0 then xm_gathers.currency_rate else 1 end)*actualamount) as sumactualamount from xm_gathers left join xm_account on xm_account.accountid = xm_gathers.accountid where xm_gathers.deleted = 0 and xm_gathers.actualdate between #{fistday} and #{lastday} group by DATE_FORMAT(xm_gathers.actualdate,'%m') ;
+   </select>
 </mapper>

@@ -7,6 +7,8 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.GregorianCalendar;
 
+import com.crm.util.DateUtil;
+
 public class TimeGet {
 	// 用来全局控制 上一周，本周，下一周的周数变化
 	private int weeks = 0;
@@ -152,6 +154,31 @@ public class TimeGet {
 		str = sdf.format(lastDate.getTime());
 		return str;
 	}
+	
+	/**
+	 * 根据日期，Calendar，获取时间第一天的、yyyy-MM-dd HH:mm:ss
+	 * 
+	 * @param calendar
+	 * @return
+	 */
+	public String getFirstDayOfMonth(Calendar calendar){
+		calendar.set(Calendar.DATE, 1);// 设为当前月的1号
+		return DateUtil.format(calendar.getTime(),"yyyy-MM-dd 00:00:00");
+	}
+	
+	/**
+	 * 根据日期，Calendar，获取时间(月)最后一天的、yyyy-MM-dd HH:mm:ss
+	 * 
+	 * @param calendar
+	 * @return
+	 */
+	public String getLastDayOfMonth(Calendar calendar){
+		calendar.add(Calendar.MONTH, 1);
+		calendar.set(Calendar.DATE, 1);// 把日期设置为当月第一天
+		calendar.add(Calendar.DATE, -1);// 日期回滚一天，也就是本月最后一天
+		return DateUtil.format(calendar.getTime(),"yyyy-MM-dd 23:59:00");
+	}
+	
 
 	// 获得本周星期日的日期
 	public String getCurrentWeekday() {

@@ -1,6 +1,9 @@
 package com.crm.mapper.module;
 
 import java.util.List;
+import java.util.Map;
+
+import org.apache.ibatis.annotations.Param;
 
 import com.crm.model.XmGathers;
 
@@ -24,4 +27,8 @@ public interface XmGathersMapper {
 	List<XmGathers> getCustomerCharge();
 
 	List<XmGathers> getSupplierCharge();
+
+	List<Map> getYearGather(@Param("fistday") String fistday,@Param("lastday") String lastday);
+
+	List<Map> getLastYearGather(@Param("fistday") String fistday,@Param("lastday") String lastday);
 }
