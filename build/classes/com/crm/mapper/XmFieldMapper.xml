@@ -1,342 +1,314 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.crm.mapper.XmFieldMapper">
-	<resultMap id="BaseResultMap" type="com.crm.model.XmField">
-		<id column="fieldid" property="fieldid" jdbcType="INTEGER" />
-		<result column="tabid" property="tabid" jdbcType="INTEGER" />
-		<result column="columnname" property="columnname" jdbcType="VARCHAR" />
-		<result column="tablename" property="tablename" jdbcType="VARCHAR" />
-		<result column="generatedtype" property="generatedtype"
-			jdbcType="INTEGER" />
-		<result column="uitype" property="uitype" jdbcType="VARCHAR" />
-		<result column="fieldname" property="fieldname" jdbcType="VARCHAR" />
-		<result column="fieldlabel" property="fieldlabel" jdbcType="VARCHAR" />
-		<result column="readonly" property="readonly" jdbcType="INTEGER" />
-		<result column="presence" property="presence" jdbcType="INTEGER" />
-		<result column="selected" property="selected" jdbcType="INTEGER" />
-		<result column="maximumlength" property="maximumlength"
-			jdbcType="INTEGER" />
-		<result column="sequence" property="sequence" jdbcType="INTEGER" />
-		<result column="block" property="block" jdbcType="INTEGER" />
-		<result column="displaytype" property="displaytype" jdbcType="INTEGER" />
-		<result column="typeofdata" property="typeofdata" jdbcType="VARCHAR" />
-		<result column="quickcreate" property="quickcreate" jdbcType="INTEGER" />
-		<result column="quickcreatesequence" property="quickcreatesequence"
-			jdbcType="INTEGER" />
-		<result column="info_type" property="infoType" jdbcType="VARCHAR" />
-		<result column="tablabel" property="tablabel" jdbcType="VARCHAR" />
-		<result column="profile_readonly" property="profileReadonly"
-			jdbcType="VARCHAR" />
-		<result column="visible" property="visible" jdbcType="VARCHAR" />
-	</resultMap>
-	<sql id="Base_Column_List">
-		fieldid, tabid, columnname, tablename, generatedtype, uitype, fieldname,
-		fieldlabel,
-		readonly, presence, selected, maximumlength, sequence, block, displaytype,
-		typeofdata,
-		quickcreate, quickcreatesequence, info_type
-	</sql>
-	<select id="selectByPrimaryKey" resultMap="BaseResultMap"
-		parameterType="java.lang.Integer">
-		select
-		<include refid="Base_Column_List" />
-		from xm_field
-		where fieldid = #{fieldid,jdbcType=INTEGER}
-	</select>
-	<delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
-		delete from xm_field
-		where fieldid = #{fieldid,jdbcType=INTEGER}
-	</delete>
-	<insert id="insert" parameterType="com.crm.model.XmField">
-		insert into xm_field (fieldid, tabid, columnname,
-		tablename, generatedtype, uitype,
-		fieldname, fieldlabel, readonly,
-		presence, selected, maximumlength,
-		sequence, block, displaytype,
-		typeofdata, quickcreate, quickcreatesequence,
-		info_type)
-		values (#{fieldid,jdbcType=INTEGER}, #{tabid,jdbcType=INTEGER},
-		#{columnname,jdbcType=VARCHAR},
-		#{tablename,jdbcType=VARCHAR}, #{generatedtype,jdbcType=INTEGER}, #{uitype,jdbcType=VARCHAR},
-		#{fieldname,jdbcType=VARCHAR}, #{fieldlabel,jdbcType=VARCHAR},
-		#{readonly,jdbcType=INTEGER},
-		#{presence,jdbcType=INTEGER}, #{selected,jdbcType=INTEGER}, #{maximumlength,jdbcType=INTEGER},
-		#{sequence,jdbcType=INTEGER}, #{block,jdbcType=INTEGER},
-		#{displaytype,jdbcType=INTEGER},
-		#{typeofdata,jdbcType=VARCHAR}, #{quickcreate,jdbcType=INTEGER},
-		#{quickcreatesequence,jdbcType=INTEGER},
-		#{infoType,jdbcType=VARCHAR})
-	</insert>
-	<insert id="insertSelective" parameterType="com.crm.model.XmField">
-		insert into xm_field
-		<trim prefix="(" suffix=")" suffixOverrides=",">
-			<if test="fieldid != null">
-				fieldid,
-			</if>
-			<if test="tabid != null">
-				tabid,
-			</if>
-			<if test="columnname != null">
-				columnname,
-			</if>
-			<if test="tablename != null">
-				tablename,
-			</if>
-			<if test="generatedtype != null">
-				generatedtype,
-			</if>
-			<if test="uitype != null">
-				uitype,
-			</if>
-			<if test="fieldname != null">
-				fieldname,
-			</if>
-			<if test="fieldlabel != null">
-				fieldlabel,
-			</if>
-			<if test="readonly != null">
-				readonly,
-			</if>
-			<if test="presence != null">
-				presence,
-			</if>
-			<if test="selected != null">
-				selected,
-			</if>
-			<if test="maximumlength != null">
-				maximumlength,
-			</if>
-			<if test="sequence != null">
-				sequence,
-			</if>
-			<if test="block != null">
-				block,
-			</if>
-			<if test="displaytype != null">
-				displaytype,
-			</if>
-			<if test="typeofdata != null">
-				typeofdata,
-			</if>
-			<if test="quickcreate != null">
-				quickcreate,
-			</if>
-			<if test="quickcreatesequence != null">
-				quickcreatesequence,
-			</if>
-			<if test="infoType != null">
-				info_type,
-			</if>
-		</trim>
-		<trim prefix="values (" suffix=")" suffixOverrides=",">
-			<if test="fieldid != null">
-				#{fieldid,jdbcType=INTEGER},
-			</if>
-			<if test="tabid != null">
-				#{tabid,jdbcType=INTEGER},
-			</if>
-			<if test="columnname != null">
-				#{columnname,jdbcType=VARCHAR},
-			</if>
-			<if test="tablename != null">
-				#{tablename,jdbcType=VARCHAR},
-			</if>
-			<if test="generatedtype != null">
-				#{generatedtype,jdbcType=INTEGER},
-			</if>
-			<if test="uitype != null">
-				#{uitype,jdbcType=VARCHAR},
-			</if>
-			<if test="fieldname != null">
-				#{fieldname,jdbcType=VARCHAR},
-			</if>
-			<if test="fieldlabel != null">
-				#{fieldlabel,jdbcType=VARCHAR},
-			</if>
-			<if test="readonly != null">
-				#{readonly,jdbcType=INTEGER},
-			</if>
-			<if test="presence != null">
-				#{presence,jdbcType=INTEGER},
-			</if>
-			<if test="selected != null">
-				#{selected,jdbcType=INTEGER},
-			</if>
-			<if test="maximumlength != null">
-				#{maximumlength,jdbcType=INTEGER},
-			</if>
-			<if test="sequence != null">
-				#{sequence,jdbcType=INTEGER},
-			</if>
-			<if test="block != null">
-				#{block,jdbcType=INTEGER},
-			</if>
-			<if test="displaytype != null">
-				#{displaytype,jdbcType=INTEGER},
-			</if>
-			<if test="typeofdata != null">
-				#{typeofdata,jdbcType=VARCHAR},
-			</if>
-			<if test="quickcreate != null">
-				#{quickcreate,jdbcType=INTEGER},
-			</if>
-			<if test="quickcreatesequence != null">
-				#{quickcreatesequence,jdbcType=INTEGER},
-			</if>
-			<if test="infoType != null">
-				#{infoType,jdbcType=VARCHAR},
-			</if>
-		</trim>
-	</insert>
-	<update id="updateByPrimaryKeySelective" parameterType="com.crm.model.XmField">
-		update xm_field
-		<set>
-			<if test="tabid != null">
-				tabid = #{tabid,jdbcType=INTEGER},
-			</if>
-			<if test="columnname != null">
-				columnname = #{columnname,jdbcType=VARCHAR},
-			</if>
-			<if test="tablename != null">
-				tablename = #{tablename,jdbcType=VARCHAR},
-			</if>
-			<if test="generatedtype != null">
-				generatedtype = #{generatedtype,jdbcType=INTEGER},
-			</if>
-			<if test="uitype != null">
-				uitype = #{uitype,jdbcType=VARCHAR},
-			</if>
-			<if test="fieldname != null">
-				fieldname = #{fieldname,jdbcType=VARCHAR},
-			</if>
-			<if test="fieldlabel != null">
-				fieldlabel = #{fieldlabel,jdbcType=VARCHAR},
-			</if>
-			<if test="readonly != null">
-				readonly = #{readonly,jdbcType=INTEGER},
-			</if>
-			<if test="presence != null">
-				presence = #{presence,jdbcType=INTEGER},
-			</if>
-			<if test="selected != null">
-				selected = #{selected,jdbcType=INTEGER},
-			</if>
-			<if test="maximumlength != null">
-				maximumlength = #{maximumlength,jdbcType=INTEGER},
-			</if>
-			<if test="sequence != null">
-				sequence = #{sequence,jdbcType=INTEGER},
-			</if>
-			<if test="block != null">
-				block = #{block,jdbcType=INTEGER},
-			</if>
-			<if test="displaytype != null">
-				displaytype = #{displaytype,jdbcType=INTEGER},
-			</if>
-			<if test="typeofdata != null">
-				typeofdata = #{typeofdata,jdbcType=VARCHAR},
-			</if>
-			<if test="quickcreate != null">
-				quickcreate = #{quickcreate,jdbcType=INTEGER},
-			</if>
-			<if test="quickcreatesequence != null">
-				quickcreatesequence = #{quickcreatesequence,jdbcType=INTEGER},
-			</if>
-			<if test="infoType != null">
-				info_type = #{infoType,jdbcType=VARCHAR},
-			</if>
-		</set>
-		where fieldid = #{fieldid,jdbcType=INTEGER}
-	</update>
-	<update id="updateByPrimaryKey" parameterType="com.crm.model.XmField">
-		update xm_field
-		set tabid = #{tabid,jdbcType=INTEGER},
-		columnname = #{columnname,jdbcType=VARCHAR},
-		tablename = #{tablename,jdbcType=VARCHAR},
-		generatedtype = #{generatedtype,jdbcType=INTEGER},
-		uitype = #{uitype,jdbcType=VARCHAR},
-		fieldname = #{fieldname,jdbcType=VARCHAR},
-		fieldlabel = #{fieldlabel,jdbcType=VARCHAR},
-		readonly = #{readonly,jdbcType=INTEGER},
-		presence = #{presence,jdbcType=INTEGER},
-		selected = #{selected,jdbcType=INTEGER},
-		maximumlength = #{maximumlength,jdbcType=INTEGER},
-		sequence = #{sequence,jdbcType=INTEGER},
-		block = #{block,jdbcType=INTEGER},
-		displaytype = #{displaytype,jdbcType=INTEGER},
-		typeofdata = #{typeofdata,jdbcType=VARCHAR},
-		quickcreate = #{quickcreate,jdbcType=INTEGER},
-		quickcreatesequence = #{quickcreatesequence,jdbcType=INTEGER},
-		info_type = #{infoType,jdbcType=VARCHAR}
-		where fieldid = #{fieldid,jdbcType=INTEGER}
-	</update>
-	<select id="getReportField" resultMap="BaseResultMap">
-		select xm_field.* from xm_field INNER JOIN xm_def_org_field ON
-		xm_def_org_field.fieldid=xm_field.fieldid AND
-		xm_def_org_field.visible=0 where xm_field.tabid=#{tabid} and uitype in
-		('15') and xm_field.displaytype in (1,2) order by sequence;
-	</select>
-	<select id="getFieldByBlockAndTab" resultMap="BaseResultMap">
-		select xm_field.* from xm_field INNER JOIN xm_def_org_field ON
-		xm_def_org_field.fieldid=xm_field.fieldid AND
-		xm_def_org_field.visible=0 where xm_field.tabid=#{tabid} and
-		xm_field.block in (${blockid}) and xm_field.displaytype in (1,2) union
-		select xm_field.* from xm_field where xm_field.displaytype=3 and
-		xm_field.block in (${blockid}) and xm_field.tabid=#{tabid} order by
-		sequence
-	</select>
-	<select id="getSearchFields" resultMap="BaseResultMap">
-		select * from xm_field inner join xm_tab on xm_tab.tabid = xm_field.tabid
-		where xm_field.tabid=#{tabid} and xm_field.uitype in (5,6,23,70) order
-		by xm_field.sequence;
-	</select>
-	<select id="getReportItems" resultMap="BaseResultMap">
-		SELECT
+<mapper namespace="com.crm.mapper.XmFieldMapper" >
+  <resultMap id="BaseResultMap" type="com.crm.model.XmField" >
+    <id column="fieldid" property="fieldid" jdbcType="INTEGER" />
+    <result column="tabid" property="tabid" jdbcType="INTEGER" />
+    <result column="columnname" property="columnname" jdbcType="VARCHAR" />
+    <result column="tablename" property="tablename" jdbcType="VARCHAR" />
+    <result column="generatedtype" property="generatedtype" jdbcType="INTEGER" />
+    <result column="uitype" property="uitype" jdbcType="VARCHAR" />
+    <result column="fieldname" property="fieldname" jdbcType="VARCHAR" />
+    <result column="fieldlabel" property="fieldlabel" jdbcType="VARCHAR" />
+    <result column="readonly" property="readonly" jdbcType="INTEGER" />
+    <result column="presence" property="presence" jdbcType="INTEGER" />
+    <result column="selected" property="selected" jdbcType="INTEGER" />
+    <result column="maximumlength" property="maximumlength" jdbcType="INTEGER" />
+    <result column="sequence" property="sequence" jdbcType="INTEGER" />
+    <result column="block" property="block" jdbcType="INTEGER" />
+    <result column="displaytype" property="displaytype" jdbcType="INTEGER" />
+    <result column="typeofdata" property="typeofdata" jdbcType="VARCHAR" />
+    <result column="quickcreate" property="quickcreate" jdbcType="INTEGER" />
+    <result column="quickcreatesequence" property="quickcreatesequence" jdbcType="INTEGER" />
+    <result column="info_type" property="infoType" jdbcType="VARCHAR" />
+    <result column="tablabel" property="tablabel" jdbcType="VARCHAR" />
+    <result column="profile_readonly" property="profileReadonly" jdbcType="VARCHAR" />
+    <result column="visible" property="visible" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    fieldid, tabid, columnname, tablename, generatedtype, uitype, fieldname, fieldlabel, 
+    readonly, presence, selected, maximumlength, sequence, block, displaytype, typeofdata, 
+    quickcreate, quickcreatesequence, info_type
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from xm_field
+    where fieldid = #{fieldid,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from xm_field
+    where fieldid = #{fieldid,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.crm.model.XmField" >
+    insert into xm_field (fieldid, tabid, columnname, 
+      tablename, generatedtype, uitype, 
+      fieldname, fieldlabel, readonly, 
+      presence, selected, maximumlength, 
+      sequence, block, displaytype, 
+      typeofdata, quickcreate, quickcreatesequence, 
+      info_type)
+    values (#{fieldid,jdbcType=INTEGER}, #{tabid,jdbcType=INTEGER}, #{columnname,jdbcType=VARCHAR}, 
+      #{tablename,jdbcType=VARCHAR}, #{generatedtype,jdbcType=INTEGER}, #{uitype,jdbcType=VARCHAR}, 
+      #{fieldname,jdbcType=VARCHAR}, #{fieldlabel,jdbcType=VARCHAR}, #{readonly,jdbcType=INTEGER}, 
+      #{presence,jdbcType=INTEGER}, #{selected,jdbcType=INTEGER}, #{maximumlength,jdbcType=INTEGER}, 
+      #{sequence,jdbcType=INTEGER}, #{block,jdbcType=INTEGER}, #{displaytype,jdbcType=INTEGER}, 
+      #{typeofdata,jdbcType=VARCHAR}, #{quickcreate,jdbcType=INTEGER}, #{quickcreatesequence,jdbcType=INTEGER}, 
+      #{infoType,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.crm.model.XmField" >
+    insert into xm_field
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="fieldid != null" >
+        fieldid,
+      </if>
+      <if test="tabid != null" >
+        tabid,
+      </if>
+      <if test="columnname != null" >
+        columnname,
+      </if>
+      <if test="tablename != null" >
+        tablename,
+      </if>
+      <if test="generatedtype != null" >
+        generatedtype,
+      </if>
+      <if test="uitype != null" >
+        uitype,
+      </if>
+      <if test="fieldname != null" >
+        fieldname,
+      </if>
+      <if test="fieldlabel != null" >
+        fieldlabel,
+      </if>
+      <if test="readonly != null" >
+        readonly,
+      </if>
+      <if test="presence != null" >
+        presence,
+      </if>
+      <if test="selected != null" >
+        selected,
+      </if>
+      <if test="maximumlength != null" >
+        maximumlength,
+      </if>
+      <if test="sequence != null" >
+        sequence,
+      </if>
+      <if test="block != null" >
+        block,
+      </if>
+      <if test="displaytype != null" >
+        displaytype,
+      </if>
+      <if test="typeofdata != null" >
+        typeofdata,
+      </if>
+      <if test="quickcreate != null" >
+        quickcreate,
+      </if>
+      <if test="quickcreatesequence != null" >
+        quickcreatesequence,
+      </if>
+      <if test="infoType != null" >
+        info_type,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="fieldid != null" >
+        #{fieldid,jdbcType=INTEGER},
+      </if>
+      <if test="tabid != null" >
+        #{tabid,jdbcType=INTEGER},
+      </if>
+      <if test="columnname != null" >
+        #{columnname,jdbcType=VARCHAR},
+      </if>
+      <if test="tablename != null" >
+        #{tablename,jdbcType=VARCHAR},
+      </if>
+      <if test="generatedtype != null" >
+        #{generatedtype,jdbcType=INTEGER},
+      </if>
+      <if test="uitype != null" >
+        #{uitype,jdbcType=VARCHAR},
+      </if>
+      <if test="fieldname != null" >
+        #{fieldname,jdbcType=VARCHAR},
+      </if>
+      <if test="fieldlabel != null" >
+        #{fieldlabel,jdbcType=VARCHAR},
+      </if>
+      <if test="readonly != null" >
+        #{readonly,jdbcType=INTEGER},
+      </if>
+      <if test="presence != null" >
+        #{presence,jdbcType=INTEGER},
+      </if>
+      <if test="selected != null" >
+        #{selected,jdbcType=INTEGER},
+      </if>
+      <if test="maximumlength != null" >
+        #{maximumlength,jdbcType=INTEGER},
+      </if>
+      <if test="sequence != null" >
+        #{sequence,jdbcType=INTEGER},
+      </if>
+      <if test="block != null" >
+        #{block,jdbcType=INTEGER},
+      </if>
+      <if test="displaytype != null" >
+        #{displaytype,jdbcType=INTEGER},
+      </if>
+      <if test="typeofdata != null" >
+        #{typeofdata,jdbcType=VARCHAR},
+      </if>
+      <if test="quickcreate != null" >
+        #{quickcreate,jdbcType=INTEGER},
+      </if>
+      <if test="quickcreatesequence != null" >
+        #{quickcreatesequence,jdbcType=INTEGER},
+      </if>
+      <if test="infoType != null" >
+        #{infoType,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.crm.model.XmField" >
+    update xm_field
+    <set >
+      <if test="tabid != null" >
+        tabid = #{tabid,jdbcType=INTEGER},
+      </if>
+      <if test="columnname != null" >
+        columnname = #{columnname,jdbcType=VARCHAR},
+      </if>
+      <if test="tablename != null" >
+        tablename = #{tablename,jdbcType=VARCHAR},
+      </if>
+      <if test="generatedtype != null" >
+        generatedtype = #{generatedtype,jdbcType=INTEGER},
+      </if>
+      <if test="uitype != null" >
+        uitype = #{uitype,jdbcType=VARCHAR},
+      </if>
+      <if test="fieldname != null" >
+        fieldname = #{fieldname,jdbcType=VARCHAR},
+      </if>
+      <if test="fieldlabel != null" >
+        fieldlabel = #{fieldlabel,jdbcType=VARCHAR},
+      </if>
+      <if test="readonly != null" >
+        readonly = #{readonly,jdbcType=INTEGER},
+      </if>
+      <if test="presence != null" >
+        presence = #{presence,jdbcType=INTEGER},
+      </if>
+      <if test="selected != null" >
+        selected = #{selected,jdbcType=INTEGER},
+      </if>
+      <if test="maximumlength != null" >
+        maximumlength = #{maximumlength,jdbcType=INTEGER},
+      </if>
+      <if test="sequence != null" >
+        sequence = #{sequence,jdbcType=INTEGER},
+      </if>
+      <if test="block != null" >
+        block = #{block,jdbcType=INTEGER},
+      </if>
+      <if test="displaytype != null" >
+        displaytype = #{displaytype,jdbcType=INTEGER},
+      </if>
+      <if test="typeofdata != null" >
+        typeofdata = #{typeofdata,jdbcType=VARCHAR},
+      </if>
+      <if test="quickcreate != null" >
+        quickcreate = #{quickcreate,jdbcType=INTEGER},
+      </if>
+      <if test="quickcreatesequence != null" >
+        quickcreatesequence = #{quickcreatesequence,jdbcType=INTEGER},
+      </if>
+      <if test="infoType != null" >
+        info_type = #{infoType,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where fieldid = #{fieldid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.crm.model.XmField" >
+    update xm_field
+    set tabid = #{tabid,jdbcType=INTEGER},
+      columnname = #{columnname,jdbcType=VARCHAR},
+      tablename = #{tablename,jdbcType=VARCHAR},
+      generatedtype = #{generatedtype,jdbcType=INTEGER},
+      uitype = #{uitype,jdbcType=VARCHAR},
+      fieldname = #{fieldname,jdbcType=VARCHAR},
+      fieldlabel = #{fieldlabel,jdbcType=VARCHAR},
+      readonly = #{readonly,jdbcType=INTEGER},
+      presence = #{presence,jdbcType=INTEGER},
+      selected = #{selected,jdbcType=INTEGER},
+      maximumlength = #{maximumlength,jdbcType=INTEGER},
+      sequence = #{sequence,jdbcType=INTEGER},
+      block = #{block,jdbcType=INTEGER},
+      displaytype = #{displaytype,jdbcType=INTEGER},
+      typeofdata = #{typeofdata,jdbcType=VARCHAR},
+      quickcreate = #{quickcreate,jdbcType=INTEGER},
+      quickcreatesequence = #{quickcreatesequence,jdbcType=INTEGER},
+      info_type = #{infoType,jdbcType=VARCHAR}
+    where fieldid = #{fieldid,jdbcType=INTEGER}
+  </update>
+  <select id="getReportField" resultMap="BaseResultMap" >
+  	select xm_field.* from xm_field INNER JOIN xm_def_org_field ON xm_def_org_field.fieldid=xm_field.fieldid AND xm_def_org_field.visible=0 where xm_field.tabid=#{tabid} and uitype in ('15') and xm_field.displaytype in (1,2) order by sequence;
+  </select>
+  <select id="getFieldByBlockAndTab"  resultMap="BaseResultMap"  >
+  	select xm_field.* from xm_field INNER JOIN xm_def_org_field ON xm_def_org_field.fieldid=xm_field.fieldid AND xm_def_org_field.visible=0 where xm_field.tabid=#{tabid} and xm_field.block in (${blockid}) and xm_field.displaytype in (1,2) union select xm_field.* from xm_field where xm_field.displaytype=3 and xm_field.block in (${blockid}) and xm_field.tabid=#{tabid} order by sequence
+  </select>
+  <select id="getSearchFields" resultMap="BaseResultMap"  >
+  	select * from xm_field inner join xm_tab on xm_tab.tabid = xm_field.tabid where xm_field.tabid=#{tabid} and xm_field.uitype in (5,6,23,70) order by xm_field.sequence;
+  </select>
+  <select id="getReportItems" resultMap="BaseResultMap">
+  	SELECT 
+		xm_field.* 
+	FROM 
+		xm_field 
+	INNER JOIN xm_def_org_field ON xm_def_org_field.fieldid = xm_field.fieldid 
+	AND xm_def_org_field.visible = 0 
+	INNER JOIN xm_tab ON xm_tab.tabid = xm_field.tabid 
+	WHERE 
+		xm_field.uitype != 50 
+	AND xm_field.tabid = #{tabid} 
+	AND xm_field.displaytype = 1 
+	UNION 
+		SELECT 
+			* 
+		FROM 
+			xm_field 
+		WHERE 
+			xm_field.displaytype = 3 
+		AND xm_field.tabid = #{tabid} 
+		ORDER BY  
+			sequence 
+  </select>
+  <select id="getProfileFieldsByTabid" resultMap="BaseResultMap"  >
+  	select xm_profile2field.readonly as profile_readonly,xm_profile2field.visible,xm_field.* from xm_profile2field inner join xm_field on xm_field.fieldid=xm_profile2field.fieldid where xm_profile2field.profileid=#{profileid} and xm_profile2field.tabid=#{tabid}
+  </select>
+  <select id="getEditFields"  resultMap="BaseResultMap"   >
+  	SELECT
 		xm_field.*
-		FROM
+	FROM
 		xm_field
-		INNER JOIN xm_def_org_field ON xm_def_org_field.fieldid = xm_field.fieldid
-		AND xm_def_org_field.visible = 0
-		INNER JOIN xm_tab ON xm_tab.tabid = xm_field.tabid
-		WHERE
-		xm_field.uitype != 50
-		AND xm_field.tabid = #{tabid}
-		AND xm_field.displaytype = 1
-		UNION
-		SELECT
-		*
-		FROM
-		xm_field
-		WHERE
-		xm_field.displaytype = 3
-		AND xm_field.tabid = #{tabid}
-		ORDER BY
-		sequence
-	</select>
-	<select id="getProfileFieldsByTabid" resultMap="BaseResultMap">
-		select xm_profile2field.readonly as
-		profile_readonly,xm_profile2field.visible,xm_field.* from
-		xm_profile2field inner join xm_field on
-		xm_field.fieldid=xm_profile2field.fieldid where
-		xm_profile2field.profileid=#{profileid} and
-		xm_profile2field.tabid=#{tabid}
-	</select>
-	<select id="getEditFields" resultMap="BaseResultMap">
-		SELECT
-		xm_field.*
-		FROM
-		xm_field
-		INNER JOIN xm_def_org_field ON xm_def_org_field.fieldid = xm_field.fieldid
-		AND xm_def_org_field.visible = 0
-		WHERE
+	INNER JOIN xm_def_org_field ON xm_def_org_field.fieldid = xm_field.fieldid
+	AND xm_def_org_field.visible = 0
+	WHERE
 		xm_field.tabid = ${tabid}
-		AND xm_field.block IN(${blockstr})
-		AND xm_field.displaytype IN(1, 4)
-		AND info_type = 'BAS'
-		ORDER BY
+	AND xm_field.block IN(${blockstr})
+	AND xm_field.displaytype IN(1, 4)
+	AND info_type = 'BAS'
+	ORDER BY
 		block,
 		sequence;
-<<<<<<< HEAD
   </select>
   <select id="getFieldsByTabid" resultMap="BaseResultMap" >
   	select fieldid,columnname,fieldlabel,uitype,displaytype,tablename,typeofdata from xm_field where tabid=#{tabid} and  generatedtype=2 and uitype not in('1021','1022','1023') order by sequence limit #{start},#{rows}
@@ -367,32 +339,4 @@
   <update id="deleteColumn">
      alter table ${tablename} ${cfField};
   </update>
-=======
-	</select>
-	<select id="getFieldsByTabid" resultMap="BaseResultMap">
-		select fieldid,columnname,fieldlabel,uitype,displaytype,tablename,typeofdata
-		from xm_field where tabid=#{tabid} and generatedtype=2 and uitype not
-		in('1021','1022','1023') order by sequence limit #{start},#{rows}
-	</select>
-	<select id="getTableNameByTabid" resultType="String">
-		select tablename from xm_entityname where tabid=#{tabid}
-	</select>
-	<select id="getMaxSequence" resultType="Integer">
-		select max(sequence) sequence from xm_field WHERE tabid =#{tabid} AND
-		generatedtype = 2 AND uitype NOT IN('1021', '1022', '1023')
-	</select>
-	<select id="getTotal" resultType="Integer">
-		SELECT count(*) total FROM xm_field WHERE tabid = #{tabid} AND generatedtype
-		= 2 AND uitype NOT IN('1021', '1022', '1023') ORDER BY sequence
-	</select>
-	<update id="addColumn">
-		alter table ${tablename} ${cfField};
-	</update>
-	<update id="deleteColumn">
-		alter table ${tablename} ${cfField};
-	</update>
-	<select id="getDefOrgFields" resultMap="BaseResultMap" >
-		select xm_def_org_field.visible,xm_field.* from xm_def_org_field inner join xm_field on xm_field.fieldid=xm_def_org_field.fieldid where xm_def_org_field.tabid=#{tabid}
-	</select>
->>>>>>> git-crm/zhujun
 </mapper>
