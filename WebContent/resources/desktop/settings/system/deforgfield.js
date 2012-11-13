@@ -12,10 +12,13 @@ function reloadview(){
 	if(res.length>0){
 	    for(var i=0;i<res.length;i++){
 		if(i==0){
-		    trstr+="<tr>";
+		    trstr+="<tr style='border-bottom: 1px solid #DEDEDE;'>";
 		}
 		trstr +="<td>";
-		trstr +="<input type=\'checkbox\'/>"+res[i].fieldlabel;
+		if(res[i].visible==0)
+			trstr +="<input type=\'checkbox\'/ checked>"+res[i].fieldlabel;
+		else
+		    trstr +="<input type=\'checkbox\'/>"+res[i].fieldlabel;
 		trstr +="</td>";
 		if((i+1)%4==0&&i!=0){
 		    trstr +="</tr><tr>";
