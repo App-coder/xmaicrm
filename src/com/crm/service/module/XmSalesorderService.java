@@ -19,4 +19,8 @@ public interface XmSalesorderService {
 
 	SalesorderStat getSalesorderStat(String year);
 
+	int getSaleOrderOfUserAndLast(Integer id, String start, String end);
+
+	String getSumOfOrderByUserAndLast(Integer id, String start, String end);
+
 }

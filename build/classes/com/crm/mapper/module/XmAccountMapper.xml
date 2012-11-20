@@ -870,4 +870,10 @@
   <select id="getNewAccounts" resultType="String" >
   select count(accountid) as acccount from xm_account where xm_account.deleted = 0 and xm_account.createdtime between '${year}-01-01 00:00:00' and '${year}-12-31 23:59:00';
   </select>
+  <select id="getTopAccount" resultMap="BaseResultMap">
+  	select * from xm_account where deleted=0 and smownerid=#{smownerid} order by lastcontacttime desc limit 0,10;
+  </select>
+  <select id="getNewAccountOfUserAndLast" resultType="INTEGER">
+  	select count(*) as rowsnum FROM xm_account WHERE deleted =0 AND smownerid='${userid}' and createdtime between '${start} 00:00:00' and '${end} 23:59:00';
+  </select>
 </mapper>

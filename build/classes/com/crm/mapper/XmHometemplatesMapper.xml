@@ -115,7 +115,7 @@
       deleted = #{deleted,jdbcType=INTEGER}
     where hometemplatesid = #{hometemplatesid,jdbcType=INTEGER}
   </update>
-  <select id="getStuffId" resultType="Integer" >
+  <select id="getStuffId" resultType="String" >
   	select xm_hometemplates.hometemplatesid from xm_hometemplates inner join xm_hometemplatesrole on xm_hometemplatesrole.hometemplatesid = xm_hometemplates.hometemplatesid where xm_hometemplates.deleted = 0 and xm_hometemplatesrole.roleid = #{role} 
   </select>
 </mapper>

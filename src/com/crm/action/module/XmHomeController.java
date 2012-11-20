@@ -1,6 +1,7 @@
 package com.crm.action.module;
 
 import java.io.UnsupportedEncodingException;
+import java.util.HashMap;
 import java.util.List;
 
 import javax.annotation.Resource;
@@ -14,7 +15,9 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.crm.bean.crm.UserPermission;
 import com.crm.model.XmHomestuff;
+import com.crm.model.XmParenttab;
 import com.crm.service.XmHomestuffService;
+import com.crm.util.CacheManager;
 import com.crm.util.Constant;
 import com.crm.util.crm.CustomViewUtil;
 
@@ -40,11 +43,14 @@ public class XmHomeController {
 	public String index(ModelMap modelmap,HttpSession session,HttpServletRequest request) throws UnsupportedEncodingException{
 		
 		//不带ptb参数情况下，进入默认的desktop
-		String ptb = request.getParameter("ptb");
-		if(ptb!=null){
+		int ptb = 0;
+		if(request.getParameter("ptb")!=null){
+			ptb = Integer.parseInt(request.getParameter("ptb"));
+		}
+		if(ptb!=0){
 			modelmap.addAttribute("tab",CustomViewUtil.getTabByName("Home"));
-			modelmap.addAttribute("ptb",new String(ptb.getBytes("ISO-8859-1"),
-					"utf-8"));
+			HashMap<Integer, XmParenttab> parenttab = (HashMap<Integer, XmParenttab>)CacheManager.getFromCache(Constant.PARENTTAB);
+			modelmap.addAttribute("ptb",parenttab.get(ptb));
 		}
 		
 		UserPermission userpermission = (UserPermission)session.getAttribute(Constant.USERPERMISSION);

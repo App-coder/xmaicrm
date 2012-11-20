@@ -36,11 +36,7 @@ public class WelcomeController implements ServletContextAware {
 		this.xmUsersService = xmUsersService;
 	}
 
-	CacheDataService cacheDataService;
-	@Resource(name = "cacheDataService")
-	public void setCacheDataService(CacheDataService cacheDataService) {
-		this.cacheDataService = cacheDataService;
-	}
+
 
 	UserService userService;
 	@Resource(name = "userService")
@@ -75,8 +71,6 @@ public class WelcomeController implements ServletContextAware {
 		Message msg = new Message();
 		XmUsers login = this.xmUsersService.validateUser(user);
 		if (login != null) {
-			// 初始化系统缓存
-			this.cacheDataService.initData();
 			//用户的权限得到
 			UserPermission userpermission = this.userService.getUserPermission(login);
 			userpermission.setUser(login);

@@ -1,5 +1,7 @@
 package com.crm.mapper.module;
 
+import java.util.List;
+
 import org.apache.ibatis.annotations.Param;
 
 import com.crm.mapper.ModuleMapper;
@@ -21,4 +23,8 @@ public interface XmAccountMapper extends ModuleMapper<XmAccount> {
     int updateByPrimaryKey(XmAccount record);
 
 	String getNewAccounts(@Param("year") String year);
+
+	List<XmAccount> getTopAccount(@Param("smownerid") String smownerid);
+
+	int getNewAccountOfUserAndLast(@Param("userid") Integer userid,@Param("start") String start,@Param("end") String end);
 }

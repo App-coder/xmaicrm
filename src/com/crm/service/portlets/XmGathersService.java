@@ -22,5 +22,7 @@ public interface XmGathersService {
 
 	GatherStat getGatherStat(String year);
 
+	String getSumOfGatherByUserAndLast(Integer id, String start, String end);
+
 
 }

@@ -29,4 +29,6 @@ public interface XmPotentialMapper extends ModuleMapper<XmPotential>{
 	String getSalesCountByPick(@Param("colvalue") String colvalue,@Param("range") String range,@Param("firstday") String firstday,
 		@Param("lastday") String lastday);
 
+	int getPotentialOfUserAndLast(@Param("userid") Integer userid,@Param("start") String start,@Param("end") String end);
+
 }

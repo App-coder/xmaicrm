@@ -10,4 +10,6 @@ public interface XmPotentialService{
 
 	String getSalesCountByPick(String colvalue, List<Object> ids,String firstday,String lastday);
 
+	int getPotentialOfUserAndLast(Integer id, String start, String end);
+
 }
