@@ -55,7 +55,6 @@ public class XmRelatedlistsController extends BaseController {
 	@RequestMapping(value = "/list", method = RequestMethod.POST)
 	@ResponseBody
 	public String list(int tabid){
-		
 		List<XmRelatedlists> relatedlist = this.xmRelatedlistsService.getRelatedByTabid(tabid);
 		ListBean bean = new ListBean();
 		bean.setRows(relatedlist);

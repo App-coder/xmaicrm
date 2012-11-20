@@ -83,6 +83,9 @@
 	<c:when test="${pathname=='相关信息' }">
 		${syssetting }&gt;<a href="${url }">相关信息</a>
 	</c:when>
+	<c:when test="${pathname=='关联产品字段' }">
+		${syssetting }&gt;<a href="${url }">关联产品字段</a>
+	</c:when>
 	<c:when test="${pathname=='短信通道' }">
 		${syssetting }&gt;<a href="${url }">短信通道</a>
 	</c:when>	

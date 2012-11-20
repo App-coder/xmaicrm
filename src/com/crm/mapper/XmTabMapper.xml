@@ -207,4 +207,8 @@
 	WHERE
 		xm_field.tabid NOT IN(7, 9, 10, 16, 15, 29);
   </select>
+  
+  <select id="getProductFieldModule" resultMap="BaseResultMap" >
+     select xm_tab.name,xm_tab.tablabel from xm_modulelist inner join xm_tab on xm_tab.tabid=xm_modulelist.tabid where xm_modulelist.type='productfield' order by xm_tab.tabid
+  </select>
 </mapper>
