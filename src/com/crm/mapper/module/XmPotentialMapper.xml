@@ -527,4 +527,7 @@
   <select id="getSalesCountByPick" resultType="String" >
   	SELECT count(*) FROM xm_potential INNER JOIN xm_account ON xm_potential.accountid = xm_account.accountid LEFT JOIN xm_users ON xm_users.id = xm_potential.smownerid where xm_potential.deleted=0 and xm_potential.smownerid in (${range}) and xm_potential.closingdate <![CDATA[>=]]> '${firstday}' and xm_potential.closingdate <![CDATA[<=]]> '${lastday}' and xm_potential.sales_stage = #{colvalue}
   </select>
+  <select id="getPotentialOfUserAndLast" resultType="INTEGER">
+  	select count(*) as rowsnum from xm_potential WHERE deleted =0 AND smownerid='${userid}' and createdtime between '${start} 00:00:00' and '${end} 23:59:00';
+  </select>
 </mapper>

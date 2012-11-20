@@ -94,11 +94,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
       out.write("<script type=\"text/javascript\" src=\"resources/global.js\"></script>    \r\n");
       out.write("<script type=\"text/javascript\" src=\"resources/desktop/portlets.js\"></script>");
       out.write("\r\n");
-      out.write("<script type=\"text/javascript\" >\r\n");
-      out.write("\tvar viewjson = ");
-      out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${viewjson}", java.lang.String.class, (PageContext)_jspx_page_context, null, false));
-      out.write(";\r\n");
-      out.write("</script>\r\n");
       out.write("<script type=\"text/javascript\" src=\"resources/desktop/portlets/keycustomview.js\"></script>\r\n");
       out.write("</head>\r\n");
       out.write("<body>\r\n");

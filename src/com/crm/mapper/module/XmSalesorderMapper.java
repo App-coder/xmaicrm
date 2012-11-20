@@ -34,4 +34,8 @@ public interface XmSalesorderMapper extends ModuleMapper<XmSalesorder> {
 	List<Salesyear> getSalesOfYear(@Param("year") String year);
 
 	SalesorderStat getSalesorderStat(@Param("year") String year);
+
+	int getSaleOrderOfUserAndLast(@Param("userid") Integer userid,@Param("start") String start,@Param("end") String end);
+
+	String getSumOfOrderByUserAndLast(@Param("userid") Integer userid,@Param("start") String start,@Param("end") String end);
 }

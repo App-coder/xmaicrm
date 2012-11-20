@@ -15,6 +15,10 @@ public class XmNoteServiceImpl implements XmNoteService {
 	public void setXmNotesMapper(XmNotesMapper xmNotesMapper) {
     	this.xmNotesMapper = xmNotesMapper;
 	}
+	@Override
+	public int getNoteOfUserAndLast(Integer id, String start, String end) {
+		return this.xmNotesMapper.getNoteOfUserAndLast(id,start,end);
+	}
     
 
 }

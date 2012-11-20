@@ -1,0 +1,474 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.crm.mapper.module.XmActivityMapper" >
+  <resultMap id="BaseResultMap" type="com.crm.model.XmActivity" >
+    <id column="activityid" property="activityid" jdbcType="INTEGER" />
+    <result column="subject" property="subject" jdbcType="VARCHAR" />
+    <result column="semodule" property="semodule" jdbcType="VARCHAR" />
+    <result column="activitytype" property="activitytype" jdbcType="VARCHAR" />
+    <result column="calendartype" property="calendartype" jdbcType="VARCHAR" />
+    <result column="date_start" property="dateStart" jdbcType="DATE" />
+    <result column="due_date" property="dueDate" jdbcType="DATE" />
+    <result column="time_start" property="timeStart" jdbcType="VARCHAR" />
+    <result column="time_end" property="timeEnd" jdbcType="VARCHAR" />
+    <result column="sendnotification" property="sendnotification" jdbcType="VARCHAR" />
+    <result column="duration_hours" property="durationHours" jdbcType="VARCHAR" />
+    <result column="duration_minutes" property="durationMinutes" jdbcType="VARCHAR" />
+    <result column="status" property="status" jdbcType="VARCHAR" />
+    <result column="eventstatus" property="eventstatus" jdbcType="VARCHAR" />
+    <result column="priority" property="priority" jdbcType="VARCHAR" />
+    <result column="location" property="location" jdbcType="VARCHAR" />
+    <result column="notime" property="notime" jdbcType="VARCHAR" />
+    <result column="visibility" property="visibility" jdbcType="VARCHAR" />
+    <result column="contact_id" property="contactId" jdbcType="INTEGER" />
+    <result column="accountid" property="accountid" jdbcType="INTEGER" />
+    <result column="potentialid" property="potentialid" jdbcType="INTEGER" />
+    <result column="smcreatorid" property="smcreatorid" jdbcType="INTEGER" />
+    <result column="smownerid" property="smownerid" jdbcType="INTEGER" />
+    <result column="modifiedby" property="modifiedby" jdbcType="INTEGER" />
+    <result column="groupid" property="groupid" jdbcType="INTEGER" />
+    <result column="createdtime" property="createdtime" jdbcType="TIMESTAMP" />
+    <result column="modifiedtime" property="modifiedtime" jdbcType="TIMESTAMP" />
+    <result column="deleted" property="deleted" jdbcType="INTEGER" />
+    <result column="approved" property="approved" jdbcType="INTEGER" />
+    <result column="approvedby" property="approvedby" jdbcType="INTEGER" />
+  </resultMap>
+  <resultMap id="ResultMapWithBLOBs" type="com.crm.model.XmActivity" extends="BaseResultMap" >
+    <result column="description" property="description" jdbcType="LONGVARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    activityid, subject, semodule, activitytype, calendartype, date_start, due_date, 
+    time_start, time_end, sendnotification, duration_hours, duration_minutes, status, 
+    eventstatus, priority, location, notime, visibility, contact_id, accountid, potentialid, 
+    smcreatorid, smownerid, modifiedby, groupid, createdtime, modifiedtime, deleted, 
+    approved, approvedby
+  </sql>
+  <sql id="Blob_Column_List" >
+    description
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="ResultMapWithBLOBs" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from xm_activity
+    where activityid = #{activityid,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from xm_activity
+    where activityid = #{activityid,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.crm.model.XmActivity" >
+    insert into xm_activity (activityid, subject, semodule, 
+      activitytype, calendartype, date_start, 
+      due_date, time_start, time_end, 
+      sendnotification, duration_hours, duration_minutes, 
+      status, eventstatus, priority, 
+      location, notime, visibility, 
+      contact_id, accountid, potentialid, 
+      smcreatorid, smownerid, modifiedby, 
+      groupid, createdtime, modifiedtime, 
+      deleted, approved, approvedby, 
+      description)
+    values (#{activityid,jdbcType=INTEGER}, #{subject,jdbcType=VARCHAR}, #{semodule,jdbcType=VARCHAR}, 
+      #{activitytype,jdbcType=VARCHAR}, #{calendartype,jdbcType=VARCHAR}, #{dateStart,jdbcType=DATE}, 
+      #{dueDate,jdbcType=DATE}, #{timeStart,jdbcType=VARCHAR}, #{timeEnd,jdbcType=VARCHAR}, 
+      #{sendnotification,jdbcType=VARCHAR}, #{durationHours,jdbcType=VARCHAR}, #{durationMinutes,jdbcType=VARCHAR}, 
+      #{status,jdbcType=VARCHAR}, #{eventstatus,jdbcType=VARCHAR}, #{priority,jdbcType=VARCHAR}, 
+      #{location,jdbcType=VARCHAR}, #{notime,jdbcType=VARCHAR}, #{visibility,jdbcType=VARCHAR}, 
+      #{contactId,jdbcType=INTEGER}, #{accountid,jdbcType=INTEGER}, #{potentialid,jdbcType=INTEGER}, 
+      #{smcreatorid,jdbcType=INTEGER}, #{smownerid,jdbcType=INTEGER}, #{modifiedby,jdbcType=INTEGER}, 
+      #{groupid,jdbcType=INTEGER}, #{createdtime,jdbcType=TIMESTAMP}, #{modifiedtime,jdbcType=TIMESTAMP}, 
+      #{deleted,jdbcType=INTEGER}, #{approved,jdbcType=INTEGER}, #{approvedby,jdbcType=INTEGER}, 
+      #{description,jdbcType=LONGVARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.crm.model.XmActivity" >
+    insert into xm_activity
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="activityid != null" >
+        activityid,
+      </if>
+      <if test="subject != null" >
+        subject,
+      </if>
+      <if test="semodule != null" >
+        semodule,
+      </if>
+      <if test="activitytype != null" >
+        activitytype,
+      </if>
+      <if test="calendartype != null" >
+        calendartype,
+      </if>
+      <if test="dateStart != null" >
+        date_start,
+      </if>
+      <if test="dueDate != null" >
+        due_date,
+      </if>
+      <if test="timeStart != null" >
+        time_start,
+      </if>
+      <if test="timeEnd != null" >
+        time_end,
+      </if>
+      <if test="sendnotification != null" >
+        sendnotification,
+      </if>
+      <if test="durationHours != null" >
+        duration_hours,
+      </if>
+      <if test="durationMinutes != null" >
+        duration_minutes,
+      </if>
+      <if test="status != null" >
+        status,
+      </if>
+      <if test="eventstatus != null" >
+        eventstatus,
+      </if>
+      <if test="priority != null" >
+        priority,
+      </if>
+      <if test="location != null" >
+        location,
+      </if>
+      <if test="notime != null" >
+        notime,
+      </if>
+      <if test="visibility != null" >
+        visibility,
+      </if>
+      <if test="contactId != null" >
+        contact_id,
+      </if>
+      <if test="accountid != null" >
+        accountid,
+      </if>
+      <if test="potentialid != null" >
+        potentialid,
+      </if>
+      <if test="smcreatorid != null" >
+        smcreatorid,
+      </if>
+      <if test="smownerid != null" >
+        smownerid,
+      </if>
+      <if test="modifiedby != null" >
+        modifiedby,
+      </if>
+      <if test="groupid != null" >
+        groupid,
+      </if>
+      <if test="createdtime != null" >
+        createdtime,
+      </if>
+      <if test="modifiedtime != null" >
+        modifiedtime,
+      </if>
+      <if test="deleted != null" >
+        deleted,
+      </if>
+      <if test="approved != null" >
+        approved,
+      </if>
+      <if test="approvedby != null" >
+        approvedby,
+      </if>
+      <if test="description != null" >
+        description,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="activityid != null" >
+        #{activityid,jdbcType=INTEGER},
+      </if>
+      <if test="subject != null" >
+        #{subject,jdbcType=VARCHAR},
+      </if>
+      <if test="semodule != null" >
+        #{semodule,jdbcType=VARCHAR},
+      </if>
+      <if test="activitytype != null" >
+        #{activitytype,jdbcType=VARCHAR},
+      </if>
+      <if test="calendartype != null" >
+        #{calendartype,jdbcType=VARCHAR},
+      </if>
+      <if test="dateStart != null" >
+        #{dateStart,jdbcType=DATE},
+      </if>
+      <if test="dueDate != null" >
+        #{dueDate,jdbcType=DATE},
+      </if>
+      <if test="timeStart != null" >
+        #{timeStart,jdbcType=VARCHAR},
+      </if>
+      <if test="timeEnd != null" >
+        #{timeEnd,jdbcType=VARCHAR},
+      </if>
+      <if test="sendnotification != null" >
+        #{sendnotification,jdbcType=VARCHAR},
+      </if>
+      <if test="durationHours != null" >
+        #{durationHours,jdbcType=VARCHAR},
+      </if>
+      <if test="durationMinutes != null" >
+        #{durationMinutes,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null" >
+        #{status,jdbcType=VARCHAR},
+      </if>
+      <if test="eventstatus != null" >
+        #{eventstatus,jdbcType=VARCHAR},
+      </if>
+      <if test="priority != null" >
+        #{priority,jdbcType=VARCHAR},
+      </if>
+      <if test="location != null" >
+        #{location,jdbcType=VARCHAR},
+      </if>
+      <if test="notime != null" >
+        #{notime,jdbcType=VARCHAR},
+      </if>
+      <if test="visibility != null" >
+        #{visibility,jdbcType=VARCHAR},
+      </if>
+      <if test="contactId != null" >
+        #{contactId,jdbcType=INTEGER},
+      </if>
+      <if test="accountid != null" >
+        #{accountid,jdbcType=INTEGER},
+      </if>
+      <if test="potentialid != null" >
+        #{potentialid,jdbcType=INTEGER},
+      </if>
+      <if test="smcreatorid != null" >
+        #{smcreatorid,jdbcType=INTEGER},
+      </if>
+      <if test="smownerid != null" >
+        #{smownerid,jdbcType=INTEGER},
+      </if>
+      <if test="modifiedby != null" >
+        #{modifiedby,jdbcType=INTEGER},
+      </if>
+      <if test="groupid != null" >
+        #{groupid,jdbcType=INTEGER},
+      </if>
+      <if test="createdtime != null" >
+        #{createdtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="modifiedtime != null" >
+        #{modifiedtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="deleted != null" >
+        #{deleted,jdbcType=INTEGER},
+      </if>
+      <if test="approved != null" >
+        #{approved,jdbcType=INTEGER},
+      </if>
+      <if test="approvedby != null" >
+        #{approvedby,jdbcType=INTEGER},
+      </if>
+      <if test="description != null" >
+        #{description,jdbcType=LONGVARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.crm.model.XmActivity" >
+    update xm_activity
+    <set >
+      <if test="subject != null" >
+        subject = #{subject,jdbcType=VARCHAR},
+      </if>
+      <if test="semodule != null" >
+        semodule = #{semodule,jdbcType=VARCHAR},
+      </if>
+      <if test="activitytype != null" >
+        activitytype = #{activitytype,jdbcType=VARCHAR},
+      </if>
+      <if test="calendartype != null" >
+        calendartype = #{calendartype,jdbcType=VARCHAR},
+      </if>
+      <if test="dateStart != null" >
+        date_start = #{dateStart,jdbcType=DATE},
+      </if>
+      <if test="dueDate != null" >
+        due_date = #{dueDate,jdbcType=DATE},
+      </if>
+      <if test="timeStart != null" >
+        time_start = #{timeStart,jdbcType=VARCHAR},
+      </if>
+      <if test="timeEnd != null" >
+        time_end = #{timeEnd,jdbcType=VARCHAR},
+      </if>
+      <if test="sendnotification != null" >
+        sendnotification = #{sendnotification,jdbcType=VARCHAR},
+      </if>
+      <if test="durationHours != null" >
+        duration_hours = #{durationHours,jdbcType=VARCHAR},
+      </if>
+      <if test="durationMinutes != null" >
+        duration_minutes = #{durationMinutes,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null" >
+        status = #{status,jdbcType=VARCHAR},
+      </if>
+      <if test="eventstatus != null" >
+        eventstatus = #{eventstatus,jdbcType=VARCHAR},
+      </if>
+      <if test="priority != null" >
+        priority = #{priority,jdbcType=VARCHAR},
+      </if>
+      <if test="location != null" >
+        location = #{location,jdbcType=VARCHAR},
+      </if>
+      <if test="notime != null" >
+        notime = #{notime,jdbcType=VARCHAR},
+      </if>
+      <if test="visibility != null" >
+        visibility = #{visibility,jdbcType=VARCHAR},
+      </if>
+      <if test="contactId != null" >
+        contact_id = #{contactId,jdbcType=INTEGER},
+      </if>
+      <if test="accountid != null" >
+        accountid = #{accountid,jdbcType=INTEGER},
+      </if>
+      <if test="potentialid != null" >
+        potentialid = #{potentialid,jdbcType=INTEGER},
+      </if>
+      <if test="smcreatorid != null" >
+        smcreatorid = #{smcreatorid,jdbcType=INTEGER},
+      </if>
+      <if test="smownerid != null" >
+        smownerid = #{smownerid,jdbcType=INTEGER},
+      </if>
+      <if test="modifiedby != null" >
+        modifiedby = #{modifiedby,jdbcType=INTEGER},
+      </if>
+      <if test="groupid != null" >
+        groupid = #{groupid,jdbcType=INTEGER},
+      </if>
+      <if test="createdtime != null" >
+        createdtime = #{createdtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="modifiedtime != null" >
+        modifiedtime = #{modifiedtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="deleted != null" >
+        deleted = #{deleted,jdbcType=INTEGER},
+      </if>
+      <if test="approved != null" >
+        approved = #{approved,jdbcType=INTEGER},
+      </if>
+      <if test="approvedby != null" >
+        approvedby = #{approvedby,jdbcType=INTEGER},
+      </if>
+      <if test="description != null" >
+        description = #{description,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    where activityid = #{activityid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.crm.model.XmActivity" >
+    update xm_activity
+    set subject = #{subject,jdbcType=VARCHAR},
+      semodule = #{semodule,jdbcType=VARCHAR},
+      activitytype = #{activitytype,jdbcType=VARCHAR},
+      calendartype = #{calendartype,jdbcType=VARCHAR},
+      date_start = #{dateStart,jdbcType=DATE},
+      due_date = #{dueDate,jdbcType=DATE},
+      time_start = #{timeStart,jdbcType=VARCHAR},
+      time_end = #{timeEnd,jdbcType=VARCHAR},
+      sendnotification = #{sendnotification,jdbcType=VARCHAR},
+      duration_hours = #{durationHours,jdbcType=VARCHAR},
+      duration_minutes = #{durationMinutes,jdbcType=VARCHAR},
+      status = #{status,jdbcType=VARCHAR},
+      eventstatus = #{eventstatus,jdbcType=VARCHAR},
+      priority = #{priority,jdbcType=VARCHAR},
+      location = #{location,jdbcType=VARCHAR},
+      notime = #{notime,jdbcType=VARCHAR},
+      visibility = #{visibility,jdbcType=VARCHAR},
+      contact_id = #{contactId,jdbcType=INTEGER},
+      accountid = #{accountid,jdbcType=INTEGER},
+      potentialid = #{potentialid,jdbcType=INTEGER},
+      smcreatorid = #{smcreatorid,jdbcType=INTEGER},
+      smownerid = #{smownerid,jdbcType=INTEGER},
+      modifiedby = #{modifiedby,jdbcType=INTEGER},
+      groupid = #{groupid,jdbcType=INTEGER},
+      createdtime = #{createdtime,jdbcType=TIMESTAMP},
+      modifiedtime = #{modifiedtime,jdbcType=TIMESTAMP},
+      deleted = #{deleted,jdbcType=INTEGER},
+      approved = #{approved,jdbcType=INTEGER},
+      approvedby = #{approvedby,jdbcType=INTEGER},
+      description = #{description,jdbcType=LONGVARCHAR}
+    where activityid = #{activityid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.crm.model.XmActivity" >
+    update xm_activity
+    set subject = #{subject,jdbcType=VARCHAR},
+      semodule = #{semodule,jdbcType=VARCHAR},
+      activitytype = #{activitytype,jdbcType=VARCHAR},
+      calendartype = #{calendartype,jdbcType=VARCHAR},
+      date_start = #{dateStart,jdbcType=DATE},
+      due_date = #{dueDate,jdbcType=DATE},
+      time_start = #{timeStart,jdbcType=VARCHAR},
+      time_end = #{timeEnd,jdbcType=VARCHAR},
+      sendnotification = #{sendnotification,jdbcType=VARCHAR},
+      duration_hours = #{durationHours,jdbcType=VARCHAR},
+      duration_minutes = #{durationMinutes,jdbcType=VARCHAR},
+      status = #{status,jdbcType=VARCHAR},
+      eventstatus = #{eventstatus,jdbcType=VARCHAR},
+      priority = #{priority,jdbcType=VARCHAR},
+      location = #{location,jdbcType=VARCHAR},
+      notime = #{notime,jdbcType=VARCHAR},
+      visibility = #{visibility,jdbcType=VARCHAR},
+      contact_id = #{contactId,jdbcType=INTEGER},
+      accountid = #{accountid,jdbcType=INTEGER},
+      potentialid = #{potentialid,jdbcType=INTEGER},
+      smcreatorid = #{smcreatorid,jdbcType=INTEGER},
+      smownerid = #{smownerid,jdbcType=INTEGER},
+      modifiedby = #{modifiedby,jdbcType=INTEGER},
+      groupid = #{groupid,jdbcType=INTEGER},
+      createdtime = #{createdtime,jdbcType=TIMESTAMP},
+      modifiedtime = #{modifiedtime,jdbcType=TIMESTAMP},
+      deleted = #{deleted,jdbcType=INTEGER},
+      approved = #{approved,jdbcType=INTEGER},
+      approvedby = #{approvedby,jdbcType=INTEGER}
+    where activityid = #{activityid,jdbcType=INTEGER}
+  </update>
+  <select id="getTopActivity" resultMap="BaseResultMap" >
+  	SELECT DISTINCT
+		xm_activity.activityid AS crmid,
+		xm_activity.*, xm_recurringevents.recurringtype
+	FROM
+		xm_activity
+	LEFT JOIN xm_seactivityrel ON xm_seactivityrel.activityid = xm_activity.activityid
+	LEFT OUTER JOIN xm_recurringevents ON xm_recurringevents.activityid = xm_activity.activityid
+	INNER JOIN xm_salesmanactivityrel ON xm_salesmanactivityrel.activityid = xm_activity.activityid
+	WHERE
+		xm_activity.deleted = 0
+	AND(
+		xm_activity.eventstatus IS NULL
+		OR xm_activity.eventstatus != '已完成'
+	)
+	AND(
+		(
+			date_start >= #{today}
+			AND date_start <![CDATA[<=]]> #{dayend}
+		)
+		OR(
+			xm_recurringevents.recurringdate >= #{today}
+			AND xm_recurringevents.recurringdate <![CDATA[<=]]> #{dayend}
+		)
+	)
+	AND xm_activity.smownerid != 0
+	AND(
+		xm_activity.smownerid = #{smownerid} 
+		OR xm_salesmanactivityrel.smid = #{smownerid}
+	)
+	ORDER BY
+		date_start;
+  </select>
+</mapper>

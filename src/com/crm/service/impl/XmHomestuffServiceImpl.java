@@ -26,9 +26,6 @@ public class XmHomestuffServiceImpl implements XmHomestuffService {
 		this.xmHomestuffMapper = xmHomestuffMapper;
 	}
 
-
-
-
 	@Override
 	public List<XmHomestuff> getStuffByRole(String role) {
 		String templatesid = this.xmHometemplatesMapper.getStuffId(role);

@@ -72,5 +72,11 @@ public class XmGathersServiceImpl implements XmGathersService {
 		return this.xmGathersMapper.getGatherStat(year);
 	}
 
+	@Override
+	public String getSumOfGatherByUserAndLast(Integer id, String start,
+			String end) {
+		return this.xmGathersMapper.getSumOfGatherByUserAndLast(id,start,end);
+	}
+
 
 }

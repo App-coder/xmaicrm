@@ -360,4 +360,7 @@
     LEFT OUTER JOIN xm_potential ON xm_potential.potentialid = xm_notes.potentialid 
     LEFT JOIN xm_users ON xm_users.id = xm_notes.smownerid WHERE xm_notes.deleted = 0 and 1=1 ${filter} limit #{start},#{rows}
   </select>
+  <select id="getNoteOfUserAndLast" resultType="INTEGER">
+  	select count(*) as rowsnum from xm_notes WHERE deleted =0 AND smownerid='${userid}' and contact_date between '${start} 00:00:00' and '${end} 23:59:00';
+  </select>
 </mapper>

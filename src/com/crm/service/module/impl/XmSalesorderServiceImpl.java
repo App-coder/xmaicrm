@@ -46,5 +46,16 @@ public class XmSalesorderServiceImpl implements XmSalesorderService {
 		return this.xmSalesorderMapper.getSalesorderStat(year);
 	}
 
+	@Override
+	public int getSaleOrderOfUserAndLast(Integer id, String start, String end) {
+		return this.xmSalesorderMapper.getSaleOrderOfUserAndLast(id,start,end);
+	}
+
+	@Override
+	public String getSumOfOrderByUserAndLast(Integer id, String start,
+			String end) {
+		return this.xmSalesorderMapper.getSumOfOrderByUserAndLast(id,start,end);
+	}
+
 
 }

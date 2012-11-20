@@ -37,4 +37,6 @@ public interface XmGathersMapper {
 
 	GatherStat getGatherStat(@Param("year") String year);
 
+	String getSumOfGatherByUserAndLast(@Param("userid") Integer userid,@Param("start") String start,@Param("end") String end);
+
 }

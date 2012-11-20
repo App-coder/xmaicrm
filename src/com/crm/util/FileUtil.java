@@ -1,6 +1,12 @@
 package com.crm.util;
 
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
 import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.InputStreamReader;
 import java.util.Date;
 
 import javax.servlet.ServletContext;
@@ -116,4 +122,31 @@ public class FileUtil {
 		}
 	}
 
+	public static String getString(String path) throws IOException{
+		File f = new File(path);
+		StringBuffer sb = new StringBuffer();
+		if(f.exists()){
+			
+			InputStreamReader isr = new InputStreamReader(new FileInputStream(path), "UTF-8");
+			BufferedReader b = new BufferedReader(isr);
+			
+			String s;
+			while((s=b.readLine()) != null){
+				sb.append(s);
+			}
+			
+		}
+		return sb.toString();
+	}
+
+	public static void writeFile(String filepath, String note) throws IOException {
+		File f = new File(filepath);
+		if(!f.exists()){
+			f.createNewFile();
+		}
+		BufferedWriter bw = new BufferedWriter(new FileWriter(filepath));
+		bw.write(note);
+		bw.flush(); 
+	}
+	
 }

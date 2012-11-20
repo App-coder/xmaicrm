@@ -32,6 +32,11 @@ public class XmPotentialServiceImpl implements XmPotentialService {
 		return this.xmPotentialMapper.getSalesCountByPick(colvalue,range,firstday,lastday);
 	}
 
+	@Override
+	public int getPotentialOfUserAndLast(Integer id, String start, String end) {
+		return this.xmPotentialMapper.getPotentialOfUserAndLast(id,start,end);
+	}
+
 
 
 }
