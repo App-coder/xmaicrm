@@ -55,11 +55,11 @@ ${navbar }
 </div>
 <div id="main">
 <div id="navpath" class="path">
-${ptb.parenttabLabel }&gt;<a href="crm/customview/viewIndex?entitytype=${entityname.modulename }&ptb=${ptb.parenttabid }">${tab.tablabel}</a>
+${ptb.parenttabLabel }&gt;<a href="crm/module/${fn:toLowerCase(entityname.modulename) }/index?ptb=${ptb.parenttabid }">${tab.tablabel}</a>
 </div>
 	<div class="d_view ">
 				<span class="icon-filter ">视图：</span> <select
-					class="sel_120">
+					class="sel_120" >
 					<c:forEach items="${views}" var="v">
 						<option value="${v.cvid }">${v.viewname}</option>
 					</c:forEach>

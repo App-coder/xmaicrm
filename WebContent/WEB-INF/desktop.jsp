@@ -15,6 +15,7 @@ var pathname = "工作台";
 ${navbar }
 <div id="main" >
 <div class="path" >&gt;<a  href="crm/welcome/desktop">工作台</a></div>
+<!-- 
 <div id="desktop" >
 		<div style="width:33%;">
 			<c:forEach items="${stuffs}" var="stuff" varStatus="vs" >
@@ -43,8 +44,8 @@ ${navbar }
 			</c:if>
 			</c:forEach>
 		</div>
-
 </div>
+ -->
 
 </div>
 <%@ include file="foot.jsp"%>
