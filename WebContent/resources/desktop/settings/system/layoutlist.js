@@ -1,5 +1,6 @@
 var tabid=null;
 var block_options="";
+var tod="";
 var cols = [{
 	field:'fieldlabel',
 	title:'字段名称'
@@ -10,6 +11,7 @@ var colname="";
 $(function() {
     initForm();
 });
+
 
 //初始化
 function initForm() {
@@ -42,6 +44,7 @@ function initForm() {
 		    res = $.parseJSON(res);
 		    if(res.type == true){
 		       closeWin('layoutlist');
+		       initTable(tabid);
 		       $('#form_layout').form("clear");
 		    }
 		}
@@ -90,7 +93,7 @@ function general(blockids,results){
 
 //编辑窗口的初始化
 function loadForm(fieldid,fieldlabel,block,sequence,typeofdata) {
-	
+	tod=typeofdata;
 	$('#form_layout').form('load',{
 		fieldlabel:fieldlabel,
 		sequence:sequence,
@@ -104,9 +107,9 @@ function loadForm(fieldid,fieldlabel,block,sequence,typeofdata) {
 	    	$("#block").get(0).value = block;
 	    	var ischeck=typeofdata.substr(2,1);
 	    	if(ischeck=='O')
-	    		$("input[name='typeofdata']").attr("checked",false);
+	    		$("input[name='_typeofdata']").attr("checked",false);
 	    	else
-	    		$("input[name='typeofdata']").attr("checked",true);
+	    		$("input[name='_typeofdata']").attr("checked",true);
 	    },
 	    onClose:function(){
 	    	$('#form_layout').form("clear");
@@ -116,6 +119,11 @@ function loadForm(fieldid,fieldlabel,block,sequence,typeofdata) {
 }
 
 function submitLayoutlist(){
+	var temp= tod.charAt(2);
+	if($("input[name='_typeofdata']").attr('checked'))
+		$("input[name='typeofdata']").val(tod.replace(temp,"M"));
+	else
+		$("input[name='typeofdata']").val(tod.replace(temp,"O"));
 	formsubmit("form_layout");
 }
 

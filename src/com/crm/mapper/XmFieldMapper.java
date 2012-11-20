@@ -50,5 +50,5 @@ public interface XmFieldMapper {
 	
 	List<Object> getLayoutField(@Param("tabid") Integer tabid,@Param("blockid") Integer blockid);
 	
-	
+	int updateDefOrgVisible(@Param("tabid") Integer tabid,@Param("visible") Integer visible,@Param("fieldids") String fieldids);
 }

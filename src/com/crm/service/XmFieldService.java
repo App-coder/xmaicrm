@@ -52,4 +52,6 @@ public interface XmFieldService {
 	 * @return
 	 */
 	public List<Object> getDefOrgFields(int tabid);
+	
+	int submit(int tabid,String ck_fieldid,String unck_fieldid);
 }

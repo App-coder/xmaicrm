@@ -12,16 +12,19 @@ var pathname = "全局字段";
 ${navbar }
 <div id="main">
 <div class="path" id="navpath"></div>
-<div class="pl_container">
-<div class="gtb datagrid-toolbar" style="display: block;" >  
+<div  class="d_view" id="tb" style="display: block;" >  
     <span>选择模块：</span>  
     <select class="tipt" id="selectmodule" onchange="reloadview(this.value)">
     	<c:forEach items="${modules }" var="m">
     		<option value="${m.tabid }">${m.tablabel }</option>
     	</c:forEach>
     </select>
+    <span>
+      <a class="easyui-linkbutton" iconCls="icon-save" plain="true" onclick="javascript:submitDeforgFid()">保存</a> 
+    </span>
 </div>
-<table class="midtab" id="dof_tab"></table>
+<div class="d_center">
+   <table class="midtab" id="dof_tab" toolbar="#tb"></table>
 </div>
 </div>
 <%@ include file="../../foot.jsp"%>

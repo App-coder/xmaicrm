@@ -7,5 +7,7 @@ import com.crm.model.XmRelatedlists;
 public interface XmRelatedlistsService {
 
 	List<XmRelatedlists> getRelatedByTabid(int tabid);
+	
+	int submit(XmRelatedlists xmRelatedlists);
 
 }

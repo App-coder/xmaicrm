@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.alibaba.fastjson.JSON;
 import com.crm.action.BaseController;
+import com.crm.bean.crm.Message;
 import com.crm.bean.easyui.ListBean;
 import com.crm.model.XmRelatedlists;
 import com.crm.model.XmTab;
@@ -63,5 +64,19 @@ public class XmRelatedlistsController extends BaseController {
 		return JSON.toJSONString(bean);
 	}
 	
+	@RequestMapping(value = "/submit", method = RequestMethod.POST)
+	@ResponseBody
+	public String submit(XmRelatedlists xmRelatedlists){
+		int affectrows=this.xmRelatedlistsService.submit(xmRelatedlists);
+		Message msg = new Message();
+		if(affectrows>=1){
+			msg.setMessage("编辑成功！");
+			msg.setType(true);
+		}else{
+			msg.setMessage("编辑时发生异常！");
+			msg.setType(false);
+		}
+		return objToJson(msg);
+	}
 	
 }
