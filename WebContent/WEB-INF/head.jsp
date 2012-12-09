@@ -34,6 +34,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 
 <!-- easyuipack.js 补充拓展 -->
 <script type="text/javascript" src="resources/easyui/easyuipack.js"></script>
+<script type="text/javascript" src="resources/easyui/extension/validatebox.js"></script>
 
 <!-- loadmask -->
 <link href="resources/plugins/loadmask/jquery.loadmask.css" rel="stylesheet" type="text/css" />

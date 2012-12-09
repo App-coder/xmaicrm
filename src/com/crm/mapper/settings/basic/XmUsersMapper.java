@@ -35,5 +35,7 @@ public interface XmUsersMapper {
 	XmUsers selectUserByPassword(XmUsers user);
 
 	List<XmUsers> getOptionsUser();
+
+	Integer existUserName(@Param("username") String username);
 	
 }

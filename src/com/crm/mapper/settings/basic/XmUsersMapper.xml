@@ -792,4 +792,7 @@
   <select id="getOptionsUser" resultMap="BaseResultMap" >
   	SELECT id, user_name from xm_users WHERE deleted=0 and status='Active' OR id='1' order by prefix ASC;
   </select>
+  <select id="existUserName" resultType="Integer" >
+  	select count(id) from xm_users where user_name = #{username}
+  </select>
 </mapper>

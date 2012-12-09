@@ -84,6 +84,11 @@ public class XmUsersServiceImpl implements XmUsersService{
 		return this.xmUsersMapper.getOptionsUser();
 	}
 
+	@Override
+	public boolean existUserName(String username) {
+		return this.xmUsersMapper.existUserName(username)>0?true:false;
+	}
+
 
 
 	

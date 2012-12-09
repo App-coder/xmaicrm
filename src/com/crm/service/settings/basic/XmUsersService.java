@@ -26,6 +26,8 @@ public interface XmUsersService {
 
 	List<XmUsers> getOptionsUser();
 
+	boolean existUserName(String username);
+
 
 	
 }

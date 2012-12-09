@@ -32,7 +32,7 @@ import com.crm.util.HtmlUtil;
  * Time: 上午10:09:13
  */
 @Controller
-@RequestMapping(value = "settings/users")
+@RequestMapping(value = "crm/settings/users")
 public class XmUsersController extends BaseController {
 	
 	XmUsersService xmUsersService;
@@ -100,6 +100,9 @@ public class XmUsersController extends BaseController {
 			msg.setMessage("用户添加成功！");
 			
 		}else{
+			if(user.getIsAdmin()==null){
+				user.setIsAdmin("off");
+			}
 			this.xmUsersService.update(user);
 			XmUser2role user2role = new XmUser2role();
 			user2role.setRoleid(roleid);
@@ -114,6 +117,30 @@ public class XmUsersController extends BaseController {
 		}
 		
 		msg.setType(true);
+		return JSON.toJSONString(msg);
+	}
+	
+	@RequestMapping(value = "/editPassword", method = RequestMethod.POST)
+	@ResponseBody
+	public String editPassword(XmUsers user){
+		
+		this.xmUsersService.update(user);
+		Message msg = new Message();
+		msg.setMessage("用户密码修改成功！");
+		msg.setType(true);
+		return JSON.toJSONString(msg);
+	}
+	
+	@RequestMapping(value = "/existUserName", method = RequestMethod.POST)
+	@ResponseBody
+	public String existUserName(String username){
+		Message msg = new Message();
+		boolean exist = this.xmUsersService.existUserName(username);
+		if(exist){
+			msg.setType(true);
+		}else{
+			msg.setType(false);
+		}
 		return JSON.toJSONString(msg);
 	}
 	
