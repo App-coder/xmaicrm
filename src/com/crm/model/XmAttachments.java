@@ -20,6 +20,8 @@ public class XmAttachments {
     private Date createdtime;
 
     private Integer deleted;
+    
+    private String username;
 
     public Integer getAttachmentsid() {
         return attachmentsid;
@@ -92,4 +94,13 @@ public class XmAttachments {
     public void setDeleted(Integer deleted) {
         this.deleted = deleted;
     }
+
+	public String getUsername() {
+		return username;
+	}
+
+	public void setUsername(String username) {
+		this.username = username;
+	}
+	
 }

@@ -14,17 +14,23 @@ import javax.servlet.http.HttpServletRequest;
 import org.springframework.stereotype.Component;
 import org.springframework.ui.ModelMap;
 
+import com.alibaba.fastjson.JSON;
 import com.crm.model.XmBlocks;
 import com.crm.model.XmEntityname;
 import com.crm.model.XmField;
 import com.crm.model.XmParenttab;
+import com.crm.model.XmProducts;
+import com.crm.model.XmRelatedlists;
 import com.crm.model.XmTab;
+import com.crm.model.XmUsers;
 import com.crm.service.XmBlocksService;
 import com.crm.service.XmCustomViewService;
 import com.crm.service.XmEntitynameService;
 import com.crm.service.XmFieldService;
 import com.crm.service.XmPicklistService;
 import com.crm.service.XmSequenceService;
+import com.crm.service.module.XmProductsService;
+import com.crm.service.module.XmRelatedlistsServie;
 import com.crm.service.settings.basic.XmUsersService;
 import com.crm.util.ArrayUtil;
 import com.crm.util.CacheManager;
@@ -77,6 +83,13 @@ public class ActionCls {
 	public void setXmSequenceService(XmSequenceService xmSequenceService) {
 		this.xmSequenceService = xmSequenceService;
 	}
+	
+	XmRelatedlistsServie xmRelatedlistsServie;
+	@Resource(name="xmRelatedlistsServie")
+	public void setXmRelatedlistsServie(XmRelatedlistsServie xmRelatedlistsServie) {
+		this.xmRelatedlistsServie = xmRelatedlistsServie;
+	}
+	
 
 	public void showEdit(int ptb, String module, ModelMap modelmap, int recordid) {
 		Map obj = null;
@@ -259,7 +272,7 @@ public class ActionCls {
 		return false;
 	}
 
-	public void showView(int ptb, String module, ModelMap modelmap, int recordid) {
+	public void showView(int ptb, String module, ModelMap modelmap, int recordid,XmTab tab) {
 		Map obj = null;
 		if(recordid!=0){
 			modelmap.addAttribute("recordid",recordid);
@@ -267,7 +280,6 @@ public class ActionCls {
 			modelmap.addAttribute("record",obj);
 		}
 		
-		XmTab tab = CustomViewUtil.getTabByName(module);
 		modelmap.addAttribute("tab",tab );
 
 		HashMap<Integer, XmParenttab> parenttabs = (HashMap<Integer, XmParenttab>) CacheManager
@@ -295,7 +307,10 @@ public class ActionCls {
 
 		if (fields.size() > 0) {
 			for (int i = 0; i < fields.size(); i++) {
-				fields.get(i).setFieldHtml(HtmlUtil.getMapVal(obj,fields.get(i).getColumnname()));
+				//根据模块进行字段的特殊处理，主要用于关联字段值的设置
+				String val = HtmlUtil.getMapVal(obj,fields.get(i).getColumnname());
+				val = resetVal(module,fields.get(i).getColumnname(),val);
+				fields.get(i).setFieldHtml(val);
 				setblock.add(fields.get(i).getBlock());
 			}
 		}
@@ -311,4 +326,37 @@ public class ActionCls {
 		modelmap.addAttribute("blocks", arrangeBlock);
 	}
 
+	/**
+	 * @param module 模块
+	 * @param columnname 字段对应COLUMN
+	 * @param val 字段的值
+	 * @return
+	 */
+	private String resetVal(String module, String columnname, String val) {
+		if(val==null||val==""){
+			return "";
+		}
+		return this.xmCustomViewService.getModuleVal(module,val,columnname);
+	}
+
+	/**
+	 * 
+	 * 相关信息
+	 * 
+	 * @param tab 模块
+	 * @param modelmap
+	 */
+	public void setRelatedlist(XmTab tab,ModelMap modelmap){
+		
+		List<XmRelatedlists> relatedlists = this.xmRelatedlistsServie.getRelatedlistByTabid(tab.getTabid());
+		modelmap.addAttribute("relatedlists",relatedlists);
+		
+		List<String> relatedstr = new ArrayList<String>();
+		for(int i=0;i<relatedlists.size();i++){
+			relatedstr.add(relatedlists.get(i).getName());
+		}
+		modelmap.addAttribute("relatedstr",JSON.toJSON(relatedstr));
+		
+	}
+	
 }

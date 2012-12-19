@@ -41,5 +41,7 @@ public interface XmUsersMapper {
 	List<Object> getRelUser(@Param("start") int start,@Param("rows") int rows,@Param("roleid") String roleid);
 
 	int getTotalRelUser(@Param("roleid") String roleid);
+
+	List<XmUsers> loadAll();
 	
 }

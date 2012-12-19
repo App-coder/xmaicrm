@@ -114,6 +114,8 @@ public class XmUsers {
     private String groupname;
     
     private String rolename;
+    
+    private String groupid;
 
     public Integer getId() {
         return id;
@@ -561,6 +563,14 @@ public class XmUsers {
 
 	public void setRolename(String rolename) {
 		this.rolename = rolename;
+	}
+
+	public String getGroupid() {
+		return groupid;
+	}
+
+	public void setGroupid(String groupid) {
+		this.groupid = groupid;
 	}
     
     

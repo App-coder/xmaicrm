@@ -179,4 +179,7 @@
   <update id="update" >
   	${sql}
   </update>
+  <select id="getModuleVal" resultType="String" >
+  	${sql}
+  </select>
 </mapper>

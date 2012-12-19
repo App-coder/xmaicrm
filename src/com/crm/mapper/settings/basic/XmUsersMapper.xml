@@ -56,6 +56,7 @@
     <result column="description" property="description" jdbcType="LONGVARCHAR" />
     <result column="user_preferences" property="userPreferences" jdbcType="LONGVARCHAR" />
     <result column="buddylist" property="buddylist" jdbcType="LONGVARCHAR" />
+    <result column="groupid" property="groupid" jdbcType="VARCHAR" />
   </resultMap>
   <sql id="Base_Column_List" >
     id, user_name, user_password, user_hash, cal_color, first_name, last_name, reports_to_id, 
@@ -831,5 +832,8 @@
 	ORDER BY
 		last_name ASC 
 	limit #{start},#{rows}		
+  </select>
+  <select id="loadAll" resultMap="BaseResultMap"  >
+  	select xm_users.*,xm_users2group.groupid from xm_users left join xm_users2group on xm_users.id = xm_users2group.userid order by id asc
   </select>
 </mapper>

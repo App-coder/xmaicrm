@@ -105,6 +105,11 @@ public class XmUsersServiceImpl implements XmUsersService{
 		return this.xmUsersMapper.selectByPrimaryKey(id);
 	}
 
+	@Override
+	public List<XmUsers> loadAll() {
+		return this.xmUsersMapper.loadAll();
+	}
+
 
 
 	

@@ -55,6 +55,17 @@ public interface XmCustomViewService {
 
 	int update(String sql);
 
+	/**
+	 * 
+	 * 获取例外值
+	 * 
+	 * @param module
+	 * @param val
+	 * @param column
+	 * @return
+	 */
+	String getModuleVal(String module, String val,String column);
+
 	
 
 }

@@ -1,7 +1,6 @@
 package com.crm.action.module;
 
 import java.io.UnsupportedEncodingException;
-import java.util.Map;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
@@ -19,11 +18,19 @@ import com.crm.action.BaseController;
 import com.crm.action.util.ModuleUtil;
 import com.crm.bean.crm.Message;
 import com.crm.bean.crm.UserPermission;
+import com.crm.model.XmFreetags;
+import com.crm.model.XmRelatedlists;
+import com.crm.model.XmTab;
 import com.crm.service.XmCustomViewService;
+import com.crm.service.XmFreetagsService;
 import com.crm.service.module.XmCampaignService;
+import com.crm.service.module.XmRelatedlistsServie;
 import com.crm.util.ActionUtil;
 import com.crm.util.Constant;
 import com.crm.util.actionutil.ActionCls;
+import com.crm.util.crm.CustomViewUtil;
+
+import java.util.*;
 
 /**
  * 
@@ -56,6 +63,12 @@ public class XmCampaignController extends BaseController {
 		this.xmCustomViewService = xmCustomViewService;
 	}
 	
+	XmFreetagsService xmFreetagsService;
+	@Resource(name="xmFreetagsService")
+	public void setXmFreetagsService(XmFreetagsService xmFreetagsService) {
+		this.xmFreetagsService = xmFreetagsService;
+	}
+
 	ActionCls actionCls;
 	@Resource(name="actionCls")
 	public void setActionCls(ActionCls actionCls) {
@@ -85,7 +98,7 @@ public class XmCampaignController extends BaseController {
 		Boolean res = false;
 		
 		//修改
-		if(request.getParameter("recordid")!=null){
+		if(request.getParameter("recordid")!=null&&request.getParameter("recordid")!=""){
 			res = this.actionCls.update(request,Integer.parseInt(request.getParameter("recordid")));
 		}else{
 			int insertid = this.xmCampaignService.getMaxId()+1;
@@ -105,24 +118,18 @@ public class XmCampaignController extends BaseController {
 	@RequestMapping(value = "/view")
 	public String view(int recordid,String module,int ptb,ModelMap modelmap){
 		
-		this.actionCls.showView(ptb, module, modelmap,recordid);
+		XmTab tab = CustomViewUtil.getTabByName(module);
+		this.actionCls.showView(ptb, module, modelmap,recordid,tab);
+		this.actionCls.setRelatedlist(tab, modelmap);
+		List<XmFreetags> freetags = this.xmFreetagsService.getModuleTags(module,recordid); 
 		
 		return "module/campaigns/view";
 	}
 	
-	@RequestMapping(value = "/deleteById", method = RequestMethod.POST)
-	@ResponseBody
-	public String deleteById(int recordid){
+	@RequestMapping(value = "/deleteById", method = RequestMethod.GET)
+	public String deleteById(int recordid,int ptb){
 		boolean res = this.xmCampaignService.delete(recordid);
-		Message msg = new Message();
-		if(res == true){
-			msg.setType(true);
-			msg.setMessage("删除成功！");
-		}else{
-			msg.setType(false);
-			msg.setMessage("删除失败！");
-		}
-		return JSON.toJSONString(msg);
+		return "redirect:/crm/module/campaigns/index?ptb="+ptb;
 	}
 	
 	@RequestMapping(value = "/deleteRecords", method = RequestMethod.POST)

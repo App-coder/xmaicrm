@@ -5,6 +5,7 @@ public class ComboTree {
 	private String id;
 	private String text;
 	private String checked;
+	private String iconCls;
 	private Object attributes;
 	private List children;
 	
@@ -38,4 +39,11 @@ public class ComboTree {
 	public void setChecked(String checked) {
 		this.checked = checked;
 	}
+	public String getIconCls() {
+		return iconCls;
+	}
+	public void setIconCls(String iconCls) {
+		this.iconCls = iconCls;
+	}
+	
 }

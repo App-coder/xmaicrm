@@ -20,4 +20,7 @@ public interface XmRelatedlistsMapper {
     int updateByPrimaryKey(XmRelatedlists record);
 
 	List<XmRelatedlists> getRelatedByTabid(@Param("tabid") int tabid);
+
+	List<XmRelatedlists> getRelatedlistByTabid(@Param("tabid") Integer tabid);
+
 }

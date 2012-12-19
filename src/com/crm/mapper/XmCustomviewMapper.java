@@ -57,5 +57,7 @@ public interface XmCustomviewMapper {
 	String getFieldValue(@Param("sql") String sql);
 
 	int update(@Param("sql") String sql);
+
+	String getModuleVal(@Param("sql") String sql);
 	
 }

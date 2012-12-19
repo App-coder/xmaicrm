@@ -34,6 +34,8 @@ public interface XmUsersService {
 
 	XmUsers getById(Integer id);
 
+	List<XmUsers> loadAll();
+
 
 	
 }

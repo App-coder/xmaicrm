@@ -44,15 +44,15 @@ function init(){
 					var recordids = ""
 					for(var i=0;i<selected.length;i++){
 					    if(i==0){
-						recordids +=selected.campaignid;
+						recordids +=selected[i].campaignid;
 					    }else{
-						recordids +=","+selected.campaignid;
+						recordids +=","+selected[i].campaignid;
 					    }
 					}
-					
 					$.post('crm/module/campaigns/deleteRecords',{recordids:recordids},function(res){
 						if(res.type == true){
-						    $('#view_list').datagrid("reload")
+						    $('#view_list').datagrid("reload");
+						    $('#view_list').datagrid("unselectAll");
 						}
 					},'json');
 				    }

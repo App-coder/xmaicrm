@@ -187,3 +187,15 @@
 .icon-return{
 	background:url('icons/return.png') no-repeat ;
 }
+.icon-group{
+	background:url('icons/group.png') no-repeat ;
+}
+.icon-user{
+	background:url('icons/user.png') no-repeat ;
+}
+.icon-import{
+	background:url('icons/import.png') no-repeat ;
+}
+.icon-mini-delete{
+	background:url('icons/mini_delete.png') no-repeat ;
+}

@@ -20,10 +20,8 @@ ${navbar }
 ${ptb.parenttabLabel }&gt;<a href="crm/module/${fn:toLowerCase(entityname.modulename) }/index?ptb=${ptb.parenttabid }">${tab.tablabel}</a>
 </div>
 	<div class="d_view ">
-				<span class="icon-filter ">查看范围：</span>
-				
-					<select><option>所有客户任务</option></select>
-					
+	查看范围：
+					<select class="easyui-combotree" style="width:200px;" data-options="url:'crm/module/normaltasks/getCondition'"></select>
 					<div class="fr" id="tasksstatus" style="margin-right: 10px;">
 					<a class="easyui-linkbutton lb_ck" onclick="loadNormalTask(0,this)" >未处理（<span class="red">${notdo }</span>）</a>
 					<a class="easyui-linkbutton" onclick="loadNormalTask(2,this)" >跟进中（<span class="red">${follow }</span>）</a>

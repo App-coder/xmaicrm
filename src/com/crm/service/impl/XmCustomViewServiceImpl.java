@@ -189,4 +189,28 @@ public class XmCustomViewServiceImpl implements XmCustomViewService {
 		return this.xmCustomviewMapper.update(sql);
 	}
 
+	@Override
+	public String getModuleVal(String module, String val,String column) {
+		String table = "";
+		String valfield = "";
+		String idfield = "";
+		String sql = "";
+		if(module.equals("Campaigns")){
+			if(column.equals("smownerid")){
+				table = "xm_users";
+				valfield = "last_name";
+				idfield = "id";
+				sql += "select "+valfield+" from "+table +" where "+idfield+" = "+val;
+				val = this.xmCustomviewMapper.getModuleVal(sql);
+			}else if(column.equals("product_id")){
+				table = "xm_products";
+				valfield = "productname";
+				idfield = "productid";
+				sql += "select "+valfield+" from "+table +" where "+idfield+" = "+val;
+				val = this.xmCustomviewMapper.getModuleVal(sql);
+			}
+		}
+		return val;
+	}
+
 }
