@@ -22,7 +22,7 @@
 		<li><a>相关信息</a></li>
 		<li><a>打印模板</a></li>
 		<li><a>关联产品字段</a></li>
-		<li><a>审批流程</a></li>
+		<li id="path_multiapprove"><a href="crm/settings/multiapprove/index">审批流程</a></li>
 		<li><a>级联字段</a></li>
 		<li><a>相关信息模块字段</a></li>
 	</ul>

@@ -145,3 +145,12 @@ function submitMultiApprove(){
 		    }
 	},"json");
 }
+
+function doMultiApproveStep(){
+	var selected = $('#multiapprovelist').datagrid("getSelected");
+	if (selected) {
+	     window.location.href="crm/settings/multiapprove/showApproveStep?approveid="+selected.id+"";
+	}else{
+		message("请选择一行记录！");
+	}
+}

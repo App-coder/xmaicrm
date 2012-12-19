@@ -95,6 +95,9 @@
 	<c:when test="${pathname=='审批流程' }">
 		${syssetting }&gt;<a href="${url }">审批流程</a>
 	</c:when>
+	<c:when test="${pathname=='编辑审批步骤' }">
+		${syssetting }&gt;<a href="crm/settings/multiapprove/index">审批流程</a>&gt;<a href="${url }">编辑审批步骤</a>
+	</c:when>
 	<c:when test="${pathname=='自定义共享规则' }">
 		${syssetting }&gt;<a href="${url }">自定义共享规则</a>
 	</c:when>

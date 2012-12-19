@@ -24,8 +24,29 @@ public class XmApprovestep {
     private Integer alterapproveowner;
 
     private String memo;
+    
+    private String username;
+    
+    private String nextstepname;
 
-    public Integer getId() {
+    
+    public String getNextstepname() {
+		return nextstepname;
+	}
+
+	public void setNextstepname(String nextstepname) {
+		this.nextstepname = nextstepname;
+	}
+
+	public String getUsername() {
+		return username;
+	}
+
+	public void setUsername(String username) {
+		this.username = username;
+	}
+
+	public Integer getId() {
         return id;
     }
 

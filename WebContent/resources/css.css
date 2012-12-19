@@ -150,6 +150,9 @@ a.cus_markhui:link {
 }
 
 
+.lvtColData {
+    background-color: #FFFFFF;
+}
 .lvtColDataHover {
     background-color: #FEFF99;
 }
@@ -304,7 +307,65 @@ background-color: #D0E5F5;
     border-right: 1px solid #CCCCCC;
 }
 
-.tag ul {display: inline-table;list-style: none;margin:0px;padding:0px;}
-.tag ul li{float:left;margin-right:10px;padding:3px;background-color: #E4E4E4;border:1px solid #D2D2D2;}
+.tag ul {display: inline-table;list-style: none;margin:0px;padding:0px;}.tag ul li{float:left;margin-right:10px;padding:3px;background-color: #E4E4E4;border:1px solid #D2D2D2;}/*审批流程*/
+.edit {
+    background-color: green;
+    background-image: url("./images/settings/system/themes/buttongreen.png");
+    color: #FFFFFF;
+    font-weight: bold;
+}
+.crmButton {
+    border-color: #FFFFFF #555555 #555555 #FFFFFF;
+    border-left: 1px solid #FFFFFF;
+    border-style: solid;
+    border-width: 1px;
+}
 
-.mini_delete{height:4px;padding:5px;cursor: pointer;display: none;}
+.mini_delete{height:4px;padding:5px;cursor: pointer;display: none;}.dvtCellLabel, .cellLabel {
+    background-color: #EFEFF8;
+    border-bottom: 1px solid #DEDEDE;
+    border-top: 0 solid #DEDEDE;
+    color: #545454;
+    padding-left: 10px;
+    padding-right: 10px;
+    white-space: nowrap;
+}
+.dvtCellInfo, .cellInfo {
+    border-bottom: 1px solid #ECECEC;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+
+.create {
+    background-color: #5774B0;
+    background-image: url("./images/settings/system/themes/toolbar-bg.png");
+    color: #FFFFFF;
+    font-weight: bold;
+}
+.crmButton {
+    border-color: #FFFFFF #555555 #555555 #FFFFFF;
+    border-style: solid;
+    border-width: 1px;
+}
+.edit {
+    background-color: green;
+    background-image: url("./images/settings/system/themes/buttongreen.png");
+    color: #FFFFFF;
+    font-weight: bold;
+}
+
+.approvestep_tab{
+	left: 182px;
+    position: absolute;
+    right: 17px;
+}
+
+#dept_system{
+	border-collapse: collapse;
+}
+
+#dept_system td{
+	border:1px solid #EFEFF8;
+}
+

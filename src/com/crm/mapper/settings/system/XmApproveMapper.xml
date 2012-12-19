@@ -195,8 +195,12 @@
       userselected = #{userselected,jdbcType=INTEGER}
     where id = #{id,jdbcType=INTEGER}
   </update>
-  <select id="getApproveList" resultMap="BaseResultMap" >
-  	select id,name,used,userselected from xm_approve where tabid=#{tabid} order by created_at;
+  <select id="getApproveList" resultMap="ResultMapWithBLOBs" >
+  	select id,name,used,userselected,memo from xm_approve where tabid=#{tabid} order by created_at
+  </select>
+  
+  <select id="getApproveListById" resultMap="ResultMapWithBLOBs" >
+	select id,name,used,userselected,memo from xm_approve where id=#{approveid}
   </select>
   
   <select id="getApproveRole" resultType="map">
@@ -205,5 +209,21 @@
   
   <select id="getApproveRelatedModule" resultType="String">
     select xm_tab.name from xm_approve inner join xm_tab on xm_approve.tabid=xm_tab.tabid where xm_approve.id=#{approveid}
+  </select>
+  
+  <select id="getApproveStepList" resultType="map">
+    SELECT
+		t1.*, xm_step2users.userid,
+		GROUP_CONCAT(xm_users.user_name) user_name,IFNULL(t2.name,0) next_step  
+	FROM
+		xm_approvestep t1
+	left join xm_approvestep t2 on t1.nextstep=t2.id
+	LEFT JOIN xm_step2users ON t1.id = xm_step2users.stepid
+	LEFT JOIN xm_users ON xm_users.id = xm_step2users.userid
+	WHERE
+		t1.approveid = #{approveid}
+	GROUP BY t1.id
+	ORDER BY 
+		sequnce
   </select>
 </mapper>

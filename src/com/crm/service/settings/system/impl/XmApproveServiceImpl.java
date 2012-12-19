@@ -11,8 +11,10 @@ import com.crm.mapper.XmEntitynameMapper;
 import com.crm.mapper.settings.system.XmApprove2userMapper;
 import com.crm.mapper.settings.system.XmApproveMapper;
 import com.crm.mapper.settings.system.XmApprovelogMapper;
+import com.crm.mapper.settings.system.XmApprovestepMapper;
 import com.crm.model.XmApprove;
 import com.crm.model.XmApprove2user;
+import com.crm.model.XmApprovestep;
 import com.crm.model.XmEntityname;
 import com.crm.service.settings.system.XmApproveService;
 
@@ -27,10 +29,15 @@ public class XmApproveServiceImpl implements XmApproveService {
 	
 	@Autowired
 	XmApprove2userMapper xmApprove2userMapper;
+	
 	@Autowired
 	XmEntitynameMapper xmEntitynameMapper;
+	
 	@Autowired
 	XmApprovelogMapper xmApprovelogMapper;
+	
+	@Autowired
+	XmApprovestepMapper xmApprovestepMapper;
 
 
 	@Override
@@ -67,6 +74,26 @@ public class XmApproveServiceImpl implements XmApproveService {
 		return this.xmApprovelogMapper.getApproveUsed(tablename, fieldid, approveid);
 	}
 	
+	@Override
+	public List<Object> getApproveStepList(int approveid) {
+		List<Object> list=this.xmApproveMapper.getApproveStepList(approveid);
+		return list;
+	}
+	
+	@Override
+	public XmApprove getApproveListById(int approveid) {
+		return this.xmApproveMapper.getApproveListById(approveid);
+	}
+	
+	@Override
+	public XmApprovestep getApproveStepById(Integer id) {
+		return this.xmApprovestepMapper.getApproveStepById(id);
+	}
+	
+	@Override
+	public List<Object> getApproveStepUsers() {
+		return this.xmApprovestepMapper.getApproveStepUsers();
+	}
 	
 
 }

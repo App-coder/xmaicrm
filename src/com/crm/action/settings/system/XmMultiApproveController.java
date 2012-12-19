@@ -1,6 +1,5 @@
 package com.crm.action.settings.system;
 
-import java.util.Date;
 import java.util.List;
 
 import javax.annotation.Resource;
@@ -16,10 +15,10 @@ import com.crm.action.BaseController;
 import com.crm.bean.crm.Message;
 import com.crm.bean.easyui.ListBean;
 import com.crm.model.XmApprove;
+import com.crm.model.XmApprovestep;
 import com.crm.model.XmTab;
 import com.crm.service.XmTabService;
 import com.crm.service.settings.system.XmApproveService;
-import com.crm.util.DateUtil;
 import com.crm.util.JsonUtil;
 /**
  * 
@@ -71,6 +70,7 @@ public class XmMultiApproveController extends BaseController {
 		
 		return JSON.toJSONString(approves);
 	}
+	
 	
 	@RequestMapping(value = "/getApproveRole", method = RequestMethod.GET)
 	@ResponseBody
@@ -136,6 +136,37 @@ public class XmMultiApproveController extends BaseController {
 		}
 		return objToJson(msg);
 	}
+	
+	@RequestMapping(value="/showApproveStep",method=RequestMethod.GET)
+	public String showApproveStep(ModelMap modelMap,int approveid){
+		XmApprove xmApprove=this.xmApproveService.getApproveListById(approveid);
+		modelMap.addAttribute("approveid", approveid);
+		modelMap.addAttribute("xmApprove", xmApprove);
+		return "settings/system/multiapprovestep";
+	}
+	
+	@RequestMapping(value="/editApproveStep",method=RequestMethod.GET)
+	public String editApproveStep(ModelMap modelMap,int id){
+		XmApprovestep xmApprove=this.xmApproveService.getApproveStepById(id);
+		//modelMap.addAttribute("approveid", approveid);
+		//modelMap.addAttribute("xmApprove", xmApprove);
+		return "settings/system/editApprovestep";
+	}
+	
+	@RequestMapping(value="/getApproveStepList",method=RequestMethod.POST)
+	@ResponseBody
+	public String getApproveStepList(int approveid){
+		return JSON.toJSONString(this.xmApproveService.getApproveStepList(approveid));
+	}
+	
+	@RequestMapping(value="/getApproveStepUsers",method=RequestMethod.GET)
+	@ResponseBody
+	public String getApproveStepUsers(){
+		return JSON.toJSONString(this.xmApproveService.getApproveStepUsers());
+	}
+	
+	
+	
 	
 	
 	
