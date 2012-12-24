@@ -38,6 +38,8 @@
     <result column="deleted" property="deleted" jdbcType="INTEGER" />
     <result column="approved" property="approved" jdbcType="INTEGER" />
     <result column="approvedby" property="approvedby" jdbcType="INTEGER" />
+    <result column="crmid" property="crmid" jdbcType="INTEGER" />
+    <result column="user_name" property="username" jdbcType="VARCHAR" />
   </resultMap>
   <resultMap id="ResultMapWithBLOBs" type="com.crm.model.XmPotential" extends="BaseResultMap" >
     <result column="description" property="description" jdbcType="LONGVARCHAR" />
@@ -529,5 +531,29 @@
   </select>
   <select id="getPotentialOfUserAndLast" resultType="INTEGER">
   	select count(*) as rowsnum from xm_potential WHERE deleted =0 AND smownerid='${userid}' and createdtime between '${start} 00:00:00' and '${end} 23:59:00';
+  </select>
+  <select id="getOpportunities" resultMap="BaseResultMap">
+  	SELECT
+		xm_users.user_name,
+		xm_potential.*, xm_potential.potentialid AS crmid
+	FROM
+		xm_potential
+	LEFT JOIN xm_users ON xm_users.id = xm_potential.smownerid
+	LEFT JOIN xm_moduleentityrel ON xm_moduleentityrel.relcrmid = xm_potential.potentialid
+	WHERE
+		xm_potential.deleted = 0
+	AND xm_moduleentityrel.crmid = #{crmid}
+		limit #{start},#{rows};
+  </select>
+  <select id="getTotalForOpportunities" resultType="INTEGER" >
+  	SELECT
+		count(1) AS count
+	FROM
+		xm_potential
+	LEFT JOIN xm_users ON xm_users.id = xm_potential.smownerid
+	LEFT JOIN xm_moduleentityrel ON xm_moduleentityrel.relcrmid = xm_potential.potentialid
+	WHERE
+		xm_potential.deleted = 0
+	AND xm_moduleentityrel.crmid =  #{crmid};
   </select>
 </mapper>

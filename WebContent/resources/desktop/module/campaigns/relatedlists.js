@@ -370,16 +370,15 @@ function rel_opportunities() {
     cols = setDefWidth(cols, 80);
     $('#tab_get_opportunities').datagrid({
 	title : '销售机会',
-	url : '',
+	url : 'crm/module/potentials/getOpportunities',
 	collapsible : false,
-	idField : 'accountid',
+	idField : 'crmid',
 	singleSelect : true,
 	rownumbers : true,
 	fitColumns : true,
 	pageSize:20,
 	pagination:true,
 	queryParams : {
-	    module : module,
 	    crmid : crmid
 	},
 	toolbar : [ {

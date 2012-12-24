@@ -31,4 +31,9 @@ public interface XmPotentialMapper extends ModuleMapper<XmPotential>{
 
 	int getPotentialOfUserAndLast(@Param("userid") Integer userid,@Param("start") String start,@Param("end") String end);
 
+	List<XmPotential> getOpportunities(@Param("start") int start,@Param("rows") int rows,@Param("crmid") int crmid);
+
+	int getTotalForOpportunities(@Param("crmid") int crmid);
+
+
 }

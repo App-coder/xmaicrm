@@ -946,7 +946,7 @@
 	LEFT JOIN xm_users ON xm_account.smownerid = xm_users.id
 	WHERE
 		xm_account.deleted = 0
-	AND xm_campaignaccountrel.campaignid = #{campaignid};
+	AND xm_campaignaccountrel.campaignid = #{campaignid} 
 		limit #{start},#{rows}
   </select>
   <select id="getTotalAccount" resultType="Integer" >

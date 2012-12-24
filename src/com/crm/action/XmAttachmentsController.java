@@ -50,7 +50,7 @@ public class XmAttachmentsController {
 
 	@RequestMapping(value = "/getRelAttachments", method = RequestMethod.POST)
 	@ResponseBody
-	public String getRelAttachments(int page,int rows,String module,Integer crmid){
+	public String getRelAttachments(int page,int rows,String module,int crmid){
 		
 		ListBean bean = new ListBean();
 		int total = this.xmAttachmentsService.getTotalRelAttachments(module,crmid);

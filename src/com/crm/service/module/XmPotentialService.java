@@ -12,4 +12,8 @@ public interface XmPotentialService{
 
 	int getPotentialOfUserAndLast(Integer id, String start, String end);
 
+	int getTotalForOpportunities(int crmid);
+
+	List<XmPotential> getOpportunities(int page, int rows, int crmid);
+
 }

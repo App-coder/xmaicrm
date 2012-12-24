@@ -1,6 +1,7 @@
 package com.crm.action.module;
 
 import java.io.UnsupportedEncodingException;
+import java.util.List;
 
 import javax.annotation.Resource;
 
@@ -8,9 +9,13 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.alibaba.fastjson.JSON;
 import com.crm.action.BaseController;
 import com.crm.action.util.ModuleUtil;
+import com.crm.bean.easyui.ListBean;
+import com.crm.model.XmPotential;
 import com.crm.model.XmTab;
 import com.crm.service.XmTabService;
 import com.crm.service.module.XmPotentialService;
@@ -68,5 +73,20 @@ public class XmPotentialController extends BaseController  {
 
 		return "module/potentials/index";
 	}
+	
+	@RequestMapping(value = "/getOpportunities")
+	@ResponseBody
+	public String getOpportunities(int page,int rows,int crmid){
+		
+		ListBean bean = new ListBean();
+		int total = this.xmPotentialService.getTotalForOpportunities(crmid);
+		List<XmPotential> potentials = this.xmPotentialService.getOpportunities(page,rows,crmid);
+		
+		bean.setTotal(total);
+		bean.setRows(potentials);
+		
+		return JSON.toJSONString(bean);
+	}
+	
 	
 }

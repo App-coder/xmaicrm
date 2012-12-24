@@ -82,6 +82,10 @@ public class XmPotential {
      * 客户名称
      */
     private String accountname;
+    
+    private String username;
+    
+    private Integer crmid;
 
     public Integer getPotentialid() {
         return potentialid;
@@ -387,6 +391,23 @@ public class XmPotential {
 	public void setAccountname(String accountname) {
 		this.accountname = accountname;
 	}
+
+	public String getUsername() {
+		return username;
+	}
+
+	public void setUsername(String username) {
+		this.username = username;
+	}
+
+	public Integer getCrmid() {
+		return crmid;
+	}
+
+	public void setCrmid(Integer crmid) {
+		this.crmid = crmid;
+	}
     
+	
     
 }
