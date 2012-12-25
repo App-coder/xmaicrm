@@ -136,10 +136,7 @@ function rel_attachments() {
 							    var param = {
 								attachmentid : selected.attachmentsid
 							    };
-							    $
-								    .post(
-									    'crm/attachments/delete',
-									    param,
+							    $.post('crm/attachments/delete',param,
 									    function(
 										    res) {
 										if (res.type == true) {
@@ -334,7 +331,16 @@ function rel_contacts() {
 	    text : '选择',
 	    iconCls : 'icon-ok',
 	    handler : function() {
-		
+		$("#wind_contacts").window(
+			{
+			    onOpen : function() {
+				$("#frame_get_accounts").attr(
+					"src",
+					"crm/module/contacts/related/campaign?crmid="
+						+ crmid);
+			    }
+			});
+		$("#wind_contacts").window("open");
 	    }
 	}, {
 	    text : '新增',
@@ -385,7 +391,16 @@ function rel_opportunities() {
 	    text : '选择',
 	    iconCls : 'icon-ok',
 	    handler : function() {
-
+		$("#wind_opportunities").window(
+			{
+			    onOpen : function() {
+				$("#frame_get_opportunities").attr(
+					"src",
+					"crm/module/potentials/related/campaign?crmid="
+						+ crmid);
+			    }
+			});
+		$("#wind_opportunities").window("open");
 	    }
 	}, {
 	    text : '新增',
@@ -436,16 +451,15 @@ function rel_activities() {
     cols = setDefWidth(cols, 80);
     $('#tab_get_activities').datagrid({
 	title : '日程安排',
-	url : '',
+	url : 'crm/activity/getActivities',
 	collapsible : false,
-	idField : 'accountid',
+	idField : 'crmid',
 	singleSelect : true,
 	rownumbers : true,
 	fitColumns : true,
 	pageSize:20,
 	pagination:true,
 	queryParams : {
-	    module : module,
 	    crmid : crmid
 	},
 	toolbar : [ {

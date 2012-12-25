@@ -74,6 +74,15 @@ public class XmPotentialController extends BaseController  {
 		return "module/potentials/index";
 	}
 	
+	/**
+	 * 
+	 * 营销活动 相关信息-销售机会
+	 * 
+	 * @param page
+	 * @param rows
+	 * @param crmid
+	 * @return
+	 */
 	@RequestMapping(value = "/getOpportunities")
 	@ResponseBody
 	public String getOpportunities(int page,int rows,int crmid){
@@ -88,5 +97,18 @@ public class XmPotentialController extends BaseController  {
 		return JSON.toJSONString(bean);
 	}
 	
+	
+	/**
+	 * 
+	 * 营销活动-关联销售机会列表页面
+	 * 
+	 * @param crmid
+	 * @param modelMap
+	 * @return
+	 */
+	@RequestMapping(value = "/related/campaign")
+	public String relCampaign(int crmid,ModelMap modelMap){
+		return "module/potentials/related/campaign";
+	}
 	
 }

@@ -16,7 +16,7 @@ ${navbar }
 <div id="main" >
 <div class="path" >&gt;<a  href="crm/module/home/index">工作台</a></div>
 <div id="desktop" >
-		<%-- <div style="width:33%;">
+		 <div style="width:33%;">
 			<c:forEach items="${stuffs}" var="stuff" varStatus="vs" >
 			<c:if test="${vs.index%3==0 }">
 				<div title="${stuff.stufftitle }" style="height:280px;overflow:hidden;">
@@ -42,7 +42,7 @@ ${navbar }
 				</div>
 			</c:if>
 			</c:forEach>
-		</div> --%>
+		</div> 
 </div>
 
 </div>

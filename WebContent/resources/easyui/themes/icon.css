@@ -199,3 +199,31 @@
 .icon-mini-delete{
 	background:url('icons/mini_delete.png') no-repeat ;
 }
+.icon-prev{
+	background:url('icons/prev.png') no-repeat ;
+}
+.icon-next{
+	background:url('icons/next.png') no-repeat ;
+}
+.icon-sendmsg{
+	background:url('icons/sendmsg.png') no-repeat ;
+}
+.icon-inbox{
+	background:url('icons/inbox.png') no-repeat ;
+}
+/*草稿箱*/
+.icon-draft{
+	background:url('icons/draft.png') no-repeat ;
+}
+.icon-dustbin{
+	background:url('icons/dustbin.png') no-repeat ;
+}
+.icon-writeemail{
+	background:url('icons/writeemail.png') no-repeat ;
+}
+.icon-receiveemail{
+	background:url('icons/receiveemail.png') no-repeat ;
+}
+.icon-emailcfg{
+	background:url('icons/emailcfg.png') no-repeat ;
+}

@@ -75,7 +75,9 @@ table .tb_list td.righttd{padding-left:10px;}
 .tab_form .fullarea{width:100%;border:1px solid #D2D2D2;height:200px;}
 .midtab{width:100%;font:12px/1.5 Tahoma,'Microsoft Yahei','Simsun';}
 .midtab tr td{height:25px;text-align: left;line-height:25px;padding-left:10px;}
+
 .tab_editlist{width:100%;font:12px/1.5 Tahoma,'Microsoft Yahei','Simsun';}
+.tab_editlist textarea{width:90%;border:1px solid #D2D2D2;}
 .tab_editlist input.text{width:250px;margin-right: 10px;border:1px solid #D2D2D2;height: 20px;}
 .tab_editlist select.text{width:258px;margin-right: 10px;border:1px solid #D2D2D2;height: 25px;}
 .tab_editlist .edittd{width:15%;}
@@ -91,7 +93,7 @@ table .tb_list td.righttd{padding-left:10px;}
 .tabview .label{width:200px;text-align: right;padding-right:10px;background-color: #EFEFEF;}
 .tabview td {border:1px dotted #AED0EA;height:25px;line-height:25px;padding-left:10px;}
 
-.text{width:180px;margin-right: 10px;border:1px solid #D2D2D2;padding-left:3px;padding-right:3px;}
+.text{width:180px;margin-right: 10px;border:1px solid #D2D2D2;padding-left:3px;padding-right:3px;height:18px;}
 
 .bbar{padding-top:5px;padding-bottom:5px;}
 .textborder{border:1px solid #D2D2D2;}
@@ -198,6 +200,7 @@ fieldset legend{color:#15428B;}
 .reporttab{width:100%;border-collapse: collapse;}
 .reporttab td,.reporttab th{border:1px solid #8DB2E3;height:25px;line-height:25px;text-align: center;}
 .mb_10{margin-bottom:10px;}
+.mr_5{margin-right:5px;}
 .po{
   font-size: 15pt; 
   font-family: 黑体; 
@@ -258,6 +261,26 @@ text-decoration:none;
 .navcontainer ul li a:hover,.navcontainer ul li a:active{
 color:#000;
 background-color: #D0E5F5;
+}
+
+.navcontainer1{border:1px solid #99BBE8;margin-right: 10px;}
+.rightfl{margin-left:10px;margin-right: 0px !important;}
+.navcontainer1 .datagrid-toolbar{line-height:28px;padding-left:5px;}
+.navcontainer1 ul{list-style: none;padding:5px;margin:0px;}
+.navcontainer1 ul li{height:25px;line-height:25px;border-bottom: 1px dotted #AED0EA;}
+.navcontainer1 ul li.active{background-color:#FBEC88;}
+.navcontainer1 ul li a{display: block;padding-left:10px;}
+.navcontainer1 ul li a:link,.navcontainer1 ul li a:visited{
+color:#000;
+text-decoration:none;
+}
+.navcontainer1 ul li a:hover,.navcontainer1 ul li a:active{
+color:#000;
+background-color: #D0E5F5;
+}
+
+.iconblock{
+	padding-left:20px;
 }
 
 .small {
@@ -373,3 +396,4 @@ background-color: #D0E5F5;
 	border:1px solid #EFEFF8;
 }
 
+.def_div{padding-top:5px;padding-bottom:5px;height:25px;line-height:25px;}

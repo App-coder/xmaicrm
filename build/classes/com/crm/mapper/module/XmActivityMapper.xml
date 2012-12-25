@@ -471,4 +471,36 @@
 	ORDER BY
 		date_start;
   </select>
+  <select id="getTotalForGetActivities" resultType="Integer">
+  	SELECT
+		count(1)AS count
+	FROM
+		xm_activity
+	INNER JOIN xm_seactivityrel ON xm_seactivityrel.activityid = xm_activity.activityid
+	LEFT JOIN xm_cntactivityrel ON xm_cntactivityrel.activityid = xm_activity.activityid
+	LEFT JOIN xm_contactdetails ON xm_contactdetails.contactid = xm_cntactivityrel.contactid
+	LEFT JOIN xm_users ON xm_users.id = xm_activity.smownerid
+	LEFT OUTER JOIN xm_recurringevents ON xm_recurringevents.activityid = xm_activity.activityid
+	WHERE
+		xm_seactivityrel.crmid = #{crmid}
+  </select>
+  <select id="getActivities" resultMap="BaseResultMap">
+  	SELECT
+		xm_contactdetails.lastname,
+		xm_contactdetails.firstname,
+		xm_contactdetails.contactid,
+		xm_activity.*, xm_seactivityrel.*, xm_activity.activityid AS crmid,
+		xm_users.user_name,
+		xm_recurringevents.recurringtype
+	FROM
+		xm_activity
+	INNER JOIN xm_seactivityrel ON xm_seactivityrel.activityid = xm_activity.activityid
+	LEFT JOIN xm_cntactivityrel ON xm_cntactivityrel.activityid = xm_activity.activityid
+	LEFT JOIN xm_contactdetails ON xm_contactdetails.contactid = xm_cntactivityrel.contactid
+	LEFT JOIN xm_users ON xm_users.id = xm_activity.smownerid
+	LEFT OUTER JOIN xm_recurringevents ON xm_recurringevents.activityid = xm_activity.activityid
+	WHERE
+		xm_seactivityrel.crmid =#{crmid} 
+		limit #{start},#{rows}
+  </select>
 </mapper>

@@ -107,7 +107,7 @@ public class XmAccountController extends BaseController{
 				if(users.get(j).getGroupid().equals(group.getId())){
 					ComboTree u = new ComboTree();
 					u.setId(users.get(j).getId()+"");
-					u.setText(users.get(j).getLastName());
+					u.setText(users.get(j).getUserName());
 					u.setIconCls("icon-user");
 					childs.add(u);
 				}

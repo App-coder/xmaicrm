@@ -23,4 +23,8 @@ public interface XmActivityMapper {
 
 	List<XmActivity> getTopActivity(@Param("today") String today,@Param("dayend") String dayend,
 		 @Param("smownerid") String smownerid);
+
+	int getTotalForGetActivities(@Param("crmid") int crmid);
+
+	List<XmActivity> getActivities(@Param("start") int start,@Param("rows") int rows,@Param("crmid") int crmid);
 }

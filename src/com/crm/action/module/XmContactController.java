@@ -100,5 +100,11 @@ public class XmContactController extends BaseController{
 		
 		return JSON.toJSONString(cbos);
 	}
+	
+	@RequestMapping(value = "/related/campaign")
+	public String relCampaign(int crmid,ModelMap modelMap){
+		return "module/contacts/related/campaign";
+	}
+	
 
 }
