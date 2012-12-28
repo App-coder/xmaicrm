@@ -33,6 +33,12 @@ function init(){
 			}
 		    }
 		},{
+		    text : '批量修改',
+		    iconCls:'icon-edit',
+		    handler : function() {
+			
+		    }
+		},{
 		    text : '删除',
 		    iconCls:'icon-remove',
 		    handler : function() {
@@ -44,14 +50,26 @@ function init(){
 			}			
 		    }
 		},{
-		    text : '修改负责人',
-		    iconCls:'icon-edit',
+		    text : '导入',
+		    iconCls:'icon-import',
 		    handler:function(){
 			
 		    }
 		},{
-		    text : '共享',
-		    iconCls:'icon-share',
+		    text : '导出',
+		    iconCls:'icon-excel',
+		    handler : function() {
+			
+		    }
+		},{
+		    text : '查找',
+		    iconCls:'icon-search',
+		    handler : function() {
+			
+		    }
+		},{
+		    text : '取消查找',
+		    iconCls:'icon-undo',
 		    handler : function() {
 			
 		    }

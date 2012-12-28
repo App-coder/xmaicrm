@@ -86,3 +86,62 @@ function reloadView(val){
     
     
 }
+function add(){
+    window.location.href="crm/module/cares/showedit?recordid=0&ptb="+ptb+"&module="+entitytype;
+}
+function edit(){
+    var selected = $('#view_list').datagrid("getSelected");
+    if(selected){
+	window.location.href="crm/module/cares/showedit?recordid="+selected.accountid+"&ptb="+ptb+"&module="+entitytype;
+    }else{
+	message("请选择记录！");
+    }
+}
+function batchEdit(){
+    var selections = $('#view_list').datagrid("getSelections");
+    //空的记录
+    if(selections.length==0){
+	message("请选择记录！");
+    }else{
+	$("#win_batchEdit").window("open");
+    }
+}
+function view(){
+    var selected = $('#view_list').datagrid("getSelected");
+    if(selected){
+	window.location.href="crm/module/cares/view?recordid="+selected.accountid+"&ptb="+ptb+"&module="+entitytype;
+    }else{
+	message("请选择记录！");
+    }    
+}
+function editLeading(){
+    var selections = $('#view_list').datagrid("getSelections");
+    //空的记录
+    if(selections.length==0){
+	message("请选择记录！");
+    }else{
+	$("#win_editLeading").window("open");
+    }
+}
+function del(){
+    var selections = $('#view_list').datagrid("getSelections");
+    //空的记录
+    if(selections.length==0){
+	message("请选择记录！");
+    }else{
+	confirm('确定删除所选的客户？',function(r){
+	    if(r){
+		
+	    }
+	});
+    }
+}
+function share(){
+    var selections = $('#view_list').datagrid("getSelections");
+    //空的记录
+    if(selections.length==0){
+	message("请选择记录！");
+    }else{
+	$("#win_share").window("open");
+    }
+}

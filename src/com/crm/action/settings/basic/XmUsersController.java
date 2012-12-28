@@ -1,5 +1,6 @@
 package com.crm.action.settings.basic;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.annotation.Resource;
@@ -17,10 +18,13 @@ import com.alibaba.fastjson.JSON;
 import com.crm.action.BaseController;
 import com.crm.bean.crm.Message;
 import com.crm.bean.crm.UserPermission;
+import com.crm.bean.easyui.ComboTree;
 import com.crm.bean.easyui.ListBean;
+import com.crm.model.XmGroups;
 import com.crm.model.XmUser2role;
 import com.crm.model.XmUsers;
 import com.crm.model.XmUsers2group;
+import com.crm.service.settings.basic.XmGroupsService;
 import com.crm.service.settings.basic.XmUser2roleService;
 import com.crm.service.settings.basic.XmUsers2groupService;
 import com.crm.service.settings.basic.XmUsersService;
@@ -40,6 +44,12 @@ import com.crm.util.StringUtil;
 @SessionAttributes({Constant.USERPERMISSION})
 @RequestMapping(value = "crm/settings/users")
 public class XmUsersController extends BaseController {
+	
+	XmGroupsService xmGroupsService;
+	@Resource(name="xmGroupsService")
+	public void setXmGroupsService(XmGroupsService xmGroupsService) {
+		this.xmGroupsService = xmGroupsService;
+	}
 	
 	XmUsersService xmUsersService;
 	@Resource(name="xmUsersService")
@@ -174,6 +184,35 @@ public class XmUsersController extends BaseController {
 		return "settings/basic/users/detail";
 	}
 	
-	
+	@RequestMapping(value = "/getLeadings")
+	@ResponseBody
+	public String getLeadings(){
+		
+		List<ComboTree> cbos = new ArrayList<ComboTree>();
+		
+		List<XmGroups> groups = this.xmGroupsService.loadAll();
+		List<XmUsers> users = this.xmUsersService.loadAll();
+		
+		for(int i=0;i<groups.size();i++){
+			ComboTree group = new ComboTree();
+			group.setId(groups.get(i).getGroupid()+"");
+			group.setText(groups.get(i).getGroupname());
+			group.setIconCls("icon-group");
+			List<ComboTree> childs = new ArrayList();
+			for(int j=0;j<users.size();j++){
+				if(users.get(j).getGroupid().equals(group.getId())){
+					ComboTree u = new ComboTree();
+					u.setId(users.get(j).getId()+"");
+					u.setText(users.get(j).getUserName());
+					u.setIconCls("icon-user");
+					childs.add(u);
+				}
+			}
+			group.setChildren(childs);
+			cbos.add(group);
+		}
+		
+		return JSON.toJSONString(cbos);
+	}
 	
 }

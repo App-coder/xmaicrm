@@ -16,11 +16,16 @@ import com.alibaba.fastjson.JSON;
 import com.crm.action.BaseController;
 import com.crm.action.util.ModuleUtil;
 import com.crm.bean.easyui.ComboTree;
+import com.crm.model.XmFreetags;
 import com.crm.model.XmGroups;
+import com.crm.model.XmTab;
 import com.crm.model.XmUsers;
+import com.crm.service.XmFreetagsService;
 import com.crm.service.settings.basic.XmGroupsService;
 import com.crm.service.settings.basic.XmUsersService;
 import com.crm.util.ActionUtil;
+import com.crm.util.actionutil.ActionCls;
+import com.crm.util.crm.CustomViewUtil;
 
 @Controller
 @RequestMapping(value = "crm/module/contacts")
@@ -48,6 +53,18 @@ public class XmContactController extends BaseController{
 	public String index(int ptb,ModelMap modelMap) throws UnsupportedEncodingException{
 		ActionUtil.setTitle("Contacts", ptb, modelMap, this.moduleUtil);
 		return "module/contacts/index";
+	}
+	
+	ActionCls actionCls;
+	@Resource(name="actionCls")
+	public void setActionCls(ActionCls actionCls) {
+		this.actionCls = actionCls;
+	}
+	
+	XmFreetagsService xmFreetagsService;
+	@Resource(name="xmFreetagsService")
+	public void setXmFreetagsService(XmFreetagsService xmFreetagsService) {
+		this.xmFreetagsService = xmFreetagsService;
 	}
 	
 	@RequestMapping(value = "/getCondition")
@@ -106,5 +123,24 @@ public class XmContactController extends BaseController{
 		return "module/contacts/related/campaign";
 	}
 	
+	@RequestMapping(value = "/showedit")
+	public String showedit(int recordid,String module,int ptb,ModelMap modelmap){
+		
+		this.actionCls.showEdit(ptb, module, modelmap,recordid);
+		
+		return "module/campaigns/edit";
+	}
+	
+	@RequestMapping(value = "/view")
+	public String view(int recordid,String module,int ptb,ModelMap modelmap){
+		
+		XmTab tab = CustomViewUtil.getTabByName(module);
+		this.actionCls.showView(ptb, module, modelmap,recordid,tab);
+		this.actionCls.setRelatedlist(tab, modelmap);
+		List<XmFreetags> freetags = this.xmFreetagsService.getModuleTags(module,recordid); 
+		modelmap.addAttribute("freetags",freetags);
+		
+		return "module/campaigns/view";
+	}
 
 }
