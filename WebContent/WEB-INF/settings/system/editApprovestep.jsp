@@ -5,9 +5,10 @@
 <c:set var="contextPath" value="${pageContext.request.contextPath}"></c:set>
 
  <c:choose>
-    <c:when test="${approveid!=null}">
+    <c:when test="${approveid!=null || stepid!=null}">
        <script>
-       var approveid=${approveid};
+         var approveid=${approveid};
+         var stepid=${stepid};
        </script>
     </c:when>
     <c:otherwise>
@@ -15,9 +16,24 @@
     </c:otherwise>
  </c:choose>
  
+ <c:choose>
+   <c:when test="${type=='u'}">
+     <script>
+        var pathname = "编辑审批步骤";
+     </script>
+   </c:when>
+   <c:otherwise>
+     <script>
+        var pathname = "新建审批步骤";
+     </script>
+    </c:otherwise>
+ </c:choose>
+ 
  
 <script>
-var pathname = "编辑审批步骤";
+var type="${type}";
+var userid="${xmApprove.userid}";
+var tabid=${tabid};
 var pathActive = "multiapprove";
 </script>
 <%@ include file="../../path.jsp"%>
@@ -37,7 +53,7 @@ var pathActive = "multiapprove";
 					<tbody>
 						<tr style="background-color: #EFEFEF;">
 						<td class="small" align="left">
-						<strong>审批流程： 经理</strong>
+						<strong>审批流程： ${approvename}</strong>
 						</td>
 						</tr>
 					</tbody>
@@ -47,7 +63,7 @@ var pathActive = "multiapprove";
 						<tr>
 						<td class="small"> </td>
 						<td class="small" align="right">
-						<input class="crmButton create small" type="submit" value="保存">
+						<input class="crmButton create small" type="button" onclick="doMultiApprove()" value="保存">
 						<input class="crmButton edit small" type="button" onclick="window.history.back();" value="取消">
 						</td>
 						</tr>
@@ -62,31 +78,63 @@ var pathActive = "multiapprove";
 								<tr>
 									<td class="dvtCellLabel" width="15%" align="right">步骤名称</td>
 									<td class="dvtCellInfo" width="35%" colspan="3">
-									<input class="detailedViewTextBox" type="text" onblur="this.className='detailedViewTextBox'" onfocus="this.className='detailedViewTextBoxOn'" tabindex="1" value="销售经理审批" name="name">
+									<input class="detailedViewTextBox" type="text" onblur="this.className='detailedViewTextBox'" onfocus="this.className='detailedViewTextBoxOn'" tabindex="1" value="${xmApprove.name}" name="name">
 									</td>
 								</tr>
 								<tr>
 									<td class="dvtCellLabel" width="15%" align="right">下一步骤</td>
 									<td class="dvtCellInfo" width="35%">
 									<select tabindex="3" width="50%" name="nextstep">
-									<option value="">无</option>
-									<option value="10" selected="">财务审批</option>
+									   <c:forEach items="${xmApprovestep}" var="steps" varStatus="vs">
+									        <c:choose>
+											    <c:when test="${xmApprove.nextstepname}==${steps.name}">
+											       <option value="${steps.id}" selected="">${steps.name}</option>
+											    </c:when>
+											    <c:otherwise>
+											      <option value="${steps.id}">${steps.name}</option>
+											    </c:otherwise>
+									        </c:choose>
+									   </c:forEach>
+									   <c:choose>
+											    <c:when test="${xmApprove.nextstepname=='无'}">
+											       <option value="" selected="">无</option>
+											    </c:when>
+											    <c:otherwise>
+											      <option value="0">无</option>
+											    </c:otherwise>
+									   </c:choose>
 									</select>
 									</td>
 									<td class="dvtCellLabel" width="15%" align="right">是否可以结束整个流程</td>
 									<td class="dvtCellInfo" width="35%">
-									<select tabindex="2" name="ended">
-									<option value="0">否</option>
-									<option value="1">是</option>
+									<select name="ended">
+									   <c:choose>
+										    <c:when test="${xmApprove.ended==0}">
+										       <option selected="selected" value="0">否</option>
+										       <option value="1">是</option>
+										    </c:when>
+										    <c:otherwise>
+										       <option value="0">否</option>
+										       <option selected="selected" value="1">是</option>
+										    </c:otherwise>
+									    </c:choose>
 									</select>
 									</td>
 								</tr>
 								<tr>
 									<td class="dvtCellLabel" width="15%" align="right">是否修改审批人 </td>
 									<td class="dvtCellInfo" width="35%">
-									<select tabindex="3" width="50%" name="alterapproveowner">
-									<option value="0">否</option>
-									<option value="1">是</option>
+									<select  width="50%" name="alterapproveowner">
+									    <c:choose>
+										    <c:when test="${xmApprove.alterapproveowner==0}">
+										       <option selected="selected" value="0">否</option>
+										       <option value="1">是</option>
+										    </c:when>
+										    <c:otherwise>
+										       <option value="0">否</option>
+										       <option selected="selected" value="1">是</option>
+										    </c:otherwise>
+									    </c:choose>
 									</select>
 									</td>
 									<td class="dvtCellInfo" width="15%" align="right"> </td>
@@ -95,7 +143,7 @@ var pathActive = "multiapprove";
 								<tr>
 									<td class="dvtCellLabel" width="15%" align="right">备注</td>
 									<td class="dvtCellInfo" width="35%" colspan="3">
-									<textarea class="detailedViewTextBox" rows="8" cols="90" onblur="this.className='detailedViewTextBox'" name="memo" onfocus="this.className='detailedViewTextBoxOn'" tabindex="3"></textarea>
+									<textarea class="detailedViewTextBox" rows="8" cols="90" onblur="this.className='detailedViewTextBox'" name="memo" onfocus="this.className='detailedViewTextBoxOn'" tabindex="3">${xmApprove.memo}</textarea>
 									</td>
 								</tr>
 							</table>
@@ -139,28 +187,45 @@ var pathActive = "multiapprove";
 								</tr>
 								</tbody>
 							</table>
-			                 
-			                 
-			                 
-			                 
 			              </fieldset>
 						  
 			        </div>  
-			        <div title="字段权限" style="padding:10px;">  
-			            
+			        <div id="countrycontainer2" title="字段权限" style="padding:10px;">  
 			        </div>  
-			        <div title="高级功能" style="padding:10px;">  
-			            Third Tab  
+			        <div id="countrycontainer3" title="高级功能" style="padding:10px;">  
 			        </div>  
 		          </div> 
+		          <table width="100%" cellspacing="0" cellpadding="5">
+						<tbody>
+							<tr>
+								<td valign="top" nowrap="">
+								提示：
+								<ul class="small">
+								<li>所选用户将参与当前审批步骤，每个审批步骤可以由1个或多个用户参与。</li>
+								<li>如果选择"下一步骤"，审批中将可以直接跳转到"下一步骤"所指定的审批步骤。</li>
+								<li>如果"是否可以结束整个流程"为"是"，当到达当前审批步骤审批时，审批人可以直接结束当前审批流程，不管是否还有未处理的审批步骤。</li>
+								<li>如果"是否修改审批人"为"是"，当前审批流程结束时将自动修改审批人为当前审批人。</li>
+								<li>记录的创建人和负责人也可以作为审批人参与审批流程。</li>
+								</ul>
+								</td>
+							</tr>
+						</tbody>
+		          </table>
 				</div>
-				 
+				
+				<div>
+				  
+				</div>
 				</td>
 			</tr>
 		</table>
 		
 		
 	</div>
-	<%@ include file="../../foot.jsp"%>
+	<div style='position: relative;top: 600px;'>
+	  <%@ include file="../../foot.jsp"%>
+	</div>
+	
+	
 </body>
 </html>

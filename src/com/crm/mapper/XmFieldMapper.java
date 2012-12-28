@@ -59,5 +59,11 @@ public interface XmFieldMapper {
 	String getProductOfFieldname(@Param("module") String module,@Param("fieldid") Integer fieldid);
     List<XmField> getRecycleBinFields(@Param("tabid") int tabid,@Param("fieldsStr") String fieldsStr);
     List<Object> getMultiLevel2(@Param("tabid") Integer tabid,@Param("typeofdata") String typeofdata);
+    
+    List<Object> getApproveStepFieldTab(@Param("tabid") Integer tabid);
+    List<Object> getApproveStepFieldTabDetail(@Param("tabid") Integer tabid);
+    
+    List<XmField> getApproveStepFilters(@Param("tabid") Integer tabid);
+    
 }
 	

@@ -88,5 +88,10 @@ public class XmTabServiceImpl implements XmTabService {
 	public List<XmTab> getRecyclebinModule(String skipstr) {
 		return this.xmTabMapper.getRecyclebinModule(skipstr);
 	}
+	
+	@Override
+	public XmTab selectByPrimaryKey(Integer tabid) {
+		return this.xmTabMapper.selectByPrimaryKey(tabid);
+	}
 
 }

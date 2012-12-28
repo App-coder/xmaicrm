@@ -1,6 +1,8 @@
 package com.crm.mapper.settings.system;
 import java.util.List;
 
+import org.apache.ibatis.annotations.Param;
+
 import com.crm.model.XmApprovestep;
 
 public interface XmApprovestepMapper {
@@ -18,7 +20,9 @@ public interface XmApprovestepMapper {
 
     int updateByPrimaryKey(XmApprovestep record);
     
-    XmApprovestep getApproveStepById(Integer id);
+    XmApprovestep getApproveStepById(@Param("id") int id);
     
     List<Object> getApproveStepUsers();
+    
+    List<XmApprovestep> getApproveNextStep(@Param("approveid") int approveid,@Param("id") int id);
 }

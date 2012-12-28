@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.crm.mapper.settings.system.XmStep2fieldsMapper" >
+  <resultMap id="BaseResultMap" type="com.crm.model.XmStep2fields" >
+    <result column="stepid" property="stepid" jdbcType="INTEGER" />
+    <result column="fieldid" property="fieldid" jdbcType="INTEGER" />
+    <result column="readonly" property="readonly" jdbcType="INTEGER" />
+  </resultMap>
+  <insert id="insert" parameterType="com.crm.model.XmStep2fields" >
+    insert into xm_step2fields (stepid, fieldid, readonly
+      )
+    values (#{stepid,jdbcType=INTEGER}, #{fieldid,jdbcType=INTEGER}, #{readonly,jdbcType=INTEGER}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.crm.model.XmStep2fields" >
+    insert into xm_step2fields
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="stepid != null" >
+        stepid,
+      </if>
+      <if test="fieldid != null" >
+        fieldid,
+      </if>
+      <if test="readonly != null" >
+        readonly,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="stepid != null" >
+        #{stepid,jdbcType=INTEGER},
+      </if>
+      <if test="fieldid != null" >
+        #{fieldid,jdbcType=INTEGER},
+      </if>
+      <if test="readonly != null" >
+        #{readonly,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  
+  <delete id="deleteByStepId" parameterType="java.lang.Integer">
+     delete from xm_step2fields
+     where stepid = #{stepid,jdbcType=INTEGER}
+  </delete>
+  
+  
+  <update id="updateByStepId">
+    update xm_step2fields set
+	   readonly = 1
+	WHERE
+		stepid = #{stepid}
+	AND fieldid IN ${fieldids}
+  </update>
+</mapper>

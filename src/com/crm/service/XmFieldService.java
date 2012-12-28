@@ -15,23 +15,23 @@ public interface XmFieldService {
 	 * @param tabname 表名
 	 * @return
 	 */
-	public List<XmField> getReportField(String tabname);
+	List<XmField> getReportField(String tabname);
 
-	public List<XmField> getFieldByBlockAndTab(Integer tabid, Integer blockid);
+	List<XmField> getFieldByBlockAndTab(Integer tabid, Integer blockid);
 
-	public List<XmField> getSearchFields(Integer tabid);
+	List<XmField> getSearchFields(Integer tabid);
 
-	public List<XmField> getReportItems(int tabid);
+	List<XmField> getReportItems(int tabid);
 
 	/**
 	 * 根据表的ID获取，字段信息
 	 * @param tabid
 	 * @return
 	 */
-	public List<XmField> getFieldsByTabid(Integer tabid);
+	List<XmField> getFieldsByTabid(Integer tabid);
 
 	
-	public List<XmField> getProfileFieldsByTabid(Integer profileid,Integer tabid);
+	List<XmField> getProfileFieldsByTabid(Integer profileid,Integer tabid);
 
 	/**
 	 * 视图编辑的字段
@@ -40,9 +40,9 @@ public interface XmFieldService {
 	 * @param blockstr
 	 * @return
 	 */
-	public List<XmField> getEditFields(Integer tabid, String blockstr);
+	List<XmField> getEditFields(Integer tabid, String blockstr);
 	
-	public List<Object> getLayoutField(Integer tabid,Integer blockid);
+	List<Object> getLayoutField(Integer tabid,Integer blockid);
 	
 	int updateByPrimaryKeySelective(XmField xmField);
 
@@ -53,7 +53,7 @@ public interface XmFieldService {
 	 * @param tabid
 	 * @return
 	 */
-	public List<Object> getDefOrgFields(int tabid);
+	List<Object> getDefOrgFields(int tabid);
 	
 	int submit(int tabid,String ck_fieldid,String unck_fieldid);
 	
@@ -67,6 +67,12 @@ public interface XmFieldService {
 	 * @param columns 回收站显示字段
 	 * @return 
 	 */
-	public List<XmField> getRecycleBinFields(int tabid, String[] columns);
+	List<XmField> getRecycleBinFields(int tabid, String[] columns);
+	
+	List<Object> getApproveStepFieldTab(Integer tabid);
+	
+	List<Object> getApproveStepFieldTabDetail(Integer tabid);
+	
+	List<XmField> getApproveStepFilters(Integer tabid);
 
 }

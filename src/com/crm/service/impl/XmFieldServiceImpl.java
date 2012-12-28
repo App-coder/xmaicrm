@@ -118,5 +118,22 @@ public class XmFieldServiceImpl implements XmFieldService{
 		List<XmField> recyclebinFields = this.xmFieldMapper.getRecycleBinFields(tabid,ArrayUtil.arrayToJoinStr(columns));
 		return recyclebinFields;
 	}
+	
+	//审批流程子节点的字段权限页面标题
+	@Override
+	public List<Object> getApproveStepFieldTab(Integer tabid) {
+		return this.xmFieldMapper.getApproveStepFieldTab(tabid);
+	}
+	
+	//审批流程子节点的字段权限内容
+	@Override
+	public List<Object> getApproveStepFieldTabDetail(Integer tabid) {
+		return this.xmFieldMapper.getApproveStepFieldTabDetail(tabid);
+	}
+	
+	@Override
+	public List<XmField> getApproveStepFilters(Integer tabid) {
+		return this.xmFieldMapper.getApproveStepFilters(tabid);
+	}
 
 }

@@ -200,7 +200,7 @@
   </select>
   
   <select id="getApproveListById" resultMap="ResultMapWithBLOBs" >
-	select id,name,used,userselected,memo from xm_approve where id=#{approveid}
+	select id,tabid,name,used,userselected,memo from xm_approve where id=#{approveid}
   </select>
   
   <select id="getApproveRole" resultType="map">
@@ -214,7 +214,7 @@
   <select id="getApproveStepList" resultType="map">
     SELECT
 		t1.*, xm_step2users.userid,
-		GROUP_CONCAT(xm_users.user_name) user_name,IFNULL(t2.name,0) next_step  
+		GROUP_CONCAT(xm_users.user_name) user_name,IFNULL(t2.name,'无') next_step  
 	FROM
 		xm_approvestep t1
 	left join xm_approvestep t2 on t1.nextstep=t2.id

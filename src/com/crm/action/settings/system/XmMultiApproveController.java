@@ -4,6 +4,7 @@ import java.util.List;
 
 import javax.annotation.Resource;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -17,6 +18,7 @@ import com.crm.bean.easyui.ListBean;
 import com.crm.model.XmApprove;
 import com.crm.model.XmApprovestep;
 import com.crm.model.XmTab;
+import com.crm.service.XmFieldService;
 import com.crm.service.XmTabService;
 import com.crm.service.settings.system.XmApproveService;
 import com.crm.util.JsonUtil;
@@ -43,6 +45,9 @@ public class XmMultiApproveController extends BaseController {
 	public void setXmApproveService(XmApproveService xmApproveService) {
 		this.xmApproveService = xmApproveService;
 	}
+	
+	@Autowired
+	XmFieldService xmFieldService;
 
 
 	@RequestMapping(value = "/index", method = RequestMethod.GET)
@@ -56,13 +61,12 @@ public class XmMultiApproveController extends BaseController {
 	
 	
 	/**
-	 * @param tabid 
-	 * @return
+	 * 获取审批流程 
+	 * 
 	 */
 	@RequestMapping(value = "/getApproveList", method = RequestMethod.POST)
 	@ResponseBody
 	public String getApproveList(int tabid){
-		
 		ListBean bean = new ListBean();
 		List<XmApprove> approves = this.xmApproveService.getApproveList(tabid); 
 		bean.setRows(approves);
@@ -101,6 +105,22 @@ public class XmMultiApproveController extends BaseController {
 		return objToJson(msg);
 	}
 	 */
+	
+	@RequestMapping(value="/submit",method=RequestMethod.POST)
+	@ResponseBody
+	public String execute(int stepid,String step,String step2users,String step2fields,String step2advoption){
+		int affectrows  = 0;
+		affectrows=this.xmApproveService.updateApproveStepById(stepid, step, step2users, step2fields, step2advoption);
+		Message msg = new Message();
+		if(affectrows>=1){
+			msg.setMessage("编辑成功！");
+			msg.setType(true);
+		}else{
+			msg.setMessage("编辑时发生异常！");
+			msg.setType(false);
+		}
+		return objToJson(msg);
+	}
 	
 	
 	@RequestMapping(value="/doMultiApprove",method=RequestMethod.POST)
@@ -146,10 +166,26 @@ public class XmMultiApproveController extends BaseController {
 	}
 	
 	@RequestMapping(value="/editApproveStep",method=RequestMethod.GET)
-	public String editApproveStep(ModelMap modelMap,int id){
-		XmApprovestep xmApprove=this.xmApproveService.getApproveStepById(id);
-		//modelMap.addAttribute("approveid", approveid);
-		//modelMap.addAttribute("xmApprove", xmApprove);
+	public String editApproveStep(ModelMap modelMap,int id,String type){
+		XmApprove multiapprove=null;
+		if(type.equals("u")){
+			XmApprovestep xmApprove=this.xmApproveService.getApproveStepById(id);
+			multiapprove=this.xmApproveService.getApproveListById(xmApprove.getApproveid());
+			String approvename=multiapprove.getName();
+			List<XmApprovestep> xmApprovestep=this.xmApproveService.getApproveNextStep(xmApprove.getApproveid(), id);
+			modelMap.addAttribute("approvename", approvename);
+			modelMap.addAttribute("approveid", xmApprove.getApproveid());
+			modelMap.addAttribute("xmApprovestep", xmApprovestep);
+			modelMap.addAttribute("xmApprove", xmApprove);
+		}else{
+			multiapprove=this.xmApproveService.getApproveListById(id);
+			List<XmApprovestep> xmApprovestep=this.xmApproveService.getApproveNextStep(id, -1);
+			modelMap.addAttribute("xmApprovestep", xmApprovestep);
+		}
+		int tabid=multiapprove.getTabid();
+		modelMap.addAttribute("tabid",tabid);
+		modelMap.addAttribute("type",type);
+		modelMap.addAttribute("stepid",id);
 		return "settings/system/editApprovestep";
 	}
 	
@@ -164,6 +200,41 @@ public class XmMultiApproveController extends BaseController {
 	public String getApproveStepUsers(){
 		return JSON.toJSONString(this.xmApproveService.getApproveStepUsers());
 	}
+	
+	@RequestMapping(value="/getApproveStepFieldLabel",method=RequestMethod.GET)
+	@ResponseBody
+	public String getApproveStepFieldLabel(int tabid){
+		return JSON.toJSONString(this.xmFieldService.getApproveStepFieldTab(tabid));
+	}
+	
+	@RequestMapping(value="/getApproveStepFieldDetail",method=RequestMethod.GET)
+	@ResponseBody
+	public String getApproveStepFieldDetail(int tabid){
+		return JSON.toJSONString(this.xmFieldService.getApproveStepFieldTabDetail(tabid));
+	}
+	
+	@RequestMapping(value="/getTabName",method=RequestMethod.GET)
+	@ResponseBody
+	public String getTabName(int tabid){
+		return JSON.toJSONString(this.xmTabService.selectByPrimaryKey(tabid));
+	}
+	
+	@RequestMapping(value="/getApproveStepAdvFilters",method=RequestMethod.GET)
+	@ResponseBody
+	public String getApproveStepAdvFilters(int tabid){
+		return JSON.toJSONString(this.xmFieldService.getApproveStepFilters(tabid));
+	}
+	
+	@RequestMapping(value="/getStepAdvFilterById",method=RequestMethod.GET)
+	@ResponseBody
+	public String getStepAdvFilterById(int stepid){
+		return JSON.toJSONString(this.xmApproveService.getStepAdvFilterById(stepid));
+	}
+	
+	
+	
+	
+	
 	
 	
 	
