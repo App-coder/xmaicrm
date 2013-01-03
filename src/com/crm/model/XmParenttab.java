@@ -1,7 +1,12 @@
 package com.crm.model;
 
-public class XmParenttab {
-    private Integer parenttabid;
+import java.io.Serializable;
+
+public class XmParenttab implements Serializable {
+	
+	private static final long serialVersionUID = 7947758219450458961L;
+
+	private Integer parenttabid;
 
     private String parenttabLabel;
 

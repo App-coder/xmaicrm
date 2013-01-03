@@ -19,7 +19,7 @@ import com.crm.service.XmTabService;
 import com.crm.service.settings.system.XmParenttabService;
 import com.crm.service.system.CacheDataService;
 import com.crm.thread.CacheThread;
-import com.crm.util.CacheManager;
+import com.crm.util.CacheUtil;
 import com.crm.util.Constant;
 
 @Service("cacheDataService")
@@ -56,7 +56,7 @@ public class CacheDataServiceImpl implements CacheDataService {
 	}
 	
 	public void initGlobalData(){
-		if (CacheManager.getFromCache(Constant.ENTITYNAME) == null) {
+		if (CacheUtil.getFromCache(Constant.ENTITYNAME) == null) {
 			HashMap<String, XmEntityname> hmentityname = new HashMap<String, XmEntityname>();
 			HashMap<String, XmEntityname> hmbyid = new HashMap<String, XmEntityname>();
 			HashMap<String, XmEntityname> hmbyid_noline = new HashMap<String, XmEntityname>();
@@ -67,12 +67,12 @@ public class CacheDataServiceImpl implements CacheDataService {
 				hmbyid.put(ens.get(i).getEntityidfield(), ens.get(i));
 				hmbyid_noline.put(ens.get(i).getEntityidfield().replace("_", ""), ens.get(i));
 			}
-			CacheManager.putInCache(Constant.TABBYEID, hmbyid);
-			CacheManager.putInCache(Constant.ENTITYNAME, hmentityname);
-			CacheManager.putInCache(Constant.ENTITYNAME_NOLINE, hmbyid_noline);
+			CacheUtil.putInCache(Constant.TABBYEID, hmbyid);
+			CacheUtil.putInCache(Constant.ENTITYNAME, hmentityname);
+			CacheUtil.putInCache(Constant.ENTITYNAME_NOLINE, hmbyid_noline);
 		}
 
-		if (CacheManager.getFromCache(Constant.TAB) == null) {
+		if (CacheUtil.getFromCache(Constant.TAB) == null) {
 			HashMap<String, XmTab> tabOfName = new HashMap<String, XmTab>();
 			HashMap<String, XmTab> hmlabtabs = new HashMap<String, XmTab>();
 			List<XmTab> tabs = this.xmTabService.getAll();
@@ -82,24 +82,24 @@ public class CacheDataServiceImpl implements CacheDataService {
 				hmlabtabs.put(tabs.get(i).getTablabel().toLowerCase(),
 						tabs.get(i));
 			}
-			CacheManager.putInCache(Constant.TAB, tabOfName);
-			CacheManager.putInCache(Constant.TABBYLAB, hmlabtabs);
+			CacheUtil.putInCache(Constant.TAB, tabOfName);
+			CacheUtil.putInCache(Constant.TABBYLAB, hmlabtabs);
 		}
 		
-		if (CacheManager.getFromCache(Constant.HMDOF) == null) {
+		if (CacheUtil.getFromCache(Constant.HMDOF) == null) {
 			//默认的权限的DefOrgFields
 			List<XmDefOrgField> defOrgFieldLs = this.xmDefOrgFieldService.selectAll();
 			HashMap<Integer,XmDefOrgField> hmdof = new HashMap<Integer, XmDefOrgField>();
 			for(int i=0;i<defOrgFieldLs.size();i++){
 				hmdof.put(defOrgFieldLs.get(i).getFieldid(), defOrgFieldLs.get(i));
 			}
-			CacheManager.putInCache(Constant.HMDOF, hmdof);
+			CacheUtil.putInCache(Constant.HMDOF, hmdof);
 		}
 		
 	}
 	
 	public void initMenuBar(){
-		if (CacheManager.getFromCache(Constant.MENUBAR) == null) {
+		if (CacheUtil.getFromCache(Constant.MENUBAR) == null) {
 			List<MenuBar> menubar = new ArrayList<MenuBar>();
 			List<XmParenttab> parenttabs = this.xmParenttabService
 					.getVisibleParenttab();
@@ -112,8 +112,8 @@ public class CacheDataServiceImpl implements CacheDataService {
 				menubar.add(menu);
 				parenttab.put(parenttabs.get(i).getParenttabid(),parenttabs.get(i));
 			}
-			CacheManager.putInCache(Constant.MENUBAR,menubar);
-			CacheManager.putInCache(Constant.PARENTTAB,parenttab);
+			CacheUtil.putInCache(Constant.MENUBAR,menubar);
+			CacheUtil.putInCache(Constant.PARENTTAB,parenttab);
 		}
 	}
 	

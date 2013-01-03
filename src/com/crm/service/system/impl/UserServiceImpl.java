@@ -27,7 +27,7 @@ import com.crm.service.settings.basic.XmProfile2standardpermissionsService;
 import com.crm.service.settings.basic.XmRole2profileService;
 import com.crm.service.settings.basic.XmRoleService;
 import com.crm.service.system.UserService;
-import com.crm.util.CacheManager;
+import com.crm.util.CacheUtil;
 import com.crm.util.Constant;
 import com.crm.util.crm.PermissionUtil;
 
@@ -78,7 +78,7 @@ public class UserServiceImpl implements UserService {
 	
 	@Override
 	public String getNavBar(XmUsers login,String tpl,UserPermission userpermission) {
-		List<MenuBar> menubar = (List<MenuBar>) CacheManager.getFromCache(Constant.MENUBAR);
+		List<MenuBar> menubar = (List<MenuBar>) CacheUtil.getFromCache(Constant.MENUBAR);
 		
 		Configuration cfg = new Configuration();
         cfg.setEncoding(Locale.CHINA, "UTF-8");

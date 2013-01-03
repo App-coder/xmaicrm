@@ -54,7 +54,6 @@
 	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/org.springframework.web-3.0.5.RELEASE.jar"/>
 	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/org.springframework.web.portlet-3.0.5.RELEASE.jar"/>
 	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/org.springframework.web.servlet-3.0.5.RELEASE.jar"/>
-	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/oscache-2.4.jar"/>
 	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/proxool-0.9.1.jar"/>
 	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/proxool-cglib.jar"/>
 	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/rt.jar"/>
@@ -68,5 +67,6 @@
 	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/mybatis-spring-1.1.1.jar"/>
 	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/fastjson-1.1.22.jar"/>
 	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/freemarker.jar"/>
+	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/ehcache-core-2.6.2.jar"/>
 	<classpathentry kind="output" path="build/classes"/>
 </classpath>

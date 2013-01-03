@@ -18,7 +18,7 @@ import com.crm.model.XmParenttab;
 import com.crm.model.XmQunfa;
 import com.crm.service.module.XmQunfaService;
 import com.crm.util.ActionUtil;
-import com.crm.util.CacheManager;
+import com.crm.util.CacheUtil;
 import com.crm.util.Constant;
 import com.crm.util.crm.CustomViewUtil;
 import java.util.*;

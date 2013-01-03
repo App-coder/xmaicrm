@@ -258,7 +258,7 @@ public class HtmlUtil {
 			List<XmUsers> users = xmUsersService.getOptionsUser();
 			fieldstr += getUserSelect(xmField,users,tds,getMapVal(obj,xmField.getColumnname()));
 		}else if(uitype.equals("59")){
-			HashMap<String, XmEntityname> hm_noline = (HashMap<String, XmEntityname>)CacheManager.getFromCache(Constant.ENTITYNAME_NOLINE);
+			HashMap<String, XmEntityname> hm_noline = (HashMap<String, XmEntityname>)CacheUtil.getFromCache(Constant.ENTITYNAME_NOLINE);
 			XmEntityname et = hm_noline.get(xmField.getFieldname().replace("_", ""));
 			//关联可选的字段
 			fieldstr +="<input type=\"hidden\" name=\""+xmField.getColumnname()+"\" value=\""+getMapVal(obj,xmField.getColumnname())+"\" class=\"text2\"  />";
@@ -271,7 +271,7 @@ public class HtmlUtil {
 			fieldstr +="<textarea class=\"fullarea\" name=\""+xmField.getColumnname()+"\" >"+getMapVal(obj,xmField.getColumnname())+"</textarea>";
 		}else if(uitype.equals("1006")){
 			if(xmField.getFieldname().equals("catalogid")&&xmField.getTablename().equals("xm_products")){
-				HashMap<String, XmEntityname> hm_noline = (HashMap<String, XmEntityname>)CacheManager.getFromCache(Constant.ENTITYNAME_NOLINE);
+				HashMap<String, XmEntityname> hm_noline = (HashMap<String, XmEntityname>)CacheUtil.getFromCache(Constant.ENTITYNAME_NOLINE);
 				XmEntityname et = hm_noline.get("Products");
 				fieldstr +="<input type=\"hidden\" name=\""+xmField.getColumnname()+"\" value=\""+getMapVal(obj,xmField.getColumnname())+"\" class=\"text2\"  />";
 				fieldstr +="<input type=\"text\" name=\""+xmField.getColumnname()+"_text\" class=\"text2\" value=\""+getText(getMapVal(obj,xmField.getColumnname()),et,xmCustomViewService)+"\" readonly=\"readonly\" />";
@@ -280,7 +280,7 @@ public class HtmlUtil {
 			}
 		}else if(uitype.equals("75")){
 			if(xmField.getFieldname().equals("vendor_id")&&xmField.getTablename().equals("xm_products")){
-				HashMap<String, XmEntityname> hm_noline = (HashMap<String, XmEntityname>)CacheManager.getFromCache(Constant.ENTITYNAME_NOLINE);
+				HashMap<String, XmEntityname> hm_noline = (HashMap<String, XmEntityname>)CacheUtil.getFromCache(Constant.ENTITYNAME_NOLINE);
 				XmEntityname et = hm_noline.get("Products");
 				fieldstr +="<input type=\"hidden\" name=\""+xmField.getColumnname()+"\" value=\""+getMapVal(obj,xmField.getColumnname())+"\" class=\"text2\"  />";
 				fieldstr +="<input type=\"text\" name=\""+xmField.getColumnname()+"_text\" class=\"text2\" value=\""+getText(getMapVal(obj,xmField.getColumnname()),et,xmCustomViewService)+"\" readonly=\"readonly\" />";

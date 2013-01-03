@@ -33,7 +33,7 @@ import com.crm.service.module.XmProductsService;
 import com.crm.service.module.XmRelatedlistsServie;
 import com.crm.service.settings.basic.XmUsersService;
 import com.crm.util.ArrayUtil;
-import com.crm.util.CacheManager;
+import com.crm.util.CacheUtil;
 import com.crm.util.Constant;
 import com.crm.util.DateUtil;
 import com.crm.util.HtmlUtil;
@@ -102,7 +102,7 @@ public class ActionCls {
 		XmTab tab = CustomViewUtil.getTabByName(module);
 		modelmap.addAttribute("tab",tab );
 
-		HashMap<Integer, XmParenttab> parenttabs = (HashMap<Integer, XmParenttab>) CacheManager
+		HashMap<Integer, XmParenttab> parenttabs = (HashMap<Integer, XmParenttab>) CacheUtil
 				.getFromCache(Constant.PARENTTAB);
 		XmParenttab parenttab = parenttabs.get(ptb);
 		modelmap.addAttribute("ptb", parenttab);
@@ -292,7 +292,7 @@ public class ActionCls {
 		
 		modelmap.addAttribute("tab",tab );
 
-		HashMap<Integer, XmParenttab> parenttabs = (HashMap<Integer, XmParenttab>) CacheManager
+		HashMap<Integer, XmParenttab> parenttabs = (HashMap<Integer, XmParenttab>) CacheUtil
 				.getFromCache(Constant.PARENTTAB);
 		XmParenttab parenttab = parenttabs.get(ptb);
 		modelmap.addAttribute("ptb", parenttab);

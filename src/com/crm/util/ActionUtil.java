@@ -30,7 +30,7 @@ public class ActionUtil {
 		XmTab tab = CustomViewUtil.getTabByName(entitytype);
 		modelmap.addAttribute("tab", tab);
 
-		HashMap<Integer, XmParenttab> parenttabs = (HashMap<Integer, XmParenttab>) CacheManager
+		HashMap<Integer, XmParenttab> parenttabs = (HashMap<Integer, XmParenttab>) CacheUtil
 				.getFromCache(Constant.PARENTTAB);
 		XmParenttab parenttab = parenttabs.get(ptb);
 		modelmap.addAttribute("ptb", parenttab);
@@ -67,7 +67,7 @@ public class ActionUtil {
 		XmTab tab = CustomViewUtil.getTabByName(entitytype);
 		modelmap.addAttribute("tab", tab);
 
-		HashMap<Integer, XmParenttab> parenttabs = (HashMap<Integer, XmParenttab>) CacheManager
+		HashMap<Integer, XmParenttab> parenttabs = (HashMap<Integer, XmParenttab>) CacheUtil
 				.getFromCache(Constant.PARENTTAB);
 		XmParenttab parenttab = parenttabs.get(ptb);
 		modelmap.addAttribute("ptb", parenttab);

@@ -1,6 +1,6 @@
 package com.crm.thread;
 
-import com.crm.util.CacheManager;
+import com.crm.util.CacheUtil;
 import com.crm.util.Constant;
 import com.crm.util.LogUtil;
 
@@ -9,7 +9,7 @@ public class CacheThread extends Thread {
 	
 	public void clearCache(){
 		//刷新缓存，每小时刷新一次。
-		CacheManager.removeCache(Constant.USERPERMISSION);
+		CacheUtil.removeCache(Constant.USERPERMISSION);
 		LogUtil.logger.info("系统清理缓存");
 	}
 	

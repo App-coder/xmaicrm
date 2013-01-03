@@ -10,7 +10,7 @@ import com.crm.model.XmProfile2standardpermissions;
 import com.crm.model.XmTab;
 import com.crm.service.XmDefOrgFieldService;
 import com.crm.service.XmFieldService;
-import com.crm.util.CacheManager;
+import com.crm.util.CacheUtil;
 import com.crm.util.Constant;
 
 public class PermissionUtil {
@@ -47,7 +47,7 @@ public class PermissionUtil {
 			//设置字段的权限
 			permission.setProfile2fields(xmFieldService.getProfileFieldsByTabid(profileid,tabPermissions.get(i).getTabid()));
 			
-			permission.setDefOrgFields((HashMap<Integer, XmDefOrgField>)CacheManager.getFromCache(Constant.HMDOF));
+			permission.setDefOrgFields((HashMap<Integer, XmDefOrgField>)CacheUtil.getFromCache(Constant.HMDOF));
 			
 			permissions.add(permission);
 		}

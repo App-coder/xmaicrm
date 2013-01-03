@@ -53,7 +53,7 @@ import com.crm.service.XmTabService;
 import com.crm.service.module.XmNoteplansService;
 import com.crm.service.settings.basic.XmUsersService;
 import com.crm.util.ArrayUtil;
-import com.crm.util.CacheManager;
+import com.crm.util.CacheUtil;
 import com.crm.util.Constant;
 import com.crm.util.DateUtil;
 import com.crm.util.HtmlUtil;
@@ -213,7 +213,7 @@ public class XmCustomViewController extends BaseController {
 		modelmap.addAttribute("searchfields",
 				HtmlUtil.getSearchFields(searchFields));
 		
-		HashMap<Integer, XmParenttab> parenttabs = (HashMap<Integer, XmParenttab>) CacheManager
+		HashMap<Integer, XmParenttab> parenttabs = (HashMap<Integer, XmParenttab>) CacheUtil
 				.getFromCache(Constant.PARENTTAB);
 		XmParenttab parenttab = parenttabs.get(ptb);
 		modelmap.addAttribute("ptb", parenttab);
