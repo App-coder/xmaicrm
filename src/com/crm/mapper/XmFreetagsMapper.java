@@ -20,4 +20,6 @@ public interface XmFreetagsMapper {
     int updateByPrimaryKey(XmFreetags record);
 
 	List<XmFreetags> getModuleTags(@Param("module") String module,@Param("recordid") int recordid);
+
+	List<XmFreetags> getFreetags();
 }

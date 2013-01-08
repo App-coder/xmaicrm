@@ -87,4 +87,21 @@
 	ORDER BY
 		quantity DESC;
   </select>
+  <select id="getFreetags" resultMap="BaseResultMap" >
+  	SELECT
+		tag,
+		tag_id,
+		COUNT(object_id)AS quantity
+	FROM
+		xm_freetags
+	INNER JOIN xm_freetagged_objects ON(xm_freetags.id = tag_id)
+	WHERE
+		1 = 1
+	AND tagger_id = 1
+	GROUP BY
+		tag,
+		tag_id
+	ORDER BY
+		quantity DESC;
+  </select>
 </mapper>

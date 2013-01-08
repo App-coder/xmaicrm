@@ -1,0 +1,288 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.crm.mapper.XmMemdaysMapper" >
+  <resultMap id="BaseResultMap" type="com.crm.model.XmMemdays" >
+    <id column="memdaysid" property="memdaysid" jdbcType="INTEGER" />
+    <result column="memdayname" property="memdayname" jdbcType="VARCHAR" />
+    <result column="memday946" property="memday946" jdbcType="DATE" />
+    <result column="contact_id" property="contactId" jdbcType="INTEGER" />
+    <result column="accountid" property="accountid" jdbcType="INTEGER" />
+    <result column="memday938" property="memday938" jdbcType="VARCHAR" />
+    <result column="memday940" property="memday940" jdbcType="VARCHAR" />
+    <result column="memday1004" property="memday1004" jdbcType="VARCHAR" />
+    <result column="smcreatorid" property="smcreatorid" jdbcType="INTEGER" />
+    <result column="smownerid" property="smownerid" jdbcType="INTEGER" />
+    <result column="modifiedby" property="modifiedby" jdbcType="INTEGER" />
+    <result column="groupid" property="groupid" jdbcType="INTEGER" />
+    <result column="createdtime" property="createdtime" jdbcType="TIMESTAMP" />
+    <result column="modifiedtime" property="modifiedtime" jdbcType="TIMESTAMP" />
+    <result column="deleted" property="deleted" jdbcType="INTEGER" />
+    <result column="approved" property="approved" jdbcType="INTEGER" />
+    <result column="approvedby" property="approvedby" jdbcType="INTEGER" />
+    <result column="accountname" property="accountname" jdbcType="VARCHAR" />
+  </resultMap>
+  <resultMap id="ResultMapWithBLOBs" type="com.crm.model.XmMemdays" extends="BaseResultMap" >
+    <result column="description" property="description" jdbcType="LONGVARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    memdaysid, memdayname, memday946, contact_id, accountid, memday938, memday940, memday1004, 
+    smcreatorid, smownerid, modifiedby, groupid, createdtime, modifiedtime, deleted, 
+    approved, approvedby
+  </sql>
+  <sql id="Blob_Column_List" >
+    description
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="ResultMapWithBLOBs" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from xm_memdays
+    where memdaysid = #{memdaysid,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from xm_memdays
+    where memdaysid = #{memdaysid,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.crm.model.XmMemdays" >
+    insert into xm_memdays (memdaysid, memdayname, memday946, 
+      contact_id, accountid, memday938, 
+      memday940, memday1004, smcreatorid, 
+      smownerid, modifiedby, groupid, 
+      createdtime, modifiedtime, deleted, 
+      approved, approvedby, description
+      )
+    values (#{memdaysid,jdbcType=INTEGER}, #{memdayname,jdbcType=VARCHAR}, #{memday946,jdbcType=DATE}, 
+      #{contactId,jdbcType=INTEGER}, #{accountid,jdbcType=INTEGER}, #{memday938,jdbcType=VARCHAR}, 
+      #{memday940,jdbcType=VARCHAR}, #{memday1004,jdbcType=VARCHAR}, #{smcreatorid,jdbcType=INTEGER}, 
+      #{smownerid,jdbcType=INTEGER}, #{modifiedby,jdbcType=INTEGER}, #{groupid,jdbcType=INTEGER}, 
+      #{createdtime,jdbcType=TIMESTAMP}, #{modifiedtime,jdbcType=TIMESTAMP}, #{deleted,jdbcType=INTEGER}, 
+      #{approved,jdbcType=INTEGER}, #{approvedby,jdbcType=INTEGER}, #{description,jdbcType=LONGVARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.crm.model.XmMemdays" >
+    insert into xm_memdays
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="memdaysid != null" >
+        memdaysid,
+      </if>
+      <if test="memdayname != null" >
+        memdayname,
+      </if>
+      <if test="memday946 != null" >
+        memday946,
+      </if>
+      <if test="contactId != null" >
+        contact_id,
+      </if>
+      <if test="accountid != null" >
+        accountid,
+      </if>
+      <if test="memday938 != null" >
+        memday938,
+      </if>
+      <if test="memday940 != null" >
+        memday940,
+      </if>
+      <if test="memday1004 != null" >
+        memday1004,
+      </if>
+      <if test="smcreatorid != null" >
+        smcreatorid,
+      </if>
+      <if test="smownerid != null" >
+        smownerid,
+      </if>
+      <if test="modifiedby != null" >
+        modifiedby,
+      </if>
+      <if test="groupid != null" >
+        groupid,
+      </if>
+      <if test="createdtime != null" >
+        createdtime,
+      </if>
+      <if test="modifiedtime != null" >
+        modifiedtime,
+      </if>
+      <if test="deleted != null" >
+        deleted,
+      </if>
+      <if test="approved != null" >
+        approved,
+      </if>
+      <if test="approvedby != null" >
+        approvedby,
+      </if>
+      <if test="description != null" >
+        description,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="memdaysid != null" >
+        #{memdaysid,jdbcType=INTEGER},
+      </if>
+      <if test="memdayname != null" >
+        #{memdayname,jdbcType=VARCHAR},
+      </if>
+      <if test="memday946 != null" >
+        #{memday946,jdbcType=DATE},
+      </if>
+      <if test="contactId != null" >
+        #{contactId,jdbcType=INTEGER},
+      </if>
+      <if test="accountid != null" >
+        #{accountid,jdbcType=INTEGER},
+      </if>
+      <if test="memday938 != null" >
+        #{memday938,jdbcType=VARCHAR},
+      </if>
+      <if test="memday940 != null" >
+        #{memday940,jdbcType=VARCHAR},
+      </if>
+      <if test="memday1004 != null" >
+        #{memday1004,jdbcType=VARCHAR},
+      </if>
+      <if test="smcreatorid != null" >
+        #{smcreatorid,jdbcType=INTEGER},
+      </if>
+      <if test="smownerid != null" >
+        #{smownerid,jdbcType=INTEGER},
+      </if>
+      <if test="modifiedby != null" >
+        #{modifiedby,jdbcType=INTEGER},
+      </if>
+      <if test="groupid != null" >
+        #{groupid,jdbcType=INTEGER},
+      </if>
+      <if test="createdtime != null" >
+        #{createdtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="modifiedtime != null" >
+        #{modifiedtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="deleted != null" >
+        #{deleted,jdbcType=INTEGER},
+      </if>
+      <if test="approved != null" >
+        #{approved,jdbcType=INTEGER},
+      </if>
+      <if test="approvedby != null" >
+        #{approvedby,jdbcType=INTEGER},
+      </if>
+      <if test="description != null" >
+        #{description,jdbcType=LONGVARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.crm.model.XmMemdays" >
+    update xm_memdays
+    <set >
+      <if test="memdayname != null" >
+        memdayname = #{memdayname,jdbcType=VARCHAR},
+      </if>
+      <if test="memday946 != null" >
+        memday946 = #{memday946,jdbcType=DATE},
+      </if>
+      <if test="contactId != null" >
+        contact_id = #{contactId,jdbcType=INTEGER},
+      </if>
+      <if test="accountid != null" >
+        accountid = #{accountid,jdbcType=INTEGER},
+      </if>
+      <if test="memday938 != null" >
+        memday938 = #{memday938,jdbcType=VARCHAR},
+      </if>
+      <if test="memday940 != null" >
+        memday940 = #{memday940,jdbcType=VARCHAR},
+      </if>
+      <if test="memday1004 != null" >
+        memday1004 = #{memday1004,jdbcType=VARCHAR},
+      </if>
+      <if test="smcreatorid != null" >
+        smcreatorid = #{smcreatorid,jdbcType=INTEGER},
+      </if>
+      <if test="smownerid != null" >
+        smownerid = #{smownerid,jdbcType=INTEGER},
+      </if>
+      <if test="modifiedby != null" >
+        modifiedby = #{modifiedby,jdbcType=INTEGER},
+      </if>
+      <if test="groupid != null" >
+        groupid = #{groupid,jdbcType=INTEGER},
+      </if>
+      <if test="createdtime != null" >
+        createdtime = #{createdtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="modifiedtime != null" >
+        modifiedtime = #{modifiedtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="deleted != null" >
+        deleted = #{deleted,jdbcType=INTEGER},
+      </if>
+      <if test="approved != null" >
+        approved = #{approved,jdbcType=INTEGER},
+      </if>
+      <if test="approvedby != null" >
+        approvedby = #{approvedby,jdbcType=INTEGER},
+      </if>
+      <if test="description != null" >
+        description = #{description,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    where memdaysid = #{memdaysid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.crm.model.XmMemdays" >
+    update xm_memdays
+    set memdayname = #{memdayname,jdbcType=VARCHAR},
+      memday946 = #{memday946,jdbcType=DATE},
+      contact_id = #{contactId,jdbcType=INTEGER},
+      accountid = #{accountid,jdbcType=INTEGER},
+      memday938 = #{memday938,jdbcType=VARCHAR},
+      memday940 = #{memday940,jdbcType=VARCHAR},
+      memday1004 = #{memday1004,jdbcType=VARCHAR},
+      smcreatorid = #{smcreatorid,jdbcType=INTEGER},
+      smownerid = #{smownerid,jdbcType=INTEGER},
+      modifiedby = #{modifiedby,jdbcType=INTEGER},
+      groupid = #{groupid,jdbcType=INTEGER},
+      createdtime = #{createdtime,jdbcType=TIMESTAMP},
+      modifiedtime = #{modifiedtime,jdbcType=TIMESTAMP},
+      deleted = #{deleted,jdbcType=INTEGER},
+      approved = #{approved,jdbcType=INTEGER},
+      approvedby = #{approvedby,jdbcType=INTEGER},
+      description = #{description,jdbcType=LONGVARCHAR}
+    where memdaysid = #{memdaysid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.crm.model.XmMemdays" >
+    update xm_memdays
+    set memdayname = #{memdayname,jdbcType=VARCHAR},
+      memday946 = #{memday946,jdbcType=DATE},
+      contact_id = #{contactId,jdbcType=INTEGER},
+      accountid = #{accountid,jdbcType=INTEGER},
+      memday938 = #{memday938,jdbcType=VARCHAR},
+      memday940 = #{memday940,jdbcType=VARCHAR},
+      memday1004 = #{memday1004,jdbcType=VARCHAR},
+      smcreatorid = #{smcreatorid,jdbcType=INTEGER},
+      smownerid = #{smownerid,jdbcType=INTEGER},
+      modifiedby = #{modifiedby,jdbcType=INTEGER},
+      groupid = #{groupid,jdbcType=INTEGER},
+      createdtime = #{createdtime,jdbcType=TIMESTAMP},
+      modifiedtime = #{modifiedtime,jdbcType=TIMESTAMP},
+      deleted = #{deleted,jdbcType=INTEGER},
+      approved = #{approved,jdbcType=INTEGER},
+      approvedby = #{approvedby,jdbcType=INTEGER}
+    where memdaysid = #{memdaysid,jdbcType=INTEGER}
+  </update>
+  <select id="getAccountMemdays" resultMap="BaseResultMap" >
+  	SELECT
+		*
+	FROM
+		xm_memdays
+	INNER JOIN xm_account ON xm_account.accountid = xm_memdays.accountid
+	LEFT JOIN xm_contactdetails ON xm_contactdetails.contactid = xm_memdays.contact_id
+	WHERE
+		xm_memdays.deleted = 0
+	AND xm_memdays.memday946 BETWEEN #{fday}
+	AND #{lday}
+  </select>
+</mapper>

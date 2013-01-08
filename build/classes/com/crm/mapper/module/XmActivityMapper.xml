@@ -503,4 +503,33 @@
 		xm_seactivityrel.crmid =#{crmid} 
 		limit #{start},#{rows}
   </select>
+  <select id="getNotokcalendar" resultMap="BaseResultMap" >
+  	SELECT DISTINCT
+		xm_activity.*
+	FROM
+		xm_activity
+	LEFT JOIN xm_cntactivityrel ON xm_cntactivityrel.activityid = xm_activity.activityid
+	LEFT JOIN xm_contactdetails ON xm_contactdetails.contactid = xm_cntactivityrel.contactid
+	LEFT JOIN xm_seactivityrel ON xm_seactivityrel.activityid = xm_activity.activityid
+	LEFT OUTER JOIN xm_account ON xm_account.accountid = xm_contactdetails.accountid
+	LEFT OUTER JOIN xm_recurringevents ON xm_recurringevents.activityid = xm_activity.activityid
+	INNER JOIN xm_salesmanactivityrel ON xm_salesmanactivityrel.activityid = xm_activity.activityid
+	WHERE
+		xm_activity.deleted = 0
+	AND(
+		xm_activity.eventstatus IS NULL
+		OR xm_activity.eventstatus != '已完成'
+	)
+	AND(
+		due_date <![CDATA[<]]> #{today}
+		OR xm_recurringevents.recurringdate <![CDATA[<]]> #{today}
+	)
+	AND xm_activity.smownerid != 0
+	AND(
+		xm_activity.smownerid = '${userid}'
+		OR xm_salesmanactivityrel.smid = '${userid}'
+	)
+	ORDER BY
+		date_start;
+  </select>
 </mapper>

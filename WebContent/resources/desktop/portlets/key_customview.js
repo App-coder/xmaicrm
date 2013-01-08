@@ -13,7 +13,7 @@ function init_keycustomview(){
 	title : '数量'
     }];
     cols = setDefWidth(cols, 80);
-    $('#keycustomview').datagrid({
+    $('#tab_keycustomview').datagrid({
 	url:'crm/portlets/key_customview/getJson',
 	collapsible : false,
 	idField : 'cvid',

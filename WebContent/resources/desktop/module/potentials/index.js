@@ -86,7 +86,7 @@ function reloadView(val){
 }
 
 function add(){
-    window.location.href="crm/module/accounts/showedit?recordid=0&ptb="+ptb+"&module="+entitytype;
+    window.location.href="crm/module/potentials/showedit?recordid=0&ptb="+ptb+"&module="+entitytype;
 }
 function edit(){
     var selected = $('#view_list').datagrid("getSelected");

@@ -1,5 +1,7 @@
 package com.crm.interceptor;
 
+import java.util.Calendar;
+
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -65,6 +67,22 @@ public class BaseInterceptor implements HandlerInterceptor {
 			request.getSession().setAttribute(Constant.USERPERMISSION, userpermission);
 			// 缓存导航栏
 			request.getSession().setAttribute("navbar", this.userService.getNavBar(login,request.getSession().getServletContext().getRealPath("WEB-INF/tpl"),userpermission));
+		}else{
+			//当用户的登入状态存在时候
+			UserPermission userPermission = (UserPermission)request.getSession().getAttribute(Constant.USERPERMISSION);
+			if(userPermission.getPingnum()<200){
+				userPermission.setPingnum(userPermission.getPingnum()+1);
+				request.getSession().setAttribute(Constant.USERPERMISSION, userPermission);
+			}else{
+				
+				Calendar calendar = Calendar.getInstance();
+				calendar.add(Calendar.MINUTE, 30);
+				
+				//设置用户登入的状态
+				userPermission.setPingnum(0);
+				this.userService.setUserStatus(userPermission.getUser().getId(),"1", calendar.getTime().getTime()/1000+"");
+			}
+			
 		}
 		
 		return true;

@@ -29,7 +29,7 @@ ${navbar }
 			<c:forEach items="${stuffs}" var="stuff" varStatus="vs" >
 			<c:if test="${vs.index%3==0 }">
 				<div title="${stuff.stufftitle }" style="height:280px;overflow:hidden;">
-					${stuff.stufftitle }
+					${stuff.stufftype }
 					<%@ include file="../portlets/select.jsp"%>
 				</div>
 			</c:if>
@@ -39,7 +39,7 @@ ${navbar }
 			<c:forEach items="${stuffs}" var="stuff" varStatus="vs" >
 			<c:if test="${(vs.index+2)%3==0 }">
 				<div title="${stuff.stufftitle }" style="height:280px;overflow:hidden;">
-					${stuff.stufftitle }
+					${stuff.stufftype }
 					<%@ include file="../portlets/select.jsp"%>
 				</div>
 			</c:if>
@@ -49,7 +49,7 @@ ${navbar }
 			<c:forEach items="${stuffs}" var="stuff" varStatus="vs" >
 			<c:if test="${(vs.index+1)%3==0 }">
 				<div title="${stuff.stufftitle }" style="height:280px;overflow:hidden;">
-					${stuff.stufftitle }
+					${stuff.stufftype }
 					<%@ include file="../portlets/select.jsp"%>
 				</div>
 			</c:if>

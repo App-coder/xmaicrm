@@ -24,7 +24,7 @@ var viewtab = entitytype.toLowerCase();
 var viewid = '${viewid}';
 var tabid = ${tab.tabid};
 var tablabel = '${tab.tablabel}';
-var ptb = '${ptb}';
+var ptb = ${ptb.parenttabid };
 </script>
 <script type="text/javascript" src="resources/desktop/module/notes/index.js"></script>
 </head>

@@ -15,6 +15,7 @@ import org.springframework.stereotype.Service;
 
 import com.crm.bean.crm.MenuBar;
 import com.crm.bean.crm.UserPermission;
+import com.crm.mapper.settings.basic.XmUsersMapper;
 import com.crm.model.XmProfile2globalpermissions;
 import com.crm.model.XmProfile2standardpermissions;
 import com.crm.model.XmRole;
@@ -37,6 +38,12 @@ import freemarker.template.TemplateException;
 
 @Service("userService")
 public class UserServiceImpl implements UserService {
+	
+	XmUsersMapper xmUsersMapper;
+	@Resource(name="xmUsersMapper")
+	public void setXmUsersMapper(XmUsersMapper xmUsersMapper) {
+		this.xmUsersMapper = xmUsersMapper;
+	}
 
 	XmRoleService xmRoleService;
 	@Resource(name="xmRoleService")
@@ -118,6 +125,11 @@ public class UserServiceImpl implements UserService {
 		permission.setModulePermission(PermissionUtil.GenerateUserModulePerssion(tabPermissions,standardpermissions,this.xmFieldService));
 
 		return permission;
+	}
+
+	@Override
+	public int setUserStatus(Integer userid, String status, String lastPing) {
+		return this.xmUsersMapper.setUserStatus(userid,status,lastPing);
 	}
 
 }

@@ -27,4 +27,6 @@ public interface XmActivityMapper {
 	int getTotalForGetActivities(@Param("crmid") int crmid);
 
 	List<XmActivity> getActivities(@Param("start") int start,@Param("rows") int rows,@Param("crmid") int crmid);
+
+	List<XmActivity> getNotokcalendar(@Param("today") String today,@Param("userid") Integer userid);
 }

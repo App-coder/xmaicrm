@@ -43,6 +43,11 @@ public class XmExpenses {
     private Integer approvedby;
 
     private String description;
+    
+    //客户名称
+    private String accountname;
+    //负责人
+    private String smowner;
 
     public Integer getExpensesid() {
         return expensesid;
@@ -203,4 +208,23 @@ public class XmExpenses {
     public void setDescription(String description) {
         this.description = description == null ? null : description.trim();
     }
+
+	public String getAccountname() {
+		return accountname;
+	}
+
+	public void setAccountname(String accountname) {
+		this.accountname = accountname;
+	}
+
+	public String getSmowner() {
+		return smowner;
+	}
+
+	public void setSmowner(String smowner) {
+		this.smowner = smowner;
+	}
+    
+    
+    
 }

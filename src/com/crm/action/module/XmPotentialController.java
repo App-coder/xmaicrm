@@ -21,11 +21,18 @@ import com.crm.service.XmTabService;
 import com.crm.service.module.XmPotentialService;
 import com.crm.service.settings.system.XmParenttabrelService;
 import com.crm.util.ActionUtil;
+import com.crm.util.actionutil.ActionCls;
 import com.crm.util.crm.CustomViewUtil;
 
 @Controller
 @RequestMapping(value = "crm/module/potentials")
 public class XmPotentialController extends BaseController  {
+	
+	ActionCls actionCls;
+	@Resource(name="actionCls")
+	public void setActionCls(ActionCls actionCls) {
+		this.actionCls = actionCls;
+	}
 	
 	ModuleUtil moduleUtil;
 	@Resource(name = "moduleUtil")
@@ -109,6 +116,21 @@ public class XmPotentialController extends BaseController  {
 	@RequestMapping(value = "/related/campaign")
 	public String relCampaign(int crmid,ModelMap modelMap){
 		return "module/potentials/related/campaign";
+	}
+	
+	
+	
+	@RequestMapping(value = "/showedit")
+	public String showedit(int recordid,String module,int ptb,ModelMap modelmap){
+		
+		if(ptb==-1){
+			XmTab tab = CustomViewUtil.getTabByName("Potentials");
+			ptb = this.xmParenttabrelService.getPtbByTabid(tab.getTabid());
+		}
+		
+		this.actionCls.showEdit(ptb, module, modelmap,recordid);
+		
+		return "module/potentials/edit";
 	}
 	
 }

@@ -38,6 +38,8 @@ public class XmMemdays {
     private Integer approvedby;
 
     private String description;
+    
+    private String accountname;
 
     public Integer getMemdaysid() {
         return memdaysid;
@@ -182,4 +184,15 @@ public class XmMemdays {
     public void setDescription(String description) {
         this.description = description == null ? null : description.trim();
     }
+
+	public String getAccountname() {
+		return accountname;
+	}
+
+	public void setAccountname(String accountname) {
+		this.accountname = accountname;
+	}
+    
+    
+    
 }

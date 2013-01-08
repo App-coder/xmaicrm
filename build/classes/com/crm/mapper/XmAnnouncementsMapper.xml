@@ -1,0 +1,266 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.crm.mapper.XmAnnouncementsMapper" >
+  <resultMap id="BaseResultMap" type="com.crm.model.XmAnnouncements" >
+    <id column="announcementsid" property="announcementsid" jdbcType="INTEGER" />
+    <result column="announcementname" property="announcementname" jdbcType="VARCHAR" />
+    <result column="announcement975" property="announcement975" jdbcType="VARCHAR" />
+    <result column="announcement977" property="announcement977" jdbcType="DATE" />
+    <result column="announcement979" property="announcement979" jdbcType="DATE" />
+    <result column="announcement981" property="announcement981" jdbcType="VARCHAR" />
+    <result column="smcreatorid" property="smcreatorid" jdbcType="INTEGER" />
+    <result column="smownerid" property="smownerid" jdbcType="INTEGER" />
+    <result column="modifiedby" property="modifiedby" jdbcType="INTEGER" />
+    <result column="groupid" property="groupid" jdbcType="INTEGER" />
+    <result column="createdtime" property="createdtime" jdbcType="TIMESTAMP" />
+    <result column="modifiedtime" property="modifiedtime" jdbcType="TIMESTAMP" />
+    <result column="deleted" property="deleted" jdbcType="INTEGER" />
+    <result column="approved" property="approved" jdbcType="INTEGER" />
+    <result column="approvedby" property="approvedby" jdbcType="INTEGER" />
+  </resultMap>
+  <resultMap id="ResultMapWithBLOBs" type="com.crm.model.XmAnnouncements" extends="BaseResultMap" >
+    <result column="description" property="description" jdbcType="LONGVARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    announcementsid, announcementname, announcement975, announcement977, announcement979, 
+    announcement981, smcreatorid, smownerid, modifiedby, groupid, createdtime, modifiedtime, 
+    deleted, approved, approvedby
+  </sql>
+  <sql id="Blob_Column_List" >
+    description
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="ResultMapWithBLOBs" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from xm_announcements
+    where announcementsid = #{announcementsid,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from xm_announcements
+    where announcementsid = #{announcementsid,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.crm.model.XmAnnouncements" >
+    insert into xm_announcements (announcementsid, announcementname, 
+      announcement975, announcement977, announcement979, 
+      announcement981, smcreatorid, smownerid, 
+      modifiedby, groupid, createdtime, 
+      modifiedtime, deleted, approved, 
+      approvedby, description)
+    values (#{announcementsid,jdbcType=INTEGER}, #{announcementname,jdbcType=VARCHAR}, 
+      #{announcement975,jdbcType=VARCHAR}, #{announcement977,jdbcType=DATE}, #{announcement979,jdbcType=DATE}, 
+      #{announcement981,jdbcType=VARCHAR}, #{smcreatorid,jdbcType=INTEGER}, #{smownerid,jdbcType=INTEGER}, 
+      #{modifiedby,jdbcType=INTEGER}, #{groupid,jdbcType=INTEGER}, #{createdtime,jdbcType=TIMESTAMP}, 
+      #{modifiedtime,jdbcType=TIMESTAMP}, #{deleted,jdbcType=INTEGER}, #{approved,jdbcType=INTEGER}, 
+      #{approvedby,jdbcType=INTEGER}, #{description,jdbcType=LONGVARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.crm.model.XmAnnouncements" >
+    insert into xm_announcements
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="announcementsid != null" >
+        announcementsid,
+      </if>
+      <if test="announcementname != null" >
+        announcementname,
+      </if>
+      <if test="announcement975 != null" >
+        announcement975,
+      </if>
+      <if test="announcement977 != null" >
+        announcement977,
+      </if>
+      <if test="announcement979 != null" >
+        announcement979,
+      </if>
+      <if test="announcement981 != null" >
+        announcement981,
+      </if>
+      <if test="smcreatorid != null" >
+        smcreatorid,
+      </if>
+      <if test="smownerid != null" >
+        smownerid,
+      </if>
+      <if test="modifiedby != null" >
+        modifiedby,
+      </if>
+      <if test="groupid != null" >
+        groupid,
+      </if>
+      <if test="createdtime != null" >
+        createdtime,
+      </if>
+      <if test="modifiedtime != null" >
+        modifiedtime,
+      </if>
+      <if test="deleted != null" >
+        deleted,
+      </if>
+      <if test="approved != null" >
+        approved,
+      </if>
+      <if test="approvedby != null" >
+        approvedby,
+      </if>
+      <if test="description != null" >
+        description,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="announcementsid != null" >
+        #{announcementsid,jdbcType=INTEGER},
+      </if>
+      <if test="announcementname != null" >
+        #{announcementname,jdbcType=VARCHAR},
+      </if>
+      <if test="announcement975 != null" >
+        #{announcement975,jdbcType=VARCHAR},
+      </if>
+      <if test="announcement977 != null" >
+        #{announcement977,jdbcType=DATE},
+      </if>
+      <if test="announcement979 != null" >
+        #{announcement979,jdbcType=DATE},
+      </if>
+      <if test="announcement981 != null" >
+        #{announcement981,jdbcType=VARCHAR},
+      </if>
+      <if test="smcreatorid != null" >
+        #{smcreatorid,jdbcType=INTEGER},
+      </if>
+      <if test="smownerid != null" >
+        #{smownerid,jdbcType=INTEGER},
+      </if>
+      <if test="modifiedby != null" >
+        #{modifiedby,jdbcType=INTEGER},
+      </if>
+      <if test="groupid != null" >
+        #{groupid,jdbcType=INTEGER},
+      </if>
+      <if test="createdtime != null" >
+        #{createdtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="modifiedtime != null" >
+        #{modifiedtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="deleted != null" >
+        #{deleted,jdbcType=INTEGER},
+      </if>
+      <if test="approved != null" >
+        #{approved,jdbcType=INTEGER},
+      </if>
+      <if test="approvedby != null" >
+        #{approvedby,jdbcType=INTEGER},
+      </if>
+      <if test="description != null" >
+        #{description,jdbcType=LONGVARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.crm.model.XmAnnouncements" >
+    update xm_announcements
+    <set >
+      <if test="announcementname != null" >
+        announcementname = #{announcementname,jdbcType=VARCHAR},
+      </if>
+      <if test="announcement975 != null" >
+        announcement975 = #{announcement975,jdbcType=VARCHAR},
+      </if>
+      <if test="announcement977 != null" >
+        announcement977 = #{announcement977,jdbcType=DATE},
+      </if>
+      <if test="announcement979 != null" >
+        announcement979 = #{announcement979,jdbcType=DATE},
+      </if>
+      <if test="announcement981 != null" >
+        announcement981 = #{announcement981,jdbcType=VARCHAR},
+      </if>
+      <if test="smcreatorid != null" >
+        smcreatorid = #{smcreatorid,jdbcType=INTEGER},
+      </if>
+      <if test="smownerid != null" >
+        smownerid = #{smownerid,jdbcType=INTEGER},
+      </if>
+      <if test="modifiedby != null" >
+        modifiedby = #{modifiedby,jdbcType=INTEGER},
+      </if>
+      <if test="groupid != null" >
+        groupid = #{groupid,jdbcType=INTEGER},
+      </if>
+      <if test="createdtime != null" >
+        createdtime = #{createdtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="modifiedtime != null" >
+        modifiedtime = #{modifiedtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="deleted != null" >
+        deleted = #{deleted,jdbcType=INTEGER},
+      </if>
+      <if test="approved != null" >
+        approved = #{approved,jdbcType=INTEGER},
+      </if>
+      <if test="approvedby != null" >
+        approvedby = #{approvedby,jdbcType=INTEGER},
+      </if>
+      <if test="description != null" >
+        description = #{description,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    where announcementsid = #{announcementsid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.crm.model.XmAnnouncements" >
+    update xm_announcements
+    set announcementname = #{announcementname,jdbcType=VARCHAR},
+      announcement975 = #{announcement975,jdbcType=VARCHAR},
+      announcement977 = #{announcement977,jdbcType=DATE},
+      announcement979 = #{announcement979,jdbcType=DATE},
+      announcement981 = #{announcement981,jdbcType=VARCHAR},
+      smcreatorid = #{smcreatorid,jdbcType=INTEGER},
+      smownerid = #{smownerid,jdbcType=INTEGER},
+      modifiedby = #{modifiedby,jdbcType=INTEGER},
+      groupid = #{groupid,jdbcType=INTEGER},
+      createdtime = #{createdtime,jdbcType=TIMESTAMP},
+      modifiedtime = #{modifiedtime,jdbcType=TIMESTAMP},
+      deleted = #{deleted,jdbcType=INTEGER},
+      approved = #{approved,jdbcType=INTEGER},
+      approvedby = #{approvedby,jdbcType=INTEGER},
+      description = #{description,jdbcType=LONGVARCHAR}
+    where announcementsid = #{announcementsid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.crm.model.XmAnnouncements" >
+    update xm_announcements
+    set announcementname = #{announcementname,jdbcType=VARCHAR},
+      announcement975 = #{announcement975,jdbcType=VARCHAR},
+      announcement977 = #{announcement977,jdbcType=DATE},
+      announcement979 = #{announcement979,jdbcType=DATE},
+      announcement981 = #{announcement981,jdbcType=VARCHAR},
+      smcreatorid = #{smcreatorid,jdbcType=INTEGER},
+      smownerid = #{smownerid,jdbcType=INTEGER},
+      modifiedby = #{modifiedby,jdbcType=INTEGER},
+      groupid = #{groupid,jdbcType=INTEGER},
+      createdtime = #{createdtime,jdbcType=TIMESTAMP},
+      modifiedtime = #{modifiedtime,jdbcType=TIMESTAMP},
+      deleted = #{deleted,jdbcType=INTEGER},
+      approved = #{approved,jdbcType=INTEGER},
+      approvedby = #{approvedby,jdbcType=INTEGER}
+    where announcementsid = #{announcementsid,jdbcType=INTEGER}
+  </update>
+  <select id="getAnnouncements" resultMap="BaseResultMap" >
+  	SELECT DISTINCT
+		xm_announcements.announcementsid,
+		xm_announcements.announcementname,
+		xm_announcements.announcement975,
+		xm_announcements.announcement977
+	FROM
+		xm_announcements
+	INNER JOIN xm_announcement2user ON xm_announcement2user.announcementsid = xm_announcements.announcementsid
+	WHERE
+		xm_announcements.deleted = 0
+	AND xm_announcements.announcementname != ''
+	AND xm_announcements.announcement977 <![CDATA[<=]]> #{today}
+	AND xm_announcements.announcement979 >= #{today} 
+	ORDER BY
+		announcement977 DESC;
+  </select>
+</mapper>

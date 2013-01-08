@@ -44,7 +44,7 @@
 	</table>
 	</c:when>
 	<c:when test="${stuff.stufftype == 'key_customview'}">
-		<table id="keycustomview"></table>
+		<table id="tab_keycustomview"></table>
 	</c:when>
 	<c:when test="${stuff.stufftype == 'salesyear'}">
 		<div id="chart_salesyear" style="width:100%;height:252px;"></div>
@@ -98,6 +98,56 @@
 	</c:when>
 	<c:when test="${ stuff.stufftype == 'cangkuassets' }">
 		<table id="tab_cangkuassets"></table>
+	</c:when>
+	<c:when test="${stuff.stufftype =='AccountMemdays' }">
+		<table id="tab_AccountMemdays"></table>
+	</c:when>
+	<c:when test="${stuff.stufftype=='announcements' }">
+		<table class="tablist" id="tab_announcements">
+		</table>
+	</c:when>
+	<c:when test="${stuff.stufftype=='c3crm_news' }">
+		<table class="tablist" id="tab_c3crm_news">
+			<tr>
+				<td class="pl5">暂不可用</td>
+			</tr>
+		</table>
+	</c:when>
+	<c:when test="${ stuff.stufftype =='expensesmonth' }">
+		<table id="tab_expensesmonth"></table>
+	</c:when>
+	<c:when test="${ stuff.stufftype =='free_tags' }" >
+		<div id="div_free_tags" class="tag p10">
+			<ul>
+			</ul>
+		</div>
+	</c:when>
+	<c:when test="${ stuff.stufftype =='note_pad' }"  >
+		<textarea name="content" style="width:99%;height:250px;border:1px solid gray;" id="content" onblur="setNotepad()" ></textarea>
+	</c:when>
+	<c:when test="${stuff.stufftype=='notok_calendar' }">
+		<table id="tab_notok_calendar"></table>
+	</c:when>
+	<c:when test="${stuff.stufftype=='online_users' }">
+		<table id="tab_online_users"></table>
+	</c:when>
+	<c:when test="${stuff.stufftype=='short_cuts' }">
+		<div class="p10">
+		<table class="tabview">
+			<tr>
+				<td><a href="crm/module/accounts/showedit?recordid=0&ptb=-1&module=Accounts">新增客户</a></td><td><a href="crm/module/contacts/showedit?recordid=0&ptb=-1&module=Contacts">新增联系人</a></td>
+			</tr>
+			<tr>
+				<td><a href="crm/module/notes/showedit?recordid=0&ptb=-1&module=Notes">新增联系记录</a></td><td><a href="crm/module/potentials/showedit?recordid=0&ptb=-1&module=Potentials">新增销售机会</a></td>
+			</tr>
+			<tr>
+				<td><a href="crm/module/funnels/index?ptb=5" >销售漏斗</a></td><td><a href="crm/module/quotes/showedit?recordid=0&ptb=-1&module=Quotes">新增报价</a></td>
+			</tr>
+			<tr>
+				<td><a href="crm/module/salesorder/showedit?recordid=0&ptb=-1&module=SalesOrder" >新增合同订单</a></td><td><a href="crm/module/performances/index?ptb=-1" >员工绩效</a></td>
+			</tr>
+		</table> 
+		</div>
 	</c:when>
 </c:choose>
   

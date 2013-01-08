@@ -28,6 +28,7 @@ import com.crm.service.XmFreetagsService;
 import com.crm.service.module.XmAccountService;
 import com.crm.service.settings.basic.XmGroupsService;
 import com.crm.service.settings.basic.XmUsersService;
+import com.crm.service.settings.system.XmParenttabrelService;
 import com.crm.util.ActionUtil;
 import com.crm.util.actionutil.ActionCls;
 import com.crm.util.crm.CustomViewUtil;
@@ -83,6 +84,12 @@ public class XmAccountController extends BaseController{
 	@Resource(name="xmFreetagsService")
 	public void setXmFreetagsService(XmFreetagsService xmFreetagsService) {
 		this.xmFreetagsService = xmFreetagsService;
+	}
+	
+	XmParenttabrelService xmParenttabrelService;
+	@Resource(name="xmParenttabrelService")
+	public void setXmParenttabrelService(XmParenttabrelService xmParenttabrelService) {
+		this.xmParenttabrelService = xmParenttabrelService;
 	}
 
 	@RequestMapping(value = "/getCondition")
@@ -208,6 +215,11 @@ public class XmAccountController extends BaseController{
 	
 	@RequestMapping(value = "/showedit")
 	public String showedit(int recordid,String module,int ptb,ModelMap modelmap){
+		
+		if(ptb==-1){
+			XmTab tab = CustomViewUtil.getTabByName("Accounts");
+			ptb = this.xmParenttabrelService.getPtbByTabid(tab.getTabid());
+		}
 		
 		this.actionCls.showEdit(ptb, module, modelmap,recordid);
 		

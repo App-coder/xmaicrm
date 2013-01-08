@@ -63,7 +63,7 @@ function viewReport(){
     $("#reportframe").attr("src","crm/customview/createChart?graphtype="+graphtype+"&grouptype="+grouptype+"&cvid="+tab_viewid+"&pickfieldtable="+reportselect.fieldtable+"&pickfieldname="+reportselect.fieldname+"&pickfieldcolname="+reportselect.fieldcolname+"&title="+title+"&grouptitle="+grouptitle+"&reporttext="+reporttext+"&_rd="+rdnum());
 }
 function add(){
-    window.location.href="crm/module/cares/showedit?recordid=0&ptb="+ptb+"&module="+entitytype;
+    window.location.href="crm/module/notes/showedit?recordid=0&ptb="+ptb+"&module="+entitytype;
 }
 function edit(){
     var selected = $('#view_list').datagrid("getSelected");

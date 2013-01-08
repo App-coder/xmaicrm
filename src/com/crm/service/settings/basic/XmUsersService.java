@@ -36,6 +36,10 @@ public interface XmUsersService {
 
 	List<XmUsers> loadAll();
 
+	int setUsersUnvalid();
+
+	List<XmUsers> getOnlineusers();
+
 
 	
 }

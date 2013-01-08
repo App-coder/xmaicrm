@@ -43,5 +43,11 @@ public interface XmUsersMapper {
 	int getTotalRelUser(@Param("roleid") String roleid);
 
 	List<XmUsers> loadAll();
+
+	int setUserStatus(@Param("userid") Integer userid,@Param("status") String status,@Param("lastPing") String lastPing);
+
+	int setUsersUnvalid(@Param("now") String now);
+
+	List<XmUsers> getOnlineusers(@Param("now") String now);
 	
 }

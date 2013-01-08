@@ -15,16 +15,27 @@ import com.alibaba.fastjson.JSON;
 import com.crm.action.BaseController;
 import com.crm.action.util.ModuleUtil;
 import com.crm.bean.easyui.ComboTree;
+import com.crm.model.XmFreetags;
 import com.crm.model.XmGroups;
+import com.crm.model.XmTab;
 import com.crm.model.XmUsers;
 import com.crm.service.module.XmNoteService;
 import com.crm.service.settings.basic.XmGroupsService;
 import com.crm.service.settings.basic.XmUsersService;
+import com.crm.service.settings.system.XmParenttabrelService;
 import com.crm.util.ActionUtil;
+import com.crm.util.actionutil.ActionCls;
+import com.crm.util.crm.CustomViewUtil;
 
 @Controller
 @RequestMapping(value = "crm/module/notes")
 public class XmNoteController extends BaseController{
+	
+	ActionCls actionCls;
+	@Resource(name="actionCls")
+	public void setActionCls(ActionCls actionCls) {
+		this.actionCls = actionCls;
+	}
 	
 	XmGroupsService xmGroupsService;
 	@Resource(name="xmGroupsService")
@@ -42,6 +53,12 @@ public class XmNoteController extends BaseController{
 	@Resource(name = "moduleUtil")
 	public void setModuleUtil(ModuleUtil moduleUtil) {
 		this.moduleUtil = moduleUtil;
+	}
+	
+	XmParenttabrelService xmParenttabrelService;
+	@Resource(name="xmParenttabrelService")
+	public void setXmParenttabrelService(XmParenttabrelService xmParenttabrelService) {
+		this.xmParenttabrelService = xmParenttabrelService;
 	}
 	
 	@RequestMapping(value = "/index")
@@ -99,6 +116,19 @@ public class XmNoteController extends BaseController{
 		}
 		
 		return JSON.toJSONString(cbos);
+	}
+	
+	@RequestMapping(value = "/showedit")
+	public String showedit(int recordid,String module,int ptb,ModelMap modelmap){
+		
+		if(ptb==-1){
+			XmTab tab = CustomViewUtil.getTabByName("Notes");
+			ptb = this.xmParenttabrelService.getPtbByTabid(tab.getTabid());
+		}
+		
+		this.actionCls.showEdit(ptb, module, modelmap,recordid);
+		
+		return "module/notes/edit";
 	}
 	
 }
