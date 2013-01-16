@@ -6,6 +6,8 @@ public class XmFreetags {
     private String tag;
 
     private String rawTag;
+    
+    private String quantity;
 
     public Integer getId() {
         return id;
@@ -30,4 +32,15 @@ public class XmFreetags {
     public void setRawTag(String rawTag) {
         this.rawTag = rawTag == null ? null : rawTag.trim();
     }
+
+	public String getQuantity() {
+		return quantity;
+	}
+
+	public void setQuantity(String quantity) {
+		this.quantity = quantity;
+	}
+    
+    
+    
 }

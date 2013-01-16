@@ -65,6 +65,7 @@
     <result column="latestnote" property="latestnote" jdbcType="VARCHAR" />
     <result column="ispools" property="ispools" jdbcType="VARCHAR" />
     <result column="cf_686" property="cf686" jdbcType="VARCHAR" />
+    <result column="user_name" property="username" jdbcType="VARCHAR" />
   </resultMap>
   <resultMap id="ResultMapWithBLOBs" type="com.crm.model.XmAccount" extends="BaseResultMap" >
     <result column="description" property="description" jdbcType="LONGVARCHAR" />
@@ -934,5 +935,63 @@
 	AND xm_account.assignstatus = '已分配'
 	AND((1 = 1))
 		limit #{start},#{rows}
+  </select>
+  <select id="getAccount" resultMap="BaseResultMap" >
+  	SELECT
+		xm_account.*, xm_account.accountid AS crmid,
+		xm_users.user_name
+	FROM
+		xm_account
+	INNER JOIN xm_campaignaccountrel ON xm_campaignaccountrel.accountid = xm_account.accountid
+	LEFT JOIN xm_users ON xm_account.smownerid = xm_users.id
+	WHERE
+		xm_account.deleted = 0
+	AND xm_campaignaccountrel.campaignid = #{campaignid} 
+		limit #{start},#{rows}
+  </select>
+  <select id="getTotalAccount" resultType="Integer" >
+  	  	SELECT
+			count(1) 
+		FROM
+			xm_account
+		INNER JOIN xm_campaignaccountrel ON xm_campaignaccountrel.accountid = xm_account.accountid
+		LEFT JOIN xm_users ON xm_account.smownerid = xm_users.id
+		WHERE
+			xm_account.deleted = 0
+		AND xm_campaignaccountrel.campaignid = #{campaignid}; 
+  </select>
+  <select id="getExistAccounts" resultType="String">
+  	SELECT
+		GROUP_CONCAT(cast(xm_account.accountid AS char ))
+	FROM
+		xm_account
+	INNER JOIN xm_campaignaccountrel ON xm_campaignaccountrel.accountid = xm_account.accountid
+	LEFT JOIN xm_users ON xm_account.smownerid = xm_users.id
+	WHERE
+		xm_account.deleted = 0
+	AND xm_campaignaccountrel.campaignid = #{campaignid}
+  </select>
+  <select id="getAccountsExist" resultMap="BaseResultMap">
+    	SELECT
+		xm_account.accountid 
+	FROM
+		xm_account
+	INNER JOIN xm_campaignaccountrel ON xm_campaignaccountrel.accountid = xm_account.accountid
+	LEFT JOIN xm_users ON xm_account.smownerid = xm_users.id
+	WHERE
+		xm_account.deleted = 0
+	AND xm_campaignaccountrel.campaignid = #{campaignid}
+  </select>
+  <select id="getTodayaccount" resultMap="BaseResultMap" >
+  	SELECT
+		xm_account.*
+	FROM
+		xm_account
+	WHERE
+		deleted = 0
+	AND smownerid = #{smownerid}
+	AND xm_account.contact_date = #{contactdate}
+	ORDER BY
+		xm_account.lastcontacttime DESC;
   </select>
 </mapper>

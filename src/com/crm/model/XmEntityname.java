@@ -1,7 +1,11 @@
 package com.crm.model;
 
-public class XmEntityname {
-    private Integer tabid;
+import java.io.Serializable;
+
+public class XmEntityname implements Serializable{
+	private static final long serialVersionUID = -3507566292319036257L;
+
+	private Integer tabid;
 
     private String modulename;
 

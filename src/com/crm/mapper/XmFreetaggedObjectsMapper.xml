@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.crm.mapper.XmFreetaggedObjectsMapper" >
+  <resultMap id="BaseResultMap" type="com.crm.model.XmFreetaggedObjects" >
+    <id column="object_id" property="objectId" jdbcType="INTEGER" />
+    <id column="tag_id" property="tagId" jdbcType="INTEGER" />
+    <id column="tagger_id" property="taggerId" jdbcType="INTEGER" />
+    <result column="tagged_on" property="taggedOn" jdbcType="TIMESTAMP" />
+    <result column="module" property="module" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    object_id, tag_id, tagger_id, tagged_on, module
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="map" >
+    select 
+    <include refid="Base_Column_List" />
+    from xm_freetagged_objects
+    where object_id = #{objectId,jdbcType=INTEGER}
+      and tag_id = #{tagId,jdbcType=INTEGER}
+      and tagger_id = #{taggerId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="map" >
+    delete from xm_freetagged_objects
+    where object_id = #{objectId,jdbcType=INTEGER}
+      and tag_id = #{tagId,jdbcType=INTEGER}
+      and tagger_id = #{taggerId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.crm.model.XmFreetaggedObjects" >
+    insert into xm_freetagged_objects (object_id, tag_id, tagger_id, 
+      tagged_on, module)
+    values (#{objectId,jdbcType=INTEGER}, #{tagId,jdbcType=INTEGER}, #{taggerId,jdbcType=INTEGER}, 
+      #{taggedOn,jdbcType=TIMESTAMP}, #{module,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.crm.model.XmFreetaggedObjects" >
+    insert into xm_freetagged_objects
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="objectId != null" >
+        object_id,
+      </if>
+      <if test="tagId != null" >
+        tag_id,
+      </if>
+      <if test="taggerId != null" >
+        tagger_id,
+      </if>
+      <if test="taggedOn != null" >
+        tagged_on,
+      </if>
+      <if test="module != null" >
+        module,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="objectId != null" >
+        #{objectId,jdbcType=INTEGER},
+      </if>
+      <if test="tagId != null" >
+        #{tagId,jdbcType=INTEGER},
+      </if>
+      <if test="taggerId != null" >
+        #{taggerId,jdbcType=INTEGER},
+      </if>
+      <if test="taggedOn != null" >
+        #{taggedOn,jdbcType=TIMESTAMP},
+      </if>
+      <if test="module != null" >
+        #{module,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.crm.model.XmFreetaggedObjects" >
+    update xm_freetagged_objects
+    <set >
+      <if test="taggedOn != null" >
+        tagged_on = #{taggedOn,jdbcType=TIMESTAMP},
+      </if>
+      <if test="module != null" >
+        module = #{module,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where object_id = #{objectId,jdbcType=INTEGER}
+      and tag_id = #{tagId,jdbcType=INTEGER}
+      and tagger_id = #{taggerId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.crm.model.XmFreetaggedObjects" >
+    update xm_freetagged_objects
+    set tagged_on = #{taggedOn,jdbcType=TIMESTAMP},
+      module = #{module,jdbcType=VARCHAR}
+    where object_id = #{objectId,jdbcType=INTEGER}
+      and tag_id = #{tagId,jdbcType=INTEGER}
+      and tagger_id = #{taggerId,jdbcType=INTEGER}
+  </update>
+  <delete id="deleteByTagid" >
+  	delete from xm_freetagged_objects where tag_id = #{id}
+  </delete>
+</mapper>

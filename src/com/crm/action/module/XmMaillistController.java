@@ -61,4 +61,6 @@ public class XmMaillistController {
 		return JSON.toJSONString(bean);
 	}
 	
+	
+	
 }

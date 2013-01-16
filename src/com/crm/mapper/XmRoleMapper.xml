@@ -118,4 +118,26 @@
   <select id="getUserRole" resultMap="BaseResultMap" >
   	select xm_role.* from xm_role  left join xm_user2role on xm_role.roleid = xm_user2role.roleid where xm_user2role.userid = #{id}
   </select>
+  <select id="getRolesWithoutTemplates" resultMap="BaseResultMap">
+  	SELECT
+		roleid,
+		rolename
+	FROM
+		xm_role
+	WHERE
+		roleid NOT IN(
+			SELECT
+				xm_hometemplatesrole.roleid
+			FROM
+				xm_hometemplatesrole
+			LEFT JOIN xm_hometemplates ON xm_hometemplates.hometemplatesid = xm_hometemplatesrole.hometemplatesid
+			WHERE
+				xm_hometemplates.deleted = 0
+		)
+	ORDER BY
+		depth DESC;
+  </select>
+  <select id="getTemplatesRelRole" resultMap="BaseResultMap" >
+  	select roleid,rolename from xm_role where roleid not in (select xm_hometemplatesrole.roleid from xm_hometemplatesrole left join xm_hometemplates on xm_hometemplates.hometemplatesid = xm_hometemplatesrole.hometemplatesid where xm_hometemplates.deleted = 0 and xm_hometemplatesrole.hometemplatesid != #{hometemplatesid} ) order by depth desc ;
+  </select>
 </mapper>

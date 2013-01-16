@@ -32,6 +32,64 @@ var ptb = ${ptb.parenttabid };
 <body id="wrap">
 	${navbar }
 <div class="hidden">
+
+<div id="win_batchEdit" iconCls="icon-edit"
+			style="width: 500px; height:309px;" class="easyui-window"
+			<%=win_topbar%> title="属性编辑" >
+			<div class="easyui-layout" data-options="fit:true,border:false">
+			<div data-options="region:'center',border:false" class="p10">
+				<table class="tab_form">
+					<tr><td><select><option>请选择</option></select></td></tr>
+					<tr><td><input type="text" class="text" /></td></tr>
+				</table>
+			</div>
+			<div region="south" class="btnbar" border="false">
+			<a class="easyui-linkbutton" iconCls="icon-ok"
+				href="javascript:void(0)" onclick="formsubmit('form_customview')">编辑</a> <a
+				class="easyui-linkbutton" iconCls="icon-cancel"
+				href="javascript:void(0)" onclick="closeWin('customview_edit')">取消</a>
+				</div>
+			</div>
+	</div>
+	
+	<div id="win_editLeading" iconCls="icon-edit"
+			style="width:300px; height:185px;" class="easyui-window"
+			<%=win_topbar%> title="修改负责人" >
+			<div class="easyui-layout" data-options="fit:true,border:false">
+			<div data-options="region:'center',border:false" class="p10">
+				<table class="tab_form">
+					<tr><td>转移拥有关系</td></tr>
+					<tr><td><select class="easyui-combotree" style="width:200px;" data-options="url:'crm/module/accounts/getLeadings'"></select></td></tr>
+				</table>
+			</div>
+			<div region="south" class="btnbar" border="false">
+			<a class="easyui-linkbutton" iconCls="icon-ok"
+				href="javascript:void(0)" onclick="formsubmit('form_customview')">编辑</a> <a
+				class="easyui-linkbutton" iconCls="icon-cancel"
+				href="javascript:void(0)" onclick="closeWin('customview_edit')">取消</a>
+				</div>
+			</div>
+	</div>
+	
+	<div id="win_share" iconCls="icon-edit"
+			style="width:300px; height:185px;" class="easyui-window"
+			<%=win_topbar%> title="共享" >
+			<div class="easyui-layout" data-options="fit:true,border:false">
+			<div data-options="region:'center',border:false" class="p10">
+				<table class="tab_editlist">
+					<tr><td>选择共享用户</td></tr>
+					<tr><td><select class="easyui-combotree" style="width:200px;" data-options="url:'crm/module/accounts/getLeadings'"></select></td></tr>
+				</table>
+			</div>
+			<div region="south" class="btnbar" border="false">
+			<a class="easyui-linkbutton" iconCls="icon-ok"
+				href="javascript:void(0)" onclick="formsubmit('form_customview')">编辑</a> <a
+				class="easyui-linkbutton" iconCls="icon-cancel"
+				href="javascript:void(0)" onclick="closeWin('customview_edit')">取消</a>
+				</div>
+			</div>
+	</div>
+
 <c:if test="${repfields!=null }">
 	<div id="winreport" class="easyui-window" <%=win_topbar %>
 		style="width:700px; height: 499px;">
@@ -69,8 +127,21 @@ ${ptb.parenttabLabel }&gt;<a href="crm/module/${fn:toLowerCase(entityname.module
 					class="easyui-linkbutton"
 					data-options="plain:true,iconCls:'icon-view'">视图管理</a>
 			</div>
+			<div id="tabbar" class="gtb" style="display: block;" >  
+			查看范围：<select class="easyui-combotree" style="width:200px;" data-options="url:'crm/module/accounts/getCondition'"></select>
+			<a class="easyui-linkbutton" data-options="plain:true" iconCls="icon-add" onclick="add()" >添加</a>
+			<a class="easyui-linkbutton" data-options="plain:true" iconCls="icon-edit" onclick="edit()" >修改</a>
+			<a class="easyui-linkbutton" data-options="plain:true" iconCls="icon-view" onclick="view()" >预览</a>
+			<a class="easyui-linkbutton" data-options="plain:true" iconCls="icon-edit" onclick="editLeading()">修改负责人</a>
+			<a class="easyui-linkbutton" data-options="plain:true" iconCls="icon-share" onclick="share()" >共享</a>
+			<a class="easyui-linkbutton" data-options="plain:true" iconCls="icon-remove" onclick="del()" >删除</a>
+			<a class="easyui-linkbutton" data-options="plain:true" iconCls="icon-import" onclick="import()" >导入</a>	
+			<a class="easyui-linkbutton" data-options="plain:true" iconCls="icon-excel" onclick="excel()" >导出</a>	
+			<a class="easyui-linkbutton" data-options="plain:true" iconCls="icon-search" onclick="showSearch()" >查找</a>
+			<a class="easyui-linkbutton" data-options="plain:true" iconCls="icon-undo" onclick="cacelSearch()" >取消查找</a>		  
+			</div>
 			<table id="view_list"
-				data-options="fitColumns:true" ></table>
+				data-options="fitColumns:true" toolbar="#tabbar"  ></table>
 				<div class="stat_div hidden"></div>
 	<c:if test="${repfields!=null }">
 			<div data-options="region:'south',border:false">

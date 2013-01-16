@@ -4,6 +4,9 @@ import java.math.BigDecimal;
 import java.util.Date;
 
 public class XmQuotes {
+	
+	private Integer crmid;
+	
     private Integer quoteid;
 
     private String subject;
@@ -69,8 +72,18 @@ public class XmQuotes {
     private String termsConditions;
 
     private String description;
+    
+    private String accountname;
+    
+    public Integer getCrmid() {
+		return crmid;
+	}
 
-    public Integer getQuoteid() {
+	public void setCrmid(Integer crmid) {
+		this.crmid = crmid;
+	}
+
+	public Integer getQuoteid() {
         return quoteid;
     }
 
@@ -333,4 +346,15 @@ public class XmQuotes {
     public void setDescription(String description) {
         this.description = description == null ? null : description.trim();
     }
+
+	public String getAccountname() {
+		return accountname;
+	}
+
+	public void setAccountname(String accountname) {
+		this.accountname = accountname;
+	}
+    
+    
+    
 }

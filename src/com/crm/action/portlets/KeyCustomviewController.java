@@ -13,6 +13,7 @@ import com.alibaba.fastjson.JSON;
 import com.crm.bean.easyui.ListBean;
 import com.crm.model.XmCustomview;
 import com.crm.service.portlets.KeyCustomviewService;
+import com.crm.util.CacheUtil;
 /**
  * 
  * 关键视图
@@ -40,6 +41,12 @@ public class KeyCustomviewController {
 	@RequestMapping(value = "/getJson")
 	@ResponseBody
 	public String getJson(){
+		
+		Object cache = CacheUtil.getKeyCache(CacheUtil.getMethKey(),CacheUtil.defRefreshTime);
+		if(cache!=null){
+			return cache.toString();
+		}
+		
 		ListBean bean = new ListBean();
 		List<XmCustomview> keycustomviews = this.keyCustomviewService.getKeyCustomviews();
 		for(int i=0;i<keycustomviews.size();i++){
@@ -47,7 +54,11 @@ public class KeyCustomviewController {
 		}
 		bean.setRows(keycustomviews);
 		bean.setTotal(keycustomviews.size());
-		return JSON.toJSONString(bean); 
+		
+		String cachestr = JSON.toJSONString(bean);
+		CacheUtil.putKeyCache(CacheUtil.getMethKey(), cachestr);
+		
+		return cachestr; 
 	}
 	
 }

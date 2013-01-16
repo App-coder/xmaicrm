@@ -4,4 +4,6 @@ public interface CacheDataService {
 
 	void initData();
 
+	void initMenuBar();
+	
 }

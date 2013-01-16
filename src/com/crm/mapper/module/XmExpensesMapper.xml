@@ -21,6 +21,7 @@
     <result column="deleted" property="deleted" jdbcType="INTEGER" />
     <result column="approved" property="approved" jdbcType="INTEGER" />
     <result column="approvedby" property="approvedby" jdbcType="INTEGER" />
+    <result column="accountname" property="accountname" jdbcType="VARCHAR" />
   </resultMap>
   <resultMap id="ResultMapWithBLOBs" type="com.crm.model.XmExpenses" extends="BaseResultMap" >
     <result column="description" property="description" jdbcType="LONGVARCHAR" />
@@ -296,7 +297,29 @@
       approvedby = #{approvedby,jdbcType=INTEGER}
     where expensesid = #{expensesid,jdbcType=INTEGER}
   </update>
-  <select id="getExpensesStat" resultType="com.crm.bean.portlets.salesyearinfo.ExpensesStat" >
+  <select id="getExpensesStat" resultType="com.crm.bean.crm.portlets.salesyearinfo.ExpensesStat" >
   	select count(*) as expensescount,sum(IFNULL(total,0.00)) as sumexpensestotal from xm_expenses where xm_expenses.deleted = 0 and xm_expenses.expensestatus = '已批准' and xm_expenses.expensedate between '${year}-01-01 00:00:00' and '${year}-12-31 23:59:00';
+  </select>
+  <select id="getExpensesmonth" resultMap="BaseResultMap" >
+  	SELECT
+		xm_account.accountname,
+		xm_expenses.*,
+		xm_users.last_name as smowner 
+	FROM
+		xm_expenses
+	INNER JOIN xm_account ON xm_account.accountid = xm_expenses.accountid
+	left join xm_users on xm_expenses.smownerid = xm_users.id 
+	WHERE
+		xm_expenses.deleted = 0
+	AND(
+		xm_expenses.expensedate >= #{today}
+		AND xm_expenses.expensedate <![CDATA[<=]]> #{nextday}
+	)
+	OR(
+		xm_expenses.expensedate <![CDATA[<=]]> #{today}
+		AND xm_expenses.expensedate >= #{prevday}
+	)
+	ORDER BY
+		modifiedtime DESC;
   </select>
 </mapper>

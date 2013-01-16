@@ -1,7 +1,7 @@
 $(function(){
-    loadPage();
+    init_cangkuassets();
 });
-function loadPage(){
+function init_cangkuassets(){
     var cols = [ {
 	field : 'cangkuname',
 	title : '仓库'
@@ -16,7 +16,7 @@ function loadPage(){
 	title : '资产'
     }];
     cols = setDefWidth(cols, 80);
-    $('#tablist').datagrid({
+    $('#tab_cangkuassets').datagrid({
 	url:'crm/portlets/cangkuassets/getJson',
 	collapsible : false,
 	idField : 'cangkusid',
@@ -25,6 +25,7 @@ function loadPage(){
 	fitColumns : true,
 	singleSelect : true,
 	border:false,
+	fit:true,
 	columns : [ cols ]
     });
 }

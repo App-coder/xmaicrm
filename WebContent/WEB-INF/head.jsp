@@ -2,6 +2,7 @@
     pageEncoding="utf-8"%>
 <%@ taglib prefix="c"  uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"  %>
+<%@ taglib uri="http://www.opensymphony.com/oscache" prefix="cache" %>
 <%
 String path = request.getContextPath();  
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/"; 
@@ -21,6 +22,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	</c:otherwise>
 </c:choose>
 </title>
+ <cache:cache>
 <link rel="stylesheet" type="text/css" href="resources/easyui/themes/default/easyui.css">
 <link rel="stylesheet" type="text/css" href="resources/easyui/themes/icon.css">
 <link rel="stylesheet" type="text/css" href="resources/css.css">
@@ -30,7 +32,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <script type="text/javascript" src="resources/easyui/locale/easyui-lang-zh_CN.js"></script>
 
 <!-- JSON插件 -->
-<script type="text/javascript" src="resources/lib/JSONUtil.js"></script>
+<script type="text/javascript" src="resources/lib/json2.js"></script>
 
 <!-- easyuipack.js 补充拓展 -->
 <script type="text/javascript" src="resources/easyui/easyuipack.js"></script>
@@ -50,3 +52,4 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 
 <!-- 文件上传 -->
 <script type="text/javascript" src="resources/plugins/ajaxfileupload.js"></script>
+</cache:cache>

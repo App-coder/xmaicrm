@@ -12,9 +12,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.alibaba.fastjson.JSON;
-import com.crm.bean.portlets.AccountMoney;
+import com.crm.bean.crm.portlets.AccountMoney;
 import com.crm.model.XmGathers;
 import com.crm.service.portlets.XmGathersService;
+import com.crm.util.CacheUtil;
 
 /**
  * 应收款客户,应付款客户汇总
@@ -39,6 +40,12 @@ public class AccountmoneyController {
 	@RequestMapping(value = "/getJson")
 	@ResponseBody
 	public String getJson() {
+		
+		Object cache = CacheUtil.getKeyCache(CacheUtil.getMethKey(),CacheUtil.defRefreshTime);
+		if(cache!=null){
+			return cache.toString();
+		}
+		
 		List<Object> objs = new ArrayList<Object>();
 		// 应收款客户汇总
 		List<XmGathers> gathers = this.xmGathersService.getGathersAll();
@@ -73,7 +80,9 @@ public class AccountmoneyController {
 				suppliercharge.size(), supplierchargesum);
 		objs.add(am_suppliercharge);
 		
-		return JSON.toJSONString(objs);
+		String cachestr = JSON.toJSONString(objs);
+		CacheUtil.putKeyCache(CacheUtil.getMethKey(), cachestr);
+		return cachestr;
 	}
 
 }

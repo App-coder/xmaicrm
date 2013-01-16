@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.alibaba.fastjson.JSON;
 import com.crm.bean.easyui.Combobox;
 import com.crm.model.XmRole;
 import com.crm.service.module.XmRoleService;
@@ -40,5 +41,13 @@ public class XmRoleController extends BaseController {
 		}
 		return arrayToJson(cbos);
 	}
+	
+	@RequestMapping(value = "/getRolesWithoutTemplates", method = RequestMethod.GET)
+	@ResponseBody
+	public String getRolesWithoutTemplates(){
+		List<XmRole> roles = this.xmRoleService.getRolesWithoutTemplates();
+		return JSON.toJSONString(roles);
+	}
+	
 	
 }

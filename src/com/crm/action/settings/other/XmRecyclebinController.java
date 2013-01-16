@@ -19,7 +19,7 @@ import com.crm.model.XmTab;
 import com.crm.service.XmFieldService;
 import com.crm.service.XmTabService;
 import com.crm.util.ArrayUtil;
-import com.crm.util.CacheManager;
+import com.crm.util.CacheUtil;
 import com.crm.util.Constant;
 import com.crm.util.crm.RecyclebinUtil;
 /**
@@ -54,7 +54,7 @@ public class XmRecyclebinController extends BaseController {
 		List skipids = new ArrayList();
 		
 		
-		HashMap<String, XmTab> tabOfName =(HashMap<String, XmTab>) CacheManager.getFromCache(Constant.TAB);
+		HashMap<String, XmTab> tabOfName =(HashMap<String, XmTab>) CacheUtil.getFromCache(Constant.TAB);
 		for(int i=0;i<skip_modules.length;i++){
 			if(tabOfName.get(skip_modules[i].toLowerCase())!=null){
 				skipids.add(tabOfName.get(skip_modules[i].toLowerCase()).getTabid());

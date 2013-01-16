@@ -1,7 +1,12 @@
 package com.crm.model;
 
-public class XmTab {
-    private Integer tabid;
+import java.io.Serializable;
+
+public class XmTab implements Serializable{
+	
+	private static final long serialVersionUID = -1252024588479189121L;
+
+	private Integer tabid;
 
     private String name;
 

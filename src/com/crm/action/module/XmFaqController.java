@@ -34,7 +34,7 @@ public class XmFaqController {
 	public String index(int ptb, ModelMap modelMap)
 			throws UnsupportedEncodingException {
 
-		ActionUtil.setTitle2("Faq", ptb, modelMap, this.moduleUtil);
+		ActionUtil.setTitle("Faq", ptb, modelMap, this.moduleUtil);
 
 		return "module/faq/index";
 	}

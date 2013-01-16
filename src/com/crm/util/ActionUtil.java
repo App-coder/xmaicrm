@@ -30,10 +30,33 @@ public class ActionUtil {
 		XmTab tab = CustomViewUtil.getTabByName(entitytype);
 		modelmap.addAttribute("tab", tab);
 
-		HashMap<Integer, XmParenttab> parenttabs = (HashMap<Integer, XmParenttab>) CacheManager
+		HashMap<Integer, XmParenttab> parenttabs = (HashMap<Integer, XmParenttab>) CacheUtil
 				.getFromCache(Constant.PARENTTAB);
 		XmParenttab parenttab = parenttabs.get(ptb);
 		modelmap.addAttribute("ptb", parenttab);
+
+		moduleUtil.setViewProp(modelmap, entitytype, tab);
+
+		XmEntityname entityname = CustomViewUtil.getEntitynameByET(entitytype);
+		modelmap.addAttribute("viewid", entityname.getEntityidfield());
+		modelmap.addAttribute("entityname", entityname);
+
+	}
+	
+	/**
+	 * 用于Pop弹出窗列表显示
+	 * 
+	 * @param entitytype
+	 * @param modelmap
+	 * @param moduleUtil
+	 */
+	public static void showList(String entitytype, ModelMap modelmap,
+			ModuleUtil moduleUtil) {
+
+		modelmap.addAttribute("entitytype", entitytype);
+
+		XmTab tab = CustomViewUtil.getTabByName(entitytype);
+		modelmap.addAttribute("tab", tab);
 
 		moduleUtil.setViewProp(modelmap, entitytype, tab);
 
@@ -51,7 +74,7 @@ public class ActionUtil {
 		XmTab tab = CustomViewUtil.getTabByName(entitytype);
 		modelmap.addAttribute("tab", tab);
 
-		HashMap<Integer, XmParenttab> parenttabs = (HashMap<Integer, XmParenttab>) CacheManager
+		HashMap<Integer, XmParenttab> parenttabs = (HashMap<Integer, XmParenttab>) CacheUtil
 				.getFromCache(Constant.PARENTTAB);
 		XmParenttab parenttab = parenttabs.get(ptb);
 		modelmap.addAttribute("ptb", parenttab);

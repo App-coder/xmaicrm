@@ -1,6 +1,7 @@
 package com.crm.action.module;
 
 import java.io.UnsupportedEncodingException;
+import java.util.List;
 
 import javax.annotation.Resource;
 
@@ -8,19 +9,30 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.alibaba.fastjson.JSON;
 import com.crm.action.BaseController;
 import com.crm.action.util.ModuleUtil;
+import com.crm.bean.easyui.ListBean;
+import com.crm.model.XmPotential;
 import com.crm.model.XmTab;
 import com.crm.service.XmTabService;
 import com.crm.service.module.XmPotentialService;
 import com.crm.service.settings.system.XmParenttabrelService;
 import com.crm.util.ActionUtil;
+import com.crm.util.actionutil.ActionCls;
 import com.crm.util.crm.CustomViewUtil;
 
 @Controller
 @RequestMapping(value = "crm/module/potentials")
 public class XmPotentialController extends BaseController  {
+	
+	ActionCls actionCls;
+	@Resource(name="actionCls")
+	public void setActionCls(ActionCls actionCls) {
+		this.actionCls = actionCls;
+	}
 	
 	ModuleUtil moduleUtil;
 	@Resource(name = "moduleUtil")
@@ -67,6 +79,71 @@ public class XmPotentialController extends BaseController  {
 		ActionUtil.setTitle("Potentials", ptb, modelMap, this.moduleUtil);
 
 		return "module/potentials/index";
+	}
+	
+	/**
+	 * 
+	 * 营销活动 相关信息-销售机会
+	 * 
+	 * @param page
+	 * @param rows
+	 * @param crmid
+	 * @return
+	 */
+	@RequestMapping(value = "/getOpportunities")
+	@ResponseBody
+	public String getOpportunities(int page,int rows,int crmid){
+		
+		ListBean bean = new ListBean();
+		int total = this.xmPotentialService.getTotalForOpportunities(crmid);
+		List<XmPotential> potentials = this.xmPotentialService.getOpportunities(page,rows,crmid);
+		
+		bean.setTotal(total);
+		bean.setRows(potentials);
+		
+		return JSON.toJSONString(bean);
+	}
+	
+	
+	/**
+	 * 
+	 * 营销活动-关联销售机会列表页面
+	 * 
+	 * @param crmid
+	 * @param modelMap
+	 * @return
+	 */
+	@RequestMapping(value = "/related/campaign")
+	public String relCampaign(int crmid,ModelMap modelMap){
+		return "module/potentials/related/campaign";
+	}
+	
+	
+	
+	@RequestMapping(value = "/showedit")
+	public String showedit(int recordid,String module,int ptb,ModelMap modelmap){
+		
+		if(ptb==-1){
+			XmTab tab = CustomViewUtil.getTabByName("Potentials");
+			ptb = this.xmParenttabrelService.getPtbByTabid(tab.getTabid());
+		}
+		
+		this.actionCls.showEdit(ptb, module, modelmap,recordid);
+		
+		return "module/potentials/edit";
+	}
+	
+	/**
+	 * 用户选择弹出窗
+	 * 
+	 * @param columnname
+	 * @return
+	 */
+	@RequestMapping(value = "/viewpop")
+	public String viewpop(String columnname,ModelMap modelmap){
+		ActionUtil.showList("Potentials", modelmap, moduleUtil);
+		modelmap.addAttribute("columnname",columnname);
+		return "module/potentials/viewpop";
 	}
 	
 }

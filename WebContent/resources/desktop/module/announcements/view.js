@@ -1,0 +1,5 @@
+$(function() {
+    initPage();
+});
+function initPage() {
+}

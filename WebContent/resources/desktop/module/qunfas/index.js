@@ -25,7 +25,7 @@ function initPage(){
 	    text : '添加',
 	    iconCls:'icon-add',
 	    handler : function() {
-		
+		$("#wind_message").window("open");
 	    }
 	},{
 	    text : '修改',

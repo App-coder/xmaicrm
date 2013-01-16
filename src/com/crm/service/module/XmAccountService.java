@@ -28,5 +28,13 @@ public interface XmAccountService  {
 	int getTotalAssigned();
 
 	List<Object> loadAssigned(int page, int rows);
+
+	List<XmAccount> getAccount(int campaignid, int page, int rows);
+
+	String getExistAccounts(int campaignid);
+
+	List<XmAccount> getAccountsExist(int campaignid);
+
+	int getTotalAccount(int campaignid);
  
 }

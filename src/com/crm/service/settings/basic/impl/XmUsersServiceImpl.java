@@ -1,5 +1,6 @@
 package com.crm.service.settings.basic.impl;
 
+import java.util.Date;
 import java.util.List;
 
 import javax.annotation.Resource;
@@ -98,6 +99,28 @@ public class XmUsersServiceImpl implements XmUsersService{
 	@Override
 	public int getTotalRelUser(String roleid) {
 		return this.xmUsersMapper.getTotalRelUser(roleid);
+	}
+
+	@Override
+	public XmUsers getById(Integer id) {
+		return this.xmUsersMapper.selectByPrimaryKey(id);
+	}
+
+	@Override
+	public List<XmUsers> loadAll() {
+		return this.xmUsersMapper.loadAll();
+	}
+
+	@Override
+	public int setUsersUnvalid() {
+		String now = new Date().getTime()/1000+"";
+		return this.xmUsersMapper.setUsersUnvalid(now);
+	}
+
+	@Override
+	public List<XmUsers> getOnlineusers() {
+		String now = new Date().getTime()/1000+"";
+		return this.xmUsersMapper.getOnlineusers(now);
 	}
 
 

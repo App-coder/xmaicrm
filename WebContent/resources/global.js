@@ -129,31 +129,6 @@ function formsubmit(fid) {
 function clearform(fid){
     $('#' + fid).form("clear");
 }
-function obj2str(o) {
-	var r = [];
-	if (typeof o == "string")
-		return "\""
-				+ o.replace(/([\'\"\\])/g, "\\$1").replace(/(\n)/g, "\\n")
-						.replace(/(\r)/g, "\\r").replace(/(\t)/g, "\\t") + "\"";
-	if (typeof o == "object") {
-		if (!o.sort) {
-			for ( var i in o)
-				r.push(i + ":" + obj2str(o[i]));
-			if (!!document.all
-					&& !/^\n?function\s*toString\(\)\s*\{\n?\s*\[native code\]\n?\s*\}\n?\s*$/
-							.test(o.toString)) {
-				r.push("toString:" + o.toString.toString());
-			}
-			r = "{" + r.join() + "}"
-		} else {
-			for ( var i = 0; i < o.length; i++)
-				r.push(obj2str(o[i]))
-			r = "[" + r.join() + "]"
-		}
-		return r;
-	}
-	return o.toString();
-}
 function reloadTab(){
     var currentTab = $('#tabs').tabs('getSelected');
     currentTab.panel('refresh');
@@ -263,9 +238,10 @@ function setDefWidth(cols,wid){
 //显示选项的optionwindow，用于选项的选择
 function showOptionPanel(modulename,columnname,fieldlabel){
     $("#optionwindow").window({
-	title:"选择"+fieldlabel
+	title:"选择"+fieldlabel,
+	border:false
     });
-    $("#optionframe").attr("src","crm/customview/viewPop?modulename="+modulename+"&columnname="+columnname);
+    $("#optionframe").attr("src","crm/customview/viewPop?modulename="+modulename+"&columnname="+columnname+"&_rd="+rdnum());
     $("#optionwindow").window("open");
 }
 function showTip(value,row,index){
@@ -289,4 +265,37 @@ function showLocale(objD)
 	if(ss<10) ss = '0' + ss;
 	str = yy + "-" + MM + "-" + dd + " " + hh + ":" + mm + ":" + ss;
     return(str);
+}
+
+function initEdit(name,module,resizeType){
+	var editor = KindEditor.create('textarea[name="'+name+'"]', {
+		resizeType : 1,
+		allowPreviewEmoticons : true,
+		allowImageUpload : true,
+		allowFileManager : true,
+		resizeType:resizeType,
+		//urlType:'absolute',
+		items:editoritem_more,
+		uploadJson:'crm/file/upload',
+		fileManagerJson:'crm/file/filemanager',
+		fileloc:"attach/"+module+"/",
+		pluginsPath:"resources/plugins/kindeditor/plugins/"
+	});
+	return editor;
+}
+//去除空格,回车
+String.prototype.Trim = function()
+{
+	return this.replace(/(^\s*)|(\s*$)|(\n)/g, ""); 
+}
+
+//删除字符串左边的空格回车
+String.prototype.LTrim = function()
+{
+	return this.replace(/(^\s*)|(^\n)/g, ""); 
+}
+
+String.prototype.RTrim = function()
+{
+	return this.replace(/(\s*$)|(\n$)/g, ""); 
 }

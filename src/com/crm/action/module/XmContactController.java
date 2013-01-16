@@ -2,21 +2,47 @@ package com.crm.action.module;
 
 
 import java.io.UnsupportedEncodingException;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.annotation.Resource;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.alibaba.fastjson.JSON;
 import com.crm.action.BaseController;
 import com.crm.action.util.ModuleUtil;
-import com.crm.service.module.XmContactService;
+import com.crm.bean.easyui.ComboTree;
+import com.crm.model.XmFreetags;
+import com.crm.model.XmGroups;
+import com.crm.model.XmTab;
+import com.crm.model.XmUsers;
+import com.crm.service.XmFreetagsService;
+import com.crm.service.settings.basic.XmGroupsService;
+import com.crm.service.settings.basic.XmUsersService;
+import com.crm.service.settings.system.XmParenttabrelService;
 import com.crm.util.ActionUtil;
+import com.crm.util.actionutil.ActionCls;
+import com.crm.util.crm.CustomViewUtil;
 
 @Controller
 @RequestMapping(value = "crm/module/contacts")
 public class XmContactController extends BaseController{
+	
+	XmGroupsService xmGroupsService;
+	@Resource(name="xmGroupsService")
+	public void setXmGroupsService(XmGroupsService xmGroupsService) {
+		this.xmGroupsService = xmGroupsService;
+	}
+	
+	XmUsersService xmUsersService;
+	@Resource(name="xmUsersService")
+	public void setXmUsersService(XmUsersService xmUsersService) {
+		this.xmUsersService = xmUsersService;
+	}
 	
 	ModuleUtil moduleUtil;
 	@Resource(name = "moduleUtil")
@@ -27,9 +53,106 @@ public class XmContactController extends BaseController{
 	@RequestMapping(value = "/index")
 	public String index(int ptb,ModelMap modelMap) throws UnsupportedEncodingException{
 		ActionUtil.setTitle("Contacts", ptb, modelMap, this.moduleUtil);
-		return "public/viewcv";
+		return "module/contacts/index";
 	}
 	
+	ActionCls actionCls;
+	@Resource(name="actionCls")
+	public void setActionCls(ActionCls actionCls) {
+		this.actionCls = actionCls;
+	}
 	
+	XmFreetagsService xmFreetagsService;
+	@Resource(name="xmFreetagsService")
+	public void setXmFreetagsService(XmFreetagsService xmFreetagsService) {
+		this.xmFreetagsService = xmFreetagsService;
+	}
+	
+	XmParenttabrelService xmParenttabrelService;
+	@Resource(name="xmParenttabrelService")
+	public void setXmParenttabrelService(XmParenttabrelService xmParenttabrelService) {
+		this.xmParenttabrelService = xmParenttabrelService;
+	}
+	
+	@RequestMapping(value = "/getCondition")
+	@ResponseBody
+	public String getCondition(){
+		
+		List<ComboTree> cbos = new ArrayList<ComboTree>();
+		
+		ComboTree all = new ComboTree();
+		all.setId("0");
+		all.setText("所有联系人");
+		cbos.add(all);
+		
+		ComboTree  myaccount = new ComboTree();
+		myaccount.setId("-1");
+		myaccount.setText("我的联系人");
+		cbos.add(myaccount);
+		
+		ComboTree  mycreate = new ComboTree();
+		mycreate.setId("-2");
+		mycreate.setText("我创建的联系人");
+		cbos.add(mycreate);
+		
+		ComboTree  mybranch = new ComboTree();
+		mybranch.setId("-3");
+		mybranch.setText("下属的联系人");
+		cbos.add(mybranch);
+		
+		List<XmGroups> groups = this.xmGroupsService.loadAll();
+		List<XmUsers> users = this.xmUsersService.loadAll();
+		
+		for(int i=0;i<groups.size();i++){
+			ComboTree group = new ComboTree();
+			group.setId(groups.get(i).getGroupid()+"");
+			group.setText(groups.get(i).getGroupname());
+			group.setIconCls("icon-group");
+			List<ComboTree> childs = new ArrayList();
+			for(int j=0;j<users.size();j++){
+				if(users.get(j).getGroupid().equals(group.getId())){
+					ComboTree u = new ComboTree();
+					u.setId(users.get(j).getId()+"");
+					u.setText(users.get(j).getLastName());
+					u.setIconCls("icon-user");
+					childs.add(u);
+				}
+			}
+			group.setChildren(childs);
+			cbos.add(group);
+		}
+		
+		return JSON.toJSONString(cbos);
+	}
+	
+	@RequestMapping(value = "/related/campaign")
+	public String relCampaign(int crmid,ModelMap modelMap){
+		return "module/contacts/related/campaign";
+	}
+	
+	@RequestMapping(value = "/showedit")
+	public String showedit(int recordid,String module,int ptb,ModelMap modelmap){
+		
+		if(ptb==-1){
+			XmTab tab = CustomViewUtil.getTabByName("Accounts");
+			ptb = this.xmParenttabrelService.getPtbByTabid(tab.getTabid());
+		}
+		
+		this.actionCls.showEdit(ptb, module, modelmap,recordid);
+		
+		return "module/campaigns/edit";
+	}
+	
+	@RequestMapping(value = "/view")
+	public String view(int recordid,String module,int ptb,ModelMap modelmap){
+		
+		XmTab tab = CustomViewUtil.getTabByName(module);
+		this.actionCls.showView(ptb, module, modelmap,recordid,tab);
+		this.actionCls.setRelatedlist(tab, modelmap);
+		List<XmFreetags> freetags = this.xmFreetagsService.getModuleTags(module,recordid); 
+		modelmap.addAttribute("freetags",freetags);
+		
+		return "module/campaigns/view";
+	}
 
 }

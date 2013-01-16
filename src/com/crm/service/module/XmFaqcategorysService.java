@@ -8,7 +8,8 @@ import com.crm.model.XmFaqcategory;
 
 
 public interface XmFaqcategorysService {
-	List<XmFaqcategory> getFaqCategoryByParentid(@Param("parentfaqcategoryid") int parentfaqcategoryid);
+	List<XmFaqcategory> getFaqCategoryByParentid(@Param("parentfaqcategoryid") String parentfaqcategoryid);
 	String getFaqCategory();
+	List<XmFaqcategory> getCatalogAll();
 
 }

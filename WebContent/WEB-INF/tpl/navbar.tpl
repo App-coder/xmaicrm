@@ -4,8 +4,9 @@
 			<li><a href="javascript:msgWind()">手机短信</a></li>
 			<li><a href="javascript:approveWind()">我的审批中心</a></li>
 			<li><a href="javascript:remindWind()">自定义提醒</a></li>
+			<li><a href="javascript:webmsgWind()">短消息</a></li>
 			<li><a href="http://www.x-mai.com" target="_blank" >我要提问</a></li>
-			<li><a href="crm/user/detail">帐号&设置</a></li>
+			<li><a href="crm/settings/users/detail">帐号&设置</a></li>
 			<li><a href="crm/welcome/loginout">退出（${login.userName}）</a></li>
 		</ul>
 </div>	

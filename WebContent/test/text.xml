@@ -1,1 +1,29 @@
-<chart caption='' subcaption=''  decimals='1' baseFontSize='12' isSliced='1' streamlinedData='0' isHollow='0' bgColor='EAEAEA' showBorder='0' formatNumberScale='0'><set label='无' value='0.001' /> <set label='初期沟通' value='0.001' /> <set label='立项评估' value='0.001' /> <set label='需求分析' value='2' /> <set label='方案指定' value='0.001' /> <set label='招投标/竞争' value='1' /> <set label='商务谈判' value='0.001' /> <set label='谈成结束' value='1' /> <set label='未成结束' value='0.001' /> <styles>       <definition>          <style type='font' name='captionFont' size='15' />       </definition>       <application>       <apply toObject='CAPTION' styles='captionFont' />       </application>    </styles></chart>
+<graph caption='销售任务完成情况统计图' labelDisplay='WRAP' shownames='1'
+	showvalues='0' decimals='0' numDivLines='4' formatNumberScale='0'
+	decimalPrecision='0' anchorSides='10' anchorRadius='3'
+	anchorBorderColor='009900' outCnvBaseFontSize='12' baseFontSize='12'>
+	<categories>
+		<category label='2012-03' />
+		<category label='2012-04' />
+		<category label='2012-05' />
+		<category label='2012-06' />
+		<category label='2012-07' />
+		<category label='2012-08' />
+	</categories>
+	<dataset seriesName='目标' color='AFD8F8' showValues='0'>
+		<set value='290358' />
+		<set value='306802' />
+		<set value='404281' />
+		<set value='789286' />
+		<set value='401364' />
+		<set value='1154432' />
+	</dataset>
+	<dataset seriesName='完成' color='F6BD0F' showValues='0'>
+		<set value='217978.0000' />
+		<set value='552847.0000' />
+		<set value='137340.0000' />
+		<set value='1321120.4200' />
+		<set value='103940.0000' />
+		<set value='0' />
+	</dataset>
+</graph>

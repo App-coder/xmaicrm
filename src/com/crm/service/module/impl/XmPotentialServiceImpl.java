@@ -37,6 +37,17 @@ public class XmPotentialServiceImpl implements XmPotentialService {
 		return this.xmPotentialMapper.getPotentialOfUserAndLast(id,start,end);
 	}
 
+	@Override
+	public int getTotalForOpportunities(int crmid) {
+		return this.xmPotentialMapper.getTotalForOpportunities(crmid);
+	}
+
+	@Override
+	public List<XmPotential> getOpportunities(int page, int rows, int crmid) {
+		int start = (page-1)*rows;
+		return this.xmPotentialMapper.getOpportunities(start,rows,crmid);
+	}
+
 
 
 }

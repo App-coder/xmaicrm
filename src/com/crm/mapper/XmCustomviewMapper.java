@@ -51,5 +51,13 @@ public interface XmCustomviewMapper {
 	XmCustomview getFirstCView(@Param("entitytype") String entitytype);
 
 	int insertsql(@Param("sql") String sql);
+
+	Map getObject(@Param("sql") String sql);
+
+	String getFieldValue(@Param("sql") String sql);
+
+	int update(@Param("sql") String sql);
+
+	String getModuleVal(@Param("sql") String sql);
 	
 }

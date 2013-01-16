@@ -1,5 +1,7 @@
 package com.crm.mapper.module;
 
+import java.util.List;
+
 import org.apache.ibatis.annotations.Param;
 
 import com.crm.mapper.ModuleMapper;
@@ -21,4 +23,6 @@ public interface XmNotesMapper extends ModuleMapper<XmNotes> {
     int updateByPrimaryKey(XmNotes record);
 
 	int getNoteOfUserAndLast(@Param("userid") Integer userid,@Param("start") String start,@Param("end") String end);
+
+	List<XmNotes> getTopNotes(@Param("userid") Integer userid);
 }

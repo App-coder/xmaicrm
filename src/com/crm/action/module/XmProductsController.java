@@ -11,8 +11,11 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.crm.action.BaseController;
 import com.crm.action.util.ModuleUtil;
+import com.crm.model.XmEntityname;
+import com.crm.model.XmTab;
 import com.crm.util.ActionUtil;
 import com.crm.util.actionutil.ActionCls;
+import com.crm.util.crm.CustomViewUtil;
 
 /**
  * 产品控制器
@@ -30,6 +33,12 @@ public class XmProductsController extends BaseController{
 	public void setModuleUtil(ModuleUtil moduleUtil) {
 		this.moduleUtil = moduleUtil;
 	}
+	
+	ActionCls actionCls;
+	@Resource(name="actionCls")
+	public void setActionCls(ActionCls actionCls) {
+		this.actionCls = actionCls;
+	}
 
 	@RequestMapping(value = "/index")
 	public String index(int ptb, ModelMap modelMap)
@@ -40,5 +49,29 @@ public class XmProductsController extends BaseController{
 		return "module/products/index";
 	}
 	
+	@RequestMapping(value = "/viewpop")
+	public String viewpop(ModelMap modelmap){
+		
+		modelmap.addAttribute("entitytype", "Products");
+		
+		XmTab tab = CustomViewUtil.getTabByName("Products");
+		modelmap.addAttribute("tab", tab);
+		
+		moduleUtil.setViewProp(modelmap, "Products", tab);
+
+		XmEntityname entityname = CustomViewUtil.getEntitynameByET("Products");
+		modelmap.addAttribute("viewid", entityname.getEntityidfield());
+		modelmap.addAttribute("entityname", entityname);
+		
+		return "module/products/viewpop";
+	}
+	
+	@RequestMapping(value = "/showedit")
+	public String showedit(int recordid,String module,int ptb,ModelMap modelmap){
+		
+		this.actionCls.showEdit(ptb, module, modelmap,recordid);
+		
+		return "module/products/edit";
+	}
 	
 }

@@ -61,11 +61,10 @@ public interface XmFieldMapper {
     List<Object> getMultiLevel2(@Param("tabid") Integer tabid,@Param("typeofdata") String typeofdata);
     
     List<Object> getApproveStepFieldTab(@Param("tabid") Integer tabid);
+
     List<Object> getApproveStepFieldTabDetail(@Param("stepid") Integer stepid,@Param("tabid") Integer tabid);
     
     List<XmField> getApproveStepFilters(@Param("tabid") Integer tabid);
-    
-    String getApproveStepFilterOfFieldid(@Param("tabid") Integer tabid);
-    
-}
+    List<XmField> getDisplayFields(@Param("tabid") Integer tabid,@Param("blockstr") String blockstr);
+	}
 	

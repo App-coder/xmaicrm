@@ -4,29 +4,29 @@ import java.util.HashMap;
 
 import com.crm.model.XmEntityname;
 import com.crm.model.XmTab;
-import com.crm.util.CacheManager;
+import com.crm.util.CacheUtil;
 import com.crm.util.Constant;
 
 public class CustomViewUtil {
 	
 	
 	public static XmEntityname getEntitynameByET(String entitytype){
-		HashMap<String,XmEntityname>  hmen = (HashMap<String,XmEntityname> )CacheManager.getFromCache(Constant.ENTITYNAME);
+		HashMap<String,XmEntityname>  hmen = (HashMap<String,XmEntityname> )CacheUtil.getFromCache(Constant.ENTITYNAME);
 		return hmen.get(entitytype.toLowerCase());
 	}
 	
 	public static XmTab getTabByName(String entitytype) {
-		HashMap<String,XmTab>  hmen = (HashMap<String,XmTab> )CacheManager.getFromCache(Constant.TAB);
+		HashMap<String,XmTab>  hmen = (HashMap<String,XmTab> )CacheUtil.getFromCache(Constant.TAB);
 		return hmen.get(entitytype.toLowerCase());
 	}
 	
 	public static XmTab getTabByLab(String lab){
-		HashMap<String,XmTab>  hmen = (HashMap<String,XmTab> )CacheManager.getFromCache(Constant.TABBYLAB);
+		HashMap<String,XmTab>  hmen = (HashMap<String,XmTab> )CacheUtil.getFromCache(Constant.TABBYLAB);
 		return hmen.get(lab.toLowerCase());
 	}
 
 	public static XmEntityname getEntitynameByEID(String eid) {
-		HashMap<String,XmEntityname>  hmen = (HashMap<String,XmEntityname> )CacheManager.getFromCache(Constant.TABBYEID);
+		HashMap<String,XmEntityname>  hmen = (HashMap<String,XmEntityname> )CacheUtil.getFromCache(Constant.TABBYEID);
 		return hmen.get(eid);
 	}
 

@@ -1,7 +1,12 @@
 package com.crm.model;
 
-public class XmDefOrgField {
-    private Integer fieldid;
+import java.io.Serializable;
+
+public class XmDefOrgField implements Serializable{
+	
+	private static final long serialVersionUID = -8760562014687336443L;
+
+	private Integer fieldid;
 
     private Integer tabid;
 

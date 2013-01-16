@@ -26,7 +26,7 @@ var tabid = ${tab.tabid};
 var tablabel = '${tab.tablabel}';
 var ptb = ${ptb.parenttabid };
 </script>
-<script type="text/javascript" src="resources/desktop/module/campaigns/index.js"></script>
+<script type="text/javascript" src="resources/desktop/module/gathersrecords/index.js"></script>
 </head>
 <body id="wrap">
 ${navbar }
@@ -68,8 +68,20 @@ ${ptb.parenttabLabel }&gt;<a href="crm/module/${fn:toLowerCase(entityname.module
 					class="easyui-linkbutton"
 					data-options="plain:true,iconCls:'icon-view'">视图管理</a>
 			</div>
+			
+			<div id="tabbar" class="gtb" style="display: block;" >  
+			查看范围：<select class="easyui-combotree" style="width:200px;" data-options="url:'crm/module/accounts/getCondition'"></select>
+			<a class="easyui-linkbutton" data-options="plain:true" iconCls="icon-add" onclick="add()" >添加</a>
+			<a class="easyui-linkbutton" data-options="plain:true" iconCls="icon-edit" onclick="edit()" >修改</a>
+			<a class="easyui-linkbutton" data-options="plain:true" iconCls="icon-view" onclick="view()" >预览</a>
+			<a class="easyui-linkbutton" data-options="plain:true" iconCls="icon-edit" onclick="editLeading()">修改负责人</a>
+			<a class="easyui-linkbutton" data-options="plain:true" iconCls="icon-share" onclick="share()" >共享</a>
+			<a class="easyui-linkbutton" data-options="plain:true" iconCls="icon-remove" onclick="del()" >删除</a>
+			<a class="easyui-linkbutton" data-options="plain:true" iconCls="icon-search" onclick="showSearch()" >查找</a>
+			<a class="easyui-linkbutton" data-options="plain:true" iconCls="icon-undo" onclick="cacelSearch()" >取消查找</a>		  
+			</div>
 			<table id="view_list"
-				data-options="fitColumns:true" ></table>
+				data-options="fitColumns:true" toolbar="#tabbar"  ></table>
 				<div class="stat_div hidden"></div>
 	<c:if test="${repfields!=null }">
 			<div data-options="region:'south',border:false">

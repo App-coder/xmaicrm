@@ -9,15 +9,15 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.alibaba.fastjson.JSON;
-import com.crm.bean.portlets.Salesyearinfo;
-import com.crm.bean.portlets.salesyearinfo.ExpensesStat;
-import com.crm.bean.portlets.salesyearinfo.GatherStat;
-import com.crm.bean.portlets.salesyearinfo.SalesorderStat;
-import com.crm.model.XmAccount;
+import com.crm.bean.crm.portlets.Salesyearinfo;
+import com.crm.bean.crm.portlets.salesyearinfo.ExpensesStat;
+import com.crm.bean.crm.portlets.salesyearinfo.GatherStat;
+import com.crm.bean.crm.portlets.salesyearinfo.SalesorderStat;
 import com.crm.service.module.XmAccountService;
 import com.crm.service.module.XmExpensesService;
 import com.crm.service.module.XmSalesorderService;
 import com.crm.service.portlets.XmGathersService;
+import com.crm.util.CacheUtil;
 
 /**
  * 公司年度销售情况
@@ -62,6 +62,12 @@ public class SalesyearinfoController {
 	@RequestMapping(value = "/getJson")
 	@ResponseBody
 	public String getJson() {
+		
+		Object cache = CacheUtil.getKeyCache(CacheUtil.getMethKey(),CacheUtil.defRefreshTime);
+		if(cache!=null){
+			return cache.toString();
+		}
+		
 		Salesyearinfo salesyearinfo = new Salesyearinfo();
 		
 		Calendar calendar = Calendar.getInstance();
@@ -80,7 +86,10 @@ public class SalesyearinfoController {
 		salesyearinfo.setSumexpensestotal(expensesstat.getSumexpensestotal());
 		salesyearinfo.setSumgathersactual(gatherstat.getSumgathersactual());
 		
-		return JSON.toJSONString(salesyearinfo);
+		String cachestr = JSON.toJSONString(salesyearinfo);
+		CacheUtil.putKeyCache(CacheUtil.getMethKey(), cachestr);
+		
+		return cachestr;
 	}
 	
 }

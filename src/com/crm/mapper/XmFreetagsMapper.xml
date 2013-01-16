@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.crm.mapper.XmFreetagsMapper" >
+  <resultMap id="BaseResultMap" type="com.crm.model.XmFreetags" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="tag" property="tag" jdbcType="VARCHAR" />
+    <result column="raw_tag" property="rawTag" jdbcType="VARCHAR" />
+    <result column="quantity" property="quantity" jdbcType="INTEGER" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, tag, raw_tag
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from xm_freetags
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from xm_freetags
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.crm.model.XmFreetags" >
+    insert into xm_freetags (id, tag, raw_tag
+      )
+    values (#{id,jdbcType=INTEGER}, #{tag,jdbcType=VARCHAR}, #{rawTag,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.crm.model.XmFreetags" >
+    insert into xm_freetags
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="tag != null" >
+        tag,
+      </if>
+      <if test="rawTag != null" >
+        raw_tag,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="tag != null" >
+        #{tag,jdbcType=VARCHAR},
+      </if>
+      <if test="rawTag != null" >
+        #{rawTag,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.crm.model.XmFreetags" >
+    update xm_freetags
+    <set >
+      <if test="tag != null" >
+        tag = #{tag,jdbcType=VARCHAR},
+      </if>
+      <if test="rawTag != null" >
+        raw_tag = #{rawTag,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.crm.model.XmFreetags" >
+    update xm_freetags
+    set tag = #{tag,jdbcType=VARCHAR},
+      raw_tag = #{rawTag,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <select id="getModuleTags" resultMap="BaseResultMap"  >
+  	SELECT
+		xm_freetags.*,
+		COUNT(object_id)AS quantity
+	FROM
+		xm_freetags
+	INNER JOIN xm_freetagged_objects ON(xm_freetags.id = tag_id)
+	WHERE
+		1 = 1
+	AND tagger_id = 1
+	AND module = #{module}
+	AND object_id = #{recordid}
+	GROUP BY
+		tag,
+		tag_id
+	ORDER BY
+		quantity DESC;
+  </select>
+  <select id="getFreetags" resultMap="BaseResultMap" >
+  	SELECT
+		tag,
+		tag_id,
+		COUNT(object_id)AS quantity
+	FROM
+		xm_freetags
+	INNER JOIN xm_freetagged_objects ON(xm_freetags.id = tag_id)
+	WHERE
+		1 = 1
+	AND tagger_id = 1
+	GROUP BY
+		tag,
+		tag_id
+	ORDER BY
+		quantity DESC;
+  </select>
+</mapper>

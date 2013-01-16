@@ -5,11 +5,11 @@
 	<ul>
 		<li id="path_users"><a href="crm/settings/users/index" >系统用户</a></li>
 		<li id="path_role"><a href="crm/settings/role/index">角色权限</a></li>
-		<li id="group"><a href="crm/settings/group/index">部门机构</a></li>
-		<li id="deforgshare" ><a href="crm/settings/deforgshare/index" >全局共享规则</a></li>
-		<li id="customsharings" ><a href="crm/settings/customsharings/index">自定义共享规则</a></li>
-		<li id="systemlog" ><a href="crm/settings/systemlog/index" >系统日志</a></li>
-		<li id="loginhistory" ><a href="crm/settings/loginhistory/index">登录历史</a></li>
+		<li id="path_group"><a href="crm/settings/group/index">部门机构</a></li>
+		<li id="path_deforgshare" ><a href="crm/settings/deforgshare/index" >全局共享规则</a></li>
+		<li id="path_customsharings" ><a href="crm/settings/customsharings/index">自定义共享规则</a></li>
+		<li id="path_systemlog" ><a href="crm/settings/systemlog/index" >系统日志</a></li>
+		<li id="path_loginhistory" ><a href="crm/settings/loginhistory/index">登录历史</a></li>
 	</ul>
 	<div class="datagrid-toolbar">系统定制</div>
 	<ul>

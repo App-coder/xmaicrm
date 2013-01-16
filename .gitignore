@@ -1,2 +1,10 @@
 
 /classes/artifacts/xmaicrm/xmaicrm.war
+/build/classes/com/crm/service/impl/XmFieldServiceImpl.class
+/build/classes/com/crm/util/DateUtil.class
+/build/classes/com/crm/mapper/XmFieldMapper.class
+/build/classes/com/crm/service/XmFieldService.class
+/build/classes/com/crm/service/impl/XmFieldServiceImpl.class
+/build/classes/com/crm/service/XmFieldService.class
+/build/classes/com/crm/mapper/XmFieldMapper.class
+/build/classes/com/crm/util/DateUtil.class

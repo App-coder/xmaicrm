@@ -14,6 +14,7 @@ import com.crm.model.XmTab;
 import com.crm.service.module.XmSalesorderService;
 import com.crm.service.settings.system.XmParenttabrelService;
 import com.crm.util.ActionUtil;
+import com.crm.util.actionutil.ActionCls;
 import com.crm.util.crm.CustomViewUtil;
 
 /**
@@ -26,6 +27,12 @@ import com.crm.util.crm.CustomViewUtil;
 @Controller
 @RequestMapping(value = "crm/module/salesorder")
 public class XmSalesorderController extends BaseController {
+	
+	ActionCls actionCls;
+	@Resource(name="actionCls")
+	public void setActionCls(ActionCls actionCls) {
+		this.actionCls = actionCls;
+	}
 	
 	ModuleUtil moduleUtil;
 	@Resource(name = "moduleUtil")
@@ -56,6 +63,19 @@ public class XmSalesorderController extends BaseController {
 		ActionUtil.setTitle("SalesOrder", ptb, modelMap, this.moduleUtil);
 
 		return "module/salesorder/index";
+	}
+	
+	@RequestMapping(value = "/showedit")
+	public String showedit(int recordid,String module,int ptb,ModelMap modelmap){
+		
+		if(ptb==-1){
+			XmTab tab = CustomViewUtil.getTabByName("SalesOrder");
+			ptb = this.xmParenttabrelService.getPtbByTabid(tab.getTabid());
+		}
+		
+		this.actionCls.showEdit(ptb, module, modelmap,recordid);
+		
+		return "module/salesorder/edit";
 	}
 
 	

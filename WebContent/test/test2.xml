@@ -1,0 +1,17 @@
+<graph caption='销售任务完成情况统计图' labelDisplay='WRAP' shownames='1' showvalues='0' decimals='0' numDivLines='4' formatNumberScale='0' decimalPrecision='0' anchorSides='10' anchorRadius='3' anchorBorderColor='009900' outCnvBaseFontSize='12' baseFontSize='12'>
+	<categories>
+		<category label='2012-06' />
+		<category label='2012-07' />
+		<category label='2012-08' />
+	</categories>
+	<dataset seriesName='目标' color='AFD8F8' showValues='0'>
+		<set value='500000' />
+		<set value='350000' />
+		<set value='500000' />
+	</dataset>
+	<dataset seriesName='完成' color='F6BD0F' showValues='0'>
+		<set value='769222.4200' />
+		<set value='98500.0000' />
+		<set value='14634.9000' />
+	</dataset>
+</graph>

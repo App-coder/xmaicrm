@@ -1,6 +1,7 @@
 package com.crm.service.module.impl;
 
 import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 
 import javax.annotation.Resource;
@@ -31,6 +32,24 @@ public class XmActivityServiceImpl implements XmActivityService {
 		String dayend = DateUtil.format(calendar.getTime(),DateUtil.C_DATE_PATTON_DEFAULT);
 		
 		return this.xmActivityMapper.getTopActivity(today,dayend,smownerid);
+	}
+
+
+	@Override
+	public List<XmActivity> getDayActivity() {
+		String now = DateUtil.format(new Date(),DateUtil.C_DATE_PATTON_DEFAULT);
+		Calendar calendar = Calendar.getInstance();
+		calendar.add(Calendar.DAY_OF_MONTH, 1);
+		String tomorrow = DateUtil.format(calendar.getTime(),DateUtil.C_DATE_PATTON_DEFAULT);
+		return this.xmActivityMapper.getDayActivity(now,tomorrow);
+	}
+
+
+	@Override
+	public List<XmActivity> getActivity(String start, String end) {
+		String begin = DateUtil.format(DateUtil.parseDate(start),DateUtil.C_DATE_PATTON_DEFAULT);
+		String finish = DateUtil.format(DateUtil.parseDate(end),DateUtil.C_DATE_PATTON_DEFAULT);
+		return this.xmActivityMapper.getActivitiesInInterval(begin,finish);
 	}
 
 }

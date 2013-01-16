@@ -19,6 +19,9 @@ public class UserPermission {
 	HashMap<String, ModulePermission> modulePermission;
 	List<XmProfile2globalpermissions> globalpermissions;
 	
+	//用于统计用户状态计数
+	private int pingnum;
+	
 	public HashMap<String, ModulePermission> getModulePermission() {
 		return modulePermission;
 	}
@@ -45,4 +48,11 @@ public class UserPermission {
 	public void setUser(XmUsers user) {
 		this.user = user;
 	}
+	public int getPingnum() {
+		return pingnum;
+	}
+	public void setPingnum(int pingnum) {
+		this.pingnum = pingnum;
+	}
+	
 }

@@ -1,7 +1,8 @@
 package com.crm.action.portlets;
 
-import javax.annotation.Resource;
+import java.util.List;
 
+import javax.annotation.Resource;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -11,9 +12,8 @@ import com.alibaba.fastjson.JSON;
 import com.crm.bean.easyui.ListBean;
 import com.crm.model.XmPotential;
 import com.crm.service.module.XmPotentialService;
+import com.crm.util.CacheUtil;
 import com.crm.util.DateUtil;
-
-import java.util.*;
 
 /**
  * 金额较大的销售机会
@@ -40,11 +40,21 @@ public class TopPotentialController {
 	@RequestMapping(value = "/getJson")
 	@ResponseBody
 	public String getJson() {
+		
+		Object cache = CacheUtil.getKeyCache(CacheUtil.getMethKey(),CacheUtil.defRefreshTime);
+		if(cache!=null){
+			return cache.toString();
+		}
+		
 		ListBean bean = new ListBean();
 		List<XmPotential> potentials = this.xmPotentialService.getTopPotential();
 		bean.setRows(potentials);
 		bean.setTotal(potentials.size());
-		return JSON.toJSONStringWithDateFormat(bean,DateUtil.C_DATE_PATTON_DEFAULT);
+		
+		String cachestr = JSON.toJSONStringWithDateFormat(bean,DateUtil.C_DATE_PATTON_DEFAULT);
+		CacheUtil.putKeyCache(CacheUtil.getMethKey(), cachestr);
+		
+		return cachestr;
 	}
 	
 }

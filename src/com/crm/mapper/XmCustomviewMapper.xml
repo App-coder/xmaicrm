@@ -170,4 +170,16 @@
   <insert id="insertsql" >
   	${sql}
   </insert>
+  <select id="getObject" resultType="map">
+  	${sql}
+  </select>
+  <select id="getFieldValue" resultType="String">
+  	${sql}
+  </select>
+  <update id="update" >
+  	${sql}
+  </update>
+  <select id="getModuleVal" resultType="String" >
+  	${sql}
+  </select>
 </mapper>

@@ -15,47 +15,6 @@ function init(){
 		queryParams:{entitytype:entitytype,viewid:tab_viewid},
 		columns : [tab_columns],
 		pageSize:20,
-		toolbar : [{
-		    text : '添加',
-		    iconCls:'icon-add',
-		    handler : function() {
-			window.location.href="crm/module/campaigns/showedit?recordid=0&ptb="+ptb+"&module="+entitytype;
-		    }
-		}, {
-		    text : '编辑',
-		    iconCls:'icon-edit',
-		    handler : function() {
-			var selected = $('#view_list').datagrid("getSelected");
-			if(selected){
-			    
-			}else{
-			    message("请选择记录！");
-			}
-		    }
-		},{
-		    text : '删除',
-		    iconCls:'icon-remove',
-		    handler : function() {
-			var selected = $('#view_list').datagrid("getSelected");
-			if(selected){
-			    
-			}else{
-			    message("请选择记录！");
-			}			
-		    }
-		},{
-		    text : '修改负责人',
-		    iconCls:'icon-edit',
-		    handler:function(){
-			
-		    }
-		},{
-		    text : '共享',
-		    iconCls:'icon-share',
-		    handler : function() {
-			
-		    }
-		}],
 		frozenColumns : [[{
 			field : 'ck',
 			checkbox : true
@@ -124,6 +83,64 @@ function reloadView(val){
 		pageSize:20
 	});
     },'json');
-    
-    
+}
+
+function add(){
+    window.location.href="crm/module/potentials/showedit?recordid=0&ptb="+ptb+"&module="+entitytype;
+}
+function edit(){
+    var selected = $('#view_list').datagrid("getSelected");
+    if(selected){
+	window.location.href="crm/module/accounts/showedit?recordid="+selected.accountid+"&ptb="+ptb+"&module="+entitytype;
+    }else{
+	message("请选择记录！");
+    }
+}
+function batchEdit(){
+    var selections = $('#view_list').datagrid("getSelections");
+    //空的记录
+    if(selections.length==0){
+	message("请选择记录！");
+    }else{
+	$("#win_batchEdit").window("open");
+    }
+}
+function view(){
+    var selected = $('#view_list').datagrid("getSelected");
+    if(selected){
+	window.location.href="crm/module/accounts/view?recordid="+selected.accountid+"&ptb="+ptb+"&module="+entitytype;
+    }else{
+	message("请选择记录！");
+    }    
+}
+function editLeading(){
+    var selections = $('#view_list').datagrid("getSelections");
+    //空的记录
+    if(selections.length==0){
+	message("请选择记录！");
+    }else{
+	$("#win_editLeading").window("open");
+    }
+}
+function del(){
+    var selections = $('#view_list').datagrid("getSelections");
+    //空的记录
+    if(selections.length==0){
+	message("请选择记录！");
+    }else{
+	confirm('确定删除所选的客户？',function(r){
+	    if(r){
+		
+	    }
+	});
+    }
+}
+function share(){
+    var selections = $('#view_list').datagrid("getSelections");
+    //空的记录
+    if(selections.length==0){
+	message("请选择记录！");
+    }else{
+	$("#win_share").window("open");
+    }
 }

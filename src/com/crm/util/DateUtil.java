@@ -17,6 +17,7 @@ public class DateUtil {
 
 	public static final String C_TIME_PATTON_DEFAULT = "yyyy-MM-dd HH:mm:ss";
 	public static final String C_DATE_PATTON_DEFAULT = "yyyy-MM-dd";
+	public static final String C_DATE_PATTON_YYYYMM = "yyyy-MM";
 	public static final String C_DATA_PATTON_YYYYMMDD = "yyyyMMdd";
 	public static final String C_DATA_PATTON_YYYYMM = "yyyyMM";
 	public static final String C_DATA_PATTON_DD = "yyyyMMdd";
@@ -273,6 +274,18 @@ public class DateUtil {
 
 		calendar.add(GregorianCalendar.DATE, 1);
 		return calendar.getTime();
+	}
+	
+	/**
+	 * 根据天和时间整合成日期格式
+	 * 
+	 * @param day 天
+	 * @param time 时间
+	 * @return
+	 */
+	public static Date getDateFromDayAndTime(String day,String time){
+		String timestr = day+" "+time+":00";
+		return DateUtil.parseDateTime(timestr);
 	}
 
 	public static void main(String[] args) {

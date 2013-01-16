@@ -28,6 +28,7 @@
     <result column="approvedby" property="approvedby" jdbcType="INTEGER" />
     <result column="sumgathersplan" property="sumgathersplan" jdbcType="DECIMAL" />
     <result column="sumchargesplan" property="sumchargesplan" jdbcType="DECIMAL" />
+    <result column="accountname" property="accountname" jdbcType="VARCHAR" />
   </resultMap>
   <resultMap id="ResultMapWithBLOBs" type="com.crm.model.XmGathers" extends="BaseResultMap" >
     <result column="description" property="description" jdbcType="LONGVARCHAR" />
@@ -400,10 +401,44 @@
    <select id="getFinished" resultType="String">
    	select sum((case when xm_gathers.currency_rate > 0 then xm_gathers.currency_rate else 1 end)*xm_gathers.actualamount) as total from xm_gathers WHERE deleted =0 and gatherstatus='已收' and actualdate between #{firstDayOfMonth} and #{lastDayOfMonth};
    </select>
-   <select id="getGatherStat" resultType="com.crm.bean.portlets.salesyearinfo.GatherStat">
+   <select id="getGatherStat" resultType="com.crm.bean.crm.portlets.salesyearinfo.GatherStat">
    	select count(*) as gathersacc, sum(IFNULL(xm_gathers.planamount,0.00)*(case when xm_gathers.currency_rate > 0 then xm_gathers.currency_rate else 1 end)) as sumgathersplan, sum(IFNULL((case when xm_gathers.currency_rate > 0 then xm_gathers.currency_rate else 1 end)*actualamount,0.00)) as sumgathersactual from xm_gathers where xm_gathers.deleted = 0 and xm_gathers.gatherstatus = '已收' and xm_gathers.actualdate between '${year}-01-01 00:00:00' and '${year}-12-31 23:59:00';
    </select>
    <select id="getSumOfGatherByUserAndLast" resultType="String">
    	select sum((case when xm_gathers.currency_rate > 0 then xm_gathers.currency_rate else 1 end)*xm_gathers.actualamount) as rowsnum from xm_gathers WHERE deleted =0 AND smownerid='${userid}' and gatherstatus='已收' and actualdate between '${start} 00:00:00' and '${end} 23:59:00';
+   </select>
+   <select id="getTopGather" resultMap="BaseResultMap"  >
+   	SELECT
+		xm_gathers.*, xm_account.accountname,
+		xm_account.accountid,
+		(
+			(
+				CASE
+				WHEN xm_gathers.currency_rate > 0 THEN
+					xm_gathers.currency_rate
+				ELSE
+					1
+				END
+			)* xm_gathers.planamount
+		)AS planamount
+	FROM
+		xm_gathers
+	LEFT JOIN xm_account ON xm_account.accountid = xm_gathers.accountid
+	LEFT JOIN xm_users ON xm_users.id = xm_gathers.smownerid
+	LEFT JOIN xm_salesorder ON xm_salesorder.salesorderid = xm_gathers.salesorderid
+	LEFT JOIN xm_invoice ON xm_invoice.invoiceid = xm_gathers.invoiceid
+	WHERE
+		xm_gathers.deleted = 0
+	AND xm_gathers.smownerid = #{userid}
+	AND xm_gathers.gatherstatus != '已收'
+	AND(
+		(
+			plandate >= #{now}
+			AND plandate <![CDATA[<= ]]> #{next}
+		)
+		OR plandate <![CDATA[<]]> #{now}
+	)
+	ORDER BY
+		plandate;
    </select>
 </mapper>

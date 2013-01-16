@@ -24,15 +24,17 @@
 		</property>
 	</bean>
 
+	
 	<!-- 自动搜索@Controller标注的类 -->
 	<context:component-scan base-package="com.crm" />
 	<!-- 设置注解驱动 -->
 	<mvc:annotation-driven />
 
+
 	<mvc:interceptors>
-		<!-- 用于用户登入的验证 ，全局拦截，可用于防盗链，记住访问来源，记住刚才访问的链接，系统数据的初始化-->
+		<!-- 全局拦截，可用于防盗链，记住访问来源，记住刚才访问的链接  -->
 		<mvc:interceptor>
-			<mvc:mapping path="/crm/**" />
+			<mvc:mapping path="/**" />
 			<bean class="com.crm.interceptor.BaseInterceptor" />
 		</mvc:interceptor>
 	</mvc:interceptors>

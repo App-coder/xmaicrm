@@ -10,6 +10,8 @@ public class XmRole {
     private Integer depth;
     
     private String state;
+    
+    private Boolean relTemplate;
 
     public String getRoleid() {
         return roleid;
@@ -49,6 +51,14 @@ public class XmRole {
 
 	public void setState(String state) {
 		this.state = state;
+	}
+
+	public Boolean getRelTemplate() {
+		return relTemplate;
+	}
+
+	public void setRelTemplate(Boolean relTemplate) {
+		this.relTemplate = relTemplate;
 	}
     
     

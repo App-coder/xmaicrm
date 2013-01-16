@@ -1,0 +1,167 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.crm.mapper.XmAttachmentsMapper" >
+  <resultMap id="BaseResultMap" type="com.crm.model.XmAttachments" >
+    <id column="attachmentsid" property="attachmentsid" jdbcType="INTEGER" />
+    <result column="name" property="name" jdbcType="VARCHAR" />
+    <result column="description" property="description" jdbcType="VARCHAR" />
+    <result column="type" property="type" jdbcType="VARCHAR" />
+    <result column="setype" property="setype" jdbcType="VARCHAR" />
+    <result column="path" property="path" jdbcType="VARCHAR" />
+    <result column="smcreatorid" property="smcreatorid" jdbcType="INTEGER" />
+    <result column="createdtime" property="createdtime" jdbcType="TIMESTAMP" />
+    <result column="deleted" property="deleted" jdbcType="INTEGER" />
+    <result column="user_name" property="username" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    attachmentsid, name, description, type, setype, path, smcreatorid, createdtime, deleted
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from xm_attachments
+    where attachmentsid = #{attachmentsid,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from xm_attachments
+    where attachmentsid = #{attachmentsid,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.crm.model.XmAttachments" >
+    insert into xm_attachments (attachmentsid, name, description, 
+      type, setype, path, 
+      smcreatorid, createdtime, deleted
+      )
+    values (#{attachmentsid,jdbcType=INTEGER}, #{name,jdbcType=VARCHAR}, #{description,jdbcType=VARCHAR}, 
+      #{type,jdbcType=VARCHAR}, #{setype,jdbcType=VARCHAR}, #{path,jdbcType=VARCHAR}, 
+      #{smcreatorid,jdbcType=INTEGER}, #{createdtime,jdbcType=TIMESTAMP}, #{deleted,jdbcType=INTEGER}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.crm.model.XmAttachments" >
+    insert into xm_attachments
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="attachmentsid != null" >
+        attachmentsid,
+      </if>
+      <if test="name != null" >
+        name,
+      </if>
+      <if test="description != null" >
+        description,
+      </if>
+      <if test="type != null" >
+        type,
+      </if>
+      <if test="setype != null" >
+        setype,
+      </if>
+      <if test="path != null" >
+        path,
+      </if>
+      <if test="smcreatorid != null" >
+        smcreatorid,
+      </if>
+      <if test="createdtime != null" >
+        createdtime,
+      </if>
+      <if test="deleted != null" >
+        deleted,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="attachmentsid != null" >
+        #{attachmentsid,jdbcType=INTEGER},
+      </if>
+      <if test="name != null" >
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="description != null" >
+        #{description,jdbcType=VARCHAR},
+      </if>
+      <if test="type != null" >
+        #{type,jdbcType=VARCHAR},
+      </if>
+      <if test="setype != null" >
+        #{setype,jdbcType=VARCHAR},
+      </if>
+      <if test="path != null" >
+        #{path,jdbcType=VARCHAR},
+      </if>
+      <if test="smcreatorid != null" >
+        #{smcreatorid,jdbcType=INTEGER},
+      </if>
+      <if test="createdtime != null" >
+        #{createdtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="deleted != null" >
+        #{deleted,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.crm.model.XmAttachments" >
+    update xm_attachments
+    <set >
+      <if test="name != null" >
+        name = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="description != null" >
+        description = #{description,jdbcType=VARCHAR},
+      </if>
+      <if test="type != null" >
+        type = #{type,jdbcType=VARCHAR},
+      </if>
+      <if test="setype != null" >
+        setype = #{setype,jdbcType=VARCHAR},
+      </if>
+      <if test="path != null" >
+        path = #{path,jdbcType=VARCHAR},
+      </if>
+      <if test="smcreatorid != null" >
+        smcreatorid = #{smcreatorid,jdbcType=INTEGER},
+      </if>
+      <if test="createdtime != null" >
+        createdtime = #{createdtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="deleted != null" >
+        deleted = #{deleted,jdbcType=INTEGER},
+      </if>
+    </set>
+    where attachmentsid = #{attachmentsid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.crm.model.XmAttachments" >
+    update xm_attachments
+    set name = #{name,jdbcType=VARCHAR},
+      description = #{description,jdbcType=VARCHAR},
+      type = #{type,jdbcType=VARCHAR},
+      setype = #{setype,jdbcType=VARCHAR},
+      path = #{path,jdbcType=VARCHAR},
+      smcreatorid = #{smcreatorid,jdbcType=INTEGER},
+      createdtime = #{createdtime,jdbcType=TIMESTAMP},
+      deleted = #{deleted,jdbcType=INTEGER}
+    where attachmentsid = #{attachmentsid,jdbcType=INTEGER}
+  </update>
+  <select id="getRelAttachments" resultMap="BaseResultMap" >
+  	SELECT
+		xm_attachments.*, xm_users.user_name
+	FROM
+		xm_attachments
+	INNER JOIN xm_users ON xm_attachments.smcreatorid = xm_users.id
+	INNER JOIN xm_seattachmentsrel ON xm_seattachmentsrel.attachmentsid = xm_attachments.attachmentsid
+	WHERE
+		xm_attachments.deleted = 0
+	and xm_attachments.setype = #{module}		
+	AND xm_seattachmentsrel.crmid = #{crmid}  
+		limit #{start},#{rows}
+  </select>
+  <select id="getTotalRelAttachments" resultType="Integer" >
+  	  	SELECT
+			count(1) 
+		FROM
+			xm_attachments
+		INNER JOIN xm_users ON xm_attachments.smcreatorid = xm_users.id
+		INNER JOIN xm_seattachmentsrel ON xm_seattachmentsrel.attachmentsid = xm_attachments.attachmentsid
+		WHERE
+			xm_attachments.deleted = 0
+		and xm_attachments.setype = #{module}		
+		AND xm_seattachmentsrel.crmid = #{crmid}  
+  </select>
+</mapper>

@@ -20,6 +20,7 @@ infosoftglobal.FusionCharts = function(swf, id, w, h, debugMode, registerWithJS,
 	
 	//Create container objects
 	this.params = new Object();
+	this.addParam('wmode', 'opaque');
 	this.variables = new Object();
 	this.attributes = new Array();
 	

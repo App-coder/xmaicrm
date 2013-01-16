@@ -22,6 +22,9 @@
 .icon-unauditoffline{
 	background:url('icons/unauditoffline.png') no-repeat;
 }
+.icon-sendemail{
+	background:url('icons/sendemail.png') no-repeat;
+}
 .icon-unauditOnline{
 	background:url('icons/unauditOnline.png') no-repeat;
 }
@@ -63,6 +66,9 @@
 }
 .icon-cancel{
 	background:url('icons/cancel.png') no-repeat;
+}
+.icon-lock{
+	background:url('icons/lock.png') no-repeat;
 }
 .icon-reload{
 	background:url('icons/reload.png') no-repeat;
@@ -183,4 +189,47 @@
 }
 .icon-return{
 	background:url('icons/return.png') no-repeat ;
+}
+.icon-group{
+	background:url('icons/group.png') no-repeat ;
+}
+.icon-user{
+	background:url('icons/user.png') no-repeat ;
+}
+.icon-import{
+	background:url('icons/import.png') no-repeat ;
+}
+.icon-mini-delete{
+	background:url('icons/mini_delete.png') no-repeat ;
+}
+.icon-prev{
+	background:url('icons/prev.png') no-repeat ;
+}
+.icon-next{
+	background:url('icons/next.png') no-repeat ;
+}
+.icon-sendmsg{
+	background:url('icons/sendmsg.png') no-repeat ;
+}
+.icon-inbox{
+	background:url('icons/inbox.png') no-repeat ;
+}
+/*草稿箱*/
+.icon-draft{
+	background:url('icons/draft.png') no-repeat ;
+}
+.icon-dustbin{
+	background:url('icons/dustbin.png') no-repeat ;
+}
+.icon-writeemail{
+	background:url('icons/writeemail.png') no-repeat ;
+}
+.icon-receiveemail{
+	background:url('icons/receiveemail.png') no-repeat ;
+}
+.icon-emailcfg{
+	background:url('icons/emailcfg.png') no-repeat ;
+}
+.icon-submit{
+	background:url('icons/submit.png') no-repeat ;
 }

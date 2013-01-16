@@ -55,6 +55,12 @@ public class XmGathers {
     private String description;
     
     /**
+     * 客户名称
+     */
+    private String accountname;
+    
+    
+    /**
      * 应收款总额
      */
     private BigDecimal sumgathersplan;
@@ -278,6 +284,14 @@ public class XmGathers {
 
 	public void setSumchargesplan(BigDecimal sumchargesplan) {
 		this.sumchargesplan = sumchargesplan;
+	}
+
+	public String getAccountname() {
+		return accountname;
+	}
+
+	public void setAccountname(String accountname) {
+		this.accountname = accountname;
 	}
     
     

@@ -17,7 +17,6 @@ import com.crm.service.module.XmCampaignService;
 @Service("xmCampaignService")
 public class XmCampaignServiceImpl implements XmCampaignService {
 	
-	
 	CvFilter cvFilter;
 	@Resource(name="cvFilter")
 	public void setCvFilter(CvFilter cvFilter) {
@@ -55,6 +54,16 @@ public class XmCampaignServiceImpl implements XmCampaignService {
 			return Integer.parseInt(maxid); 
 		}
 		return 0;
+	}
+
+	@Override
+	public boolean delete(int recordid) {
+		return this.xmCampaignMapper.deleteByPrimaryKey(recordid) == 1?true:false;
+	}
+
+	@Override
+	public boolean deleteRecords(String recordids) {
+		return this.xmCampaignMapper.deleteRecords(recordids) >= 1?true:false;
 	}
 
 

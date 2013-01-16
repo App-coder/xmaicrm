@@ -17,7 +17,7 @@ import com.crm.bean.crm.UserPermission;
 import com.crm.model.XmHomestuff;
 import com.crm.model.XmParenttab;
 import com.crm.service.XmHomestuffService;
-import com.crm.util.CacheManager;
+import com.crm.util.CacheUtil;
 import com.crm.util.Constant;
 import com.crm.util.crm.CustomViewUtil;
 
@@ -49,7 +49,7 @@ public class XmHomeController {
 		}
 		if(ptb!=0){
 			modelmap.addAttribute("tab",CustomViewUtil.getTabByName("Home"));
-			HashMap<Integer, XmParenttab> parenttab = (HashMap<Integer, XmParenttab>)CacheManager.getFromCache(Constant.PARENTTAB);
+			HashMap<Integer, XmParenttab> parenttab = (HashMap<Integer, XmParenttab>)CacheUtil.getFromCache(Constant.PARENTTAB);
 			modelmap.addAttribute("ptb",parenttab.get(ptb));
 		}
 		

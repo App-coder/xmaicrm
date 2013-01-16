@@ -171,7 +171,7 @@ ${navbar }
 			style="width: 700px; height: 432px;" class="easyui-window"
 			<%=win_topbar%> title="属性编辑" >
 			<div class="easyui-layout" data-options="fit:true,border:false">
-			<div data-options="region:'center',border:false" style="padding:10px;background:#fff;">
+			<div data-options="region:'center',border:false" style="padding:10px;">
 					<form name="form_customview" id="form_customview" method="post" >
 					<input type="hidden" name="id" />
 					<input type="hidden" name="action"  />

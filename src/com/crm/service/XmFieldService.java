@@ -75,4 +75,6 @@ public interface XmFieldService {
 	
 	List<XmField> getApproveStepFilters(Integer tabid);
 
+	public List<XmField> getDisplayFields(Integer tabid, String blockstr);
+
 }

@@ -104,9 +104,19 @@
       and stufftype = #{stufftype,jdbcType=VARCHAR}
   </update>
   <select id="getStuffById" resultMap="BaseResultMap" >
-  	select xm_homestuff.* from xm_homestuff where visible=0 and stuffid=#{stuffid} order by stuffsequence ;
+  	select xm_homestuff.* from xm_homestuff where visible=0 and stuffid=#{stuffid} order by stuffsequence asc;
   </select>
   <select id="getDefaultStuff" resultMap="BaseResultMap" >
   	SELECT * from xm_homedefault order by stuffsequence 
   </select>
+  <select id="getByStuffId" resultMap="BaseResultMap" >
+  select * from xm_homestuff where stuffid = #{hometemplatesid} order by stuffsequence asc ;
+  </select>
+  <delete id="deleteByStuffId" >
+  	delete from xm_homestuff where stuffid = #{hometemplatesid}
+  </delete>
+  <update id="changeSeq" parameterType="com.crm.model.XmHomestuff" >
+  	update xm_homestuff set stuffsequence = #{stuffsequence,jdbcType=INTEGER} where stuffid = #{stuffid,jdbcType=INTEGER} 
+      and stufftype = #{stufftype,jdbcType=VARCHAR} 
+  </update>
 </mapper>

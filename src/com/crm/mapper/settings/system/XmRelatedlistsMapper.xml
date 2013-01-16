@@ -117,4 +117,15 @@
   <select id="getRelatedByTabid" resultMap="BaseResultMap" >
   	select * from xm_relatedlists where tabid=#{tabid} order by sequence;
   </select>
+  <select id="getRelatedlistByTabid" resultMap="BaseResultMap">
+  	SELECT
+		xm_relatedlists.*
+	FROM
+		xm_relatedlists 
+	WHERE
+		xm_relatedlists.tabid = #{tabid} 
+	AND xm_relatedlists.presence = 0 
+	ORDER BY 
+		sequence;
+  </select>
 </mapper>

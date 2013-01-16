@@ -5,15 +5,19 @@ import java.util.HashMap;
 import java.util.List;
 
 import com.crm.bean.crm.permission.ModulePermission;
+import com.crm.model.XmDefOrgField;
 import com.crm.model.XmProfile2standardpermissions;
 import com.crm.model.XmTab;
+import com.crm.service.XmDefOrgFieldService;
 import com.crm.service.XmFieldService;
+import com.crm.util.CacheUtil;
+import com.crm.util.Constant;
 
 public class PermissionUtil {
 
 	public static List<ModulePermission> GenerateModulePerssion(
 			List<XmTab> tabPermissions,
-			List<XmProfile2standardpermissions> standardpermissions,XmFieldService xmFieldService,int profileid) {
+			List<XmProfile2standardpermissions> standardpermissions,XmFieldService xmFieldService,int profileid,XmDefOrgFieldService xmDefOrgFieldService) {
 		
 		List<ModulePermission> permissions = new ArrayList<ModulePermission>();
 		for(int i=0;i<tabPermissions.size();i++){
@@ -42,6 +46,8 @@ public class PermissionUtil {
 			
 			//设置字段的权限
 			permission.setProfile2fields(xmFieldService.getProfileFieldsByTabid(profileid,tabPermissions.get(i).getTabid()));
+			
+			permission.setDefOrgFields((HashMap<Integer, XmDefOrgField>)CacheUtil.getFromCache(Constant.HMDOF));
 			
 			permissions.add(permission);
 		}

@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.crm.mapper.XmSeattachmentsrelMapper" >
+  <resultMap id="BaseResultMap" type="com.crm.model.XmSeattachmentsrel" >
+    <id column="attachmentsid" property="attachmentsid" jdbcType="INTEGER" />
+    <id column="crmid" property="crmid" jdbcType="INTEGER" />
+  </resultMap>
+  <delete id="deleteByPrimaryKey" parameterType="map" >
+    delete from xm_seattachmentsrel
+    where attachmentsid = #{attachmentsid,jdbcType=INTEGER}
+      and crmid = #{crmid,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.crm.model.XmSeattachmentsrel" >
+    insert into xm_seattachmentsrel (attachmentsid, crmid)
+    values (#{attachmentsid,jdbcType=INTEGER}, #{crmid,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" parameterType="com.crm.model.XmSeattachmentsrel" >
+    insert into xm_seattachmentsrel
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="attachmentsid != null" >
+        attachmentsid,
+      </if>
+      <if test="crmid != null" >
+        crmid,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="attachmentsid != null" >
+        #{attachmentsid,jdbcType=INTEGER},
+      </if>
+      <if test="crmid != null" >
+        #{crmid,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+</mapper>

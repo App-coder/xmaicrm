@@ -48,6 +48,8 @@
     <result column="deleted" property="deleted" jdbcType="INTEGER" />
     <result column="approved" property="approved" jdbcType="INTEGER" />
     <result column="approvedby" property="approvedby" jdbcType="INTEGER" />
+    <result column="user_name" property="username" jdbcType="VARCHAR" />
+    <result column="crmid" property="crmid" jdbcType="INTEGER" />
   </resultMap>
   <resultMap id="ResultMapWithBLOBs" type="com.crm.model.XmContactdetails" extends="BaseResultMap" >
     <result column="description" property="description" jdbcType="LONGVARCHAR" />
@@ -647,5 +649,36 @@
   </select>
   <select id="loadList" resultMap="BaseResultMap">
     SELECT xm_account.* FROM xm_account LEFT JOIN xm_users ON xm_users.id = xm_account.smownerid WHERE 1=1 ${filter} limit #{start},#{rows}
+  </select>
+  <select id="getTotalForGetContacts" resultType="Integer">
+  	SELECT
+		count(1)
+	FROM
+		xm_contactdetails
+	INNER JOIN xm_campaigncontrel ON xm_campaigncontrel.contactid = xm_contactdetails.contactid
+	LEFT JOIN xm_users ON xm_contactdetails.smownerid = xm_users.id
+	WHERE 
+		xm_campaigncontrel.campaignid = #{campaignid} 
+	AND xm_contactdetails.deleted = 0 
+	ORDER BY modifiedtime desc
+  </select>
+  <select id="getContactdetails" resultMap="BaseResultMap" >
+  	SELECT
+		xm_users.user_name,
+		xm_contactdetails.*, xm_contactdetails.contactid AS crmid
+	FROM
+		xm_contactdetails
+	INNER JOIN xm_campaigncontrel ON xm_campaigncontrel.contactid = xm_contactdetails.contactid
+	LEFT JOIN xm_users ON xm_contactdetails.smownerid = xm_users.id
+	WHERE
+		xm_campaigncontrel.campaignid = #{campaignid}
+	AND xm_contactdetails.deleted = 0 
+	ORDER BY modifiedtime desc 
+	limit #{start},#{rows}
+  </select>
+  <select id="getContactdetailsByAccountid" resultMap="BaseResultMap" >
+  	select xm_contactdetails.contactid,xm_contactdetails.ismain,
+				xm_contactdetails.lastname from xm_contactdetails 
+			where xm_contactdetails.deleted=0 and xm_contactdetails.accountid= #{accountid}
   </select>
 </mapper>

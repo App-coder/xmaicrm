@@ -27,4 +27,16 @@ public class XmRoleServiceImpl implements XmRoleService{
 	}
 
 
+	@Override
+	public List<XmRole> getRolesWithoutTemplates() {
+		return this.xmRoleMapper.getRolesWithoutTemplates();
+	}
+
+
+	@Override
+	public List<XmRole> getTemplatesRelRole(int hometemplatesid) {
+		return this.xmRoleMapper.getTemplatesRelRole(hometemplatesid);
+	}
+
+
 }

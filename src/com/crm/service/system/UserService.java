@@ -9,4 +9,6 @@ public interface UserService {
 
 	UserPermission getUserPermission(XmUsers login);
 
+	int setUserStatus(Integer userid, String status, String lastPing);
+
 }

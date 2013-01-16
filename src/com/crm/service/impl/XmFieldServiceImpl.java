@@ -136,4 +136,9 @@ public class XmFieldServiceImpl implements XmFieldService{
 		return this.xmFieldMapper.getApproveStepFilters(tabid);
 	}
 
+	@Override
+	public List<XmField> getDisplayFields(Integer tabid, String blockstr) {
+		return this.xmFieldMapper.getDisplayFields(tabid,blockstr);
+	}
+
 }

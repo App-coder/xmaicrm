@@ -32,6 +32,14 @@ public interface XmUsersService {
 
 	int getTotalRelUser(String roleid);
 
+	XmUsers getById(Integer id);
+
+	List<XmUsers> loadAll();
+
+	int setUsersUnvalid();
+
+	List<XmUsers> getOnlineusers();
+
 
 	
 }

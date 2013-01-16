@@ -23,5 +23,9 @@ public class Constant {
 	public static final String MENU = "MENU";
 	//主菜单目录
 	public static final String PARENTTAB = "PARENTTAB";
+	
+	
+	//权限模块，默认的FIELDS
+	public static final String HMDOF = "DEFALTORGFIELDS";
 
 }

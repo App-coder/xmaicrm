@@ -15,6 +15,7 @@ import org.springframework.stereotype.Service;
 
 import com.crm.bean.crm.MenuBar;
 import com.crm.bean.crm.UserPermission;
+import com.crm.mapper.settings.basic.XmUsersMapper;
 import com.crm.model.XmProfile2globalpermissions;
 import com.crm.model.XmProfile2standardpermissions;
 import com.crm.model.XmRole;
@@ -27,7 +28,7 @@ import com.crm.service.settings.basic.XmProfile2standardpermissionsService;
 import com.crm.service.settings.basic.XmRole2profileService;
 import com.crm.service.settings.basic.XmRoleService;
 import com.crm.service.system.UserService;
-import com.crm.util.CacheManager;
+import com.crm.util.CacheUtil;
 import com.crm.util.Constant;
 import com.crm.util.crm.PermissionUtil;
 
@@ -37,6 +38,12 @@ import freemarker.template.TemplateException;
 
 @Service("userService")
 public class UserServiceImpl implements UserService {
+	
+	XmUsersMapper xmUsersMapper;
+	@Resource(name="xmUsersMapper")
+	public void setXmUsersMapper(XmUsersMapper xmUsersMapper) {
+		this.xmUsersMapper = xmUsersMapper;
+	}
 
 	XmRoleService xmRoleService;
 	@Resource(name="xmRoleService")
@@ -78,7 +85,7 @@ public class UserServiceImpl implements UserService {
 	
 	@Override
 	public String getNavBar(XmUsers login,String tpl,UserPermission userpermission) {
-		List<MenuBar> menubar = (List<MenuBar>) CacheManager.getFromCache(Constant.MENUBAR);
+		List<MenuBar> menubar = (List<MenuBar>) CacheUtil.getFromCache(Constant.MENUBAR);
 		
 		Configuration cfg = new Configuration();
         cfg.setEncoding(Locale.CHINA, "UTF-8");
@@ -118,6 +125,11 @@ public class UserServiceImpl implements UserService {
 		permission.setModulePermission(PermissionUtil.GenerateUserModulePerssion(tabPermissions,standardpermissions,this.xmFieldService));
 
 		return permission;
+	}
+
+	@Override
+	public int setUserStatus(Integer userid, String status, String lastPing) {
+		return this.xmUsersMapper.setUserStatus(userid,status,lastPing);
 	}
 
 }

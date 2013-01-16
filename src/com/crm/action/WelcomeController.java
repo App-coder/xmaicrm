@@ -1,5 +1,8 @@
 package com.crm.action;
 
+import java.util.Calendar;
+import java.util.Date;
+
 import javax.annotation.Resource;
 import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletRequest;
@@ -18,9 +21,9 @@ import com.crm.bean.crm.UserPermission;
 import com.crm.model.XmUsers;
 import com.crm.service.XmHomestuffService;
 import com.crm.service.settings.basic.XmUsersService;
-import com.crm.service.system.CacheDataService;
 import com.crm.service.system.UserService;
 import com.crm.util.Constant;
+import com.sun.jmx.snmp.Timestamp;
 
 @Controller
 @RequestMapping(value = "crm/welcome")
@@ -79,6 +82,10 @@ public class WelcomeController implements ServletContextAware {
 			// 缓存导航栏
 			session.setAttribute("navbar", this.userService.getNavBar(login,this.servletContext.getRealPath("WEB-INF/tpl"),userpermission));
 			
+			Calendar calendar = Calendar.getInstance();
+			calendar.add(Calendar.MINUTE, 30);
+			this.userService.setUserStatus(login.getId(),"1",calendar.getTime().getTime()/1000+"");
+		
 			msg.setType(true);
 			msg.setMessage("用户验证成功！");
 			return JSON.toJSONString(msg);
@@ -92,6 +99,8 @@ public class WelcomeController implements ServletContextAware {
 	@RequestMapping(value = "/loginout", method = RequestMethod.GET)
 	public String loginout(HttpSession session){
 		session.removeAttribute(Constant.USERPERMISSION);
+		session.removeAttribute("navbar");
+		session.invalidate();
 		return "welcome";
 	}
 

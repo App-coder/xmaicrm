@@ -1,8 +1,10 @@
 package com.crm.mapper.module;
 
+import java.util.List;
+
 import org.apache.ibatis.annotations.Param;
 
-import com.crm.bean.portlets.salesyearinfo.ExpensesStat;
+import com.crm.bean.crm.portlets.salesyearinfo.ExpensesStat;
 import com.crm.model.XmExpenses;
 
 public interface XmExpensesMapper {
@@ -21,4 +23,7 @@ public interface XmExpensesMapper {
     int updateByPrimaryKey(XmExpenses record);
 
 	ExpensesStat getExpensesStat(@Param("year") String year);
+
+	List<XmExpenses> getExpensesmonth(@Param("today") String today,@Param("prevday") String prevday,
+		@Param("nextday") String nextday);
 }

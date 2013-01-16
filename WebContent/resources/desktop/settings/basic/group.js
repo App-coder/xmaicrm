@@ -4,7 +4,7 @@ $(function(){
 });
 function initForm(){
     $('#form_group').form({
-	url : 'settings/group/groupEdit',
+	url : 'crm/settings/group/groupEdit',
 	onSubmit : function() {
 	    if ($('#form_group').form("validate")) {
 		return true;
@@ -35,7 +35,7 @@ function initPage(){
     cols = setDefWidth(cols,80);
     
     $('#grouplist').datagrid({
-	url : 'settings/group/listAll',
+	url : 'crm/settings/group/listAll',
 	collapsible : false,
 	idField : 'groupid',
 	singleSelect : true,
@@ -85,7 +85,7 @@ function initPage(){
 		if (selected) {
 		    confirm('确定删除部门？',function(r){
 			if(r){
-			    $.post('settings/group/delete',{groupid:selected.groupid},function(res){
+			    $.post('crm/settings/group/delete',{groupid:selected.groupid},function(res){
 				if(res.type==true){
 				    $('#grouplist').datagrid("reload");
 				}
@@ -106,7 +106,7 @@ function initPage(){
 }
 function loadForm(groupid){
     
-    $.post('settings/group/getGroupById',{groupid:groupid},function(res){
+    $.post('crm/settings/group/getGroupById',{groupid:groupid},function(res){
 	$("#form_group").form("load",res);
     },'json');
     
