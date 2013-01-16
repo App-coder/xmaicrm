@@ -30,6 +30,9 @@
     from xm_approvelog
     where id = #{id,jdbcType=INTEGER}
   </select>
+  <select id="selectByApproveid" resultMap="BaseResultMap">
+    select id,crmid from xm_approvelog where approveresult=0 and approveid=#{approveid}
+  </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
     delete from xm_approvelog
     where id = #{id,jdbcType=INTEGER}
@@ -144,6 +147,25 @@
     </set>
     where id = #{id,jdbcType=INTEGER}
   </update>
+  
+  <update id="updateByApproveid">
+     update xm_approvelog set approveresult=4,approved_by=#{userid} where approveresult=0 and approveid=#{approveid} 
+  </update>
+  
+  <update id="updateApproveRefuse">
+     update xm_approvelog set approveresult=2,approved_by=#{userid},updated_at=#{nowtime} where id=#{logid} 
+  </update>
+  <update id="updateModuleRelRefuse">
+     update ${tablename} set approved=0 where ${fieldid}=#{crmid}
+  </update>
+  
+  
+  
+  <update id="updateModuleRel">
+    update ${tablename} set approved=1,approvedby=#{userid} where approved in (0,-3) 
+    and ${fieldid} in (select distinct crmid from ec_approvelog where approveid=#{approveid} and approveresult=4)
+  </update>
+  
   <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.crm.model.XmApprovelog" >
     update xm_approvelog
     set crmid = #{crmid,jdbcType=INTEGER},
@@ -177,6 +199,25 @@
 	INNER JOIN ${tablename} ON xm_approvelog.crmid = ${tablename}.${fieldid}
 	WHERE
 		approveid = #{approveid} and ${tablename}.deleted=0 and ${tablename}.approved!=1 
+  </select>
+  
+  <select id="getApproveStatus" resultType="map">
+     SELECT
+        xm_approvelog.approveid,xm_approvelog.stepid,xm_approvelog.crmid,xm_approve.name approvename,xm_approvestep.name approvestepname,
+        xm_users.user_name,xm_approvelog.approveresult,xm_approvelog.memo,xm_approvelog.updated_at,
+        crmentity.setype,crmentity.pre
+	FROM
+		xm_approvelog
+	INNER JOIN (${subquery})AS crmentity ON xm_approvelog.crmid = crmentity.crmid
+	LEFT JOIN xm_approve ON xm_approve.id = xm_approvelog.approveid
+	LEFT JOIN(
+		xm_approvestep
+		INNER JOIN xm_step2users ON xm_approvestep.id = xm_step2users.stepid
+		AND xm_step2users.userid = #{userid}) on xm_approvelog.stepid=xm_approvestep.id left join xm_users on xm_users.id=xm_approvelog.approved_by ${where} order by xm_approvelog.updated_at desc limit #{start},#{rows}
+  </select>
+  
+  <select id="getApproveStatusTotal" resultType="Integer">
+    select count(*) total FROM xm_approvelog inner join (${subquery}) as crmentity on xm_approvelog.crmid=crmentity.crmid left join xm_approve on xm_approve.id=xm_approvelog.approveid left join (xm_approvestep  inner join xm_step2users on xm_approvestep.id=xm_step2users.stepid and xm_step2users.userid=#{userid}) on xm_approvelog.stepid=xm_approvestep.id left join xm_users on xm_users.id=xm_approvelog.approved_by ${where}
   </select>
   
 </mapper>

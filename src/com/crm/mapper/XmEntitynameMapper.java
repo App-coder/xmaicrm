@@ -22,4 +22,6 @@ public interface XmEntitynameMapper {
 	List<XmEntityname> getEntityname();
 
 	XmEntityname getEntityByModule(@Param("module") String module);
+	
+	String getEntityApprovelogName(@Param("fieldsname") String fieldsname,@Param("tablename") String tablename,@Param("entityidfield") String entityidfield,@Param("crmid") int crmid);
 }

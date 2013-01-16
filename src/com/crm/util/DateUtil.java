@@ -293,7 +293,7 @@ public class DateUtil {
 //		System.out.println(date);
 //		Date date2 = addDate(date);
 //		System.out.println(date2);
-		Calendar calendar = Calendar.getInstance();
+		/*Calendar calendar = Calendar.getInstance();
 		calendar.setTime(new Date());
 		calendar.add(Calendar.MONTH, -6);
 		TimeGet timeget = new TimeGet();
@@ -305,6 +305,21 @@ public class DateUtil {
 			System.out.println(timeget.getLastDayOfMonth(calendar));
 			System.out.println("**************************************************");
 		}
+		
+		* int day = cal.get(Calendar.DATE);
 
+    int month =cal.get(Calendar.MONTH) + 1;// Calendar.MONTH中的0代表一月份
+
+    int year = cal.get(Calendar.YEAR) ;
+
+    int hour = cal.get(Calendar.HOUR_OF_DAY);//不能用Calendar.HOUR，它是12进制的
+
+    int minu = cal.get(Calendar.MINUTE);
+		*
+		*/
+		//System.out.println(DateUtil.format(new Date(), C_TIME_PATTON_DEFAULT));
+		System.out.println(getCurrentDate().toLocaleString());
+		
+		
 	}
 }

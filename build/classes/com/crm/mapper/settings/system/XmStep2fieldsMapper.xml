@@ -51,4 +51,14 @@
 		stepid = #{stepid}
 	AND fieldid IN ${fieldids}
   </update>
+  
+  <update id="updateByStepIdZero">
+    update xm_step2fields set
+	   readonly = 0
+	WHERE
+		stepid = #{stepid}
+	AND fieldid NOT IN ${fieldids}
+  </update>
+  
+  
 </mapper>

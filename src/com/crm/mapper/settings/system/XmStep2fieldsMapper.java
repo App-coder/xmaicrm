@@ -12,4 +12,6 @@ public interface XmStep2fieldsMapper {
     int deleteByStepId(@Param("stepid") int stepid);
     
     int updateByStepId(@Param("stepid") int stepid,@Param("fieldids") String fieldids);
+    
+    int updateByStepIdZero(@Param("stepid") int stepid,@Param("fieldids") String fieldids);
 }

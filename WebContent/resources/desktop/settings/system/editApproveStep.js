@@ -99,7 +99,7 @@ function initApproveStepFieldRole(){
 	$.get("crm/settings/multiapprove/getApproveStepFieldLabel",{tabid:tabid},function(labels){
 		var labelsinfo=labels;
 		var fieldRoleHtml="";
-		$.get("crm/settings/multiapprove/getApproveStepFieldDetail",{tabid:tabid},function(blockitems){
+		$.get("crm/settings/multiapprove/getApproveStepFieldDetail",{tabid:tabid,stepid:stepid},function(blockitems){
 			for(var i=0;i<labelsinfo.length;i++){
 				fieldRoleHtml+="<fieldset><legend>"+labelsinfo[i].blocklabel+"</legend>"+
 				               "<table class=\"small\" width=\"100%\" cellspacing='0' cellpadding='5' border='0'>";
@@ -156,9 +156,10 @@ function initApproveStepAdvFilters(){
 			advFilters+="</table></fieldset>";
 			$("#countrycontainer3").empty();
 			$("#countrycontainer3").append(advFilters);
-			$("body").unmask();
 			if(type=='u')
 				setStepAdvFilter();
+			$("body").unmask();
+			
 		},'json');
 	},'json');
 }
@@ -166,7 +167,8 @@ function initApproveStepAdvFilters(){
 function setStepAdvFilter(){
 	$.get("crm/settings/multiapprove/getStepAdvFilterById",{stepid:stepid},function(filters){
 		for(var i=1;i<=filters.length;i++){
-			$("#fav"+i+"").val(filters[i-1].thevalue);
+			$("#fcol"+i+"").get(0).selectedIndex=1;
+			$("#fval"+i+"").val(filters[i-1].thevalue);
 		}
 	},'json');
 }
@@ -177,10 +179,12 @@ function doMultiApprove(){
 			nextstep:$("select[name=nextstep] option:selected").val(),
 			ended:$("select[name=ended] option:selected").val(),
 			alterapproveowner:$("select[name=alterapproveowner] option:selected").val(),
-			memo:$("textarea[name=memo]").val()
+			updated_at:showLocale(new Date()),
+			memo:$("textarea[name=memo]").val(),
+			tabid:tabid
 	};
 	var step2users=[];
-	$("input:[class=StepUserClass]:checked").each(function() { 
+	$("input:[class=StepUserClass]:checked").each(function(){ 
 		step2users.push({
 			userid:$(this).val(),
 			alternate:$("input[name='user_alter_"+$(this).val()+"']:checked").val()
@@ -208,17 +212,18 @@ function doMultiApprove(){
 		    thevalue:adv.join(",")
 		});
 	var param={
+		   type:type,
 		   stepid:stepid,
 		   step:new JSONUtil().stringify(step),
 		   step2users:new JSONUtil().stringify(step2users),
 		   step2fields:step2fields.join(","),
 		   step2advoption:new JSONUtil().stringify(step2advoption)
 	};
-	/*$("body").mask('页面正在加载……');
+	$("body").mask('页面正在加载……');
 	$.post("crm/settings/multiapprove/submit",param,function(result){
 		if(result.type){
 			window.location.href="crm/settings/multiapprove/showApproveStep?approveid="+approveid+"";
 			$("body").unmask();
 		}
-	},'json');*/
+	},'json');
 }

@@ -127,8 +127,8 @@ public class XmFieldServiceImpl implements XmFieldService{
 	
 	//审批流程子节点的字段权限内容
 	@Override
-	public List<Object> getApproveStepFieldTabDetail(Integer tabid) {
-		return this.xmFieldMapper.getApproveStepFieldTabDetail(tabid);
+	public List<Object> getApproveStepFieldTabDetail(Integer stepid,Integer tabid) {
+		return this.xmFieldMapper.getApproveStepFieldTabDetail(stepid,tabid);
 	}
 	
 	@Override

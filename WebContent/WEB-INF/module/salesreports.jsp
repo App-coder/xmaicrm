@@ -2,7 +2,7 @@
 	pageEncoding="utf-8"%>
 <!-- 年终销售报表界面 -->	
 <%@ include file="../common/config.jsp"%>
-<script type="text/javascript" src="resources/desktop/report/integradedreports.js"></script>
+<script type="text/javascript" src="resources/desktop/module/report/integradedreports.js"></script>
 <div class="container">
 年终销售报表界面 
 </div>

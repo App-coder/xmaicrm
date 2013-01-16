@@ -23,7 +23,7 @@ function initForm() {
     });
 
     $('#form_block').form({
-		url : 'settings/customblock/submit',
+		url : 'crm/settings/customblock/submit',
 		onSubmit : function() {
 		    if ($('#form_block').form("validate")) {
 			     return true;
@@ -46,7 +46,7 @@ function initForm() {
 }
 
 function initPage(){
-	$.get("settings/customblock/getBlockList",null,function(result){
+	$.get("crm/settings/customblock/getBlockList",null,function(result){
 		var options="";
 		$.each(result,function(i,block){
 			options+="<option value='"+block.tabid+"'>"+block.tablabel+"</option>";
@@ -60,7 +60,7 @@ function initPage(){
 
 function initGrid(){
 	$('#blocklist').datagrid({
-		url : 'settings/customblock/getFieldBlocksByTabId',
+		url : 'crm/settings/customblock/getFieldBlocksByTabId',
 		queryParams:{
 			tabid:tabid,
 		},
@@ -106,7 +106,7 @@ function initGrid(){
 				if (selected) {
 				    confirm('确定删除用户?',function(r){
 					if (r){  
-					    $.post("settings/customblock/submit",{blockid:selected.blockid,action:"delete"},function(res){
+					    $.post("crm/settings/customblock/submit",{blockid:selected.blockid,action:"delete"},function(res){
 							if(res.type == true){
 							    $('#blocklist').datagrid("reload");
 							}

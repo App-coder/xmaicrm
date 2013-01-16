@@ -2,18 +2,20 @@ $(function(){
     loadFields();
 });
 
-var approveid;
+var approveid=0;
 var data;
+var tabid;
 
 function loadFields(){
-    var tabid = $("#selectmultiapprove").val();
-    reloadGrid(tabid);
+    tabid = $("#selectmultiapprove").val();
+    reloadGrid();
     $.post("crm/settings/role/getRoleTree",null,function(result){
     	data=result;
     },"json");
 }
 
-function reloadGrid(tabid){
+function reloadGrid(){
+	tabid = $("#selectmultiapprove").val();
     var cols = [ {
 		field : 'name',
 		title : '流程名称'
@@ -52,6 +54,22 @@ function toggleAdvOpt(){
 	$("#advopt").slideToggle("slow");
 }
 
+function addMultiApprove(){
+	$("#multiapprove-window").window({
+	    title:'创建审批流程',
+	    onOpen:function(){
+		    $(".validatebox-tip").hide();
+		    $("#advopt").hide();
+		    $("#role_tree").tree("loadData",data);
+		    $("input[name=action]").val("create");
+	    },
+	    onClose:function(){
+	    	$('#form_multiapprove').form("clear");
+	    	$(".validatebox-tip").hide();
+	    }
+	});
+	$("#multiapprove-window").window("open");
+}
 
 function editMultiApprove(){
 	var selected = $('#multiapprovelist').datagrid("getSelected");
@@ -70,6 +88,26 @@ function editMultiApprove(){
 	} else {
 	    message("请选择一行记录！");
 	}
+}
+
+function deleteMultiApprove(){
+	var selected = $('#multiapprovelist').datagrid("getSelected");
+	if (selected) {
+	    confirm('确定删除?',function(r){
+		if (r){  
+			$("body").mask('页面正在加载……');
+			$.post("crm/settings/multiapprove/doMultiApprove",{approveid:selected.id,action:'delete'},function(res){
+				if(res.type == true){
+					$('#multiapprovelist').datagrid("reload");
+					$("body").unmask();
+				}
+			},"json");		        
+		}  
+	    });
+	}else {
+	    message("请选择一行记录！");
+	}
+	
 }
 
 function setFormValue(row){
@@ -118,13 +156,31 @@ function submitMultiApprove(){
 	$.each(nodes,function(i,node){
 		userArr.push(node.id);
 	});
-	var approve={
-	    name:$("input[name=name]").val(),
-		used:$(".used").val(),
-		userselected:$(".userselected").val(),
-		updated_at:showLocale(new Date()),
-		memo:$("textarea[name=memo]").val(),
-		id:approveid
+	var approve;
+	var action=$("input[name=action]").val();
+	if(action=='update')		
+		approve={
+		    name:$("input[name=name]").val(),
+			used:$(".used").val(),
+			userselected:$(".userselected").val(),
+			updated_at:showLocale(new Date()),
+			memo:$("textarea[name=memo]").val(),
+			id:approveid
+		};
+	else
+        approve={
+			id:approveid,
+			tabid:tabid,
+		    name:$("input[name=name]").val(),
+		    memo:$("textarea[name=memo]").val(),
+		    username:0,
+		    department:0,
+			used:$(".used").val(),
+			creator:user.id,
+			lastUpdater:user.id,
+			userselected:$(".userselected").val(),
+			createdAt:showLocale(new Date()),
+			updatedAt:showLocale(new Date())
 	};
 	
 	var params={
@@ -140,7 +196,7 @@ function submitMultiApprove(){
 		       $('#form_multiapprove').form("clear");
 		       $(".validatebox-tip").hide();
 		       $('#multiapprovelist').datagrid("reload",{  
-		            tabid: $("#selectmultiapprove").val()
+		            tabid: tabid
 		       });
 		    }
 	},"json");

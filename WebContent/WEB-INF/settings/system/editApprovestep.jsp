@@ -3,20 +3,14 @@
 <%@ include file="../../head.jsp"%>
 <%@ include file="../../common/config.jsp"%>
 <c:set var="contextPath" value="${pageContext.request.contextPath}"></c:set>
-
- <c:choose>
-    <c:when test="${approveid!=null || stepid!=null}">
-       <script>
-         var approveid=${approveid};
-         var stepid=${stepid};
-       </script>
-    </c:when>
-    <c:otherwise>
-       <c:set  var="approveid" value="1"></c:set> 
-    </c:otherwise>
- </c:choose>
  
- <c:choose>
+<c:if test="${stepid!=null}">
+	<script>
+         var stepid=${stepid};
+    </script>
+</c:if>
+ 
+<c:choose>
    <c:when test="${type=='u'}">
      <script>
         var pathname = "编辑审批步骤";
@@ -27,7 +21,7 @@
         var pathname = "新建审批步骤";
      </script>
     </c:otherwise>
- </c:choose>
+</c:choose>
  
  
 <script>
@@ -35,6 +29,7 @@ var type="${type}";
 var userid="${xmApprove.userid}";
 var tabid=${tabid};
 var pathActive = "multiapprove";
+var approveid=${approveid};
 </script>
 <%@ include file="../../path.jsp"%>
 <script type="text/javascript" src="resources/desktop/settings/system/editApproveStep.js"></script>

@@ -20,6 +20,7 @@
 var pathname = "编辑审批步骤";
 var pathActive = "multiapprove";
 var contextpath = "${contextPath}";
+var modulename="${modulename}";
 </script>
 <%@ include file="../../path.jsp"%>
 <script type="text/javascript" src="resources/desktop/settings/system/multiapprovestep.js"></script>
@@ -36,11 +37,10 @@ var contextpath = "${contextPath}";
 				<div class="path" id="navpath"></div>
 				<table  class="small" width="100%" cellspacing="0" cellpadding="0" border="0">
 					  <tr>
-					      <td colspan="2">
-							<input class="crmButton edit small" type="button" onclick="getEditApproveForm('SalesOrder',3,'','','');" value="编辑流程信息">
-							<input class="crmButton edit small" type="button" onclick="forceApproveFinish('SalesOrder',3);" value="强制审批完成">
-							<input class="crmButton edit small" type="button" onclick="forceApproveRetStart('SalesOrder',3);" value="强制返回选择流程">
-							<input class="crmButton edit small" type="button" onclick="document.location.href='index.php?module=Settings&action=MultiApprove&parenttab=Settings&fld_module=SalesOrder';" value="返回列表">
+					      <td colspan="2">							
+							<input class="crmButton edit small" type="button" onclick="forceApproveFinish();" value="强制审批完成">
+							<input class="crmButton edit small" type="button" onclick="forceApproveRetStart();" value="强制返回选择流程">
+							<input class="crmButton edit small" type="button" onclick="document.location.href='crm/settings/multiapprove/index';" value="返回列表">
 						  </td>
 					  </tr>
 					  <tr style="height:3px">
@@ -123,7 +123,7 @@ var contextpath = "${contextPath}";
 		<div id="multiapprovesteplist_tb" class="gtb" style="display: block;">
 			<a onclick="javascript:doMultiApproveStep('add')" class="easyui-linkbutton" data-options="plain:true,iconCls:'icon-add'">新增审批步骤</a>
 			<a onclick="javascript:doMultiApproveStep('edit')" class="easyui-linkbutton" data-options="plain:true,iconCls:'icon-edit'">修改审批步骤</a>
-			<a href="customview/index?entitytype=${entitytype}" class="easyui-linkbutton" data-options="plain:true,iconCls:'icon-remove'">删除</a>
+			<a onclick="javascript:doMultiApproveStep('delete')" class="easyui-linkbutton" data-options="plain:true,iconCls:'icon-remove'">删除</a>
 		</div>
 	</div>
 	<%@ include file="../../foot.jsp"%>

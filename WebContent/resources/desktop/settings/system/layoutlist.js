@@ -16,6 +16,7 @@ $(function() {
 //初始化
 function initForm() {
 	$(".importBox").change(function(){
+		$("body").mask('页面正在加载……');
     	tabid=$(".importBox").val();
     	initTable(tabid);
     });
@@ -88,6 +89,7 @@ function general(blockids,results){
 			table+="</table><br>";
 		});
 		$("#cfList").append(table);
+		$("body").unmask();
 	},"json");
 }
 
